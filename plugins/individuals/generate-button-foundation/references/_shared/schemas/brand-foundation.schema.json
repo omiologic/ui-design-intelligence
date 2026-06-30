@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://omiologic.dev/schemas/ui-blueprint/brand-foundation.schema.json",
+  "title": "Brand Foundation",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["name", "summary", "personality", "audience", "positioning", "voice", "visualDirection"],
+  "properties": {
+    "name": { "$ref": "#/$defs/evidenceString" },
+    "summary": { "$ref": "#/$defs/evidenceString" },
+    "personality": { "$ref": "#/$defs/evidenceStringList" },
+    "audience": { "$ref": "#/$defs/evidenceStringList" },
+    "positioning": { "$ref": "#/$defs/evidenceString" },
+    "voice": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["tone", "avoid"],
+      "properties": {
+        "tone": { "$ref": "#/$defs/evidenceString" },
+        "avoid": { "$ref": "#/$defs/evidenceStringList" }
+      }
+    },
+    "visualDirection": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["density", "style", "emphasis"],
+      "properties": {
+        "density": { "$ref": "#/$defs/evidenceString" },
+        "style": { "$ref": "#/$defs/evidenceString" },
+        "emphasis": { "$ref": "#/$defs/evidenceString" }
+      }
+    }
+  },
+  "$defs": {
+    "sourceKind": { "type": "string", "enum": ["observed", "inferred", "recommended", "generated", "userProvided"] },
+    "confidence": { "type": "string", "enum": ["low", "medium", "high"] },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["source", "confidence"],
+      "properties": {
+        "source": { "$ref": "#/$defs/sourceKind" },
+        "confidence": { "$ref": "#/$defs/confidence" },
+        "note": { "type": "string" }
+      }
+    },
+    "evidenceString": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["value", "source", "confidence"],
+      "properties": {
+        "value": { "type": "string", "minLength": 1 },
+        "source": { "$ref": "#/$defs/sourceKind" },
+        "confidence": { "$ref": "#/$defs/confidence" },
+        "note": { "type": "string" }
+      }
+    },
+    "evidenceStringList": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["values", "source", "confidence"],
+      "properties": {
+        "values": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+        "source": { "$ref": "#/$defs/sourceKind" },
+        "confidence": { "$ref": "#/$defs/confidence" },
+        "note": { "type": "string" }
+      }
+    }
+  }
+}

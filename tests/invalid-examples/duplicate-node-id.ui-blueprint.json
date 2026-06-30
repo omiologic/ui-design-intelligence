@@ -1,0 +1,23 @@
+{
+  "id": "invalid-duplicate-node-id",
+  "type": "wireframe",
+  "label": "Invalid Duplicate Node Id",
+  "version": "0.1.0",
+  "root": {
+    "id": "duplicate-id-page",
+    "type": "page",
+    "label": "Duplicate Id Page",
+    "children": [
+      {
+        "id": "duplicate-node",
+        "type": "header",
+        "label": "Header"
+      },
+      {
+        "id": "duplicate-node",
+        "type": "main",
+        "label": "Main Content"
+      }
+    ]
+  }
+}

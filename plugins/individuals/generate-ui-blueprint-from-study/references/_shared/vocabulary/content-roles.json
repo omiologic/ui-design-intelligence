@@ -1,0 +1,24 @@
+{
+  "contentRoles": [
+    "eyebrow",
+    "headline",
+    "subheadline",
+    "body",
+    "caption",
+    "label",
+    "helperText",
+    "errorText",
+    "primaryCTA",
+    "secondaryCTA",
+    "tertiaryCTA",
+    "navigationItem",
+    "breadcrumbItem",
+    "trustSignal",
+    "testimonial",
+    "metadata",
+    "price",
+    "badge",
+    "emptyState",
+    "legal"
+  ]
+}

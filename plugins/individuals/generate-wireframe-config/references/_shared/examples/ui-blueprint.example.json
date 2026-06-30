@@ -1,0 +1,173 @@
+{
+  "id": "ui-blueprint-example",
+  "type": "wireframe",
+  "label": "UI Blueprint Example",
+  "version": "0.1.0",
+  "description": "Canonical full-bundle UIBlueprint example for ui-design-intelligence handoff.",
+  "metadata": {
+    "tasteProfile": "conversion",
+    "register": "marketing"
+  },
+  "root": {
+    "id": "example-page",
+    "type": "page",
+    "label": "Example Page",
+    "children": [
+      {
+        "id": "example-header",
+        "type": "header",
+        "label": "Example Header",
+        "accessibility": {
+          "landmark": "banner"
+        },
+        "children": [
+          {
+            "id": "example-nav",
+            "type": "navigation",
+            "label": "Example Navigation",
+            "accessibility": {
+              "ariaLabel": "Primary navigation"
+            }
+          }
+        ]
+      },
+      {
+        "id": "example-main",
+        "type": "main",
+        "label": "Example Main",
+        "accessibility": {
+          "landmark": "main"
+        },
+        "children": [
+          {
+            "id": "example-hero",
+            "type": "hero",
+            "label": "Evidence-Led Hero",
+            "layout": "splitHero",
+            "children": [
+              {
+                "id": "example-hero-copy",
+                "type": "contentGroup",
+                "label": "Hero Copy",
+                "children": [
+                  {
+                    "id": "example-hero-heading",
+                    "type": "heading",
+                    "label": "Hero Heading",
+                    "role": "headline"
+                  },
+                  {
+                    "id": "example-hero-body",
+                    "type": "paragraph",
+                    "label": "Hero Supporting Copy",
+                    "role": "body"
+                  },
+                  {
+                    "id": "example-hero-actions",
+                    "type": "buttonGroup",
+                    "label": "Hero Actions",
+                    "children": [
+                      {
+                        "id": "example-primary-cta",
+                        "type": "button",
+                        "label": "Primary CTA",
+                        "role": "primaryCTA"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "example-hero-proof-group",
+                "type": "contentGroup",
+                "label": "Hero Proof",
+                "children": [
+                  {
+                    "id": "example-hero-proof",
+                    "type": "card",
+                    "label": "Hero Proof Card",
+                    "children": [
+                      {
+                        "id": "example-proof-copy",
+                        "type": "paragraph",
+                        "label": "Proof Statement",
+                        "role": "trustSignal"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "example-feature-section",
+            "type": "section",
+            "label": "Feature Section",
+            "layout": "cardGrid",
+            "children": [
+              {
+                "id": "example-feature-grid",
+                "type": "cardGrid",
+                "label": "Feature Cards",
+                "children": [
+                  {
+                    "id": "example-feature-card",
+                    "type": "card",
+                    "label": "Feature Card"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "example-footer",
+        "type": "footer",
+        "label": "Example Footer",
+        "accessibility": {
+          "landmark": "contentinfo"
+        }
+      }
+    ]
+  },
+  "overlays": [
+    {
+      "id": "example-contact-dialog",
+      "type": "dialog",
+      "label": "Contact Dialog",
+      "state": "closed",
+      "accessibility": {
+        "ariaLabel": "Contact form",
+        "focusManagement": "Trap focus while open and return focus to the trigger on close.",
+        "keyboardBehavior": "Escape closes the dialog."
+      },
+      "children": [
+        {
+          "id": "example-contact-form",
+          "type": "form",
+          "label": "Contact Form",
+          "children": [
+            {
+              "id": "example-contact-form-error",
+              "type": "banner",
+              "label": "Contact Form Error",
+              "state": "error"
+            },
+            {
+              "id": "example-contact-form-success",
+              "type": "banner",
+              "label": "Contact Form Success",
+              "state": "success"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "responsive": {
+    "desktop": "Hero uses a split layout with proof visible in the first viewport.",
+    "tablet": "Hero columns remain visible with reduced spacing.",
+    "mobile": "Hero copy, proof, feature cards, and footer stack in one column."
+  }
+}

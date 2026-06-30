@@ -1,0 +1,65 @@
+{
+  "name": "ui-blueprint-skills",
+  "displayName": "UI Blueprint Skills",
+  "version": "0.2.0",
+  "description": "Skills for generating controlled UI blueprint and wireframe JSON configs from approved vocabulary and study inputs.",
+  "status": "active",
+  "maintainer": "UI Blueprint maintainers",
+  "repository": "ui-design-intelligence repository",
+  "license": "LICENSE",
+  "changelog": "CHANGELOG.md",
+  "dependencies": [
+    "ui-study-skills",
+    "ui-knowledge-skills"
+  ],
+  "skills": [
+    "design-terminology",
+    "wireframe-schema",
+    "page-wireframe-planner",
+    "section-wireframe-planner",
+    "component-wireframe-planner",
+    "layout-specification",
+    "interaction-patterns",
+    "accessibility-wireframe-review",
+    "generate-ui-blueprint-from-study",
+    "generate-wireframe-config"
+  ],
+  "agents": [
+    "blueprint-architect",
+    "accessibility-reviewer"
+  ],
+  "commands": [
+    "generate-blueprint-from-study"
+  ],
+  "shared": [
+    "shared/schemas/study-output.schema.json",
+    "shared/schemas/wireframe-config.schema.json",
+    "shared/vocabulary/node-types.json",
+    "shared/vocabulary/layout-patterns.json",
+    "shared/vocabulary/content-roles.json",
+    "shared/vocabulary/interaction-states.json",
+    "shared/vocabulary/ui-layer-types.json",
+    "shared/design-philosophy/README.md",
+    "shared/design-philosophy/blueprint-locks.md",
+    "shared/design-philosophy/hierarchy-density-register.md",
+    "shared/design-philosophy/layout-pattern-selection.md",
+    "shared/design-philosophy/overlay-decision.md",
+    "shared/design-philosophy/page-section-ordering.md",
+    "shared/design-philosophy/preflight-checklist.md",
+    "shared/design-philosophy/structural-anti-slop.md",
+    "shared/taste-profiles/README.md",
+    "shared/taste-profiles/conversion.json",
+    "shared/taste-profiles/utility-product.json",
+    "shared/templates/blueprint-summary.md",
+    "shared/templates/blueprint-export-seed.md",
+    "shared/examples/ui-blueprint.example.json",
+    "shared/examples/ui-blueprint.export-seed.md",
+    "shared/examples/minimal-page.ui-blueprint.json",
+    "shared/examples/product-page.ui-blueprint.json",
+    "shared/examples/dental-homepage.ui-blueprint.json",
+    "docs/interop/README.md",
+    "docs/interop/blueprint-export-seed.md",
+    "docs/interop/install-command-parity.md",
+    "scripts/export-blueprint-seed.mjs"
+  ]
+}

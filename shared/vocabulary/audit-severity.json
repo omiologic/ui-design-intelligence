@@ -1,0 +1,24 @@
+{
+  "auditSeverities": [
+    {
+      "name": "info",
+      "definition": "Contextual observation that does not require a corrective action."
+    },
+    {
+      "name": "low",
+      "definition": "Minor issue that may reduce clarity or polish but does not block the primary task."
+    },
+    {
+      "name": "medium",
+      "definition": "Material issue that can reduce comprehension, confidence, or completion for some users."
+    },
+    {
+      "name": "high",
+      "definition": "Serious issue likely to block or mislead users in a primary workflow."
+    },
+    {
+      "name": "critical",
+      "definition": "Severe issue that prevents completion, creates major accessibility risk, or invalidates core page intent."
+    }
+  ]
+}

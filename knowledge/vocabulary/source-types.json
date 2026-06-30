@@ -1,0 +1,28 @@
+{
+  "sourceTypes": [
+    {
+      "name": "publicWebsite",
+      "definition": "Publicly accessible page or site studied from a URL."
+    },
+    {
+      "name": "authenticatedProduct",
+      "definition": "Logged-in product or app surface studied with project permission."
+    },
+    {
+      "name": "screenshotSet",
+      "definition": "Static screenshot collection used as study evidence."
+    },
+    {
+      "name": "prototype",
+      "definition": "Prototype, mockup, or pre-production interface used as study evidence."
+    },
+    {
+      "name": "documentedReference",
+      "definition": "Documented reference, design spec, or written source used as evidence."
+    },
+    {
+      "name": "internalProduct",
+      "definition": "Internal product or owned surface studied inside a project workspace."
+    }
+  ]
+}

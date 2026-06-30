@@ -1,0 +1,107 @@
+{
+  "version": "0.1.0",
+  "generatedAt": "2026-06-30",
+  "patterns": [
+    {
+      "id": "credibility-first-healthcare-hero",
+      "path": "knowledge/examples/credibility-first-healthcare-hero.pattern.json",
+      "patternType": "section",
+      "category": "hero",
+      "name": "Credibility-First Healthcare Hero",
+      "summary": "A hero structure that establishes professional trust before asking users to book, inquire, or request a consultation.",
+      "tags": {
+        "industries": [
+          "healthcare",
+          "dentistry",
+          "dermatology"
+        ],
+        "pageTypes": [
+          "homepage",
+          "servicePage",
+          "landingPage"
+        ],
+        "sectionTypes": [
+          "hero"
+        ],
+        "conversionGoals": [
+          "appointmentBooking",
+          "consultationRequest"
+        ],
+        "audiences": [
+          "patients",
+          "generalConsumers"
+        ]
+      },
+      "confidence": "medium",
+      "status": "candidate"
+    },
+    {
+      "id": "mobile-navigation-drawer",
+      "path": "knowledge/examples/mobile-navigation-drawer.pattern.json",
+      "patternType": "interaction",
+      "category": "mobileNavigation",
+      "name": "Mobile Navigation Drawer",
+      "summary": "A mobile navigation pattern that preserves primary navigation while keeping dismissal, focus, and return behavior explicit.",
+      "tags": {
+        "pageTypes": [
+          "homepage",
+          "landingPage",
+          "servicePage",
+          "productDetail"
+        ],
+        "componentTypes": [
+          "drawer",
+          "navigation"
+        ],
+        "interactionTypes": [
+          "mobileNavigation",
+          "openClose"
+        ],
+        "audiences": [
+          "generalConsumers",
+          "buyers",
+          "patients"
+        ]
+      },
+      "confidence": "medium",
+      "status": "candidate"
+    },
+    {
+      "id": "sticky-appointment-cta",
+      "path": "knowledge/examples/sticky-appointment-cta.pattern.json",
+      "patternType": "conversion",
+      "category": "stickyAction",
+      "name": "Sticky Appointment CTA",
+      "summary": "A persistent appointment action that keeps the main conversion available after the user has enough trust and context.",
+      "tags": {
+        "industries": [
+          "healthcare",
+          "dentistry",
+          "dermatology",
+          "localBusiness"
+        ],
+        "pageTypes": [
+          "homepage",
+          "servicePage",
+          "landingPage"
+        ],
+        "componentTypes": [
+          "stickyBar"
+        ],
+        "interactionTypes": [
+          "stickyAction"
+        ],
+        "conversionGoals": [
+          "appointmentBooking",
+          "consultationRequest"
+        ],
+        "audiences": [
+          "patients",
+          "generalConsumers"
+        ]
+      },
+      "confidence": "medium",
+      "status": "candidate"
+    }
+  ]
+}

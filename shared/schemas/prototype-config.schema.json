@@ -1,0 +1,782 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://omiologic.dev/schemas/ui-blueprint/prototype-config.schema.json",
+  "title": "Prototype Config",
+  "description": "Structured interaction configuration that references wireframe screens and node IDs without duplicating wireframe layout vocabulary.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "version",
+    "type",
+    "id",
+    "name",
+    "source",
+    "screens",
+    "routes",
+    "states",
+    "componentStateModels",
+    "interactions",
+    "overlays",
+    "forms",
+    "navigationFlows",
+    "transitions",
+    "notes"
+  ],
+  "properties": {
+    "version": {
+      "$ref": "#/$defs/version"
+    },
+    "type": {
+      "const": "prototypeConfig"
+    },
+    "id": {
+      "$ref": "#/$defs/id"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source": {
+      "$ref": "#/$defs/source"
+    },
+    "designSystemSeedRef": {
+      "$ref": "#/$defs/id"
+    },
+    "screens": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/screen"
+      }
+    },
+    "routes": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/route"
+      }
+    },
+    "states": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/prototypeState"
+      }
+    },
+    "componentStateModels": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/componentStateModel"
+      }
+    },
+    "interactions": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/interactionFlow"
+      }
+    },
+    "overlays": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/overlay"
+      }
+    },
+    "forms": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/formModel"
+      }
+    },
+    "navigationFlows": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/navigationFlow"
+      }
+    },
+    "transitions": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/prototypeTransition"
+      }
+    },
+    "notes": {
+      "$ref": "#/$defs/stringList"
+    }
+  },
+  "$defs": {
+    "version": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$"
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "sourceWireframeId",
+        "sourceWireframeRef"
+      ],
+      "properties": {
+        "sourceWireframeId": {
+          "$ref": "#/$defs/id"
+        },
+        "sourceWireframeRef": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sourceDesignSystemSeedId": {
+          "$ref": "#/$defs/id"
+        },
+        "notes": {
+          "$ref": "#/$defs/stringList"
+        }
+      }
+    },
+    "screen": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "label",
+        "wireframeRef",
+        "initialState"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "label": {
+          "type": "string",
+          "minLength": 1
+        },
+        "wireframeRef": {
+          "$ref": "#/$defs/id"
+        },
+        "routeId": {
+          "$ref": "#/$defs/id"
+        },
+        "initialState": {
+          "$ref": "#/$defs/interactionState"
+        },
+        "viewportPriority": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/viewport"
+          }
+        }
+      }
+    },
+    "route": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "path",
+        "screenId"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "screenId": {
+          "$ref": "#/$defs/id"
+        },
+        "label": {
+          "type": "string"
+        }
+      }
+    },
+    "prototypeState": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "name",
+        "state",
+        "description"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "state": {
+          "$ref": "#/$defs/interactionState"
+        },
+        "nodeId": {
+          "$ref": "#/$defs/id"
+        },
+        "screenId": {
+          "$ref": "#/$defs/id"
+        },
+        "description": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "overlay": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "nodeId",
+        "type",
+        "initialState",
+        "triggerNodeIds",
+        "dismissal"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "nodeId": {
+          "$ref": "#/$defs/id"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "dialog",
+            "drawer",
+            "popover",
+            "toast"
+          ]
+        },
+        "initialState": {
+          "$ref": "#/$defs/interactionState"
+        },
+        "triggerNodeIds": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/id"
+          }
+        },
+        "dismissal": {
+          "$ref": "#/$defs/dismissal"
+        }
+      }
+    },
+    "dismissal": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "methods",
+        "focusReturnNodeId"
+      ],
+      "properties": {
+        "methods": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "escape",
+              "closeButton",
+              "scrim",
+              "routeChange",
+              "timeout"
+            ]
+          }
+        },
+        "focusReturnNodeId": {
+          "$ref": "#/$defs/id"
+        }
+      }
+    },
+    "formModel": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "nodeId",
+        "fields",
+        "submitNodeId",
+        "validation"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "nodeId": {
+          "$ref": "#/$defs/id"
+        },
+        "fields": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/formField"
+          }
+        },
+        "submitNodeId": {
+          "$ref": "#/$defs/id"
+        },
+        "validation": {
+          "$ref": "#/$defs/validationModel"
+        }
+      }
+    },
+    "formField": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "nodeId",
+        "required"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "nodeId": {
+          "$ref": "#/$defs/id"
+        },
+        "required": {
+          "type": "boolean"
+        },
+        "validationStateIds": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/id"
+          }
+        }
+      }
+    },
+    "navigationFlow": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "fromScreenId",
+        "toScreenId",
+        "triggerNodeId",
+        "action"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "fromScreenId": {
+          "$ref": "#/$defs/id"
+        },
+        "toScreenId": {
+          "$ref": "#/$defs/id"
+        },
+        "triggerNodeId": {
+          "$ref": "#/$defs/id"
+        },
+        "action": {
+          "$ref": "#/$defs/actionType"
+        }
+      }
+    },
+    "prototypeTransition": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "from",
+        "to",
+        "trigger"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "from": {
+          "$ref": "#/$defs/id"
+        },
+        "to": {
+          "$ref": "#/$defs/id"
+        },
+        "trigger": {
+          "$ref": "#/$defs/interactionEvent"
+        },
+        "description": {
+          "type": "string"
+        }
+      }
+    },
+    "componentStateModel": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "component",
+        "nodeId",
+        "initialState",
+        "allowedStates",
+        "transitions",
+        "accessibility"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "component": {
+          "type": "string",
+          "minLength": 1
+        },
+        "nodeId": {
+          "$ref": "#/$defs/id"
+        },
+        "wireframeRef": {
+          "$ref": "#/$defs/id"
+        },
+        "initialState": {
+          "$ref": "#/$defs/interactionState"
+        },
+        "allowedStates": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/interactionState"
+          }
+        },
+        "transitions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/stateTransition"
+          }
+        },
+        "disabledBehavior": {
+          "type": "string"
+        },
+        "loadingBehavior": {
+          "type": "string"
+        },
+        "validation": {
+          "$ref": "#/$defs/validationModel"
+        },
+        "accessibility": {
+          "$ref": "#/$defs/accessibility"
+        },
+        "notes": {
+          "$ref": "#/$defs/stringList"
+        }
+      }
+    },
+    "interactionFlow": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "trigger",
+        "action",
+        "result"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "label": {
+          "type": "string",
+          "minLength": 1
+        },
+        "trigger": {
+          "$ref": "#/$defs/trigger"
+        },
+        "condition": {
+          "$ref": "#/$defs/condition"
+        },
+        "action": {
+          "$ref": "#/$defs/action"
+        },
+        "result": {
+          "$ref": "#/$defs/result"
+        },
+        "accessibility": {
+          "$ref": "#/$defs/accessibility"
+        },
+        "notes": {
+          "$ref": "#/$defs/stringList"
+        }
+      }
+    },
+    "trigger": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "event",
+        "sourceNodeId"
+      ],
+      "properties": {
+        "event": {
+          "$ref": "#/$defs/interactionEvent"
+        },
+        "sourceNodeId": {
+          "$ref": "#/$defs/id"
+        },
+        "screenId": {
+          "$ref": "#/$defs/id"
+        },
+        "routeId": {
+          "$ref": "#/$defs/id"
+        },
+        "key": {
+          "type": "string"
+        }
+      }
+    },
+    "condition": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "type"
+      ],
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "always",
+            "whenState",
+            "whenValid",
+            "whenInvalid",
+            "whenViewport",
+            "whenAuthenticated",
+            "custom"
+          ]
+        },
+        "stateId": {
+          "$ref": "#/$defs/id"
+        },
+        "viewport": {
+          "$ref": "#/$defs/viewport"
+        },
+        "description": {
+          "type": "string"
+        }
+      }
+    },
+    "action": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "type"
+      ],
+      "properties": {
+        "type": {
+          "$ref": "#/$defs/actionType"
+        },
+        "targetNodeId": {
+          "$ref": "#/$defs/id"
+        },
+        "targetScreenId": {
+          "$ref": "#/$defs/id"
+        },
+        "targetRouteId": {
+          "$ref": "#/$defs/id"
+        },
+        "targetStateId": {
+          "$ref": "#/$defs/id"
+        },
+        "value": {
+          "type": [
+            "string",
+            "number",
+            "boolean",
+            "null"
+          ]
+        }
+      }
+    },
+    "result": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "type",
+        "description"
+      ],
+      "properties": {
+        "type": {
+          "$ref": "#/$defs/resultType"
+        },
+        "description": {
+          "type": "string",
+          "minLength": 1
+        },
+        "resultingStateId": {
+          "$ref": "#/$defs/id"
+        },
+        "focusTargetNodeId": {
+          "$ref": "#/$defs/id"
+        }
+      }
+    },
+    "stateTransition": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "from",
+        "to",
+        "trigger"
+      ],
+      "properties": {
+        "from": {
+          "$ref": "#/$defs/interactionState"
+        },
+        "to": {
+          "$ref": "#/$defs/interactionState"
+        },
+        "trigger": {
+          "$ref": "#/$defs/interactionEvent"
+        },
+        "description": {
+          "type": "string"
+        }
+      }
+    },
+    "validationModel": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "states",
+        "errorPlacement"
+      ],
+      "properties": {
+        "states": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/interactionState"
+          }
+        },
+        "errorPlacement": {
+          "type": "string",
+          "enum": [
+            "inline",
+            "summary",
+            "toast",
+            "none"
+          ]
+        },
+        "rules": {
+          "$ref": "#/$defs/stringList"
+        }
+      }
+    },
+    "accessibility": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "focusManagement",
+        "keyboardBehavior"
+      ],
+      "properties": {
+        "focusManagement": {
+          "type": "string",
+          "minLength": 1
+        },
+        "keyboardBehavior": {
+          "type": "string",
+          "minLength": 1
+        },
+        "ariaLabel": {
+          "type": "string"
+        },
+        "ariaLive": {
+          "type": "string",
+          "enum": [
+            "off",
+            "polite",
+            "assertive"
+          ]
+        },
+        "notes": {
+          "$ref": "#/$defs/stringList"
+        }
+      }
+    },
+    "interactionState": {
+      "type": "string",
+      "enum": [
+        "default",
+        "hover",
+        "focus",
+        "active",
+        "selected",
+        "disabled",
+        "expanded",
+        "collapsed",
+        "open",
+        "closed",
+        "loading",
+        "success",
+        "warning",
+        "error",
+        "empty",
+        "hidden",
+        "visible",
+        "sticky",
+        "dismissible",
+        "required",
+        "optional"
+      ]
+    },
+    "interactionEvent": {
+      "type": "string",
+      "enum": [
+        "click",
+        "tap",
+        "submit",
+        "change",
+        "input",
+        "focus",
+        "blur",
+        "keydown",
+        "routeEnter",
+        "routeLeave",
+        "timeout"
+      ]
+    },
+    "actionType": {
+      "type": "string",
+      "enum": [
+        "navigate",
+        "openOverlay",
+        "closeOverlay",
+        "toggleState",
+        "setState",
+        "submitForm",
+        "validateField",
+        "showFeedback",
+        "hideFeedback",
+        "scrollTo",
+        "none"
+      ]
+    },
+    "resultType": {
+      "type": "string",
+      "enum": [
+        "routeChanged",
+        "overlayOpened",
+        "overlayClosed",
+        "stateChanged",
+        "formSubmitted",
+        "validationShown",
+        "feedbackShown",
+        "feedbackHidden",
+        "focusMoved",
+        "noOp"
+      ]
+    },
+    "viewport": {
+      "type": "string",
+      "enum": [
+        "compact",
+        "medium",
+        "expanded",
+        "large"
+      ]
+    },
+    "stringList": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    }
+  }
+}

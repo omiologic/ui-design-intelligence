@@ -1,0 +1,53 @@
+{
+  "id": "sticky-appointment-cta",
+  "type": "pattern",
+  "patternType": "conversion",
+  "category": "stickyAction",
+  "name": "Sticky Appointment CTA",
+  "summary": "A persistent appointment action that keeps the main conversion available after the user has enough trust and context.",
+  "tags": {
+    "industries": ["healthcare", "dentistry", "dermatology", "localBusiness"],
+    "pageTypes": ["homepage", "servicePage", "landingPage"],
+    "componentTypes": ["stickyBar"],
+    "interactionTypes": ["stickyAction"],
+    "conversionGoals": ["appointmentBooking", "consultationRequest"],
+    "audiences": ["patients", "generalConsumers"]
+  },
+  "useWhen": [
+    "The page is long enough that the primary action can leave the viewport.",
+    "The user may be ready to act after reading proof, process, pricing, or FAQ content."
+  ],
+  "avoidWhen": [
+    "The page already has competing primary actions.",
+    "The sticky action would obscure form fields, comparison data, or required legal content."
+  ],
+  "structure": {
+    "required": ["primaryCTA", "shortContextLabel", "dismissalOrNonblockingPlacement"],
+    "optional": ["phoneShortcut", "secondaryCTA"],
+    "notes": ["Keep one primary appointment action and avoid duplicating every header link."]
+  },
+  "wireframeMapping": {
+    "nodeType": "stickyBar",
+    "layout": "stickyFooterBar",
+    "contentRoles": ["primaryCTA", "label"],
+    "recommendedChildren": ["paragraph", "button", "annotation"],
+    "notes": ["Document mobile placement and what content it must not cover."]
+  },
+  "blueprintImpact": {
+    "recommendedSections": ["hero", "trustSignals", "faq", "cta"],
+    "recommendedInteractions": ["stickyAction"],
+    "notes": ["Introduce after first proof or keep visually subordinate until the user has context."]
+  },
+  "sourceRefs": [
+    {
+      "sourceId": "example-healthcare-long-page",
+      "auditId": "example-healthcare-long-page-conversion-audit",
+      "findingLabels": ["Primary appointment action disappears after proof sections"]
+    }
+  ],
+  "confidence": {
+    "level": "medium",
+    "reason": "Reusable conversion support pattern; exact placement should be validated against content length and obstruction risk."
+  },
+  "status": "candidate"
+}

@@ -1,0 +1,10 @@
+.plan/
+dist/*
+!dist/plugins/
+dist/plugins/*
+!dist/plugins/.gitkeep
+
+*.log
+.DS_Store
+__pycache__/
+*.pyc

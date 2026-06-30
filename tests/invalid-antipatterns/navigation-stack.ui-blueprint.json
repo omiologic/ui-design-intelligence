@@ -1,0 +1,66 @@
+{
+  "id": "invalid-navigation-stack",
+  "type": "wireframe",
+  "label": "Invalid Navigation Stack",
+  "version": "0.1.0",
+  "root": {
+    "id": "navigation-stack-page",
+    "type": "page",
+    "label": "Navigation Stack Page",
+    "children": [
+      {
+        "id": "stacked-header",
+        "type": "header",
+        "label": "Stacked Header",
+        "children": [
+          {
+            "id": "primary-nav",
+            "type": "navigation",
+            "label": "Primary Navigation",
+            "accessibility": {
+              "ariaLabel": "Primary navigation"
+            }
+          },
+          {
+            "id": "secondary-nav",
+            "type": "navigation",
+            "label": "Secondary Navigation",
+            "accessibility": {
+              "ariaLabel": "Secondary navigation"
+            }
+          }
+        ]
+      },
+      {
+        "id": "navigation-stack-main",
+        "type": "main",
+        "label": "Navigation Stack Main",
+        "children": [
+          {
+            "id": "navigation-stack-hero",
+            "type": "hero",
+            "label": "Navigation Stack Hero",
+            "children": [
+              {
+                "id": "navigation-stack-heading",
+                "type": "heading",
+                "label": "Navigation Stack Heading",
+                "role": "headline"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "navigation-stack-footer",
+        "type": "footer",
+        "label": "Navigation Stack Footer"
+      }
+    ]
+  },
+  "responsive": {
+    "desktop": "Both navigation systems remain visible.",
+    "tablet": "Both navigation systems compress.",
+    "mobile": "Both navigation systems move into the same stack."
+  }
+}

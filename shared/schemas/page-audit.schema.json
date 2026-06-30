@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://omiologic.dev/schemas/ui-blueprint/page-audit.schema.json",
+  "title": "UI Page Audit",
+  "description": "Shared output shape for audit skills that evaluate site, page, section, interaction, accessibility, and SEO quality.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "source", "auditType", "summary", "overallSeverity", "findings"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$"
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["urlOrName"],
+      "properties": {
+        "urlOrName": { "type": "string", "minLength": 1 },
+        "capturedAt": { "type": "string" },
+        "viewport": { "type": "string" }
+      }
+    },
+    "auditType": {
+      "type": "string",
+      "enum": ["site", "page", "section", "interaction", "accessibility", "seo"]
+    },
+    "summary": {
+      "type": "string",
+      "minLength": 1
+    },
+    "overallSeverity": {
+      "type": "string",
+      "enum": ["info", "low", "medium", "high", "critical"]
+    },
+    "findings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "title", "severity", "category", "evidence", "impact", "recommendation"],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$"
+          },
+          "title": { "type": "string", "minLength": 1 },
+          "severity": {
+            "type": "string",
+            "enum": ["info", "low", "medium", "high", "critical"]
+          },
+          "category": {
+            "type": "string",
+            "enum": ["storytelling", "structure", "interaction", "accessibility", "responsive", "seo", "content", "conversion"]
+          },
+          "target": { "type": "string" },
+          "evidence": { "type": "string", "minLength": 1 },
+          "impact": { "type": "string", "minLength": 1 },
+          "recommendation": { "type": "string", "minLength": 1 },
+          "handoff": { "type": "string" }
+        }
+      }
+    }
+  }
+}

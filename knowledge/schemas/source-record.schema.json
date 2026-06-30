@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://omiologic.dev/schemas/ui-blueprint/knowledge/source-record.schema.json",
+  "title": "UI Knowledge Source Record",
+  "description": "Project-local record describing a studied source without storing reusable pattern knowledge.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "type", "sourceType", "name", "capturedAt"],
+  "properties": {
+    "id": { "$ref": "#/$defs/id" },
+    "type": { "const": "source" },
+    "sourceType": {
+      "type": "string",
+      "enum": ["publicWebsite", "authenticatedProduct", "screenshotSet", "prototype", "documentedReference", "internalProduct"]
+    },
+    "name": { "$ref": "#/$defs/label" },
+    "url": { "type": "string", "minLength": 1 },
+    "industryTags": { "$ref": "#/$defs/stringList" },
+    "pageType": { "type": "string" },
+    "audienceTags": { "$ref": "#/$defs/stringList" },
+    "capturedAt": { "type": "string", "minLength": 1 },
+    "captureRefs": { "$ref": "#/$defs/pathList" },
+    "studyRefs": { "$ref": "#/$defs/pathList" },
+    "auditRefs": { "$ref": "#/$defs/pathList" },
+    "notes": { "$ref": "#/$defs/stringList" }
+  },
+  "$defs": {
+    "id": { "type": "string", "pattern": "^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$" },
+    "label": { "type": "string", "minLength": 1 },
+    "stringList": { "type": "array", "items": { "type": "string", "minLength": 1 }, "default": [] },
+    "pathList": { "type": "array", "items": { "type": "string", "minLength": 1 }, "default": [] }
+  }
+}

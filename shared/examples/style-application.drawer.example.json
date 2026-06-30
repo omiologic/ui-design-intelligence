@@ -1,0 +1,21 @@
+{
+  "version": "0.1.0",
+  "type": "styleApplication",
+  "styleId": "utilitarian",
+  "scope": "component",
+  "target": {
+    "scope": "component",
+    "id": "settings-drawer",
+    "label": "Settings Drawer"
+  },
+  "intensity": "medium",
+  "preserve": ["route structure", "keyboard dismissal", "focus return target"],
+  "applyTo": ["drawer labels", "control density", "focus states", "open close behavior"],
+  "avoid": ["slow decorative animation", "hidden close affordance", "icon-only commands without labels"],
+  "notes": ["Use utilitarian treatment to make a repeated workflow drawer efficient."],
+  "source": {
+    "type": "generated",
+    "description": "Schema-valid drawer style application example.",
+    "licenseNotes": "No external prose included."
+  }
+}

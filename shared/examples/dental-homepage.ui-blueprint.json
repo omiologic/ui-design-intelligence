@@ -1,0 +1,219 @@
+{
+  "id": "dental-homepage",
+  "type": "wireframe",
+  "label": "Dental Homepage Wireframe",
+  "version": "0.1.0",
+  "description": "Homepage blueprint for a dental practice using the MVP UIBlueprint schema.",
+  "root": {
+    "id": "dental-home-page",
+    "type": "page",
+    "label": "Dental Home Page",
+    "children": [
+      {
+        "id": "site-header",
+        "type": "header",
+        "label": "Site Header",
+        "accessibility": {
+          "landmark": "banner"
+        },
+        "children": [
+          {
+            "id": "primary-navigation",
+            "type": "navigation",
+            "label": "Primary Navigation",
+            "accessibility": {
+              "ariaLabel": "Primary navigation"
+            }
+          },
+          {
+            "id": "appointment-button",
+            "type": "button",
+            "label": "Book Appointment Button",
+            "role": "primaryCTA"
+          }
+        ]
+      },
+      {
+        "id": "main-content",
+        "type": "main",
+        "label": "Main Content",
+        "accessibility": {
+          "landmark": "main"
+        },
+        "children": [
+          {
+            "id": "hero-section",
+            "type": "hero",
+            "label": "Appointment Hero",
+            "layout": "splitHero",
+            "children": [
+              {
+                "id": "hero-copy",
+                "type": "textBlock",
+                "label": "Hero Copy",
+                "children": [
+                  {
+                    "id": "hero-heading",
+                    "type": "heading",
+                    "label": "Hero Heading",
+                    "role": "headline"
+                  },
+                  {
+                    "id": "hero-subheadline",
+                    "type": "paragraph",
+                    "label": "Hero Subheadline",
+                    "role": "subheadline"
+                  },
+                  {
+                    "id": "hero-actions",
+                    "type": "buttonGroup",
+                    "label": "Hero Actions",
+                    "children": [
+                      {
+                        "id": "book-visit-button",
+                        "type": "button",
+                        "label": "Book Visit",
+                        "role": "primaryCTA"
+                      },
+                      {
+                        "id": "call-office-button",
+                        "type": "button",
+                        "label": "Call Office",
+                        "role": "secondaryCTA"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "hero-image",
+                "type": "imagePlaceholder",
+                "label": "Practice Image Placeholder"
+              }
+            ]
+          },
+          {
+            "id": "trust-signals",
+            "type": "section",
+            "label": "Trust Signals",
+            "layout": "cardGrid",
+            "children": [
+              {
+                "id": "insurance-card",
+                "type": "card",
+                "label": "Insurance Accepted",
+                "role": "trustSignal"
+              },
+              {
+                "id": "reviews-card",
+                "type": "card",
+                "label": "Patient Reviews",
+                "role": "trustSignal"
+              },
+              {
+                "id": "same-day-card",
+                "type": "card",
+                "label": "Same Day Appointments",
+                "role": "trustSignal"
+              }
+            ]
+          },
+          {
+            "id": "services-section",
+            "type": "section",
+            "label": "Dental Services",
+            "layout": "featureGrid",
+            "children": [
+              {
+                "id": "services-grid",
+                "type": "cardGrid",
+                "label": "Services Grid",
+                "children": [
+                  {
+                    "id": "cleanings-card",
+                    "type": "card",
+                    "label": "Cleanings Card"
+                  },
+                  {
+                    "id": "cosmetic-card",
+                    "type": "card",
+                    "label": "Cosmetic Dentistry Card"
+                  },
+                  {
+                    "id": "emergency-card",
+                    "type": "card",
+                    "label": "Emergency Dental Care Card"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "faq-section",
+            "type": "section",
+            "label": "Patient FAQ",
+            "children": [
+              {
+                "id": "patient-faq",
+                "type": "accordion",
+                "label": "Patient FAQ Accordion"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "site-footer",
+        "type": "footer",
+        "label": "Site Footer",
+        "accessibility": {
+          "landmark": "contentinfo"
+        }
+      }
+    ]
+  },
+  "overlays": [
+    {
+      "id": "appointment-dialog",
+      "type": "dialog",
+      "label": "Appointment Request Dialog",
+      "state": "closed",
+      "accessibility": {
+        "ariaLabel": "Request an appointment",
+        "focusManagement": "Move focus into dialog on open and return focus to the appointment trigger on close.",
+        "keyboardBehavior": "Escape closes the dialog."
+      },
+      "children": [
+        {
+          "id": "appointment-form",
+          "type": "form",
+          "label": "Appointment Request Form",
+          "children": [
+            {
+              "id": "contact-fields",
+              "type": "inputGroup",
+              "label": "Contact Fields"
+            },
+            {
+              "id": "appointment-form-error",
+              "type": "banner",
+              "label": "Appointment Form Error",
+              "state": "error"
+            },
+            {
+              "id": "appointment-form-success",
+              "type": "banner",
+              "label": "Appointment Form Success",
+              "state": "success"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "responsive": {
+    "desktop": "Header navigation and split hero are visible.",
+    "tablet": "Hero columns compress and card grids reduce columns.",
+    "mobile": "Navigation moves to a drawer and sections stack in one column."
+  }
+}

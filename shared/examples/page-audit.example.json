@@ -1,0 +1,35 @@
+{
+  "id": "example-homepage-audit",
+  "source": {
+    "urlOrName": "Example homepage",
+    "capturedAt": "2026-06-29",
+    "viewport": "desktop"
+  },
+  "auditType": "page",
+  "summary": "The page has a clear conversion path, but proof and accessibility cues need stronger placement before the primary booking action.",
+  "overallSeverity": "medium",
+  "findings": [
+    {
+      "id": "hero-proof-placement",
+      "title": "Hero promise lacks immediate proof",
+      "severity": "medium",
+      "category": "conversion",
+      "target": "hero",
+      "evidence": "The hero presents a consultation CTA before any review, credential, or trust signal is visible.",
+      "impact": "Users may hesitate before committing to the primary action because confidence-building evidence appears later.",
+      "recommendation": "Place one concise trust signal near the hero CTA and keep fuller proof in the following section.",
+      "handoff": "Use page-wireframe-planner to preserve the hero CTA while adding first-viewport proof."
+    },
+    {
+      "id": "form-error-guidance",
+      "title": "Form recovery guidance is underspecified",
+      "severity": "medium",
+      "category": "accessibility",
+      "target": "appointment form",
+      "evidence": "The form shows required inputs but does not describe how validation errors are announced or recovered.",
+      "impact": "Keyboard and assistive technology users may not understand what changed after a failed submit.",
+      "recommendation": "Define inline error text, focus movement, and summary messaging for failed submission states.",
+      "handoff": "Use generate-interaction-audit-report for state-by-state form review."
+    }
+  ]
+}

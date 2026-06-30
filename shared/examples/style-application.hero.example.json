@@ -1,0 +1,21 @@
+{
+  "version": "0.1.0",
+  "type": "styleApplication",
+  "styleId": "art-deco",
+  "scope": "section",
+  "target": {
+    "scope": "section",
+    "id": "homepage-hero",
+    "label": "Homepage Hero"
+  },
+  "intensity": "medium",
+  "preserve": ["primary CTA hierarchy", "brand palette", "hero proof message"],
+  "applyTo": ["heading frame", "section divider", "decorative accent rules"],
+  "avoid": ["ornate body copy", "gold text on low contrast backgrounds"],
+  "notes": ["Use Art Deco as a hero-only treatment and keep the rest of the page structurally unchanged."],
+  "source": {
+    "type": "generated",
+    "description": "Schema-valid hero-section style application example.",
+    "licenseNotes": "No external prose included."
+  }
+}

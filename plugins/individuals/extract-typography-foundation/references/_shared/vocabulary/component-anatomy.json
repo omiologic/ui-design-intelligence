@@ -1,0 +1,34 @@
+{
+  "componentAnatomy": [
+    {
+      "component": "button",
+      "parts": ["label", "leadingIcon", "trailingIcon", "loadingIndicator"],
+      "requiredParts": ["label"]
+    },
+    {
+      "component": "card",
+      "parts": ["media", "eyebrow", "title", "description", "metadata", "actions"],
+      "requiredParts": ["title"]
+    },
+    {
+      "component": "header",
+      "parts": ["logo", "primaryNavigation", "utilityNavigation", "primaryAction", "mobileMenuButton"],
+      "requiredParts": ["logo", "primaryNavigation"]
+    },
+    {
+      "component": "footer",
+      "parts": ["brandSummary", "navigationGroups", "contactInfo", "socialLinks", "legalLinks"],
+      "requiredParts": ["navigationGroups", "legalLinks"]
+    },
+    {
+      "component": "dialog",
+      "parts": ["title", "description", "body", "primaryAction", "secondaryAction", "closeControl"],
+      "requiredParts": ["title", "primaryAction", "closeControl"]
+    },
+    {
+      "component": "form",
+      "parts": ["label", "input", "helperText", "errorText", "submitAction", "recoveryAction"],
+      "requiredParts": ["label", "input", "submitAction"]
+    }
+  ]
+}

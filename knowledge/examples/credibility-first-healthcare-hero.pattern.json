@@ -1,0 +1,54 @@
+{
+  "id": "credibility-first-healthcare-hero",
+  "type": "pattern",
+  "patternType": "section",
+  "category": "hero",
+  "name": "Credibility-First Healthcare Hero",
+  "summary": "A hero structure that establishes professional trust before asking users to book, inquire, or request a consultation.",
+  "tags": {
+    "industries": ["healthcare", "dentistry", "dermatology"],
+    "pageTypes": ["homepage", "servicePage", "landingPage"],
+    "sectionTypes": ["hero"],
+    "conversionGoals": ["appointmentBooking", "consultationRequest"],
+    "audiences": ["patients", "generalConsumers"]
+  },
+  "useWhen": [
+    "The service is high-consideration or trust-sensitive.",
+    "The page needs to reduce anxiety before asking for action.",
+    "Professional credibility matters before conversion."
+  ],
+  "avoidWhen": [
+    "The page is a documentation page.",
+    "The page is a low-risk product listing where comparison is more important than reassurance."
+  ],
+  "structure": {
+    "required": ["headline", "supportingCopy", "trustSignal", "primaryCTA"],
+    "optional": ["eyebrow", "secondaryCTA", "imagePlaceholder", "testimonial"],
+    "notes": ["Keep the trust signal close to the primary action."]
+  },
+  "wireframeMapping": {
+    "nodeType": "hero",
+    "layout": "splitHero",
+    "contentRoles": ["headline", "body", "trustSignal", "primaryCTA"],
+    "recommendedChildren": ["textBlock", "buttonGroup", "imagePlaceholder"],
+    "notes": ["Use real proof labels rather than decorative badges."]
+  },
+  "blueprintImpact": {
+    "recommendedSections": ["hero", "trustSignals", "process", "faq", "cta"],
+    "recommendedInteractions": ["stickyAction"],
+    "notes": ["Place proof before detailed service explanation on high-trust healthcare pages."]
+  },
+  "sourceRefs": [
+    {
+      "sourceId": "example-healthcare-homepage",
+      "studyId": "example-healthcare-homepage-storytelling",
+      "findingLabels": ["Trust appears before primary CTA"],
+      "evidenceRefs": ["ui-knowledge/sources/example-healthcare-homepage/pages/homepage/studies/storytelling.study.json"]
+    }
+  ],
+  "confidence": {
+    "level": "medium",
+    "reason": "Seed pattern is generic and evidence-shaped, but awaits project-local validation."
+  },
+  "status": "candidate"
+}

@@ -1,0 +1,67 @@
+{
+  "id": "invalid-dialog-without-task-control",
+  "type": "wireframe",
+  "label": "Invalid Dialog Without Task Control",
+  "version": "0.1.0",
+  "root": {
+    "id": "dialog-without-task-page",
+    "type": "page",
+    "label": "Dialog Without Task Page",
+    "children": [
+      {
+        "id": "dialog-without-task-header",
+        "type": "header",
+        "label": "Dialog Without Task Header"
+      },
+      {
+        "id": "dialog-without-task-main",
+        "type": "main",
+        "label": "Dialog Without Task Main",
+        "children": [
+          {
+            "id": "dialog-trigger-section",
+            "type": "section",
+            "label": "Dialog Trigger Section",
+            "children": [
+              {
+                "id": "dialog-trigger-heading",
+                "type": "heading",
+                "label": "Dialog Trigger Heading"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "dialog-without-task-footer",
+        "type": "footer",
+        "label": "Dialog Without Task Footer"
+      }
+    ]
+  },
+  "overlays": [
+    {
+      "id": "informational-dialog",
+      "type": "dialog",
+      "label": "Informational Dialog",
+      "state": "closed",
+      "accessibility": {
+        "ariaLabel": "Additional information",
+        "focusManagement": "Move focus into dialog on open and return focus to trigger on close.",
+        "keyboardBehavior": "Escape closes the dialog."
+      },
+      "children": [
+        {
+          "id": "informational-dialog-copy",
+          "type": "paragraph",
+          "label": "Informational Dialog Copy"
+        }
+      ]
+    }
+  ],
+  "responsive": {
+    "desktop": "Dialog trigger is visible in the main flow.",
+    "tablet": "Dialog trigger remains visible.",
+    "mobile": "Dialog trigger remains reachable."
+  }
+}

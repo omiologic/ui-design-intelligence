@@ -1,0 +1,77 @@
+{
+  "id": "utility-product-detail",
+  "version": "0.1.0",
+  "register": "utility-product",
+  "brief": "Plan a product detail page where shoppers need to inspect current product state, compare information, add the item to cart, and recover from cart feedback.",
+  "referenceBlueprint": "shared/examples/product-page.ui-blueprint.json",
+  "rubric": "shared/quality/blueprint-quality-rubric.md",
+  "evaluationMode": "checklist",
+  "minimumStrongScore": 14,
+  "criteria": [
+    {
+      "name": "journey-clarity",
+      "weight": 2,
+      "expectedSignals": [
+        "Product identity, price, and action appear before supporting details.",
+        "Comparison and related products come after primary inspection."
+      ]
+    },
+    {
+      "name": "single-primary-action",
+      "weight": 2,
+      "expectedSignals": [
+        "Add to cart is the clear primary task in the product summary.",
+        "Secondary exploration does not compete with the add-to-cart task."
+      ]
+    },
+    {
+      "name": "proof-placement",
+      "weight": 2,
+      "expectedSignals": [
+        "Price and product details are visible before related-product browsing.",
+        "Comparison support appears before users leave the product decision."
+      ]
+    },
+    {
+      "name": "state-coverage",
+      "weight": 2,
+      "expectedSignals": [
+        "Cart drawer has a closed state and focus behavior.",
+        "Cart toast covers feedback after add-to-cart."
+      ]
+    },
+    {
+      "name": "register-fit",
+      "weight": 2,
+      "expectedSignals": [
+        "The page prioritizes state, controls, comparison, feedback, and recovery.",
+        "Structure avoids brochure-style persuasion before the product task."
+      ]
+    },
+    {
+      "name": "landmark-coverage",
+      "weight": 2,
+      "expectedSignals": [
+        "Page includes header, main, and footer regions.",
+        "Store navigation and cart drawer include accessibility labels."
+      ]
+    },
+    {
+      "name": "responsive-priority",
+      "weight": 2,
+      "expectedSignals": [
+        "Mobile keeps media, summary, action, details, and related content in task order.",
+        "Tabs and related product areas stack without hiding the primary action."
+      ]
+    },
+    {
+      "name": "anti-pattern-absence",
+      "weight": 2,
+      "expectedSignals": [
+        "No brochure content appears before the product state and action.",
+        "No filler labels, missing responsive notes, or incomplete drawer contract."
+      ]
+    }
+  ],
+  "notes": "Positive fixture for utility/product quality. It complements schema and anti-pattern validators rather than replacing them."
+}

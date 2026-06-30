@@ -1,0 +1,61 @@
+{
+  "version": "0.1.0",
+  "type": "styleReference",
+  "id": "glassmorphism",
+  "name": "Glassmorphism",
+  "category": "surface-treatment",
+  "summary": "A layered surface style using translucent panels, blur, light borders, and controlled depth.",
+  "visualDNA": {
+    "palette": ["cool neutrals, soft accents, and background color fields"],
+    "typography": ["clean sans-serif with high contrast on panels"],
+    "surfaces": ["frosted panels, translucent cards, and blurred backdrops"],
+    "shapes": ["rounded rectangles and layered overlays"],
+    "effects": ["backdrop blur, light border, soft shadow"],
+    "layout": ["layered depth with clear foreground content"],
+    "imagery": ["soft gradient backdrops and app UI surfaces"]
+  },
+  "mood": ["sleek", "soft", "modern", "premium"],
+  "bestFor": ["app interfaces", "hero sections", "dialogs", "dashboard cards"],
+  "avoidFor": ["dense reading pages", "strict contrast contexts"],
+  "applicationScopes": {
+    "site": { "strength": "global surface theme", "appliesTo": ["cards", "overlays", "navigation"], "defaultIntensity": "subtle", "notes": ["Use opaque fallbacks."] },
+    "page": { "strength": "page surface direction", "appliesTo": ["hero cards", "feature panels", "pricing cards"], "defaultIntensity": "medium", "notes": ["Limit blur layers."] },
+    "section": { "strength": "local panel treatment", "appliesTo": ["cards", "CTA panels", "comparison areas"], "defaultIntensity": "medium", "notes": ["Keep text on stable panels."] },
+    "component": { "strength": "component surface variant", "appliesTo": ["dialogs", "drawers", "cards", "nav"], "defaultIntensity": "medium", "notes": ["Check contrast over all backgrounds."] },
+    "prototype": { "strength": "layered interaction feel", "appliesTo": ["overlay open", "hover lift", "surface depth"], "defaultIntensity": "subtle", "notes": ["Avoid motion plus blur overload."] }
+  },
+  "designSystemMapping": {
+    "brand": { "recommendations": ["Use sleek, modern, calm visual tone."], "avoid": ["Avoid implying fragility for heavy workflows."] },
+    "palette": { "recommendations": ["Define backdrop, glass surface, border, and on-glass text roles."], "avoid": ["Avoid low-contrast text over transparent surfaces."] },
+    "typography": { "recommendations": ["Use clean readable sans-serif."], "avoid": ["Avoid thin body weights on glass."] },
+    "iconography": { "recommendations": ["Use light outline icons with sufficient contrast."], "avoid": ["Avoid faint icons on blurred backdrops."] },
+    "buttons": { "recommendations": ["Use solid primary buttons on glass surfaces."], "avoid": ["Avoid transparent primary actions."] },
+    "cards": { "recommendations": ["Use blur, border, and shadow as named surface tokens."], "avoid": ["Avoid stacked blur on every card."] },
+    "header": { "recommendations": ["Use translucent nav only when text contrast is stable."], "avoid": ["Avoid busy backgrounds behind nav."] },
+    "footer": { "recommendations": ["Use more opaque footer surfaces."], "avoid": ["Avoid transparent legal links."] }
+  },
+  "componentMapping": {
+    "dialogs": { "recommendations": ["Use frosted panel with opaque content areas."], "avoid": ["Avoid transparent form fields."] },
+    "cards": { "recommendations": ["Use one glass layer over a calm backdrop."], "avoid": ["Avoid unreadable nested glass."] }
+  },
+  "prototypeMapping": {
+    "motionTone": { "recommendations": ["Use subtle depth transitions."], "avoid": ["Avoid blur animation as primary motion."] },
+    "hoverStates": { "recommendations": ["Increase border clarity or lift slightly."], "avoid": ["Avoid opacity-only hover."] },
+    "transitions": { "recommendations": ["Use quick overlay fades and depth shifts."], "avoid": ["Avoid long blur transitions."] },
+    "surfaceDepth": { "recommendations": ["Use distinct backdrop, panel, and foreground layers."], "avoid": ["Avoid unclear layer hierarchy."] },
+    "feedback": { "recommendations": ["Use solid status text and icons on glass."], "avoid": ["Avoid subtle glow-only feedback."] }
+  },
+  "accessibilityRisks": [{ "risk": "Transparent surfaces can fail contrast depending on backdrop.", "severity": "high", "mitigation": "Require contrast-tested text surfaces and opaque fallbacks." }],
+  "compatibility": {
+    "industries": { "saas": "high", "healthcare": "conditional", "finance": "conditional" },
+    "scopes": { "site": "medium", "page": "high", "section": "high", "component": "high", "prototype": "medium" },
+    "components": { "dialogs": "high", "cards": "high", "forms": "conditional" }
+  },
+  "implementationHints": {
+    "css": ["Use background rgba, backdrop-filter, border, and shadow tokens."],
+    "tokens": ["surface.glass", "effect.blur.medium", "border.glass"],
+    "do": ["Test contrast against expected backdrops."],
+    "avoid": ["Do not place critical text on uncontrolled imagery."]
+  },
+  "source": { "type": "internalReference", "title": "Sprint 003 style-reference MVP taxonomy", "usage": "Original normalized UI-focused style record.", "licenseNotes": "No copied third-party prose." }
+}

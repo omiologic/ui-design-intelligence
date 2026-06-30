@@ -1,0 +1,40 @@
+{
+  "id": "invalid-out-of-vocabulary-tokens",
+  "type": "wireframe",
+  "label": "Invalid Out Of Vocabulary Tokens",
+  "version": "0.1.0",
+  "root": {
+    "id": "vocabulary-page",
+    "type": "page",
+    "label": "Vocabulary Page",
+    "children": [
+      {
+        "id": "vocabulary-main",
+        "type": "main",
+        "label": "Main Content",
+        "children": [
+          {
+            "id": "vocabulary-hero",
+            "type": "hero",
+            "label": "Hero",
+            "layout": "masonry",
+            "children": [
+              {
+                "id": "vocabulary-heading",
+                "type": "heading",
+                "label": "Heading",
+                "role": "marketingHeadline"
+              },
+              {
+                "id": "vocabulary-button",
+                "type": "button",
+                "label": "Button",
+                "state": "pressed"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "id": "invalid-bad-version-string",
+  "type": "wireframe",
+  "label": "Invalid Bad Version String",
+  "version": "v1",
+  "root": {
+    "id": "bad-version-page",
+    "type": "page",
+    "label": "Bad Version Page",
+    "children": [
+      {
+        "id": "bad-version-main",
+        "type": "main",
+        "label": "Main Content"
+      }
+    ]
+  }
+}

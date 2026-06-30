@@ -1,0 +1,129 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://omiologic.dev/schemas/ui-blueprint/knowledge/pattern-record.schema.json",
+  "title": "UI Pattern Knowledge Record",
+  "description": "Reusable UI pattern knowledge extracted from evidence-backed studies and audits.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "type",
+    "patternType",
+    "category",
+    "name",
+    "summary",
+    "tags",
+    "useWhen",
+    "structure",
+    "wireframeMapping",
+    "sourceRefs",
+    "confidence",
+    "status"
+  ],
+  "properties": {
+    "id": { "$ref": "#/$defs/id" },
+    "type": { "const": "pattern" },
+    "patternType": { "$ref": "#/$defs/patternType" },
+    "category": { "type": "string", "minLength": 1 },
+    "name": { "$ref": "#/$defs/label" },
+    "summary": { "type": "string", "minLength": 1 },
+    "tags": { "$ref": "#/$defs/knowledgeTags" },
+    "useWhen": { "$ref": "#/$defs/stringList" },
+    "avoidWhen": { "$ref": "#/$defs/stringList" },
+    "structure": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["required"],
+      "properties": {
+        "required": { "$ref": "#/$defs/stringList" },
+        "optional": { "$ref": "#/$defs/stringList" },
+        "notes": { "$ref": "#/$defs/stringList" }
+      }
+    },
+    "wireframeMapping": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["nodeType", "contentRoles"],
+      "properties": {
+        "nodeType": { "$ref": "#/$defs/nodeType" },
+        "layout": { "$ref": "#/$defs/layoutPattern" },
+        "contentRoles": { "type": "array", "items": { "$ref": "#/$defs/contentRole" }, "minItems": 1 },
+        "recommendedChildren": { "type": "array", "items": { "$ref": "#/$defs/nodeType" }, "default": [] },
+        "notes": { "$ref": "#/$defs/stringList" }
+      }
+    },
+    "blueprintImpact": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "recommendedSections": { "$ref": "#/$defs/stringList" },
+        "recommendedInteractions": { "$ref": "#/$defs/stringList" },
+        "notes": { "$ref": "#/$defs/stringList" }
+      }
+    },
+    "sourceRefs": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/sourceRef" }
+    },
+    "confidence": { "$ref": "#/$defs/confidence" },
+    "status": { "$ref": "#/$defs/status" }
+  },
+  "$defs": {
+    "id": { "type": "string", "pattern": "^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$" },
+    "label": { "type": "string", "minLength": 1 },
+    "stringList": { "type": "array", "items": { "type": "string", "minLength": 1 }, "default": [] },
+    "patternType": {
+      "type": "string",
+      "enum": ["page", "section", "component", "interaction", "storytelling", "conversion", "accessibility", "responsive", "seo"]
+    },
+    "status": { "type": "string", "enum": ["candidate", "accepted", "validated", "deprecated", "merged"] },
+    "confidenceLevel": { "type": "string", "enum": ["low", "medium", "high", "validated"] },
+    "confidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["level", "reason"],
+      "properties": {
+        "level": { "$ref": "#/$defs/confidenceLevel" },
+        "reason": { "type": "string", "minLength": 1 }
+      }
+    },
+    "knowledgeTags": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "industries": { "$ref": "#/$defs/stringList" },
+        "pageTypes": { "$ref": "#/$defs/stringList" },
+        "sectionTypes": { "$ref": "#/$defs/stringList" },
+        "componentTypes": { "$ref": "#/$defs/stringList" },
+        "interactionTypes": { "$ref": "#/$defs/stringList" },
+        "conversionGoals": { "$ref": "#/$defs/stringList" },
+        "audiences": { "$ref": "#/$defs/stringList" }
+      }
+    },
+    "sourceRef": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["sourceId"],
+      "properties": {
+        "sourceId": { "$ref": "#/$defs/id" },
+        "studyId": { "$ref": "#/$defs/id" },
+        "auditId": { "$ref": "#/$defs/id" },
+        "findingLabels": { "$ref": "#/$defs/stringList" },
+        "evidenceRefs": { "$ref": "#/$defs/stringList" }
+      }
+    },
+    "nodeType": {
+      "type": "string",
+      "enum": ["page", "header", "footer", "main", "section", "hero", "navigation", "breadcrumb", "contentGroup", "textBlock", "heading", "paragraph", "button", "buttonGroup", "imagePlaceholder", "videoPlaceholder", "card", "cardGrid", "list", "table", "comparisonTable", "accordion", "tabs", "form", "inputGroup", "dialog", "drawer", "popover", "toast", "banner", "stickyBar", "spacer", "divider", "annotation"]
+    },
+    "layoutPattern": {
+      "type": "string",
+      "enum": ["singleColumn", "twoColumn", "threeColumn", "sidebar", "splitHero", "centeredHero", "mediaLeft", "mediaRight", "cardGrid", "featureGrid", "comparisonGrid", "stackedSections", "inlineForm", "stepper", "tabs", "accordion", "stickyHeader", "stickyFooterBar", "modalOverlay", "drawerPanel"]
+    },
+    "contentRole": {
+      "type": "string",
+      "enum": ["eyebrow", "headline", "subheadline", "body", "caption", "label", "helperText", "errorText", "primaryCTA", "secondaryCTA", "tertiaryCTA", "navigationItem", "breadcrumbItem", "trustSignal", "testimonial", "metadata", "price", "badge", "emptyState", "legal"]
+    }
+  }
+}

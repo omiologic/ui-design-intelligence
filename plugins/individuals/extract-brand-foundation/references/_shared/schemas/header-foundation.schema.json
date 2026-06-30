@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://omiologic.dev/schemas/ui-blueprint/header-foundation.schema.json",
+  "title": "Header Foundation",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["layout", "height", "behavior", "anatomy", "navigation", "rules", "source", "confidence"],
+  "properties": {
+    "layout": { "type": "object", "additionalProperties": { "type": "string" } },
+    "height": { "type": "object", "additionalProperties": { "type": "string" } },
+    "behavior": { "type": "object", "additionalProperties": { "type": ["string", "boolean"] } },
+    "anatomy": { "type": "array", "items": { "type": "string" } },
+    "navigation": { "type": "object", "additionalProperties": { "type": ["string", "number", "boolean"] } },
+    "rules": { "type": "array", "items": { "type": "string" } },
+    "source": { "type": "string", "enum": ["observed", "inferred", "recommended", "generated", "userProvided"] },
+    "confidence": { "type": "string", "enum": ["low", "medium", "high"] },
+    "note": { "type": "string" }
+  }
+}

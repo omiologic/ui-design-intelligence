@@ -1,0 +1,44 @@
+{
+  "id": "invalid-overlay-without-contract",
+  "type": "wireframe",
+  "label": "Invalid Overlay Without Contract",
+  "version": "0.1.0",
+  "root": {
+    "id": "overlay-contract-page",
+    "type": "page",
+    "label": "Overlay Contract Page",
+    "children": [
+      {
+        "id": "overlay-contract-header",
+        "type": "header",
+        "label": "Overlay Contract Header"
+      },
+      {
+        "id": "overlay-contract-main",
+        "type": "main",
+        "label": "Overlay Contract Main"
+      },
+      {
+        "id": "overlay-contract-footer",
+        "type": "footer",
+        "label": "Overlay Contract Footer"
+      }
+    ]
+  },
+  "overlays": [
+    {
+      "id": "help-dialog",
+      "type": "dialog",
+      "label": "Help Dialog",
+      "state": "closed",
+      "accessibility": {
+        "ariaLabel": "Help"
+      }
+    }
+  ],
+  "responsive": {
+    "desktop": "Dialog opens above the page.",
+    "tablet": "Dialog uses the same contract.",
+    "mobile": "Dialog fills the viewport."
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://omiologic.dev/schemas/ui-blueprint/knowledge/study-record.schema.json",
+  "title": "UI Knowledge Study Record",
+  "description": "Project-local wrapper around evidence-backed StudyOutput files and their archive references.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "type", "sourceId", "studyType", "studyRef", "summary"],
+  "properties": {
+    "id": { "$ref": "#/$defs/id" },
+    "type": { "const": "studyRecord" },
+    "sourceId": { "$ref": "#/$defs/id" },
+    "pageId": { "$ref": "#/$defs/id" },
+    "studyType": {
+      "type": "string",
+      "enum": ["storytelling", "specification", "interaction", "informationArchitecture", "responsiveBehavior", "accessibility"]
+    },
+    "studyRef": { "type": "string", "minLength": 1 },
+    "captureRefs": { "$ref": "#/$defs/pathList" },
+    "summary": { "type": "string", "minLength": 1 },
+    "findingLabels": { "$ref": "#/$defs/stringList" },
+    "knowledgeCandidateRefs": { "$ref": "#/$defs/pathList" },
+    "notes": { "$ref": "#/$defs/stringList" }
+  },
+  "$defs": {
+    "id": { "type": "string", "pattern": "^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$" },
+    "stringList": { "type": "array", "items": { "type": "string", "minLength": 1 }, "default": [] },
+    "pathList": { "type": "array", "items": { "type": "string", "minLength": 1 }, "default": [] }
+  }
+}

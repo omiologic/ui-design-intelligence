@@ -1,0 +1,25 @@
+{
+  "interactionStates": [
+    "default",
+    "hover",
+    "focus",
+    "active",
+    "selected",
+    "disabled",
+    "expanded",
+    "collapsed",
+    "open",
+    "closed",
+    "loading",
+    "success",
+    "warning",
+    "error",
+    "empty",
+    "hidden",
+    "visible",
+    "sticky",
+    "dismissible",
+    "required",
+    "optional"
+  ]
+}

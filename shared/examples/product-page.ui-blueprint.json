@@ -1,0 +1,167 @@
+{
+  "id": "product-page",
+  "type": "wireframe",
+  "label": "Product Detail Page Wireframe",
+  "version": "0.1.0",
+  "description": "Product detail page blueprint using approved MVP node types.",
+  "root": {
+    "id": "product-detail-page",
+    "type": "page",
+    "label": "Product Detail Page",
+    "children": [
+      {
+        "id": "site-header",
+        "type": "header",
+        "label": "Store Header",
+        "children": [
+          {
+            "id": "store-navigation",
+            "type": "navigation",
+            "label": "Store Navigation",
+            "accessibility": {
+              "ariaLabel": "Store navigation"
+            }
+          }
+        ]
+      },
+      {
+        "id": "product-main",
+        "type": "main",
+        "label": "Product Main",
+        "accessibility": {
+          "landmark": "main"
+        },
+        "children": [
+          {
+            "id": "product-breadcrumb",
+            "type": "breadcrumb",
+            "label": "Product Breadcrumb"
+          },
+          {
+            "id": "product-hero",
+            "type": "section",
+            "label": "Product Hero",
+            "layout": "twoColumn",
+            "children": [
+              {
+                "id": "product-media",
+                "type": "imagePlaceholder",
+                "label": "Product Media"
+              },
+              {
+                "id": "product-summary",
+                "type": "contentGroup",
+                "label": "Product Summary",
+                "children": [
+                  {
+                    "id": "product-title",
+                    "type": "heading",
+                    "label": "Product Title",
+                    "role": "headline"
+                  },
+                  {
+                    "id": "product-price",
+                    "type": "paragraph",
+                    "label": "Product Price",
+                    "role": "price"
+                  },
+                  {
+                    "id": "product-actions",
+                    "type": "buttonGroup",
+                    "label": "Product Actions",
+                    "children": [
+                      {
+                        "id": "add-to-cart-button",
+                        "type": "button",
+                        "label": "Add To Cart",
+                        "role": "primaryCTA"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "product-details-tabs",
+            "type": "tabs",
+            "label": "Product Details Tabs",
+            "children": [
+              {
+                "id": "overview-tab-panel",
+                "type": "contentGroup",
+                "label": "Overview Tab Panel"
+              },
+              {
+                "id": "specifications-tab-panel",
+                "type": "contentGroup",
+                "label": "Specifications Tab Panel"
+              }
+            ]
+          },
+          {
+            "id": "comparison-section",
+            "type": "section",
+            "label": "Comparison Section",
+            "children": [
+              {
+                "id": "comparison-table",
+                "type": "comparisonTable",
+                "label": "Product Comparison Table"
+              }
+            ]
+          },
+          {
+            "id": "related-products",
+            "type": "section",
+            "label": "Related Products",
+            "layout": "cardGrid",
+            "children": [
+              {
+                "id": "related-grid",
+                "type": "cardGrid",
+                "label": "Related Product Cards",
+                "children": [
+                  {
+                    "id": "related-product-card",
+                    "type": "card",
+                    "label": "Related Product Card"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "site-footer",
+        "type": "footer",
+        "label": "Store Footer"
+      }
+    ]
+  },
+  "overlays": [
+    {
+      "id": "cart-drawer",
+      "type": "drawer",
+      "label": "Cart Drawer",
+      "state": "closed",
+      "accessibility": {
+        "ariaLabel": "Shopping cart",
+        "focusManagement": "Move focus into drawer on open and return focus to add-to-cart trigger on close.",
+        "keyboardBehavior": "Escape closes the drawer."
+      }
+    },
+    {
+      "id": "cart-toast",
+      "type": "toast",
+      "label": "Added To Cart Toast",
+      "state": "closed"
+    }
+  ],
+  "responsive": {
+    "desktop": "Product media and summary use a two-column layout.",
+    "tablet": "Product hero remains two columns with reduced spacing.",
+    "mobile": "Product media, summary, tabs, and related products stack in one column."
+  }
+}

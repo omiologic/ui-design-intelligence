@@ -1,0 +1,17 @@
+{
+  "id": "invalid-missing-required-field",
+  "type": "wireframe",
+  "label": "Invalid Missing Required Field",
+  "version": "0.1.0",
+  "root": {
+    "id": "missing-field-page",
+    "type": "page",
+    "label": "Missing Field Page",
+    "children": [
+      {
+        "id": "missing-label-main",
+        "type": "main"
+      }
+    ]
+  }
+}

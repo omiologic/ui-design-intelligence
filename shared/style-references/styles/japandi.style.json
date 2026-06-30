@@ -1,0 +1,61 @@
+{
+  "version": "0.1.0",
+  "type": "styleReference",
+  "id": "japandi",
+  "name": "Japandi",
+  "category": "minimal-natural",
+  "summary": "A calm minimal style combining restrained hierarchy, warm neutrals, natural materials, and intentional spacing.",
+  "visualDNA": {
+    "palette": ["warm neutrals, charcoal, muted earth, sage, and wood tones"],
+    "typography": ["quiet sans-serif or restrained serif pairing"],
+    "surfaces": ["matte panels, soft off-white fields, natural material cues"],
+    "shapes": ["simple rectangles, soft radius, and balanced negative space"],
+    "effects": ["minimal shadow and subtle border"],
+    "layout": ["spacious composition with clear intentional grouping"],
+    "imagery": ["natural textures, calm interiors, and uncluttered product scenes"]
+  },
+  "mood": ["calm", "intentional", "natural", "trustworthy"],
+  "bestFor": ["healthcare", "wellness", "home goods", "local services"],
+  "avoidFor": ["high-energy gaming pages", "dense analytics dashboards"],
+  "applicationScopes": {
+    "site": { "strength": "calm global theme", "appliesTo": ["palette", "spacing", "typography", "surface tone"], "defaultIntensity": "subtle", "notes": ["Use restraint as the primary signal."] },
+    "page": { "strength": "primary calm direction", "appliesTo": ["hero", "service sections", "about pages"], "defaultIntensity": "subtle", "notes": ["Avoid empty-feeling layouts."] },
+    "section": { "strength": "local calm treatment", "appliesTo": ["testimonial", "service cards", "CTA"], "defaultIntensity": "subtle", "notes": ["Use warm surfaces and generous spacing."] },
+    "component": { "strength": "soft component variant", "appliesTo": ["cards", "buttons", "forms"], "defaultIntensity": "subtle", "notes": ["Keep controls clear and tactile."] },
+    "prototype": { "strength": "quiet interaction feel", "appliesTo": ["hover", "transitions", "form feedback"], "defaultIntensity": "subtle", "notes": ["Prefer calm motion."] }
+  },
+  "designSystemMapping": {
+    "brand": { "recommendations": ["Use calm, careful, natural personality."], "avoid": ["Avoid loud urgency unless required."] },
+    "palette": { "recommendations": ["Use warm background, soft surface, muted accent, and charcoal text roles."], "avoid": ["Avoid cold stark whites as the dominant tone."] },
+    "typography": { "recommendations": ["Use highly legible restrained type."], "avoid": ["Avoid ornate decorative type."] },
+    "iconography": { "recommendations": ["Use simple rounded or natural line icons."], "avoid": ["Avoid sharp aggressive icon sets."] },
+    "buttons": { "recommendations": ["Use calm solid or outlined buttons with clear contrast."], "avoid": ["Avoid overly tiny low-contrast buttons."] },
+    "cards": { "recommendations": ["Use soft surfaces, medium radius, and minimal shadow."], "avoid": ["Avoid dense card grids."] },
+    "header": { "recommendations": ["Use simple navigation with ample breathing room."], "avoid": ["Avoid packed nav clusters."] },
+    "footer": { "recommendations": ["Use quiet structure and muted background."], "avoid": ["Avoid visual clutter."] }
+  },
+  "componentMapping": {
+    "forms": { "recommendations": ["Use comfortable fields and clear labels."], "avoid": ["Avoid placeholder-only input labeling."] },
+    "cards": { "recommendations": ["Use warm panels and sparse content."], "avoid": ["Avoid cramped cards."] }
+  },
+  "prototypeMapping": {
+    "motionTone": { "recommendations": ["Use gentle short transitions."], "avoid": ["Avoid bouncy motion."] },
+    "hoverStates": { "recommendations": ["Use subtle tone shift or border clarity."], "avoid": ["Avoid dramatic movement."] },
+    "transitions": { "recommendations": ["Use soft fades and simple reveals."], "avoid": ["Avoid page-wide animation."] },
+    "surfaceDepth": { "recommendations": ["Use low depth and tactile surfaces."], "avoid": ["Avoid glassy stacks."] },
+    "feedback": { "recommendations": ["Use calm inline feedback and clear text."], "avoid": ["Avoid alarming color unless error severity requires it."] }
+  },
+  "accessibilityRisks": [{ "risk": "Muted palettes can drift into low contrast.", "severity": "medium", "mitigation": "Use charcoal text and test muted accents against background roles." }],
+  "compatibility": {
+    "industries": { "healthcare": "high", "wellness": "high", "saas": "medium", "gaming": "low" },
+    "scopes": { "site": "high", "page": "high", "section": "high", "component": "medium", "prototype": "medium" },
+    "components": { "forms": "high", "cards": "medium", "dashboards": "low" }
+  },
+  "implementationHints": {
+    "css": ["Use warm surface tokens, readable text contrast, and generous spacing."],
+    "tokens": ["color.background.warm", "surface.natural", "space.comfortable"],
+    "do": ["Let fewer elements carry more meaning."],
+    "avoid": ["Do not make restraint look unfinished."]
+  },
+  "source": { "type": "internalReference", "title": "Sprint 003 style-reference MVP taxonomy", "usage": "Original normalized UI-focused style record.", "licenseNotes": "No copied third-party prose." }
+}

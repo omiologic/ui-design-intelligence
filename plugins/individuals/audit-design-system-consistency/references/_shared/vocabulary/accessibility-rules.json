@@ -1,0 +1,36 @@
+{
+  "accessibilityRules": [
+    {
+      "name": "visibleFocus",
+      "definition": "Interactive controls must define a visible focus state."
+    },
+    {
+      "name": "keyboardReachable",
+      "definition": "Interactive controls and overlay controls must be reachable by keyboard."
+    },
+    {
+      "name": "semanticLabels",
+      "definition": "Controls, navigation, fields, and regions need meaningful labels."
+    },
+    {
+      "name": "inlineFieldErrors",
+      "definition": "Field-specific errors appear at the field and do not rely on toast or color alone."
+    },
+    {
+      "name": "overlayFocusManagement",
+      "definition": "Blocking overlays must describe focus entry, containment, dismissal, and return."
+    },
+    {
+      "name": "targetSize",
+      "definition": "Touch-oriented controls must preserve usable target size across responsive states."
+    },
+    {
+      "name": "contrastCheckRequired",
+      "definition": "Generated or inferred color pairs require contrast validation before production use."
+    },
+    {
+      "name": "motionReduced",
+      "definition": "Prototype behavior that implies motion should preserve a reduced-motion path."
+    }
+  ]
+}

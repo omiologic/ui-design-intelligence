@@ -1,0 +1,27 @@
+{
+  "version": "0.1.0",
+  "type": "stylePatch",
+  "styleId": "bento-box",
+  "target": {
+    "scope": "section",
+    "id": "feature-grid",
+    "artifactType": "section"
+  },
+  "intensity": "medium",
+  "changes": [
+    {
+      "operation": "replace",
+      "path": "cards.layout",
+      "value": "modular varied tile grid",
+      "reason": "Apply bento-box structure while preserving brand tokens."
+    }
+  ],
+  "preserve": ["brand.primaryColor", "typography.body"],
+  "avoid": ["nested cards", "low contrast labels"],
+  "rationale": "Patch only the feature grid treatment instead of regenerating the full design system.",
+  "source": {
+    "type": "styleApplication",
+    "description": "Template patch generated from a scoped style application.",
+    "licenseNotes": "No external prose included."
+  }
+}

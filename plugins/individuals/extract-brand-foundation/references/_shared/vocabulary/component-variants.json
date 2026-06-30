@@ -1,0 +1,54 @@
+{
+  "componentVariants": [
+    {
+      "name": "button.primary",
+      "component": "button",
+      "definition": "Primary conversion or completion action in the current context."
+    },
+    {
+      "name": "button.secondary",
+      "component": "button",
+      "definition": "Secondary action placed near, but lower in priority than, the primary action."
+    },
+    {
+      "name": "button.ghost",
+      "component": "button",
+      "definition": "Low-emphasis utility or navigation action."
+    },
+    {
+      "name": "button.destructive",
+      "component": "button",
+      "definition": "Action that deletes, cancels, or permanently changes user data."
+    },
+    {
+      "name": "card.feature",
+      "component": "card",
+      "definition": "Card explaining one benefit, capability, or reason to believe."
+    },
+    {
+      "name": "card.service",
+      "component": "card",
+      "definition": "Card presenting a service overview and path to learn or book."
+    },
+    {
+      "name": "card.product",
+      "component": "card",
+      "definition": "Card showing a product preview and path to details or purchase."
+    },
+    {
+      "name": "card.testimonial",
+      "component": "card",
+      "definition": "Card carrying social proof, quote, or attribution."
+    },
+    {
+      "name": "header.global",
+      "component": "header",
+      "definition": "Primary site or product header."
+    },
+    {
+      "name": "footer.global",
+      "component": "footer",
+      "definition": "Primary footer with recovery navigation, contact, and legal links."
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://omiologic.dev/schemas/ui-blueprint/iconography-foundation.schema.json",
+  "title": "Iconography Foundation",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["style", "strokeWidth", "cornerStyle", "preferredLibrary", "usage", "rules", "source", "confidence"],
+  "properties": {
+    "style": { "type": "string", "minLength": 1 },
+    "strokeWidth": { "type": "string", "minLength": 1 },
+    "cornerStyle": { "type": "string", "minLength": 1 },
+    "preferredLibrary": { "type": "string", "minLength": 1 },
+    "usage": {
+      "type": "object",
+      "additionalProperties": { "type": "string" }
+    },
+    "rules": { "type": "array", "items": { "type": "string" } },
+    "source": { "type": "string", "enum": ["observed", "inferred", "recommended", "generated", "userProvided"] },
+    "confidence": { "type": "string", "enum": ["low", "medium", "high"] },
+    "note": { "type": "string" }
+  }
+}

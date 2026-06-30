@@ -1,0 +1,21 @@
+{
+  "version": "0.1.0",
+  "type": "styleApplication",
+  "styleId": "glassmorphism",
+  "scope": "component",
+  "target": {
+    "scope": "component",
+    "id": "product-comparison-dialog",
+    "label": "Product Comparison Dialog"
+  },
+  "intensity": "medium",
+  "preserve": ["dialog information architecture", "button hierarchy"],
+  "applyTo": ["dialog surface", "overlay depth", "panel border"],
+  "avoid": ["transparent form fields", "low contrast body text"],
+  "notes": ["Apply glass treatment to the dialog shell only."],
+  "source": {
+    "type": "generated",
+    "description": "Schema-valid component-scope style application example.",
+    "licenseNotes": "No external prose included."
+  }
+}

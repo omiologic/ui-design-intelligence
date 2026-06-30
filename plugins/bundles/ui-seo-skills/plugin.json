@@ -1,0 +1,33 @@
+{
+  "name": "ui-seo-skills",
+  "displayName": "UI SEO Skills",
+  "version": "0.2.0",
+  "description": "Skills for generating and reviewing SEO metadata, page summaries, and SEO audit findings.",
+  "status": "active",
+  "maintainer": "UI Blueprint maintainers",
+  "repository": "ui-design-intelligence repository",
+  "license": "LICENSE",
+  "changelog": "CHANGELOG.md",
+  "dependencies": [
+    "ui-study-skills"
+  ],
+  "skills": [
+    "generate-meta-description",
+    "generate-title-tag",
+    "generate-seo-audit-report",
+    "generate-page-summary"
+  ],
+  "agents": [
+    "seo-content-analyst"
+  ],
+  "commands": [
+    "seo-audit-page",
+    "seo-audit-site"
+  ],
+  "shared": [
+    "shared/schemas/page-audit.schema.json",
+    "shared/vocabulary/ui-terminology.json",
+    "shared/vocabulary/audit-severity.json",
+    "shared/templates/page-audit.md"
+  ]
+}

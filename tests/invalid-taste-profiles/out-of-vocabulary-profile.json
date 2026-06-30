@@ -1,0 +1,45 @@
+{
+  "name": "out-of-vocabulary-profile",
+  "version": "0.1.0",
+  "register": "marketing",
+  "description": "Invalid profile fixture for vocabulary drift validation.",
+  "intent": "Exercise invalid structural tokens.",
+  "rules": {
+    "sectionOrder": [
+      {
+        "job": "orient",
+        "preferredStructures": ["masonryHero"],
+        "reason": "This structure is intentionally invalid."
+      }
+    ],
+    "density": {
+      "default": "moderate",
+      "increaseWhen": [],
+      "decreaseWhen": [],
+      "reason": "Density labels are not schema vocabulary in this validator."
+    },
+    "layoutSelection": {
+      "hero": ["floatingOrbGrid"]
+    },
+    "ctaCadence": {
+      "primaryActionCount": "one",
+      "secondaryActionRule": "None.",
+      "repeatPrimaryActionAfter": [],
+      "reason": "CTA cadence prose is outside deterministic vocabulary checks."
+    },
+    "overlayUse": {
+      "allowed": ["lightbox"],
+      "preferred": ["dialog"],
+      "useWhen": [],
+      "avoidWhen": [],
+      "reason": "Overlay type lightbox is intentionally invalid."
+    },
+    "responsivePriority": ["offer"]
+  },
+  "antiPatterns": [
+    {
+      "name": "bad-profile-token",
+      "reason": "Fixture should fail validation."
+    }
+  ]
+}

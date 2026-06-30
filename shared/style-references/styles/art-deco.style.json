@@ -1,0 +1,61 @@
+{
+  "version": "0.1.0",
+  "type": "styleReference",
+  "id": "art-deco",
+  "name": "Art Deco",
+  "category": "historical",
+  "summary": "A precise, glamorous style using symmetry, geometric framing, refined contrast, and restrained metallic accents.",
+  "visualDNA": {
+    "palette": ["ivory, black, deep jewel tones, and controlled gold accents"],
+    "typography": ["elegant display headings with clean readable body text"],
+    "surfaces": ["flat premium panels with framed edges"],
+    "shapes": ["chevrons, rays, stepped geometry, and symmetrical borders"],
+    "effects": ["crisp contrast and subtle metallic emphasis"],
+    "layout": ["centered hierarchy, mirrored balance, and formal section rhythm"],
+    "imagery": ["architectural crops, refined product staging, and geometric motifs"]
+  },
+  "mood": ["glamorous", "formal", "precise", "premium"],
+  "bestFor": ["luxury landing pages", "hospitality pages", "editorial campaign sections"],
+  "avoidFor": ["dense operational dashboards", "casual utility products"],
+  "applicationScopes": {
+    "site": { "strength": "premium global theme", "appliesTo": ["palette", "typography", "section framing"], "defaultIntensity": "subtle", "notes": ["Use ornament sparingly for business sites."] },
+    "page": { "strength": "primary page direction", "appliesTo": ["hero", "CTA panels", "feature dividers"], "defaultIntensity": "medium", "notes": ["Keep body sections readable."] },
+    "section": { "strength": "local decorative treatment", "appliesTo": ["hero frame", "heading block", "section divider"], "defaultIntensity": "medium", "notes": ["Prefer one strong motif per section."] },
+    "component": { "strength": "variant styling", "appliesTo": ["buttons", "cards", "badges"], "defaultIntensity": "subtle", "notes": ["Use borders and type treatment before heavy decoration."] },
+    "prototype": { "strength": "refined interaction feel", "appliesTo": ["transitions", "hover states", "overlay entrances"], "defaultIntensity": "subtle", "notes": ["Use measured fades and slides."] }
+  },
+  "designSystemMapping": {
+    "brand": { "recommendations": ["Position as elegant, precise, and premium."], "avoid": ["Do not imply ornate luxury if the product needs plain utility."] },
+    "palette": { "recommendations": ["Use dark neutrals, ivory backgrounds, and a small metallic accent role."], "avoid": ["Avoid large gold fills that reduce readability."] },
+    "typography": { "recommendations": ["Pair a refined display heading with a restrained sans-serif body."], "avoid": ["Avoid decorative body copy."] },
+    "iconography": { "recommendations": ["Use thin geometric line icons."], "avoid": ["Avoid playful rounded icon sets."] },
+    "buttons": { "recommendations": ["Use framed or angular button treatments with high contrast."], "avoid": ["Avoid pill buttons unless softened by brand constraints."] },
+    "cards": { "recommendations": ["Use symmetrical cards with crisp borders and reserved accent rules."], "avoid": ["Avoid deep soft shadows."] },
+    "header": { "recommendations": ["Use centered or formally balanced navigation."], "avoid": ["Avoid crowded utility nav."] },
+    "footer": { "recommendations": ["Use structured columns and restrained dividers."], "avoid": ["Avoid decorative overload at the page end."] }
+  },
+  "componentMapping": {
+    "cards": { "recommendations": ["Add framed edges and disciplined spacing."], "avoid": ["Avoid noisy pattern fills behind text."] },
+    "dialogs": { "recommendations": ["Use crisp frame, centered title, and calm entrance."], "avoid": ["Avoid flashy modal motion."] }
+  },
+  "prototypeMapping": {
+    "motionTone": { "recommendations": ["Use poised fades and short vertical reveals."], "avoid": ["Avoid springy or cartoon motion."] },
+    "hoverStates": { "recommendations": ["Increase border contrast or reveal a thin accent rule."], "avoid": ["Avoid glow-heavy hover states."] },
+    "transitions": { "recommendations": ["Use clean fade/slide transitions."], "avoid": ["Avoid bouncy overshoot."] },
+    "surfaceDepth": { "recommendations": ["Use shallow depth and framed panels."], "avoid": ["Avoid heavy shadow stacks."] },
+    "feedback": { "recommendations": ["Use refined inline feedback with clear contrast."], "avoid": ["Avoid loud celebratory feedback."] }
+  },
+  "accessibilityRisks": [{ "risk": "Metallic accents can lower contrast when used as text.", "severity": "medium", "mitigation": "Reserve metallic tones for borders, icons, and small accents." }],
+  "compatibility": {
+    "industries": { "luxury": "high", "healthcare": "conditional", "saas": "low" },
+    "scopes": { "site": "conditional", "page": "high", "section": "high", "component": "medium", "prototype": "medium" },
+    "components": { "hero": "high", "cards": "medium", "dashboard": "low" }
+  },
+  "implementationHints": {
+    "css": ["Use border rules, high contrast, and restrained accent colors."],
+    "tokens": ["color.accent.metallic", "border.decorative", "typography.display"],
+    "do": ["Use symmetry and crisp spacing."],
+    "avoid": ["Do not copy historic ornament into dense interface controls."]
+  },
+  "source": { "type": "internalReference", "title": "Sprint 003 style-reference MVP taxonomy", "usage": "Original normalized UI-focused style record.", "licenseNotes": "No copied third-party prose." }
+}

@@ -1,0 +1,68 @@
+{
+  "id": "dental-homepage",
+  "type": "wireframe",
+  "label": "Dental Homepage Wireframe",
+  "version": "0.1.0",
+  "description": "Skill-local page planner copy of the shared dental homepage example.",
+  "root": {
+    "id": "dental-home-page",
+    "type": "page",
+    "label": "Dental Home Page",
+    "children": [
+      {
+        "id": "site-header",
+        "type": "header",
+        "label": "Site Header",
+        "children": [
+          {
+            "id": "primary-navigation",
+            "type": "navigation",
+            "label": "Primary Navigation"
+          }
+        ]
+      },
+      {
+        "id": "main-content",
+        "type": "main",
+        "label": "Main Content",
+        "children": [
+          {
+            "id": "hero-section",
+            "type": "hero",
+            "label": "Appointment Hero",
+            "layout": "splitHero"
+          },
+          {
+            "id": "services-section",
+            "type": "section",
+            "label": "Dental Services",
+            "layout": "featureGrid"
+          },
+          {
+            "id": "faq-section",
+            "type": "section",
+            "label": "Patient FAQ"
+          }
+        ]
+      },
+      {
+        "id": "site-footer",
+        "type": "footer",
+        "label": "Site Footer"
+      }
+    ]
+  },
+  "overlays": [
+    {
+      "id": "appointment-dialog",
+      "type": "dialog",
+      "label": "Appointment Request Dialog",
+      "state": "closed"
+    }
+  ],
+  "responsive": {
+    "desktop": "Split hero and multi-column sections.",
+    "tablet": "Reduced grid columns.",
+    "mobile": "Stacked sections and drawer navigation."
+  }
+}

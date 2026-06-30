@@ -1,0 +1,21 @@
+{
+  "version": "0.1.0",
+  "type": "styleApplication",
+  "styleId": "bento-box",
+  "scope": "section",
+  "target": {
+    "scope": "section",
+    "id": "feature-grid",
+    "label": "Feature Grid"
+  },
+  "intensity": "medium",
+  "preserve": ["brand palette", "body typography"],
+  "applyTo": ["card layout", "card spacing", "section grouping"],
+  "avoid": ["nested cards", "layout shifts on hover"],
+  "notes": ["Use the style as a local section treatment."],
+  "source": {
+    "type": "userProvided",
+    "description": "Template style application request.",
+    "licenseNotes": "No external prose included."
+  }
+}

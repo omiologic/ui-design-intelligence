@@ -1,0 +1,78 @@
+{
+  "id": "conversion-dental-homepage",
+  "version": "0.1.0",
+  "register": "conversion",
+  "brief": "Plan a dental practice homepage for new patients who need to understand the offer, trust the practice, and book an appointment.",
+  "referenceBlueprint": "shared/examples/dental-homepage.ui-blueprint.json",
+  "rubric": "shared/quality/blueprint-quality-rubric.md",
+  "evaluationMode": "checklist",
+  "minimumStrongScore": 14,
+  "criteria": [
+    {
+      "name": "journey-clarity",
+      "weight": 2,
+      "expectedSignals": [
+        "Hero orients around appointment booking before service detail.",
+        "Trust signals appear before deeper service browsing.",
+        "Objection support appears before or near later action moments."
+      ]
+    },
+    {
+      "name": "single-primary-action",
+      "weight": 2,
+      "expectedSignals": [
+        "Book appointment is the dominant action.",
+        "Secondary contact action supports the same booking path."
+      ]
+    },
+    {
+      "name": "proof-placement",
+      "weight": 2,
+      "expectedSignals": [
+        "Insurance, reviews, or availability proof appears before service cards.",
+        "Proof is not hidden after the final commitment point."
+      ]
+    },
+    {
+      "name": "state-coverage",
+      "weight": 2,
+      "expectedSignals": [
+        "Appointment request overlay has explicit closed state.",
+        "Form includes error and success recovery states."
+      ]
+    },
+    {
+      "name": "register-fit",
+      "weight": 2,
+      "expectedSignals": [
+        "Structure follows offer, proof, explanation, objection, and action.",
+        "Density stays moderate and avoids product-dashboard controls."
+      ]
+    },
+    {
+      "name": "landmark-coverage",
+      "weight": 2,
+      "expectedSignals": [
+        "Page includes header, main, and footer regions.",
+        "Navigation and appointment dialog include accessibility labels."
+      ]
+    },
+    {
+      "name": "responsive-priority",
+      "weight": 2,
+      "expectedSignals": [
+        "Mobile stack keeps offer, primary action, proof, and services in order.",
+        "Navigation can move to a drawer without hiding booking access."
+      ]
+    },
+    {
+      "name": "anti-pattern-absence",
+      "weight": 2,
+      "expectedSignals": [
+        "No competing primary CTAs in a single decision region.",
+        "No filler labels, missing landmarks, or incomplete overlay contract."
+      ]
+    }
+  ],
+  "notes": "Positive fixture for conversion quality. Negative anti-pattern behavior remains covered by tests/invalid-antipatterns."
+}

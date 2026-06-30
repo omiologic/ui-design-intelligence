@@ -1,0 +1,45 @@
+project:
+  name: "Project Name"
+  industry: "local-service"
+  audience:
+    - "primary audience"
+
+designSystem:
+  outputDir: "./ui-design-system"
+  mode: "seed"
+  maturity: "designSystemSeed"
+  defaultTone: "clear, trustworthy, direct"
+  tokenFormat: "json"
+  requiredSections:
+    - "brand"
+    - "palette"
+    - "typography"
+    - "iconography"
+    - "buttons"
+    - "cards"
+    - "header"
+    - "footer"
+  confidenceThreshold: "medium"
+  requireSourceConfidence: true
+
+knowledge:
+  rootDir: "./ui-knowledge"
+  confidenceThreshold: "medium"
+
+blueprint:
+  outputDir: "./ui-blueprints"
+  schemaVersion: "0.1.0"
+
+prototype:
+  outputDir: "./ui-prototypes"
+  schemaVersion: "0.1.0"
+
+capture:
+  screenshots: true
+  viewports:
+    desktop:
+      width: 1440
+      height: 1200
+    mobile:
+      width: 390
+      height: 1200

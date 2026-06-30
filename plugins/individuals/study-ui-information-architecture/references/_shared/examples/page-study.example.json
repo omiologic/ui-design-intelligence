@@ -1,0 +1,24 @@
+{
+  "id": "example-homepage-story-study",
+  "source": {
+    "urlOrName": "Example homepage",
+    "capturedAt": "2026-06-29",
+    "viewport": "desktop"
+  },
+  "studyType": "storytelling",
+  "summary": "The page leads with a direct service promise, supports it with trust proof, and repeats one primary consultation action after answering common objections.",
+  "findings": [
+    {
+      "label": "Hero promise is action-oriented",
+      "evidence": "The first viewport combines a service headline, short supporting copy, and one primary booking action.",
+      "interpretation": "The page is structured around conversion rather than browsing.",
+      "handoff": "Use page-wireframe-planner to preserve one primary hero CTA."
+    },
+    {
+      "label": "Proof appears before process detail",
+      "evidence": "Trust signals and testimonials appear before the step-by-step service explanation.",
+      "interpretation": "The page treats confidence as a prerequisite for reading service details.",
+      "handoff": "Use generate-page-audit-report to evaluate proof quality and placement."
+    }
+  ]
+}

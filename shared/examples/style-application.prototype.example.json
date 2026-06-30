@@ -1,0 +1,21 @@
+{
+  "version": "0.1.0",
+  "type": "styleApplication",
+  "styleId": "utilitarian",
+  "scope": "prototype",
+  "target": {
+    "scope": "prototype",
+    "id": "settings-workflow",
+    "label": "Settings Workflow"
+  },
+  "intensity": "medium",
+  "preserve": ["route structure", "form validation requirements"],
+  "applyTo": ["menu behavior", "inline feedback", "bulk action states"],
+  "avoid": ["slow transitions", "decorative animation"],
+  "notes": ["Use utilitarian behavior rules to keep repeated workflow actions efficient."],
+  "source": {
+    "type": "generated",
+    "description": "Schema-valid prototype-scope style application example.",
+    "licenseNotes": "No external prose included."
+  }
+}

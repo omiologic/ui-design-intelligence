@@ -1,0 +1,392 @@
+{
+  "version": "0.1.0",
+  "type": "designSystemSeed",
+  "id": "dental-clinic-design-system-seed",
+  "name": "Dental Clinic Design System Seed",
+  "source": {
+    "inputType": "mixed",
+    "sourceRefs": [
+      "prompt:dental clinic homepage",
+      "study-output:dental-homepage-study",
+      "screenshot:homepage-desktop"
+    ],
+    "confidence": "medium",
+    "notes": [
+      "Palette values include observed screenshot approximations and generated support colors.",
+      "Typography is recommended until CSS evidence is available."
+    ]
+  },
+  "maturity": "designSystemSeed",
+  "brand": {
+    "name": {
+      "value": "Brightline Dental",
+      "source": "userProvided",
+      "confidence": "high"
+    },
+    "summary": {
+      "value": "A local dental clinic design foundation focused on clarity, trust, and appointment conversion.",
+      "source": "generated",
+      "confidence": "medium"
+    },
+    "personality": {
+      "values": [
+        "clean",
+        "trustworthy",
+        "calm",
+        "professional"
+      ],
+      "source": "inferred",
+      "confidence": "medium",
+      "note": "Inferred from healthcare category and homepage study direction."
+    },
+    "audience": {
+      "values": [
+        "patients",
+        "families",
+        "local appointment seekers"
+      ],
+      "source": "userProvided",
+      "confidence": "high"
+    },
+    "positioning": {
+      "value": "Practical dental care with a clear path to booking an appointment.",
+      "source": "recommended",
+      "confidence": "medium"
+    },
+    "voice": {
+      "tone": {
+        "value": "clear, reassuring, and direct",
+        "source": "recommended",
+        "confidence": "medium"
+      },
+      "avoid": {
+        "values": [
+          "overly playful language",
+          "unsupported medical claims",
+          "luxury language without evidence"
+        ],
+        "source": "recommended",
+        "confidence": "medium"
+      }
+    },
+    "visualDirection": {
+      "density": {
+        "value": "medium",
+        "source": "recommended",
+        "confidence": "medium"
+      },
+      "style": {
+        "value": "clean service-focused interface",
+        "source": "generated",
+        "confidence": "medium"
+      },
+      "emphasis": {
+        "value": "appointment clarity and patient trust",
+        "source": "inferred",
+        "confidence": "medium"
+      }
+    }
+  },
+  "palette": {
+    "mode": "light",
+    "colors": {
+      "color.action.primary": {
+        "name": "Clinic Blue",
+        "value": "#0B78C2",
+        "intent": "Primary interactive action color.",
+        "usage": "Primary CTA, active navigation, and high-emphasis action links.",
+        "useOn": [
+          "button.primary",
+          "active navigation",
+          "appointment links"
+        ],
+        "doNotUseOn": [
+          "large decorative backgrounds",
+          "low-priority badges"
+        ],
+        "accessibilityNotes": [
+          "Validate contrast against white before production use."
+        ],
+        "source": "observed",
+        "confidence": "medium",
+        "note": "Approximated from screenshot, not extracted from CSS."
+      },
+      "color.surface.default": {
+        "name": "Clean White",
+        "value": "#FFFFFF",
+        "intent": "Default page and card surface.",
+        "usage": "Primary page background and card interiors.",
+        "useOn": [
+          "page background",
+          "card surfaces"
+        ],
+        "doNotUseOn": [
+          "focus indicators"
+        ],
+        "accessibilityNotes": [
+          "Validate text contrast on all generated surface pairings."
+        ],
+        "source": "observed",
+        "confidence": "high"
+      },
+      "color.surface.subtle": {
+        "name": "Soft Clinic Surface",
+        "value": "#F4F8FA",
+        "intent": "Subtle grouped-content surface.",
+        "usage": "Section backgrounds and low-emphasis content groupings.",
+        "useOn": [
+          "section.background",
+          "feature groups"
+        ],
+        "doNotUseOn": [
+          "body text"
+        ],
+        "accessibilityNotes": [
+          "Use only behind text that passes contrast validation."
+        ],
+        "source": "generated",
+        "confidence": "medium"
+      },
+      "color.text.primary": {
+        "name": "Clinical Ink",
+        "value": "#17212B",
+        "intent": "Primary readable text.",
+        "usage": "Headings and body copy.",
+        "useOn": [
+          "heading",
+          "paragraph"
+        ],
+        "doNotUseOn": [
+          "disabled labels"
+        ],
+        "accessibilityNotes": [
+          "Validate contrast against all generated surfaces."
+        ],
+        "source": "recommended",
+        "confidence": "medium"
+      }
+    },
+    "accessibilityNotes": [
+      "Do not rely on color alone for validation errors.",
+      "Primary button contrast must be checked against all surfaces."
+    ]
+  },
+  "typography": {
+    "fontFamilies": {
+      "heading": {
+        "value": "Inter, system-ui, sans-serif",
+        "source": "recommended",
+        "confidence": "medium"
+      },
+      "body": {
+        "value": "Inter, system-ui, sans-serif",
+        "source": "recommended",
+        "confidence": "medium"
+      }
+    },
+    "scale": {
+      "h1": {
+        "fontSize": "40px",
+        "lineHeight": "1.15",
+        "fontWeight": 700,
+        "usage": "Page title and hero headline.",
+        "source": "recommended",
+        "confidence": "medium"
+      },
+      "h2": {
+        "fontSize": "32px",
+        "lineHeight": "1.2",
+        "fontWeight": 650,
+        "usage": "Major section title.",
+        "source": "recommended",
+        "confidence": "medium"
+      },
+      "body": {
+        "fontSize": "16px",
+        "lineHeight": "1.6",
+        "fontWeight": 400,
+        "usage": "Main readable content.",
+        "source": "recommended",
+        "confidence": "medium"
+      }
+    }
+  },
+  "iconography": {
+    "style": "outline",
+    "strokeWidth": "1.75px",
+    "cornerStyle": "rounded",
+    "preferredLibrary": "lucide-react",
+    "usage": {
+      "navigation": "Use icons only when they clarify destination recognition.",
+      "featureCards": "Use simple outline icons to support scanning.",
+      "status": "Use semantic icons for success, warning, info, and error."
+    },
+    "rules": [
+      "Do not mix filled and outline icons in the same component group.",
+      "Icons must support labels, not replace them."
+    ],
+    "source": "recommended",
+    "confidence": "medium"
+  },
+  "components": {
+    "buttons": {
+      "base": {
+        "radius": "8px",
+        "fontWeight": 600,
+        "height": {
+          "sm": "36px",
+          "md": "44px",
+          "lg": "52px"
+        }
+      },
+      "variants": {
+        "button.primary": {
+          "usage": "Primary appointment or contact conversion action.",
+          "background": "color.action.primary",
+          "text": "color.surface.default",
+          "border": "color.action.primary",
+          "allowedActions": [
+            "navigate",
+            "openDialog"
+          ]
+        },
+        "button.secondary": {
+          "usage": "Secondary action beside the primary CTA.",
+          "background": "transparent",
+          "text": "color.action.primary",
+          "border": "color.action.primary",
+          "allowedActions": [
+            "navigate"
+          ]
+        }
+      },
+      "states": [
+        "default",
+        "hover",
+        "focus",
+        "active",
+        "disabled",
+        "loading"
+      ],
+      "rules": [
+        "Use one primary CTA per major section.",
+        "Focus state must be visible.",
+        "Loading state should preserve button width."
+      ],
+      "source": "generated",
+      "confidence": "medium"
+    },
+    "cards": {
+      "base": {
+        "surface": "color.surface.default",
+        "border": "1px solid color.border.subtle",
+        "radius": "12px",
+        "padding": "24px"
+      },
+      "anatomy": [
+        "media",
+        "eyebrow",
+        "title",
+        "description",
+        "actions"
+      ],
+      "variants": {
+        "card.service": {
+          "usage": "Present a dental service overview.",
+          "requiredParts": [
+            "title",
+            "description",
+            "actions"
+          ],
+          "allowedActions": [
+            "navigate",
+            "openDialog"
+          ]
+        },
+        "card.testimonial": {
+          "usage": "Show patient social proof.",
+          "requiredParts": [
+            "quote",
+            "attribution"
+          ]
+        }
+      },
+      "rules": [
+        "Cards in the same grid should use consistent anatomy.",
+        "Do not overload service cards with competing CTAs."
+      ],
+      "source": "generated",
+      "confidence": "medium"
+    },
+    "header": {
+      "layout": {
+        "desktop": "logo-left nav-center actions-right",
+        "mobile": "logo-left menu-button-right"
+      },
+      "height": {
+        "desktop": "72px",
+        "mobile": "64px"
+      },
+      "behavior": {
+        "sticky": false,
+        "mobileNavigation": "drawer"
+      },
+      "anatomy": [
+        "logo",
+        "primaryNavigation",
+        "primaryAction",
+        "mobileMenuButton"
+      ],
+      "navigation": {
+        "maxPrimaryItems": 6,
+        "supportsDropdown": true,
+        "supportsMegaMenu": false
+      },
+      "rules": [
+        "Primary appointment CTA should be visible on desktop.",
+        "Use a mobile drawer when primary navigation has more than four links."
+      ],
+      "source": "inferred",
+      "confidence": "medium"
+    },
+    "footer": {
+      "layout": {
+        "desktop": "multi-column",
+        "mobile": "stacked"
+      },
+      "anatomy": [
+        "brandSummary",
+        "navigationGroups",
+        "contactInfo",
+        "legalLinks"
+      ],
+      "navigationGroups": [
+        "Services",
+        "Patient Resources",
+        "Clinic",
+        "Legal"
+      ],
+      "industrySpecificNeeds": [
+        "address",
+        "phone",
+        "hours",
+        "appointment CTA"
+      ],
+      "rules": [
+        "Footer should provide recovery navigation.",
+        "Contact information should be easy to find."
+      ],
+      "source": "recommended",
+      "confidence": "medium"
+    }
+  },
+  "usageNotes": [
+    "Use this seed as a generation contract, not as final brand governance.",
+    "Preserve low-confidence notes when generating blueprints or prototypes."
+  ],
+  "openQuestions": [
+    "Confirm exact brand colors from CSS or brand assets.",
+    "Confirm production font family before implementation.",
+    "Confirm whether mobile appointment CTA should be sticky."
+  ]
+}

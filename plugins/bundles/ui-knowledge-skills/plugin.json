@@ -1,0 +1,58 @@
+{
+  "name": "ui-knowledge-skills",
+  "displayName": "UI Knowledge Skills",
+  "version": "0.1.0",
+  "description": "Skills for extracting, curating, indexing, searching, applying, and explaining reusable UI pattern knowledge.",
+  "status": "transitional",
+  "maintainer": "UI Blueprint maintainers",
+  "repository": "ui-design-intelligence repository",
+  "license": "LICENSE",
+  "changelog": "CHANGELOG.md",
+  "dependencies": [
+    "ui-study-skills",
+    "ui-audit-skills"
+  ],
+  "skills": [
+    "extract-ui-pattern-knowledge",
+    "curate-ui-knowledge",
+    "search-ui-knowledge",
+    "generate-blueprint-from-knowledge",
+    "explain-blueprint-lineage"
+  ],
+  "agents": [
+    "ui-knowledge-librarian",
+    "blueprint-architect"
+  ],
+  "commands": [
+    "extract-patterns-from-study",
+    "index-knowledge-base",
+    "search-ui-knowledge",
+    "generate-blueprint-from-knowledge",
+    "explain-blueprint-lineage"
+  ],
+  "shared": [
+    "knowledge/README.md",
+    "knowledge/schemas/source-record.schema.json",
+    "knowledge/schemas/study-record.schema.json",
+    "knowledge/schemas/pattern-record.schema.json",
+    "knowledge/schemas/audit-insight.schema.json",
+    "knowledge/schemas/knowledge-index.schema.json",
+    "knowledge/schemas/blueprint-lineage.schema.json",
+    "knowledge/vocabulary/pattern-types.json",
+    "knowledge/vocabulary/source-types.json",
+    "knowledge/vocabulary/confidence-levels.json",
+    "knowledge/vocabulary/pattern-statuses.json",
+    "knowledge/vocabulary/knowledge-tags.json",
+    "knowledge/templates/pattern-record.md",
+    "knowledge/templates/audit-insight.md",
+    "knowledge/templates/source-study-summary.md",
+    "knowledge/templates/blueprint-lineage.md",
+    "knowledge/examples/credibility-first-healthcare-hero.pattern.json",
+    "knowledge/examples/mobile-navigation-drawer.pattern.json",
+    "knowledge/examples/sticky-appointment-cta.pattern.json",
+    "knowledge/examples/knowledge-index.example.json",
+    "scripts/validate-knowledge.mjs",
+    "scripts/index-knowledge.mjs",
+    "scripts/init-knowledge-workspace.mjs"
+  ]
+}

@@ -1,0 +1,779 @@
+# ui-design-intelligence
+
+Reusable agent skills for generating schema-valid UI wireframes, controlled UI terminology, layout structures, interaction patterns, and accessibility reviews.
+
+`ui-design-intelligence` is a local skills repository. Its value is not a collection of prompts; it is a shared UI blueprint language backed by vocabulary files, a wireframe JSON schema, examples, validation scripts, and install packaging.
+
+## Transition Direction
+
+This repository is named `ui-design-intelligence`. The original
+`ui-blueprint-skills` name remains as a compatibility bundle for controlled
+UIBlueprint wireframe generation. The current `skills/` install surface remains
+compatible for existing blueprint users, while plugin source lives under
+`plugins/individuals/`, with `plugins/bundles/*` holding committed bundle
+manifests and generated bundle contents written to `dist/plugins/`.
+
+## Plugin Monorepo Model
+
+The repository is organized as a plugin monorepo:
+
+- `plugins/individuals/`: source of truth for reusable installable skills.
+- `plugins/bundles/`: committed bundle manifests and bundle README files.
+- `agents/`: shared agent role definitions that bundles can include.
+- `commands/`: shared command entrypoints that bundles can include.
+- `shared/`: schemas, vocabulary, templates, and examples used by skills and bundles.
+- `knowledge/`: repository-owned UI knowledge schemas, vocabulary, templates,
+  and generic examples for reusable pattern knowledge.
+- `docs/interop/`: layer boundaries and handoff formats, including the
+  Sprint 003 design-system foundation architecture.
+- `dist/build/`: generated expanded bundle folders.
+- `dist/plugins/`: generated release zip files.
+
+Individual skills are maintained once and included in one or more bundles by
+listing their names in `plugins/bundles/{bundle-name}/plugin.json`.
+
+Current bundle roles:
+
+- `ui-study-skills`: page and site study skills for storytelling, structure,
+  interaction, responsive behavior, and accessibility observations.
+- `ui-audit-skills`: transitional audit bundle for site, page, section,
+  interaction, accessibility, and SEO quality reports.
+- `ui-blueprint-skills`: transitional MVP blueprint bundle for controlled
+  vocabulary and UIBlueprint wireframe generation.
+- `ui-seo-skills`: transitional SEO bundle for title tags, meta descriptions,
+  page summaries, and SEO audit findings.
+- `ui-design-system-skills`: lightweight design-system seed bundle for
+  foundation sections, semantic token intent, component vocabulary, and seed
+  audits.
+- `ui-design-intelligence`: transitional full bundle combining study, audit,
+  SEO, blueprint, knowledge, and design-system workflows.
+
+Development order for Sprint 001 is study vertical first, blueprint bundle
+second, audit vertical third, SEO vertical fourth, then the full
+`ui-design-intelligence` bundle.
+
+## What This Is
+
+This repository provides installable skills under `skills/` for agents that support local skill directories. The skills help an agent produce predictable UIBlueprint JSON instead of ad hoc wireframe descriptions.
+
+It is useful for:
+
+- Designers who want consistent wireframe structure before visual design.
+- Developers using Claude Code or compatible agents to generate UI blueprint JSON.
+- Contributors adding new UI planning skills without redefining vocabulary each time.
+
+## Where This Fits In The Taste Stack
+
+This repository owns the structural layer: study findings, information
+architecture, wireframe hierarchy, interaction contracts, responsive priorities,
+accessibility constraints, and schema-valid UIBlueprint JSON. Downstream visual
+taste tools own the rendered layer: color, typography, spacing, imagery, motion,
+component polish, and production code.
+
+See `docs/interop/README.md` for the layer-ownership table and the interop map
+for Taste Skill-style, Impeccable-style, and Emil Kowalski-style design
+engineering workflows. The downstream handoff artifact is defined in
+`docs/interop/blueprint-export-seed.md`.
+
+## Knowledge System
+
+Sprint 003 adds a `knowledge/` foundation for reusable UI pattern knowledge.
+This repository defines knowledge formats, controlled vocabulary, templates,
+generic examples, scripts, skills, commands, agents, and bundle packaging. Real
+captures, screenshots, studies, audits, extracted patterns, generated
+blueprints, and lineage files belong in project-local `ui-knowledge/`
+workspaces.
+
+The knowledge flow is:
+
+```txt
+capture -> study -> audit -> pattern knowledge -> knowledge index -> blueprint -> lineage
+```
+
+`StudyOutput` remains evidence-based. Pattern records are the reusable layer:
+they abstract evidence into tagged, confidence-scored design knowledge without
+copying exact page composition.
+
+Sprint 003 also adds a style-reference layer and a lightweight design-system
+foundation layer after knowledge and before blueprint/prototype generation:
+
+```txt
+study -> knowledge -> style reference -> design system foundation -> blueprint/wireframe -> prototype
+```
+
+The style-reference layer treats styles as structured data instead of one skill
+per style. It owns style records, scoped style applications, style blends, style
+patches, compatibility guidance, intensity levels, source metadata, and
+style-to-design-system mappings. This lets a style apply globally to a site or
+locally to a page, section, component, or prototype behavior target without
+replacing the whole design-system seed. See
+`docs/interop/style-reference-layer-architecture.md`.
+
+The design-system layer is a prototype design contract, not a production UI kit.
+It owns `DesignSystemSeed` and foundation decisions such as semantic token
+intent, component vocabulary, state names, layout rules, accessibility
+constraints, and source/confidence metadata. See
+`docs/interop/design-system-layer-architecture.md`.
+
+The study-to-prototype artifact sequence is documented in
+`docs/interop/design-system-prototype-pipeline.md`. It explains how
+style references can be recommended, applied, blended, patched, and audited
+before design-system seed generation; how `DesignSystemSeed` feeds blueprint and
+wireframe generation; how state and component vocabulary constrain prototype
+interactions; and why runtime/editor work remains a later package boundary.
+
+Project-local design-system defaults should use `.ui-design-intelligence.yml`.
+The starter config template is
+`shared/templates/ui-design-intelligence.config.yml`.
+
+## Problems It Solves
+
+- Prevents agents from inventing new UI terms for the same component.
+- Keeps page, section, component, layout, interaction, and accessibility planning separate.
+- Gives wireframe output a schema and examples that can be validated.
+- Provides local install and package commands for repeatable use.
+
+## Installed Skills
+
+The default installer ships the compatibility blueprint bundle by default.
+
+### Core Wireframe Skills
+
+- `design-terminology`: Normalizes informal UI language into approved vocabulary.
+- `wireframe-schema`: Explains and validates schema representation choices; it does not own page, section, or component planning.
+- `layout-specification`: Defines layout patterns and responsive structure.
+- `interaction-patterns`: Defines dialogs, drawers, popovers, forms, stateful components, and feedback patterns.
+- `accessibility-wireframe-review`: Reviews wireframes for structural accessibility issues.
+
+### Planning Skills
+
+- `page-wireframe-planner`: Plans page-level journey, section order, CTA cadence, overlays, and responsive priorities.
+- `section-wireframe-planner`: Plans reusable section purpose, anatomy, layout intent, and responsive behavior.
+- `component-wireframe-planner`: Plans reusable component anatomy, states, behavior, and accessibility contracts.
+
+### Generator Skills
+
+- `generate-wireframe-config`: Assembles final schema-valid UIBlueprint JSON from an already planned page, section, component, or translated study structure.
+- `generate-ui-blueprint-from-study`: Translates structured study findings into UIBlueprint structure, then hands off unresolved composition or final assembly.
+
+## Repository Maintenance Skills
+
+These skills are kept in the repository for local development and planning, and are validated by `npm run validate`, but they are not installed or packaged by default:
+
+- `skill-creator`: Guidance for creating and maintaining agent skills.
+- `sprint-planner`: Local utility for `.plan/` sprint summaries, objectives, and task files.
+
+## Install
+
+The installer copies a selected plugin bundle into an agent target directory. By
+default it installs the `ui-blueprint-skills` compatibility bundle, which
+preserves the original product wireframing install behavior while adding bundled
+agents, commands, and shared files when the selected manifest includes them.
+
+Installed product skills include a `references/_shared/` bundle with the vocabulary, schema, and wireframe-schema references they need. That makes each installed skill self-contained; it does not need a sibling `shared/` directory or another installed skill to resolve its listed references.
+
+Bundle installs also copy manifest-referenced shared files to the plugin target
+root so study and generation skills can resolve `../../shared/...` references.
+
+### Global Install
+
+```bash
+./install.sh
+```
+
+By default this installs bundle files under:
+
+```txt
+~/.claude/
+```
+
+Skills are installed to `~/.claude/skills`, agents to `~/.claude/agents`,
+commands to `~/.claude/commands`, and shared files to `~/.claude/shared`.
+
+### Project-Local Install
+
+```bash
+UI_PLUGIN_TARGET="./.claude" ./install.sh
+```
+
+### Bundle Selection
+
+Install the study bundle:
+
+```bash
+UI_PLUGIN_BUNDLE="ui-study-skills" ./install.sh
+```
+
+Install the blueprint bundle explicitly:
+
+```bash
+UI_PLUGIN_BUNDLE="ui-blueprint-skills" ./install.sh
+```
+
+Install the design-system foundation bundle:
+
+```bash
+UI_PLUGIN_BUNDLE="ui-design-system-skills" ./install.sh
+```
+
+Install the full design intelligence bundle:
+
+```bash
+UI_PLUGIN_BUNDLE="ui-design-intelligence" ./install.sh
+```
+
+### Install And Command Parity
+
+Sprint 002 keeps install parity practical and local: `install.sh` installs
+manifest-selected bundles into an agent root, including skills, agents,
+commands, and shared files. Marketplace or `npx skills add` support is
+documented as deferred work, not implied release behavior.
+
+Commands are discipline-scoped:
+
+- Study: `study-page`, `study-site`
+- Audit: `audit-page`, `audit-site`, `audit-interactions`
+- Blueprint: `generate-blueprint-from-study`
+- Design system: `generate-design-system-seed`, `audit-design-system-seed`
+- Export seed prototype: `scripts/export-blueprint-seed.mjs`
+
+See `docs/interop/install-command-parity.md` for bundle command coverage and the
+deferred marketplace/npx work.
+
+### Capture URL Helper
+
+Sprint 001 includes a deterministic URL metadata helper:
+
+```bash
+node scripts/capture-url.mjs --url "https://example.com" --screenshot "./captures/example.png"
+```
+
+This helper does not fetch pages, launch a browser, or create screenshots. It
+records the URL and optional paths to externally captured screenshots, DOM
+exports, or notes so study commands have an explicit evidence envelope.
+
+### Blueprint Export Seed Prototype
+
+Sprint 002 includes a deterministic prototype for exporting a structural
+blueprint plus taste profile into the repository-native Blueprint Export Seed:
+
+```bash
+node scripts/export-blueprint-seed.mjs \
+  --blueprint shared/examples/ui-blueprint.example.json \
+  --profile shared/taste-profiles/conversion.json \
+  --out /tmp/ui-blueprint.export-seed.md
+```
+
+The output is a downstream handoff artifact. It preserves structure,
+accessibility, responsive priorities, and profile bias without choosing visual
+style, motion, or implementation code.
+
+### Custom Install Target
+
+Use `UI_PLUGIN_TARGET` for an agent root directory:
+
+```bash
+UI_PLUGIN_TARGET="/path/to/.claude" ./install.sh
+```
+
+For compatibility with earlier releases, `UI_BLUEPRINT_SKILLS_DIR` still points
+directly at the skills directory. The installer derives the plugin target from
+that directory's parent:
+
+```bash
+UI_BLUEPRINT_SKILLS_DIR="/path/to/.claude/skills" ./install.sh
+```
+
+### Manual Install
+
+Copy selected product skill directories from `skills/` into your agent's skills directory. Each installed skill directory must include its `SKILL.md` file and any referenced `references/`, `scripts/`, or `assets/` files.
+
+## Usage Examples
+
+Use skill names directly when your agent supports explicit skill invocation.
+
+### Plan Then Generate A Page Wireframe
+
+```txt
+/page-wireframe-planner Plan a homepage wireframe for a dental clinic: journey, section order, primary CTA, overlays, and responsive priorities.
+/generate-wireframe-config Assemble the approved page plan as schema-valid UIBlueprint JSON.
+```
+
+### Plan A Section
+
+```txt
+/section-wireframe-planner Plan an FAQ section with six questions, collapsed by default, including anatomy, state notes, and responsive behavior.
+```
+
+### Plan A Component
+
+```txt
+/component-wireframe-planner Plan a reusable product card component with image, title, price, short description, primary CTA, states, and parent inputs.
+```
+
+### Convert Study Findings
+
+```txt
+/generate-ui-blueprint-from-study Translate this page-study output into candidate UIBlueprint structure, preserving evidence notes and calling out composition gaps.
+```
+
+### Normalize UI Terminology
+
+```txt
+/design-terminology Normalize these UI terms into approved vocabulary: popup, slide panel, top menu, selling button.
+```
+
+### Review Accessibility
+
+```txt
+/accessibility-wireframe-review Review this dialog wireframe JSON for focus management, labels, keyboard behavior, and structural accessibility.
+```
+
+## Output Format
+
+Wireframe examples use the UIBlueprint schema in:
+
+```txt
+shared/schemas/wireframe-config.schema.json
+```
+
+Installed skills use their bundled copy at:
+
+```txt
+references/_shared/schemas/wireframe-config.schema.json
+```
+
+Every wireframe includes:
+
+- top-level `id`, `type`, `label`, `version`, and `root`
+- `type: "wireframe"` at the top level
+- recursive nodes with required `id`, `type`, and `label`
+- optional `children`, `overlays`, `responsive`, `accessibility`, `role`, `layout`, and `state`
+
+Minimal shape:
+
+```json
+{
+  "id": "example-page",
+  "type": "wireframe",
+  "label": "Example Page",
+  "version": "0.1.0",
+  "root": {
+    "id": "example-root",
+    "type": "page",
+    "label": "Example Root"
+  }
+}
+```
+
+## Controlled Vocabulary
+
+Shared vocabulary lives in:
+
+```txt
+shared/vocabulary/
+```
+
+The current vocabulary files are:
+
+- `node-types.json`
+- `layout-patterns.json`
+- `content-roles.json`
+- `interaction-states.json`
+- `ui-layer-types.json`
+- `ui-terminology.json`
+- `audit-severity.json`
+
+Skills should reference these files instead of defining their own terms. This keeps generated wireframes compatible with the schema and with future renderers.
+
+In product skills, listed references point at `references/_shared/vocabulary/`. Those files are bundled from the canonical `shared/vocabulary/` source so each installed skill can be used on its own.
+
+`node-types.json` is semantic, not just a flat token list. Each node type has a definition, allowed direct children, overlay placement rules, and selected cardinality rules. The example validator enforces those semantic rules.
+
+Unknown `type`, `role`, `layout`, and `state` tokens hard-fail validation. There is no custom-token escape hatch in the MVP schema; add new vocabulary intentionally before using new terms in examples or generated output.
+
+## Examples
+
+Shared examples live in:
+
+```txt
+shared/examples/
+```
+
+Skill-local examples live under each skill's `references/examples/` directory when useful.
+
+Current shared examples include:
+
+- `ui-blueprint.example.json`
+- `dental-homepage.ui-blueprint.json`
+- `product-page.ui-blueprint.json`
+- `minimal-page.ui-blueprint.json`
+- `page-study.example.json`
+- `page-audit.example.json`
+
+## Quality Golden Set
+
+Quality fixtures live in:
+
+```txt
+tests/quality-golden-set/
+```
+
+The first golden set is checklist-based. It pairs compact briefs with
+schema-valid reference blueprints and expected quality signals for journey
+clarity, single primary action, proof placement, state coverage, register fit,
+landmarks, responsive priority, and anti-pattern absence.
+
+The rubric lives at:
+
+```txt
+shared/quality/blueprint-quality-rubric.md
+```
+
+These fixtures are positive reference cases for discussing blueprint quality.
+They intentionally do not duplicate invalid fixtures under `tests/invalid-*`,
+which exist to prove deterministic failure behavior.
+
+## Validate
+
+Run all validations:
+
+```bash
+npm run validate
+```
+
+Run skill validation only:
+
+```bash
+npm run validate:skills
+```
+
+Run example validation only:
+
+```bash
+npm run validate:examples
+```
+
+Run invalid fixture validation only:
+
+```bash
+npm run validate:invalid-examples
+```
+
+Run quality golden-set validation only:
+
+```bash
+npm run validate:quality-golden-set
+```
+
+Run style-reference validation only:
+
+```bash
+npm run validate:style-references
+```
+
+Run bundle manifest validation only:
+
+```bash
+npm run validate:bundles
+```
+
+Run strict bundle validation for a selected bundle:
+
+```bash
+npm run validate:bundles:strict -- ui-blueprint-skills
+```
+
+Run release validation for buildable bundles:
+
+```bash
+npm run validate:release
+```
+
+Build active/transitional plugin bundles:
+
+```bash
+npm run build:bundles
+```
+
+Validation checks:
+
+- every skill directory has `SKILL.md`
+- skill frontmatter includes `name` and `description`
+- skill `name` matches its directory
+- skill references exist where practical
+- example JSON parses
+- examples validate against `shared/schemas/wireframe-config.schema.json` directly
+- shared wireframe examples are files ending in `.ui-blueprint.json` plus the canonical `ui-blueprint.example.json`; future non-wireframe examples can coexist in `shared/examples/`
+- page audit examples ending in `page-audit.example.json` validate against `shared/schemas/page-audit.schema.json`
+- skill-local wireframe examples are validated under both `skills/` and `plugins/individuals/`
+- a local schema-subset validator is used so validation works offline without third-party runtime dependencies
+- duplicate node ids are rejected in a semantic validation layer
+- example node types, roles, layouts, and states match shared vocabulary in the semantic validation layer
+- node nesting follows `node-types.json` allowed-child semantics
+- overlay-only node types appear only in overlays or overlay component roots
+- node cardinality follows `node-types.json` semantic rules where defined
+- schema enums are checked against controlled vocabulary during validation
+- quality golden-set fixtures declare required rubric criteria and point to schema-valid reference blueprints
+- style-reference validation checks style schemas, category/index drift, style ids,
+  scope and intensity vocabulary, design-system/component/prototype mapping
+  keys, source/license metadata, style templates, scoped application examples,
+  patch examples, blend examples, and standalone/aggregate bundle packaging
+- blueprint anti-pattern validation catches deterministic structural issues such as missing landmarks, missing responsive notes, filler labels, CTA pile-up, incomplete overlay contracts, forms without recovery, decorative sections with no job, dialogs without task controls, and stacked sibling header navigation
+- invalid fixtures under `tests/invalid-examples/` fail with expected schema or semantic errors
+- bundle manifests reference existing agent and command files with the expected markdown sections
+- `scripts/capture-url.mjs` has a smoke validation path for deterministic URL metadata generation
+- normal bundle validation allows `planned` bundles to reference future skills and shared files
+- strict bundle validation requires selected bundles to resolve skills and shared files even if they are still marked `planned`
+- release validation builds active/transitional bundles, installs each one into a temporary target, and verifies installed skill references before release
+
+Bundle builds:
+
+- read committed manifests from `plugins/bundles/*/plugin.json`
+- build `active` and `transitional` bundles by default
+- copy referenced skills, agents, commands, and shared files into `dist/build/{bundle-name}/`
+- create release zips in `dist/plugins/{bundle-name}.zip`
+- verify copied skill references before zipping
+
+## Package
+
+Create a release zip:
+
+```bash
+npm run package
+```
+
+This runs validation first and writes generated release output to:
+
+```txt
+dist/
+```
+
+Generated files under `dist/` are ignored by Git because release archives are
+generated artifacts. `dist/plugins/.gitkeep` is tracked only to preserve the
+planned plugin release directory.
+
+Release archives include product wireframing skills and exclude repository maintenance skills.
+Sprint 002 release packages also include interop documentation, structural
+design philosophy references, taste profiles, export seed templates/examples,
+the export seed prototype script, and negative anti-pattern fixtures used by
+validation.
+
+## Uninstall
+
+Remove the default `ui-blueprint-skills` compatibility bundle from the same target used by
+`install.sh`:
+
+```bash
+./uninstall.sh
+```
+
+Select the same bundle name used at install time to remove only that bundle's
+installed skills, agents, commands, shared files, and install record:
+
+```bash
+UI_PLUGIN_BUNDLE="ui-study-skills" ./uninstall.sh
+```
+
+Use `UI_PLUGIN_TARGET` to uninstall from a custom plugin target:
+
+```bash
+UI_PLUGIN_TARGET="./.claude" ./uninstall.sh
+```
+
+The compatibility target override is still supported:
+
+```bash
+UI_BLUEPRINT_SKILLS_DIR="./.claude/skills" ./uninstall.sh
+```
+
+## Repository Structure
+
+```txt
+ui-design-intelligence/
+  README.md
+  LICENSE
+  CHANGELOG.md
+  MIGRATION.md
+  install.sh
+  uninstall.sh
+  package.json
+  plugins/
+    individuals/
+      study-ui-storytelling/
+      study-ui-specification/
+      study-ui-interaction/
+      study-ui-information-architecture/
+      study-ui-responsive-behavior/
+      study-ui-accessibility/
+    bundles/
+      ui-audit-skills/
+      ui-study-skills/
+      ui-blueprint-skills/
+      ui-seo-skills/
+      ui-design-intelligence/
+  agents/
+    README.md
+    ui-researcher.md
+    ui-specification-analyst.md
+    ui-interaction-analyst.md
+    ui-audit-lead.md
+    seo-content-analyst.md
+    accessibility-reviewer.md
+    blueprint-architect.md
+  commands/
+    README.md
+    study-page.md
+    study-site.md
+    audit-page.md
+    audit-site.md
+    audit-interactions.md
+    generate-blueprint-from-study.md
+  skills/
+    design-terminology/
+    wireframe-schema/
+    page-wireframe-planner/
+    section-wireframe-planner/
+    component-wireframe-planner/
+    layout-specification/
+    interaction-patterns/
+    accessibility-wireframe-review/
+    skill-creator/
+    sprint-planner/
+  shared/
+    vocabulary/
+    schemas/
+    examples/
+  scripts/
+    validate-skills.mjs
+    validate-examples.mjs
+    validate-bundles.mjs
+    build-bundles.mjs
+    install-bundle.mjs
+    build-zip.mjs
+  dist/
+    plugins/
+      .gitkeep
+  .plan/
+```
+
+During Sprint 001, `skills/` remains the compatibility install surface for the
+completed blueprint MVP. The scaffolded `plugins/individuals/` directory is the
+planned source location for reusable plugin skills, and `plugins/bundles/` holds
+committed `plugin.json` manifests plus bundle README files. Built bundle contents
+should be generated under `dist/`, not committed.
+
+The current blueprint product skills are copied into `plugins/individuals/` while
+the `skills/` copies remain for compatibility. Scripts prefer individual plugin
+sources when present and fall back to `skills/` for existing MVP installs and
+packages.
+
+The first study vertical source set also lives in `plugins/individuals/`. These
+skills share the study output schema, UI terminology vocabulary, page-study
+template, and page-study example under `shared/`.
+
+Canonical skill shapes and release validation expectations are documented in
+`docs/skill-shapes-and-validation.md`. That document records the intentional
+differences between planner/generator, study, knowledge, design-system, and
+planned prototype skill shapes.
+
+## Contributing
+
+When adding or updating a skill:
+
+1. Use lowercase kebab-case for the skill directory.
+2. Add or update the source skill under `plugins/individuals/{skill-name}/`.
+3. Ensure frontmatter `name` exactly matches the directory name.
+4. Write a specific `description` that explains when the skill should be used.
+5. Put detailed reusable guidance in `references/` instead of bloating `SKILL.md`.
+6. Keep canonical terms in `shared/vocabulary/` and `shared/schemas/`.
+7. Add or update examples when behavior changes.
+8. Add the skill name to one or more `plugins/bundles/{bundle-name}/plugin.json` manifests.
+9. Run `npm run validate`.
+
+During Sprint 001, product blueprint skills are mirrored in both
+`plugins/individuals/` and `skills/` for compatibility. New plugin-first skills
+should start in `plugins/individuals/`. Only mirror into `skills/` when the
+skill must remain part of the legacy compatibility surface.
+
+When adding a skill to a bundle:
+
+1. Add the skill directory under `plugins/individuals/{skill-name}/`.
+2. Add any reusable schemas, vocabulary, templates, or examples under `shared/`.
+3. Add the skill name to the bundle manifest `skills` array.
+4. Add required agent names, command names, and shared file paths to the same manifest.
+5. Run `npm run validate:bundles`.
+6. Run `npm run build:bundles {bundle-name}` for buildable bundles.
+
+### Product Skill Content Standard
+
+Product wireframing skills must encode judgment, not only vocabulary lists. Each
+product skill's local references should include:
+
+- `Decision Heuristics`: when to choose one structure, layout, state, or pattern over another
+- `Anti-Pattern`: at least one bad structure and the corrected version
+- `Worked Example`: a concrete example tied to the skill's scope
+- `Hand-Off`: what the skill does not do and which skill should take over
+
+`npm run validate:skills` checks product skill references for these sections so
+new skills do not regress to generic prompt fragments.
+
+For the full Sprint 003 skill-shape contract, including knowledge,
+design-system, command, agent, strict bundle, and release validation gates, see
+`docs/skill-shapes-and-validation.md`.
+
+## Versioning
+
+This repository starts at `0.1.0` for the MVP skillset.
+
+Planned version direction:
+
+- `0.1.0`: MVP core skills, vocabulary, schema, examples, validation, and install packaging.
+- `0.2.0`: stronger schema and validation coverage.
+- `0.3.0`: domain skills such as healthcare, dental, ecommerce, local business, or SaaS.
+- `1.0.0`: stable vocabulary and schema contract.
+
+Schema and vocabulary changes can affect downstream renderers. Breaking changes should be documented in `CHANGELOG.md`; add `MIGRATION.md` when compatibility guidance is needed.
+
+## Security Notes
+
+Skills are executable instructions for agents. Review `SKILL.md` and referenced files before installing third-party skill repositories.
+
+Current security posture:
+
+- The installer copies local skill directories only.
+- The installer does not download remote code.
+- Validation and packaging scripts run locally with Node.js.
+- No telemetry is included.
+- Generated release archives are written to `dist/`.
+- Pin release versions before production use once releases exist.
+
+## Planning Convention
+
+Planning artifacts live in `.plan/`.
+
+Each sprint uses a zero-padded numeric directory:
+
+```txt
+.plan/sprint-001
+.plan/sprint-002
+.plan/sprint-003
+```
+
+Each sprint may include local objective files:
+
+```txt
+.plan/sprint-001/objectives/*.md
+```
+
+Each sprint has one summary:
+
+```txt
+.plan/sprint-001/sprint-001.summary.md
+```
+
+Each sprint task lives under `tasks/` and uses the sprint number plus a task slug:
+
+```txt
+.plan/sprint-001/tasks/sprint-001.{task-name}.task.md
+```

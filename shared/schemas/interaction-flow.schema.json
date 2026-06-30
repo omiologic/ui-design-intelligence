@@ -1,0 +1,240 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://omiologic.dev/schemas/ui-blueprint/interaction-flow.schema.json",
+  "title": "Interaction Flow",
+  "description": "A narrow event -> condition -> action -> target -> result model for skill-generated interactive prototypes.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "trigger",
+    "action",
+    "result"
+  ],
+  "properties": {
+    "id": {
+      "$ref": "#/$defs/id"
+    },
+    "label": {
+      "type": "string",
+      "minLength": 1
+    },
+    "trigger": {
+      "$ref": "#/$defs/trigger"
+    },
+    "condition": {
+      "$ref": "#/$defs/condition"
+    },
+    "action": {
+      "$ref": "#/$defs/action"
+    },
+    "result": {
+      "$ref": "#/$defs/result"
+    },
+    "accessibility": {
+      "$ref": "#/$defs/accessibility"
+    },
+    "notes": {
+      "$ref": "#/$defs/stringList"
+    }
+  },
+  "$defs": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$"
+    },
+    "interactionEvent": {
+      "type": "string",
+      "enum": [
+        "click",
+        "tap",
+        "submit",
+        "change",
+        "input",
+        "focus",
+        "blur",
+        "keydown",
+        "routeEnter",
+        "routeLeave",
+        "timeout"
+      ]
+    },
+    "actionType": {
+      "type": "string",
+      "enum": [
+        "navigate",
+        "openOverlay",
+        "closeOverlay",
+        "toggleState",
+        "setState",
+        "submitForm",
+        "validateField",
+        "showFeedback",
+        "hideFeedback",
+        "scrollTo",
+        "none"
+      ]
+    },
+    "resultType": {
+      "type": "string",
+      "enum": [
+        "routeChanged",
+        "overlayOpened",
+        "overlayClosed",
+        "stateChanged",
+        "formSubmitted",
+        "validationShown",
+        "feedbackShown",
+        "feedbackHidden",
+        "focusMoved",
+        "noOp"
+      ]
+    },
+    "trigger": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "event",
+        "sourceNodeId"
+      ],
+      "properties": {
+        "event": {
+          "$ref": "#/$defs/interactionEvent"
+        },
+        "sourceNodeId": {
+          "$ref": "#/$defs/id"
+        },
+        "screenId": {
+          "$ref": "#/$defs/id"
+        },
+        "routeId": {
+          "$ref": "#/$defs/id"
+        },
+        "key": {
+          "type": "string"
+        }
+      }
+    },
+    "condition": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "type"
+      ],
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "always",
+            "whenState",
+            "whenValid",
+            "whenInvalid",
+            "whenViewport",
+            "whenAuthenticated",
+            "custom"
+          ]
+        },
+        "stateId": {
+          "$ref": "#/$defs/id"
+        },
+        "viewport": {
+          "type": "string",
+          "enum": [
+            "compact",
+            "medium",
+            "expanded",
+            "large"
+          ]
+        },
+        "description": {
+          "type": "string"
+        }
+      }
+    },
+    "action": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "type"
+      ],
+      "properties": {
+        "type": {
+          "$ref": "#/$defs/actionType"
+        },
+        "targetNodeId": {
+          "$ref": "#/$defs/id"
+        },
+        "targetScreenId": {
+          "$ref": "#/$defs/id"
+        },
+        "targetRouteId": {
+          "$ref": "#/$defs/id"
+        },
+        "targetStateId": {
+          "$ref": "#/$defs/id"
+        },
+        "value": {
+          "type": [
+            "string",
+            "number",
+            "boolean",
+            "null"
+          ]
+        }
+      }
+    },
+    "result": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "type",
+        "description"
+      ],
+      "properties": {
+        "type": {
+          "$ref": "#/$defs/resultType"
+        },
+        "description": {
+          "type": "string",
+          "minLength": 1
+        },
+        "resultingStateId": {
+          "$ref": "#/$defs/id"
+        },
+        "focusTargetNodeId": {
+          "$ref": "#/$defs/id"
+        }
+      }
+    },
+    "accessibility": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "focusManagement": {
+          "type": "string"
+        },
+        "keyboardBehavior": {
+          "type": "string"
+        },
+        "ariaLive": {
+          "type": "string",
+          "enum": [
+            "off",
+            "polite",
+            "assertive"
+          ]
+        },
+        "notes": {
+          "$ref": "#/$defs/stringList"
+        }
+      }
+    },
+    "stringList": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    }
+  }
+}

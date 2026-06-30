@@ -1,0 +1,61 @@
+{
+  "version": "0.1.0",
+  "type": "styleReference",
+  "id": "bento-box",
+  "name": "Bento Box",
+  "category": "layout-system",
+  "summary": "A modular UI style built from varied content tiles, clear grouping, compact hierarchy, and repeatable grid logic.",
+  "visualDNA": {
+    "palette": ["neutral surfaces with controlled accent tiles"],
+    "typography": ["clean sans-serif with compact card hierarchy"],
+    "surfaces": ["contained cards, panels, and tile groups"],
+    "shapes": ["rounded rectangles and modular blocks"],
+    "effects": ["subtle border, soft shadow, or flat separation"],
+    "layout": ["asymmetric tile grid with clear grouping"],
+    "imagery": ["product UI crops, icons, charts, and compact media tiles"]
+  },
+  "mood": ["organized", "modern", "friendly", "scannable"],
+  "bestFor": ["SaaS pages", "feature sections", "dashboards", "productivity tools"],
+  "avoidFor": ["linear long-form articles", "single-message campaign pages"],
+  "applicationScopes": {
+    "site": { "strength": "global modular rhythm", "appliesTo": ["cards", "feature sections", "dashboards"], "defaultIntensity": "medium", "notes": ["Avoid making every section a tile grid."] },
+    "page": { "strength": "primary page layout", "appliesTo": ["features", "use cases", "pricing support"], "defaultIntensity": "medium", "notes": ["Use varied tile sizes intentionally."] },
+    "section": { "strength": "local grid treatment", "appliesTo": ["feature grid", "proof grid", "service cards"], "defaultIntensity": "medium", "notes": ["Match tile weight to content priority."] },
+    "component": { "strength": "card-system variant", "appliesTo": ["cards", "dashboard modules", "media tiles"], "defaultIntensity": "medium", "notes": ["Keep card actions predictable."] },
+    "prototype": { "strength": "tile interaction feel", "appliesTo": ["hover", "expand", "reveal", "filtering"], "defaultIntensity": "subtle", "notes": ["Use interaction to expose secondary detail."] }
+  },
+  "designSystemMapping": {
+    "brand": { "recommendations": ["Use organized, capable, approachable personality."], "avoid": ["Avoid overly playful tone for serious workflows."] },
+    "palette": { "recommendations": ["Use neutral base surfaces with a small accent system."], "avoid": ["Avoid too many equally loud card colors."] },
+    "typography": { "recommendations": ["Use compact hierarchy with clear card titles."], "avoid": ["Avoid oversized card copy."] },
+    "iconography": { "recommendations": ["Use simple paired icons for card scanning."], "avoid": ["Avoid illustration clutter inside every tile."] },
+    "buttons": { "recommendations": ["Use compact buttons and clear card-level actions."], "avoid": ["Avoid multiple competing CTAs per tile."] },
+    "cards": { "recommendations": ["Define tile sizes, padding, radius, border, and media rules."], "avoid": ["Avoid nested cards."] },
+    "header": { "recommendations": ["Use clean utility navigation."], "avoid": ["Avoid card-like nav containers unless needed."] },
+    "footer": { "recommendations": ["Use organized column groups."], "avoid": ["Avoid dense tile footers."] }
+  },
+  "componentMapping": {
+    "cards": { "recommendations": ["Use tile variants for metric, feature, media, proof, and CTA cards."], "avoid": ["Avoid arbitrary card sizing."] },
+    "dashboard": { "recommendations": ["Use stable modules and compact summaries."], "avoid": ["Avoid unpredictable masonry for operational data."] }
+  },
+  "prototypeMapping": {
+    "motionTone": { "recommendations": ["Use subtle lifts and reveals."], "avoid": ["Avoid reflow-heavy animations."] },
+    "hoverStates": { "recommendations": ["Lift tile, reveal secondary action, or strengthen border."], "avoid": ["Avoid resizing tiles on hover."] },
+    "transitions": { "recommendations": ["Use contained expand/collapse behavior."], "avoid": ["Avoid layout jumps."] },
+    "surfaceDepth": { "recommendations": ["Use shallow card elevation or border separation."], "avoid": ["Avoid deep shadows on every tile."] },
+    "feedback": { "recommendations": ["Use inline card-level status."], "avoid": ["Avoid toast-only feedback for card actions."] }
+  },
+  "accessibilityRisks": [{ "risk": "Dense card grids can hide reading order and action priority.", "severity": "medium", "mitigation": "Preserve logical DOM order, clear headings, and one primary action per tile." }],
+  "compatibility": {
+    "industries": { "saas": "high", "healthcare": "medium", "ecommerce": "high", "luxury": "low" },
+    "scopes": { "site": "medium", "page": "high", "section": "high", "component": "high", "prototype": "high" },
+    "components": { "cards": "high", "dashboard": "high", "footer": "medium" }
+  },
+  "implementationHints": {
+    "css": ["Use grid-template areas or stable column spans for tile hierarchy."],
+    "tokens": ["card.tile.radius", "card.tile.padding", "layout.grid.bento"],
+    "do": ["Give each tile a clear content job."],
+    "avoid": ["Do not use bento structure as generic decoration."]
+  },
+  "source": { "type": "internalReference", "title": "Sprint 003 style-reference MVP taxonomy", "usage": "Original normalized UI-focused style record.", "licenseNotes": "No copied third-party prose." }
+}

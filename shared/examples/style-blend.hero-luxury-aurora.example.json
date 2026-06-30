@@ -1,0 +1,42 @@
+{
+  "version": "0.1.0",
+  "type": "styleBlend",
+  "id": "luxury-aurora-hero",
+  "name": "Luxury Typography With Aurora Hero Atmosphere",
+  "primaryStyle": "luxury-typography",
+  "secondaryStyles": ["aurora"],
+  "ratio": [
+    { "styleId": "luxury-typography", "weight": 0.7 },
+    { "styleId": "aurora", "weight": 0.3 }
+  ],
+  "scope": "section",
+  "target": {
+    "scope": "section",
+    "id": "launch-hero",
+    "label": "Launch Hero"
+  },
+  "intensity": "medium",
+  "rules": [
+    {
+      "area": "typography and copy rhythm",
+      "styleId": "luxury-typography",
+      "rule": "Own headline scale, restrained body copy, spacing, and premium editorial hierarchy."
+    },
+    {
+      "area": "background atmosphere",
+      "styleId": "aurora",
+      "rule": "Apply only a soft background light field behind stable readable content surfaces."
+    },
+    {
+      "area": "prototype depth",
+      "styleId": "aurora",
+      "rule": "Use subtle surface depth and calm transition feel without animated color fields."
+    }
+  ],
+  "avoid": ["gradient text", "low contrast body copy", "aurora effects behind legal or pricing text"],
+  "source": {
+    "type": "generated",
+    "description": "Schema-valid style blend example with explicit ratio and conflict rules.",
+    "licenseNotes": "No external prose included."
+  }
+}

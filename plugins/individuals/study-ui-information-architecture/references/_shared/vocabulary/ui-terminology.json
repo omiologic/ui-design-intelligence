@@ -1,0 +1,28 @@
+{
+  "studyTypes": [
+    "storytelling",
+    "specification",
+    "interaction",
+    "informationArchitecture",
+    "responsiveBehavior",
+    "accessibility"
+  ],
+  "evidenceKinds": [
+    "copy",
+    "layout",
+    "navigation",
+    "component",
+    "interaction",
+    "state",
+    "responsive",
+    "accessibility",
+    "proof",
+    "conversion"
+  ],
+  "handoffTargets": [
+    "ui-audit-skills",
+    "ui-blueprint-skills",
+    "ui-seo-skills",
+    "ui-design-intelligence"
+  ]
+}

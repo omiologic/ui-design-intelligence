@@ -1,0 +1,799 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://omiologic.dev/schemas/ui-blueprint/design-system-seed.schema.json",
+  "title": "Design System Seed",
+  "description": "Lightweight design-system foundation generated from prompt, screenshot, URL capture, study output, knowledge patterns, or mixed input.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "version",
+    "type",
+    "id",
+    "name",
+    "source",
+    "brand",
+    "palette",
+    "typography",
+    "iconography",
+    "components",
+    "usageNotes",
+    "openQuestions"
+  ],
+  "properties": {
+    "version": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+    },
+    "type": {
+      "const": "designSystemSeed"
+    },
+    "id": {
+      "$ref": "#/$defs/id"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source": {
+      "$ref": "#/$defs/seedSource"
+    },
+    "maturity": {
+      "$ref": "#/$defs/maturity"
+    },
+    "brand": {
+      "$ref": "#/$defs/brandFoundation"
+    },
+    "palette": {
+      "$ref": "#/$defs/paletteFoundation"
+    },
+    "typography": {
+      "$ref": "#/$defs/typographyFoundation"
+    },
+    "iconography": {
+      "$ref": "#/$defs/iconographyFoundation"
+    },
+    "components": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "buttons",
+        "cards",
+        "header",
+        "footer"
+      ],
+      "properties": {
+        "buttons": {
+          "$ref": "#/$defs/buttonFoundation"
+        },
+        "cards": {
+          "$ref": "#/$defs/cardFoundation"
+        },
+        "header": {
+          "$ref": "#/$defs/headerFoundation"
+        },
+        "footer": {
+          "$ref": "#/$defs/footerFoundation"
+        }
+      }
+    },
+    "usageNotes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "openQuestions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "$defs": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$"
+    },
+    "inputType": {
+      "type": "string",
+      "enum": [
+        "prompt",
+        "screenshot",
+        "url",
+        "study-output",
+        "knowledge-patterns",
+        "mixed"
+      ]
+    },
+    "sourceKind": {
+      "type": "string",
+      "enum": [
+        "observed",
+        "inferred",
+        "recommended",
+        "generated",
+        "userProvided"
+      ]
+    },
+    "confidence": {
+      "type": "string",
+      "enum": [
+        "low",
+        "medium",
+        "high"
+      ]
+    },
+    "maturity": {
+      "type": "string",
+      "enum": [
+        "designSystemSeed",
+        "brandStyleGuide",
+        "componentStarterKit",
+        "prototypeDesignSystem",
+        "productionDesignSystem"
+      ]
+    },
+    "interactionState": {
+      "type": "string",
+      "enum": [
+        "default",
+        "hover",
+        "focus",
+        "active",
+        "selected",
+        "disabled",
+        "loading",
+        "error",
+        "success",
+        "empty"
+      ]
+    },
+    "seedSource": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "inputType",
+        "sourceRefs",
+        "confidence"
+      ],
+      "properties": {
+        "inputType": {
+          "$ref": "#/$defs/inputType"
+        },
+        "sourceRefs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "confidence": {
+          "$ref": "#/$defs/confidence"
+        },
+        "notes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "evidenceString": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "value",
+        "source",
+        "confidence"
+      ],
+      "properties": {
+        "value": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source": {
+          "$ref": "#/$defs/sourceKind"
+        },
+        "confidence": {
+          "$ref": "#/$defs/confidence"
+        },
+        "note": {
+          "type": "string"
+        }
+      }
+    },
+    "evidenceStringList": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "values",
+        "source",
+        "confidence"
+      ],
+      "properties": {
+        "values": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "source": {
+          "$ref": "#/$defs/sourceKind"
+        },
+        "confidence": {
+          "$ref": "#/$defs/confidence"
+        },
+        "note": {
+          "type": "string"
+        }
+      }
+    },
+    "brandFoundation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "summary",
+        "personality",
+        "audience",
+        "positioning",
+        "voice",
+        "visualDirection"
+      ],
+      "properties": {
+        "name": {
+          "$ref": "#/$defs/evidenceString"
+        },
+        "summary": {
+          "$ref": "#/$defs/evidenceString"
+        },
+        "personality": {
+          "$ref": "#/$defs/evidenceStringList"
+        },
+        "audience": {
+          "$ref": "#/$defs/evidenceStringList"
+        },
+        "positioning": {
+          "$ref": "#/$defs/evidenceString"
+        },
+        "voice": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "tone",
+            "avoid"
+          ],
+          "properties": {
+            "tone": {
+              "$ref": "#/$defs/evidenceString"
+            },
+            "avoid": {
+              "$ref": "#/$defs/evidenceStringList"
+            }
+          }
+        },
+        "visualDirection": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "density",
+            "style",
+            "emphasis"
+          ],
+          "properties": {
+            "density": {
+              "$ref": "#/$defs/evidenceString"
+            },
+            "style": {
+              "$ref": "#/$defs/evidenceString"
+            },
+            "emphasis": {
+              "$ref": "#/$defs/evidenceString"
+            }
+          }
+        }
+      }
+    },
+    "colorToken": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "value",
+        "intent",
+        "usage",
+        "source",
+        "confidence"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "value": {
+          "type": "string",
+          "pattern": "^#[0-9A-Fa-f]{6}$"
+        },
+        "intent": {
+          "type": "string",
+          "minLength": 1
+        },
+        "usage": {
+          "type": "string",
+          "minLength": 1
+        },
+        "useOn": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "doNotUseOn": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "accessibilityNotes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "source": {
+          "$ref": "#/$defs/sourceKind"
+        },
+        "confidence": {
+          "$ref": "#/$defs/confidence"
+        },
+        "note": {
+          "type": "string"
+        }
+      }
+    },
+    "paletteFoundation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "mode",
+        "colors",
+        "accessibilityNotes"
+      ],
+      "properties": {
+        "mode": {
+          "type": "string",
+          "enum": [
+            "light",
+            "dark",
+            "mixed",
+            "unknown"
+          ]
+        },
+        "colors": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/$defs/colorToken"
+          }
+        },
+        "accessibilityNotes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "typeToken": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "fontSize",
+        "lineHeight",
+        "fontWeight",
+        "usage",
+        "source",
+        "confidence"
+      ],
+      "properties": {
+        "fontSize": {
+          "type": "string",
+          "minLength": 1
+        },
+        "lineHeight": {
+          "type": "string",
+          "minLength": 1
+        },
+        "fontWeight": {
+          "type": "number"
+        },
+        "usage": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source": {
+          "$ref": "#/$defs/sourceKind"
+        },
+        "confidence": {
+          "$ref": "#/$defs/confidence"
+        },
+        "note": {
+          "type": "string"
+        }
+      }
+    },
+    "typographyFoundation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "fontFamilies",
+        "scale"
+      ],
+      "properties": {
+        "fontFamilies": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/$defs/evidenceString"
+          }
+        },
+        "scale": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/$defs/typeToken"
+          }
+        }
+      }
+    },
+    "iconographyFoundation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "style",
+        "strokeWidth",
+        "cornerStyle",
+        "preferredLibrary",
+        "usage",
+        "rules",
+        "source",
+        "confidence"
+      ],
+      "properties": {
+        "style": {
+          "type": "string",
+          "minLength": 1
+        },
+        "strokeWidth": {
+          "type": "string",
+          "minLength": 1
+        },
+        "cornerStyle": {
+          "type": "string",
+          "minLength": 1
+        },
+        "preferredLibrary": {
+          "type": "string",
+          "minLength": 1
+        },
+        "usage": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "rules": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "source": {
+          "$ref": "#/$defs/sourceKind"
+        },
+        "confidence": {
+          "$ref": "#/$defs/confidence"
+        },
+        "note": {
+          "type": "string"
+        }
+      }
+    },
+    "buttonBase": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "radius",
+        "fontWeight",
+        "height"
+      ],
+      "properties": {
+        "radius": {
+          "type": "string"
+        },
+        "fontWeight": {
+          "type": "number"
+        },
+        "height": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "componentVariant": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "usage"
+      ],
+      "properties": {
+        "usage": {
+          "type": "string",
+          "minLength": 1
+        },
+        "background": {
+          "type": "string"
+        },
+        "text": {
+          "type": "string"
+        },
+        "border": {
+          "type": "string"
+        },
+        "requiredParts": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "allowedActions": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "buttonFoundation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "base",
+        "variants",
+        "states",
+        "rules",
+        "source",
+        "confidence"
+      ],
+      "properties": {
+        "base": {
+          "$ref": "#/$defs/buttonBase"
+        },
+        "variants": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/$defs/componentVariant"
+          }
+        },
+        "states": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/interactionState"
+          }
+        },
+        "rules": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "source": {
+          "$ref": "#/$defs/sourceKind"
+        },
+        "confidence": {
+          "$ref": "#/$defs/confidence"
+        },
+        "note": {
+          "type": "string"
+        }
+      }
+    },
+    "cardVariant": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "usage",
+        "requiredParts"
+      ],
+      "properties": {
+        "usage": {
+          "type": "string",
+          "minLength": 1
+        },
+        "requiredParts": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "allowedActions": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "cardFoundation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "base",
+        "anatomy",
+        "variants",
+        "rules",
+        "source",
+        "confidence"
+      ],
+      "properties": {
+        "base": {
+          "type": "object",
+          "additionalProperties": {
+            "type": [
+              "string",
+              "number",
+              "boolean"
+            ]
+          }
+        },
+        "anatomy": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "variants": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/$defs/cardVariant"
+          }
+        },
+        "rules": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "source": {
+          "$ref": "#/$defs/sourceKind"
+        },
+        "confidence": {
+          "$ref": "#/$defs/confidence"
+        },
+        "note": {
+          "type": "string"
+        }
+      }
+    },
+    "headerFoundation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "layout",
+        "height",
+        "behavior",
+        "anatomy",
+        "navigation",
+        "rules",
+        "source",
+        "confidence"
+      ],
+      "properties": {
+        "layout": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "height": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "behavior": {
+          "type": "object",
+          "additionalProperties": {
+            "type": [
+              "string",
+              "boolean"
+            ]
+          }
+        },
+        "anatomy": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "navigation": {
+          "type": "object",
+          "additionalProperties": {
+            "type": [
+              "string",
+              "number",
+              "boolean"
+            ]
+          }
+        },
+        "rules": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "source": {
+          "$ref": "#/$defs/sourceKind"
+        },
+        "confidence": {
+          "$ref": "#/$defs/confidence"
+        },
+        "note": {
+          "type": "string"
+        }
+      }
+    },
+    "footerFoundation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "layout",
+        "anatomy",
+        "navigationGroups",
+        "rules",
+        "source",
+        "confidence"
+      ],
+      "properties": {
+        "layout": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "anatomy": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "navigationGroups": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "industrySpecificNeeds": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "rules": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "source": {
+          "$ref": "#/$defs/sourceKind"
+        },
+        "confidence": {
+          "$ref": "#/$defs/confidence"
+        },
+        "note": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

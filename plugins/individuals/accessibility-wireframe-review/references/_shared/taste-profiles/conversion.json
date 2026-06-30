@@ -1,0 +1,88 @@
+{
+  "name": "conversion",
+  "version": "0.1.0",
+  "register": "marketing",
+  "description": "Structural bias for pages that need a visitor to understand, trust, and take one primary action.",
+  "intent": "Move from clear offer to early proof to action without creating competing decision paths.",
+  "rules": {
+    "sectionOrder": [
+      {
+        "job": "orient",
+        "preferredStructures": ["hero"],
+        "reason": "The first viewport must name the offer, audience, and primary action before details compete for attention."
+      },
+      {
+        "job": "prove",
+        "preferredStructures": ["card", "cardGrid", "contentGroup"],
+        "reason": "A conversion page needs credibility before it asks for commitment."
+      },
+      {
+        "job": "explain",
+        "preferredStructures": ["section", "cardGrid", "twoColumn"],
+        "reason": "Benefits and features should answer the buyer's next questions in priority order."
+      },
+      {
+        "job": "resolve-objections",
+        "preferredStructures": ["accordion", "comparisonTable", "list"],
+        "reason": "Objections should appear near the decision they block, not as disconnected filler."
+      },
+      {
+        "job": "act",
+        "preferredStructures": ["buttonGroup", "form", "stickyBar"],
+        "reason": "The final action should reinforce the same primary commitment introduced earlier."
+      }
+    ],
+    "density": {
+      "default": "moderate",
+      "increaseWhen": ["comparison", "pricing", "proof-list", "faq"],
+      "decreaseWhen": ["hero", "primary-cta", "high-risk-commitment"],
+      "reason": "Conversion pages need enough evidence to build trust without making the primary action hard to see."
+    },
+    "layoutSelection": {
+      "hero": ["splitHero", "centeredHero"],
+      "proof": ["cardGrid", "twoColumn"],
+      "features": ["cardGrid", "stackedSections"],
+      "objections": ["accordion", "comparisonTable"],
+      "action": ["centeredHero", "singleColumn"]
+    },
+    "ctaCadence": {
+      "primaryActionCount": "one-per-decision-moment",
+      "secondaryActionRule": "Use secondary actions only for lower-commitment learning paths that support the same primary goal.",
+      "repeatPrimaryActionAfter": ["early-proof", "objection-resolution", "final-section"],
+      "reason": "Repeating one action can help; competing actions weaken the decision path."
+    },
+    "overlayUse": {
+      "allowed": ["dialog", "drawer", "popover"],
+      "preferred": ["dialog"],
+      "useWhen": ["lead-form", "appointment-request", "plan-details", "contextual-help"],
+      "avoidWhen": ["static-proof", "core-offer-explanation", "required-comparison"],
+      "reason": "Conversion overlays must support commitment or focused clarification, not hide essential persuasion."
+    },
+    "responsivePriority": [
+      "offer",
+      "primary-action",
+      "early-proof",
+      "key-benefit",
+      "objection-resolution",
+      "final-action"
+    ]
+  },
+  "antiPatterns": [
+    {
+      "name": "competing-primary-ctas",
+      "reason": "Multiple primary actions split intent before the visitor has committed to a path."
+    },
+    {
+      "name": "proof-after-final-action",
+      "reason": "Evidence placed after the commitment arrives too late to affect trust."
+    },
+    {
+      "name": "decorative-hero-secondary-column",
+      "reason": "A split hero needs a structural job on both sides; decoration belongs downstream."
+    },
+    {
+      "name": "faq-dump",
+      "reason": "Objections should be grouped by the decision they unblock."
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "id": "invalid-missing-responsive",
+  "type": "wireframe",
+  "label": "Invalid Missing Responsive",
+  "version": "0.1.0",
+  "root": {
+    "id": "missing-responsive-page",
+    "type": "page",
+    "label": "Missing Responsive Page",
+    "children": [
+      {
+        "id": "missing-responsive-header",
+        "type": "header",
+        "label": "Missing Responsive Header"
+      },
+      {
+        "id": "missing-responsive-main",
+        "type": "main",
+        "label": "Missing Responsive Main"
+      },
+      {
+        "id": "missing-responsive-footer",
+        "type": "footer",
+        "label": "Missing Responsive Footer"
+      }
+    ]
+  },
+  "responsive": {
+    "desktop": "Desktop structure is visible.",
+    "tablet": "Tablet structure is stacked."
+  }
+}

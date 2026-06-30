@@ -1,0 +1,206 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://omiologic.dev/schemas/ui-blueprint/style-blend.schema.json",
+  "title": "Style Blend",
+  "description": "Structured blend of multiple style references with ratios, scope, intensity, and conflict-resolution rules.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "version",
+    "type",
+    "id",
+    "name",
+    "primaryStyle",
+    "secondaryStyles",
+    "ratio",
+    "scope",
+    "intensity",
+    "rules",
+    "avoid",
+    "source"
+  ],
+  "properties": {
+    "version": {
+      "$ref": "#/$defs/version"
+    },
+    "type": {
+      "const": "styleBlend"
+    },
+    "id": {
+      "$ref": "#/$defs/id"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "primaryStyle": {
+      "$ref": "#/$defs/id"
+    },
+    "secondaryStyles": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/id"
+      }
+    },
+    "ratio": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/ratioEntry"
+      }
+    },
+    "scope": {
+      "$ref": "#/$defs/scope"
+    },
+    "target": {
+      "$ref": "#/$defs/target"
+    },
+    "intensity": {
+      "$ref": "#/$defs/intensity"
+    },
+    "rules": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/blendRule"
+      }
+    },
+    "avoid": {
+      "$ref": "#/$defs/stringList"
+    },
+    "source": {
+      "$ref": "#/$defs/source"
+    }
+  },
+  "$defs": {
+    "version": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$"
+    },
+    "scope": {
+      "type": "string",
+      "enum": [
+        "site",
+        "page",
+        "section",
+        "component",
+        "prototype"
+      ]
+    },
+    "intensity": {
+      "type": "string",
+      "enum": [
+        "subtle",
+        "medium",
+        "strong",
+        "experimental"
+      ]
+    },
+    "sourceType": {
+      "type": "string",
+      "enum": [
+        "prompt",
+        "userProvided",
+        "generated",
+        "styleRecommendation",
+        "internalReference"
+      ]
+    },
+    "stringList": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "target": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "scope",
+        "id",
+        "label"
+      ],
+      "properties": {
+        "scope": {
+          "$ref": "#/$defs/scope"
+        },
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "label": {
+          "type": "string",
+          "minLength": 1
+        },
+        "artifactRef": {
+          "type": "string"
+        }
+      }
+    },
+    "ratioEntry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "styleId",
+        "weight"
+      ],
+      "properties": {
+        "styleId": {
+          "$ref": "#/$defs/id"
+        },
+        "weight": {
+          "type": "number"
+        }
+      }
+    },
+    "blendRule": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "area",
+        "styleId",
+        "rule"
+      ],
+      "properties": {
+        "area": {
+          "type": "string",
+          "minLength": 1
+        },
+        "styleId": {
+          "$ref": "#/$defs/id"
+        },
+        "rule": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "type",
+        "description",
+        "licenseNotes"
+      ],
+      "properties": {
+        "type": {
+          "$ref": "#/$defs/sourceType"
+        },
+        "description": {
+          "type": "string",
+          "minLength": 1
+        },
+        "artifactRef": {
+          "type": "string"
+        },
+        "licenseNotes": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    }
+  }
+}

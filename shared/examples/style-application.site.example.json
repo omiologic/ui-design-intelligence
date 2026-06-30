@@ -1,0 +1,21 @@
+{
+  "version": "0.1.0",
+  "type": "styleApplication",
+  "styleId": "japandi",
+  "scope": "site",
+  "target": {
+    "scope": "site",
+    "id": "local-service-site",
+    "label": "Local Service Site"
+  },
+  "intensity": "subtle",
+  "preserve": ["existing logo", "primary CTA wording"],
+  "applyTo": ["global palette", "spacing rhythm", "card surfaces"],
+  "avoid": ["low contrast muted text", "empty-feeling sections"],
+  "notes": ["Use Japandi as the global calm trust signal."],
+  "source": {
+    "type": "generated",
+    "description": "Schema-valid site-scope style application example.",
+    "licenseNotes": "No external prose included."
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "id": "dialog-component-example",
+  "type": "wireframe",
+  "label": "Dialog Component Example",
+  "version": "0.1.0",
+  "root": {
+    "id": "contact-dialog",
+    "type": "dialog",
+    "label": "Contact Dialog",
+    "state": "closed",
+    "accessibility": {
+      "ariaLabel": "Contact form",
+      "focusManagement": "Trap focus while open and return focus to trigger on close.",
+      "keyboardBehavior": "Escape closes the dialog."
+    },
+    "children": [
+      {
+        "id": "dialog-heading",
+        "type": "heading",
+        "label": "Dialog Heading",
+        "role": "headline"
+      },
+      {
+        "id": "dialog-copy",
+        "type": "paragraph",
+        "label": "Dialog Supporting Copy",
+        "role": "body"
+      },
+      {
+        "id": "dialog-form",
+        "type": "form",
+        "label": "Dialog Form",
+        "children": [
+          {
+            "id": "dialog-inputs",
+            "type": "inputGroup",
+            "label": "Dialog Inputs"
+          }
+        ]
+      },
+      {
+        "id": "dialog-actions",
+        "type": "buttonGroup",
+        "label": "Dialog Actions",
+        "children": [
+          {
+            "id": "dialog-submit",
+            "type": "button",
+            "label": "Submit",
+            "role": "primaryCTA"
+          },
+          {
+            "id": "dialog-cancel",
+            "type": "button",
+            "label": "Cancel",
+            "role": "secondaryCTA"
+          }
+        ]
+      }
+    ]
+  }
+}

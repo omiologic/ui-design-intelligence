@@ -1,0 +1,211 @@
+{
+  "version": "0.1.0",
+  "type": "designSystemSeed",
+  "id": "project-design-system-seed",
+  "name": "Project Design System Seed",
+  "source": {
+    "inputType": "mixed",
+    "sourceRefs": [],
+    "confidence": "medium",
+    "notes": []
+  },
+  "maturity": "designSystemSeed",
+  "brand": {
+    "name": {
+      "value": "Project Brand",
+      "source": "userProvided",
+      "confidence": "medium"
+    },
+    "summary": {
+      "value": "Brief brand summary.",
+      "source": "generated",
+      "confidence": "medium"
+    },
+    "personality": {
+      "values": ["clear", "trustworthy"],
+      "source": "inferred",
+      "confidence": "medium"
+    },
+    "audience": {
+      "values": ["primary audience"],
+      "source": "userProvided",
+      "confidence": "medium"
+    },
+    "positioning": {
+      "value": "Positioning statement.",
+      "source": "recommended",
+      "confidence": "medium"
+    },
+    "voice": {
+      "tone": {
+        "value": "clear and direct",
+        "source": "recommended",
+        "confidence": "medium"
+      },
+      "avoid": {
+        "values": ["unsupported claims"],
+        "source": "recommended",
+        "confidence": "medium"
+      }
+    },
+    "visualDirection": {
+      "density": {
+        "value": "medium",
+        "source": "recommended",
+        "confidence": "medium"
+      },
+      "style": {
+        "value": "clean interface",
+        "source": "generated",
+        "confidence": "medium"
+      },
+      "emphasis": {
+        "value": "clarity",
+        "source": "inferred",
+        "confidence": "medium"
+      }
+    }
+  },
+  "palette": {
+    "mode": "light",
+    "colors": {
+      "color.action.primary": {
+        "name": "Primary Action",
+        "value": "#0B78C2",
+        "intent": "Primary interactive action color.",
+        "usage": "Primary CTA and active navigation.",
+        "useOn": ["button.primary"],
+        "doNotUseOn": ["decorative backgrounds"],
+        "accessibilityNotes": ["Validate contrast before production use."],
+        "source": "recommended",
+        "confidence": "medium"
+      },
+      "color.surface.default": {
+        "name": "Default Surface",
+        "value": "#FFFFFF",
+        "intent": "Default page and component surface.",
+        "usage": "Page background and component surfaces.",
+        "useOn": ["page background", "card surfaces"],
+        "doNotUseOn": ["focus indicators"],
+        "accessibilityNotes": ["Validate text contrast on this surface."],
+        "source": "recommended",
+        "confidence": "medium"
+      }
+    },
+    "accessibilityNotes": ["Do not rely on color alone for state."]
+  },
+  "typography": {
+    "fontFamilies": {
+      "heading": {
+        "value": "Inter, system-ui, sans-serif",
+        "source": "recommended",
+        "confidence": "medium"
+      },
+      "body": {
+        "value": "Inter, system-ui, sans-serif",
+        "source": "recommended",
+        "confidence": "medium"
+      }
+    },
+    "scale": {
+      "body": {
+        "fontSize": "16px",
+        "lineHeight": "1.6",
+        "fontWeight": 400,
+        "usage": "Main readable content.",
+        "source": "recommended",
+        "confidence": "medium"
+      }
+    }
+  },
+  "iconography": {
+    "style": "outline",
+    "strokeWidth": "1.75px",
+    "cornerStyle": "rounded",
+    "preferredLibrary": "lucide-react",
+    "usage": {
+      "buttons": "Use icons only when they clarify action."
+    },
+    "rules": ["Do not mix filled and outline icons in the same group."],
+    "source": "recommended",
+    "confidence": "medium"
+  },
+  "components": {
+    "buttons": {
+      "base": {
+        "radius": "8px",
+        "fontWeight": 600,
+        "height": {
+          "md": "44px"
+        }
+      },
+      "variants": {
+        "button.primary": {
+          "usage": "Primary conversion action.",
+          "background": "color.action.primary",
+          "text": "color.surface.default",
+          "border": "color.action.primary",
+          "allowedActions": ["navigate", "openDialog"]
+        }
+      },
+      "states": ["default", "hover", "focus", "active", "disabled", "loading"],
+      "rules": ["Use one primary CTA per major section."],
+      "source": "generated",
+      "confidence": "medium"
+    },
+    "cards": {
+      "base": {
+        "surface": "color.surface.default",
+        "radius": "12px",
+        "padding": "24px"
+      },
+      "anatomy": ["title", "description", "actions"],
+      "variants": {
+        "card.feature": {
+          "usage": "Explain one benefit or feature.",
+          "requiredParts": ["title", "description"]
+        }
+      },
+      "rules": ["Cards in the same grid should use consistent anatomy."],
+      "source": "generated",
+      "confidence": "medium"
+    },
+    "header": {
+      "layout": {
+        "desktop": "logo-left nav-center actions-right",
+        "mobile": "logo-left menu-button-right"
+      },
+      "height": {
+        "desktop": "72px",
+        "mobile": "64px"
+      },
+      "behavior": {
+        "sticky": false,
+        "mobileNavigation": "drawer"
+      },
+      "anatomy": ["logo", "primaryNavigation", "primaryAction", "mobileMenuButton"],
+      "navigation": {
+        "maxPrimaryItems": 6,
+        "supportsDropdown": true,
+        "supportsMegaMenu": false
+      },
+      "rules": ["Mobile navigation should use a drawer when more than four links exist."],
+      "source": "recommended",
+      "confidence": "medium"
+    },
+    "footer": {
+      "layout": {
+        "desktop": "multi-column",
+        "mobile": "stacked"
+      },
+      "anatomy": ["brandSummary", "navigationGroups", "contactInfo", "legalLinks"],
+      "navigationGroups": ["Products", "Resources", "Support", "Company"],
+      "industrySpecificNeeds": [],
+      "rules": ["Footer should provide recovery navigation."],
+      "source": "recommended",
+      "confidence": "medium"
+    }
+  },
+  "usageNotes": ["Use as a generation contract, not as final production governance."],
+  "openQuestions": ["Confirm exact colors and fonts from source evidence."]
+}

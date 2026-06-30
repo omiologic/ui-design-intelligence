@@ -1,0 +1,67 @@
+{
+  "version": "0.1.0",
+  "type": "styleReference",
+  "id": "example-style",
+  "name": "Example Style",
+  "category": "mixed",
+  "summary": "A short original UI-focused description of the style.",
+  "visualDNA": {
+    "palette": ["primary palette guidance"],
+    "typography": ["typography guidance"],
+    "surfaces": ["surface guidance"],
+    "shapes": ["shape guidance"],
+    "effects": ["effect guidance"],
+    "layout": ["layout guidance"],
+    "imagery": ["imagery guidance"]
+  },
+  "mood": ["clear"],
+  "bestFor": ["appropriate use case"],
+  "avoidFor": ["poor fit use case"],
+  "applicationScopes": {
+    "site": { "strength": "global direction", "appliesTo": ["palette"], "defaultIntensity": "subtle", "notes": ["Use only when the whole product should carry the style."] },
+    "page": { "strength": "page direction", "appliesTo": ["hero"], "defaultIntensity": "medium", "notes": ["Preserve page purpose."] },
+    "section": { "strength": "local treatment", "appliesTo": ["section background"], "defaultIntensity": "medium", "notes": ["Do not affect unrelated sections."] },
+    "component": { "strength": "component variant", "appliesTo": ["cards"], "defaultIntensity": "subtle", "notes": ["Keep component states clear."] },
+    "prototype": { "strength": "interaction feel", "appliesTo": ["hover states"], "defaultIntensity": "subtle", "notes": ["Respect accessibility constraints."] }
+  },
+  "designSystemMapping": {
+    "brand": { "recommendations": ["brand recommendation"], "avoid": ["brand avoid rule"] },
+    "palette": { "recommendations": ["palette recommendation"], "avoid": ["palette avoid rule"] },
+    "typography": { "recommendations": ["typography recommendation"], "avoid": ["typography avoid rule"] },
+    "iconography": { "recommendations": ["icon recommendation"], "avoid": ["icon avoid rule"] },
+    "buttons": { "recommendations": ["button recommendation"], "avoid": ["button avoid rule"] },
+    "cards": { "recommendations": ["card recommendation"], "avoid": ["card avoid rule"] },
+    "header": { "recommendations": ["header recommendation"], "avoid": ["header avoid rule"] },
+    "footer": { "recommendations": ["footer recommendation"], "avoid": ["footer avoid rule"] }
+  },
+  "componentMapping": {
+    "cards": { "recommendations": ["component recommendation"], "avoid": ["component avoid rule"] }
+  },
+  "prototypeMapping": {
+    "motionTone": { "recommendations": ["motion recommendation"], "avoid": ["motion avoid rule"] },
+    "hoverStates": { "recommendations": ["hover recommendation"], "avoid": ["hover avoid rule"] },
+    "transitions": { "recommendations": ["transition recommendation"], "avoid": ["transition avoid rule"] },
+    "surfaceDepth": { "recommendations": ["depth recommendation"], "avoid": ["depth avoid rule"] },
+    "feedback": { "recommendations": ["feedback recommendation"], "avoid": ["feedback avoid rule"] }
+  },
+  "accessibilityRisks": [
+    { "risk": "Potential accessibility risk.", "severity": "medium", "mitigation": "Mitigation guidance." }
+  ],
+  "compatibility": {
+    "industries": { "saas": "medium" },
+    "scopes": { "site": "medium", "page": "medium", "section": "high", "component": "high", "prototype": "medium" },
+    "components": { "cards": "high" }
+  },
+  "implementationHints": {
+    "css": ["implementation hint"],
+    "tokens": ["token.hint"],
+    "do": ["recommended practice"],
+    "avoid": ["implementation avoid rule"]
+  },
+  "source": {
+    "type": "internalReference",
+    "title": "Internal style reference template",
+    "usage": "Starter template for authoring an original normalized style record.",
+    "licenseNotes": "Do not copy third-party prose into this record."
+  }
+}

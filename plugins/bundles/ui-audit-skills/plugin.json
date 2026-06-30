@@ -1,0 +1,39 @@
+{
+  "name": "ui-audit-skills",
+  "displayName": "UI Audit Skills",
+  "version": "0.2.0",
+  "description": "Skills for evaluating site, page, section, interaction, accessibility, and SEO quality.",
+  "status": "active",
+  "maintainer": "UI Blueprint maintainers",
+  "repository": "ui-design-intelligence repository",
+  "license": "LICENSE",
+  "changelog": "CHANGELOG.md",
+  "dependencies": [
+    "ui-study-skills"
+  ],
+  "skills": [
+    "generate-site-audit-report",
+    "generate-page-audit-report",
+    "generate-section-audit-report",
+    "generate-interaction-audit-report",
+    "generate-accessibility-audit-report",
+    "generate-seo-audit-report"
+  ],
+  "agents": [
+    "ui-audit-lead",
+    "accessibility-reviewer",
+    "seo-content-analyst"
+  ],
+  "commands": [
+    "audit-page",
+    "audit-site",
+    "audit-interactions"
+  ],
+  "shared": [
+    "shared/schemas/page-audit.schema.json",
+    "shared/vocabulary/audit-severity.json",
+    "shared/templates/page-audit.md",
+    "shared/templates/interaction-audit.md",
+    "shared/examples/page-audit.example.json"
+  ]
+}

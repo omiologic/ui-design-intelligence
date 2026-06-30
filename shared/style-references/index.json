@@ -1,0 +1,67 @@
+{
+  "version": "0.1.0",
+  "type": "styleReferenceIndex",
+  "description": "Starter index for the Sprint 003 style-reference library.",
+  "styles": [
+    {
+      "id": "art-deco",
+      "name": "Art Deco",
+      "category": "historical",
+      "path": "styles/art-deco.style.json"
+    },
+    {
+      "id": "aurora",
+      "name": "Aurora",
+      "category": "digital-futuristic",
+      "path": "styles/aurora.style.json"
+    },
+    {
+      "id": "bauhaus",
+      "name": "Bauhaus",
+      "category": "modernist-functional",
+      "path": "styles/bauhaus.style.json"
+    },
+    {
+      "id": "bento-box",
+      "name": "Bento Box",
+      "category": "layout-system",
+      "path": "styles/bento-box.style.json"
+    },
+    {
+      "id": "brutalism",
+      "name": "Brutalism",
+      "category": "modernist-functional",
+      "path": "styles/brutalism.style.json"
+    },
+    {
+      "id": "glassmorphism",
+      "name": "Glassmorphism",
+      "category": "surface-treatment",
+      "path": "styles/glassmorphism.style.json"
+    },
+    {
+      "id": "japandi",
+      "name": "Japandi",
+      "category": "minimal-natural",
+      "path": "styles/japandi.style.json"
+    },
+    {
+      "id": "luxury-typography",
+      "name": "Luxury Typography",
+      "category": "editorial-luxury",
+      "path": "styles/luxury-typography.style.json"
+    },
+    {
+      "id": "neo-brutalism",
+      "name": "Neo Brutalism",
+      "category": "modernist-functional",
+      "path": "styles/neo-brutalism.style.json"
+    },
+    {
+      "id": "utilitarian",
+      "name": "Utilitarian",
+      "category": "modernist-functional",
+      "path": "styles/utilitarian.style.json"
+    }
+  ]
+}

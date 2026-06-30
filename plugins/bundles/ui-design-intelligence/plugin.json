@@ -1,0 +1,31 @@
+{
+  "name": "ui-design-intelligence",
+  "displayName": "UI Design Intelligence",
+  "version": "0.2.0",
+  "description": "Full UI design intelligence bundle for studying, auditing, SEO review, and generating UI blueprints.",
+  "status": "transitional",
+  "maintainer": "UI Blueprint maintainers",
+  "repository": "ui-design-intelligence repository",
+  "license": "LICENSE",
+  "changelog": "CHANGELOG.md",
+  "dependencies": [
+    "ui-study-skills",
+    "ui-audit-skills",
+    "ui-seo-skills",
+    "ui-blueprint-skills",
+    "ui-knowledge-skills",
+    "ui-design-system-skills",
+    "ui-style-reference-skills",
+    "ui-prototype-skills"
+  ],
+  "includes": [
+    "ui-study-skills",
+    "ui-audit-skills",
+    "ui-seo-skills",
+    "ui-blueprint-skills",
+    "ui-knowledge-skills",
+    "ui-design-system-skills",
+    "ui-style-reference-skills",
+    "ui-prototype-skills"
+  ]
+}

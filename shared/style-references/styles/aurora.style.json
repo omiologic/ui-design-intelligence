@@ -1,0 +1,61 @@
+{
+  "version": "0.1.0",
+  "type": "styleReference",
+  "id": "aurora",
+  "name": "Aurora",
+  "category": "digital-futuristic",
+  "summary": "A soft luminous digital style using layered color fields, gentle glow, and airy depth.",
+  "visualDNA": {
+    "palette": ["cool gradients, spectral accents, soft dark or light neutrals"],
+    "typography": ["clean sans-serif with generous spacing"],
+    "surfaces": ["translucent or softly lit panels"],
+    "shapes": ["large flowing fields and rounded interface edges"],
+    "effects": ["subtle glow, blurred color transitions, atmospheric depth"],
+    "layout": ["open compositions with strong focal zones"],
+    "imagery": ["abstract light fields and product silhouettes"]
+  },
+  "mood": ["calm", "futuristic", "immersive", "soft"],
+  "bestFor": ["AI product pages", "creative tools", "launch heroes"],
+  "avoidFor": ["long-form reading pages", "strict enterprise tables"],
+  "applicationScopes": {
+    "site": { "strength": "ambient brand theme", "appliesTo": ["backgrounds", "accent fields", "hero surfaces"], "defaultIntensity": "subtle", "notes": ["Keep content panels readable."] },
+    "page": { "strength": "primary atmosphere", "appliesTo": ["hero", "CTA bands", "feature backgrounds"], "defaultIntensity": "medium", "notes": ["Avoid one-note gradient dominance."] },
+    "section": { "strength": "local glow treatment", "appliesTo": ["section background", "media frame"], "defaultIntensity": "medium", "notes": ["Use behind content, not over text."] },
+    "component": { "strength": "surface variant", "appliesTo": ["cards", "badges", "dialogs"], "defaultIntensity": "subtle", "notes": ["Use accessible contrast on glowing surfaces."] },
+    "prototype": { "strength": "soft interaction feel", "appliesTo": ["hover glow", "transitions", "feedback"], "defaultIntensity": "subtle", "notes": ["Respect reduced-motion preferences."] }
+  },
+  "designSystemMapping": {
+    "brand": { "recommendations": ["Use a progressive, calm, luminous personality."], "avoid": ["Avoid implying entertainment if the product is operational."] },
+    "palette": { "recommendations": ["Define restrained gradient accents and neutral readable surfaces."], "avoid": ["Avoid placing body text directly on saturated gradients."] },
+    "typography": { "recommendations": ["Use neutral modern sans-serif typography."], "avoid": ["Avoid sci-fi novelty fonts."] },
+    "iconography": { "recommendations": ["Use simple line icons with optional soft accent fills."], "avoid": ["Avoid overly detailed neon icons."] },
+    "buttons": { "recommendations": ["Use clear solid buttons with optional luminous accent border."], "avoid": ["Avoid low-contrast glowing labels."] },
+    "cards": { "recommendations": ["Use layered panels with subtle color depth."], "avoid": ["Avoid blur that hides content edges."] },
+    "header": { "recommendations": ["Use clean nav over stable surface."], "avoid": ["Avoid animated backgrounds behind nav labels."] },
+    "footer": { "recommendations": ["Use subdued gradient accents and structured links."], "avoid": ["Avoid atmospheric effects that obscure legal links."] }
+  },
+  "componentMapping": {
+    "cards": { "recommendations": ["Add subtle light edge and calm depth."], "avoid": ["Avoid heavy glow stacks."] },
+    "dialogs": { "recommendations": ["Use stable readable panel with ambient backdrop."], "avoid": ["Avoid transparent text areas."] }
+  },
+  "prototypeMapping": {
+    "motionTone": { "recommendations": ["Use smooth, gentle transitions."], "avoid": ["Avoid rapid color pulsing."] },
+    "hoverStates": { "recommendations": ["Use light edge or mild lift."], "avoid": ["Avoid large color blooms on hover."] },
+    "transitions": { "recommendations": ["Use short fades with slight depth shift."], "avoid": ["Avoid complex animated backgrounds."] },
+    "surfaceDepth": { "recommendations": ["Use shallow layered panels."], "avoid": ["Avoid unclear hit targets."] },
+    "feedback": { "recommendations": ["Use soft highlight feedback with text labels."], "avoid": ["Avoid relying on color alone."] }
+  },
+  "accessibilityRisks": [{ "risk": "Atmospheric gradients can reduce text contrast.", "severity": "high", "mitigation": "Place text on stable opaque or high-contrast surfaces." }],
+  "compatibility": {
+    "industries": { "saas": "high", "healthcare": "conditional", "finance": "conditional" },
+    "scopes": { "site": "medium", "page": "high", "section": "high", "component": "medium", "prototype": "medium" },
+    "components": { "hero": "high", "cards": "medium", "forms": "conditional" }
+  },
+  "implementationHints": {
+    "css": ["Use layered gradients behind readable panels."],
+    "tokens": ["color.accent.aurora", "surface.luminous", "shadow.soft"],
+    "do": ["Separate atmosphere from content surfaces."],
+    "avoid": ["Do not use decorative glow as the only state indicator."]
+  },
+  "source": { "type": "internalReference", "title": "Sprint 003 style-reference MVP taxonomy", "usage": "Original normalized UI-focused style record.", "licenseNotes": "No copied third-party prose." }
+}

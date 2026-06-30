@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://omiologic.dev/schemas/ui-blueprint/knowledge/knowledge-index.schema.json",
+  "title": "UI Knowledge Index",
+  "description": "Lightweight retrieval index for UI pattern knowledge records.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["version", "generatedAt", "patterns"],
+  "properties": {
+    "version": { "type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$" },
+    "generatedAt": { "type": "string", "minLength": 1 },
+    "patterns": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "path", "patternType", "category", "tags", "confidence", "status"],
+        "properties": {
+          "id": { "$ref": "#/$defs/id" },
+          "path": { "type": "string", "minLength": 1 },
+          "patternType": { "$ref": "#/$defs/patternType" },
+          "category": { "type": "string", "minLength": 1 },
+          "name": { "type": "string" },
+          "summary": { "type": "string" },
+          "tags": { "$ref": "#/$defs/knowledgeTags" },
+          "confidence": { "type": "string", "enum": ["low", "medium", "high", "validated"] },
+          "status": { "type": "string", "enum": ["candidate", "accepted", "validated", "deprecated", "merged"] }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "id": { "type": "string", "pattern": "^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$" },
+    "stringList": { "type": "array", "items": { "type": "string", "minLength": 1 }, "default": [] },
+    "patternType": {
+      "type": "string",
+      "enum": ["page", "section", "component", "interaction", "storytelling", "conversion", "accessibility", "responsive", "seo"]
+    },
+    "knowledgeTags": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "industries": { "$ref": "#/$defs/stringList" },
+        "pageTypes": { "$ref": "#/$defs/stringList" },
+        "sectionTypes": { "$ref": "#/$defs/stringList" },
+        "componentTypes": { "$ref": "#/$defs/stringList" },
+        "interactionTypes": { "$ref": "#/$defs/stringList" },
+        "conversionGoals": { "$ref": "#/$defs/stringList" },
+        "audiences": { "$ref": "#/$defs/stringList" }
+      }
+    }
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "version": "0.1.0",
+  "type": "styleReference",
+  "id": "bauhaus",
+  "name": "Bauhaus",
+  "category": "modernist-functional",
+  "summary": "A rational modernist style using primary geometry, clear hierarchy, strong grid discipline, and functional composition.",
+  "visualDNA": {
+    "palette": ["white, black, primary red, blue, yellow, and neutral gray"],
+    "typography": ["direct sans-serif with clear scale"],
+    "surfaces": ["flat panels and simple blocks"],
+    "shapes": ["circles, rectangles, lines, and modular geometry"],
+    "effects": ["minimal effects and high clarity"],
+    "layout": ["grid-led asymmetric balance"],
+    "imagery": ["simple product crops and geometric annotation"]
+  },
+  "mood": ["clear", "rational", "modern", "systematic"],
+  "bestFor": ["education pages", "portfolio systems", "product explainers"],
+  "avoidFor": ["soft luxury pages", "emotion-led wellness pages"],
+  "applicationScopes": {
+    "site": { "strength": "systemic visual logic", "appliesTo": ["grid", "typography", "accent geometry"], "defaultIntensity": "subtle", "notes": ["Use accents with restraint."] },
+    "page": { "strength": "structured page direction", "appliesTo": ["hero", "feature layout", "navigation rhythm"], "defaultIntensity": "medium", "notes": ["Preserve content clarity."] },
+    "section": { "strength": "local grid treatment", "appliesTo": ["feature grids", "explainers", "stats"], "defaultIntensity": "medium", "notes": ["Use geometry to clarify, not decorate."] },
+    "component": { "strength": "functional variant", "appliesTo": ["buttons", "cards", "tabs"], "defaultIntensity": "subtle", "notes": ["Prefer flat direct states."] },
+    "prototype": { "strength": "direct interaction feel", "appliesTo": ["state changes", "transitions", "feedback"], "defaultIntensity": "subtle", "notes": ["Use concise transitions."] }
+  },
+  "designSystemMapping": {
+    "brand": { "recommendations": ["Use useful, clear, rational personality."], "avoid": ["Avoid ornate brand language."] },
+    "palette": { "recommendations": ["Use mostly neutrals with small primary accents."], "avoid": ["Avoid rainbow-like equal color weight."] },
+    "typography": { "recommendations": ["Use plain sans-serif with strong hierarchy."], "avoid": ["Avoid decorative display type."] },
+    "iconography": { "recommendations": ["Use geometric icons with simple strokes."], "avoid": ["Avoid skeuomorphic icons."] },
+    "buttons": { "recommendations": ["Use flat rectangular buttons with obvious contrast."], "avoid": ["Avoid glossy or pill treatments."] },
+    "cards": { "recommendations": ["Use modular flat cards with grid alignment."], "avoid": ["Avoid floating shadows."] },
+    "header": { "recommendations": ["Use direct nav with strong alignment."], "avoid": ["Avoid decorative nav flourishes."] },
+    "footer": { "recommendations": ["Use simple columns and clear labels."], "avoid": ["Avoid soft ornamental footer treatments."] }
+  },
+  "componentMapping": {
+    "cards": { "recommendations": ["Use flat modules with strong alignment."], "avoid": ["Avoid nested cards."] },
+    "tabs": { "recommendations": ["Use simple block states."], "avoid": ["Avoid ambiguous decorative tabs."] }
+  },
+  "prototypeMapping": {
+    "motionTone": { "recommendations": ["Use direct functional motion."], "avoid": ["Avoid theatrical animation."] },
+    "hoverStates": { "recommendations": ["Use color, border, or block shift."], "avoid": ["Avoid fuzzy glow."] },
+    "transitions": { "recommendations": ["Use quick linear-feeling transitions."], "avoid": ["Avoid long easing curves."] },
+    "surfaceDepth": { "recommendations": ["Use flat planes."], "avoid": ["Avoid deep elevation systems."] },
+    "feedback": { "recommendations": ["Use clear blocks and text labels."], "avoid": ["Avoid purely decorative feedback."] }
+  },
+  "accessibilityRisks": [{ "risk": "Primary color accents can become the only state cue.", "severity": "medium", "mitigation": "Pair color with labels, icons, borders, or shape changes." }],
+  "compatibility": {
+    "industries": { "education": "high", "saas": "medium", "luxury": "low" },
+    "scopes": { "site": "medium", "page": "high", "section": "high", "component": "high", "prototype": "medium" },
+    "components": { "cards": "high", "tabs": "high", "forms": "medium" }
+  },
+  "implementationHints": {
+    "css": ["Use grid alignment, flat surfaces, and primary accent tokens."],
+    "tokens": ["color.accent.primary-red", "layout.grid.modular", "surface.flat"],
+    "do": ["Use geometry to support hierarchy."],
+    "avoid": ["Do not let decorative geometry compete with content."]
+  },
+  "source": { "type": "internalReference", "title": "Sprint 003 style-reference MVP taxonomy", "usage": "Original normalized UI-focused style record.", "licenseNotes": "No copied third-party prose." }
+}

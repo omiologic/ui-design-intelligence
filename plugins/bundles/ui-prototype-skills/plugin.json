@@ -1,0 +1,48 @@
+{
+  "name": "ui-prototype-skills",
+  "displayName": "UI Prototype Skills",
+  "version": "0.1.0",
+  "description": "Skills for generating, studying, planning, and auditing structured interactive prototype configuration.",
+  "status": "transitional",
+  "maintainer": "UI Blueprint maintainers",
+  "repository": "ui-design-intelligence repository",
+  "license": "LICENSE",
+  "changelog": "CHANGELOG.md",
+  "dependencies": [
+    "ui-blueprint-skills",
+    "ui-design-system-skills"
+  ],
+  "skills": [
+    "generate-interactive-prototype-config",
+    "study-ui-prototype-behavior",
+    "generate-component-state-model",
+    "generate-interaction-flow",
+    "generate-clickable-prototype-plan",
+    "audit-prototype-interactions"
+  ],
+  "agents": [
+    "prototype-architect"
+  ],
+  "commands": [
+    "generate-prototype-from-blueprint",
+    "generate-prototype-from-knowledge",
+    "audit-prototype-flow",
+    "explain-prototype-interactions"
+  ],
+  "shared": [
+    "docs/interop/prototype-config-architecture.md",
+    "docs/interop/design-system-prototype-pipeline.md",
+    "shared/schemas/prototype-config.schema.json",
+    "shared/schemas/interaction-flow.schema.json",
+    "shared/schemas/component-state-model.schema.json",
+    "shared/schemas/study-output.schema.json",
+    "shared/schemas/wireframe-config.schema.json",
+    "shared/schemas/design-system-seed.schema.json",
+    "shared/vocabulary/content-roles.json",
+    "shared/vocabulary/interaction-states.json",
+    "shared/vocabulary/node-types.json",
+    "shared/vocabulary/layout-patterns.json",
+    "shared/examples/dental-appointment.prototype-config.example.json",
+    "shared/examples/dental-homepage.ui-blueprint.json"
+  ]
+}

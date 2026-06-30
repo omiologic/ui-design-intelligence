@@ -1,0 +1,21 @@
+{
+  "version": "0.1.0",
+  "type": "styleApplication",
+  "styleId": "bento-box",
+  "scope": "section",
+  "target": {
+    "scope": "section",
+    "id": "services-overview",
+    "label": "Services Overview"
+  },
+  "intensity": "medium",
+  "preserve": ["brand palette", "heading typography"],
+  "applyTo": ["service cards", "grid rhythm", "supporting proof tiles"],
+  "avoid": ["nested cards", "equal visual weight for every tile"],
+  "notes": ["Use varied tile sizing to make priority services easier to scan."],
+  "source": {
+    "type": "generated",
+    "description": "Schema-valid section-scope style application example.",
+    "licenseNotes": "No external prose included."
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "version": "0.1.0",
+  "type": "componentDecisionTree",
+  "id": "button-card-decision-tree",
+  "name": "Button And Card Variant Decision Tree",
+  "sourceRefs": [
+    "shared/vocabulary/component-variants.json",
+    "shared/vocabulary/component-anatomy.json",
+    "shared/examples/design-system-seed.example.json"
+  ],
+  "trees": [
+    {
+      "component": "button",
+      "decisions": [
+        {
+          "question": "Is this the primary conversion or completion action in the current section?",
+          "yes": "button.primary",
+          "no": "continue"
+        },
+        {
+          "question": "Is this a supporting action shown near the primary CTA?",
+          "yes": "button.secondary",
+          "no": "continue"
+        },
+        {
+          "question": "Is this a low-emphasis utility or navigation action?",
+          "yes": "button.ghost",
+          "no": "button.secondary"
+        }
+      ],
+      "rules": [
+        "Use one button.primary per major section unless the layout has independent task regions.",
+        "A destructive action requires explicit confirmation behavior before using button.destructive.",
+        "Button labels should name the outcome, not the UI mechanism."
+      ]
+    },
+    {
+      "component": "card",
+      "decisions": [
+        {
+          "question": "Is the card presenting a service and a path to learn or book?",
+          "yes": "card.service",
+          "no": "continue"
+        },
+        {
+          "question": "Is the card explaining one capability, benefit, or reason to believe?",
+          "yes": "card.feature",
+          "no": "continue"
+        },
+        {
+          "question": "Is the card carrying a quote, review, or attribution?",
+          "yes": "card.testimonial",
+          "no": "card.feature"
+        }
+      ],
+      "rules": [
+        "Cards in one grid should share the same primary anatomy.",
+        "Do not mix service and testimonial cards in the same repeated grid unless the section purpose says why.",
+        "A card with a primary action should make the action target explicit."
+      ]
+    }
+  ]
+}

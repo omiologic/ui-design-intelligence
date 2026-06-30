@@ -1,0 +1,23 @@
+{
+  "id": "invalid-card-direct-page",
+  "type": "wireframe",
+  "label": "Invalid Card Direct Page",
+  "version": "0.1.0",
+  "root": {
+    "id": "invalid-page",
+    "type": "page",
+    "label": "Invalid Page",
+    "children": [
+      {
+        "id": "direct-card",
+        "type": "card",
+        "label": "Direct Card"
+      },
+      {
+        "id": "main-content",
+        "type": "main",
+        "label": "Main Content"
+      }
+    ]
+  }
+}

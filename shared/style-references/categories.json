@@ -1,0 +1,60 @@
+{
+  "version": "0.1.0",
+  "type": "styleReferenceCategories",
+  "categories": [
+    {
+      "id": "historical",
+      "name": "Historical",
+      "description": "Styles rooted in recognizable historic visual movements and ornament systems.",
+      "starterStyles": ["art-deco"]
+    },
+    {
+      "id": "modernist-functional",
+      "name": "Modernist Functional",
+      "description": "Styles that prioritize clarity, system logic, utility, and direct structure.",
+      "starterStyles": ["bauhaus", "brutalism", "neo-brutalism", "utilitarian"]
+    },
+    {
+      "id": "digital-futuristic",
+      "name": "Digital Futuristic",
+      "description": "Styles built around digital surfaces, light, depth, glow, and synthetic atmosphere.",
+      "starterStyles": ["aurora", "glassmorphism"]
+    },
+    {
+      "id": "minimal-natural",
+      "name": "Minimal Natural",
+      "description": "Styles that use restraint, calm rhythm, natural warmth, and quiet material cues.",
+      "starterStyles": ["japandi"]
+    },
+    {
+      "id": "playful-expressive",
+      "name": "Playful Expressive",
+      "description": "Styles with high personality, novelty, decorative energy, or intentional visual surprise.",
+      "starterStyles": []
+    },
+    {
+      "id": "editorial-luxury",
+      "name": "Editorial Luxury",
+      "description": "Styles that rely on refined typography, restraint, premium spacing, and elevated presentation.",
+      "starterStyles": ["luxury-typography"]
+    },
+    {
+      "id": "surface-treatment",
+      "name": "Surface Treatment",
+      "description": "Styles primarily defined by depth, material, blur, lighting, edge treatment, or panel behavior.",
+      "starterStyles": ["glassmorphism", "aurora"]
+    },
+    {
+      "id": "layout-system",
+      "name": "Layout System",
+      "description": "Styles primarily defined by arrangement, modularity, grouping, and repeated spatial logic.",
+      "starterStyles": ["bento-box"]
+    },
+    {
+      "id": "mixed",
+      "name": "Mixed",
+      "description": "Hybrid or transitional styles that intentionally combine multiple visual systems.",
+      "starterStyles": []
+    }
+  ]
+}

@@ -1,0 +1,218 @@
+{
+  "nodeTypes": [
+    {
+      "name": "page",
+      "definition": "Top-level page or screen container for a complete wireframe.",
+      "allowedChildren": ["header", "main", "footer", "banner", "stickyBar", "annotation"],
+      "overlayOnly": false,
+      "cardinality": {
+        "main": { "min": 1, "max": 1 }
+      }
+    },
+    {
+      "name": "header",
+      "definition": "Introductory page region for brand, navigation, and primary page-level actions.",
+      "allowedChildren": ["navigation", "button", "buttonGroup", "banner", "spacer", "divider", "annotation"],
+      "overlayOnly": false
+    },
+    {
+      "name": "footer",
+      "definition": "Closing page region for secondary navigation, contact, legal, and support content.",
+      "allowedChildren": ["navigation", "contentGroup", "textBlock", "paragraph", "list", "buttonGroup", "divider", "annotation"],
+      "overlayOnly": false
+    },
+    {
+      "name": "main",
+      "definition": "Primary page content landmark containing the decision flow.",
+      "allowedChildren": ["breadcrumb", "hero", "section", "tabs", "accordion", "form", "banner", "stickyBar", "annotation"],
+      "overlayOnly": false
+    },
+    {
+      "name": "section",
+      "definition": "Reusable page region focused on one content purpose.",
+      "allowedChildren": ["heading", "paragraph", "textBlock", "contentGroup", "cardGrid", "card", "list", "table", "comparisonTable", "accordion", "tabs", "form", "buttonGroup", "imagePlaceholder", "videoPlaceholder", "spacer", "divider", "annotation"],
+      "overlayOnly": false
+    },
+    {
+      "name": "hero",
+      "definition": "Primary page or section opener that orients the user and presents the main action.",
+      "allowedChildren": ["textBlock", "contentGroup", "heading", "paragraph", "buttonGroup", "button", "imagePlaceholder", "videoPlaceholder", "spacer", "annotation"],
+      "overlayOnly": false
+    },
+    {
+      "name": "navigation",
+      "definition": "Set of links or controls for moving through primary or secondary destinations.",
+      "allowedChildren": ["button", "buttonGroup", "list", "divider", "annotation"],
+      "overlayOnly": false
+    },
+    {
+      "name": "breadcrumb",
+      "definition": "Hierarchical navigation trail showing the current page location.",
+      "allowedChildren": ["list", "annotation"],
+      "overlayOnly": false
+    },
+    {
+      "name": "contentGroup",
+      "definition": "Logical grouping of related content and actions.",
+      "allowedChildren": ["heading", "paragraph", "textBlock", "button", "buttonGroup", "imagePlaceholder", "videoPlaceholder", "list", "card", "spacer", "divider", "annotation"],
+      "overlayOnly": false
+    },
+    {
+      "name": "textBlock",
+      "definition": "Group of related text content such as eyebrow, heading, body, and captions.",
+      "allowedChildren": ["heading", "paragraph", "button", "buttonGroup", "spacer", "divider", "annotation"],
+      "overlayOnly": false
+    },
+    {
+      "name": "heading",
+      "definition": "Section, component, or page heading text.",
+      "allowedChildren": [],
+      "overlayOnly": false
+    },
+    {
+      "name": "paragraph",
+      "definition": "Body, helper, caption, metadata, or supporting copy.",
+      "allowedChildren": [],
+      "overlayOnly": false
+    },
+    {
+      "name": "button",
+      "definition": "Single action control.",
+      "allowedChildren": [],
+      "overlayOnly": false
+    },
+    {
+      "name": "buttonGroup",
+      "definition": "Group of related primary, secondary, or tertiary action controls.",
+      "allowedChildren": ["button", "annotation"],
+      "overlayOnly": false
+    },
+    {
+      "name": "imagePlaceholder",
+      "definition": "Wireframe placeholder for still imagery.",
+      "allowedChildren": [],
+      "overlayOnly": false
+    },
+    {
+      "name": "videoPlaceholder",
+      "definition": "Wireframe placeholder for video or motion media.",
+      "allowedChildren": [],
+      "overlayOnly": false
+    },
+    {
+      "name": "card",
+      "definition": "Reusable content container for a single item, feature, product, or proof point.",
+      "allowedChildren": ["imagePlaceholder", "videoPlaceholder", "heading", "paragraph", "contentGroup", "button", "buttonGroup", "list", "divider", "annotation"],
+      "overlayOnly": false
+    },
+    {
+      "name": "cardGrid",
+      "definition": "Grid or repeated set of cards.",
+      "allowedChildren": ["card", "annotation"],
+      "overlayOnly": false
+    },
+    {
+      "name": "list",
+      "definition": "Linear collection of related items.",
+      "allowedChildren": ["textBlock", "contentGroup", "button", "annotation"],
+      "overlayOnly": false
+    },
+    {
+      "name": "table",
+      "definition": "Structured rows and columns for comparable data.",
+      "allowedChildren": ["annotation"],
+      "overlayOnly": false
+    },
+    {
+      "name": "comparisonTable",
+      "definition": "Table optimized for comparing options, plans, products, or features.",
+      "allowedChildren": ["annotation"],
+      "overlayOnly": false
+    },
+    {
+      "name": "accordion",
+      "definition": "Stack of expandable disclosure items.",
+      "allowedChildren": ["heading", "paragraph", "contentGroup", "textBlock", "annotation"],
+      "overlayOnly": false
+    },
+    {
+      "name": "tabs",
+      "definition": "Mutually exclusive content panels selected by tab controls.",
+      "allowedChildren": ["section", "contentGroup", "textBlock", "cardGrid", "table", "comparisonTable", "annotation"],
+      "overlayOnly": false,
+      "cardinality": {
+        "children": { "min": 2 }
+      }
+    },
+    {
+      "name": "form",
+      "definition": "Input workflow for collecting or submitting user information.",
+      "allowedChildren": ["heading", "paragraph", "inputGroup", "button", "buttonGroup", "banner", "annotation"],
+      "overlayOnly": false
+    },
+    {
+      "name": "inputGroup",
+      "definition": "Related form inputs, labels, helper text, and error placement.",
+      "allowedChildren": ["paragraph", "button", "annotation"],
+      "overlayOnly": false
+    },
+    {
+      "name": "dialog",
+      "definition": "Blocking overlay for focused tasks or confirmations.",
+      "allowedChildren": ["heading", "paragraph", "textBlock", "contentGroup", "form", "button", "buttonGroup", "divider", "annotation"],
+      "overlayOnly": true,
+      "rootAllowed": true
+    },
+    {
+      "name": "drawer",
+      "definition": "Edge-attached overlay panel for navigation, carts, filters, or secondary workflows.",
+      "allowedChildren": ["navigation", "heading", "paragraph", "contentGroup", "form", "button", "buttonGroup", "divider", "annotation"],
+      "overlayOnly": true,
+      "rootAllowed": true
+    },
+    {
+      "name": "popover",
+      "definition": "Lightweight contextual overlay anchored to another control.",
+      "allowedChildren": ["heading", "paragraph", "textBlock", "button", "buttonGroup", "annotation"],
+      "overlayOnly": true,
+      "rootAllowed": true
+    },
+    {
+      "name": "toast",
+      "definition": "Transient non-blocking feedback message.",
+      "allowedChildren": ["paragraph", "button", "annotation"],
+      "overlayOnly": true,
+      "rootAllowed": true
+    },
+    {
+      "name": "banner",
+      "definition": "Prominent inline or page-level message.",
+      "allowedChildren": ["heading", "paragraph", "button", "buttonGroup", "annotation"],
+      "overlayOnly": false
+    },
+    {
+      "name": "stickyBar",
+      "definition": "Persistent sticky action or status bar.",
+      "allowedChildren": ["paragraph", "button", "buttonGroup", "annotation"],
+      "overlayOnly": false
+    },
+    {
+      "name": "spacer",
+      "definition": "Structural spacing marker used only when spacing affects layout semantics.",
+      "allowedChildren": [],
+      "overlayOnly": false
+    },
+    {
+      "name": "divider",
+      "definition": "Structural separator between content groups.",
+      "allowedChildren": [],
+      "overlayOnly": false
+    },
+    {
+      "name": "annotation",
+      "definition": "Non-rendered implementation or review note attached to a wireframe node.",
+      "allowedChildren": [],
+      "overlayOnly": false
+    }
+  ]
+}

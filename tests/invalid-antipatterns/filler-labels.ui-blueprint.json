@@ -1,0 +1,40 @@
+{
+  "id": "invalid-filler-labels",
+  "type": "wireframe",
+  "label": "Invalid Filler Labels",
+  "version": "0.1.0",
+  "root": {
+    "id": "filler-label-page",
+    "type": "page",
+    "label": "Filler Label Page",
+    "children": [
+      {
+        "id": "filler-label-header",
+        "type": "header",
+        "label": "Filler Label Header"
+      },
+      {
+        "id": "filler-label-main",
+        "type": "main",
+        "label": "Filler Label Main",
+        "children": [
+          {
+            "id": "placeholder-section",
+            "type": "section",
+            "label": "Placeholder"
+          }
+        ]
+      },
+      {
+        "id": "filler-label-footer",
+        "type": "footer",
+        "label": "Filler Label Footer"
+      }
+    ]
+  },
+  "responsive": {
+    "desktop": "Placeholder section is visible.",
+    "tablet": "Placeholder section remains visible.",
+    "mobile": "Placeholder section stacks."
+  }
+}

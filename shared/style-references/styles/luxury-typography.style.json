@@ -1,0 +1,61 @@
+{
+  "version": "0.1.0",
+  "type": "styleReference",
+  "id": "luxury-typography",
+  "name": "Luxury Typography",
+  "category": "editorial-luxury",
+  "summary": "A premium editorial style led by refined type scale, generous spacing, disciplined copy rhythm, and restrained visual accents.",
+  "visualDNA": {
+    "palette": ["quiet neutrals, deep ink, warm whites, and one refined accent"],
+    "typography": ["large elegant headings with carefully set body copy"],
+    "surfaces": ["minimal flat sections and premium editorial panels"],
+    "shapes": ["simple frames, fine rules, and ample whitespace"],
+    "effects": ["near-flat depth with refined contrast"],
+    "layout": ["editorial hierarchy and deliberate negative space"],
+    "imagery": ["high-quality product, portrait, venue, or material photography"]
+  },
+  "mood": ["premium", "editorial", "confident", "restrained"],
+  "bestFor": ["luxury brands", "portfolio pages", "premium services", "hospitality"],
+  "avoidFor": ["dense dashboards", "utility-heavy admin tools"],
+  "applicationScopes": {
+    "site": { "strength": "global brand tone", "appliesTo": ["typography", "spacing", "editorial rhythm"], "defaultIntensity": "subtle", "notes": ["Prioritize readability."] },
+    "page": { "strength": "primary editorial direction", "appliesTo": ["hero", "story sections", "case studies"], "defaultIntensity": "medium", "notes": ["Use real content, not filler."] },
+    "section": { "strength": "local type-led treatment", "appliesTo": ["hero", "quote", "feature intro"], "defaultIntensity": "medium", "notes": ["Let type carry hierarchy."] },
+    "component": { "strength": "refined component treatment", "appliesTo": ["cards", "buttons", "navigation"], "defaultIntensity": "subtle", "notes": ["Avoid over-styling controls."] },
+    "prototype": { "strength": "polished interaction feel", "appliesTo": ["transitions", "hover", "reveal"], "defaultIntensity": "subtle", "notes": ["Motion should feel measured."] }
+  },
+  "designSystemMapping": {
+    "brand": { "recommendations": ["Use refined, confident, selective messaging."], "avoid": ["Avoid exaggerated claims and cluttered value props."] },
+    "palette": { "recommendations": ["Use quiet neutral roles and a restrained accent."], "avoid": ["Avoid bright multi-accent systems."] },
+    "typography": { "recommendations": ["Define display, heading, body, caption, and quote roles carefully."], "avoid": ["Avoid large text without line-length control."] },
+    "iconography": { "recommendations": ["Use minimal icons only when they clarify."], "avoid": ["Avoid icon-heavy layouts."] },
+    "buttons": { "recommendations": ["Use refined buttons with clear hit areas."], "avoid": ["Avoid tiny luxury CTAs that harm usability."] },
+    "cards": { "recommendations": ["Use quiet cards with type-led hierarchy."], "avoid": ["Avoid decorative card stacks."] },
+    "header": { "recommendations": ["Use restrained nav and brand-forward spacing."], "avoid": ["Avoid dense utility nav."] },
+    "footer": { "recommendations": ["Use elegant legal and navigation structure."], "avoid": ["Avoid oversized promotional footer clutter."] }
+  },
+  "componentMapping": {
+    "cards": { "recommendations": ["Use headline, supporting copy, and fine divider rhythm."], "avoid": ["Avoid stuffing cards with badges."] },
+    "buttons": { "recommendations": ["Use clear command labels and refined borders."], "avoid": ["Avoid low-contrast text buttons."] }
+  },
+  "prototypeMapping": {
+    "motionTone": { "recommendations": ["Use slow-enough-to-feel-polished but concise motion."], "avoid": ["Avoid playful bounce."] },
+    "hoverStates": { "recommendations": ["Use underline, fine-rule, or subtle opacity changes."], "avoid": ["Avoid loud color shifts."] },
+    "transitions": { "recommendations": ["Use refined fades and mask-like reveals."], "avoid": ["Avoid excessive scroll choreography."] },
+    "surfaceDepth": { "recommendations": ["Use low depth and editorial layering."], "avoid": ["Avoid SaaS-like shadow stacks."] },
+    "feedback": { "recommendations": ["Use precise inline feedback with composed spacing."], "avoid": ["Avoid casual microcopy for premium contexts."] }
+  },
+  "accessibilityRisks": [{ "risk": "Thin type and low contrast can harm readability.", "severity": "high", "mitigation": "Use accessible contrast and avoid thin body weights." }],
+  "compatibility": {
+    "industries": { "luxury": "high", "hospitality": "high", "saas": "conditional", "healthcare": "medium" },
+    "scopes": { "site": "high", "page": "high", "section": "high", "component": "medium", "prototype": "medium" },
+    "components": { "hero": "high", "cards": "medium", "forms": "conditional" }
+  },
+  "implementationHints": {
+    "css": ["Use constrained line length, generous whitespace, and refined type scale."],
+    "tokens": ["typography.display.luxury", "space.editorial", "border.fine"],
+    "do": ["Let typography create the premium signal."],
+    "avoid": ["Do not use tiny low-contrast controls."]
+  },
+  "source": { "type": "internalReference", "title": "Sprint 003 style-reference MVP taxonomy", "usage": "Original normalized UI-focused style record.", "licenseNotes": "No copied third-party prose." }
+}

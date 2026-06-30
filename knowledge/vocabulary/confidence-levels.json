@@ -1,0 +1,20 @@
+{
+  "confidenceLevels": [
+    {
+      "name": "low",
+      "definition": "Promising but weakly supported; use only with explicit assumptions."
+    },
+    {
+      "name": "medium",
+      "definition": "Supported by evidence or audit logic but not yet repeatedly validated."
+    },
+    {
+      "name": "high",
+      "definition": "Supported by multiple evidence points or strong repeated use across contexts."
+    },
+    {
+      "name": "validated",
+      "definition": "Validated by review, outcomes, repeated project use, or formal evaluation."
+    }
+  ]
+}

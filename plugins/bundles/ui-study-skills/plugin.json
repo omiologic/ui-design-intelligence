@@ -1,0 +1,36 @@
+{
+  "name": "ui-study-skills",
+  "displayName": "UI Study Skills",
+  "version": "0.2.0",
+  "description": "Skills for studying website storytelling, UI structure, interaction behavior, responsive behavior, and accessibility from captured page data.",
+  "status": "active",
+  "maintainer": "UI Blueprint maintainers",
+  "repository": "ui-design-intelligence repository",
+  "license": "LICENSE",
+  "changelog": "CHANGELOG.md",
+  "dependencies": [],
+  "skills": [
+    "study-ui-storytelling",
+    "study-ui-specification",
+    "study-ui-interaction",
+    "study-ui-information-architecture",
+    "study-ui-responsive-behavior",
+    "study-ui-accessibility"
+  ],
+  "agents": [
+    "ui-researcher",
+    "ui-specification-analyst",
+    "ui-interaction-analyst",
+    "accessibility-reviewer"
+  ],
+  "commands": [
+    "study-page",
+    "study-site"
+  ],
+  "shared": [
+    "shared/schemas/study-output.schema.json",
+    "shared/vocabulary/ui-terminology.json",
+    "shared/templates/page-study.md",
+    "shared/examples/page-study.example.json"
+  ]
+}

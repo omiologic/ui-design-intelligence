@@ -1,0 +1,122 @@
+{
+  "id": "minimal-homepage",
+  "type": "wireframe",
+  "label": "Minimal Homepage Wireframe",
+  "version": "0.1.0",
+  "description": "Small schema-valid fixture for the MVP wireframe schema.",
+  "root": {
+    "id": "home-page",
+    "type": "page",
+    "label": "Home Page",
+    "children": [
+      {
+        "id": "site-header",
+        "type": "header",
+        "label": "Site Header",
+        "accessibility": {
+          "landmark": "banner"
+        },
+        "children": [
+          {
+            "id": "primary-navigation",
+            "type": "navigation",
+            "label": "Primary Navigation",
+            "accessibility": {
+              "ariaLabel": "Primary navigation"
+            }
+          }
+        ]
+      },
+      {
+        "id": "main-content",
+        "type": "main",
+        "label": "Main Content",
+        "accessibility": {
+          "landmark": "main"
+        },
+        "children": [
+          {
+            "id": "hero-section",
+            "type": "hero",
+            "label": "Hero Section",
+            "layout": "centeredHero",
+            "children": [
+              {
+                "id": "hero-heading",
+                "type": "heading",
+                "label": "Hero Heading",
+                "role": "headline"
+              },
+              {
+                "id": "hero-copy",
+                "type": "paragraph",
+                "label": "Hero Supporting Copy",
+                "role": "body"
+              },
+              {
+                "id": "hero-actions",
+                "type": "buttonGroup",
+                "label": "Hero Actions",
+                "children": [
+                  {
+                    "id": "primary-action",
+                    "type": "button",
+                    "label": "Primary Action",
+                    "role": "primaryCTA"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "site-footer",
+        "type": "footer",
+        "label": "Site Footer",
+        "accessibility": {
+          "landmark": "contentinfo"
+        }
+      }
+    ]
+  },
+  "overlays": [
+    {
+      "id": "contact-dialog",
+      "type": "dialog",
+      "label": "Contact Dialog",
+      "state": "closed",
+      "accessibility": {
+        "ariaLabel": "Contact form",
+        "focusManagement": "Trap focus while open and return focus to trigger on close.",
+        "keyboardBehavior": "Escape closes the dialog."
+      },
+      "children": [
+        {
+          "id": "contact-form",
+          "type": "form",
+          "label": "Contact Form",
+          "children": [
+            {
+              "id": "contact-form-error",
+              "type": "banner",
+              "label": "Contact Form Error",
+              "state": "error"
+            },
+            {
+              "id": "contact-form-success",
+              "type": "banner",
+              "label": "Contact Form Success",
+              "state": "success"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "responsive": {
+    "desktop": "Header navigation is horizontal. Hero content is centered.",
+    "tablet": "Hero spacing tightens and navigation remains visible.",
+    "mobile": "Navigation collapses into a drawer trigger."
+  }
+}

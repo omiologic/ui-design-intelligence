@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://omiologic.dev/schemas/ui-blueprint/study-output.schema.json",
+  "title": "UI Study Output",
+  "description": "Shared output shape for study skills that analyze captured pages before audit or blueprint generation.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "source", "studyType", "summary", "findings"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$"
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["urlOrName"],
+      "properties": {
+        "urlOrName": { "type": "string", "minLength": 1 },
+        "capturedAt": { "type": "string" },
+        "viewport": { "type": "string" }
+      }
+    },
+    "studyType": {
+      "type": "string",
+      "enum": [
+        "storytelling",
+        "specification",
+        "interaction",
+        "informationArchitecture",
+        "responsiveBehavior",
+        "accessibility"
+      ]
+    },
+    "summary": {
+      "type": "string",
+      "minLength": 1
+    },
+    "findings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["label", "evidence", "interpretation"],
+        "properties": {
+          "label": { "type": "string", "minLength": 1 },
+          "evidence": { "type": "string", "minLength": 1 },
+          "interpretation": { "type": "string", "minLength": 1 },
+          "handoff": { "type": "string" }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "version": "0.1.0",
+  "type": "styleBlend",
+  "id": "japandi-glassmorphism-subtle",
+  "name": "Japandi With Subtle Glassmorphism",
+  "primaryStyle": "japandi",
+  "secondaryStyles": ["glassmorphism"],
+  "ratio": [
+    { "styleId": "japandi", "weight": 0.75 },
+    { "styleId": "glassmorphism", "weight": 0.25 }
+  ],
+  "scope": "component",
+  "target": {
+    "scope": "component",
+    "id": "inquiry-dialog",
+    "label": "Inquiry Dialog"
+  },
+  "intensity": "subtle",
+  "rules": [
+    { "area": "palette and spacing", "styleId": "japandi", "rule": "Use warm neutrals, calm rhythm, and generous spacing." },
+    { "area": "dialog surface", "styleId": "glassmorphism", "rule": "Use only a subtle frosted panel treatment with stable text contrast." }
+  ],
+  "avoid": ["low contrast glass text", "busy background imagery"],
+  "source": {
+    "type": "userProvided",
+    "description": "Template structured style blend.",
+    "licenseNotes": "No external prose included."
+  }
+}

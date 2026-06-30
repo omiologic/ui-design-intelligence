@@ -1,0 +1,61 @@
+{
+  "version": "0.1.0",
+  "type": "styleReference",
+  "id": "brutalism",
+  "name": "Brutalism",
+  "category": "modernist-functional",
+  "summary": "A direct raw interface style using stark contrast, exposed structure, hard borders, and minimal polish.",
+  "visualDNA": {
+    "palette": ["black, white, gray, and occasional loud accent"],
+    "typography": ["heavy sans-serif or monospace with blunt scale"],
+    "surfaces": ["flat blocks with visible edges"],
+    "shapes": ["rectangles, hard outlines, and grid boxes"],
+    "effects": ["little or no shadow, visible borders"],
+    "layout": ["obvious structure and direct grouping"],
+    "imagery": ["raw crops, diagrams, and unpolished product evidence"]
+  },
+  "mood": ["direct", "raw", "bold", "uncompromising"],
+  "bestFor": ["experimental portfolios", "developer tools", "campaign microsites"],
+  "avoidFor": ["trust-sensitive healthcare", "luxury hospitality", "calming service sites"],
+  "applicationScopes": {
+    "site": { "strength": "dominant raw theme", "appliesTo": ["typography", "borders", "surface system"], "defaultIntensity": "strong", "notes": ["Use only when brand can carry a blunt tone."] },
+    "page": { "strength": "bold page direction", "appliesTo": ["hero", "navigation", "content blocks"], "defaultIntensity": "medium", "notes": ["Keep conversion paths obvious."] },
+    "section": { "strength": "local contrast treatment", "appliesTo": ["proof blocks", "CTA bands", "feature lists"], "defaultIntensity": "medium", "notes": ["Use hard framing without harming readability."] },
+    "component": { "strength": "raw component variant", "appliesTo": ["buttons", "cards", "forms"], "defaultIntensity": "medium", "notes": ["Make focus states very obvious."] },
+    "prototype": { "strength": "instant interaction feel", "appliesTo": ["state changes", "hover", "feedback"], "defaultIntensity": "medium", "notes": ["Prefer immediate transitions."] }
+  },
+  "designSystemMapping": {
+    "brand": { "recommendations": ["Use blunt, confident, anti-polish language."], "avoid": ["Avoid friendly wellness tone unless softened."] },
+    "palette": { "recommendations": ["Use stark neutral contrast with one loud accent."], "avoid": ["Avoid muted pastel systems."] },
+    "typography": { "recommendations": ["Use heavy sans-serif or monospace for strong hierarchy."], "avoid": ["Avoid delicate display typography."] },
+    "iconography": { "recommendations": ["Use simple blocky or technical icons."], "avoid": ["Avoid soft illustrative icons."] },
+    "buttons": { "recommendations": ["Use hard-bordered rectangular buttons."], "avoid": ["Avoid soft pill buttons."] },
+    "cards": { "recommendations": ["Use visible borders and flat panels."], "avoid": ["Avoid glass or soft shadows."] },
+    "header": { "recommendations": ["Use plain utilitarian navigation."], "avoid": ["Avoid ornate or hidden nav."] },
+    "footer": { "recommendations": ["Use functional link blocks."], "avoid": ["Avoid decorative footer art."] }
+  },
+  "componentMapping": {
+    "forms": { "recommendations": ["Use explicit labels, hard borders, and strong errors."], "avoid": ["Avoid subtle placeholder-only forms."] },
+    "buttons": { "recommendations": ["Use high-contrast block states."], "avoid": ["Avoid ambiguous disabled states."] }
+  },
+  "prototypeMapping": {
+    "motionTone": { "recommendations": ["Use instant or very short transitions."], "avoid": ["Avoid soft cinematic motion."] },
+    "hoverStates": { "recommendations": ["Invert color or shift border weight."], "avoid": ["Avoid subtle-only hover states."] },
+    "transitions": { "recommendations": ["Use hard cuts or simple fades."], "avoid": ["Avoid elastic motion."] },
+    "surfaceDepth": { "recommendations": ["Use flat stacking and visible outlines."], "avoid": ["Avoid atmospheric depth."] },
+    "feedback": { "recommendations": ["Use direct labels and strong status blocks."], "avoid": ["Avoid color-only status."] }
+  },
+  "accessibilityRisks": [{ "risk": "Extreme contrast and heavy type can create visual fatigue.", "severity": "medium", "mitigation": "Use generous spacing and clear hierarchy for longer tasks." }],
+  "compatibility": {
+    "industries": { "developer-tools": "high", "healthcare": "low", "luxury": "conditional" },
+    "scopes": { "site": "conditional", "page": "medium", "section": "high", "component": "medium", "prototype": "medium" },
+    "components": { "buttons": "high", "forms": "medium", "dashboards": "conditional" }
+  },
+  "implementationHints": {
+    "css": ["Use visible borders, high contrast, and flat blocks."],
+    "tokens": ["border.hard", "surface.raw", "color.accent.loud"],
+    "do": ["Keep labels and actions explicit."],
+    "avoid": ["Do not sacrifice usability for rawness."]
+  },
+  "source": { "type": "internalReference", "title": "Sprint 003 style-reference MVP taxonomy", "usage": "Original normalized UI-focused style record.", "licenseNotes": "No copied third-party prose." }
+}

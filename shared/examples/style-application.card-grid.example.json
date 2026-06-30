@@ -1,0 +1,21 @@
+{
+  "version": "0.1.0",
+  "type": "styleApplication",
+  "styleId": "bento-box",
+  "scope": "component",
+  "target": {
+    "scope": "component",
+    "id": "feature-card-grid",
+    "label": "Feature Card Grid"
+  },
+  "intensity": "medium",
+  "preserve": ["card labels", "card actions", "body typography"],
+  "applyTo": ["tile sizing", "card spacing", "card media treatment", "hover state"],
+  "avoid": ["arbitrary masonry", "cards resizing on hover", "hidden primary actions"],
+  "notes": ["Apply bento-box as a card-grid component variant."],
+  "source": {
+    "type": "generated",
+    "description": "Schema-valid card-grid style application example.",
+    "licenseNotes": "No external prose included."
+  }
+}

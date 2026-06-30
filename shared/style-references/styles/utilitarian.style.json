@@ -1,0 +1,61 @@
+{
+  "version": "0.1.0",
+  "type": "styleReference",
+  "id": "utilitarian",
+  "name": "Utilitarian",
+  "category": "modernist-functional",
+  "summary": "A work-focused style that favors dense clarity, predictable controls, restrained color, and efficient scanning.",
+  "visualDNA": {
+    "palette": ["neutral backgrounds, clear text, functional status colors"],
+    "typography": ["compact high-legibility sans-serif"],
+    "surfaces": ["flat panels, tables, toolbars, and form regions"],
+    "shapes": ["small-radius rectangles and stable control frames"],
+    "effects": ["minimal elevation and explicit separators"],
+    "layout": ["dense but organized grids, sidebars, and tables"],
+    "imagery": ["functional screenshots, diagrams, and data previews"]
+  },
+  "mood": ["efficient", "clear", "work-focused", "predictable"],
+  "bestFor": ["admin tools", "dashboards", "B2B SaaS", "operations workflows"],
+  "avoidFor": ["brand-led campaign pages", "luxury editorial stories"],
+  "applicationScopes": {
+    "site": { "strength": "global product UI system", "appliesTo": ["navigation", "forms", "tables", "controls"], "defaultIntensity": "medium", "notes": ["Keep visual language quiet."] },
+    "page": { "strength": "operational page direction", "appliesTo": ["dashboards", "settings", "lists"], "defaultIntensity": "medium", "notes": ["Optimize repeated use."] },
+    "section": { "strength": "local work surface", "appliesTo": ["tables", "filters", "forms"], "defaultIntensity": "medium", "notes": ["Favor scannability."] },
+    "component": { "strength": "control-system variant", "appliesTo": ["buttons", "inputs", "menus", "tables"], "defaultIntensity": "medium", "notes": ["Keep states predictable."] },
+    "prototype": { "strength": "efficient interaction feel", "appliesTo": ["menus", "validation", "bulk actions", "filters"], "defaultIntensity": "medium", "notes": ["Prioritize task completion."] }
+  },
+  "designSystemMapping": {
+    "brand": { "recommendations": ["Use pragmatic, reliable, direct voice."], "avoid": ["Avoid decorative marketing tone in task surfaces."] },
+    "palette": { "recommendations": ["Use neutral surfaces and semantic status colors."], "avoid": ["Avoid decorative gradients."] },
+    "typography": { "recommendations": ["Use compact readable type with tabular clarity."], "avoid": ["Avoid oversized hero type inside tools."] },
+    "iconography": { "recommendations": ["Use familiar utility icons."], "avoid": ["Avoid novelty icons for commands."] },
+    "buttons": { "recommendations": ["Use clear command hierarchy and predictable sizes."], "avoid": ["Avoid ambiguous icon-only controls without labels/tooltips."] },
+    "cards": { "recommendations": ["Use panels only when grouping helps scanning."], "avoid": ["Avoid card-heavy dashboards when tables fit better."] },
+    "header": { "recommendations": ["Use stable app navigation and search/filter access."], "avoid": ["Avoid marketing-style nav in app surfaces."] },
+    "footer": { "recommendations": ["Use minimal footer or utility links."], "avoid": ["Avoid promotional footers inside workflows."] }
+  },
+  "componentMapping": {
+    "tables": { "recommendations": ["Use sortable columns, filters, and clear density."], "avoid": ["Avoid hiding primary data in cards."] },
+    "forms": { "recommendations": ["Use explicit labels, validation, and recovery."], "avoid": ["Avoid decorative form layouts."] }
+  },
+  "prototypeMapping": {
+    "motionTone": { "recommendations": ["Use fast functional transitions."], "avoid": ["Avoid animation that delays tasks."] },
+    "hoverStates": { "recommendations": ["Use clear row, button, and menu affordances."], "avoid": ["Avoid subtle-only action discovery."] },
+    "transitions": { "recommendations": ["Use immediate panel and menu behavior."], "avoid": ["Avoid slow page transitions."] },
+    "surfaceDepth": { "recommendations": ["Use clear layering for drawers, dialogs, and popovers."], "avoid": ["Avoid decorative depth."] },
+    "feedback": { "recommendations": ["Use inline validation, status, and undo where useful."], "avoid": ["Avoid vague success messages."] }
+  },
+  "accessibilityRisks": [{ "risk": "Dense UI can reduce touch target size and reading comfort.", "severity": "medium", "mitigation": "Define minimum control sizes, focus states, and responsive density rules." }],
+  "compatibility": {
+    "industries": { "saas": "high", "operations": "high", "healthcare": "medium", "luxury": "low" },
+    "scopes": { "site": "medium", "page": "high", "section": "high", "component": "high", "prototype": "high" },
+    "components": { "tables": "high", "forms": "high", "dashboards": "high" }
+  },
+  "implementationHints": {
+    "css": ["Use stable dimensions, compact spacing, visible focus, and semantic status colors."],
+    "tokens": ["density.compact", "color.status", "control.height"],
+    "do": ["Optimize repeated workflows and scanning."],
+    "avoid": ["Do not make operational tools look like landing pages."]
+  },
+  "source": { "type": "internalReference", "title": "Sprint 003 style-reference MVP taxonomy", "usage": "Original normalized UI-focused style record.", "licenseNotes": "No copied third-party prose." }
+}

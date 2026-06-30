@@ -1,0 +1,469 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://omiologic.dev/schemas/ui-blueprint/style-reference.schema.json",
+  "title": "Style Reference",
+  "description": "Structured visual vocabulary record for recommending, applying, blending, auditing, and mapping UI styles.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "version",
+    "type",
+    "id",
+    "name",
+    "category",
+    "summary",
+    "visualDNA",
+    "mood",
+    "bestFor",
+    "avoidFor",
+    "applicationScopes",
+    "designSystemMapping",
+    "componentMapping",
+    "prototypeMapping",
+    "accessibilityRisks",
+    "compatibility",
+    "implementationHints",
+    "source"
+  ],
+  "properties": {
+    "version": {
+      "$ref": "#/$defs/version"
+    },
+    "type": {
+      "const": "styleReference"
+    },
+    "id": {
+      "$ref": "#/$defs/id"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "category": {
+      "$ref": "#/$defs/styleCategory"
+    },
+    "summary": {
+      "type": "string",
+      "minLength": 1
+    },
+    "visualDNA": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "palette",
+        "typography",
+        "surfaces",
+        "shapes",
+        "effects",
+        "layout",
+        "imagery"
+      ],
+      "properties": {
+        "palette": {
+          "$ref": "#/$defs/stringList"
+        },
+        "typography": {
+          "$ref": "#/$defs/stringList"
+        },
+        "surfaces": {
+          "$ref": "#/$defs/stringList"
+        },
+        "shapes": {
+          "$ref": "#/$defs/stringList"
+        },
+        "effects": {
+          "$ref": "#/$defs/stringList"
+        },
+        "layout": {
+          "$ref": "#/$defs/stringList"
+        },
+        "imagery": {
+          "$ref": "#/$defs/stringList"
+        }
+      }
+    },
+    "mood": {
+      "$ref": "#/$defs/stringList"
+    },
+    "bestFor": {
+      "$ref": "#/$defs/stringList"
+    },
+    "avoidFor": {
+      "$ref": "#/$defs/stringList"
+    },
+    "applicationScopes": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "site",
+        "page",
+        "section",
+        "component",
+        "prototype"
+      ],
+      "properties": {
+        "site": {
+          "$ref": "#/$defs/scopeRule"
+        },
+        "page": {
+          "$ref": "#/$defs/scopeRule"
+        },
+        "section": {
+          "$ref": "#/$defs/scopeRule"
+        },
+        "component": {
+          "$ref": "#/$defs/scopeRule"
+        },
+        "prototype": {
+          "$ref": "#/$defs/scopeRule"
+        }
+      }
+    },
+    "designSystemMapping": {
+      "$ref": "#/$defs/designSystemMapping"
+    },
+    "componentMapping": {
+      "$ref": "#/$defs/componentMapping"
+    },
+    "prototypeMapping": {
+      "$ref": "#/$defs/prototypeMapping"
+    },
+    "accessibilityRisks": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/risk"
+      }
+    },
+    "compatibility": {
+      "$ref": "#/$defs/compatibility"
+    },
+    "implementationHints": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "css",
+        "tokens",
+        "do",
+        "avoid"
+      ],
+      "properties": {
+        "css": {
+          "$ref": "#/$defs/stringList"
+        },
+        "tokens": {
+          "$ref": "#/$defs/stringList"
+        },
+        "do": {
+          "$ref": "#/$defs/stringList"
+        },
+        "avoid": {
+          "$ref": "#/$defs/stringList"
+        }
+      }
+    },
+    "source": {
+      "$ref": "#/$defs/source"
+    }
+  },
+  "$defs": {
+    "version": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$"
+    },
+    "styleCategory": {
+      "type": "string",
+      "enum": [
+        "historical",
+        "modernist-functional",
+        "digital-futuristic",
+        "minimal-natural",
+        "playful-expressive",
+        "editorial-luxury",
+        "surface-treatment",
+        "layout-system",
+        "mixed"
+      ]
+    },
+    "scope": {
+      "type": "string",
+      "enum": [
+        "site",
+        "page",
+        "section",
+        "component",
+        "prototype"
+      ]
+    },
+    "intensity": {
+      "type": "string",
+      "enum": [
+        "subtle",
+        "medium",
+        "strong",
+        "experimental"
+      ]
+    },
+    "compatibilityLevel": {
+      "type": "string",
+      "enum": [
+        "low",
+        "medium",
+        "high",
+        "conditional"
+      ]
+    },
+    "riskSeverity": {
+      "type": "string",
+      "enum": [
+        "low",
+        "medium",
+        "high"
+      ]
+    },
+    "sourceType": {
+      "type": "string",
+      "enum": [
+        "externalReference",
+        "screenshot",
+        "prompt",
+        "studyOutput",
+        "knowledgePattern",
+        "userProvided",
+        "generated",
+        "internalReference"
+      ]
+    },
+    "stringList": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "scopeRule": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "strength",
+        "appliesTo",
+        "defaultIntensity",
+        "notes"
+      ],
+      "properties": {
+        "strength": {
+          "type": "string",
+          "minLength": 1
+        },
+        "appliesTo": {
+          "$ref": "#/$defs/stringList"
+        },
+        "defaultIntensity": {
+          "$ref": "#/$defs/intensity"
+        },
+        "notes": {
+          "$ref": "#/$defs/stringList"
+        }
+      }
+    },
+    "roleMapping": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "recommendations",
+        "avoid"
+      ],
+      "properties": {
+        "recommendations": {
+          "$ref": "#/$defs/stringList"
+        },
+        "avoid": {
+          "$ref": "#/$defs/stringList"
+        }
+      }
+    },
+    "designSystemMapping": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "brand",
+        "palette",
+        "typography",
+        "iconography",
+        "buttons",
+        "cards",
+        "header",
+        "footer"
+      ],
+      "properties": {
+        "brand": {
+          "$ref": "#/$defs/roleMapping"
+        },
+        "palette": {
+          "$ref": "#/$defs/roleMapping"
+        },
+        "typography": {
+          "$ref": "#/$defs/roleMapping"
+        },
+        "iconography": {
+          "$ref": "#/$defs/roleMapping"
+        },
+        "buttons": {
+          "$ref": "#/$defs/roleMapping"
+        },
+        "cards": {
+          "$ref": "#/$defs/roleMapping"
+        },
+        "header": {
+          "$ref": "#/$defs/roleMapping"
+        },
+        "footer": {
+          "$ref": "#/$defs/roleMapping"
+        }
+      }
+    },
+    "componentMapping": {
+      "type": "object",
+      "additionalProperties": {
+        "$ref": "#/$defs/roleMapping"
+      }
+    },
+    "prototypeMapping": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "motionTone",
+        "hoverStates",
+        "transitions",
+        "surfaceDepth",
+        "feedback"
+      ],
+      "properties": {
+        "motionTone": {
+          "$ref": "#/$defs/roleMapping"
+        },
+        "hoverStates": {
+          "$ref": "#/$defs/roleMapping"
+        },
+        "transitions": {
+          "$ref": "#/$defs/roleMapping"
+        },
+        "surfaceDepth": {
+          "$ref": "#/$defs/roleMapping"
+        },
+        "feedback": {
+          "$ref": "#/$defs/roleMapping"
+        }
+      }
+    },
+    "risk": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "risk",
+        "severity",
+        "mitigation"
+      ],
+      "properties": {
+        "risk": {
+          "type": "string",
+          "minLength": 1
+        },
+        "severity": {
+          "$ref": "#/$defs/riskSeverity"
+        },
+        "mitigation": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "compatibility": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "industries",
+        "scopes",
+        "components"
+      ],
+      "properties": {
+        "industries": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/$defs/compatibilityLevel"
+          }
+        },
+        "scopes": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "site",
+            "page",
+            "section",
+            "component",
+            "prototype"
+          ],
+          "properties": {
+            "site": {
+              "$ref": "#/$defs/compatibilityLevel"
+            },
+            "page": {
+              "$ref": "#/$defs/compatibilityLevel"
+            },
+            "section": {
+              "$ref": "#/$defs/compatibilityLevel"
+            },
+            "component": {
+              "$ref": "#/$defs/compatibilityLevel"
+            },
+            "prototype": {
+              "$ref": "#/$defs/compatibilityLevel"
+            }
+          }
+        },
+        "components": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/$defs/compatibilityLevel"
+          }
+        }
+      }
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "type",
+        "title",
+        "usage",
+        "licenseNotes"
+      ],
+      "properties": {
+        "type": {
+          "$ref": "#/$defs/sourceType"
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "url": {
+          "type": "string"
+        },
+        "artifactId": {
+          "type": "string"
+        },
+        "usage": {
+          "type": "string",
+          "minLength": 1
+        },
+        "licenseNotes": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    }
+  }
+}

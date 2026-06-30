@@ -1,0 +1,192 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://omiologic.dev/schemas/ui-blueprint/component-state-model.schema.json",
+  "title": "Component State Model",
+  "description": "Allowed component states, transitions, disabled/loading behavior, validation states, and accessibility requirements for prototype configuration.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "component",
+    "nodeId",
+    "initialState",
+    "allowedStates",
+    "transitions",
+    "accessibility"
+  ],
+  "properties": {
+    "id": {
+      "$ref": "#/$defs/id"
+    },
+    "component": {
+      "type": "string",
+      "minLength": 1
+    },
+    "nodeId": {
+      "$ref": "#/$defs/id"
+    },
+    "wireframeRef": {
+      "$ref": "#/$defs/id"
+    },
+    "initialState": {
+      "$ref": "#/$defs/interactionState"
+    },
+    "allowedStates": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/interactionState"
+      }
+    },
+    "transitions": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/stateTransition"
+      }
+    },
+    "disabledBehavior": {
+      "type": "string"
+    },
+    "loadingBehavior": {
+      "type": "string"
+    },
+    "validation": {
+      "$ref": "#/$defs/validationModel"
+    },
+    "accessibility": {
+      "$ref": "#/$defs/accessibility"
+    },
+    "notes": {
+      "$ref": "#/$defs/stringList"
+    }
+  },
+  "$defs": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$"
+    },
+    "interactionState": {
+      "type": "string",
+      "enum": [
+        "default",
+        "hover",
+        "focus",
+        "active",
+        "selected",
+        "disabled",
+        "expanded",
+        "collapsed",
+        "open",
+        "closed",
+        "loading",
+        "success",
+        "warning",
+        "error",
+        "empty",
+        "hidden",
+        "visible",
+        "sticky",
+        "dismissible",
+        "required",
+        "optional"
+      ]
+    },
+    "interactionEvent": {
+      "type": "string",
+      "enum": [
+        "click",
+        "tap",
+        "submit",
+        "change",
+        "input",
+        "focus",
+        "blur",
+        "keydown",
+        "routeEnter",
+        "routeLeave",
+        "timeout"
+      ]
+    },
+    "stateTransition": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "from",
+        "to",
+        "trigger"
+      ],
+      "properties": {
+        "from": {
+          "$ref": "#/$defs/interactionState"
+        },
+        "to": {
+          "$ref": "#/$defs/interactionState"
+        },
+        "trigger": {
+          "$ref": "#/$defs/interactionEvent"
+        },
+        "description": {
+          "type": "string"
+        }
+      }
+    },
+    "validationModel": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "states",
+        "errorPlacement"
+      ],
+      "properties": {
+        "states": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/interactionState"
+          }
+        },
+        "errorPlacement": {
+          "type": "string",
+          "enum": [
+            "inline",
+            "summary",
+            "toast",
+            "none"
+          ]
+        },
+        "rules": {
+          "$ref": "#/$defs/stringList"
+        }
+      }
+    },
+    "accessibility": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "focusManagement",
+        "keyboardBehavior"
+      ],
+      "properties": {
+        "focusManagement": {
+          "type": "string",
+          "minLength": 1
+        },
+        "keyboardBehavior": {
+          "type": "string",
+          "minLength": 1
+        },
+        "ariaLabel": {
+          "type": "string"
+        },
+        "notes": {
+          "$ref": "#/$defs/stringList"
+        }
+      }
+    },
+    "stringList": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    }
+  }
+}

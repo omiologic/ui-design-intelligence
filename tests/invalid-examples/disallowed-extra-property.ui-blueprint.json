@@ -1,0 +1,19 @@
+{
+  "id": "invalid-disallowed-extra-property",
+  "type": "wireframe",
+  "label": "Invalid Disallowed Extra Property",
+  "version": "0.1.0",
+  "theme": "unsupported",
+  "root": {
+    "id": "extra-property-page",
+    "type": "page",
+    "label": "Extra Property Page",
+    "children": [
+      {
+        "id": "extra-property-main",
+        "type": "main",
+        "label": "Main Content"
+      }
+    ]
+  }
+}

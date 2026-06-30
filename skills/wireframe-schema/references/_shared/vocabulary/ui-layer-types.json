@@ -1,0 +1,20 @@
+{
+  "uiLayerTypes": [
+    "page",
+    "siteHeader",
+    "siteFooter",
+    "mainContent",
+    "section",
+    "component",
+    "navigation",
+    "overlay",
+    "dialog",
+    "drawer",
+    "popover",
+    "toast",
+    "banner",
+    "sticky",
+    "annotation",
+    "supportingContent"
+  ]
+}

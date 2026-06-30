@@ -1,0 +1,52 @@
+{
+  "id": "invalid-decorative-section",
+  "type": "wireframe",
+  "label": "Invalid Decorative Section",
+  "version": "0.1.0",
+  "root": {
+    "id": "decorative-section-page",
+    "type": "page",
+    "label": "Decorative Section Page",
+    "children": [
+      {
+        "id": "decorative-section-header",
+        "type": "header",
+        "label": "Decorative Section Header"
+      },
+      {
+        "id": "decorative-section-main",
+        "type": "main",
+        "label": "Decorative Section Main",
+        "children": [
+          {
+            "id": "decorative-band",
+            "type": "section",
+            "label": "Brand Texture Band",
+            "children": [
+              {
+                "id": "texture-image",
+                "type": "imagePlaceholder",
+                "label": "Texture Image"
+              },
+              {
+                "id": "texture-divider",
+                "type": "divider",
+                "label": "Texture Divider"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "decorative-section-footer",
+        "type": "footer",
+        "label": "Decorative Section Footer"
+      }
+    ]
+  },
+  "responsive": {
+    "desktop": "Decorative band spans the viewport.",
+    "tablet": "Decorative band remains visible.",
+    "mobile": "Decorative band stacks."
+  }
+}

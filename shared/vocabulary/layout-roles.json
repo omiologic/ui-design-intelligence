@@ -1,0 +1,36 @@
+{
+  "layoutRoles": [
+    {
+      "name": "pageShell",
+      "definition": "Top-level page structure containing header, main, footer, overlays, or sticky regions."
+    },
+    {
+      "name": "contentContainer",
+      "definition": "Width-constrained readable content region."
+    },
+    {
+      "name": "sectionBand",
+      "definition": "Full-width horizontal page section with a distinct structural purpose."
+    },
+    {
+      "name": "contentGrid",
+      "definition": "Repeated item layout for cards, features, services, products, or proof."
+    },
+    {
+      "name": "splitPane",
+      "definition": "Two-region layout where primary content and supporting content remain related."
+    },
+    {
+      "name": "stickyRegion",
+      "definition": "Persistent region such as sticky header, sticky footer bar, or mobile CTA."
+    },
+    {
+      "name": "overlaySurface",
+      "definition": "Dialog, drawer, popover, or toast surface shown above the page."
+    },
+    {
+      "name": "formGroup",
+      "definition": "Grouped labels, inputs, helper text, validation, and submit/recovery actions."
+    }
+  ]
+}

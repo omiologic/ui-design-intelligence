@@ -1,0 +1,61 @@
+{
+  "version": "0.1.0",
+  "type": "styleReference",
+  "id": "neo-brutalism",
+  "name": "Neo Brutalism",
+  "category": "modernist-functional",
+  "summary": "A playful hard-edged style using thick borders, offset shadows, bright accents, and deliberately obvious components.",
+  "visualDNA": {
+    "palette": ["black outlines, white surfaces, bright accent blocks"],
+    "typography": ["bold sans-serif with direct labels"],
+    "surfaces": ["flat cards with heavy borders and offset shadows"],
+    "shapes": ["rectangles, stickers, badges, and blocky controls"],
+    "effects": ["hard offset shadow and obvious focus states"],
+    "layout": ["clear blocks with energetic asymmetry"],
+    "imagery": ["product crops, playful icons, and bold annotations"]
+  },
+  "mood": ["bold", "playful", "direct", "energetic"],
+  "bestFor": ["creator tools", "education products", "youthful SaaS sections"],
+  "avoidFor": ["conservative finance", "luxury wellness", "clinical trust pages"],
+  "applicationScopes": {
+    "site": { "strength": "bold global treatment", "appliesTo": ["cards", "buttons", "accent blocks"], "defaultIntensity": "medium", "notes": ["Use only for fitting brand tone."] },
+    "page": { "strength": "energetic page direction", "appliesTo": ["hero", "pricing", "feature cards"], "defaultIntensity": "medium", "notes": ["Keep hierarchy disciplined."] },
+    "section": { "strength": "local emphasis treatment", "appliesTo": ["CTA", "feature grid", "comparison"], "defaultIntensity": "medium", "notes": ["Good for focused promotional sections."] },
+    "component": { "strength": "bold variant styling", "appliesTo": ["buttons", "cards", "badges"], "defaultIntensity": "medium", "notes": ["Make states explicit."] },
+    "prototype": { "strength": "snappy interaction feel", "appliesTo": ["hover", "press", "selection"], "defaultIntensity": "medium", "notes": ["Use small hard movements."] }
+  },
+  "designSystemMapping": {
+    "brand": { "recommendations": ["Use confident, simple, energetic messaging."], "avoid": ["Avoid formal institutional tone."] },
+    "palette": { "recommendations": ["Use high-contrast base with controlled bright accents."], "avoid": ["Avoid too many accent colors at once."] },
+    "typography": { "recommendations": ["Use bold readable sans-serif."], "avoid": ["Avoid delicate type."] },
+    "iconography": { "recommendations": ["Use chunky icons and simple badges."], "avoid": ["Avoid detailed thin icons."] },
+    "buttons": { "recommendations": ["Use thick borders and strong pressed states."], "avoid": ["Avoid subtle ghost buttons as primary actions."] },
+    "cards": { "recommendations": ["Use bordered cards with hard offset shadows."], "avoid": ["Avoid soft glass surfaces."] },
+    "header": { "recommendations": ["Use clear nav and strong active states."], "avoid": ["Avoid hidden or vague nav states."] },
+    "footer": { "recommendations": ["Use bold columns and obvious links."], "avoid": ["Avoid overfilled promotional blocks."] }
+  },
+  "componentMapping": {
+    "buttons": { "recommendations": ["Use obvious default, hover, active, disabled states."], "avoid": ["Avoid animation that shifts layout."] },
+    "badges": { "recommendations": ["Use high-contrast labels."], "avoid": ["Avoid tiny badge text."] }
+  },
+  "prototypeMapping": {
+    "motionTone": { "recommendations": ["Use snappy state changes."], "avoid": ["Avoid slow premium fades."] },
+    "hoverStates": { "recommendations": ["Move offset shadow or invert accent."], "avoid": ["Avoid imperceptible hover states."] },
+    "transitions": { "recommendations": ["Use quick hard-edged transitions."], "avoid": ["Avoid elastic overshoot that harms precision."] },
+    "surfaceDepth": { "recommendations": ["Use hard offset shadows."], "avoid": ["Avoid realistic soft elevation."] },
+    "feedback": { "recommendations": ["Use bold status blocks."], "avoid": ["Avoid low-emphasis feedback."] }
+  },
+  "accessibilityRisks": [{ "risk": "Bright accents and heavy outlines can overwhelm dense screens.", "severity": "medium", "mitigation": "Limit bright accents to priority actions and status." }],
+  "compatibility": {
+    "industries": { "education": "high", "creator-tools": "high", "healthcare": "low", "finance": "low" },
+    "scopes": { "site": "conditional", "page": "medium", "section": "high", "component": "high", "prototype": "high" },
+    "components": { "buttons": "high", "cards": "high", "forms": "medium" }
+  },
+  "implementationHints": {
+    "css": ["Use thick borders and box-shadow offsets with stable layout dimensions."],
+    "tokens": ["border.bold", "shadow.offset-hard", "color.accent.bold"],
+    "do": ["Keep component states obvious."],
+    "avoid": ["Do not overuse loud accents."]
+  },
+  "source": { "type": "internalReference", "title": "Sprint 003 style-reference MVP taxonomy", "usage": "Original normalized UI-focused style record.", "licenseNotes": "No copied third-party prose." }
+}

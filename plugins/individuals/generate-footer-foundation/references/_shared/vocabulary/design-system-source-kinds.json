@@ -1,0 +1,21 @@
+{
+  "sourceKinds": [
+    "observed",
+    "inferred",
+    "recommended",
+    "generated",
+    "userProvided"
+  ],
+  "confidenceLevels": [
+    "low",
+    "medium",
+    "high"
+  ],
+  "rules": [
+    "Use observed only for values directly found in source evidence.",
+    "Use inferred for values reasoned from screenshots, visual patterns, or study output.",
+    "Use recommended for best-practice defaults proposed by the skill.",
+    "Use generated for synthesized values created to complete the seed.",
+    "Use userProvided for explicit user brief values."
+  ]
+}

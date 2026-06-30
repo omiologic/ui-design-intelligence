@@ -1,0 +1,40 @@
+{
+  "patternTypes": [
+    {
+      "name": "page",
+      "definition": "Reusable page-level composition, sequencing, or journey pattern."
+    },
+    {
+      "name": "section",
+      "definition": "Reusable section-level structure such as hero, FAQ, proof, comparison, or CTA."
+    },
+    {
+      "name": "component",
+      "definition": "Reusable component anatomy, state, or behavior pattern."
+    },
+    {
+      "name": "interaction",
+      "definition": "Reusable interaction, disclosure, feedback, navigation, or state transition pattern."
+    },
+    {
+      "name": "storytelling",
+      "definition": "Reusable narrative, proof, objection, or decision-flow pattern."
+    },
+    {
+      "name": "conversion",
+      "definition": "Reusable structure that supports a conversion goal without copying a specific page."
+    },
+    {
+      "name": "accessibility",
+      "definition": "Reusable accessibility constraint or inclusive interaction pattern."
+    },
+    {
+      "name": "responsive",
+      "definition": "Reusable breakpoint, priority, or responsive behavior pattern."
+    },
+    {
+      "name": "seo",
+      "definition": "Reusable search-facing metadata, summary, or content-structure pattern."
+    }
+  ]
+}

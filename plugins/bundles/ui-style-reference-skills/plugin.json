@@ -1,0 +1,71 @@
+{
+  "name": "ui-style-reference-skills",
+  "displayName": "UI Style Reference Skills",
+  "version": "0.1.0",
+  "description": "Skills for generating, recommending, extracting, applying, blending, auditing, and mapping structured UI style references.",
+  "status": "transitional",
+  "maintainer": "UI Blueprint maintainers",
+  "repository": "ui-design-intelligence repository",
+  "license": "LICENSE",
+  "changelog": "CHANGELOG.md",
+  "dependencies": [
+    "ui-study-skills",
+    "ui-knowledge-skills"
+  ],
+  "skills": [
+    "generate-style-reference",
+    "recommend-style-reference",
+    "apply-style-reference",
+    "blend-style-references",
+    "audit-style-application",
+    "extract-style-from-reference",
+    "map-style-to-design-system-seed"
+  ],
+  "agents": [
+    "style-reference-curator"
+  ],
+  "commands": [
+    "generate-style-library",
+    "recommend-style",
+    "apply-style-to-design-system",
+    "apply-style-to-section",
+    "apply-style-to-component"
+  ],
+  "shared": [
+    "docs/interop/style-reference-layer-architecture.md",
+    "shared/schemas/style-reference.schema.json",
+    "shared/schemas/style-application.schema.json",
+    "shared/schemas/style-patch.schema.json",
+    "shared/schemas/style-blend.schema.json",
+    "shared/schemas/design-system-seed.schema.json",
+    "shared/style-references/categories.json",
+    "shared/style-references/index.json",
+    "shared/style-references/styles/art-deco.style.json",
+    "shared/style-references/styles/aurora.style.json",
+    "shared/style-references/styles/bauhaus.style.json",
+    "shared/style-references/styles/bento-box.style.json",
+    "shared/style-references/styles/brutalism.style.json",
+    "shared/style-references/styles/glassmorphism.style.json",
+    "shared/style-references/styles/japandi.style.json",
+    "shared/style-references/styles/luxury-typography.style.json",
+    "shared/style-references/styles/neo-brutalism.style.json",
+    "shared/style-references/styles/utilitarian.style.json",
+    "shared/templates/style-reference.json",
+    "shared/templates/style-application.json",
+    "shared/templates/style-patch.json",
+    "shared/templates/style-blend.json",
+    "shared/examples/style-application.site.example.json",
+    "shared/examples/style-application.section.example.json",
+    "shared/examples/style-application.component.example.json",
+    "shared/examples/style-application.prototype.example.json",
+    "shared/examples/style-application.hero.example.json",
+    "shared/examples/style-application.pricing-section.example.json",
+    "shared/examples/style-application.card-grid.example.json",
+    "shared/examples/style-application.drawer.example.json",
+    "shared/examples/style-application.badge-system.example.json",
+    "shared/examples/style-blend.hero-luxury-aurora.example.json",
+    "shared/examples/style-patch.section-preserve-brand.example.json",
+    "shared/examples/style-patch.component-preserve-typography.example.json",
+    "scripts/validate-style-references.mjs"
+  ]
+}

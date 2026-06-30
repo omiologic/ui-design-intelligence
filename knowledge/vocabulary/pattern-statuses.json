@@ -1,0 +1,24 @@
+{
+  "patternStatuses": [
+    {
+      "name": "candidate",
+      "definition": "Newly extracted pattern awaiting curation or repeated support."
+    },
+    {
+      "name": "accepted",
+      "definition": "Curated pattern approved for normal retrieval and blueprint use."
+    },
+    {
+      "name": "validated",
+      "definition": "Pattern has strong validation and can be preferred when query tags match."
+    },
+    {
+      "name": "deprecated",
+      "definition": "Pattern should not be used for new blueprint generation."
+    },
+    {
+      "name": "merged",
+      "definition": "Pattern was merged into another record and kept only for traceability."
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "id": "mobile-navigation-drawer",
+  "type": "pattern",
+  "patternType": "interaction",
+  "category": "mobileNavigation",
+  "name": "Mobile Navigation Drawer",
+  "summary": "A mobile navigation pattern that preserves primary navigation while keeping dismissal, focus, and return behavior explicit.",
+  "tags": {
+    "pageTypes": ["homepage", "landingPage", "servicePage", "productDetail"],
+    "componentTypes": ["drawer", "navigation"],
+    "interactionTypes": ["mobileNavigation", "openClose"],
+    "audiences": ["generalConsumers", "buyers", "patients"]
+  },
+  "useWhen": [
+    "Mobile navigation would otherwise crowd the first viewport.",
+    "The page needs persistent access to key destinations without flattening hierarchy."
+  ],
+  "avoidWhen": [
+    "Only one destination or action is needed.",
+    "Critical primary controls would become hidden behind optional navigation."
+  ],
+  "structure": {
+    "required": ["trigger", "navigationItems", "dismissal", "focusReturn"],
+    "optional": ["primaryCTA", "secondaryNavigation", "contactShortcut"],
+    "notes": ["The drawer must not hide the only primary task control."]
+  },
+  "wireframeMapping": {
+    "nodeType": "drawer",
+    "layout": "drawerPanel",
+    "contentRoles": ["navigationItem", "primaryCTA"],
+    "recommendedChildren": ["navigation", "buttonGroup", "annotation"],
+    "notes": ["Represent the drawer as an overlay with closed/open behavior in lineage or annotations."]
+  },
+  "blueprintImpact": {
+    "recommendedSections": ["header"],
+    "recommendedInteractions": ["mobileNavigation", "openClose"],
+    "notes": ["Add accessibility notes for focus trap, Escape/back behavior, and return focus."]
+  },
+  "sourceRefs": [
+    {
+      "sourceId": "example-mobile-navigation-study",
+      "studyId": "example-mobile-navigation-interaction",
+      "findingLabels": ["Mobile navigation uses explicit open and close contract"]
+    }
+  ],
+  "confidence": {
+    "level": "medium",
+    "reason": "Common reusable interaction pattern; project-local evidence should confirm details."
+  },
+  "status": "candidate"
+}

@@ -1,0 +1,61 @@
+{
+  "id": "invalid-cta-pileup",
+  "type": "wireframe",
+  "label": "Invalid CTA Pileup",
+  "version": "0.1.0",
+  "root": {
+    "id": "cta-pileup-page",
+    "type": "page",
+    "label": "CTA Pileup Page",
+    "children": [
+      {
+        "id": "cta-pileup-header",
+        "type": "header",
+        "label": "CTA Pileup Header"
+      },
+      {
+        "id": "cta-pileup-main",
+        "type": "main",
+        "label": "CTA Pileup Main",
+        "children": [
+          {
+            "id": "cta-pileup-hero",
+            "type": "hero",
+            "label": "CTA Pileup Hero",
+            "children": [
+              {
+                "id": "cta-pileup-actions",
+                "type": "buttonGroup",
+                "label": "CTA Pileup Actions",
+                "children": [
+                  {
+                    "id": "book-now",
+                    "type": "button",
+                    "label": "Book Now",
+                    "role": "primaryCTA"
+                  },
+                  {
+                    "id": "buy-now",
+                    "type": "button",
+                    "label": "Buy Now",
+                    "role": "primaryCTA"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "cta-pileup-footer",
+        "type": "footer",
+        "label": "CTA Pileup Footer"
+      }
+    ]
+  },
+  "responsive": {
+    "desktop": "Primary action group is visible.",
+    "tablet": "Primary action group remains visible.",
+    "mobile": "Primary action group stacks."
+  }
+}

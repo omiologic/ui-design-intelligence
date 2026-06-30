@@ -1,0 +1,21 @@
+{
+  "version": "0.1.0",
+  "type": "styleApplication",
+  "styleId": "bento-box",
+  "scope": "section",
+  "target": {
+    "scope": "section",
+    "id": "pricing-section",
+    "label": "Pricing Section"
+  },
+  "intensity": "medium",
+  "preserve": ["price hierarchy", "plan names", "primary checkout CTA"],
+  "applyTo": ["plan card grouping", "featured plan emphasis", "supporting comparison tiles"],
+  "avoid": ["nested cards", "equal emphasis for every plan", "hover reflow"],
+  "notes": ["Use bento-box layout to make plan comparison easier to scan."],
+  "source": {
+    "type": "generated",
+    "description": "Schema-valid pricing-section style application example.",
+    "licenseNotes": "No external prose included."
+  }
+}

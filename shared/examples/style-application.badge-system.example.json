@@ -1,0 +1,21 @@
+{
+  "version": "0.1.0",
+  "type": "styleApplication",
+  "styleId": "neo-brutalism",
+  "scope": "component",
+  "target": {
+    "scope": "component",
+    "id": "status-badge-system",
+    "label": "Status Badge System"
+  },
+  "intensity": "subtle",
+  "preserve": ["status semantics", "badge text labels", "existing status colors"],
+  "applyTo": ["badge border", "badge contrast", "active selected state"],
+  "avoid": ["color-only status meaning", "tiny labels", "overpowering bright accents"],
+  "notes": ["Use neo-brutalism only to strengthen badge affordance and state clarity."],
+  "source": {
+    "type": "generated",
+    "description": "Schema-valid badge-system style application example.",
+    "licenseNotes": "No external prose included."
+  }
+}

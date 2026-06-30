@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://omiologic.dev/schemas/ui-blueprint/typography-foundation.schema.json",
+  "title": "Typography Foundation",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["fontFamilies", "scale"],
+  "properties": {
+    "fontFamilies": {
+      "type": "object",
+      "additionalProperties": { "$ref": "#/$defs/evidenceString" }
+    },
+    "scale": {
+      "type": "object",
+      "additionalProperties": { "$ref": "#/$defs/typeToken" }
+    }
+  },
+  "$defs": {
+    "sourceKind": { "type": "string", "enum": ["observed", "inferred", "recommended", "generated", "userProvided"] },
+    "confidence": { "type": "string", "enum": ["low", "medium", "high"] },
+    "evidenceString": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["value", "source", "confidence"],
+      "properties": {
+        "value": { "type": "string", "minLength": 1 },
+        "source": { "$ref": "#/$defs/sourceKind" },
+        "confidence": { "$ref": "#/$defs/confidence" },
+        "note": { "type": "string" }
+      }
+    },
+    "typeToken": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["fontSize", "lineHeight", "fontWeight", "usage", "source", "confidence"],
+      "properties": {
+        "fontSize": { "type": "string", "minLength": 1 },
+        "lineHeight": { "type": "string", "minLength": 1 },
+        "fontWeight": { "type": "number" },
+        "usage": { "type": "string", "minLength": 1 },
+        "source": { "$ref": "#/$defs/sourceKind" },
+        "confidence": { "$ref": "#/$defs/confidence" },
+        "note": { "type": "string" }
+      }
+    }
+  }
+}

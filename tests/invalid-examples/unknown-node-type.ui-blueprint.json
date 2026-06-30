@@ -1,0 +1,25 @@
+{
+  "id": "invalid-unknown-node-type",
+  "type": "wireframe",
+  "label": "Invalid Unknown Node Type",
+  "version": "0.1.0",
+  "root": {
+    "id": "unknown-node-page",
+    "type": "page",
+    "label": "Unknown Node Page",
+    "children": [
+      {
+        "id": "unknown-node-main",
+        "type": "main",
+        "label": "Main Content",
+        "children": [
+          {
+            "id": "unknown-widget",
+            "type": "widget",
+            "label": "Unknown Widget"
+          }
+        ]
+      }
+    ]
+  }
+}

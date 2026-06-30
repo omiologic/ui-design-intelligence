@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://omiologic.dev/schemas/ui-blueprint/button-foundation.schema.json",
+  "title": "Button Foundation",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["base", "variants", "states", "rules", "source", "confidence"],
+  "properties": {
+    "base": { "$ref": "#/$defs/buttonBase" },
+    "variants": { "type": "object", "additionalProperties": { "$ref": "#/$defs/componentVariant" } },
+    "states": { "type": "array", "items": { "$ref": "#/$defs/interactionState" } },
+    "rules": { "type": "array", "items": { "type": "string" } },
+    "source": { "$ref": "#/$defs/sourceKind" },
+    "confidence": { "$ref": "#/$defs/confidence" },
+    "note": { "type": "string" }
+  },
+  "$defs": {
+    "sourceKind": { "type": "string", "enum": ["observed", "inferred", "recommended", "generated", "userProvided"] },
+    "confidence": { "type": "string", "enum": ["low", "medium", "high"] },
+    "interactionState": { "type": "string", "enum": ["default", "hover", "focus", "active", "selected", "disabled", "loading", "error", "success", "empty"] },
+    "buttonBase": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["radius", "fontWeight", "height"],
+      "properties": {
+        "radius": { "type": "string" },
+        "fontWeight": { "type": "number" },
+        "height": { "type": "object", "additionalProperties": { "type": "string" } }
+      }
+    },
+    "componentVariant": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["usage"],
+      "properties": {
+        "usage": { "type": "string", "minLength": 1 },
+        "background": { "type": "string" },
+        "text": { "type": "string" },
+        "border": { "type": "string" },
+        "requiredParts": { "type": "array", "items": { "type": "string" } },
+        "allowedActions": { "type": "array", "items": { "type": "string" } }
+      }
+    }
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "id": "invalid-form-without-recovery",
+  "type": "wireframe",
+  "label": "Invalid Form Without Recovery",
+  "version": "0.1.0",
+  "root": {
+    "id": "form-recovery-page",
+    "type": "page",
+    "label": "Form Recovery Page",
+    "children": [
+      {
+        "id": "form-recovery-header",
+        "type": "header",
+        "label": "Form Recovery Header"
+      },
+      {
+        "id": "form-recovery-main",
+        "type": "main",
+        "label": "Form Recovery Main",
+        "children": [
+          {
+            "id": "contact-section",
+            "type": "section",
+            "label": "Contact Section",
+            "children": [
+              {
+                "id": "contact-form",
+                "type": "form",
+                "label": "Contact Form"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "form-recovery-footer",
+        "type": "footer",
+        "label": "Form Recovery Footer"
+      }
+    ]
+  },
+  "responsive": {
+    "desktop": "Form is visible.",
+    "tablet": "Form remains visible.",
+    "mobile": "Form stacks."
+  }
+}

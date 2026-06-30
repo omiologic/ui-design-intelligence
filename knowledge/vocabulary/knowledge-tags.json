@@ -1,0 +1,83 @@
+{
+  "industries": [
+    "healthcare",
+    "dentistry",
+    "dermatology",
+    "aesthetic",
+    "plasticSurgery",
+    "ecommerce",
+    "saas",
+    "localBusiness",
+    "medicalDevice"
+  ],
+  "pageTypes": [
+    "homepage",
+    "landingPage",
+    "servicePage",
+    "productDetail",
+    "collectionPage",
+    "articlePage",
+    "contactPage",
+    "supportPage",
+    "pricingPage",
+    "dashboard",
+    "settingsPage",
+    "checkoutPage"
+  ],
+  "sectionTypes": [
+    "hero",
+    "featureGrid",
+    "benefits",
+    "comparison",
+    "testimonials",
+    "faq",
+    "pricing",
+    "contact",
+    "trustSignals",
+    "gallery",
+    "process",
+    "cta",
+    "navigation"
+  ],
+  "componentTypes": [
+    "card",
+    "form",
+    "dialog",
+    "drawer",
+    "accordion",
+    "tabs",
+    "table",
+    "navigation",
+    "stickyBar"
+  ],
+  "interactionTypes": [
+    "openClose",
+    "expandCollapse",
+    "submit",
+    "filter",
+    "search",
+    "selectOption",
+    "stickyAction",
+    "mobileNavigation",
+    "formValidation"
+  ],
+  "conversionGoals": [
+    "appointmentBooking",
+    "consultationRequest",
+    "leadGeneration",
+    "addToCart",
+    "quoteRequest",
+    "demoRequest",
+    "newsletterSignup",
+    "supportRequest"
+  ],
+  "audiences": [
+    "patients",
+    "professionals",
+    "clinicOwners",
+    "buyers",
+    "developers",
+    "businessOwners",
+    "generalConsumers"
+  ]
+}

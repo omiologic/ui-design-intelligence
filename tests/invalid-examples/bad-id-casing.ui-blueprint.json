@@ -1,0 +1,18 @@
+{
+  "id": "InvalidBadIdCasing",
+  "type": "wireframe",
+  "label": "Invalid Bad Id Casing",
+  "version": "0.1.0",
+  "root": {
+    "id": "bad-id-page",
+    "type": "page",
+    "label": "Bad Id Page",
+    "children": [
+      {
+        "id": "bad-id-main",
+        "type": "main",
+        "label": "Main Content"
+      }
+    ]
+  }
+}
