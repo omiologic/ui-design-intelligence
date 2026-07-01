@@ -1,0 +1,47 @@
+{
+  "version": "0.1.0",
+  "type": "runtimeDesignTheme",
+  "id": "missing-provenance",
+  "name": "Missing Provenance",
+  "source": {
+    "primarySeedRef": "shared/examples/design-system-seed.example.json",
+    "sourceRefs": [
+      {
+        "type": "designSystemSeed",
+        "ref": "shared/examples/design-system-seed.example.json",
+        "confidence": "medium"
+      }
+    ],
+    "confidence": "medium"
+  },
+  "brandAssets": {
+    "assets": [],
+    "usageNotes": []
+  },
+  "colorSystem": {
+    "primitives": {
+      "color.brand.primaryBase": {
+        "value": "#145C9E"
+      }
+    },
+    "ramps": {},
+    "semantic": {},
+    "themeVariants": {},
+    "contrastPairs": []
+  },
+  "statusSystem": {},
+  "interactionStates": {},
+  "componentThemes": {},
+  "runtimeExports": {
+    "cssVariables": {},
+    "viewerGroups": [],
+    "previewSwatches": [],
+    "sampleBindings": []
+  },
+  "accessibility": {
+    "contrastPairs": [],
+    "requiredChecks": [],
+    "nonColorStateRequirements": []
+  },
+  "openQuestions": []
+}

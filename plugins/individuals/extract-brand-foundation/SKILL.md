@@ -21,10 +21,12 @@ questions for the seed.
 ## References
 
 - `references/brand-foundation-method.md`
+- `references/_shared/design-system/brand-asset-color-extraction.md`
 - `references/_shared/design-philosophy/design-system/design-system-principles.md`
 - `references/_shared/design-philosophy/design-system/design-system-anti-slop.md`
 - `references/_shared/design-philosophy/design-system/skill-doctrine.md`
 - `references/_shared/schemas/design-system-seed.schema.json`
+- `references/_shared/schemas/runtime-design-theme.schema.json`
 - `references/_shared/schemas/brand-foundation.schema.json`
 - `references/_shared/vocabulary/design-system-source-kinds.json`
 
@@ -45,11 +47,16 @@ questions for the seed.
    high-confidence observed facts.
 6. Avoid final-styling drift: visual direction describes density, style, and
    emphasis, not polished art direction.
+7. When brand assets are present, preserve logo, wordmark, favicon, app icon,
+   safe-background, extracted-color, and do-not-use evidence for downstream
+   `RuntimeDesignTheme` generation.
+8. Never promote screenshot-derived or inferred logo colors to high confidence.
 
 ## Boundary
 
-Owns brand foundation only. Does not own palette, typography, component
-behavior, final positioning, or copywriting.
+Owns brand foundation only and may preserve brand asset evidence for runtime
+theme handoff. Does not own palette, typography, component behavior, final
+positioning, or copywriting.
 
 ## Workflow
 

@@ -10,9 +10,10 @@ second copy of their contents.
 ## When To Install
 
 Install this bundle when a project needs the full stack available in one target:
-study existing pages, audit quality, generate SEO and accessibility findings,
-extract reusable knowledge, create lightweight design-system seeds, produce
-blueprints, curate style references, and specify prototype behavior.
+study existing pages, capture visual evidence, analyze motion behavior, audit
+quality, generate SEO and accessibility findings, extract reusable knowledge,
+create lightweight design-system seeds, produce blueprints, curate style
+references, and specify prototype behavior.
 
 Do not install it when a project needs only one layer. Use component bundles for
 smaller installs, clearer command ownership, and narrower agent context.
@@ -75,9 +76,10 @@ UI_PLUGIN_BUNDLE="ui-design-intelligence" ./uninstall.sh
 ## Usage Example
 
 Use `study-page` or `study-site` to create evidence, route findings through
-audit and SEO commands, extract reusable knowledge, generate or audit a
-design-system seed, create blueprint output, apply style guidance, and finish
-with prototype config or prototype-flow audit commands.
+capture and motion study when needed, route findings through audit and SEO
+commands, extract reusable knowledge, generate or audit a design-system seed,
+create blueprint output, apply style guidance, and finish with prototype config
+or prototype-flow audit commands.
 
 ## Relationship To Other Bundles
 

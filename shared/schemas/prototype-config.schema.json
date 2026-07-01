@@ -42,6 +42,9 @@
     "designSystemSeedRef": {
       "$ref": "#/$defs/id"
     },
+    "runtimeDesignThemeRef": {
+      "$ref": "#/$defs/id"
+    },
     "screens": {
       "type": "array",
       "items": {
@@ -126,6 +129,13 @@
         },
         "sourceDesignSystemSeedId": {
           "$ref": "#/$defs/id"
+        },
+        "sourceRuntimeDesignThemeId": {
+          "$ref": "#/$defs/id"
+        },
+        "sourceRuntimeDesignThemeRef": {
+          "type": "string",
+          "minLength": 1
         },
         "notes": {
           "$ref": "#/$defs/stringList"

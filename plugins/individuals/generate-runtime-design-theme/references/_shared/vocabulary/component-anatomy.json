@@ -1,0 +1,79 @@
+{
+  "componentAnatomy": [
+    {
+      "component": "button",
+      "parts": ["label", "leadingIcon", "trailingIcon", "loadingIndicator", "shortcutHint"],
+      "requiredParts": ["label"]
+    },
+    {
+      "component": "input",
+      "parts": ["label", "input", "helperText", "errorText", "prefix", "suffix", "counter", "clearControl"],
+      "requiredParts": ["label", "input"]
+    },
+    {
+      "component": "card",
+      "parts": ["media", "eyebrow", "title", "description", "metadata", "badge", "actions", "secondaryLink"],
+      "requiredParts": ["title"]
+    },
+    {
+      "component": "table",
+      "parts": ["caption", "columns", "rows", "toolbar", "filters", "sortControls", "pagination", "emptyState", "bulkActions"],
+      "requiredParts": ["caption", "columns", "rows"]
+    },
+    {
+      "component": "header",
+      "parts": ["logo", "primaryNavigation", "utilityNavigation", "primaryAction", "mobileMenuButton"],
+      "requiredParts": ["logo", "primaryNavigation"]
+    },
+    {
+      "component": "footer",
+      "parts": ["brandSummary", "navigationGroups", "contactInfo", "socialLinks", "legalLinks"],
+      "requiredParts": ["navigationGroups", "legalLinks"]
+    },
+    {
+      "component": "dialog",
+      "parts": ["title", "description", "body", "primaryAction", "secondaryAction", "destructiveAction", "closeControl", "footer", "statusMessage"],
+      "requiredParts": ["title", "body", "primaryAction", "closeControl"]
+    },
+    {
+      "component": "navigation",
+      "parts": ["landmarkLabel", "items", "logo", "utilityItems", "primaryAction", "activeIndicator", "overflowMenu"],
+      "requiredParts": ["landmarkLabel", "items"]
+    },
+    {
+      "component": "productGrid",
+      "parts": ["gridLabel", "productCards", "filters", "sortControl", "resultCount", "pagination", "emptyState", "loadingState"],
+      "requiredParts": ["gridLabel", "productCards"]
+    },
+    {
+      "component": "form",
+      "parts": ["intro", "progress", "fieldGroups", "label", "input", "helperText", "errorText", "errorSummary", "submitAction", "saveAction", "recoveryAction", "successMessage"],
+      "requiredParts": ["fieldGroups", "submitAction"]
+    },
+    {
+      "component": "tabs",
+      "parts": ["tabList", "tabs", "panels", "badge", "overflowMenu", "panelIntro"],
+      "requiredParts": ["tabList", "tabs", "panels"]
+    },
+    {
+      "component": "accordion",
+      "parts": ["items", "trigger", "panel", "summary", "icon", "metadata", "nestedActions"],
+      "requiredParts": ["items", "trigger", "panel"]
+    },
+    {
+      "component": "alert",
+      "parts": ["message", "severity", "title", "description", "action", "dismissControl", "icon"],
+      "requiredParts": ["message", "severity"]
+    },
+    {
+      "component": "toast",
+      "parts": ["message", "title", "action", "dismissControl", "timeout", "undoAction"],
+      "requiredParts": ["message"]
+    },
+    {
+      "component": "emptyState",
+      "parts": ["title", "description", "illustration", "primaryAction", "secondaryAction", "nextSteps", "recoveryLink"],
+      "requiredParts": ["title", "description"]
+    }
+  ]
+}

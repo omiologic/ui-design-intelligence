@@ -50,6 +50,14 @@ const interactionFlowSchema = readJson(path.join(root, "shared/schemas/interacti
 const componentStateModelSchema = readJson(path.join(root, "shared/schemas/component-state-model.schema.json"));
 const interactionStatesDoc = readJson(path.join(root, "shared/vocabulary/interaction-states.json"));
 const approvedStates = new Set(interactionStatesDoc?.interactionStates ?? []);
+const runtimeThemeFiles = walk(path.join(root, "shared/examples"))
+  .filter((file) => file.endsWith("runtime-design-theme.example.json"))
+  .sort();
+const runtimeThemeIds = new Set(
+  runtimeThemeFiles
+    .map((file) => readJson(file)?.id)
+    .filter((id) => typeof id === "string")
+);
 
 function checkComponentStateModel(model, file, knownNodeRefs) {
   validateAgainstSchema(model, componentStateModelSchema, file, "component-state-model");
@@ -81,6 +89,12 @@ function checkInteraction(flow, file, knownNodeRefs, stateIds, screenIds, routeI
 function checkPrototype(doc, file) {
   validateAgainstSchema(doc, prototypeSchema, file, "prototype-config");
   if (!doc) return;
+
+  requireKnown(runtimeThemeIds, doc.runtimeDesignThemeRef, file, "runtimeDesignThemeRef", "runtime design theme");
+  requireKnown(runtimeThemeIds, doc.source?.sourceRuntimeDesignThemeId, file, "source.sourceRuntimeDesignThemeId", "runtime design theme");
+  if (doc.runtimeDesignThemeRef && doc.source?.sourceRuntimeDesignThemeId && doc.runtimeDesignThemeRef !== doc.source.sourceRuntimeDesignThemeId) {
+    fail(`${path.relative(root, file)}: runtimeDesignThemeRef must match source.sourceRuntimeDesignThemeId`);
+  }
 
   const allIds = new Set();
   const screenIds = new Set();
@@ -161,6 +175,35 @@ const prototypeFiles = walk(path.join(root, "shared/examples"))
 for (const file of prototypeFiles) {
   checkPrototype(readJson(file), file);
 }
+
+function requireText(file, expected, label) {
+  const fullPath = path.join(root, file);
+  const text = fs.existsSync(fullPath) ? fs.readFileSync(fullPath, "utf8") : "";
+  if (!text.includes(expected)) {
+    fail(`${file}: missing ${label}`);
+  }
+}
+
+requireText(
+  "docs/interop/design-system-prototype-pipeline.md",
+  "study -> knowledge -> style reference -> DesignSystemSeed -> RuntimeDesignTheme -> blueprint/wireframe -> PrototypeConfig -> viewer/runtime",
+  "seed-to-runtime-theme-to-prototype pipeline summary"
+);
+requireText(
+  "docs/interop/design-system-prototype-pipeline.md",
+  "RuntimeDesignTheme Versus VisualExperienceSpec",
+  "runtime theme versus visual experience boundary"
+);
+requireText(
+  "plugins/individuals/generate-interactive-prototype-config/SKILL.md",
+  "runtimeDesignThemeRef",
+  "prototype skill runtime theme reference guidance"
+);
+requireText(
+  "plugins/individuals/generate-interactive-prototype-config/references/prototype-config-generation.md",
+  "RuntimeDesignTheme",
+  "prototype generation runtime theme guidance"
+);
 
 if (errors.length) {
   console.error("Prototype validation failed:");

@@ -1,6 +1,6 @@
 ---
 name: generate-interactive-prototype-config
-description: Generate schema-valid PrototypeConfig JSON from wireframe config, design-system seed data, knowledge patterns, and user behavior requirements.
+description: Generate schema-valid PrototypeConfig JSON from wireframe config, design-system seed data, optional RuntimeDesignTheme refs, knowledge patterns, and user behavior requirements.
 license: See repository LICENSE
 ---
 
@@ -20,8 +20,11 @@ duplicating layout vocabulary.
 Prototype config is a declarative behavior layer over an existing wireframe. It
 should make a future clickable experience unambiguous by referencing stable
 screen, route, state, and node IDs while leaving layout, final styling,
-animation craft, and runtime implementation to adjacent layers. The best output
-is boringly explicit: every trigger has a result, every overlay has a close and
+animation craft, and runtime implementation to adjacent layers. When a
+`RuntimeDesignTheme` is available, the config may cite `runtimeDesignThemeRef`
+so a future viewer can resolve component state styling and status behavior
+without copying token maps into prototype behavior data. The best output is
+boringly explicit: every trigger has a result, every overlay has a close and
 focus path, every form has validation states, and every responsive behavior is
 conditioned rather than implied.
 
@@ -30,12 +33,15 @@ conditioned rather than implied.
 1. Use this skill after there is a wireframe, blueprint, or clear node map.
 2. Use design-system seed data to keep component states, actions, and
    accessibility rules consistent.
-3. Use knowledge patterns only as behavior evidence, not as hidden runtime code.
-4. Prefer explicit references to `screenId`, `routeId`, `nodeId`, and
+3. Use `RuntimeDesignTheme` refs when component states, focus treatments,
+   disabled/loading/empty states, or success/error/warning/info behavior needs
+   viewer-ready theme tokens.
+4. Use knowledge patterns only as behavior evidence, not as hidden runtime code.
+5. Prefer explicit references to `screenId`, `routeId`, `nodeId`, and
    `wireframeRef`.
-5. Hand off uncertain component behavior to state-model or interaction-flow
+6. Hand off uncertain component behavior to state-model or interaction-flow
    skills before final assembly.
-6. Stop at configuration when the user needs prototype behavior; hand off to a
+7. Stop at configuration when the user needs prototype behavior; hand off to a
    future runtime/editor only after the config audits cleanly.
 
 ## Boundary
@@ -51,7 +57,9 @@ conditioned rather than implied.
 - `../../../shared/schemas/prototype-config.schema.json`
 - `../../../shared/schemas/wireframe-config.schema.json`
 - `../../../shared/schemas/design-system-seed.schema.json`
+- `../../../shared/schemas/runtime-design-theme.schema.json`
 - `../../../shared/examples/dental-appointment.prototype-config.example.json`
+- `../../../shared/examples/runtime-theme/ledgerpilot.runtime-design-theme.example.json`
 
 ## Rules
 
@@ -59,13 +67,17 @@ conditioned rather than implied.
 2. Reference wireframe nodes instead of restating layout trees.
 3. Include keyboard, focus, validation, and responsive conditions when behavior
    depends on them.
-4. Preserve open questions for missing triggers, states, or target nodes.
-5. Do not invent a renderer, preview app, editor, export engine, or React
+4. Add `runtimeDesignThemeRef` only when a runtime theme artifact exists; cite
+   it for status/state/component styling and keep token values in the runtime
+   theme.
+5. Preserve open questions for missing triggers, states, target nodes, or
+   missing runtime theme coverage.
+6. Do not invent a renderer, preview app, editor, export engine, or React
    implementation.
-6. Every interaction must have a trigger, action, and result.
-7. Overlay focus and close behavior must be explicit.
-8. Mobile-only affordances must use viewport conditions.
-9. Form errors must point at prototype state IDs, not unrelated model IDs.
+7. Every interaction must have a trigger, action, and result.
+8. Overlay focus and close behavior must be explicit.
+9. Mobile-only affordances must use viewport conditions.
+10. Form errors must point at prototype state IDs, not unrelated model IDs.
 
 ## Anti-Patterns
 
@@ -77,11 +89,14 @@ conditioned rather than implied.
 ## Workflow
 
 1. Identify source wireframe, blueprint, seed, and knowledge inputs.
-2. Build the screen and route inventory from existing structure.
-3. Generate or import component state models and interaction flows.
-4. Add overlays, forms, navigation flows, transitions, and responsive behavior.
-5. Check node, state, screen, route, and focus references.
-6. Validate against `prototype-config.schema.json`.
+2. Identify whether a `RuntimeDesignTheme` exists for viewer-ready component
+   state styling, status behavior, focus, disabled, selected, loading, and empty
+   state mappings.
+3. Build the screen and route inventory from existing structure.
+4. Generate or import component state models and interaction flows.
+5. Add overlays, forms, navigation flows, transitions, and responsive behavior.
+6. Check node, state, screen, route, focus, and runtime theme references.
+7. Validate against `prototype-config.schema.json`.
 
 ## Inline Example
 
@@ -94,8 +109,11 @@ conditioned rather than implied.
   "source": {
     "sourceWireframeId": "dental-homepage-wireframe",
     "sourceWireframeRef": "shared/examples/dental-homepage.ui-blueprint.json",
+    "sourceRuntimeDesignThemeId": "dental-runtime-theme",
+    "sourceRuntimeDesignThemeRef": "artifacts/dental/runtime-design-theme.json",
     "notes": ["References wireframe node IDs without copying layout."]
   },
+  "runtimeDesignThemeRef": "dental-runtime-theme",
   "screens": [
     {
       "id": "home-screen",

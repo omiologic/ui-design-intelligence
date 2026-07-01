@@ -1,0 +1,86 @@
+{
+  "version": "0.1.0",
+  "type": "runtimeDesignTheme",
+  "id": "missing-contrast-pairs",
+  "name": "Missing Contrast Pairs",
+  "source": {
+    "primarySeedRef": "shared/examples/design-system-seed.example.json",
+    "sourceRefs": [
+      {
+        "type": "designSystemSeed",
+        "ref": "shared/examples/design-system-seed.example.json",
+        "confidence": "medium"
+      }
+    ],
+    "confidence": "medium"
+  },
+  "brandAssets": {
+    "assets": [],
+    "usageNotes": []
+  },
+  "colorSystem": {
+    "primitives": {
+      "color.blue.500": {
+        "value": "#0B78C2",
+        "provenance": {
+          "source": "generated",
+          "confidence": "medium"
+        }
+      },
+      "color.white.0": {
+        "value": "#FFFFFF",
+        "provenance": {
+          "source": "generated",
+          "confidence": "medium"
+        }
+      }
+    },
+    "ramps": {
+      "blue": {
+        "family": "blue",
+        "steps": {
+          "500": "color.blue.500"
+        },
+        "provenance": {
+          "source": "generated",
+          "confidence": "medium"
+        }
+      }
+    },
+    "semantic": {
+      "color.action.primary": {
+        "primitive": "color.blue.500",
+        "intent": "Primary action",
+        "usage": "Primary buttons",
+        "provenance": {
+          "source": "generated",
+          "confidence": "medium"
+        }
+      }
+    },
+    "themeVariants": {
+      "light": {
+        "mode": "light",
+        "tokens": {
+          "color.action.primary": "color.blue.500"
+        }
+      }
+    },
+    "contrastPairs": []
+  },
+  "statusSystem": {},
+  "interactionStates": {},
+  "componentThemes": {},
+  "runtimeExports": {
+    "cssVariables": {},
+    "viewerGroups": [],
+    "previewSwatches": [],
+    "sampleBindings": []
+  },
+  "accessibility": {
+    "contrastPairs": [],
+    "requiredChecks": [],
+    "nonColorStateRequirements": []
+  },
+  "openQuestions": []
+}

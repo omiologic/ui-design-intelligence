@@ -9,6 +9,8 @@ constrain blueprint and prototype generation.
 
 - A project needs a design-system seed before blueprint, wireframe, or prototype
   generation.
+- A project needs a runtime theme dataset for a prototype viewer, editor, or
+  future runtime surface after seed generation.
 - Inputs combine prompt, screenshot, URL capture, study output, style guidance,
   and knowledge patterns.
 - A seed needs completeness, naming, or consistency review.
@@ -16,14 +18,16 @@ constrain blueprint and prototype generation.
 ## Boundary
 
 Do not use this agent for final UI-kit implementation, production token
-pipelines, visual mockups, style-reference generation, blueprint structure, or
-prototype runtime behavior. Adjacent guidance: use `style-reference-curator` for
-visual vocabulary, `blueprint-architect` for structure, and
-`prototype-architect` for behavior config.
+pipelines, visual mockups, style-reference generation, blueprint structure,
+runtime viewer implementation, or prototype runtime behavior. Adjacent
+guidance: use `style-reference-curator` for visual vocabulary,
+`blueprint-architect` for structure, and `prototype-architect` for behavior
+config.
 
 ## Skills
 
 - required: `generate-design-system-seed`
+- required: `generate-runtime-design-theme`
 - required: `extract-brand-foundation`
 - required: `extract-palette-foundation`
 - required: `extract-typography-foundation`
@@ -40,6 +44,7 @@ visual vocabulary, `blueprint-architect` for structure, and
 
 - optional: `create-design-spec`
 - required: `generate-design-system-seed`
+- required: `generate-runtime-design-theme`
 - required: `audit-design-system-seed`
 - optional: `apply-style-to-design-system`
 
@@ -74,13 +79,16 @@ visual vocabulary, `blueprint-architect` for structure, and
    header, and footer foundations as evidence allows.
 11. Assemble or update the `DesignSystemSeed` with provenance, confidence, and
    open questions.
-12. Run completeness, naming, and consistency audits before downstream handoff.
-13. Use `shared/design-system/design-system-quality-checklist.md` to assign
+12. Generate `RuntimeDesignTheme` only when a viewer, editor, or future runtime
+   needs apply-ready palette, brand asset, status, state, component theme, or
+   export groups.
+13. Run completeness, naming, and consistency audits before downstream handoff.
+14. Use `shared/design-system/design-system-quality-checklist.md` to assign
    draft, review-ready, or implementation-ready seed readiness.
-14. Use `shared/design-system/design-system-handoff-checklist.md` before
+15. Use `shared/design-system/design-system-handoff-checklist.md` before
    handing a seed to implementation, blueprint generation, prototype generation,
    app rendering, MCP-backed tooling, hosted artifact viewing, or formal review.
-15. Stop when exact values are weakly evidenced; preserve uncertainty instead of
+16. Stop when exact values are weakly evidenced; preserve uncertainty instead of
    inventing tokens.
 
 ## Creation Defaults
@@ -89,6 +97,8 @@ visual vocabulary, `blueprint-architect` for structure, and
 - Reuse an existing `DesignSystemSeed` when available.
 - Generate seed-level recommendations only when the user permits inferred
   guidance and confidence labels.
+- Generate runtime theme datasets only after source refs and theme consumer
+  needs are explicit.
 - Treat wireframe decisions as structural source and seed foundations as
   component/style constraints.
 
@@ -125,6 +135,7 @@ truth exists.
 
 - `design-system-seed.json`
 - `design-system-seed.md`
+- `runtime-design-theme.json`
 - `design-spec.md`
 - Optional `design-spec.json`
 
@@ -158,6 +169,8 @@ truth exists.
 - Responsive behavior is buildable and not only breakpoint labels.
 - Open questions are concrete enough to unblock revision.
 - Seed-level recommendations are not represented as governed production tokens.
+- Runtime theme values do not promote inferred or screenshot-derived colors to
+  certified brand truth.
 
 ## Escalation And Handoffs
 
@@ -180,7 +193,7 @@ highest-confidence source and record open questions.
   style artifacts.
 - Optional `.ui-design-intelligence.yml` project config.
 - Shared schemas such as `shared/schemas/design-system-seed.schema.json` and
-  foundation schemas.
+  `shared/schemas/runtime-design-theme.schema.json` and foundation schemas.
 - Foundation schemas include `shared/schemas/brand-foundation.schema.json`,
   `shared/schemas/palette-foundation.schema.json`, and
   `shared/schemas/typography-foundation.schema.json`.
@@ -188,6 +201,7 @@ highest-confidence source and record open questions.
 ## Outputs
 
 - `DesignSystemSeed` JSON and Markdown plans.
+- `RuntimeDesignTheme` JSON when viewer-ready theme data is requested.
 - Section-level foundation outputs.
 - Audit findings, readiness notes, and open questions.
 - Templates: `shared/templates/design-system-seed.json` and
@@ -198,8 +212,9 @@ highest-confidence source and record open questions.
 Input: local-service brief plus style application for a pricing section.
 Sequence: extract brand/palette/typography, generate button/card foundations,
 assemble seed, then run completeness and consistency audits.
-Output: seed with provenance labels and a note that local pricing style remains
-a patch, not a global token replacement.
+Output: seed with provenance labels and, when requested, a runtime theme with
+viewer groups, status roles, state mappings, brand asset refs, and a note that
+local pricing style remains a patch, not a global token replacement.
 
 ## Hand-Offs
 

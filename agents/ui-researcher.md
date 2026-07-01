@@ -18,8 +18,9 @@ accessibility, knowledge, or blueprint work.
 Do not use this agent to normalize structural vocabulary, generate blueprints,
 write audit reports, create metadata, or produce reusable pattern records.
 Adjacent guidance: use `ui-specification-analyst` for structure inventory,
-`ui-audit-lead` for severity-ranked findings, and `blueprint-architect` for
-wireframe output.
+`visual-experience-analyst` for capture-backed motion or visual-experience
+handoff, `ui-audit-lead` for severity-ranked findings, and
+`blueprint-architect` for wireframe output.
 
 ## Skills
 
@@ -100,6 +101,8 @@ Proceed with confidence labels when context is helpful but not blocking.
 - Hand accessibility concerns to `accessibility-reviewer`.
 - Hand structural generation to `blueprint-architect`.
 - Hand reusable pattern candidates to `ui-knowledge-librarian`.
+- Hand capture, motion, or visual-experience gaps to
+  `visual-experience-analyst`.
 
 ## Arbitration
 
@@ -136,4 +139,6 @@ appointment availability.
 Hand structure evidence to `ui-specification-analyst`, interaction evidence to
 `ui-interaction-analyst`, accessibility concerns to `accessibility-reviewer`,
 SEO context to `seo-content-analyst`, reusable patterns to
-`ui-knowledge-librarian`, and structural generation to `blueprint-architect`.
+`ui-knowledge-librarian`, capture or motion study to
+`visual-experience-analyst`, and structural generation to
+`blueprint-architect`.

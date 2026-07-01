@@ -10,29 +10,42 @@
   "changelog": "CHANGELOG.md",
   "dependencies": [],
   "skills": [
+    "study-ui-capture",
     "study-ui-storytelling",
     "study-ui-specification",
     "study-ui-interaction",
     "study-ui-information-architecture",
     "study-ui-responsive-behavior",
-    "study-ui-accessibility"
+    "study-ui-accessibility",
+    "study-ui-motion"
   ],
   "agents": [
     "ui-researcher",
     "ui-specification-analyst",
     "ui-interaction-analyst",
-    "accessibility-reviewer"
+    "accessibility-reviewer",
+    "visual-experience-analyst"
   ],
   "commands": [
     "study-page",
-    "study-site"
+    "study-site",
+    "study-visual-experience"
   ],
   "shared": [
     "shared/schemas/study-output.schema.json",
     "shared/vocabulary/ui-terminology.json",
     "shared/design-system/component-selection-guidelines.md",
+    "shared/workflows/study-capture-motion-routing.md",
+    "shared/workflows/capture-manifest-consumption.md",
+    "shared/workflows/visual-experience-agent-routing.md",
     "shared/templates/page-study.md",
+    "shared/templates/ui-design-intelligence.config.yml",
+    "shared/templates/capture-manifest.example.json",
+    "shared/templates/visual-experience-spec.md",
     "shared/examples/page-study.example.json",
+    "shared/examples/visual-experience-e2e/README.md",
+    "shared/examples/visual-experience-e2e/capture-manifest.json",
+    "shared/examples/visual-experience-e2e/visual-experience-spec.md",
     "shared/examples/marketing-page-e2e/brief.md",
     "shared/examples/marketing-page-e2e/README.md",
     "shared/examples/marketing-page-e2e/marketing-page.study.example.json",

@@ -5,7 +5,7 @@
 `ui-study-skills` is the active evidence-gathering bundle for studying existing
 pages and sites. It turns captured UI evidence into structured observations
 about storytelling, specification, interaction, information architecture,
-responsive behavior, and accessibility.
+responsive behavior, accessibility, visual capture, and motion behavior.
 
 ## When To Install
 
@@ -21,11 +21,13 @@ only needs final blueprint JSON.
 Skills:
 
 - `study-ui-storytelling`
+- `study-ui-capture`
 - `study-ui-specification`
 - `study-ui-interaction`
 - `study-ui-information-architecture`
 - `study-ui-responsive-behavior`
 - `study-ui-accessibility`
+- `study-ui-motion`
 
 Agents:
 
@@ -33,21 +35,26 @@ Agents:
 - `ui-specification-analyst`
 - `ui-interaction-analyst`
 - `accessibility-reviewer`
+- `visual-experience-analyst`
 
 Commands:
 
 - `study-page`
 - `study-site`
+- `study-visual-experience`
 
 Shared assets include the study-output schema, UI terminology vocabulary, page
-study template, and example study artifact.
+study template, capture/motion routing workflow, capture-manifest consumption
+workflow, visual-experience agent routing workflow, example study artifact, and
+a completed visual-experience handoff example.
 
 ## Requirements
 
-Study workflows need captured evidence. Use `scripts/capture-url.mjs` for
-deterministic URL metadata, then provide screenshots, DOM exports, page notes, or
-other observed material. The study skills do not perform browser automation by
-themselves.
+Study workflows need captured evidence. Use `study-ui-capture` to plan
+screenshots, motion frames, readiness checks, blank-frame rejection, failed
+capture storage, and capture manifests before downstream study skills analyze
+the UI. Use `scripts/capture-url.mjs` for deterministic URL metadata when a
+scriptable metadata check is enough.
 
 ## Install
 
@@ -83,9 +90,13 @@ UI_PLUGIN_BUNDLE="ui-study-skills" ./uninstall.sh
 ## Usage Example
 
 Capture URL metadata, attach or reference screenshots and notes, then run
-`study-page` for one page or `study-site` for a page group. The output should
-preserve observed evidence and confidence so audit, knowledge, or blueprint
-skills can consume it without guessing.
+`study-ui-capture` when visual evidence needs to be gathered or verified. Route
+scroll-bound, animated, canvas, WebGL, GSAP, React Spring, React Three Fiber, or
+scroll-reveal evidence through `study-ui-motion`, then write
+`visual-experience-spec.md` when the implementation needs motion-aware handoff.
+Use `study-visual-experience` when the request is specifically about visual
+experience, scroll choreography, color transitions, canvas/WebGL behavior, or
+frontend implementation handoff.
 
 ## Relationship To Other Bundles
 

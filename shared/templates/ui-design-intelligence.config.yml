@@ -1,8 +1,26 @@
 project:
   name: "Project Name"
   industry: "local-service"
+  projectSlug: "project-name"
   audience:
     - "primary audience"
+
+artifacts:
+  rootDir: "./artifacts"
+  projectSlug: "project-name"
+  pageSlugStrategy: "url-path"
+  paths:
+    project: "{root}/{project_brand}"
+    designSystem: "{root}/{project_brand}/design-system"
+    page: "{root}/{project_brand}/{page}"
+    sections: "{root}/{project_brand}/{page}/sections"
+    components: "{root}/{project_brand}/{page}/components"
+    elements: "{root}/{project_brand}/{page}/elements"
+    screenshots: "{root}/{project_brand}/{page}/.screenshots"
+    motionScreenshots: "{root}/{project_brand}/{page}/.motion_screenshots"
+    failedCaptures: "{root}/{project_brand}/{page}/.screenshots/failed"
+    captureManifest: "{root}/{project_brand}/{page}/capture-manifest.json"
+    visualExperienceSpec: "{root}/{project_brand}/{page}/visual-experience-spec.md"
 
 designSystem:
   outputDir: "./ui-design-system"
@@ -36,10 +54,53 @@ prototype:
 
 capture:
   screenshots: true
+  manifest: "capture-manifest.json"
+  rejectBlankFrames: true
+  retryCount: 3
+  failedCaptureDir: ".screenshots/failed"
+  wait:
+    strategy: "content-ready"
+    maxWaitMs: 15000
+    idleWaitMs: 1500
+    readySelectors:
+      - "main"
+      - "[data-ui-ready='true']"
+    loaderSelectors:
+      - ".loader"
+      - "[data-loading='true']"
+      - "[aria-busy='true']"
   viewports:
     desktop:
       width: 1440
       height: 1200
+    tablet:
+      width: 834
+      height: 1112
     mobile:
       width: 390
       height: 1200
+  motionFrames:
+    enabled: true
+    directory: ".motion_screenshots"
+    filePattern: "{page}_frame_{index}.jpeg"
+    scrollProgress:
+      - 0
+      - 0.1
+      - 0.25
+      - 0.5
+      - 0.75
+      - 1
+
+visualExperience:
+  outputFile: "visual-experience-spec.md"
+  requiredSections:
+    - "Evidence Files"
+    - "Palette Timeline"
+    - "Scroll Storyboard"
+    - "Section State Map"
+    - "Motion Fields"
+    - "Captured Frame Index"
+    - "Rendering Layer Ownership"
+    - "Design Quality Notes"
+    - "Implementation Notes"
+    - "Originality Guardrails"

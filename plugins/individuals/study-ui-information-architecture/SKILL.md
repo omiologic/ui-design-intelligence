@@ -34,6 +34,8 @@ taxonomy.
 - `references/_shared/templates/page-study.md`
 - `references/_shared/vocabulary/ui-terminology.json`
 - `references/_shared/examples/page-study.example.json`
+- `../../../shared/workflows/capture-manifest-consumption.md`
+- `../../../shared/templates/capture-manifest.example.json`
 
 ## Boundary
 
@@ -51,22 +53,28 @@ taxonomy.
 5. Preserve observed, inferred, and missing-evidence categories in findings.
 6. Do not rename, regroup, or reorder as if it were observed evidence; record
    recommendations as handoffs.
-7. Use commands only when structured route, sitemap, capture, or blueprint data
+7. Treat `capture-manifest.json` as the IA coverage index when supplied: use
+   successful captures to map visible navigation and hierarchy, and record
+   failed collapsed menu, search, route, or page captures as IA gaps.
+8. Use commands only when structured route, sitemap, capture, or blueprint data
    can support deterministic consistency checks.
 
 ## Method
 
-1. Map global navigation, local navigation, breadcrumbs, in-page anchors, footer
+1. If `capture-manifest.json` is supplied, identify which captures cover
+   desktop, mobile, menus, search, route/page states, and which failed captures
+   limit IA conclusions.
+2. Map global navigation, local navigation, breadcrumbs, in-page anchors, footer
    links, and repeated cross-links separately.
-2. Record heading hierarchy and section grouping in visible order.
-3. Compare visible navigation labels with the page's apparent primary task.
-4. Identify wayfinding cues such as active states, breadcrumbs, progress
+3. Record heading hierarchy and section grouping in visible order.
+4. Compare visible navigation labels with the page's apparent primary task.
+5. Identify wayfinding cues such as active states, breadcrumbs, progress
    indicators, category labels, and section anchors.
-5. Study continuity between labels, headings, CTAs, related links, destination
+6. Study continuity between labels, headings, CTAs, related links, destination
    cues, and likely next steps.
-6. Mark missing IA evidence, such as collapsed mobile menu contents or hidden
+7. Mark missing IA evidence, such as collapsed mobile menu contents or hidden
    search behavior.
-7. Hand off redesign, taxonomy, or cross-page reconciliation rather than
+8. Hand off redesign, taxonomy, or cross-page reconciliation rather than
    silently rewriting the structure.
 
 ## Anti-Patterns

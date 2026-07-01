@@ -1,0 +1,73 @@
+{
+  "type": "brandAssetColorExtractionExample",
+  "assets": [
+    {
+      "id": "ledgerpilot-logo",
+      "type": "logo",
+      "sourceType": "userProvidedAsset",
+      "ref": "assets/ledgerpilot/logo.svg",
+      "safeBackgrounds": [
+        "color.surface.default",
+        "color.surface.inverse"
+      ],
+      "doNotUseOn": [
+        "color.brand.primary"
+      ],
+      "extractedColors": [
+        {
+          "name": "LedgerPilot logo blue",
+          "value": "#145C9E",
+          "role": "logoPrimary",
+          "usage": "Logo mark and semantic brand mapping candidate.",
+          "provenance": {
+            "source": "userProvided",
+            "confidence": "high",
+            "sourceRef": "assets/ledgerpilot/logo.svg"
+          }
+        }
+      ],
+      "provenance": {
+        "source": "userProvided",
+        "confidence": "high",
+        "sourceRef": "assets/ledgerpilot/logo.svg"
+      },
+      "notes": [
+        "High confidence is allowed because the value is read from a user-provided vector asset."
+      ]
+    },
+    {
+      "id": "homepage-wordmark-crop",
+      "type": "wordmark",
+      "sourceType": "screenshotCrop",
+      "ref": "capture-manifest:homepage-wordmark-crop",
+      "safeBackgrounds": [
+        "color.surface.default"
+      ],
+      "doNotUseOn": [
+        "color.surface.subtle"
+      ],
+      "extractedColors": [
+        {
+          "name": "Approximate wordmark ink",
+          "value": "#17212B",
+          "role": "logoPrimary",
+          "usage": "Approximate logo color only; confirm against source asset before promoting.",
+          "provenance": {
+            "source": "inferred",
+            "confidence": "medium",
+            "sourceRef": "capture-manifest:homepage-wordmark-crop",
+            "note": "Sampled from screenshot crop."
+          }
+        }
+      ],
+      "provenance": {
+        "source": "inferred",
+        "confidence": "medium",
+        "sourceRef": "capture-manifest:homepage-wordmark-crop"
+      },
+      "notes": [
+        "Screenshot-derived logo color remains medium confidence."
+      ]
+    }
+  ]
+}

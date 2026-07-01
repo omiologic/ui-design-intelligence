@@ -1,0 +1,744 @@
+{
+  "version": "0.1.0",
+  "type": "runtimeDesignTheme",
+  "id": "ledgerpilot-runtime-theme",
+  "name": "LedgerPilot Runtime Theme",
+  "source": {
+    "primarySeedRef": "shared/examples/marketing-page-e2e/marketing-page.design-system-seed.example.json",
+    "sourceRefs": [
+      {
+        "type": "designSystemSeed",
+        "ref": "shared/examples/marketing-page-e2e/marketing-page.design-system-seed.example.json",
+        "id": "ledgerpilot-design-system-seed",
+        "schemaRef": "shared/schemas/design-system-seed.schema.json",
+        "confidence": "medium",
+        "notes": [
+          "Runtime theme expands the seed into viewer-facing token groups."
+        ]
+      },
+      {
+        "type": "userProvidedBrandAsset",
+        "ref": "assets/ledgerpilot/logo.svg",
+        "confidence": "high",
+        "notes": [
+          "Package-safe placeholder path for a user-provided logo asset."
+        ]
+      }
+    ],
+    "confidence": "medium",
+    "notes": [
+      "Contrast ratios marked requiresCheck are not production-certified."
+    ]
+  },
+  "brandAssets": {
+    "assets": [
+      {
+        "id": "ledgerpilot-logo",
+        "type": "logo",
+        "sourceType": "userProvidedAsset",
+        "ref": "assets/ledgerpilot/logo.svg",
+        "format": "svg",
+        "safeBackgrounds": [
+          "color.surface.default",
+          "color.surface.inverse"
+        ],
+        "doNotUseOn": [
+          "color.brand.primary",
+          "color.status.info.background"
+        ],
+        "extractedColors": [
+          {
+            "name": "LedgerPilot logo blue",
+            "value": "#145C9E",
+            "role": "logoPrimary",
+            "usage": "Logo mark and brand-primary semantic mapping candidate.",
+            "provenance": {
+              "source": "userProvided",
+              "confidence": "high",
+              "sourceRef": "assets/ledgerpilot/logo.svg"
+            }
+          }
+        ],
+        "provenance": {
+          "source": "userProvided",
+          "confidence": "high",
+          "sourceRef": "assets/ledgerpilot/logo.svg"
+        },
+        "notes": [
+          "Asset colors still map through semantic tokens before component use."
+        ]
+      }
+    ],
+    "usageNotes": [
+      "Render the logo only on declared safe backgrounds.",
+      "Do not use logo colors directly in components without semantic mapping."
+    ]
+  },
+  "colorSystem": {
+    "primitives": {
+      "color.brand.primaryBase": {
+        "value": "#145C9E",
+        "family": "brand",
+        "step": "primaryBase",
+        "provenance": {
+          "source": "userProvided",
+          "confidence": "high",
+          "sourceRef": "assets/ledgerpilot/logo.svg"
+        }
+      },
+      "color.brand.primaryDark": {
+        "value": "#0C3E70",
+        "family": "brand",
+        "step": "primaryDark",
+        "provenance": {
+          "source": "generated",
+          "confidence": "medium",
+          "note": "Generated support shade for active states."
+        }
+      },
+      "color.neutral.white": {
+        "value": "#FFFFFF",
+        "family": "neutral",
+        "step": "white",
+        "provenance": {
+          "source": "recommended",
+          "confidence": "medium"
+        }
+      },
+      "color.neutral.ink": {
+        "value": "#16202A",
+        "family": "neutral",
+        "step": "ink",
+        "provenance": {
+          "source": "recommended",
+          "confidence": "medium"
+        }
+      },
+      "color.neutral.muted": {
+        "value": "#6B7684",
+        "family": "neutral",
+        "step": "muted",
+        "provenance": {
+          "source": "generated",
+          "confidence": "medium"
+        }
+      },
+      "color.neutral.subtle": {
+        "value": "#F4F7FA",
+        "family": "neutral",
+        "step": "subtle",
+        "provenance": {
+          "source": "generated",
+          "confidence": "medium"
+        }
+      },
+      "color.status.successBase": {
+        "value": "#16833A",
+        "family": "success",
+        "step": "base",
+        "provenance": {
+          "source": "generated",
+          "confidence": "medium"
+        }
+      },
+      "color.status.errorBase": {
+        "value": "#C62828",
+        "family": "error",
+        "step": "base",
+        "provenance": {
+          "source": "generated",
+          "confidence": "medium"
+        }
+      },
+      "color.status.warningBase": {
+        "value": "#A45B00",
+        "family": "warning",
+        "step": "base",
+        "provenance": {
+          "source": "generated",
+          "confidence": "medium"
+        }
+      },
+      "color.status.infoBase": {
+        "value": "#2563A8",
+        "family": "info",
+        "step": "base",
+        "provenance": {
+          "source": "generated",
+          "confidence": "medium"
+        }
+      },
+      "color.focus.ring": {
+        "value": "#3B82F6",
+        "family": "focus",
+        "step": "ring",
+        "provenance": {
+          "source": "recommended",
+          "confidence": "medium"
+        }
+      }
+    },
+    "ramps": {
+      "brand": {
+        "family": "brand",
+        "steps": {
+          "base": "color.brand.primaryBase",
+          "dark": "color.brand.primaryDark"
+        },
+        "usage": "Primary brand and action family.",
+        "provenance": {
+          "source": "userProvided",
+          "confidence": "high",
+          "sourceRef": "assets/ledgerpilot/logo.svg"
+        }
+      },
+      "status": {
+        "family": "status",
+        "steps": {
+          "success": "color.status.successBase",
+          "error": "color.status.errorBase",
+          "warning": "color.status.warningBase",
+          "info": "color.status.infoBase"
+        },
+        "usage": "Feedback and validation states.",
+        "provenance": {
+          "source": "generated",
+          "confidence": "medium"
+        }
+      }
+    },
+    "semantic": {
+      "color.brand.primary": {
+        "primitive": "color.brand.primaryBase",
+        "intent": "Primary brand color from logo asset.",
+        "usage": "Brand marks and high-emphasis accents after contrast review.",
+        "provenance": {
+          "source": "userProvided",
+          "confidence": "high",
+          "sourceRef": "assets/ledgerpilot/logo.svg"
+        }
+      },
+      "color.action.primary": {
+        "primitive": "color.brand.primaryBase",
+        "intent": "Primary conversion action.",
+        "usage": "Main CTA and selected high-emphasis controls.",
+        "provenance": {
+          "source": "recommended",
+          "confidence": "medium"
+        }
+      },
+      "color.action.primaryHover": {
+        "primitive": "color.brand.primaryDark",
+        "intent": "Hover or active primary action state.",
+        "usage": "Primary button hover and active states.",
+        "provenance": {
+          "source": "generated",
+          "confidence": "medium"
+        }
+      },
+      "color.surface.default": {
+        "primitive": "color.neutral.white",
+        "intent": "Default readable surface.",
+        "usage": "Page and card backgrounds.",
+        "provenance": {
+          "source": "recommended",
+          "confidence": "medium"
+        }
+      },
+      "color.surface.subtle": {
+        "primitive": "color.neutral.subtle",
+        "intent": "Subtle grouped content surface.",
+        "usage": "Low-emphasis section backgrounds.",
+        "provenance": {
+          "source": "generated",
+          "confidence": "medium"
+        }
+      },
+      "color.surface.inverse": {
+        "primitive": "color.neutral.ink",
+        "intent": "Dark inverse surface.",
+        "usage": "Small high-contrast preview blocks and footer.",
+        "provenance": {
+          "source": "recommended",
+          "confidence": "medium"
+        }
+      },
+      "color.text.primary": {
+        "primitive": "color.neutral.ink",
+        "intent": "Primary readable text.",
+        "usage": "Headings and body copy.",
+        "provenance": {
+          "source": "recommended",
+          "confidence": "medium"
+        }
+      },
+      "color.text.inverse": {
+        "primitive": "color.neutral.white",
+        "intent": "Text on dark or brand surfaces.",
+        "usage": "Button labels and inverse surfaces.",
+        "provenance": {
+          "source": "recommended",
+          "confidence": "medium"
+        }
+      },
+      "color.text.muted": {
+        "primitive": "color.neutral.muted",
+        "intent": "Lower emphasis readable text.",
+        "usage": "Supporting copy and metadata.",
+        "provenance": {
+          "source": "generated",
+          "confidence": "medium"
+        }
+      },
+      "color.status.success.background": {
+        "primitive": "color.status.successBase",
+        "intent": "Success state background.",
+        "usage": "Success alert, toast, and validation state.",
+        "provenance": {
+          "source": "generated",
+          "confidence": "medium"
+        }
+      },
+      "color.status.error.background": {
+        "primitive": "color.status.errorBase",
+        "intent": "Error state background.",
+        "usage": "Error alert, toast, and validation state.",
+        "provenance": {
+          "source": "generated",
+          "confidence": "medium"
+        }
+      },
+      "color.status.warning.background": {
+        "primitive": "color.status.warningBase",
+        "intent": "Warning state background.",
+        "usage": "Warning alert and cautionary state.",
+        "provenance": {
+          "source": "generated",
+          "confidence": "medium"
+        }
+      },
+      "color.status.info.background": {
+        "primitive": "color.status.infoBase",
+        "intent": "Information state background.",
+        "usage": "Informational alert and status message.",
+        "provenance": {
+          "source": "generated",
+          "confidence": "medium"
+        }
+      },
+      "color.focus.ring": {
+        "primitive": "color.focus.ring",
+        "intent": "Visible keyboard focus ring.",
+        "usage": "Focus outline for interactive controls.",
+        "provenance": {
+          "source": "recommended",
+          "confidence": "medium"
+        }
+      },
+      "color.border.default": {
+        "primitive": "color.neutral.muted",
+        "intent": "Default component border.",
+        "usage": "Inputs, cards, and separators.",
+        "provenance": {
+          "source": "generated",
+          "confidence": "medium"
+        }
+      }
+    },
+    "themeVariants": {
+      "light": {
+        "mode": "light",
+        "tokens": {
+          "color.background": "color.surface.default",
+          "color.foreground": "color.text.primary",
+          "color.action": "color.action.primary"
+        },
+        "notes": [
+          "Primary supported viewer mode."
+        ]
+      }
+    },
+    "contrastPairs": [
+      {
+        "foreground": "color.text.primary",
+        "background": "color.surface.default",
+        "ratio": 12.4,
+        "status": "pass",
+        "provenance": {
+          "source": "generated",
+          "confidence": "medium",
+          "note": "Computed from generated example values."
+        }
+      },
+      {
+        "foreground": "color.text.inverse",
+        "background": "color.action.primary",
+        "status": "requiresCheck",
+        "provenance": {
+          "source": "recommended",
+          "confidence": "medium"
+        },
+        "notes": [
+          "Confirm before production use."
+        ]
+      }
+    ]
+  },
+  "statusSystem": {
+    "success": {
+      "background": "color.status.success.background",
+      "foreground": "color.text.inverse",
+      "border": "color.status.success.background",
+      "icon": "color.status.success.background",
+      "nonColorCue": "check icon and success copy",
+      "provenance": {
+        "source": "generated",
+        "confidence": "medium"
+      }
+    },
+    "error": {
+      "background": "color.status.error.background",
+      "foreground": "color.text.inverse",
+      "border": "color.status.error.background",
+      "icon": "color.status.error.background",
+      "nonColorCue": "error icon, field message, and summary text",
+      "provenance": {
+        "source": "generated",
+        "confidence": "medium"
+      }
+    },
+    "warning": {
+      "background": "color.status.warning.background",
+      "foreground": "color.text.inverse",
+      "border": "color.status.warning.background",
+      "icon": "color.status.warning.background",
+      "nonColorCue": "warning icon and caution copy",
+      "provenance": {
+        "source": "generated",
+        "confidence": "medium"
+      }
+    },
+    "info": {
+      "background": "color.status.info.background",
+      "foreground": "color.text.inverse",
+      "border": "color.status.info.background",
+      "icon": "color.status.info.background",
+      "nonColorCue": "info icon and explanatory copy",
+      "provenance": {
+        "source": "generated",
+        "confidence": "medium"
+      }
+    },
+    "neutral": {
+      "background": "color.surface.subtle",
+      "foreground": "color.text.primary",
+      "border": "color.border.default",
+      "icon": "color.text.muted",
+      "nonColorCue": "neutral label or supporting copy",
+      "provenance": {
+        "source": "generated",
+        "confidence": "medium"
+      }
+    },
+    "disabled": {
+      "background": "color.surface.subtle",
+      "foreground": "color.text.muted",
+      "border": "color.border.default",
+      "icon": "color.text.muted",
+      "nonColorCue": "disabled attribute and explanatory label when needed",
+      "provenance": {
+        "source": "generated",
+        "confidence": "medium"
+      }
+    },
+    "focus": {
+      "background": "color.surface.default",
+      "foreground": "color.text.primary",
+      "border": "color.focus.ring",
+      "icon": "color.focus.ring",
+      "nonColorCue": "visible outline with keyboard focus state",
+      "provenance": {
+        "source": "recommended",
+        "confidence": "medium"
+      }
+    },
+    "selected": {
+      "background": "color.surface.subtle",
+      "foreground": "color.action.primary",
+      "border": "color.action.primary",
+      "icon": "color.action.primary",
+      "nonColorCue": "selected label, aria-selected, or check indicator",
+      "provenance": {
+        "source": "generated",
+        "confidence": "medium"
+      }
+    }
+  },
+  "interactionStates": {
+    "default": {
+      "tokens": {
+        "background": "color.surface.default",
+        "foreground": "color.text.primary"
+      },
+      "nonColorCue": "default component affordance",
+      "provenance": {
+        "source": "recommended",
+        "confidence": "medium"
+      }
+    },
+    "hover": {
+      "tokens": {
+        "background": "color.action.primaryHover",
+        "foreground": "color.text.inverse"
+      },
+      "nonColorCue": "cursor and hover affordance",
+      "provenance": {
+        "source": "generated",
+        "confidence": "medium"
+      }
+    },
+    "active": {
+      "tokens": {
+        "background": "color.brand.primaryDark",
+        "foreground": "color.text.inverse"
+      },
+      "nonColorCue": "pressed state and active transform",
+      "provenance": {
+        "source": "generated",
+        "confidence": "medium"
+      }
+    },
+    "focus": {
+      "tokens": {
+        "outline": "color.focus.ring",
+        "border": "color.focus.ring"
+      },
+      "nonColorCue": "visible focus outline",
+      "provenance": {
+        "source": "recommended",
+        "confidence": "medium"
+      }
+    },
+    "loading": {
+      "tokens": {
+        "background": "color.action.primary",
+        "foreground": "color.text.inverse"
+      },
+      "nonColorCue": "spinner and loading label",
+      "provenance": {
+        "source": "generated",
+        "confidence": "medium"
+      }
+    },
+    "disabled": {
+      "tokens": {
+        "background": "color.surface.subtle",
+        "foreground": "color.text.muted"
+      },
+      "nonColorCue": "disabled attribute and unavailable label",
+      "provenance": {
+        "source": "generated",
+        "confidence": "medium"
+      }
+    },
+    "selected": {
+      "tokens": {
+        "background": "color.surface.subtle",
+        "border": "color.action.primary"
+      },
+      "nonColorCue": "selected label or check indicator",
+      "provenance": {
+        "source": "generated",
+        "confidence": "medium"
+      }
+    },
+    "error": {
+      "tokens": {
+        "background": "color.status.error.background",
+        "foreground": "color.text.inverse"
+      },
+      "nonColorCue": "error icon and recovery copy",
+      "provenance": {
+        "source": "generated",
+        "confidence": "medium"
+      }
+    },
+    "success": {
+      "tokens": {
+        "background": "color.status.success.background",
+        "foreground": "color.text.inverse"
+      },
+      "nonColorCue": "success icon and confirmation copy",
+      "provenance": {
+        "source": "generated",
+        "confidence": "medium"
+      }
+    },
+    "empty": {
+      "tokens": {
+        "background": "color.surface.subtle",
+        "foreground": "color.text.muted"
+      },
+      "nonColorCue": "empty-state title, description, and recovery action",
+      "provenance": {
+        "source": "generated",
+        "confidence": "medium"
+      }
+    }
+  },
+  "componentThemes": {
+    "button": {
+      "component": "button",
+      "variants": {
+        "button.primary": {
+          "background": "color.action.primary",
+          "foreground": "color.text.inverse",
+          "hoverBackground": "color.action.primaryHover",
+          "focusRing": "color.focus.ring"
+        },
+        "button.secondary": {
+          "background": "color.surface.default",
+          "foreground": "color.action.primary",
+          "border": "color.action.primary"
+        }
+      },
+      "states": [
+        "default",
+        "hover",
+        "active",
+        "focus",
+        "loading",
+        "disabled",
+        "success",
+        "error"
+      ],
+      "provenance": {
+        "source": "recommended",
+        "confidence": "medium"
+      },
+      "notes": [
+        "Use semantic tokens rather than raw hex values in viewer bindings."
+      ]
+    },
+    "alert": {
+      "component": "alert",
+      "variants": {
+        "alert.success": {
+          "background": "color.status.success.background",
+          "foreground": "color.text.inverse",
+          "icon": "color.status.success.background"
+        },
+        "alert.error": {
+          "background": "color.status.error.background",
+          "foreground": "color.text.inverse",
+          "icon": "color.status.error.background"
+        }
+      },
+      "states": [
+        "success",
+        "error",
+        "warning",
+        "info"
+      ],
+      "provenance": {
+        "source": "generated",
+        "confidence": "medium"
+      }
+    }
+  },
+  "runtimeExports": {
+    "cssVariables": {
+      "--color-action-primary": "color.action.primary",
+      "--color-action-primary-hover": "color.action.primaryHover",
+      "--color-surface-default": "color.surface.default",
+      "--color-text-primary": "color.text.primary",
+      "--color-focus-ring": "color.focus.ring"
+    },
+    "viewerGroups": [
+      {
+        "name": "Brand",
+        "tokens": [
+          "color.brand.primary",
+          "color.action.primary"
+        ]
+      },
+      {
+        "name": "Status",
+        "tokens": [
+          "color.status.success.background",
+          "color.status.error.background",
+          "color.status.warning.background",
+          "color.status.info.background"
+        ]
+      }
+    ],
+    "previewSwatches": [
+      {
+        "token": "color.action.primary",
+        "label": "Primary Action",
+        "pairedWith": "color.text.inverse"
+      },
+      {
+        "token": "color.status.error.background",
+        "label": "Error",
+        "pairedWith": "color.text.inverse"
+      }
+    ],
+    "sampleBindings": [
+      {
+        "component": "button.primary",
+        "property": "background",
+        "token": "color.action.primary"
+      },
+      {
+        "component": "alert.error",
+        "property": "background",
+        "token": "color.status.error.background"
+      }
+    ]
+  },
+  "accessibility": {
+    "contrastPairs": [
+      {
+        "foreground": "color.text.primary",
+        "background": "color.surface.default",
+        "ratio": 12.4,
+        "status": "pass",
+        "provenance": {
+          "source": "generated",
+          "confidence": "medium"
+        }
+      },
+      {
+        "foreground": "color.text.inverse",
+        "background": "color.action.primary",
+        "status": "requiresCheck",
+        "provenance": {
+          "source": "recommended",
+          "confidence": "medium"
+        },
+        "notes": [
+          "Confirm before production use."
+        ]
+      }
+    ],
+    "requiredChecks": [
+      "Measure contrast for generated action and status pairs.",
+      "Confirm focus ring visibility on all surfaces.",
+      "Verify disabled state remains legible."
+    ],
+    "nonColorStateRequirements": [
+      "Errors require icon or text plus field-level message.",
+      "Success requires confirmation copy.",
+      "Focus requires visible outline, not color alone.",
+      "Selected controls require aria-selected or equivalent state."
+    ],
+    "notes": [
+      "This example is runtime-ready for prototype viewing, not production-certified."
+    ]
+  },
+  "openQuestions": [
+    "Confirm exact production typography and any dark-mode requirements.",
+    "Measure final contrast after implementation values are selected."
+  ]
+}

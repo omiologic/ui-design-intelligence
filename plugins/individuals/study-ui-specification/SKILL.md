@@ -34,6 +34,8 @@ unopened states.
 - `references/_shared/templates/page-study.md`
 - `references/_shared/vocabulary/ui-terminology.json`
 - `references/_shared/examples/page-study.example.json`
+- `../../../shared/workflows/capture-manifest-consumption.md`
+- `../../../shared/templates/capture-manifest.example.json`
 
 ## Boundary
 
@@ -53,23 +55,29 @@ unopened states.
    and handoff assumptions.
 6. Do not extract visual styling, exact spacing, motion, color, or typography as
    structural specification.
-7. Use validation commands only after study output becomes a schema-targeted
+7. Treat `capture-manifest.json` as the capture index when supplied: use
+   successful still captures for visible structure, failed captures for missing
+   state/scope evidence, and source gaps as limits on structural conclusions.
+8. Use validation commands only after study output becomes a schema-targeted
    example or translated blueprint; no subagent is needed by default.
 
 ## Method
 
-1. Divide the capture into regions: header, navigation, main sections, repeated
+1. If `capture-manifest.json` is supplied, inventory the captures used, failed
+   captures, scoped artifact paths, and source gaps before extracting
+   structure.
+2. Divide the capture into regions: header, navigation, main sections, repeated
    content groups, overlays if visible, and footer.
-2. Name each visible section by its user-facing label or most specific observed
+3. Name each visible section by its user-facing label or most specific observed
    purpose.
-3. Identify repeated patterns and record one representative item plus variation
+4. Identify repeated patterns and record one representative item plus variation
    notes instead of duplicating every item.
-4. Mark inferred component types separately when the capture only suggests them.
-5. Extract candidate node types, content roles, labels, child anatomy, states,
+5. Mark inferred component types separately when the capture only suggests them.
+6. Extract candidate node types, content roles, labels, child anatomy, states,
    responsive notes, and accessibility cues only where evidence supports them.
-6. Mark unresolved assumptions such as hidden drawers, offscreen content,
+7. Mark unresolved assumptions such as hidden drawers, offscreen content,
    untested states, and unsupported responsive behavior.
-7. Produce a downstream inventory of sections, components, labels, repeated
+8. Produce a downstream inventory of sections, components, labels, repeated
    patterns, and unknowns.
 
 ## Anti-Patterns

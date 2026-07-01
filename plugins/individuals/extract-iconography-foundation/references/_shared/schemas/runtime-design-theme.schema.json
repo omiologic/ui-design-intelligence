@@ -1,0 +1,781 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://omiologic.dev/schemas/ui-blueprint/runtime-design-theme.schema.json",
+  "title": "Runtime Design Theme",
+  "description": "Runtime-facing design theme dataset generated downstream of DesignSystemSeed for prototype viewers, editors, or future runtime surfaces.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "version",
+    "type",
+    "id",
+    "name",
+    "source",
+    "brandAssets",
+    "colorSystem",
+    "statusSystem",
+    "interactionStates",
+    "componentThemes",
+    "runtimeExports",
+    "accessibility",
+    "openQuestions"
+  ],
+  "properties": {
+    "version": {
+      "$ref": "#/$defs/version"
+    },
+    "type": {
+      "const": "runtimeDesignTheme"
+    },
+    "id": {
+      "$ref": "#/$defs/id"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source": {
+      "$ref": "#/$defs/themeSource"
+    },
+    "brandAssets": {
+      "$ref": "#/$defs/brandAssets"
+    },
+    "colorSystem": {
+      "$ref": "#/$defs/colorSystem"
+    },
+    "statusSystem": {
+      "$ref": "#/$defs/statusSystem"
+    },
+    "interactionStates": {
+      "type": "object",
+      "additionalProperties": {
+        "$ref": "#/$defs/interactionStateTheme"
+      }
+    },
+    "componentThemes": {
+      "type": "object",
+      "additionalProperties": {
+        "$ref": "#/$defs/componentTheme"
+      }
+    },
+    "runtimeExports": {
+      "$ref": "#/$defs/runtimeExports"
+    },
+    "accessibility": {
+      "$ref": "#/$defs/accessibility"
+    },
+    "openQuestions": {
+      "$ref": "#/$defs/stringList"
+    }
+  },
+  "$defs": {
+    "version": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$"
+    },
+    "tokenRef": {
+      "type": "string",
+      "pattern": "^[a-z]+(?:\\.[a-z][A-Za-z0-9]*){1,}$"
+    },
+    "hexColor": {
+      "type": "string",
+      "pattern": "^#[0-9A-Fa-f]{6}$"
+    },
+    "sourceKind": {
+      "type": "string",
+      "enum": [
+        "observed",
+        "inferred",
+        "recommended",
+        "generated",
+        "userProvided"
+      ]
+    },
+    "confidence": {
+      "type": "string",
+      "enum": [
+        "low",
+        "medium",
+        "high"
+      ]
+    },
+    "sourceArtifactType": {
+      "type": "string",
+      "enum": [
+        "designSystemSeed",
+        "styleReference",
+        "styleApplication",
+        "captureManifest",
+        "studyOutput",
+        "visualExperienceSpec",
+        "userProvidedBrandAsset",
+        "userProvidedBrief",
+        "unknown"
+      ]
+    },
+    "stringList": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "source",
+        "confidence"
+      ],
+      "properties": {
+        "source": {
+          "$ref": "#/$defs/sourceKind"
+        },
+        "confidence": {
+          "$ref": "#/$defs/confidence"
+        },
+        "sourceRef": {
+          "type": "string"
+        },
+        "note": {
+          "type": "string"
+        }
+      }
+    },
+    "sourceRef": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "type",
+        "ref"
+      ],
+      "properties": {
+        "type": {
+          "$ref": "#/$defs/sourceArtifactType"
+        },
+        "ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "schemaRef": {
+          "type": "string"
+        },
+        "confidence": {
+          "$ref": "#/$defs/confidence"
+        },
+        "notes": {
+          "$ref": "#/$defs/stringList"
+        }
+      }
+    },
+    "themeSource": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "primarySeedRef",
+        "sourceRefs",
+        "confidence"
+      ],
+      "properties": {
+        "primarySeedRef": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sourceRefs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/sourceRef"
+          }
+        },
+        "confidence": {
+          "$ref": "#/$defs/confidence"
+        },
+        "notes": {
+          "$ref": "#/$defs/stringList"
+        }
+      }
+    },
+    "assetColor": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "value",
+        "role",
+        "provenance"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "value": {
+          "$ref": "#/$defs/hexColor"
+        },
+        "role": {
+          "type": "string",
+          "enum": [
+            "logoPrimary",
+            "logoSecondary",
+            "logoAccent",
+            "favicon",
+            "appIcon",
+            "brandSupport",
+            "unknown"
+          ]
+        },
+        "usage": {
+          "type": "string"
+        },
+        "provenance": {
+          "$ref": "#/$defs/provenance"
+        }
+      }
+    },
+    "brandAsset": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "type",
+        "sourceType",
+        "ref",
+        "provenance"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "logo",
+            "wordmark",
+            "symbol",
+            "favicon",
+            "appIcon",
+            "image",
+            "unknown"
+          ]
+        },
+        "sourceType": {
+          "type": "string",
+          "enum": [
+            "userProvidedAsset",
+            "sourceCodeAsset",
+            "faviconDiscovery",
+            "captureManifestFrame",
+            "screenshotCrop",
+            "inferred",
+            "unknown"
+          ]
+        },
+        "ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "format": {
+          "type": "string"
+        },
+        "safeBackgrounds": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/tokenRef"
+          }
+        },
+        "doNotUseOn": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/tokenRef"
+          }
+        },
+        "extractedColors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/assetColor"
+          }
+        },
+        "provenance": {
+          "$ref": "#/$defs/provenance"
+        },
+        "notes": {
+          "$ref": "#/$defs/stringList"
+        }
+      }
+    },
+    "brandAssets": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "assets",
+        "usageNotes"
+      ],
+      "properties": {
+        "assets": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/brandAsset"
+          }
+        },
+        "usageNotes": {
+          "$ref": "#/$defs/stringList"
+        }
+      }
+    },
+    "colorPrimitive": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "value",
+        "provenance"
+      ],
+      "properties": {
+        "value": {
+          "$ref": "#/$defs/hexColor"
+        },
+        "family": {
+          "type": "string"
+        },
+        "step": {
+          "type": "string"
+        },
+        "provenance": {
+          "$ref": "#/$defs/provenance"
+        },
+        "note": {
+          "type": "string"
+        }
+      }
+    },
+    "semanticColor": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "primitive",
+        "intent",
+        "usage",
+        "provenance"
+      ],
+      "properties": {
+        "primitive": {
+          "$ref": "#/$defs/tokenRef"
+        },
+        "intent": {
+          "type": "string",
+          "minLength": 1
+        },
+        "usage": {
+          "type": "string",
+          "minLength": 1
+        },
+        "provenance": {
+          "$ref": "#/$defs/provenance"
+        },
+        "aliases": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/tokenRef"
+          }
+        }
+      }
+    },
+    "themeVariant": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "mode",
+        "tokens"
+      ],
+      "properties": {
+        "mode": {
+          "type": "string",
+          "enum": [
+            "light",
+            "dark",
+            "mixed",
+            "unknown"
+          ]
+        },
+        "tokens": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/$defs/tokenRef"
+          }
+        },
+        "notes": {
+          "$ref": "#/$defs/stringList"
+        }
+      }
+    },
+    "contrastPair": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "foreground",
+        "background",
+        "status",
+        "provenance"
+      ],
+      "properties": {
+        "foreground": {
+          "$ref": "#/$defs/tokenRef"
+        },
+        "background": {
+          "$ref": "#/$defs/tokenRef"
+        },
+        "ratio": {
+          "type": "number"
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "pass",
+            "fail",
+            "unknown",
+            "requiresCheck"
+          ]
+        },
+        "provenance": {
+          "$ref": "#/$defs/provenance"
+        },
+        "notes": {
+          "$ref": "#/$defs/stringList"
+        }
+      }
+    },
+    "colorSystem": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "primitives",
+        "ramps",
+        "semantic",
+        "themeVariants",
+        "contrastPairs"
+      ],
+      "properties": {
+        "primitives": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/$defs/colorPrimitive"
+          }
+        },
+        "ramps": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/$defs/colorRamp"
+          }
+        },
+        "semantic": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/$defs/semanticColor"
+          }
+        },
+        "themeVariants": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/$defs/themeVariant"
+          }
+        },
+        "contrastPairs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/contrastPair"
+          }
+        }
+      }
+    },
+    "colorRamp": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "family",
+        "steps",
+        "provenance"
+      ],
+      "properties": {
+        "family": {
+          "type": "string",
+          "minLength": 1
+        },
+        "steps": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/$defs/tokenRef"
+          }
+        },
+        "usage": {
+          "type": "string"
+        },
+        "provenance": {
+          "$ref": "#/$defs/provenance"
+        },
+        "notes": {
+          "$ref": "#/$defs/stringList"
+        }
+      }
+    },
+    "statusRole": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "background",
+        "foreground",
+        "border",
+        "icon",
+        "nonColorCue",
+        "provenance"
+      ],
+      "properties": {
+        "background": {
+          "$ref": "#/$defs/tokenRef"
+        },
+        "foreground": {
+          "$ref": "#/$defs/tokenRef"
+        },
+        "border": {
+          "$ref": "#/$defs/tokenRef"
+        },
+        "icon": {
+          "$ref": "#/$defs/tokenRef"
+        },
+        "nonColorCue": {
+          "type": "string",
+          "minLength": 1
+        },
+        "provenance": {
+          "$ref": "#/$defs/provenance"
+        },
+        "notes": {
+          "$ref": "#/$defs/stringList"
+        }
+      }
+    },
+    "statusSystem": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "success",
+        "error",
+        "warning",
+        "info",
+        "neutral",
+        "disabled",
+        "focus",
+        "selected"
+      ],
+      "properties": {
+        "success": {
+          "$ref": "#/$defs/statusRole"
+        },
+        "error": {
+          "$ref": "#/$defs/statusRole"
+        },
+        "warning": {
+          "$ref": "#/$defs/statusRole"
+        },
+        "info": {
+          "$ref": "#/$defs/statusRole"
+        },
+        "neutral": {
+          "$ref": "#/$defs/statusRole"
+        },
+        "disabled": {
+          "$ref": "#/$defs/statusRole"
+        },
+        "focus": {
+          "$ref": "#/$defs/statusRole"
+        },
+        "selected": {
+          "$ref": "#/$defs/statusRole"
+        }
+      }
+    },
+    "interactionStateTheme": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "tokens",
+        "nonColorCue",
+        "provenance"
+      ],
+      "properties": {
+        "tokens": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/$defs/tokenRef"
+          }
+        },
+        "nonColorCue": {
+          "type": "string",
+          "minLength": 1
+        },
+        "provenance": {
+          "$ref": "#/$defs/provenance"
+        },
+        "notes": {
+          "$ref": "#/$defs/stringList"
+        }
+      }
+    },
+    "componentTheme": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "component",
+        "variants",
+        "states",
+        "provenance"
+      ],
+      "properties": {
+        "component": {
+          "type": "string",
+          "minLength": 1
+        },
+        "variants": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/$defs/tokenRef"
+            }
+          }
+        },
+        "states": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "provenance": {
+          "$ref": "#/$defs/provenance"
+        },
+        "notes": {
+          "$ref": "#/$defs/stringList"
+        }
+      }
+    },
+    "runtimeExports": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "cssVariables",
+        "viewerGroups",
+        "previewSwatches",
+        "sampleBindings"
+      ],
+      "properties": {
+        "cssVariables": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "viewerGroups": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "name",
+              "tokens"
+            ],
+            "properties": {
+              "name": {
+                "type": "string",
+                "minLength": 1
+              },
+              "tokens": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/tokenRef"
+                }
+              }
+            }
+          }
+        },
+        "previewSwatches": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "token",
+              "label"
+            ],
+            "properties": {
+              "token": {
+                "$ref": "#/$defs/tokenRef"
+              },
+              "label": {
+                "type": "string",
+                "minLength": 1
+              },
+              "pairedWith": {
+                "$ref": "#/$defs/tokenRef"
+              }
+            }
+          }
+        },
+        "sampleBindings": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "component",
+              "property",
+              "token"
+            ],
+            "properties": {
+              "component": {
+                "type": "string",
+                "minLength": 1
+              },
+              "property": {
+                "type": "string",
+                "minLength": 1
+              },
+              "token": {
+                "$ref": "#/$defs/tokenRef"
+              }
+            }
+          }
+        }
+      }
+    },
+    "accessibility": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "contrastPairs",
+        "requiredChecks",
+        "nonColorStateRequirements"
+      ],
+      "properties": {
+        "contrastPairs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/contrastPair"
+          }
+        },
+        "requiredChecks": {
+          "$ref": "#/$defs/stringList"
+        },
+        "nonColorStateRequirements": {
+          "$ref": "#/$defs/stringList"
+        },
+        "notes": {
+          "$ref": "#/$defs/stringList"
+        }
+      }
+    }
+  }
+}

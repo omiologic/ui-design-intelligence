@@ -1,0 +1,135 @@
+{
+  "schemaVersion": "0.1.0",
+  "projectBrand": "aurora-labs",
+  "page": "home",
+  "source": {
+    "type": "url",
+    "url": "https://example.com/",
+    "capturedAt": "2026-07-01T00:00:00.000Z"
+  },
+  "config": {
+    "artifactRoot": "artifacts",
+    "pageDir": "artifacts/aurora-labs/home",
+    "screenshotDir": "artifacts/aurora-labs/home/.screenshots",
+    "motionScreenshotDir": "artifacts/aurora-labs/home/.motion_screenshots",
+    "failedCaptureDir": "artifacts/aurora-labs/home/.screenshots/failed",
+    "readySelectors": ["main", "[data-ui-ready='true']"],
+    "loaderSelectors": [".loader", "[data-loading='true']", "[aria-busy='true']"],
+    "maxWaitMs": 15000,
+    "idleWaitMs": 1500,
+    "retryCount": 3,
+    "rejectBlankFrames": true,
+    "executionContract": "plugins/individuals/study-ui-capture/references/capture-execution-contract.md",
+    "failureReasons": [
+      "timeout",
+      "loader-still-visible",
+      "target-not-found",
+      "blank-frame-rejected",
+      "network-blocked",
+      "auth-blocked",
+      "unsupported-runtime",
+      "capture-tool-unavailable",
+      "viewport-unavailable",
+      "interaction-state-unavailable",
+      "motion-state-unavailable"
+    ]
+  },
+  "captures": [
+    {
+      "id": "home-desktop-page",
+      "type": "screenshot",
+      "status": "success",
+      "sourceUrl": "https://example.com/",
+      "viewport": {
+        "name": "desktop",
+        "width": 1440,
+        "height": 1200
+      },
+      "path": "artifacts/aurora-labs/home/.screenshots/home_desktop_page.jpeg",
+      "captureReason": "desktop page evidence",
+      "readyState": "content-ready",
+      "capturedAt": "2026-07-01T00:00:00.000Z"
+    },
+    {
+      "id": "home-mobile-page",
+      "type": "screenshot",
+      "status": "success",
+      "sourceUrl": "https://example.com/",
+      "viewport": {
+        "name": "mobile",
+        "width": 390,
+        "height": 1200
+      },
+      "path": "artifacts/aurora-labs/home/.screenshots/home_mobile_page.jpeg",
+      "captureReason": "mobile page evidence",
+      "readyState": "content-ready",
+      "capturedAt": "2026-07-01T00:00:00.000Z"
+    },
+    {
+      "id": "home-desktop-frame-0001",
+      "type": "motion-frame",
+      "status": "success",
+      "sourceUrl": "https://example.com/",
+      "viewport": {
+        "name": "desktop",
+        "width": 1440,
+        "height": 1200
+      },
+      "path": "artifacts/aurora-labs/home/.motion_screenshots/home_desktop_frame_0001.jpeg",
+      "captureReason": "scroll motion sample",
+      "scrollProgress": 0,
+      "interactionState": "default",
+      "readyState": "content-ready",
+      "capturedAt": "2026-07-01T00:00:00.000Z"
+    },
+    {
+      "id": "home-desktop-frame-0002",
+      "type": "motion-frame",
+      "status": "success",
+      "sourceUrl": "https://example.com/",
+      "viewport": {
+        "name": "desktop",
+        "width": 1440,
+        "height": 1200
+      },
+      "path": "artifacts/aurora-labs/home/.motion_screenshots/home_desktop_frame_0002.jpeg",
+      "captureReason": "scroll motion sample",
+      "scrollProgress": 0.5,
+      "interactionState": "pinned-hero-active",
+      "readyState": "content-ready",
+      "capturedAt": "2026-07-01T00:00:00.000Z"
+    }
+  ],
+  "failedCaptures": [
+    {
+      "id": "home-mobile-frame-0002",
+      "type": "motion-frame",
+      "status": "failed",
+      "sourceUrl": "https://example.com/",
+      "viewport": {
+        "name": "mobile",
+        "width": 390,
+        "height": 1200
+      },
+      "attemptedPath": "artifacts/aurora-labs/home/.motion_screenshots/home_mobile_frame_0002.jpeg",
+      "diagnosticPath": "artifacts/aurora-labs/home/.screenshots/failed/home_mobile_frame_0002.jpeg",
+      "failureReason": "motion-state-unavailable",
+      "readyState": "content-ready",
+      "capturedAt": "2026-07-01T00:00:00.000Z"
+    }
+  ],
+  "sourceGaps": [
+    "Mobile scroll-bound canvas frame at 50% could not be captured.",
+    "Reduced-motion runtime behavior was not inspected."
+  ],
+  "handoffs": [
+    {
+      "skill": "study-ui-motion",
+      "reason": "Scroll-bound palette and canvas-like background changes were observed."
+    },
+    {
+      "skill": "study-ui-accessibility",
+      "reason": "Reduced-motion fallback was not confirmed."
+    }
+  ]
+}

@@ -35,6 +35,8 @@ evidence instead of assuming the page lacks them.
 - `references/_shared/templates/page-study.md`
 - `references/_shared/vocabulary/ui-terminology.json`
 - `references/_shared/examples/page-study.example.json`
+- `../../../shared/workflows/capture-manifest-consumption.md`
+- `../../../shared/templates/capture-manifest.example.json`
 
 ## Boundary
 
@@ -53,25 +55,31 @@ evidence instead of assuming the page lacks them.
 6. Do not treat decorative rhythm, repeated cards, or repeated CTAs as journey
    evidence unless they change what the user understands, trusts, compares, can
    do, or can recover from.
-7. Do not add a command or subagent by default; sequence comparisons can be
+7. Treat `capture-manifest.json` as the narrative coverage index when supplied:
+   use successful captures to sequence visible claims and CTAs, and record
+   failed lower-page, CTA-destination, proof, or post-submit captures as
+   narrative source gaps.
+8. Do not add a command or subagent by default; sequence comparisons can be
    deterministic later, but narrative interpretation remains judgment-led.
 
 ## Method
 
-1. Identify the first visible promise, target audience, and primary CTA before
+1. If `capture-manifest.json` is supplied, note which captures define the
+   narrative sequence and which failed captures/source gaps limit conclusions.
+2. Identify the first visible promise, target audience, and primary CTA before
    reading lower sections.
-2. Walk the page in visible order and classify each narrative move: orient,
+3. Walk the page in visible order and classify each narrative move: orient,
    promise, explain, prove, compare, answer objection, ask for action, support,
    or resolve.
-3. Record proof placement, CTA cadence, objection handling, and resolution paths
+4. Record proof placement, CTA cadence, objection handling, and resolution paths
    relative to the decision they support.
-4. Record exact visible labels or representative copy snippets when they define
+5. Record exact visible labels or representative copy snippets when they define
    the page story.
-5. Mark inferred intent explicitly, such as "appears to support consultation
+6. Mark inferred intent explicitly, such as "appears to support consultation
    booking" or "likely reduces price anxiety."
-6. Mark missing evidence such as CTA destination, later-page proof, form
+7. Mark missing evidence such as CTA destination, later-page proof, form
    behavior, pricing detail, or post-submit state.
-7. Finish with handoff notes: what blueprint generation should preserve and what
+8. Finish with handoff notes: what blueprint generation should preserve and what
    audit work should evaluate.
 
 ## Anti-Patterns

@@ -1,0 +1,137 @@
+{
+  "version": "0.1.0",
+  "type": "runtimeDesignTheme",
+  "id": "high-confidence-inferred-logo-color",
+  "name": "High Confidence Inferred Logo Color",
+  "source": {
+    "primarySeedRef": "shared/examples/design-system-seed.example.json",
+    "sourceRefs": [
+      {
+        "type": "designSystemSeed",
+        "ref": "shared/examples/design-system-seed.example.json",
+        "confidence": "medium"
+      }
+    ],
+    "confidence": "medium"
+  },
+  "brandAssets": {
+    "assets": [
+      {
+        "id": "screenshot-logo",
+        "type": "logo",
+        "sourceType": "screenshotCrop",
+        "ref": "capture-manifest:homepage-logo-crop",
+        "safeBackgrounds": [
+          "color.surface.default"
+        ],
+        "doNotUseOn": [
+          "color.brand.primary"
+        ],
+        "extractedColors": [
+          {
+            "name": "Logo blue",
+            "value": "#145C9E",
+            "role": "logoPrimary",
+            "usage": "Incorrectly promoted screenshot sample.",
+            "provenance": {
+              "source": "inferred",
+              "confidence": "high",
+              "sourceRef": "capture-manifest:homepage-logo-crop"
+            }
+          }
+        ],
+        "provenance": {
+          "source": "inferred",
+          "confidence": "high",
+          "sourceRef": "capture-manifest:homepage-logo-crop"
+        }
+      }
+    ],
+    "usageNotes": []
+  },
+  "colorSystem": {
+    "primitives": {
+      "color.blue.500": {
+        "value": "#145C9E",
+        "provenance": {
+          "source": "generated",
+          "confidence": "medium"
+        }
+      },
+      "color.white.0": {
+        "value": "#FFFFFF",
+        "provenance": {
+          "source": "generated",
+          "confidence": "medium"
+        }
+      }
+    },
+    "ramps": {
+      "blue": {
+        "family": "blue",
+        "steps": {
+          "500": "color.blue.500"
+        },
+        "provenance": {
+          "source": "generated",
+          "confidence": "medium"
+        }
+      }
+    },
+    "semantic": {
+      "color.action.primary": {
+        "primitive": "color.blue.500",
+        "intent": "Primary action",
+        "usage": "Primary buttons",
+        "provenance": {
+          "source": "generated",
+          "confidence": "medium"
+        }
+      }
+    },
+    "themeVariants": {
+      "light": {
+        "mode": "light",
+        "tokens": {
+          "color.action.primary": "color.blue.500"
+        }
+      }
+    },
+    "contrastPairs": [
+      {
+        "foreground": "color.white.0",
+        "background": "color.blue.500",
+        "status": "requiresCheck",
+        "provenance": {
+          "source": "generated",
+          "confidence": "medium"
+        }
+      }
+    ]
+  },
+  "statusSystem": {},
+  "interactionStates": {},
+  "componentThemes": {},
+  "runtimeExports": {
+    "cssVariables": {},
+    "viewerGroups": [],
+    "previewSwatches": [],
+    "sampleBindings": []
+  },
+  "accessibility": {
+    "contrastPairs": [
+      {
+        "foreground": "color.white.0",
+        "background": "color.blue.500",
+        "status": "requiresCheck",
+        "provenance": {
+          "source": "generated",
+          "confidence": "medium"
+        }
+      }
+    ],
+    "requiredChecks": [],
+    "nonColorStateRequirements": []
+  },
+  "openQuestions": []
+}

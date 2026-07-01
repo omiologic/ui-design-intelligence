@@ -90,7 +90,13 @@ function validateAgainstSchema(doc, schema, file, label) {
   }
 }
 
+function collectSchemaErrors(doc, schema, label) {
+  if (!doc || !schema) return [];
+  return validateJsonSchema(doc, schema).map((error) => `${label} schema ${error}`);
+}
+
 const seedSchema = readJson(path.join(root, "shared/schemas/design-system-seed.schema.json"));
+const runtimeThemeSchema = readJson(path.join(root, "shared/schemas/runtime-design-theme.schema.json"));
 const sectionSchemas = {
   brand: readJson(path.join(root, "shared/schemas/brand-foundation.schema.json")),
   palette: readJson(path.join(root, "shared/schemas/palette-foundation.schema.json")),
@@ -304,6 +310,225 @@ function checkDecisionTree(doc, file) {
   }
 }
 
+const requiredRuntimeStatuses = ["success", "error", "warning", "info", "neutral", "disabled", "focus", "selected"];
+const requiredRuntimeInteractionStates = ["default", "hover", "active", "focus", "loading", "disabled", "selected", "error", "success", "empty"];
+
+function isColorOnlyCue(value) {
+  return typeof value === "string" && /^(color|colour|color only|colour only)$/i.test(value.trim());
+}
+
+function checkBrandAssetConfidence(asset, localErrors, location) {
+  const sourceType = asset?.sourceType;
+  const assetProvenance = asset?.provenance;
+  const weakAssetSource =
+    sourceType === "screenshotCrop" ||
+    sourceType === "captureManifestFrame" ||
+    sourceType === "faviconDiscovery" ||
+    sourceType === "inferred" ||
+    assetProvenance?.source === "inferred" ||
+    assetProvenance?.source === "generated";
+
+  if (weakAssetSource && assetProvenance?.confidence === "high") {
+    localErrors.push(`${location}.provenance.confidence must not be high for ${sourceType} brand assets`);
+  }
+
+  if ((asset?.type === "logo" || asset?.type === "wordmark" || asset?.type === "symbol") && (!Array.isArray(asset.safeBackgrounds) || asset.safeBackgrounds.length === 0)) {
+    localErrors.push(`${location}.safeBackgrounds must list safe logo/mark surfaces`);
+  }
+
+  for (const [index, color] of (asset?.extractedColors ?? []).entries()) {
+    const colorProvenance = color?.provenance;
+    const weakColorSource =
+      weakAssetSource ||
+      colorProvenance?.source === "inferred" ||
+      colorProvenance?.source === "generated";
+    if (weakColorSource && colorProvenance?.confidence === "high") {
+      localErrors.push(`${location}.extractedColors[${index}].provenance.confidence must not be high for inferred or screenshot-derived colors`);
+    }
+  }
+}
+
+function collectKnownRuntimeColorTokens(doc) {
+  const knownTokens = new Set([
+    ...Object.keys(doc.colorSystem?.primitives ?? {}),
+    ...Object.keys(doc.colorSystem?.semantic ?? {})
+  ]);
+
+  for (const semantic of Object.values(doc.colorSystem?.semantic ?? {})) {
+    for (const alias of semantic?.aliases ?? []) {
+      if (typeof alias === "string") knownTokens.add(alias);
+    }
+  }
+
+  return knownTokens;
+}
+
+function checkKnownRuntimeToken(token, knownTokens, localErrors, location) {
+  if (typeof token !== "string" || !token.startsWith("color.")) return;
+  if (!knownTokens.has(token)) {
+    localErrors.push(`${location} references unknown runtime color token "${token}"`);
+  }
+}
+
+function checkRuntimeTokenMap(tokens, knownTokens, localErrors, location) {
+  if (!tokens || typeof tokens !== "object") return;
+  for (const [name, token] of Object.entries(tokens)) {
+    checkKnownRuntimeToken(token, knownTokens, localErrors, `${location}.${name}`);
+  }
+}
+
+function checkRuntimeTokenReferences(doc, knownTokens, localErrors) {
+  for (const [name, ramp] of Object.entries(doc.colorSystem?.ramps ?? {})) {
+    checkRuntimeTokenMap(ramp?.steps, knownTokens, localErrors, `colorSystem.ramps.${name}.steps`);
+  }
+
+  for (const [name, semantic] of Object.entries(doc.colorSystem?.semantic ?? {})) {
+    checkKnownRuntimeToken(semantic?.primitive, knownTokens, localErrors, `colorSystem.semantic.${name}.primitive`);
+  }
+
+  for (const [name, variant] of Object.entries(doc.colorSystem?.themeVariants ?? {})) {
+    checkRuntimeTokenMap(variant?.tokens, knownTokens, localErrors, `colorSystem.themeVariants.${name}.tokens`);
+  }
+
+  for (const [index, pair] of (doc.colorSystem?.contrastPairs ?? []).entries()) {
+    checkKnownRuntimeToken(pair?.foreground, knownTokens, localErrors, `colorSystem.contrastPairs[${index}].foreground`);
+    checkKnownRuntimeToken(pair?.background, knownTokens, localErrors, `colorSystem.contrastPairs[${index}].background`);
+  }
+
+  for (const [index, pair] of (doc.accessibility?.contrastPairs ?? []).entries()) {
+    checkKnownRuntimeToken(pair?.foreground, knownTokens, localErrors, `accessibility.contrastPairs[${index}].foreground`);
+    checkKnownRuntimeToken(pair?.background, knownTokens, localErrors, `accessibility.contrastPairs[${index}].background`);
+  }
+
+  for (const [status, role] of Object.entries(doc.statusSystem ?? {})) {
+    for (const key of ["background", "foreground", "border", "icon"]) {
+      checkKnownRuntimeToken(role?.[key], knownTokens, localErrors, `statusSystem.${status}.${key}`);
+    }
+  }
+
+  for (const [state, stateTheme] of Object.entries(doc.interactionStates ?? {})) {
+    checkRuntimeTokenMap(stateTheme?.tokens, knownTokens, localErrors, `interactionStates.${state}.tokens`);
+  }
+
+  for (const [componentName, componentTheme] of Object.entries(doc.componentThemes ?? {})) {
+    for (const [variantName, tokens] of Object.entries(componentTheme?.variants ?? {})) {
+      checkRuntimeTokenMap(tokens, knownTokens, localErrors, `componentThemes.${componentName}.variants.${variantName}`);
+    }
+  }
+
+  checkRuntimeTokenMap(doc.runtimeExports?.cssVariables, knownTokens, localErrors, "runtimeExports.cssVariables");
+
+  for (const [index, group] of (doc.runtimeExports?.viewerGroups ?? []).entries()) {
+    for (const [tokenIndex, token] of (group?.tokens ?? []).entries()) {
+      checkKnownRuntimeToken(token, knownTokens, localErrors, `runtimeExports.viewerGroups[${index}].tokens[${tokenIndex}]`);
+    }
+  }
+
+  for (const [index, swatch] of (doc.runtimeExports?.previewSwatches ?? []).entries()) {
+    checkKnownRuntimeToken(swatch?.token, knownTokens, localErrors, `runtimeExports.previewSwatches[${index}].token`);
+    checkKnownRuntimeToken(swatch?.pairedWith, knownTokens, localErrors, `runtimeExports.previewSwatches[${index}].pairedWith`);
+  }
+
+  for (const [index, binding] of (doc.runtimeExports?.sampleBindings ?? []).entries()) {
+    checkKnownRuntimeToken(binding?.token, knownTokens, localErrors, `runtimeExports.sampleBindings[${index}].token`);
+  }
+
+  for (const [index, asset] of (doc.brandAssets?.assets ?? []).entries()) {
+    for (const [backgroundIndex, token] of (asset?.safeBackgrounds ?? []).entries()) {
+      checkKnownRuntimeToken(token, knownTokens, localErrors, `brandAssets.assets[${index}].safeBackgrounds[${backgroundIndex}]`);
+    }
+    for (const [surfaceIndex, token] of (asset?.doNotUseOn ?? []).entries()) {
+      checkKnownRuntimeToken(token, knownTokens, localErrors, `brandAssets.assets[${index}].doNotUseOn[${surfaceIndex}]`);
+    }
+  }
+}
+
+function collectRuntimeThemeErrors(doc) {
+  const localErrors = collectSchemaErrors(doc, runtimeThemeSchema, "runtime-design-theme");
+  if (!doc || typeof doc !== "object") return localErrors;
+
+  if (Object.keys(doc.colorSystem?.primitives ?? {}).length === 0) {
+    localErrors.push("colorSystem.primitives must define at least one primitive");
+  }
+  if (Object.keys(doc.colorSystem?.ramps ?? {}).length === 0) {
+    localErrors.push("colorSystem.ramps must define at least one ramp");
+  }
+  if (Object.keys(doc.colorSystem?.semantic ?? {}).length === 0) {
+    localErrors.push("colorSystem.semantic must define at least one semantic role");
+  }
+  if (!Array.isArray(doc.colorSystem?.contrastPairs) || doc.colorSystem.contrastPairs.length === 0) {
+    localErrors.push("colorSystem.contrastPairs must define foreground/background checks");
+  }
+  if (!Array.isArray(doc.accessibility?.contrastPairs) || doc.accessibility.contrastPairs.length === 0) {
+    localErrors.push("accessibility.contrastPairs must mirror runtime contrast checks");
+  }
+
+  for (const status of requiredRuntimeStatuses) {
+    const role = doc.statusSystem?.[status];
+    if (!role) {
+      localErrors.push(`statusSystem.${status} is required`);
+      continue;
+    }
+    if (isColorOnlyCue(role.nonColorCue)) {
+      localErrors.push(`statusSystem.${status}.nonColorCue must not rely on color alone`);
+    }
+  }
+
+  for (const state of requiredRuntimeInteractionStates) {
+    const stateTheme = doc.interactionStates?.[state];
+    if (!stateTheme) {
+      localErrors.push(`interactionStates.${state} is required`);
+      continue;
+    }
+    if (isColorOnlyCue(stateTheme.nonColorCue)) {
+      localErrors.push(`interactionStates.${state}.nonColorCue must not rely on color alone`);
+    }
+  }
+
+  for (const [index, asset] of (doc.brandAssets?.assets ?? []).entries()) {
+    checkBrandAssetConfidence(asset, localErrors, `brandAssets.assets[${index}]`);
+  }
+
+  checkRuntimeTokenReferences(doc, collectKnownRuntimeColorTokens(doc), localErrors);
+
+  return localErrors;
+}
+
+function checkBrandAssetExample(doc, file) {
+  if (!doc) return;
+  if (doc.type !== "brandAssetColorExtractionExample") {
+    fail(`${path.relative(root, file)}: type must be brandAssetColorExtractionExample`);
+    return;
+  }
+  const localErrors = [];
+  const assets = doc.assets ?? [];
+  if (!Array.isArray(assets) || assets.length < 2) {
+    localErrors.push("assets must include user-provided and screenshot-derived examples");
+  }
+  let hasUserProvidedHigh = false;
+  let hasScreenshotInferred = false;
+  for (const [index, asset] of assets.entries()) {
+    checkBrandAssetConfidence(asset, localErrors, `assets[${index}]`);
+    if (asset.sourceType === "userProvidedAsset" && asset.provenance?.confidence === "high") {
+      hasUserProvidedHigh = true;
+    }
+    if ((asset.sourceType === "screenshotCrop" || asset.sourceType === "captureManifestFrame") && asset.provenance?.confidence !== "high") {
+      hasScreenshotInferred = true;
+    }
+  }
+  if (!hasUserProvidedHigh) localErrors.push("must include a high-confidence userProvidedAsset example");
+  if (!hasScreenshotInferred) localErrors.push("must include a non-high-confidence screenshot/capture example");
+  for (const error of localErrors) {
+    fail(`${path.relative(root, file)}: ${error}`);
+  }
+}
+
+function checkRuntimeTheme(doc, file) {
+  for (const error of collectRuntimeThemeErrors(doc)) {
+    fail(`${path.relative(root, file)}: ${error}`);
+  }
+}
+
 function checkBundlePackaging() {
   const designSystemManifest = readJson(path.join(root, "plugins/bundles/ui-design-system-skills/plugin.json"));
   const aggregateManifest = resolveBundleManifest(readJson(path.join(root, "plugins/bundles/ui-design-intelligence/plugin.json")));
@@ -311,6 +536,7 @@ function checkBundlePackaging() {
 
   const requiredSkills = [
     "generate-design-system-seed",
+    "generate-runtime-design-theme",
     "extract-brand-foundation",
     "extract-palette-foundation",
     "extract-typography-foundation",
@@ -323,13 +549,17 @@ function checkBundlePackaging() {
     "audit-design-system-naming",
     "audit-design-system-consistency"
   ];
-  const requiredCommands = ["generate-design-system-seed", "audit-design-system-seed"];
+  const requiredCommands = ["generate-design-system-seed", "generate-runtime-design-theme", "audit-design-system-seed"];
   const requiredAgents = ["design-system-architect"];
   const requiredShared = [
     "shared/schemas/design-system-seed.schema.json",
+    "shared/schemas/runtime-design-theme.schema.json",
+    "shared/design-system/brand-asset-color-extraction.md",
     "shared/templates/design-system-seed.json",
     "shared/templates/design-system-seed.md",
     "shared/examples/design-system-seed.example.json",
+    "shared/examples/runtime-theme/ledgerpilot.runtime-design-theme.example.json",
+    "shared/examples/runtime-theme-brand-assets/brand-asset-color-extraction.example.json",
     "shared/vocabulary/design-token-types.json"
   ];
 
@@ -363,6 +593,43 @@ for (const file of seedFiles) {
   checkSeed(doc, file);
 }
 
+if (!runtimeThemeSchema || runtimeThemeSchema.type !== "object" || runtimeThemeSchema.properties?.type?.const !== "runtimeDesignTheme") {
+  fail("shared/schemas/runtime-design-theme.schema.json: must define runtimeDesignTheme object schema");
+}
+
+const runtimeThemeFiles = walk(path.join(root, "shared/examples")).filter((file) => file.endsWith("runtime-design-theme.example.json")).sort();
+for (const file of runtimeThemeFiles) {
+  checkRuntimeTheme(readJson(file), file);
+}
+
+const invalidRuntimeThemeFiles = walk(path.join(root, "tests/invalid-design-system-runtime-theme")).filter((file) => file.endsWith(".runtime-design-theme.json")).sort();
+const invalidRuntimeThemeExpectations = new Map([
+  ["color-only-error-state.runtime-design-theme.json", "statusSystem.error.nonColorCue must not rely on color alone"],
+  ["high-confidence-inferred-logo-color.runtime-design-theme.json", "provenance.confidence must not be high"],
+  ["missing-contrast-pairs.runtime-design-theme.json", "contrastPairs"],
+  ["missing-provenance.runtime-design-theme.json", "provenance"],
+  ["missing-status-mapping.runtime-design-theme.json", "statusSystem.error"],
+  ["unsupported-component-theme-reference.runtime-design-theme.json", "references unknown runtime color token"]
+]);
+for (const file of invalidRuntimeThemeFiles) {
+  const doc = readJson(file);
+  if (!doc) continue;
+  const invalidErrors = collectRuntimeThemeErrors(doc);
+  if (invalidErrors.length === 0) {
+    fail(`${path.relative(root, file)}: invalid runtime theme fixture unexpectedly passed validation`);
+    continue;
+  }
+  const expected = invalidRuntimeThemeExpectations.get(path.basename(file));
+  if (expected && !invalidErrors.some((error) => error.includes(expected))) {
+    fail(`${path.relative(root, file)}: expected validation error containing "${expected}"`);
+  }
+}
+
+const brandAssetExampleFiles = walk(path.join(root, "shared/examples/runtime-theme-brand-assets")).filter((file) => file.endsWith("brand-asset-color-extraction.example.json")).sort();
+for (const file of brandAssetExampleFiles) {
+  checkBrandAssetExample(readJson(file), file);
+}
+
 const decisionTreeFiles = walk(path.join(root, "shared/examples")).filter((file) => file.endsWith("component-decision-tree.example.json")).sort();
 for (const file of decisionTreeFiles) {
   checkDecisionTree(readJson(file), file);
@@ -379,4 +646,4 @@ if (errors.length) {
   process.exit(1);
 }
 
-console.log(`Design-system validation passed for ${seedFiles.length} seed file(s) and ${decisionTreeFiles.length} decision tree file(s).`);
+console.log(`Design-system validation passed for ${seedFiles.length} seed file(s), ${runtimeThemeFiles.length} runtime theme file(s), and ${decisionTreeFiles.length} decision tree file(s).`);

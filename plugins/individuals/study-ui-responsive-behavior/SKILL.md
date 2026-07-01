@@ -34,6 +34,8 @@ whether information and action priority survive the viewport change.
 - `references/_shared/templates/page-study.md`
 - `references/_shared/vocabulary/ui-terminology.json`
 - `references/_shared/examples/page-study.example.json`
+- `../../../shared/workflows/capture-manifest-consumption.md`
+- `../../../shared/templates/capture-manifest.example.json`
 
 ## Boundary
 
@@ -51,22 +53,28 @@ whether information and action priority survive the viewport change.
 5. Preserve observed, inferred, and missing-evidence categories in findings.
 6. Do not declare responsive behavior from one viewport or from cosmetic changes
    alone.
-7. Reference browser screenshot commands only for explicit live-page breakpoint
+7. Treat `capture-manifest.json` as the viewport evidence index when supplied:
+   compare successful captures by viewport and record missing or failed
+   breakpoint captures as explicit gaps.
+8. Reference browser screenshot commands only for explicit live-page breakpoint
    capture workflows; no subagent is needed by default.
 
 ## Method
 
-1. Create a viewport comparison table for desktop, tablet if available, and
+1. If `capture-manifest.json` is supplied, group captures and failed captures
+   by viewport before comparing behavior.
+2. Create a viewport comparison table for desktop, tablet if available, and
    mobile.
-2. Track navigation, first viewport content, primary CTA, section order, repeated
+3. Track navigation, first viewport content, primary CTA, section order, repeated
    grids, tables, forms, overlays, and sticky UI across each viewport.
-3. Record structural changes as preserved, reordered, collapsed, hidden, or
+4. Record structural changes as preserved, reordered, collapsed, hidden, or
    transformed.
-4. Check dense data, filters, form controls, support, recovery, and hidden
+5. Check dense data, filters, form controls, support, recovery, and hidden
    content for preserved access paths.
-5. Flag responsive equivalence risks where a user loses the ability to orient,
+6. Flag responsive equivalence risks where a user loses the ability to orient,
    compare, input, recover, or act.
-6. Mark absent captures or untested interactions as missing evidence.
+7. Mark absent captures, failed viewport captures, or untested interactions as
+   missing evidence.
 
 ## Anti-Patterns
 

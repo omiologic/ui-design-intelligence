@@ -35,6 +35,8 @@ trigger, dismissal, validation, or success behavior.
 - `references/_shared/templates/page-study.md`
 - `references/_shared/vocabulary/ui-terminology.json`
 - `references/_shared/examples/page-study.example.json`
+- `../../../shared/workflows/capture-manifest-consumption.md`
+- `../../../shared/templates/capture-manifest.example.json`
 
 ## Boundary
 
@@ -52,24 +54,31 @@ trigger, dismissal, validation, or success behavior.
 5. Preserve observed, inferred, and missing-evidence categories in findings.
 6. Do not claim timing, keyboard behavior, focus behavior, validation, success,
    or error recovery without supplied or live evidence.
-7. Reference browser commands only for explicit live-page interaction capture
+7. Treat `capture-manifest.json` as the interaction-state evidence index when
+   supplied: use captures with `interactionState` as observed state evidence and
+   failed state captures as missing trigger, target, feedback, or recovery
+   evidence.
+8. Reference browser commands only for explicit live-page interaction capture
    workflows; no subagent is needed by default.
 
 ## Method
 
-1. Scan for controls first: buttons, links, forms, tabs, accordions, filters,
+1. If `capture-manifest.json` is supplied, list captures with
+   `interactionState`, failed captures for requested states, and source gaps
+   before describing behavior.
+2. Scan for controls first: buttons, links, forms, tabs, accordions, filters,
    menus, overlays, sticky bars, and feedback messages.
-2. For each control, record trigger, target surface, visible state, dismissal or
+3. For each control, record trigger, target surface, visible state, dismissal or
    completion path, and feedback if observed.
-3. Capture before/after states when multiple captures or live evidence are
+4. Capture before/after states when multiple captures or live evidence are
    supplied.
-4. Distinguish visible state from implied behavior, such as "accordion likely
+5. Distinguish visible state from implied behavior, such as "accordion likely
    expands" when only a chevron is visible.
-5. Group interactions by task flow rather than by visual position when controls
+6. Group interactions by task flow rather than by visual position when controls
    work together.
-6. Flag missing states that matter for blueprint handoff, such as error, loading,
+7. Flag missing states that matter for blueprint handoff, such as error, loading,
    empty, success, or close behavior.
-7. Hand off interaction contracts to `interaction-patterns` and accessibility
+8. Hand off interaction contracts to `interaction-patterns` and accessibility
    risks to `study-ui-accessibility`.
 
 ## Anti-Patterns

@@ -1,0 +1,131 @@
+{
+  "version": "0.1.0",
+  "type": "runtimeDesignTheme",
+  "id": "unsupported-component-theme-reference",
+  "name": "Unsupported Component Theme Reference",
+  "source": {
+    "primarySeedRef": "shared/examples/design-system-seed.example.json",
+    "sourceRefs": [
+      {
+        "type": "designSystemSeed",
+        "ref": "shared/examples/design-system-seed.example.json",
+        "confidence": "medium"
+      }
+    ],
+    "confidence": "medium"
+  },
+  "brandAssets": {
+    "assets": [],
+    "usageNotes": []
+  },
+  "colorSystem": {
+    "primitives": {
+      "color.blue.base": {
+        "value": "#145C9E",
+        "provenance": {
+          "source": "generated",
+          "confidence": "medium"
+        }
+      },
+      "color.white.base": {
+        "value": "#FFFFFF",
+        "provenance": {
+          "source": "generated",
+          "confidence": "medium"
+        }
+      }
+    },
+    "ramps": {
+      "blue": {
+        "family": "blue",
+        "steps": {
+          "base": "color.blue.base"
+        },
+        "provenance": {
+          "source": "generated",
+          "confidence": "medium"
+        }
+      }
+    },
+    "semantic": {
+      "color.action.primary": {
+        "primitive": "color.blue.base",
+        "intent": "Primary action",
+        "usage": "Primary button",
+        "provenance": {
+          "source": "generated",
+          "confidence": "medium"
+        }
+      },
+      "color.text.inverse": {
+        "primitive": "color.white.base",
+        "intent": "Inverse text",
+        "usage": "Button text",
+        "provenance": {
+          "source": "generated",
+          "confidence": "medium"
+        }
+      }
+    },
+    "themeVariants": {
+      "light": {
+        "mode": "light",
+        "tokens": {
+          "color.action": "color.action.primary"
+        }
+      }
+    },
+    "contrastPairs": [
+      {
+        "foreground": "color.text.inverse",
+        "background": "color.action.primary",
+        "status": "requiresCheck",
+        "provenance": {
+          "source": "generated",
+          "confidence": "medium"
+        }
+      }
+    ]
+  },
+  "statusSystem": {},
+  "interactionStates": {},
+  "componentThemes": {
+    "button": {
+      "component": "button",
+      "variants": {
+        "button.primary": {
+          "background": "color.missing.token"
+        }
+      },
+      "states": [
+        "default"
+      ],
+      "provenance": {
+        "source": "generated",
+        "confidence": "medium"
+      }
+    }
+  },
+  "runtimeExports": {
+    "cssVariables": {},
+    "viewerGroups": [],
+    "previewSwatches": [],
+    "sampleBindings": []
+  },
+  "accessibility": {
+    "contrastPairs": [
+      {
+        "foreground": "color.text.inverse",
+        "background": "color.action.primary",
+        "status": "requiresCheck",
+        "provenance": {
+          "source": "generated",
+          "confidence": "medium"
+        }
+      }
+    ],
+    "requiredChecks": [],
+    "nonColorStateRequirements": []
+  },
+  "openQuestions": []
+}

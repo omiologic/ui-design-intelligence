@@ -1,0 +1,65 @@
+{
+  "designTokenTypes": [
+    {
+      "name": "color",
+      "definition": "Semantic color role such as action, text, surface, border, status, or focus."
+    },
+    {
+      "name": "typography",
+      "definition": "Readable text role such as display, heading, body, label, caption, or metadata."
+    },
+    {
+      "name": "spacing",
+      "definition": "Layout rhythm role for gaps, padding, margins, and section spacing."
+    },
+    {
+      "name": "size",
+      "definition": "Dimension role for controls, media, icons, hit areas, and bounded containers."
+    },
+    {
+      "name": "radius",
+      "definition": "Corner shape role for controls, cards, overlays, and media."
+    },
+    {
+      "name": "border",
+      "definition": "Stroke role for dividers, card outlines, inputs, and focus support."
+    },
+    {
+      "name": "shadow",
+      "definition": "Elevation role for surfaces and overlays when visual tooling needs it."
+    },
+    {
+      "name": "icon",
+      "definition": "Icon style role for size, stroke, corner treatment, and semantic usage."
+    },
+    {
+      "name": "motion",
+      "definition": "Behavioral transition role for prototype contracts; final easing and timing remain downstream."
+    },
+    {
+      "name": "zindex",
+      "definition": "Layering role for sticky regions, overlays, dialogs, popovers, and tooltips."
+    },
+    {
+      "name": "opacity",
+      "definition": "Transparency role for disabled states, overlays, scrims, muted content, and emphasis control."
+    },
+    {
+      "name": "breakpoint",
+      "definition": "Responsive threshold role for layout, content, and interaction behavior changes."
+    }
+  ],
+  "semanticNamePattern": "{category}.{role}.{purpose}",
+  "examples": [
+    "color.action.primary",
+    "color.text.secondary",
+    "color.surface.subtle",
+    "typography.heading.h1",
+    "spacing.section.default",
+    "size.touchTarget.minimum",
+    "radius.control.default",
+    "zindex.overlay.modal",
+    "opacity.disabled.default",
+    "breakpoint.layout.mobile"
+  ]
+}

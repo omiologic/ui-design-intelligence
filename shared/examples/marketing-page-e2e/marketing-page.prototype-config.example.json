@@ -7,9 +7,15 @@
     "sourceWireframeId": "ledgerpilot-marketing-wireframe",
     "sourceWireframeRef": "shared/examples/marketing-page-e2e/marketing-page.ui-blueprint.json",
     "sourceDesignSystemSeedId": "ledgerpilot-design-system-seed",
-    "notes": ["Prototype config references wireframe node IDs and does not duplicate layout hierarchy."]
+    "sourceRuntimeDesignThemeId": "ledgerpilot-runtime-theme",
+    "sourceRuntimeDesignThemeRef": "shared/examples/runtime-theme/ledgerpilot.runtime-design-theme.example.json",
+    "notes": [
+      "Prototype config references wireframe node IDs and does not duplicate layout hierarchy.",
+      "Runtime theme reference supplies viewer-ready component state and status styling tokens."
+    ]
   },
   "designSystemSeedRef": "ledgerpilot-design-system-seed",
+  "runtimeDesignThemeRef": "ledgerpilot-runtime-theme",
   "screens": [
     {
       "id": "marketing-screen",

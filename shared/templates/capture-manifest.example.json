@@ -1,0 +1,98 @@
+{
+  "schemaVersion": "0.1.0",
+  "projectBrand": "project-brand",
+  "page": "home",
+  "source": {
+    "type": "url",
+    "url": "https://example.com/",
+    "capturedAt": "2026-07-01T00:00:00.000Z"
+  },
+  "config": {
+    "artifactRoot": "artifacts",
+    "pageDir": "artifacts/project-brand/home",
+    "screenshotDir": "artifacts/project-brand/home/.screenshots",
+    "motionScreenshotDir": "artifacts/project-brand/home/.motion_screenshots",
+    "failedCaptureDir": "artifacts/project-brand/home/.screenshots/failed",
+    "readySelectors": ["main"],
+    "loaderSelectors": [".loader", "[data-loading='true']", "[aria-busy='true']"],
+    "maxWaitMs": 15000,
+    "idleWaitMs": 1500,
+    "retryCount": 3,
+    "rejectBlankFrames": true,
+    "executionContract": "plugins/individuals/study-ui-capture/references/capture-execution-contract.md",
+    "failureReasons": [
+      "timeout",
+      "loader-still-visible",
+      "target-not-found",
+      "blank-frame-rejected",
+      "network-blocked",
+      "auth-blocked",
+      "unsupported-runtime",
+      "capture-tool-unavailable",
+      "viewport-unavailable",
+      "interaction-state-unavailable",
+      "motion-state-unavailable"
+    ]
+  },
+  "captures": [
+    {
+      "id": "home-desktop-hero",
+      "type": "screenshot",
+      "status": "success",
+      "sourceUrl": "https://example.com/",
+      "viewport": {
+        "name": "desktop",
+        "width": 1440,
+        "height": 1200
+      },
+      "path": "artifacts/project-brand/home/.screenshots/home_desktop_hero.jpeg",
+      "captureReason": "page hero evidence",
+      "readyState": "content-ready",
+      "capturedAt": "2026-07-01T00:00:00.000Z"
+    },
+    {
+      "id": "home-frame-0001",
+      "type": "motion-frame",
+      "status": "success",
+      "sourceUrl": "https://example.com/",
+      "viewport": {
+        "name": "desktop",
+        "width": 1440,
+        "height": 1200
+      },
+      "path": "artifacts/project-brand/home/.motion_screenshots/home_frame_0001.jpeg",
+      "captureReason": "scroll motion sample",
+      "scrollProgress": 0,
+      "interactionState": "default",
+      "readyState": "content-ready",
+      "capturedAt": "2026-07-01T00:00:00.000Z"
+    }
+  ],
+  "failedCaptures": [
+    {
+      "id": "home-frame-0002",
+      "type": "motion-frame",
+      "status": "failed",
+      "sourceUrl": "https://example.com/",
+      "viewport": {
+        "name": "desktop",
+        "width": 1440,
+        "height": 1200
+      },
+      "attemptedPath": "artifacts/project-brand/home/.motion_screenshots/home_frame_0002.jpeg",
+      "diagnosticPath": "artifacts/project-brand/home/.screenshots/failed/home_frame_0002.jpeg",
+      "failureReason": "blank-frame-rejected",
+      "readyState": "content-ready",
+      "capturedAt": "2026-07-01T00:00:00.000Z"
+    }
+  ],
+  "sourceGaps": [
+    "Mobile navigation open state was not captured."
+  ],
+  "handoffs": [
+    {
+      "skill": "study-ui-motion",
+      "reason": "Scroll-bound visual changes were observed."
+    }
+  ]
+}

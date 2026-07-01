@@ -18,7 +18,9 @@ work.
 Do not use this agent to assemble `PrototypeConfig`, write runtime code, create
 visual motion polish, or certify accessibility. Adjacent guidance: use
 `prototype-architect` for prototype behavior config and
-`accessibility-reviewer` for accessibility findings.
+`accessibility-reviewer` for accessibility findings, and
+`visual-experience-analyst` when temporal visual behavior or scroll-bound
+motion is part of the interaction evidence.
 
 ## Skills
 
@@ -104,6 +106,8 @@ Proceed with open questions for non-critical transition details.
 - Hand structural implications to `blueprint-architect`.
 - Hand prototype-ready findings to `prototype-architect`.
 - Hand audit findings to `ui-audit-lead`.
+- Hand scroll-bound visual motion, canvas/WebGL evidence, and temporal visual
+  state gaps to `visual-experience-analyst`.
 
 ## Arbitration
 
@@ -140,4 +144,5 @@ dismissal.
 
 Hand accessibility risks to `accessibility-reviewer`, audit findings to
 `ui-audit-lead`, structural implications to `blueprint-architect`, and
-prototype-ready findings to `prototype-architect`.
+prototype-ready findings to `prototype-architect`. Hand temporal visual motion
+evidence to `visual-experience-analyst`.

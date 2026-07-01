@@ -24,7 +24,9 @@ work does not treat guesses as certified design tokens.
 - `references/_shared/design-philosophy/design-system/design-system-anti-slop.md`
 - `references/_shared/design-philosophy/design-system/skill-doctrine.md`
 - `references/_shared/design-system/accessibility-token-guidelines.md`
+- `references/_shared/design-system/runtime-palette-status-state-modeling.md`
 - `references/_shared/schemas/design-system-seed.schema.json`
+- `references/_shared/schemas/runtime-design-theme.schema.json`
 - `references/_shared/schemas/palette-foundation.schema.json`
 - `references/_shared/vocabulary/design-token-types.json`
 - `references/_shared/vocabulary/accessibility-rules.json`
@@ -48,6 +50,9 @@ work does not treat guesses as certified design tokens.
 6. Use `{category}.{role}.{purpose}` names such as
    `color.action.primary`, never value names such as `blueButton`.
 7. Every token must have a role and usage; delete orphan tokens.
+8. When generating runtime theme data, include primitives, ramps, semantic
+   roles, theme variants, contrast pairs, required status roles, interaction
+   state overrides, and non-color cues.
 
 ## Boundary
 

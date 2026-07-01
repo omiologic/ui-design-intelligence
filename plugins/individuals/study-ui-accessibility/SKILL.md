@@ -36,6 +36,8 @@ questions as unverified.
 - `references/_shared/templates/page-study.md`
 - `references/_shared/vocabulary/ui-terminology.json`
 - `references/_shared/examples/page-study.example.json`
+- `../../../shared/workflows/capture-manifest-consumption.md`
+- `../../../shared/templates/capture-manifest.example.json`
 
 ## Boundary
 
@@ -54,23 +56,29 @@ questions as unverified.
    meaningful finding.
 6. Reference browser, keyboard, DOM, or automated validation only when that
    evidence is available or when recommending future evidence collection.
-7. Do not add a subagent by default; use a separate evidence collection pass only
+7. Treat `capture-manifest.json` as an evidence boundary when supplied: use
+   failed focus, keyboard, overlay, mobile, blocked, and reduced-motion captures
+   as unverified gaps rather than confirmed accessibility failures.
+8. Do not add a subagent by default; use a separate evidence collection pass only
    when live-page testing is explicitly in scope.
 
 ## Method
 
-1. Scan the visible structure for landmarks, heading hierarchy, navigation cues,
+1. If `capture-manifest.json` is supplied, identify which captures support
+   accessibility observations and which failed captures/source gaps limit
+   focus, keyboard, overlay, responsive, or reduced-motion conclusions.
+2. Scan the visible structure for landmarks, heading hierarchy, navigation cues,
    form labels, helper/error text, overlay controls, and sticky UI.
-2. Check observable signals for labels, names, landmarks, heading order, form
+3. Check observable signals for labels, names, landmarks, heading order, form
    recovery, focus risks, keyboard-sensitive components, and responsive access.
-3. Identify risks visible from the capture, such as unlabeled icon-only controls,
+4. Identify risks visible from the capture, such as unlabeled icon-only controls,
    missing form helper/error areas, ambiguous focus return, or hidden mobile
    actions.
-4. Separate confirmed visual-structure risks from implementation questions such
+5. Separate confirmed visual-structure risks from implementation questions such
    as DOM order, ARIA, focus trap, and keyboard handling.
-5. Tie each finding to visible evidence and, when possible, a section or
+6. Tie each finding to visible evidence and, when possible, a section or
    component label.
-6. Hand off severe or unverified issues to audit or blueprint review with the
+7. Hand off severe or unverified issues to audit or blueprint review with the
    exact missing evidence.
 
 ## Anti-Patterns

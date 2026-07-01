@@ -25,6 +25,9 @@ A complete design-system handoff should identify the available artifacts:
 - Source study, screenshot notes, URL capture, style reference, or brand input.
 - Optional retrieval results or knowledge records.
 - `DesignSystemSeed` JSON.
+- Optional `RuntimeDesignTheme` JSON when a prototype viewer, editor, or future
+  runtime needs apply-ready palette, state, status, component theme, or export
+  groups.
 - Optional human-readable design-system seed Markdown.
 - Optional design spec or design-spec recipe output.
 - Optional style application, blend, or patch.
@@ -114,6 +117,7 @@ Each artifact entry should include:
 For design-system handoff, common `artifactType` and `schemaRef` pairs include:
 
 - `designSystemSeed` -> `shared/schemas/design-system-seed.schema.json`
+- `runtimeDesignTheme` -> `shared/schemas/runtime-design-theme.schema.json`
 - `studyOutput` -> `shared/schemas/study-output.schema.json`
 - `wireframeConfig` -> `shared/schemas/wireframe-config.schema.json`
 - `prototypeConfig` -> `shared/schemas/prototype-config.schema.json`

@@ -1,0 +1,114 @@
+{
+  "componentVariants": [
+    {
+      "name": "button.primary",
+      "component": "button",
+      "definition": "Primary conversion or completion action in the current context."
+    },
+    {
+      "name": "button.secondary",
+      "component": "button",
+      "definition": "Secondary action placed near, but lower in priority than, the primary action."
+    },
+    {
+      "name": "button.ghost",
+      "component": "button",
+      "definition": "Low-emphasis utility or navigation action."
+    },
+    {
+      "name": "button.destructive",
+      "component": "button",
+      "definition": "Action that deletes, cancels, or permanently changes user data."
+    },
+    {
+      "name": "card.feature",
+      "component": "card",
+      "definition": "Card explaining one benefit, capability, or reason to believe."
+    },
+    {
+      "name": "card.service",
+      "component": "card",
+      "definition": "Card presenting a service overview and path to learn or book."
+    },
+    {
+      "name": "card.product",
+      "component": "card",
+      "definition": "Card showing a product preview and path to details or purchase."
+    },
+    {
+      "name": "card.testimonial",
+      "component": "card",
+      "definition": "Card carrying social proof, quote, or attribution."
+    },
+    {
+      "name": "input.text",
+      "component": "input",
+      "definition": "Single-line text input with label, helper, and error anatomy."
+    },
+    {
+      "name": "input.search",
+      "component": "input",
+      "definition": "Search input with query entry, optional clear control, and result feedback."
+    },
+    {
+      "name": "table.data",
+      "component": "table",
+      "definition": "Structured data table with caption, columns, rows, and optional controls."
+    },
+    {
+      "name": "dialog.confirmation",
+      "component": "dialog",
+      "definition": "Dialog asking the user to confirm or cancel a focused decision."
+    },
+    {
+      "name": "navigation.global",
+      "component": "navigation",
+      "definition": "Primary site or product navigation landmark."
+    },
+    {
+      "name": "productGrid.browse",
+      "component": "productGrid",
+      "definition": "Product listing grid for browsing, filtering, sorting, and selection."
+    },
+    {
+      "name": "form.multiStep",
+      "component": "form",
+      "definition": "Form flow split into multiple steps with validation and recovery."
+    },
+    {
+      "name": "tabs.standard",
+      "component": "tabs",
+      "definition": "Mutually exclusive tab panels controlled by a tab list."
+    },
+    {
+      "name": "accordion.faq",
+      "component": "accordion",
+      "definition": "Disclosure list for frequently asked questions or supporting details."
+    },
+    {
+      "name": "alert.error",
+      "component": "alert",
+      "definition": "Inline or page-level alert for blocking or recoverable errors."
+    },
+    {
+      "name": "toast.success",
+      "component": "toast",
+      "definition": "Transient success message after a completed action."
+    },
+    {
+      "name": "emptyState.noResults",
+      "component": "emptyState",
+      "definition": "Empty state for searches or filtered lists with no matching results."
+    },
+    {
+      "name": "header.global",
+      "component": "header",
+      "definition": "Primary site or product header."
+    },
+    {
+      "name": "footer.global",
+      "component": "footer",
+      "definition": "Primary footer with recovery navigation, contact, and legal links."
+    }
+  ]
+}
