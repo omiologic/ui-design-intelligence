@@ -7,14 +7,14 @@
     "source": "generated",
     "confidence": "medium",
     "sourceRefs": [
-      "shared/examples/product-page-e2e/product-page.content-model.example.json",
-      "shared/examples/product-page-e2e/product-page.prototype-config.example.json"
+      ".convention/examples/product-page-e2e/product-page.content-model.example.json",
+      ".convention/examples/product-page-e2e/product-page.prototype-config.example.json"
     ]
   },
   "sourceContentModelId": "northstar-product-page-content",
-  "sourceContentModelRef": "shared/examples/product-page-e2e/product-page.content-model.example.json",
+  "sourceContentModelRef": ".convention/examples/product-page-e2e/product-page.content-model.example.json",
   "sourcePrototypeConfigId": "northstar-product-page-prototype",
-  "sourcePrototypeConfigRef": "shared/examples/product-page-e2e/product-page.prototype-config.example.json",
+  "sourcePrototypeConfigRef": ".convention/examples/product-page-e2e/product-page.prototype-config.example.json",
   "screens": [
     {
       "screenId": "product-screen",

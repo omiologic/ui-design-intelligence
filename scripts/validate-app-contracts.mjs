@@ -4,7 +4,7 @@ import path from "node:path";
 import { validateJsonSchema } from "./lib/json-schema-validator.mjs";
 
 const root = process.cwd();
-const fixtureDir = path.join(root, "shared/examples/app-handoff");
+const fixtureDir = path.join(root, ".convention/examples/app-handoff");
 const errors = [];
 
 const schemaByType = {
@@ -107,7 +107,7 @@ function npmScriptFromCommand(command) {
 
 function collectFixtureFiles() {
   if (!fs.existsSync(fixtureDir)) {
-    fail("shared/examples/app-handoff: fixture directory is missing");
+    fail(".convention/examples/app-handoff: fixture directory is missing");
     return [];
   }
   return fs
@@ -131,7 +131,7 @@ for (const file of fixtureFiles) {
   if (!schemaName) {
     fail(`${rel(file)}: unknown app contract type "${doc.type}"`);
   } else {
-    validateAgainstSchema(doc, path.join("shared/schemas", schemaName), file, doc.type);
+    validateAgainstSchema(doc, path.join(".convention/schemas", schemaName), file, doc.type);
   }
 
   if (typeof doc.id === "string") {
@@ -230,12 +230,12 @@ const requiredTypes = [
 ];
 
 for (const type of requiredTypes) {
-  if (!fixtureByType.has(type)) fail(`shared/examples/app-handoff: missing ${type} fixture`);
+  if (!fixtureByType.has(type)) fail(`.convention/examples/app-handoff: missing ${type} fixture`);
 }
 
 const runKinds = new Set((fixtureByType.get("appRunRecord") ?? []).map(({ doc }) => doc.runKind));
 for (const kind of ["creation", "review"]) {
-  if (!runKinds.has(kind)) fail(`shared/examples/app-handoff: missing ${kind} appRunRecord fixture`);
+  if (!runKinds.has(kind)) fail(`.convention/examples/app-handoff: missing ${kind} appRunRecord fixture`);
 }
 
 if (errors.length) {

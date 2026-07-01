@@ -42,9 +42,9 @@ generation to solve problems that belong in the style artifact.
 ## References
 
 - `references/style-application-audit.md`
-- `../../../shared/schemas/style-application.schema.json`
-- `../../../shared/schemas/style-patch.schema.json`
-- `../../../shared/schemas/style-blend.schema.json`
+- `../../../.convention/schemas/style-application.schema.json`
+- `../../../.convention/schemas/style-patch.schema.json`
+- `../../../.convention/schemas/style-blend.schema.json`
 
 ## Rules
 

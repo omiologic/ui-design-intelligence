@@ -3,7 +3,7 @@ import fs from "node:fs";
 import path from "node:path";
 
 const root = process.cwd();
-const recipesDir = path.join(root, "shared", "recipes");
+const recipesDir = path.join(root, ".convention", "recipes");
 const errors = [];
 
 const expectedRecipes = [
@@ -47,12 +47,12 @@ function sectionBody(text, section) {
 }
 
 if (!fs.existsSync(recipesDir)) {
-  fail("shared/recipes/: directory does not exist");
+  fail(".convention/recipes/: directory does not exist");
 } else {
   for (const recipeName of expectedRecipes) {
     const recipePath = path.join(recipesDir, recipeName);
     if (!fs.existsSync(recipePath)) {
-      fail(`shared/recipes/${recipeName}: file does not exist`);
+      fail(`.convention/recipes/${recipeName}: file does not exist`);
       continue;
     }
 

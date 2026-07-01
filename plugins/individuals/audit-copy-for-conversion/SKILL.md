@@ -34,16 +34,16 @@ clear next step feel understandable and low-friction.
 
 ## References
 
-- `../../../shared/content/claim-risk-guidelines.md`
-- `../../../shared/content/cta-patterns.md`
-- `../../../shared/content/copy-quality-checklist.md`
-- `../../../shared/content/laws-of-copywriting.md`
-- `../../../shared/content/objection-handling-reference.md`
-- `../../../shared/content/page-message-architecture.md`
-- `../../../shared/content/proof-and-credibility-patterns.md`
+- `../../../.convention/content/claim-risk-guidelines.md`
+- `../../../.convention/content/cta-patterns.md`
+- `../../../.convention/content/copy-quality-checklist.md`
+- `../../../.convention/content/laws-of-copywriting.md`
+- `../../../.convention/content/objection-handling-reference.md`
+- `../../../.convention/content/page-message-architecture.md`
+- `../../../.convention/content/proof-and-credibility-patterns.md`
 - `../../../knowledge/schemas/copy-pattern.schema.json`
-- `../../../shared/schemas/content-model.schema.json`
-- `../../../shared/schemas/user-journey-map.schema.json`
+- `../../../.convention/schemas/content-model.schema.json`
+- `../../../.convention/schemas/user-journey-map.schema.json`
 
 ## Rules
 

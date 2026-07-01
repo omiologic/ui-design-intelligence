@@ -43,10 +43,10 @@ outside the artifact unless a later implementation package owns them.
 ## References
 
 - `references/prototype-interaction-audit.md`
-- `../../../shared/schemas/prototype-config.schema.json`
-- `../../../shared/schemas/interaction-flow.schema.json`
-- `../../../shared/schemas/component-state-model.schema.json`
-- `../../../shared/vocabulary/interaction-states.json`
+- `../../../.convention/schemas/prototype-config.schema.json`
+- `../../../.convention/schemas/interaction-flow.schema.json`
+- `../../../.convention/schemas/component-state-model.schema.json`
+- `../../../.convention/vocabulary/interaction-states.json`
 
 ## Rules
 

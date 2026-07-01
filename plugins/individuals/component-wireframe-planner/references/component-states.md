@@ -1,6 +1,6 @@
 # Component States
 
-Reference `_shared/vocabulary/interaction-states.json` for canonical states.
+Reference `_.convention/vocabulary/interaction-states.json` for canonical states.
 
 ## Decision Heuristics
 

@@ -2,8 +2,8 @@
 
 Use this reference to decide which component states must be represented in a
 `DesignSystemSeed`, `ComponentStateModel`, prototype plan, design spec, or
-review. It aligns with `shared/vocabulary/interaction-states.json` and
-`shared/schemas/component-state-model.schema.json`.
+review. It aligns with `.convention/vocabulary/interaction-states.json` and
+`.convention/schemas/component-state-model.schema.json`.
 
 State guidance is a shared contract between design-system and prototype work:
 
@@ -14,7 +14,7 @@ State guidance is a shared contract between design-system and prototype work:
 
 ## State Vocabulary
 
-Use canonical state names from `shared/vocabulary/interaction-states.json`.
+Use canonical state names from `.convention/vocabulary/interaction-states.json`.
 Do not invent near-duplicates such as `pressed`, `done`, `invalid`,
 `processing`, or `expandedOpen` when `active`, `success`, `error`, `loading`,
 or `expanded` fits.

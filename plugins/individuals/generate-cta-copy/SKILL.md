@@ -33,11 +33,11 @@ manipulate, or ask for commitment before the journey has earned it.
 
 ## References
 
-- `../../../shared/content/claim-risk-guidelines.md`
-- `../../../shared/content/cta-patterns.md`
-- `../../../shared/content/laws-of-copywriting.md`
+- `../../../.convention/content/claim-risk-guidelines.md`
+- `../../../.convention/content/cta-patterns.md`
+- `../../../.convention/content/laws-of-copywriting.md`
 - `../../../knowledge/schemas/copy-pattern.schema.json`
-- `../../../shared/schemas/content-model.schema.json`
+- `../../../.convention/schemas/content-model.schema.json`
 
 ## Rules
 

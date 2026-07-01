@@ -1,6 +1,6 @@
 # Controlled Vocabulary
 
-The canonical machine-readable vocabulary lives in `_shared/vocabulary/`.
+The canonical machine-readable vocabulary lives in `_.convention/vocabulary/`.
 
 ## Decision Heuristics
 

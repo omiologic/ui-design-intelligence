@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "register": "conversion",
   "brief": "Plan a dental practice homepage for new patients who need to understand the offer, trust the practice, and book an appointment.",
-  "referenceBlueprint": "shared/examples/dental-homepage.ui-blueprint.json",
-  "rubric": "shared/quality/blueprint-quality-rubric.md",
+  "referenceBlueprint": ".convention/examples/dental-homepage.ui-blueprint.json",
+  "rubric": ".convention/quality/blueprint-quality-rubric.md",
   "evaluationMode": "checklist",
   "minimumStrongScore": 14,
   "criteria": [

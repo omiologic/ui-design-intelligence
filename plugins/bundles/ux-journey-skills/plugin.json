@@ -31,11 +31,11 @@
   ],
   "shared": [
     "docs/interop/content-journey-layer-architecture.md",
-    "shared/content/audience-intent-reference.md",
-    "shared/content/objection-handling-reference.md",
-    "shared/design-system/component-anatomy-reference.md",
-    "shared/schemas/user-journey-map.schema.json",
-    "shared/examples/product-page-e2e/product-page.user-journey-map.example.json",
+    ".convention/content/audience-intent-reference.md",
+    ".convention/content/objection-handling-reference.md",
+    ".convention/design-system/component-anatomy-reference.md",
+    ".convention/schemas/user-journey-map.schema.json",
+    ".convention/examples/product-page-e2e/product-page.user-journey-map.example.json",
     "knowledge/schemas/journey-pattern.schema.json",
     "knowledge/schemas/objection-pattern.schema.json"
   ]

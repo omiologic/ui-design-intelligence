@@ -47,11 +47,11 @@ visual request.
 ## References
 
 - `references/style-to-design-system-seed.md`
-- `../../../shared/schemas/style-reference.schema.json`
-- `../../../shared/schemas/style-application.schema.json`
-- `../../../shared/schemas/style-patch.schema.json`
-- `../../../shared/schemas/style-blend.schema.json`
-- `../../../shared/schemas/design-system-seed.schema.json`
+- `../../../.convention/schemas/style-reference.schema.json`
+- `../../../.convention/schemas/style-application.schema.json`
+- `../../../.convention/schemas/style-patch.schema.json`
+- `../../../.convention/schemas/style-blend.schema.json`
+- `../../../.convention/schemas/design-system-seed.schema.json`
 - `references/_shared/design-system/visual-style-calibration.md`
 
 ## Rules

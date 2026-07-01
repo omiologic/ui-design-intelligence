@@ -62,9 +62,9 @@
       "sourceId": "northstar-product-page-source",
       "studyId": "northstar-product-page-study",
       "evidenceRefs": [
-        "shared/examples/product-page-e2e/brief.md",
-        "shared/examples/product-page-e2e/product-page.study.example.json",
-        "shared/examples/product-page-e2e/product-page.ui-blueprint.json"
+        ".convention/examples/product-page-e2e/brief.md",
+        ".convention/examples/product-page-e2e/product-page.study.example.json",
+        ".convention/examples/product-page-e2e/product-page.ui-blueprint.json"
       ]
     }
   ],

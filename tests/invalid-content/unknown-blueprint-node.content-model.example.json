@@ -7,13 +7,13 @@
     "source": "generated",
     "confidence": "medium",
     "sourceRefs": [
-      "shared/examples/product-page-e2e/product-page.ui-blueprint.json",
-      "shared/examples/product-page-e2e/product-page.user-journey-map.example.json"
+      ".convention/examples/product-page-e2e/product-page.ui-blueprint.json",
+      ".convention/examples/product-page-e2e/product-page.user-journey-map.example.json"
     ]
   },
   "sourceBlueprintId": "northstar-product-page-wireframe",
-  "sourceBlueprintRef": "shared/examples/product-page-e2e/product-page.ui-blueprint.json",
-  "journeyMapRef": "shared/examples/product-page-e2e/product-page.user-journey-map.example.json",
+  "sourceBlueprintRef": ".convention/examples/product-page-e2e/product-page.ui-blueprint.json",
+  "journeyMapRef": ".convention/examples/product-page-e2e/product-page.user-journey-map.example.json",
   "audience": {
     "primary": "Outdoor shoppers",
     "intent": "Choose a product"

@@ -18,10 +18,10 @@ bundle installation.
 
 Use shared assets instead of local vocabulary forks:
 
-- `shared/schemas/` for output contracts
-- `shared/vocabulary/` for controlled terms
-- `shared/templates/` for reusable output shapes
-- `shared/examples/` and focused test fixtures for examples
+- `.convention/schemas/` for output contracts
+- `.convention/vocabulary/` for controlled terms
+- `.convention/templates/` for reusable output shapes
+- `.convention/examples/` and focused test fixtures for examples
 
 ## Canonical SKILL.md Template
 
@@ -140,7 +140,7 @@ These skills must preserve uncertainty instead of inventing exact tokens,
 fonts, colors, or component rules from weak evidence.
 
 Sprint 004 design-system skill migration should use
-`shared/design-philosophy/design-system/skill-doctrine.md` as the operational
+`.convention/design-philosophy/design-system/skill-doctrine.md` as the operational
 reference. That doctrine makes seed ownership, semantic roles, provenance,
 confidence, accessibility constraints, consistency locks, open questions, and
 anti-slop failures actionable for skill bodies, examples, audits, and later
@@ -203,7 +203,7 @@ Agent rosters are machine-checkable:
 - Optional roster entries must exist in the repository; they represent
   aggregate-bundle or cross-bundle handoff capabilities.
 - `## Inputs` and `## Outputs` should link to schemas, templates, or examples
-  using repository paths such as `shared/schemas/study-output.schema.json` or
+  using repository paths such as `.convention/schemas/study-output.schema.json` or
   mark intentionally prose-only outputs with `Prose-only:`.
 
 ## Validation Gates
@@ -235,7 +235,7 @@ artifact offline without calling any model.
 
 Behavioral fixtures live in `tests/behavioral/` and use the filename pattern
 `{skill-name}.behavioral-test.json`. They are defined by
-`shared/schemas/skill-behavioral-test.schema.json`.
+`.convention/schemas/skill-behavioral-test.schema.json`.
 
 Required fields:
 
@@ -273,7 +273,7 @@ Each signal requires:
 2. Set `skill` to the exact kebab-case skill directory name.
 3. Write a `brief` that represents a realistic scenario a user would hand to the
    skill.
-4. Choose a `referenceExample` from `shared/examples/` that a correct skill
+4. Choose a `referenceExample` from `.convention/examples/` that a correct skill
    output would match structurally, or use an artifact from `tests/`.
 5. Add at least three mechanically checkable signals (`nodeTypePresent`,
    `fieldPresent`, `fieldCountAtLeast`, etc.) plus one declaration-only signal
@@ -389,7 +389,7 @@ npm run package:fast
 
 Behavioral fixtures live in `tests/behavioral/` and use the extension
 `.behavioral-test.json`. Each fixture is validated against
-`shared/schemas/skill-behavioral-test.schema.json`.
+`.convention/schemas/skill-behavioral-test.schema.json`.
 
 ### What a behavioral fixture is
 
@@ -412,7 +412,7 @@ their signals document intent.
 - `requiredSignals` — array of signal objects, each with `description` and
   `check`, plus check-specific fields.
 - `referenceExample` (optional) — repository-relative path to an existing
-  artifact in `shared/examples/` or `tests/quality-golden-set/`.
+  artifact in `.convention/examples/` or `tests/quality-golden-set/`.
 
 ### Signal check types
 
@@ -437,7 +437,7 @@ their signals document intent.
    `fieldMatchesValue` to assert top-level artifact shape; use `nodeTypePresent`
    for blueprint artifacts; use `allArrayItemsHaveField` to assert evidence
    discipline on arrays.
-5. If a reference example already exists in `shared/examples/`, set
+5. If a reference example already exists in `.convention/examples/`, set
    `referenceExample` to its repository-relative path so the validator confirms
    signals hold against it.
 6. Run `npm run validate:behavioral-tests` to confirm the fixture passes.

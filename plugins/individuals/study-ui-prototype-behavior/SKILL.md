@@ -44,9 +44,9 @@ route, validation, focus, or interaction change is actually involved.
 ## References
 
 - `references/prototype-behavior-study.md`
-- `../../../shared/schemas/study-output.schema.json`
-- `../../../shared/schemas/prototype-config.schema.json`
-- `../../../shared/vocabulary/interaction-states.json`
+- `../../../.convention/schemas/study-output.schema.json`
+- `../../../.convention/schemas/prototype-config.schema.json`
+- `../../../.convention/vocabulary/interaction-states.json`
 
 ## Rules
 

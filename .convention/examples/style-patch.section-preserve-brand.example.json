@@ -1,0 +1,50 @@
+{
+  "version": "0.1.0",
+  "type": "stylePatch",
+  "styleId": "bento-box",
+  "target": {
+    "scope": "section",
+    "id": "services-overview",
+    "artifactType": "section",
+    "artifactRef": ".convention/examples/dental-homepage.ui-blueprint.json#services-overview"
+  },
+  "intensity": "medium",
+  "changes": [
+    {
+      "operation": "replace",
+      "path": "section.layout",
+      "value": "modular service tile grid with one emphasized primary service tile",
+      "reason": "Apply bento-box hierarchy locally while preserving the existing page and brand system."
+    },
+    {
+      "operation": "replace",
+      "path": "components.cards.variants.card.service.layout",
+      "value": "varied tile sizes with concise heading, short benefit copy, icon, and one action",
+      "reason": "Translate bento-box component mapping into service card rules."
+    },
+    {
+      "operation": "annotate",
+      "path": "prototype.hoverStates",
+      "value": "Use subtle tile lift or border emphasis without resizing tiles.",
+      "reason": "Carry bento-box prototype mapping into behavior vocabulary without runtime code."
+    }
+  ],
+  "preserve": [
+    "brand.name",
+    "palette.colors.color.action.primary",
+    "typography.fontFamilies.body",
+    "section.primaryCta"
+  ],
+  "avoid": [
+    "nested cards",
+    "equal visual weight for every service",
+    "hover states that resize tiles"
+  ],
+  "rationale": "Use bento-box as a local section treatment while preserving brand palette, body typography, and appointment conversion hierarchy.",
+  "source": {
+    "type": "styleApplication",
+    "description": "Example patch generated from a section-scoped bento-box style application.",
+    "artifactRef": ".convention/examples/style-application.section.example.json",
+    "licenseNotes": "No external prose included."
+  }
+}

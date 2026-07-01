@@ -12,8 +12,8 @@ consume:
 
 | File family | Stable input for | Notes |
 | --- | --- | --- |
-| `shared/schemas/app-*.schema.json` | local apps, MCP tools, hosted viewers, package browsers | The app-facing schema set. Consumers should validate wrapper records before trusting them. |
-| `shared/examples/app-handoff/*.example.json` | fixture readers, validation tests, app prototypes | Representative examples only. They are safe committed fixtures, not user project state. |
+| `.convention/schemas/app-*.schema.json` | local apps, MCP tools, hosted viewers, package browsers | The app-facing schema set. Consumers should validate wrapper records before trusting them. |
+| `.convention/examples/app-handoff/*.example.json` | fixture readers, validation tests, app prototypes | Representative examples only. They are safe committed fixtures, not user project state. |
 | `appQueryContext` records | local apps, MCP tools, retrieval adapters | Captures request intent, target artifact type, scope, filters, assumptions, and consumer surface. |
 | `appRetrievalResults` records | apps, MCP tools, dashboards | Captures ranked matches and safe `storageRef` pointers. It is not a vector database response format. |
 | `appRunRecord` records | dashboards, review tools, hosted viewers | Captures creation, review, retrieval, validation, or package run status and outputs. |
@@ -50,7 +50,7 @@ the internal source stable by accident.
 Local desktop or browser apps may:
 
 - load app wrapper records from a user-selected project directory
-- validate wrappers against `shared/schemas/app-*.schema.json`
+- validate wrappers against `.convention/schemas/app-*.schema.json`
 - follow repository-relative `path` and `schemaRef` references
 - show run status, validation results, warnings, findings, package contents, and
   referenced artifact summaries

@@ -37,10 +37,10 @@ failed frame in the configured failed-capture directory.
 
 - `references/capture-evidence-contract.md`
 - `references/capture-execution-contract.md`
-- `../../../shared/workflows/study-capture-motion-routing.md`
-- `../../../shared/workflows/visual-experience-agent-routing.md`
-- `../../../shared/templates/ui-design-intelligence.config.yml`
-- `../../../shared/templates/capture-manifest.example.json`
+- `../../../.convention/workflows/study-capture-motion-routing.md`
+- `../../../.convention/workflows/visual-experience-agent-routing.md`
+- `../../../.convention/templates/ui-design-intelligence.config.yml`
+- `../../../.convention/templates/capture-manifest.example.json`
 
 ## Boundary
 
@@ -87,9 +87,9 @@ failed frame in the configured failed-capture directory.
 
 1. Identify the requested scope: site, page, section, component, element, flow,
    state, viewport, or scroll position.
-2. Use `../../../shared/workflows/study-capture-motion-routing.md` when capture
+2. Use `../../../.convention/workflows/study-capture-motion-routing.md` when capture
    is part of a `study-page`, `study-site`, or natural-language Codex request.
-   Use `../../../shared/workflows/visual-experience-agent-routing.md` when
+   Use `../../../.convention/workflows/visual-experience-agent-routing.md` when
    role-level routing or handoff ownership is needed without runtime subagents.
 3. Resolve the artifact root, project slug, page slug, screenshot directory,
    motion screenshot directory, failed-capture directory, and manifest path.

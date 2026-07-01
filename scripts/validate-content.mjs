@@ -8,11 +8,11 @@ const explicitFiles = process.argv.slice(2).filter((arg) => !arg.startsWith("--"
 const errors = [];
 
 const sharedSchemaByType = {
-  userJourneyMap: "shared/schemas/user-journey-map.schema.json",
-  contentModel: "shared/schemas/content-model.schema.json",
-  prototypeContent: "shared/schemas/prototype-content.schema.json",
-  brandVoice: "shared/schemas/brand-voice.schema.json",
-  toneOfVoiceReference: "shared/schemas/tone-of-voice-reference.schema.json"
+  userJourneyMap: ".convention/schemas/user-journey-map.schema.json",
+  contentModel: ".convention/schemas/content-model.schema.json",
+  prototypeContent: ".convention/schemas/prototype-content.schema.json",
+  brandVoice: ".convention/schemas/brand-voice.schema.json",
+  toneOfVoiceReference: ".convention/schemas/tone-of-voice-reference.schema.json"
 };
 
 const knowledgeSchemaByType = {
@@ -80,7 +80,7 @@ function walk(dir) {
 
 function isContentExample(file) {
   const normalized = rel(file).split(path.sep).join("/");
-  return normalized.startsWith("shared/examples/") && contentExampleSuffixes.some((suffix) => normalized.endsWith(suffix));
+  return normalized.startsWith(".convention/examples/") && contentExampleSuffixes.some((suffix) => normalized.endsWith(suffix));
 }
 
 function isKnowledgeContentExample(file) {
@@ -90,7 +90,7 @@ function isKnowledgeContentExample(file) {
 
 function isToneReference(file) {
   const normalized = rel(file).split(path.sep).join("/");
-  return normalized === "shared/content/tone-of-voice/tone-of-voice-reference.json";
+  return normalized === ".convention/content/tone-of-voice/tone-of-voice-reference.json";
 }
 
 function collectFiles() {
@@ -99,9 +99,9 @@ function collectFiles() {
   }
 
   return [
-    ...walk(path.join(root, "shared/examples")).filter(isContentExample),
+    ...walk(path.join(root, ".convention/examples")).filter(isContentExample),
     ...walk(path.join(root, "knowledge/examples")).filter(isKnowledgeContentExample),
-    ...walk(path.join(root, "shared/content/tone-of-voice")).filter(isToneReference)
+    ...walk(path.join(root, ".convention/content/tone-of-voice")).filter(isToneReference)
   ].sort();
 }
 
@@ -435,9 +435,9 @@ function validateBundleRefs(files) {
       fail(`${relative}: must be listed in plugins/bundles/ux-journey-skills/plugin.json shared`);
     }
     if (
-      (relative === "shared/content/tone-of-voice/tone-of-voice-reference.json" ||
-        relative === "shared/content/tone-of-voice/tone-of-voice-reference.md" ||
-        relative === "shared/schemas/tone-of-voice-reference.schema.json") &&
+      (relative === ".convention/content/tone-of-voice/tone-of-voice-reference.json" ||
+        relative === ".convention/content/tone-of-voice/tone-of-voice-reference.md" ||
+        relative === ".convention/schemas/tone-of-voice-reference.schema.json") &&
       !contentShared.has(relative)
     ) {
       fail(`${relative}: must be listed in plugins/bundles/ui-content-skills/plugin.json shared`);
@@ -480,9 +480,9 @@ for (const file of files) {
 }
 
 validateBundleRefs([
-  ...files.filter((file) => rel(file).startsWith("shared/examples/") || rel(file).startsWith("knowledge/examples/") || rel(file).startsWith("shared/content/")),
-  path.join(root, "shared/content/tone-of-voice/tone-of-voice-reference.md"),
-  path.join(root, "shared/schemas/tone-of-voice-reference.schema.json")
+  ...files.filter((file) => rel(file).startsWith(".convention/examples/") || rel(file).startsWith("knowledge/examples/") || rel(file).startsWith(".convention/content/")),
+  path.join(root, ".convention/content/tone-of-voice/tone-of-voice-reference.md"),
+  path.join(root, ".convention/schemas/tone-of-voice-reference.schema.json")
 ]);
 
 if (errors.length) {

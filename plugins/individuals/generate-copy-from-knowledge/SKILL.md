@@ -33,10 +33,10 @@ adapted to the new audience, journey stage, node, and brand voice.
 
 ## References
 
-- `../../../shared/content/content-pattern-library.md`
+- `../../../.convention/content/content-pattern-library.md`
 - `../../../knowledge/schemas/copy-pattern.schema.json`
 - `../../../knowledge/schemas/voice-profile.schema.json`
-- `../../../shared/schemas/content-model.schema.json`
+- `../../../.convention/schemas/content-model.schema.json`
 
 ## Rules
 

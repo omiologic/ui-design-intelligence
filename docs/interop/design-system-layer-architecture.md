@@ -126,7 +126,7 @@ Design-system skills should look for a project-local config file named:
 The repository template lives at:
 
 ```txt
-shared/templates/ui-design-intelligence.config.yml
+.convention/templates/ui-design-intelligence.config.yml
 ```
 
 The config records project defaults for audience, industry, design-system output

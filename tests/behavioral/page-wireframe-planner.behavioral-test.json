@@ -1,7 +1,7 @@
 {
   "skill": "page-wireframe-planner",
   "brief": "Plan a dental practice homepage for new patients who need to understand the offer, trust the practice, and book an appointment. Include landmark coverage, a booking dialog overlay with a dismissal contract, and mobile responsive priority notes.",
-  "referenceExample": "shared/examples/dental-homepage.ui-blueprint.json",
+  "referenceExample": ".convention/examples/dental-homepage.ui-blueprint.json",
   "requiredSignals": [
     {
       "description": "Blueprint is typed as a wireframe artifact.",

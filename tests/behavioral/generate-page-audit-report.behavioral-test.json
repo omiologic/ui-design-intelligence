@@ -1,7 +1,7 @@
 {
   "skill": "generate-page-audit-report",
   "brief": "Audit a dental clinic homepage for accessibility risks, landmark structure gaps, CTA clarity, content hierarchy problems, and proof placement issues. Assign severity for each finding and include evidence and actionable recommendations.",
-  "referenceExample": "shared/examples/page-audit.example.json",
+  "referenceExample": ".convention/examples/page-audit.example.json",
   "requiredSignals": [
     {
       "description": "Audit output is typed as a page audit.",

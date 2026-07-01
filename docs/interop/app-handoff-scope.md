@@ -113,7 +113,7 @@ These remain later-sprint tracks unless a future task explicitly scopes them:
 Tasks `008.02` through `008.07` should use this scope to define schemas,
 fixtures, validation, and docs for app handoff. The first contract set is
 documented in `docs/interop/app-handoff-contracts.md` and backed by schemas in
-`shared/schemas/app-*.schema.json`. It should be minimal but complete enough to
+`.convention/schemas/app-*.schema.json`. It should be minimal but complete enough to
 represent a realistic flow:
 
 ```txt

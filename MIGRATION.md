@@ -57,7 +57,7 @@ During the Sprint 001 transition:
 - `ui-design-intelligence` is the repository name and the full aggregate bundle.
   It is installable by selecting `UI_PLUGIN_BUNDLE="ui-design-intelligence"`.
 
-Future breaking changes to `shared/vocabulary/`, `shared/schemas/`, install behavior, or skill output expectations should be documented here with before/after examples and upgrade steps.
+Future breaking changes to `.convention/vocabulary/`, `.convention/schemas/`, install behavior, or skill output expectations should be documented here with before/after examples and upgrade steps.
 
 ## Sprint 002 Install And Command Parity
 
@@ -84,8 +84,8 @@ export seed workflow remains a script prototype, not an installed command:
 
 ```bash
 node scripts/export-blueprint-seed.mjs \
-  --blueprint shared/examples/ui-blueprint.example.json \
-  --profile shared/taste-profiles/conversion.json \
+  --blueprint .convention/examples/ui-blueprint.example.json \
+  --profile .convention/taste-profiles/conversion.json \
   --out /tmp/ui-blueprint.export-seed.md
 ```
 
@@ -98,10 +98,10 @@ No migration is required, but release packages now include Sprint 002 structural
 interop assets:
 
 - `docs/interop/`
-- `shared/design-philosophy/`
-- `shared/taste-profiles/`
-- `shared/templates/blueprint-export-seed.md`
-- `shared/examples/ui-blueprint.export-seed.md`
+- `.convention/design-philosophy/`
+- `.convention/taste-profiles/`
+- `.convention/templates/blueprint-export-seed.md`
+- `.convention/examples/ui-blueprint.export-seed.md`
 - `scripts/export-blueprint-seed.mjs`
 - `tests/invalid-antipatterns/`
 

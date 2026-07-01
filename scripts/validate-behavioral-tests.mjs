@@ -177,7 +177,7 @@ function checkSignal(signal, artifact, fixturePath, signalIndex) {
 
 // ---- main ----
 
-const schema = readJson(path.join(root, "shared/schemas/skill-behavioral-test.schema.json"));
+const schema = readJson(path.join(root, ".convention/schemas/skill-behavioral-test.schema.json"));
 if (!schema) {
   console.error("Could not load skill-behavioral-test.schema.json — aborting.");
   process.exit(1);

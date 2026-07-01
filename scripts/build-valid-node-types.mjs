@@ -4,20 +4,20 @@ import path from "node:path";
 import { syncSharedReferenceBundles } from "./lib/bundle-skill.mjs";
 
 const root = process.cwd();
-const vocabularyPath = path.join(root, "shared/vocabulary/node-types.json");
+const vocabularyPath = path.join(root, ".convention/vocabulary/node-types.json");
 const individualOutputPath = path.join(root, "plugins/individuals/wireframe-schema/references/valid-node-types.md");
 const vocabulary = JSON.parse(fs.readFileSync(vocabularyPath, "utf8"));
 
 const records = vocabulary.nodeTypes;
 if (!Array.isArray(records)) {
-  console.error("shared/vocabulary/node-types.json must contain nodeTypes array");
+  console.error(".convention/vocabulary/node-types.json must contain nodeTypes array");
   process.exit(1);
 }
 
 const lines = [
   "# Valid Node Types",
   "",
-  "This file is generated from `shared/vocabulary/node-types.json`. Do not edit it by hand.",
+  "This file is generated from `.convention/vocabulary/node-types.json`. Do not edit it by hand.",
   "",
   "Use only these `type` values for UIBlueprint nodes.",
   "",

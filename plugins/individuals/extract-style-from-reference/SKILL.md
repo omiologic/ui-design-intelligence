@@ -41,8 +41,8 @@ blending, or design-system seed generation.
 ## References
 
 - `references/style-extraction.md`
-- `../../../shared/schemas/style-reference.schema.json`
-- `../../../shared/templates/style-reference.json`
+- `../../../.convention/schemas/style-reference.schema.json`
+- `../../../.convention/templates/style-reference.json`
 
 ## Rules
 

@@ -43,8 +43,8 @@ nodes, states, validation paths, or accessibility behavior are missing.
 ## References
 
 - `references/clickable-prototype-planning.md`
-- `../../../shared/schemas/prototype-config.schema.json`
-- `../../../shared/examples/dental-appointment.prototype-config.example.json`
+- `../../../.convention/schemas/prototype-config.schema.json`
+- `../../../.convention/examples/dental-appointment.prototype-config.example.json`
 
 ## Rules
 

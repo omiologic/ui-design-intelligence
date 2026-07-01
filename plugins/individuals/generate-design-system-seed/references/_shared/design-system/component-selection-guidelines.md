@@ -5,11 +5,11 @@ pattern. Component selection is a product decision, not a naming preference: the
 right pattern depends on comparison needs, density, interruption cost,
 hierarchy, mobile behavior, and accessibility.
 
-This guide complements `shared/examples/component-decision-tree.example.json`,
-`shared/vocabulary/component-anatomy.json`,
-`shared/vocabulary/component-variants.json`,
-`shared/design-system/component-anatomy-reference.md`, and
-`shared/design-system/component-state-guidelines.md`.
+This guide complements `.convention/examples/component-decision-tree.example.json`,
+`.convention/vocabulary/component-anatomy.json`,
+`.convention/vocabulary/component-variants.json`,
+`.convention/design-system/component-anatomy-reference.md`, and
+`.convention/design-system/component-state-guidelines.md`.
 
 ## Selection Principles
 
@@ -106,7 +106,7 @@ Component choice changes prototype requirements:
 - Progressive disclosure needs trigger conditions, revealed content, reversal
   behavior, and guardrails for required information.
 
-Use `shared/design-system/component-state-guidelines.md` for reusable states and
+Use `.convention/design-system/component-state-guidelines.md` for reusable states and
 hand prototype-specific flows to prototype skills after stable node IDs exist.
 
 ## Design-System Seed Guidance

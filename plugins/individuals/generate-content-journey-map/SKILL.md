@@ -32,10 +32,10 @@ what each content area must accomplish before any writer fills the node.
 
 ## References
 
-- `../../../shared/content/audience-intent-reference.md`
-- `../../../shared/content/objection-handling-reference.md`
-- `../../../shared/schemas/user-journey-map.schema.json`
-- `../../../shared/schemas/content-model.schema.json`
+- `../../../.convention/content/audience-intent-reference.md`
+- `../../../.convention/content/objection-handling-reference.md`
+- `../../../.convention/schemas/user-journey-map.schema.json`
+- `../../../.convention/schemas/content-model.schema.json`
 - `../../../docs/interop/content-journey-layer-architecture.md`
 
 ## Rules

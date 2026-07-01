@@ -21,9 +21,9 @@ in the Sprint 009 repository audit.
   `package.json`.
 - Added `scripts/validate-knowledge-storage.mjs` as a credential-aware wrapper
   for the storage sync and fetch dry-run checks.
-- Added `scripts/sync-shared-references.mjs` to propagate canonical `shared/`
-  changes into all `skills/*/references/_shared/` and
-  `plugins/individuals/*/references/_shared/` copies. Wired a `check:shared-references`
+- Added `scripts/sync-shared-references.mjs` to propagate canonical `.convention/`
+  changes into all `skills/*/references/_.convention/` and
+  `plugins/individuals/*/references/_.convention/` copies. Wired a `check:shared-references`
   drift check into `npm run validate`.
 - Added `scripts/check-skills-mirror-parity.mjs` and `check:skills-parity` to
   detect divergence between `skills/` and `plugins/individuals/` mirror copies.

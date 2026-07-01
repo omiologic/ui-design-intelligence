@@ -12,8 +12,8 @@ choices should be favored for this user goal and register?
 Profiles are JSON files named in lowercase kebab-case:
 
 ```txt
-shared/taste-profiles/conversion.json
-shared/taste-profiles/utility-product.json
+.convention/taste-profiles/conversion.json
+.convention/taste-profiles/utility-product.json
 ```
 
 Required top-level fields:

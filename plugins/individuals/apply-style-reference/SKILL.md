@@ -44,10 +44,10 @@ structure, and component contracts should remain stable.
 ## References
 
 - `references/style-application.md`
-- `../../../shared/schemas/style-application.schema.json`
-- `../../../shared/schemas/style-patch.schema.json`
-- `../../../shared/templates/style-application.json`
-- `../../../shared/templates/style-patch.json`
+- `../../../.convention/schemas/style-application.schema.json`
+- `../../../.convention/schemas/style-patch.schema.json`
+- `../../../.convention/templates/style-application.json`
+- `../../../.convention/templates/style-patch.json`
 
 ## Rules
 

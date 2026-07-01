@@ -42,9 +42,9 @@ accessibility, or component coherence.
 ## References
 
 - `references/style-blending.md`
-- `../../../shared/schemas/style-blend.schema.json`
-- `../../../shared/templates/style-blend.json`
-- `../../../shared/style-references/index.json`
+- `../../../.convention/schemas/style-blend.schema.json`
+- `../../../.convention/templates/style-blend.json`
+- `../../../.convention/style-references/index.json`
 
 ## Rules
 

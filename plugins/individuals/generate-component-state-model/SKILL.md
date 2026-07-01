@@ -42,10 +42,10 @@ not merely because a component looks different.
 ## References
 
 - `references/component-state-modeling.md`
-- `../../../shared/design-system/component-state-guidelines.md`
-- `../../../shared/schemas/component-state-model.schema.json`
-- `../../../shared/vocabulary/interaction-states.json`
-- `../../../shared/schemas/design-system-seed.schema.json`
+- `../../../.convention/design-system/component-state-guidelines.md`
+- `../../../.convention/schemas/component-state-model.schema.json`
+- `../../../.convention/vocabulary/interaction-states.json`
+- `../../../.convention/schemas/design-system-seed.schema.json`
 
 ## Rules
 

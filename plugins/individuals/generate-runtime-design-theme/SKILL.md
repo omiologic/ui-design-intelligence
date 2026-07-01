@@ -125,11 +125,11 @@ that inferred values are certified brand tokens.
   "id": "ledgerpilot-runtime-theme",
   "name": "LedgerPilot Runtime Theme",
   "source": {
-    "primarySeedRef": "shared/examples/marketing-page-e2e/marketing-page.design-system-seed.example.json",
+    "primarySeedRef": ".convention/examples/marketing-page-e2e/marketing-page.design-system-seed.example.json",
     "sourceRefs": [
       {
         "type": "designSystemSeed",
-        "ref": "shared/examples/marketing-page-e2e/marketing-page.design-system-seed.example.json",
+        "ref": ".convention/examples/marketing-page-e2e/marketing-page.design-system-seed.example.json",
         "confidence": "medium"
       }
     ],

@@ -8,12 +8,12 @@ Use this alongside:
 
 - `design-system-principles.md`
 - `design-system-anti-slop.md`
-- `shared/schemas/design-system-seed.schema.json`
-- `shared/vocabulary/design-token-types.json`
-- `shared/vocabulary/component-anatomy.json`
-- `shared/vocabulary/component-variants.json`
-- `shared/vocabulary/layout-roles.json`
-- `shared/vocabulary/accessibility-rules.json`
+- `.convention/schemas/design-system-seed.schema.json`
+- `.convention/vocabulary/design-token-types.json`
+- `.convention/vocabulary/component-anatomy.json`
+- `.convention/vocabulary/component-variants.json`
+- `.convention/vocabulary/layout-roles.json`
+- `.convention/vocabulary/accessibility-rules.json`
 
 ## Layer Ownership
 

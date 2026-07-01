@@ -89,15 +89,15 @@ function checkTokenSet(values, allowed, file, location, label) {
   }
 }
 
-const nodeTypes = loadNodeTypes(path.join(root, "shared/vocabulary/node-types.json"));
-const layoutPatterns = loadVocabulary(path.join(root, "shared/vocabulary/layout-patterns.json"), "layoutPatterns");
-const contentRoles = loadVocabulary(path.join(root, "shared/vocabulary/content-roles.json"), "contentRoles");
+const nodeTypes = loadNodeTypes(path.join(root, ".convention/vocabulary/node-types.json"));
+const layoutPatterns = loadVocabulary(path.join(root, ".convention/vocabulary/layout-patterns.json"), "layoutPatterns");
+const contentRoles = loadVocabulary(path.join(root, ".convention/vocabulary/content-roles.json"), "contentRoles");
 const structuralTokens = new Set([...nodeTypes, ...layoutPatterns]);
 
 const explicitFiles = process.argv.slice(2);
 const files = explicitFiles.length
   ? explicitFiles.map((file) => path.resolve(root, file))
-  : walk(path.join(root, "shared/taste-profiles")).filter((file) => file.endsWith(".json"));
+  : walk(path.join(root, ".convention/taste-profiles")).filter((file) => file.endsWith(".json"));
 
 for (const file of files.sort()) {
   const profile = readJson(file);

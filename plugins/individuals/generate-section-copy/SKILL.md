@@ -32,13 +32,13 @@ not restate the whole page promise.
 
 ## References
 
-- `../../../shared/content/claim-risk-guidelines.md`
-- `../../../shared/content/content-accessibility-guidelines.md`
-- `../../../shared/content/content-pattern-library.md`
-- `../../../shared/content/cta-patterns.md`
-- `../../../shared/content/laws-of-copywriting.md`
-- `../../../shared/content/proof-and-credibility-patterns.md`
-- `../../../shared/schemas/content-model.schema.json`
+- `../../../.convention/content/claim-risk-guidelines.md`
+- `../../../.convention/content/content-accessibility-guidelines.md`
+- `../../../.convention/content/content-pattern-library.md`
+- `../../../.convention/content/cta-patterns.md`
+- `../../../.convention/content/laws-of-copywriting.md`
+- `../../../.convention/content/proof-and-credibility-patterns.md`
+- `../../../.convention/schemas/content-model.schema.json`
 - `../../../knowledge/schemas/copy-pattern.schema.json`
 
 ## Rules

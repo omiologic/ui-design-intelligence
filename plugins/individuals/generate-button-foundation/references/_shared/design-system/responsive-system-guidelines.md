@@ -5,7 +5,7 @@ needs responsive behavior guidance before blueprint or prototype handoff.
 
 Responsive system guidance defines reusable expectations for tokens,
 components, density, and adaptive behavior. It does not replace
-`shared/prototype/responsive-prototype-guidelines.md`, which owns concrete
+`.convention/prototype/responsive-prototype-guidelines.md`, which owns concrete
 screen, route, state, interaction, focus, and runtime handoff behavior.
 
 ## Core Rule
@@ -23,7 +23,7 @@ Prefer semantic viewport roles over raw pixel names:
 - `expanded`: standard desktop behavior.
 - `large`: wide desktop or high-density behavior.
 
-Token names should follow `shared/design-system/token-taxonomy.md`, for example:
+Token names should follow `.convention/design-system/token-taxonomy.md`, for example:
 
 - `breakpoint.layout.compact`
 - `breakpoint.layout.medium`
@@ -163,7 +163,7 @@ Use token guidance for:
 - `motion.*`: reduced-motion-safe responsive transitions.
 
 Responsive tokens must preserve accessibility-token constraints from
-`shared/design-system/accessibility-token-guidelines.md`.
+`.convention/design-system/accessibility-token-guidelines.md`.
 
 ## App And Prototype Handoff
 
@@ -183,7 +183,7 @@ Open questions:
 
 If `Prototype behavior needed` includes state, route, focus, overlay, form, or
 interaction behavior, hand off to
-`shared/prototype/responsive-prototype-guidelines.md`.
+`.convention/prototype/responsive-prototype-guidelines.md`.
 
 ## Review Prompts
 

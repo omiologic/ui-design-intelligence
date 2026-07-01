@@ -1,7 +1,7 @@
 {
   "skill": "generate-interactive-prototype-config",
   "brief": "Generate an interactive prototype config for a dental appointment booking flow. Cover all screens in the flow, declare overlay dismissal contracts for the booking dialog, specify initial states for each screen, and include route definitions. No runtime code or implementation detail.",
-  "referenceExample": "shared/examples/dental-appointment.prototype-config.example.json",
+  "referenceExample": ".convention/examples/dental-appointment.prototype-config.example.json",
   "requiredSignals": [
     {
       "description": "Artifact is typed as a prototype config.",

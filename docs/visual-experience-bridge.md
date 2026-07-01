@@ -29,7 +29,7 @@ motion fields without copying a reference site's exact choreography.
 
 ## Visual Experience Spec
 
-`shared/templates/visual-experience-spec.md` is the handoff artifact. It records
+`.convention/templates/visual-experience-spec.md` is the handoff artifact. It records
 evidence files, palette timeline, scroll storyboard, section state map, motion
 fields, captured frame index, rendering-layer ownership, design-quality notes,
 implementation notes, and originality guardrails.

@@ -25,24 +25,24 @@ const commandSectionNames = [
 
 const creationCommands = [
   {
-    file: "commands/create-wireframe.md",
-    recipe: "shared/recipes/wireframe.recipe.md",
+    file: ".agents/commands/create-wireframe.md",
+    recipe: ".convention/recipes/wireframe.recipe.md",
     requiredOutputs: ["wireframe.json", "wireframe-notes.md"]
   },
   {
-    file: "commands/create-design-spec.md",
-    recipe: "shared/recipes/design-spec.recipe.md",
+    file: ".agents/commands/create-design-spec.md",
+    recipe: ".convention/recipes/design-spec.recipe.md",
     requiredOutputs: ["design-spec.md"]
   },
   {
-    file: "commands/create-prototype-plan.md",
-    recipe: "shared/recipes/prototype.recipe.md",
+    file: ".agents/commands/create-prototype-plan.md",
+    recipe: ".convention/recipes/prototype.recipe.md",
     requiredOutputs: ["prototype-config.json", "prototype-plan.md"]
   }
 ];
 
 const reviewCommand = {
-  file: "commands/review-generated-wireframe.md",
+  file: ".agents/commands/review-generated-wireframe.md",
   requiredOutputs: ["wireframe-review.md"],
   scoreCriteria: [
     "journey clarity",
@@ -70,37 +70,37 @@ const recipeSectionNames = [
 ];
 
 const recipes = [
-  "shared/recipes/wireframe.recipe.md",
-  "shared/recipes/design-spec.recipe.md",
-  "shared/recipes/prototype.recipe.md"
+  ".convention/recipes/wireframe.recipe.md",
+  ".convention/recipes/design-spec.recipe.md",
+  ".convention/recipes/prototype.recipe.md"
 ];
 
 const e2eExamples = [
-  { dir: "shared/examples/marketing-page-e2e", slug: "marketing-page" },
-  { dir: "shared/examples/dashboard-e2e", slug: "dashboard" },
-  { dir: "shared/examples/product-page-e2e", slug: "product-page" },
-  { dir: "shared/examples/multi-step-form-e2e", slug: "multi-step-form" }
+  { dir: ".convention/examples/marketing-page-e2e", slug: "marketing-page" },
+  { dir: ".convention/examples/dashboard-e2e", slug: "dashboard" },
+  { dir: ".convention/examples/product-page-e2e", slug: "product-page" },
+  { dir: ".convention/examples/multi-step-form-e2e", slug: "multi-step-form" }
 ];
 
 const schemaBackedArtifacts = [
   {
     suffix: ".study.example.json",
-    schema: "shared/schemas/study-output.schema.json",
+    schema: ".convention/schemas/study-output.schema.json",
     label: "study"
   },
   {
     suffix: ".ui-blueprint.json",
-    schema: "shared/schemas/wireframe-config.schema.json",
+    schema: ".convention/schemas/wireframe-config.schema.json",
     label: "wireframe"
   },
   {
     suffix: ".design-system-seed.example.json",
-    schema: "shared/schemas/design-system-seed.schema.json",
+    schema: ".convention/schemas/design-system-seed.schema.json",
     label: "design-system-seed"
   },
   {
     suffix: ".prototype-config.example.json",
-    schema: "shared/schemas/prototype-config.schema.json",
+    schema: ".convention/schemas/prototype-config.schema.json",
     label: "prototype-config"
   }
 ];
@@ -189,7 +189,7 @@ function validateReviewCommand(command) {
 
   const text = readText(command.file);
   requireSections(command.file, text, commandSectionNames);
-  requireText(command.file, text, "shared/quality/blueprint-quality-rubric.md", "rubric reference");
+  requireText(command.file, text, ".convention/quality/blueprint-quality-rubric.md", "rubric reference");
   requireText(command.file, text, "Score: 0-16", "score range");
   requireText(command.file, text, "Band: weak | usable | strong", "band contract");
   requireText(command.file, text, "Readiness: not ready | design review needed | ready for downstream handoff", "readiness contract");

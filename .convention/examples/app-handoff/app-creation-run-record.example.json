@@ -1,0 +1,89 @@
+{
+  "version": "0.1.0",
+  "type": "appRunRecord",
+  "id": "ledgerpilot-creation-run",
+  "runKind": "creation",
+  "createdAt": "2026-06-30T00:00:02Z",
+  "completedAt": "2026-06-30T00:00:04Z",
+  "status": "passed",
+  "command": "fixture: create marketing page prototype handoff",
+  "queryContextId": "ledgerpilot-app-query",
+  "retrievalResultsId": "ledgerpilot-app-retrieval",
+  "artifactManifestId": "ledgerpilot-artifact-manifest",
+  "selectedSkills": [
+    "generate-ui-blueprint-from-study",
+    "generate-design-system-seed",
+    "generate-prototype-from-blueprint"
+  ],
+  "inputs": [
+    {
+      "id": "ledgerpilot-app-query",
+      "artifactType": "queryContext",
+      "path": ".convention/examples/app-handoff/app-query-context.example.json",
+      "schemaRef": ".convention/schemas/app-query-context.schema.json",
+      "label": "App query context"
+    },
+    {
+      "id": "ledgerpilot-app-retrieval",
+      "artifactType": "retrievalResults",
+      "path": ".convention/examples/app-handoff/app-retrieval-results.example.json",
+      "schemaRef": ".convention/schemas/app-retrieval-results.schema.json",
+      "label": "App retrieval results"
+    }
+  ],
+  "outputs": [
+    {
+      "id": "ledgerpilot-design-system-seed",
+      "artifactType": "designSystemSeed",
+      "path": ".convention/examples/marketing-page-e2e/marketing-page.design-system-seed.example.json",
+      "schemaRef": ".convention/schemas/design-system-seed.schema.json",
+      "label": "Marketing page design-system seed"
+    },
+    {
+      "id": "ledgerpilot-marketing-wireframe",
+      "artifactType": "wireframeConfig",
+      "path": ".convention/examples/marketing-page-e2e/marketing-page.ui-blueprint.json",
+      "schemaRef": ".convention/schemas/wireframe-config.schema.json",
+      "label": "Marketing page wireframe"
+    },
+    {
+      "id": "ledgerpilot-marketing-prototype",
+      "artifactType": "prototypeConfig",
+      "path": ".convention/examples/marketing-page-e2e/marketing-page.prototype-config.example.json",
+      "schemaRef": ".convention/schemas/prototype-config.schema.json",
+      "label": "Marketing page prototype config"
+    },
+    {
+      "id": "ledgerpilot-export-seed",
+      "artifactType": "exportSeed",
+      "path": ".convention/examples/app-handoff/marketing-page.export-seed.md",
+      "schemaRef": "docs/interop/blueprint-export-seed.md",
+      "label": "Marketing page Blueprint Export Seed"
+    }
+  ],
+  "validation": {
+    "status": "passed",
+    "commands": [
+      {
+        "name": "validate-examples",
+        "command": "npm run validate:examples",
+        "status": "passed"
+      },
+      {
+        "name": "validate-design-system",
+        "command": "npm run validate:design-system",
+        "status": "passed"
+      },
+      {
+        "name": "validate-prototype",
+        "command": "npm run validate:prototype",
+        "status": "passed"
+      }
+    ]
+  },
+  "findings": [],
+  "warnings": [
+    "This is a deterministic fixture run, not a live command transcript."
+  ],
+  "handoffReadiness": "ready"
+}

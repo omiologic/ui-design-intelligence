@@ -95,20 +95,20 @@ function collectSchemaErrors(doc, schema, label) {
   return validateJsonSchema(doc, schema).map((error) => `${label} schema ${error}`);
 }
 
-const seedSchema = readJson(path.join(root, "shared/schemas/design-system-seed.schema.json"));
-const runtimeThemeSchema = readJson(path.join(root, "shared/schemas/runtime-design-theme.schema.json"));
+const seedSchema = readJson(path.join(root, ".convention/schemas/design-system-seed.schema.json"));
+const runtimeThemeSchema = readJson(path.join(root, ".convention/schemas/runtime-design-theme.schema.json"));
 const sectionSchemas = {
-  brand: readJson(path.join(root, "shared/schemas/brand-foundation.schema.json")),
-  palette: readJson(path.join(root, "shared/schemas/palette-foundation.schema.json")),
-  typography: readJson(path.join(root, "shared/schemas/typography-foundation.schema.json")),
-  iconography: readJson(path.join(root, "shared/schemas/iconography-foundation.schema.json")),
-  buttons: readJson(path.join(root, "shared/schemas/button-foundation.schema.json")),
-  cards: readJson(path.join(root, "shared/schemas/card-foundation.schema.json")),
-  header: readJson(path.join(root, "shared/schemas/header-foundation.schema.json")),
-  footer: readJson(path.join(root, "shared/schemas/footer-foundation.schema.json"))
+  brand: readJson(path.join(root, ".convention/schemas/brand-foundation.schema.json")),
+  palette: readJson(path.join(root, ".convention/schemas/palette-foundation.schema.json")),
+  typography: readJson(path.join(root, ".convention/schemas/typography-foundation.schema.json")),
+  iconography: readJson(path.join(root, ".convention/schemas/iconography-foundation.schema.json")),
+  buttons: readJson(path.join(root, ".convention/schemas/button-foundation.schema.json")),
+  cards: readJson(path.join(root, ".convention/schemas/card-foundation.schema.json")),
+  header: readJson(path.join(root, ".convention/schemas/header-foundation.schema.json")),
+  footer: readJson(path.join(root, ".convention/schemas/footer-foundation.schema.json"))
 };
 
-const vocabularyDir = path.join(root, "shared/vocabulary");
+const vocabularyDir = path.join(root, ".convention/vocabulary");
 const tokenTypes = namedSet(path.join(vocabularyDir, "design-token-types.json"), "designTokenTypes");
 const componentVariants = namedSet(path.join(vocabularyDir, "component-variants.json"), "componentVariants");
 const layoutRoles = namedSet(path.join(vocabularyDir, "layout-roles.json"), "layoutRoles");
@@ -122,7 +122,7 @@ const anatomyDoc = readJson(path.join(vocabularyDir, "component-anatomy.json"));
 const anatomyByComponent = new Map();
 for (const item of requireArray(anatomyDoc, path.join(vocabularyDir, "component-anatomy.json"), "componentAnatomy")) {
   if (!item || typeof item !== "object" || typeof item.component !== "string") {
-    fail("shared/vocabulary/component-anatomy.json: entries must include component");
+    fail(".convention/vocabulary/component-anatomy.json: entries must include component");
     continue;
   }
   anatomyByComponent.set(item.component, {
@@ -552,15 +552,15 @@ function checkBundlePackaging() {
   const requiredCommands = ["generate-design-system-seed", "generate-runtime-design-theme", "audit-design-system-seed"];
   const requiredAgents = ["design-system-architect"];
   const requiredShared = [
-    "shared/schemas/design-system-seed.schema.json",
-    "shared/schemas/runtime-design-theme.schema.json",
-    "shared/design-system/brand-asset-color-extraction.md",
-    "shared/templates/design-system-seed.json",
-    "shared/templates/design-system-seed.md",
-    "shared/examples/design-system-seed.example.json",
-    "shared/examples/runtime-theme/ledgerpilot.runtime-design-theme.example.json",
-    "shared/examples/runtime-theme-brand-assets/brand-asset-color-extraction.example.json",
-    "shared/vocabulary/design-token-types.json"
+    ".convention/schemas/design-system-seed.schema.json",
+    ".convention/schemas/runtime-design-theme.schema.json",
+    ".convention/design-system/brand-asset-color-extraction.md",
+    ".convention/templates/design-system-seed.json",
+    ".convention/templates/design-system-seed.md",
+    ".convention/examples/design-system-seed.example.json",
+    ".convention/examples/runtime-theme/ledgerpilot.runtime-design-theme.example.json",
+    ".convention/examples/runtime-theme-brand-assets/brand-asset-color-extraction.example.json",
+    ".convention/vocabulary/design-token-types.json"
   ];
 
   function includesAll(manifest, field, values, label) {
@@ -584,8 +584,8 @@ function checkBundlePackaging() {
 }
 
 const seedFiles = [
-  ...walk(path.join(root, "shared/examples")).filter((file) => file.endsWith("design-system-seed.example.json") || file.endsWith("design-system-seed.compact.json")),
-  path.join(root, "shared/templates/design-system-seed.json")
+  ...walk(path.join(root, ".convention/examples")).filter((file) => file.endsWith("design-system-seed.example.json") || file.endsWith("design-system-seed.compact.json")),
+  path.join(root, ".convention/templates/design-system-seed.json")
 ].sort();
 
 for (const file of seedFiles) {
@@ -594,10 +594,10 @@ for (const file of seedFiles) {
 }
 
 if (!runtimeThemeSchema || runtimeThemeSchema.type !== "object" || runtimeThemeSchema.properties?.type?.const !== "runtimeDesignTheme") {
-  fail("shared/schemas/runtime-design-theme.schema.json: must define runtimeDesignTheme object schema");
+  fail(".convention/schemas/runtime-design-theme.schema.json: must define runtimeDesignTheme object schema");
 }
 
-const runtimeThemeFiles = walk(path.join(root, "shared/examples")).filter((file) => file.endsWith("runtime-design-theme.example.json")).sort();
+const runtimeThemeFiles = walk(path.join(root, ".convention/examples")).filter((file) => file.endsWith("runtime-design-theme.example.json")).sort();
 for (const file of runtimeThemeFiles) {
   checkRuntimeTheme(readJson(file), file);
 }
@@ -625,12 +625,12 @@ for (const file of invalidRuntimeThemeFiles) {
   }
 }
 
-const brandAssetExampleFiles = walk(path.join(root, "shared/examples/runtime-theme-brand-assets")).filter((file) => file.endsWith("brand-asset-color-extraction.example.json")).sort();
+const brandAssetExampleFiles = walk(path.join(root, ".convention/examples/runtime-theme-brand-assets")).filter((file) => file.endsWith("brand-asset-color-extraction.example.json")).sort();
 for (const file of brandAssetExampleFiles) {
   checkBrandAssetExample(readJson(file), file);
 }
 
-const decisionTreeFiles = walk(path.join(root, "shared/examples")).filter((file) => file.endsWith("component-decision-tree.example.json")).sort();
+const decisionTreeFiles = walk(path.join(root, ".convention/examples")).filter((file) => file.endsWith("component-decision-tree.example.json")).sort();
 for (const file of decisionTreeFiles) {
   checkDecisionTree(readJson(file), file);
 }

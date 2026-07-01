@@ -27,7 +27,7 @@ instead of inventing a better story.
 - `references/page-summary-generation.md`
 - `references/page-summary-quality.md`
 - `../generate-meta-description/references/metadata-example.json`
-- `../../../shared/vocabulary/ui-terminology.json`
+- `../../../.convention/vocabulary/ui-terminology.json`
 
 ## Decision Criteria
 

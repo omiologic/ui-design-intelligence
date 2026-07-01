@@ -188,7 +188,7 @@ Extend bridge validation to require:
 
 Evidence:
 
-- `shared/templates/ui-design-intelligence.config.yml` defines
+- `.convention/templates/ui-design-intelligence.config.yml` defines
   `artifacts.rootDir`, `projectSlug`, page paths, screenshot paths, motion frame
   paths, manifest path, and visual-experience path.
 - `study-page` and `study-site` do not mention `.ui-design-intelligence.yml`,
@@ -210,7 +210,7 @@ visual-experience command. Include defaults when the config is missing.
 
 Evidence:
 
-- `shared/templates/visual-experience-spec.md` provides required sections and
+- `.convention/templates/visual-experience-spec.md` provides required sections and
   tables.
 - There is no schema, fixture, or example completed spec.
 

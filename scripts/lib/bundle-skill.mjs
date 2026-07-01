@@ -29,63 +29,63 @@ export const designSystemSkills = [
 ];
 
 const sharedFiles = [
-  ["shared/vocabulary/node-types.json", "vocabulary/node-types.json"],
-  ["shared/vocabulary/layout-patterns.json", "vocabulary/layout-patterns.json"],
-  ["shared/vocabulary/content-roles.json", "vocabulary/content-roles.json"],
-  ["shared/vocabulary/interaction-states.json", "vocabulary/interaction-states.json"],
-  ["shared/vocabulary/ui-layer-types.json", "vocabulary/ui-layer-types.json"],
-  ["shared/vocabulary/README.md", "vocabulary/README.md"],
-  ["shared/schemas/wireframe-config.schema.json", "schemas/wireframe-config.schema.json"],
-  ["shared/design-philosophy/blueprint-locks.md", "design-philosophy/blueprint-locks.md"],
-  ["shared/design-philosophy/hierarchy-density-register.md", "design-philosophy/hierarchy-density-register.md"],
-  ["shared/design-philosophy/layout-pattern-selection.md", "design-philosophy/layout-pattern-selection.md"],
-  ["shared/design-philosophy/overlay-decision.md", "design-philosophy/overlay-decision.md"],
-  ["shared/design-philosophy/page-section-ordering.md", "design-philosophy/page-section-ordering.md"],
-  ["shared/design-philosophy/preflight-checklist.md", "design-philosophy/preflight-checklist.md"],
-  ["shared/design-philosophy/structural-anti-slop.md", "design-philosophy/structural-anti-slop.md"],
-  ["shared/design-system/component-selection-guidelines.md", "design-system/component-selection-guidelines.md"],
-  ["shared/design-system/anti-generic-ui-guidelines.md", "design-system/anti-generic-ui-guidelines.md"],
-  ["shared/taste-profiles/README.md", "taste-profiles/README.md"],
-  ["shared/taste-profiles/conversion.json", "taste-profiles/conversion.json"],
-  ["shared/taste-profiles/utility-product.json", "taste-profiles/utility-product.json"],
+  [".convention/vocabulary/node-types.json", "vocabulary/node-types.json"],
+  [".convention/vocabulary/layout-patterns.json", "vocabulary/layout-patterns.json"],
+  [".convention/vocabulary/content-roles.json", "vocabulary/content-roles.json"],
+  [".convention/vocabulary/interaction-states.json", "vocabulary/interaction-states.json"],
+  [".convention/vocabulary/ui-layer-types.json", "vocabulary/ui-layer-types.json"],
+  [".convention/vocabulary/README.md", "vocabulary/README.md"],
+  [".convention/schemas/wireframe-config.schema.json", "schemas/wireframe-config.schema.json"],
+  [".convention/design-philosophy/blueprint-locks.md", "design-philosophy/blueprint-locks.md"],
+  [".convention/design-philosophy/hierarchy-density-register.md", "design-philosophy/hierarchy-density-register.md"],
+  [".convention/design-philosophy/layout-pattern-selection.md", "design-philosophy/layout-pattern-selection.md"],
+  [".convention/design-philosophy/overlay-decision.md", "design-philosophy/overlay-decision.md"],
+  [".convention/design-philosophy/page-section-ordering.md", "design-philosophy/page-section-ordering.md"],
+  [".convention/design-philosophy/preflight-checklist.md", "design-philosophy/preflight-checklist.md"],
+  [".convention/design-philosophy/structural-anti-slop.md", "design-philosophy/structural-anti-slop.md"],
+  [".convention/design-system/component-selection-guidelines.md", "design-system/component-selection-guidelines.md"],
+  [".convention/design-system/anti-generic-ui-guidelines.md", "design-system/anti-generic-ui-guidelines.md"],
+  [".convention/taste-profiles/README.md", "taste-profiles/README.md"],
+  [".convention/taste-profiles/conversion.json", "taste-profiles/conversion.json"],
+  [".convention/taste-profiles/utility-product.json", "taste-profiles/utility-product.json"],
   ["plugins/individuals/wireframe-schema/references/valid-node-types.md", "wireframe-schema/valid-node-types.md"],
   ["plugins/individuals/wireframe-schema/references/wireframe-config.schema.json", "wireframe-schema/wireframe-config.schema.json"]
 ];
 
 const designSystemSharedFiles = [
-  ["shared/design-philosophy/design-system/design-system-principles.md", "design-philosophy/design-system/design-system-principles.md"],
-  ["shared/design-philosophy/design-system/design-system-anti-slop.md", "design-philosophy/design-system/design-system-anti-slop.md"],
-  ["shared/design-philosophy/design-system/skill-doctrine.md", "design-philosophy/design-system/skill-doctrine.md"],
-  ["shared/design-system/design-system-quality-checklist.md", "design-system/design-system-quality-checklist.md"],
-  ["shared/design-system/design-system-handoff-checklist.md", "design-system/design-system-handoff-checklist.md"],
-  ["shared/design-system/brand-asset-color-extraction.md", "design-system/brand-asset-color-extraction.md"],
-  ["shared/design-system/token-taxonomy.md", "design-system/token-taxonomy.md"],
-  ["shared/design-system/component-anatomy-reference.md", "design-system/component-anatomy-reference.md"],
-  ["shared/design-system/component-state-guidelines.md", "design-system/component-state-guidelines.md"],
-  ["shared/design-system/accessibility-token-guidelines.md", "design-system/accessibility-token-guidelines.md"],
-  ["shared/design-system/runtime-palette-status-state-modeling.md", "design-system/runtime-palette-status-state-modeling.md"],
-  ["shared/design-system/responsive-system-guidelines.md", "design-system/responsive-system-guidelines.md"],
-  ["shared/design-system/visual-style-calibration.md", "design-system/visual-style-calibration.md"],
-  ["shared/design-system/component-selection-guidelines.md", "design-system/component-selection-guidelines.md"],
-  ["shared/design-system/anti-generic-ui-guidelines.md", "design-system/anti-generic-ui-guidelines.md"],
-  ["shared/schemas/design-system-seed.schema.json", "schemas/design-system-seed.schema.json"],
-  ["shared/schemas/runtime-design-theme.schema.json", "schemas/runtime-design-theme.schema.json"],
-  ["shared/schemas/brand-foundation.schema.json", "schemas/brand-foundation.schema.json"],
-  ["shared/schemas/palette-foundation.schema.json", "schemas/palette-foundation.schema.json"],
-  ["shared/schemas/typography-foundation.schema.json", "schemas/typography-foundation.schema.json"],
-  ["shared/schemas/iconography-foundation.schema.json", "schemas/iconography-foundation.schema.json"],
-  ["shared/schemas/button-foundation.schema.json", "schemas/button-foundation.schema.json"],
-  ["shared/schemas/card-foundation.schema.json", "schemas/card-foundation.schema.json"],
-  ["shared/schemas/header-foundation.schema.json", "schemas/header-foundation.schema.json"],
-  ["shared/schemas/footer-foundation.schema.json", "schemas/footer-foundation.schema.json"],
-  ["shared/vocabulary/design-token-types.json", "vocabulary/design-token-types.json"],
-  ["shared/vocabulary/component-anatomy.json", "vocabulary/component-anatomy.json"],
-  ["shared/vocabulary/component-variants.json", "vocabulary/component-variants.json"],
-  ["shared/vocabulary/layout-roles.json", "vocabulary/layout-roles.json"],
-  ["shared/vocabulary/accessibility-rules.json", "vocabulary/accessibility-rules.json"],
-  ["shared/vocabulary/design-system-source-kinds.json", "vocabulary/design-system-source-kinds.json"],
-  ["shared/vocabulary/content-roles.json", "vocabulary/content-roles.json"],
-  ["shared/vocabulary/interaction-states.json", "vocabulary/interaction-states.json"]
+  [".convention/design-philosophy/design-system/design-system-principles.md", "design-philosophy/design-system/design-system-principles.md"],
+  [".convention/design-philosophy/design-system/design-system-anti-slop.md", "design-philosophy/design-system/design-system-anti-slop.md"],
+  [".convention/design-philosophy/design-system/skill-doctrine.md", "design-philosophy/design-system/skill-doctrine.md"],
+  [".convention/design-system/design-system-quality-checklist.md", "design-system/design-system-quality-checklist.md"],
+  [".convention/design-system/design-system-handoff-checklist.md", "design-system/design-system-handoff-checklist.md"],
+  [".convention/design-system/brand-asset-color-extraction.md", "design-system/brand-asset-color-extraction.md"],
+  [".convention/design-system/token-taxonomy.md", "design-system/token-taxonomy.md"],
+  [".convention/design-system/component-anatomy-reference.md", "design-system/component-anatomy-reference.md"],
+  [".convention/design-system/component-state-guidelines.md", "design-system/component-state-guidelines.md"],
+  [".convention/design-system/accessibility-token-guidelines.md", "design-system/accessibility-token-guidelines.md"],
+  [".convention/design-system/runtime-palette-status-state-modeling.md", "design-system/runtime-palette-status-state-modeling.md"],
+  [".convention/design-system/responsive-system-guidelines.md", "design-system/responsive-system-guidelines.md"],
+  [".convention/design-system/visual-style-calibration.md", "design-system/visual-style-calibration.md"],
+  [".convention/design-system/component-selection-guidelines.md", "design-system/component-selection-guidelines.md"],
+  [".convention/design-system/anti-generic-ui-guidelines.md", "design-system/anti-generic-ui-guidelines.md"],
+  [".convention/schemas/design-system-seed.schema.json", "schemas/design-system-seed.schema.json"],
+  [".convention/schemas/runtime-design-theme.schema.json", "schemas/runtime-design-theme.schema.json"],
+  [".convention/schemas/brand-foundation.schema.json", "schemas/brand-foundation.schema.json"],
+  [".convention/schemas/palette-foundation.schema.json", "schemas/palette-foundation.schema.json"],
+  [".convention/schemas/typography-foundation.schema.json", "schemas/typography-foundation.schema.json"],
+  [".convention/schemas/iconography-foundation.schema.json", "schemas/iconography-foundation.schema.json"],
+  [".convention/schemas/button-foundation.schema.json", "schemas/button-foundation.schema.json"],
+  [".convention/schemas/card-foundation.schema.json", "schemas/card-foundation.schema.json"],
+  [".convention/schemas/header-foundation.schema.json", "schemas/header-foundation.schema.json"],
+  [".convention/schemas/footer-foundation.schema.json", "schemas/footer-foundation.schema.json"],
+  [".convention/vocabulary/design-token-types.json", "vocabulary/design-token-types.json"],
+  [".convention/vocabulary/component-anatomy.json", "vocabulary/component-anatomy.json"],
+  [".convention/vocabulary/component-variants.json", "vocabulary/component-variants.json"],
+  [".convention/vocabulary/layout-roles.json", "vocabulary/layout-roles.json"],
+  [".convention/vocabulary/accessibility-rules.json", "vocabulary/accessibility-rules.json"],
+  [".convention/vocabulary/design-system-source-kinds.json", "vocabulary/design-system-source-kinds.json"],
+  [".convention/vocabulary/content-roles.json", "vocabulary/content-roles.json"],
+  [".convention/vocabulary/interaction-states.json", "vocabulary/interaction-states.json"]
 ];
 
 export const sharedReferenceBundles = {
@@ -100,12 +100,12 @@ export const sharedReferenceBundles = {
   "style-to-design-system": {
     skills: ["map-style-to-design-system-seed"],
     files: [
-      ["shared/design-system/visual-style-calibration.md", "design-system/visual-style-calibration.md"],
-      ["shared/schemas/style-reference.schema.json", "schemas/style-reference.schema.json"],
-      ["shared/schemas/style-application.schema.json", "schemas/style-application.schema.json"],
-      ["shared/schemas/style-patch.schema.json", "schemas/style-patch.schema.json"],
-      ["shared/schemas/style-blend.schema.json", "schemas/style-blend.schema.json"],
-      ["shared/schemas/design-system-seed.schema.json", "schemas/design-system-seed.schema.json"]
+      [".convention/design-system/visual-style-calibration.md", "design-system/visual-style-calibration.md"],
+      [".convention/schemas/style-reference.schema.json", "schemas/style-reference.schema.json"],
+      [".convention/schemas/style-application.schema.json", "schemas/style-application.schema.json"],
+      [".convention/schemas/style-patch.schema.json", "schemas/style-patch.schema.json"],
+      [".convention/schemas/style-blend.schema.json", "schemas/style-blend.schema.json"],
+      [".convention/schemas/design-system-seed.schema.json", "schemas/design-system-seed.schema.json"]
     ]
   },
   study: {
@@ -118,40 +118,40 @@ export const sharedReferenceBundles = {
       "study-ui-storytelling"
     ],
     files: [
-      ["shared/schemas/study-output.schema.json", "schemas/study-output.schema.json"],
-      ["shared/templates/page-study.md", "templates/page-study.md"],
-      ["shared/vocabulary/ui-terminology.json", "vocabulary/ui-terminology.json"],
-      ["shared/examples/page-study.example.json", "examples/page-study.example.json"]
+      [".convention/schemas/study-output.schema.json", "schemas/study-output.schema.json"],
+      [".convention/templates/page-study.md", "templates/page-study.md"],
+      [".convention/vocabulary/ui-terminology.json", "vocabulary/ui-terminology.json"],
+      [".convention/examples/page-study.example.json", "examples/page-study.example.json"]
     ]
   },
   "wireframe-generator": {
     skills: ["generate-wireframe-config"],
     files: [
-      ["shared/schemas/wireframe-config.schema.json", "schemas/wireframe-config.schema.json"],
-      ["shared/vocabulary/node-types.json", "vocabulary/node-types.json"],
-      ["shared/vocabulary/layout-patterns.json", "vocabulary/layout-patterns.json"],
-      ["shared/vocabulary/content-roles.json", "vocabulary/content-roles.json"],
-      ["shared/vocabulary/interaction-states.json", "vocabulary/interaction-states.json"],
-      ["shared/examples/ui-blueprint.example.json", "examples/ui-blueprint.example.json"],
-      ["shared/design-philosophy/preflight-checklist.md", "design-philosophy/preflight-checklist.md"],
-      ["shared/design-philosophy/structural-anti-slop.md", "design-philosophy/structural-anti-slop.md"],
-      ["shared/taste-profiles/README.md", "taste-profiles/README.md"],
-      ["shared/taste-profiles/conversion.json", "taste-profiles/conversion.json"],
-      ["shared/taste-profiles/utility-product.json", "taste-profiles/utility-product.json"]
+      [".convention/schemas/wireframe-config.schema.json", "schemas/wireframe-config.schema.json"],
+      [".convention/vocabulary/node-types.json", "vocabulary/node-types.json"],
+      [".convention/vocabulary/layout-patterns.json", "vocabulary/layout-patterns.json"],
+      [".convention/vocabulary/content-roles.json", "vocabulary/content-roles.json"],
+      [".convention/vocabulary/interaction-states.json", "vocabulary/interaction-states.json"],
+      [".convention/examples/ui-blueprint.example.json", "examples/ui-blueprint.example.json"],
+      [".convention/design-philosophy/preflight-checklist.md", "design-philosophy/preflight-checklist.md"],
+      [".convention/design-philosophy/structural-anti-slop.md", "design-philosophy/structural-anti-slop.md"],
+      [".convention/taste-profiles/README.md", "taste-profiles/README.md"],
+      [".convention/taste-profiles/conversion.json", "taste-profiles/conversion.json"],
+      [".convention/taste-profiles/utility-product.json", "taste-profiles/utility-product.json"]
     ]
   },
   "study-to-blueprint-generator": {
     skills: ["generate-ui-blueprint-from-study"],
     files: [
-      ["shared/schemas/study-output.schema.json", "schemas/study-output.schema.json"],
-      ["shared/schemas/wireframe-config.schema.json", "schemas/wireframe-config.schema.json"],
-      ["shared/vocabulary/node-types.json", "vocabulary/node-types.json"],
-      ["shared/vocabulary/layout-patterns.json", "vocabulary/layout-patterns.json"],
-      ["shared/vocabulary/content-roles.json", "vocabulary/content-roles.json"],
-      ["shared/vocabulary/interaction-states.json", "vocabulary/interaction-states.json"],
-      ["shared/examples/page-study.example.json", "examples/page-study.example.json"],
-      ["shared/examples/ui-blueprint.example.json", "examples/ui-blueprint.example.json"],
-      ["shared/design-philosophy/preflight-checklist.md", "design-philosophy/preflight-checklist.md"]
+      [".convention/schemas/study-output.schema.json", "schemas/study-output.schema.json"],
+      [".convention/schemas/wireframe-config.schema.json", "schemas/wireframe-config.schema.json"],
+      [".convention/vocabulary/node-types.json", "vocabulary/node-types.json"],
+      [".convention/vocabulary/layout-patterns.json", "vocabulary/layout-patterns.json"],
+      [".convention/vocabulary/content-roles.json", "vocabulary/content-roles.json"],
+      [".convention/vocabulary/interaction-states.json", "vocabulary/interaction-states.json"],
+      [".convention/examples/page-study.example.json", "examples/page-study.example.json"],
+      [".convention/examples/ui-blueprint.example.json", "examples/ui-blueprint.example.json"],
+      [".convention/design-philosophy/preflight-checklist.md", "design-philosophy/preflight-checklist.md"]
     ]
   }
 };
@@ -170,12 +170,12 @@ export function productSkillMirrorDirs(root, skillName) {
 }
 
 const referenceRewrites = new Map([
-  ["../../shared/vocabulary/node-types.json", "references/_shared/vocabulary/node-types.json"],
-  ["../../shared/vocabulary/layout-patterns.json", "references/_shared/vocabulary/layout-patterns.json"],
-  ["../../shared/vocabulary/content-roles.json", "references/_shared/vocabulary/content-roles.json"],
-  ["../../shared/vocabulary/interaction-states.json", "references/_shared/vocabulary/interaction-states.json"],
-  ["../../shared/vocabulary/ui-layer-types.json", "references/_shared/vocabulary/ui-layer-types.json"],
-  ["../../shared/schemas/wireframe-config.schema.json", "references/_shared/schemas/wireframe-config.schema.json"],
+  ["../../.convention/vocabulary/node-types.json", "references/_shared/vocabulary/node-types.json"],
+  ["../../.convention/vocabulary/layout-patterns.json", "references/_shared/vocabulary/layout-patterns.json"],
+  ["../../.convention/vocabulary/content-roles.json", "references/_shared/vocabulary/content-roles.json"],
+  ["../../.convention/vocabulary/interaction-states.json", "references/_shared/vocabulary/interaction-states.json"],
+  ["../../.convention/vocabulary/ui-layer-types.json", "references/_shared/vocabulary/ui-layer-types.json"],
+  ["../../.convention/schemas/wireframe-config.schema.json", "references/_shared/schemas/wireframe-config.schema.json"],
   ["../wireframe-schema/references/valid-node-types.md", "references/_shared/wireframe-schema/valid-node-types.md"],
   ["../wireframe-schema/references/wireframe-config.schema.json", "references/_shared/wireframe-schema/wireframe-config.schema.json"]
 ]);
@@ -231,8 +231,8 @@ function rewriteSkillReferences(skillDir) {
   for (const [from, to] of referenceRewrites) {
     text = text.split(from).join(to);
   }
-  text = text.split("../../shared/vocabulary/").join("references/_shared/vocabulary/");
-  text = text.split("../../../shared/").join("references/_shared/");
+  text = text.split("../../.convention/vocabulary/").join("references/_shared/vocabulary/");
+  text = text.split("../../../.convention/").join("references/_shared/");
   fs.writeFileSync(skillFile, text);
 }
 

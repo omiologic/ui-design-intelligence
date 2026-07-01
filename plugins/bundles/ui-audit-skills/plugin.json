@@ -30,10 +30,10 @@
     "audit-interactions"
   ],
   "shared": [
-    "shared/schemas/page-audit.schema.json",
-    "shared/vocabulary/audit-severity.json",
-    "shared/templates/page-audit.md",
-    "shared/templates/interaction-audit.md",
-    "shared/examples/page-audit.example.json"
+    ".convention/schemas/page-audit.schema.json",
+    ".convention/vocabulary/audit-severity.json",
+    ".convention/templates/page-audit.md",
+    ".convention/templates/interaction-audit.md",
+    ".convention/examples/page-audit.example.json"
   ]
 }

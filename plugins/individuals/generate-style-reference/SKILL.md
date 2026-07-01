@@ -12,7 +12,7 @@ recommended, applied, blended, audited, or mapped to a design-system seed.
 ## Purpose
 
 Generate `StyleReference` JSON shaped by
-`shared/schemas/style-reference.schema.json`.
+`.convention/schemas/style-reference.schema.json`.
 
 ## Philosophy
 
@@ -44,9 +44,9 @@ component, blueprint, and prototype decisions.
 ## References
 
 - `references/style-reference-generation.md`
-- `../../../shared/schemas/style-reference.schema.json`
-- `../../../shared/templates/style-reference.json`
-- `../../../shared/style-references/categories.json`
+- `../../../.convention/schemas/style-reference.schema.json`
+- `../../../.convention/templates/style-reference.json`
+- `../../../.convention/style-references/categories.json`
 
 ## Rules
 

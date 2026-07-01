@@ -54,12 +54,12 @@ conditioned rather than implied.
 ## References
 
 - `references/prototype-config-generation.md`
-- `../../../shared/schemas/prototype-config.schema.json`
-- `../../../shared/schemas/wireframe-config.schema.json`
-- `../../../shared/schemas/design-system-seed.schema.json`
-- `../../../shared/schemas/runtime-design-theme.schema.json`
-- `../../../shared/examples/dental-appointment.prototype-config.example.json`
-- `../../../shared/examples/runtime-theme/ledgerpilot.runtime-design-theme.example.json`
+- `../../../.convention/schemas/prototype-config.schema.json`
+- `../../../.convention/schemas/wireframe-config.schema.json`
+- `../../../.convention/schemas/design-system-seed.schema.json`
+- `../../../.convention/schemas/runtime-design-theme.schema.json`
+- `../../../.convention/examples/dental-appointment.prototype-config.example.json`
+- `../../../.convention/examples/runtime-theme/ledgerpilot.runtime-design-theme.example.json`
 
 ## Rules
 
@@ -108,7 +108,7 @@ conditioned rather than implied.
   "name": "Appointment Dialog Prototype",
   "source": {
     "sourceWireframeId": "dental-homepage-wireframe",
-    "sourceWireframeRef": "shared/examples/dental-homepage.ui-blueprint.json",
+    "sourceWireframeRef": ".convention/examples/dental-homepage.ui-blueprint.json",
     "sourceRuntimeDesignThemeId": "dental-runtime-theme",
     "sourceRuntimeDesignThemeRef": "artifacts/dental/runtime-design-theme.json",
     "notes": ["References wireframe node IDs without copying layout."]

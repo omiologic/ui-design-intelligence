@@ -1,6 +1,6 @@
 # State Terminology
 
-Use `_shared/vocabulary/interaction-states.json` as the source of truth.
+Use `_.convention/vocabulary/interaction-states.json` as the source of truth.
 
 ## Decision Heuristics
 

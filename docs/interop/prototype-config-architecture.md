@@ -34,16 +34,16 @@ transitions.
 - Do not copy the wireframe `root`, `children`, layout patterns, or node nesting
   into prototype config.
 - Use existing interaction-state vocabulary from
-  `shared/vocabulary/interaction-states.json`.
+  `.convention/vocabulary/interaction-states.json`.
 - Keep prototype config declarative. A later runtime may implement it, but the
   schema should not assume a framework.
 
 ## MVP Schema Set
 
-- `shared/schemas/prototype-config.schema.json`
-- `shared/schemas/interaction-flow.schema.json`
-- `shared/schemas/component-state-model.schema.json`
+- `.convention/schemas/prototype-config.schema.json`
+- `.convention/schemas/interaction-flow.schema.json`
+- `.convention/schemas/component-state-model.schema.json`
 
 The first example is
-`shared/examples/dental-appointment.prototype-config.example.json`, which opens
+`.convention/examples/dental-appointment.prototype-config.example.json`, which opens
 an appointment dialog from a hero CTA and a compact-viewport sticky bar.

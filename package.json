@@ -43,7 +43,7 @@
     "validate:release": "node scripts/validate-release.mjs",
     "validate:capture-url": "node scripts/capture-url.mjs --url https://example.com --captured-at 2026-06-29 --check",
     "validate:visual-experience-bridge": "node scripts/validate-visual-experience-bridge.mjs",
-    "validate:export-seed": "node scripts/export-blueprint-seed.mjs --blueprint shared/examples/ui-blueprint.example.json --profile shared/taste-profiles/conversion.json --expect shared/examples/ui-blueprint.export-seed.md --check",
+    "validate:export-seed": "node scripts/export-blueprint-seed.mjs --blueprint .convention/examples/ui-blueprint.example.json --profile .convention/taste-profiles/conversion.json --expect .convention/examples/ui-blueprint.export-seed.md --check",
     "build:bundles": "node scripts/build-bundles.mjs",
     "build:codex-plugins": "node scripts/build-codex-plugins.mjs",
     "build:schema": "node scripts/build-schema.mjs",

@@ -4,7 +4,7 @@ import path from "node:path";
 import { schemaWithVocabularyEnums } from "./lib/schema-enums.mjs";
 
 const root = process.cwd();
-const schemaPath = path.join(root, "shared/schemas/wireframe-config.schema.json");
+const schemaPath = path.join(root, ".convention/schemas/wireframe-config.schema.json");
 const actual = fs.readFileSync(schemaPath, "utf8");
 const expected = `${JSON.stringify(schemaWithVocabularyEnums(root), null, 2)}\n`;
 

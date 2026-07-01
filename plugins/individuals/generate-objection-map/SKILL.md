@@ -33,7 +33,7 @@ answered honestly with proof, clarity, comparison, or recovery paths.
 
 ## References
 
-- `../../../shared/content/objection-handling-reference.md`
+- `../../../.convention/content/objection-handling-reference.md`
 - `../../../knowledge/schemas/objection-pattern.schema.json`
 - `../../../docs/interop/content-journey-layer-architecture.md`
 

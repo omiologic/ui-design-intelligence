@@ -34,11 +34,11 @@ without overexplaining or hiding required information.
 
 ## References
 
-- `../../../shared/content/content-accessibility-guidelines.md`
-- `../../../shared/content/laws-of-copywriting.md`
-- `../../../shared/content/microcopy-guidelines.md`
-- `../../../shared/schemas/prototype-content.schema.json`
-- `../../../shared/schemas/content-model.schema.json`
+- `../../../.convention/content/content-accessibility-guidelines.md`
+- `../../../.convention/content/laws-of-copywriting.md`
+- `../../../.convention/content/microcopy-guidelines.md`
+- `../../../.convention/schemas/prototype-content.schema.json`
+- `../../../.convention/schemas/content-model.schema.json`
 
 ## Rules
 

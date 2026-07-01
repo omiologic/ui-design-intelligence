@@ -74,7 +74,7 @@ function checkReferenceBlueprint(fixture, file) {
   const blueprintFile = requireExistingRelativeFile(fixture.referenceBlueprint, file, "referenceBlueprint");
   if (!blueprintFile) return;
 
-  const schema = readJson(path.join(root, "shared/schemas/wireframe-config.schema.json"));
+  const schema = readJson(path.join(root, ".convention/schemas/wireframe-config.schema.json"));
   const blueprint = readJson(blueprintFile);
   if (!schema || !blueprint) return;
 

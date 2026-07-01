@@ -50,7 +50,7 @@ function rewriteCodexSkillReferences(skillDir) {
   const skillFile = path.join(skillDir, "SKILL.md");
   const text = fs
     .readFileSync(skillFile, "utf8")
-    .split("../../../shared/").join("../../shared/")
+    .split("../../../.convention/").join("../../.convention/")
     .split("../../../knowledge/").join("../../knowledge/")
     .split("../../../docs/").join("../../docs/");
   fs.writeFileSync(skillFile, text);

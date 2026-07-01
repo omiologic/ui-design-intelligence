@@ -7,8 +7,8 @@ structural and visual-free, this layer deliberately owns the visual foundations
 the wireframe layer excluded — token intent, component foundations, and the
 constraints downstream generation depends on.
 
-Names in `code` refer to approved tokens in `shared/vocabulary/` and fields in
-`shared/schemas/design-system-seed.schema.json`.
+Names in `code` refer to approved tokens in `.convention/vocabulary/` and fields in
+`.convention/schemas/design-system-seed.schema.json`.
 
 ## Where this layer sits
 

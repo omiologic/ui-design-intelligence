@@ -7,9 +7,9 @@
 ## Current Architecture
 
 - `plugins/individuals/` contains reusable skill source directories. Each skill has a required `SKILL.md` file with frontmatter `name` and `description`.
-- `shared/vocabulary/` contains canonical UI terms for node types, layout patterns, content roles, interaction states, and UI layer types.
-- `shared/schemas/` contains the MVP wireframe JSON schema.
-- `shared/examples/` contains valid UIBlueprint examples used by validators and skill references.
+- `.convention/vocabulary/` contains canonical UI terms for node types, layout patterns, content roles, interaction states, and UI layer types.
+- `.convention/schemas/` contains the MVP wireframe JSON schema.
+- `.convention/examples/` contains valid UIBlueprint examples used by validators and skill references.
 - `scripts/` contains local validation and packaging utilities.
 - `plugins/bundles/` contains committed bundle manifests and bundle README files.
 - `agents/` and `commands/` contain shared workflow assets referenced by bundle manifests.
@@ -74,10 +74,10 @@ Initial development order:
 Naming reconciliation:
 
 - Interaction vocabulary is implemented as
-  `shared/vocabulary/interaction-states.json`. Earlier planning language used
+  `.convention/vocabulary/interaction-states.json`. Earlier planning language used
   `interaction-patterns.json`; interaction patterns now live in skill reference
   guidance, while the shared JSON file controls canonical state tokens.
-- `shared/examples/ui-blueprint.example.json` is the canonical full-bundle
+- `.convention/examples/ui-blueprint.example.json` is the canonical full-bundle
   blueprint example. Additional implemented blueprint examples are
   `minimal-page.ui-blueprint.json`, `product-page.ui-blueprint.json`, and
   `dental-homepage.ui-blueprint.json`.
@@ -99,7 +99,7 @@ Contributor workflow for a new individual skill:
 1. Add `plugins/individuals/{skill-name}/SKILL.md` with matching frontmatter.
 2. Put reusable long-form guidance in `references/`.
 3. Add or update shared schemas, vocabulary, templates, or examples under
-   `shared/` when the skill needs canonical data.
+   `.convention/` when the skill needs canonical data.
 4. Add the skill name to each target bundle manifest.
 5. Add related agent, command, and shared file manifest entries.
 6. Keep generated expanded bundle contents out of `plugins/bundles/*`.
@@ -115,9 +115,9 @@ Initial study individual skills now live under `plugins/individuals/`:
 - `study-ui-responsive-behavior`
 - `study-ui-accessibility`
 
-These skills share `shared/schemas/study-output.schema.json`,
-`shared/vocabulary/ui-terminology.json`, `shared/templates/page-study.md`, and
-`shared/examples/page-study.example.json`.
+These skills share `.convention/schemas/study-output.schema.json`,
+`.convention/vocabulary/ui-terminology.json`, `.convention/templates/page-study.md`, and
+`.convention/examples/page-study.example.json`.
 
 ## Implemented MVP
 
@@ -168,14 +168,14 @@ native Blueprint Export Seed, documented in
 `docs/interop/blueprint-export-seed.md`. It can be adapted into
 `PRODUCT.md`-style context, `DESIGN.md`-style direction, or design-engineering
 prompts, but it does not copy or claim a third-party private format. The seed
-template lives at `shared/templates/blueprint-export-seed.md`, with a worked
-example at `shared/examples/ui-blueprint.export-seed.md`.
+template lives at `.convention/templates/blueprint-export-seed.md`, with a worked
+example at `.convention/examples/ui-blueprint.export-seed.md`.
 
 Sprint 002 export workflow status: `scripts/export-blueprint-seed.mjs`
 prototypes deterministic export from a committed UIBlueprint plus structural
 taste profile into the native seed markdown format. `npm run validate:export-seed`
-regenerates the example from `shared/examples/ui-blueprint.example.json` and
-`shared/taste-profiles/conversion.json`, then compares it to the committed seed
+regenerates the example from `.convention/examples/ui-blueprint.example.json` and
+`.convention/taste-profiles/conversion.json`, then compares it to the committed seed
 example.
 
 Sprint 002 install and command parity decision: local bundle installation remains
@@ -200,17 +200,17 @@ build passed. The repository package archive now uses the
 Product skills are self-contained at install time. Each product skill keeps a bundled copy of required shared files under:
 
 ```txt
-plugins/individuals/{skill-name}/references/_shared/
+plugins/individuals/{skill-name}/references/_.convention/
 ```
 
-`shared/` remains the canonical source for vocabulary, schemas, and shared examples. The committed `_shared` copies make source-time validation and generated installs work. `install.sh` and `scripts/build-zip.mjs` refresh those `_shared` copies when installing or packaging so release output does not depend on sibling skills or repo-level `shared/` paths.
+`.convention/` remains the canonical source for vocabulary, schemas, and shared examples. The committed `_shared` copies make source-time validation and generated installs work. `install.sh` and `scripts/build-zip.mjs` refresh those `_shared` copies when installing or packaging so release output does not depend on sibling skills or repo-level `.convention/` paths.
 
-Skill `SKILL.md` reference sections must point at `references/_shared/...`, not `../../shared/...` or `../wireframe-schema/...`.
+Skill `SKILL.md` reference sections must point at `references/_.convention/...`, not `../../.convention/...` or `../wireframe-schema/...`.
 
 Sprint 002 reference-safety status: study skills and the two blueprint
 generator skills (`generate-wireframe-config` and
 `generate-ui-blueprint-from-study`) also use install-safe
-`references/_shared/...` paths. `scripts/build-valid-node-types.mjs` syncs
+`references/_.convention/...` paths. `scripts/build-valid-node-types.mjs` syncs
 their required schemas, templates, vocabulary, examples, and selected design
 philosophy references alongside the original blueprint product skill bundles.
 
@@ -219,17 +219,17 @@ philosophy references alongside the original blueprint product skill bundles.
 Sprint 002 keeps the UIBlueprint substrate neutral and layers structural taste
 on top of it. The neutral substrate remains:
 
-- `shared/schemas/`: shape, required fields, and machine-checkable structure.
-- `shared/vocabulary/`: canonical names and semantic meaning for node types,
+- `.convention/schemas/`: shape, required fields, and machine-checkable structure.
+- `.convention/vocabulary/`: canonical names and semantic meaning for node types,
   layouts, content roles, interaction states, UI layers, and related terms.
-- `shared/examples/`: schema-valid examples that can optionally demonstrate a
+- `.convention/examples/`: schema-valid examples that can optionally demonstrate a
   profile but must still validate without profile-specific assumptions.
 
 Structural opinions live outside that substrate:
 
-- `shared/design-philosophy/`: shared rationale, decision flowcharts, blueprint
+- `.convention/design-philosophy/`: shared rationale, decision flowcharts, blueprint
   locks, structural anti-slop rules, and pre-flight checks.
-- `shared/taste-profiles/`: named profile files that bias structural decisions
+- `.convention/taste-profiles/`: named profile files that bias structural decisions
   such as section order, density, layout selection, CTA cadence, overlay use,
   and register-specific hierarchy.
 
@@ -255,8 +255,8 @@ than new required schema fields:
 Those keys are advisory for skills, profile-aware validators, and export tools.
 They do not change the base schema contract, and examples without them remain
 valid neutral UIBlueprints. If Sprint 002 adds profile validation, it should
-validate these metadata values against `shared/taste-profiles/` without making
-`shared/schemas/wireframe-config.schema.json` opinionated.
+validate these metadata values against `.convention/taste-profiles/` without making
+`.convention/schemas/wireframe-config.schema.json` opinionated.
 
 ## Install And Packaging
 
@@ -274,7 +274,7 @@ Default plugin target:
 ```
 
 Installed skills go to `~/.claude/skills`; agents, commands, and shared files
-go to sibling `agents/`, `commands/`, and `shared/` directories under the same
+go to sibling `agents/`, `commands/`, and `.convention/` directories under the same
 plugin target.
 
 Select a bundle:
@@ -344,16 +344,16 @@ judgment sections: decision heuristics, an anti-pattern, a worked example, and a
 hand-off statement. This keeps product skills from regressing into generic
 vocabulary lists.
 
-Example validation runs in two layers for wireframe examples. First, `scripts/validate-examples.mjs` validates each wireframe example against `shared/schemas/wireframe-config.schema.json` directly using the repository-local schema-subset validator in `scripts/lib/json-schema-validator.mjs`. This avoids network-installed dependencies and keeps offline validation deterministic. Second, it runs semantic checks for duplicate node ids, controlled vocabulary membership, node containment, overlay-only placement, and cardinality.
+Example validation runs in two layers for wireframe examples. First, `scripts/validate-examples.mjs` validates each wireframe example against `.convention/schemas/wireframe-config.schema.json` directly using the repository-local schema-subset validator in `scripts/lib/json-schema-validator.mjs`. This avoids network-installed dependencies and keeps offline validation deterministic. Second, it runs semantic checks for duplicate node ids, controlled vocabulary membership, node containment, overlay-only placement, and cardinality.
 
 Wireframe example validation scans `*.ui-blueprint.json` files in
-`shared/examples/` and skill-local JSON examples under
+`.convention/examples/` and skill-local JSON examples under
 `plugins/individuals/`. This lets future study/audit examples coexist in
-`shared/examples/` without being treated as UIBlueprint wireframes.
+`.convention/examples/` without being treated as UIBlueprint wireframes.
 
 Audit example validation scans `page-audit.example.json` files in
-`shared/examples/`, validates them against `shared/schemas/page-audit.schema.json`,
-and checks audit severity values against `shared/vocabulary/audit-severity.json`.
+`.convention/examples/`, validates them against `.convention/schemas/page-audit.schema.json`,
+and checks audit severity values against `.convention/vocabulary/audit-severity.json`.
 
 Invalid example validation runs fixtures under `tests/invalid-examples/` through the same validator and asserts they fail with expected messages for schema and semantic failure categories.
 
@@ -380,7 +380,7 @@ intentionally planned future bundles.
 
 `node-types.json` stores semantic records rather than a flat list. Each node type defines direct child containment, overlay-only placement, and selected cardinality rules. `scripts/validate-examples.mjs` enforces those semantic rules.
 
-`scripts/build-schema.mjs` regenerates schema enums for node types, content roles, layout patterns, and interaction states from `shared/vocabulary/*`. Unknown vocabulary tokens hard-fail; the MVP does not include an `x-custom` escape hatch.
+`scripts/build-schema.mjs` regenerates schema enums for node types, content roles, layout patterns, and interaction states from `.convention/vocabulary/*`. Unknown vocabulary tokens hard-fail; the MVP does not include an `x-custom` escape hatch.
 
 ## Known Follow-Up Decisions
 
@@ -410,7 +410,7 @@ Rules:
 
 ## Design Rules
 
-- Keep vocabulary and schema canonical in `shared/`.
+- Keep vocabulary and schema canonical in `.convention/`.
 - Keep skill instructions focused and use `references/` for reusable detail.
 - Keep generated artifacts out of source.
 - Prefer boring, explicit names over clever or brand-heavy names.

@@ -75,7 +75,7 @@ for a journey map when audience, goal, stage, or objection logic is missing.
 ## Tone And Voice Boundaries
 
 The shared tone-of-voice reference is controlled vocabulary, not a project
-voice contract. Use `shared/content/tone-of-voice/tone-of-voice-reference.json`
+voice contract. Use `.convention/content/tone-of-voice/tone-of-voice-reference.json`
 when a skill needs stable tone IDs, tone-fit guidance, copy rules, sample lines,
 or safe tone-mixing defaults before a project-specific voice exists.
 
@@ -108,7 +108,7 @@ accessibility, claim-risk review, or approval status.
 
 ## Copywriting Laws Boundary
 
-`shared/content/laws-of-copywriting.md` is the shared content strategy
+`.convention/content/laws-of-copywriting.md` is the shared content strategy
 checklist for persuasion logic and message readiness. Use it when planning or
 auditing:
 
@@ -139,7 +139,7 @@ precedence over persuasive polish.
 
 ## Copy Quality Checklist Boundary
 
-`shared/content/copy-quality-checklist.md` is the shared pass/fail checklist
+`.convention/content/copy-quality-checklist.md` is the shared pass/fail checklist
 for copy audits. It covers clarity, benefit, proof, CTA readiness, objections,
 tone fit, claim risk, scannability, accessibility, and node fit.
 
@@ -155,7 +155,7 @@ claims by itself.
 
 ## Content Pattern Library Boundary
 
-`shared/content/content-pattern-library.md` provides generic reusable copy
+`.convention/content/content-pattern-library.md` provides generic reusable copy
 structures for common page, section, component, form, and prototype surfaces:
 hero copy, feature sections, proof sections, pricing copy, comparison tables,
 FAQs, empty states, forms, and error states.
@@ -172,7 +172,7 @@ and claim-risk status.
 
 ## CTA Patterns Boundary
 
-`shared/content/cta-patterns.md` provides intent-specific CTA label guidance
+`.convention/content/cta-patterns.md` provides intent-specific CTA label guidance
 for learn, compare, inquire, buy, book, download, start, continue, save, retry,
 and support actions. It also defines primary, secondary, tertiary, destructive,
 and disabled CTA guidance with audit checks for vague, misleading,
@@ -192,7 +192,7 @@ journey stage, or offer.
 
 ## Claim Risk Guidelines Boundary
 
-`shared/content/claim-risk-guidelines.md` defines shared detection and handling
+`.convention/content/claim-risk-guidelines.md` defines shared detection and handling
 rules for medical, financial, legal, technical, pricing, safety, performance,
 compatibility, and availability claims in generated or audited copy.
 
@@ -209,7 +209,7 @@ safer source-aware draft language.
 
 ## Proof And Credibility Patterns Boundary
 
-`shared/content/proof-and-credibility-patterns.md` defines reusable proof
+`.convention/content/proof-and-credibility-patterns.md` defines reusable proof
 structures for testimonials, stats, certifications, case studies, expert proof,
 guarantees, trust badges, comparison proof, and process proof.
 
@@ -227,7 +227,7 @@ or reviewed status.
 
 ## Page Message Architecture Boundary
 
-`shared/content/page-message-architecture.md` defines generic message sequences
+`.convention/content/page-message-architecture.md` defines generic message sequences
 by page type and user intent for landing pages, product pages, service pages,
 pricing pages, onboarding, checkout, support flows, healthcare pages, and B2B
 SaaS pages.
@@ -246,7 +246,7 @@ objection handling, or CTA readiness.
 
 ## Microcopy Guidelines Boundary
 
-`shared/content/microcopy-guidelines.md` defines shared rules for small UI copy:
+`.convention/content/microcopy-guidelines.md` defines shared rules for small UI copy:
 form labels, helper text, validation errors, empty states, success states,
 confirmation dialogs, destructive actions, loading states, permission prompts,
 recovery paths, accessibility, and tone restraint.
@@ -263,7 +263,7 @@ or carry a draft handoff note when behavior is not modeled.
 
 ## Content Accessibility Guidelines Boundary
 
-`shared/content/content-accessibility-guidelines.md` defines copy-focused
+`.convention/content/content-accessibility-guidelines.md` defines copy-focused
 accessibility guidance for plain language, reading level, inclusive language,
 label clarity, error recovery, cognitive load, and screen-reader-friendly copy.
 
@@ -281,7 +281,7 @@ design-system reviews.
 
 ## Audience Intent Reference Boundary
 
-`shared/content/audience-intent-reference.md` maps audience awareness,
+`.convention/content/audience-intent-reference.md` maps audience awareness,
 readiness, and emotional state to user questions, content needs, proof needs,
 CTA posture, and tone considerations. It covers unaware, problem-aware,
 solution-aware, comparison-ready, purchase-ready, anxious, skeptical, and
@@ -300,7 +300,7 @@ approved fact.
 
 ## Objection Handling Reference Boundary
 
-`shared/content/objection-handling-reference.md` defines common objection
+`.convention/content/objection-handling-reference.md` defines common objection
 categories and safe response patterns for price, trust, complexity, effort,
 risk, compatibility, time, switching cost, privacy, safety, and proof gaps.
 
@@ -342,8 +342,8 @@ domains should mark review risks instead of smoothing over uncertainty.
 
 ## Schema Set
 
-- `shared/schemas/user-journey-map.schema.json`
-- `shared/schemas/content-model.schema.json`
-- `shared/schemas/prototype-content.schema.json`
-- `shared/schemas/brand-voice.schema.json`
-- `shared/schemas/tone-of-voice-reference.schema.json`
+- `.convention/schemas/user-journey-map.schema.json`
+- `.convention/schemas/content-model.schema.json`
+- `.convention/schemas/prototype-content.schema.json`
+- `.convention/schemas/brand-voice.schema.json`
+- `.convention/schemas/tone-of-voice-reference.schema.json`

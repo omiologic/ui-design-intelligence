@@ -36,8 +36,8 @@ questions as unverified.
 - `references/_shared/templates/page-study.md`
 - `references/_shared/vocabulary/ui-terminology.json`
 - `references/_shared/examples/page-study.example.json`
-- `../../../shared/workflows/capture-manifest-consumption.md`
-- `../../../shared/templates/capture-manifest.example.json`
+- `../../../.convention/workflows/capture-manifest-consumption.md`
+- `../../../.convention/templates/capture-manifest.example.json`
 
 ## Boundary
 

@@ -34,7 +34,7 @@ duplicating wireframe nodes or writing final copy.
 ## References
 
 - `../../../docs/interop/content-journey-layer-architecture.md`
-- `../../../shared/schemas/user-journey-map.schema.json`
+- `../../../.convention/schemas/user-journey-map.schema.json`
 
 ## Rules
 

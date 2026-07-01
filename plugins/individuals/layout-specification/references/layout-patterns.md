@@ -1,6 +1,6 @@
 # Layout Patterns
 
-The canonical list is `_shared/vocabulary/layout-patterns.json`.
+The canonical list is `_.convention/vocabulary/layout-patterns.json`.
 
 ## Decision Heuristics
 

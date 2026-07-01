@@ -2,16 +2,18 @@
 
 ## Decision
 
-The supported install paths are target-specific. Codex/GPT local skill installs
-use `.agents/skills`; Claude/local compatibility installs use `.claude` for the
-full bundle surface; generated Codex plugin packages use `.codex-plugin` package
-shape under `dist/` once built.
+The supported install paths are target-specific. Codex/GPT full local installs
+use `.agents` with skills under `.agents/skills`, roles under `.agents/agents`,
+commands under `.agents/commands`, and conventions under `.agents/.convention`.
+Claude/local compatibility installs use `.claude` for the same full bundle
+surface. Generated Codex plugin packages use `.codex-plugin` package shape under
+`dist/` once built.
 
 The deterministic local bundle installer remains the shared implementation for
 direct local installs:
 
 ```bash
-node scripts/install-bundle.mjs install ui-design-intelligence "$HOME/.agents" "$HOME/.agents/skills" --skills-only --dry-run
+node scripts/install-bundle.mjs install ui-design-intelligence "$HOME/.agents" "$HOME/.agents/skills" --dry-run
 node scripts/install-bundle.mjs install ui-design-intelligence "$HOME/.claude" "$HOME/.claude/skills" --dry-run
 ```
 
@@ -27,13 +29,14 @@ UI_PLUGIN_TARGET="/path/to/.claude" ./install.sh
 
 | Area | Supported behavior | Not implied |
 | --- | --- | --- |
-| Codex/GPT local skills | `install-bundle.mjs --skills-only` installs selected bundle skills into `.agents/skills` and required shared reference assets beside them. | Claude agents and commands in `.agents`. |
+| Codex/GPT local full bundle | `install-bundle.mjs` installs selected bundle skills into `.agents/skills`, agents into `.agents/agents`, commands into `.agents/commands`, and conventions into `.agents/.convention`. | Generated Codex plugin marketplace metadata in `.agents`. |
+| Codex/GPT local skills-only | `install-bundle.mjs --skills-only` installs selected bundle skills into `.agents/skills` and required convention reference assets beside them. | Agents and commands. |
 | Codex plugin package | `build:codex-plugins` emits `.codex-plugin/plugin.json`, `skills/`, inspection output, and required reference assets under `dist/codex-plugins`. | Claude agents and commands in generated plugin packages. |
 | Codex local marketplace | `build:codex-plugins` emits `dist/codex-marketplace/.agents/plugins/marketplace.json` with local entries for mirrored generated packages. | Public marketplace publishing or remote registry availability. |
 | Claude/local full bundle | `install.sh` or `install-bundle.mjs` installs selected bundle manifests into `.claude`. | Codex plugin marketplace metadata in `.claude`. |
 | Bundle selection | `UI_PLUGIN_BUNDLE` selects `ui-study-skills`, `ui-audit-skills`, `ui-blueprint-skills`, `ui-seo-skills`, `ui-knowledge-skills`, `ui-design-system-skills`, `ui-style-reference-skills`, `ui-prototype-skills`, `ui-content-skills`, or `ui-design-intelligence`. | Automatic bundle discovery in external marketplaces. |
-| Target selection | `target-root` and `skills-dir` are passed separately; `UI_PLUGIN_TARGET` selects a Claude/local agent root for the shell wrapper. | Mixing Codex `.agents` command paths with Claude `.claude` command paths. |
-| Commands | Markdown commands are installed from bundle manifests into Claude/local `commands/`. | Codex slash-command registration until a generated Codex package supports it. |
+| Target selection | `target-root` and `skills-dir` are passed separately; `UI_PLUGIN_TARGET` selects a Claude/local agent root for the shell wrapper. | Mixing target roots and skills roots. |
+| Commands | Markdown commands are installed from bundle manifests into the selected target root's `commands/` directory. | Codex plugin package command registration. |
 | Handoff | Blueprint Export Seed markdown can be passed to downstream visual-taste tools. | Direct invocation of third-party tools or private prompt formats. |
 
 ## Discipline-Scoped Commands

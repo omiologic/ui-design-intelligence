@@ -1,0 +1,321 @@
+{
+  "version": "0.1.0",
+  "type": "prototypeConfig",
+  "id": "dental-appointment-prototype",
+  "name": "Dental Appointment Prototype",
+  "source": {
+    "sourceWireframeId": "dental-homepage-wireframe",
+    "sourceWireframeRef": ".convention/examples/dental-homepage.ui-blueprint.json",
+    "sourceDesignSystemSeedId": "dental-clinic-design-system-seed",
+    "notes": [
+      "Prototype config references wireframe node IDs and does not duplicate layout hierarchy."
+    ]
+  },
+  "designSystemSeedRef": "dental-clinic-design-system-seed",
+  "screens": [
+    {
+      "id": "homepage-screen",
+      "label": "Homepage",
+      "wireframeRef": "dental-homepage",
+      "routeId": "home-route",
+      "initialState": "default",
+      "viewportPriority": [
+        "expanded",
+        "compact"
+      ]
+    }
+  ],
+  "routes": [
+    {
+      "id": "home-route",
+      "path": "/",
+      "screenId": "homepage-screen",
+      "label": "Home"
+    }
+  ],
+  "states": [
+    {
+      "id": "appointment-dialog-closed",
+      "name": "Appointment Dialog Closed",
+      "state": "closed",
+      "nodeId": "appointment-dialog",
+      "screenId": "homepage-screen",
+      "description": "Appointment dialog is not visible."
+    },
+    {
+      "id": "appointment-dialog-open",
+      "name": "Appointment Dialog Open",
+      "state": "open",
+      "nodeId": "appointment-dialog",
+      "screenId": "homepage-screen",
+      "description": "Appointment dialog is visible and holds focus."
+    },
+    {
+      "id": "mobile-sticky-bar-visible",
+      "name": "Mobile Sticky Bar Visible",
+      "state": "visible",
+      "nodeId": "mobile-appointment-sticky-bar",
+      "screenId": "homepage-screen",
+      "description": "Mobile sticky appointment CTA remains visible on compact viewports."
+    },
+    {
+      "id": "appointment-form-error",
+      "name": "Appointment Form Error",
+      "state": "error",
+      "nodeId": "appointment-form",
+      "screenId": "homepage-screen",
+      "description": "Appointment form shows inline validation errors."
+    }
+  ],
+  "componentStateModels": [
+    {
+      "id": "appointment-dialog-state-model",
+      "component": "dialog",
+      "nodeId": "appointment-dialog",
+      "wireframeRef": "dental-homepage",
+      "initialState": "closed",
+      "allowedStates": [
+        "closed",
+        "open"
+      ],
+      "transitions": [
+        {
+          "from": "closed",
+          "to": "open",
+          "trigger": "click",
+          "description": "Appointment CTA opens the dialog."
+        },
+        {
+          "from": "open",
+          "to": "closed",
+          "trigger": "keydown",
+          "description": "Escape closes the dialog."
+        }
+      ],
+      "accessibility": {
+        "focusManagement": "Move focus into the dialog on open and return focus to the triggering CTA on close.",
+        "keyboardBehavior": "Escape closes the dialog; Tab remains inside while open.",
+        "ariaLabel": "Request an appointment",
+        "notes": [
+          "Dialog must not open automatically."
+        ]
+      }
+    },
+    {
+      "id": "appointment-submit-state-model",
+      "component": "button",
+      "nodeId": "appointment-submit-button",
+      "wireframeRef": "dental-homepage",
+      "initialState": "default",
+      "allowedStates": [
+        "default",
+        "focus",
+        "disabled",
+        "loading",
+        "success",
+        "error"
+      ],
+      "transitions": [
+        {
+          "from": "default",
+          "to": "loading",
+          "trigger": "submit",
+          "description": "Submitting the appointment form enters loading state."
+        },
+        {
+          "from": "loading",
+          "to": "success",
+          "trigger": "timeout",
+          "description": "Successful simulated submission shows success state."
+        }
+      ],
+      "disabledBehavior": "Disabled submit button cannot receive pointer activation.",
+      "loadingBehavior": "Preserve button width and announce submission progress.",
+      "validation": {
+        "states": [
+          "error",
+          "success"
+        ],
+        "errorPlacement": "inline",
+        "rules": [
+          "Required field errors appear beside the field."
+        ]
+      },
+      "accessibility": {
+        "focusManagement": "Keep focus on submit until validation result is available.",
+        "keyboardBehavior": "Enter submits the form when focus is inside a valid field group.",
+        "notes": [
+          "Do not use toast as the only validation surface."
+        ]
+      }
+    }
+  ],
+  "interactions": [
+    {
+      "id": "open-appointment-dialog-from-hero",
+      "label": "Open appointment dialog from hero CTA",
+      "trigger": {
+        "event": "click",
+        "sourceNodeId": "hero-book-appointment-button",
+        "screenId": "homepage-screen",
+        "routeId": "home-route"
+      },
+      "condition": {
+        "type": "always"
+      },
+      "action": {
+        "type": "openOverlay",
+        "targetNodeId": "appointment-dialog",
+        "targetStateId": "appointment-dialog-open"
+      },
+      "result": {
+        "type": "overlayOpened",
+        "description": "Appointment dialog opens and focus moves to the dialog container.",
+        "resultingStateId": "appointment-dialog-open",
+        "focusTargetNodeId": "appointment-dialog"
+      },
+      "accessibility": {
+        "focusManagement": "Focus moves from CTA to dialog container.",
+        "keyboardBehavior": "Escape closes the dialog.",
+        "ariaLive": "off"
+      }
+    },
+    {
+      "id": "open-appointment-dialog-from-sticky-bar",
+      "label": "Open appointment dialog from mobile sticky CTA",
+      "trigger": {
+        "event": "tap",
+        "sourceNodeId": "mobile-sticky-book-button",
+        "screenId": "homepage-screen",
+        "routeId": "home-route"
+      },
+      "condition": {
+        "type": "whenViewport",
+        "viewport": "compact",
+        "description": "Mobile sticky CTA is only used on compact viewport."
+      },
+      "action": {
+        "type": "openOverlay",
+        "targetNodeId": "appointment-dialog",
+        "targetStateId": "appointment-dialog-open"
+      },
+      "result": {
+        "type": "overlayOpened",
+        "description": "Appointment dialog opens from sticky CTA.",
+        "resultingStateId": "appointment-dialog-open",
+        "focusTargetNodeId": "appointment-dialog"
+      },
+      "accessibility": {
+        "focusManagement": "Return focus to the sticky CTA when the dialog closes.",
+        "keyboardBehavior": "Sticky CTA remains keyboard reachable before the dialog opens.",
+        "ariaLive": "off"
+      }
+    },
+    {
+      "id": "close-appointment-dialog",
+      "label": "Close appointment dialog",
+      "trigger": {
+        "event": "keydown",
+        "sourceNodeId": "appointment-dialog",
+        "screenId": "homepage-screen",
+        "key": "Escape"
+      },
+      "condition": {
+        "type": "whenState",
+        "stateId": "appointment-dialog-open"
+      },
+      "action": {
+        "type": "closeOverlay",
+        "targetNodeId": "appointment-dialog",
+        "targetStateId": "appointment-dialog-closed"
+      },
+      "result": {
+        "type": "overlayClosed",
+        "description": "Dialog closes and focus returns to the triggering CTA.",
+        "resultingStateId": "appointment-dialog-closed",
+        "focusTargetNodeId": "hero-book-appointment-button"
+      },
+      "accessibility": {
+        "focusManagement": "Return focus to the opening control.",
+        "keyboardBehavior": "Escape dismisses only while the dialog is open.",
+        "ariaLive": "off"
+      }
+    }
+  ],
+  "overlays": [
+    {
+      "id": "appointment-dialog-overlay",
+      "nodeId": "appointment-dialog",
+      "type": "dialog",
+      "initialState": "closed",
+      "triggerNodeIds": [
+        "hero-book-appointment-button",
+        "mobile-sticky-book-button"
+      ],
+      "dismissal": {
+        "methods": [
+          "escape",
+          "closeButton",
+          "scrim"
+        ],
+        "focusReturnNodeId": "hero-book-appointment-button"
+      }
+    }
+  ],
+  "forms": [
+    {
+      "id": "appointment-request-form",
+      "nodeId": "appointment-form",
+      "fields": [
+        {
+          "id": "patient-name-field",
+          "nodeId": "patient-name-input",
+          "required": true,
+          "validationStateIds": [
+            "appointment-form-error"
+          ]
+        }
+      ],
+      "submitNodeId": "appointment-submit-button",
+      "validation": {
+        "states": [
+          "error",
+          "success"
+        ],
+        "errorPlacement": "inline",
+        "rules": [
+          "Required errors appear inline next to each missing field."
+        ]
+      }
+    }
+  ],
+  "navigationFlows": [
+    {
+      "id": "home-to-services-flow",
+      "fromScreenId": "homepage-screen",
+      "toScreenId": "homepage-screen",
+      "triggerNodeId": "services-nav-link",
+      "action": "scrollTo"
+    }
+  ],
+  "transitions": [
+    {
+      "id": "dialog-open-transition",
+      "from": "appointment-dialog-closed",
+      "to": "appointment-dialog-open",
+      "trigger": "click",
+      "description": "Overlay state changes from closed to open."
+    },
+    {
+      "id": "sticky-bar-compact-visibility",
+      "from": "mobile-sticky-bar-visible",
+      "to": "appointment-dialog-open",
+      "trigger": "tap",
+      "description": "Sticky CTA remains the compact viewport trigger for the dialog."
+    }
+  ],
+  "notes": [
+    "Prototype config references wireframe nodes by ID instead of duplicating layout hierarchy.",
+    "A future runtime may implement these states and interactions."
+  ]
+}

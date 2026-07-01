@@ -41,9 +41,9 @@ full prototype config.
 ## References
 
 - `references/interaction-flow-generation.md`
-- `../../../shared/schemas/interaction-flow.schema.json`
-- `../../../shared/vocabulary/interaction-states.json`
-- `../../../shared/schemas/wireframe-config.schema.json`
+- `../../../.convention/schemas/interaction-flow.schema.json`
+- `../../../.convention/vocabulary/interaction-states.json`
+- `../../../.convention/schemas/wireframe-config.schema.json`
 
 ## Rules
 

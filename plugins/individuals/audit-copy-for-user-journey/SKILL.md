@@ -34,15 +34,15 @@ the wrong node.
 
 ## References
 
-- `../../../shared/content/audience-intent-reference.md`
-- `../../../shared/content/claim-risk-guidelines.md`
-- `../../../shared/content/content-accessibility-guidelines.md`
-- `../../../shared/content/copy-quality-checklist.md`
-- `../../../shared/content/laws-of-copywriting.md`
-- `../../../shared/content/objection-handling-reference.md`
-- `../../../shared/content/page-message-architecture.md`
-- `../../../shared/schemas/user-journey-map.schema.json`
-- `../../../shared/schemas/content-model.schema.json`
+- `../../../.convention/content/audience-intent-reference.md`
+- `../../../.convention/content/claim-risk-guidelines.md`
+- `../../../.convention/content/content-accessibility-guidelines.md`
+- `../../../.convention/content/copy-quality-checklist.md`
+- `../../../.convention/content/laws-of-copywriting.md`
+- `../../../.convention/content/objection-handling-reference.md`
+- `../../../.convention/content/page-message-architecture.md`
+- `../../../.convention/schemas/user-journey-map.schema.json`
+- `../../../.convention/schemas/content-model.schema.json`
 - `../../../docs/interop/content-journey-layer-architecture.md`
 
 ## Rules

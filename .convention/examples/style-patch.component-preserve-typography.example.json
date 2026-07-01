@@ -1,0 +1,51 @@
+{
+  "version": "0.1.0",
+  "type": "stylePatch",
+  "styleId": "glassmorphism",
+  "target": {
+    "scope": "component",
+    "id": "product-comparison-dialog",
+    "artifactType": "component",
+    "artifactRef": ".convention/examples/style-application.component.example.json#product-comparison-dialog"
+  },
+  "intensity": "medium",
+  "changes": [
+    {
+      "operation": "replace",
+      "path": "components.dialog.surface",
+      "value": "frosted panel shell with opaque readable content regions",
+      "reason": "Apply glassmorphism surface treatment without weakening dialog content readability."
+    },
+    {
+      "operation": "replace",
+      "path": "components.dialog.border",
+      "value": "subtle light border with sufficient edge contrast",
+      "reason": "Translate glassmorphism implementation hints into a component foundation rule."
+    },
+    {
+      "operation": "annotate",
+      "path": "prototype.surfaceDepth",
+      "value": "Use clear backdrop, dialog shell, and foreground content layers.",
+      "reason": "Expose prototype depth guidance without choosing a runtime implementation."
+    }
+  ],
+  "preserve": [
+    "typography.fontFamilies.heading",
+    "typography.fontFamilies.body",
+    "components.buttons.variants.button.primary",
+    "component.informationArchitecture",
+    "component.formLabels"
+  ],
+  "avoid": [
+    "transparent form fields",
+    "low contrast body text",
+    "blur animation as the primary motion cue"
+  ],
+  "rationale": "Apply glassmorphism only to the dialog shell while preserving typography, button hierarchy, labels, and dialog structure.",
+  "source": {
+    "type": "styleApplication",
+    "description": "Example patch generated from a component-scoped glassmorphism style application.",
+    "artifactRef": ".convention/examples/style-application.component.example.json",
+    "licenseNotes": "No external prose included."
+  }
+}

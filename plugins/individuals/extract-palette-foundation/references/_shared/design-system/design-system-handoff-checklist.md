@@ -116,15 +116,15 @@ Each artifact entry should include:
 
 For design-system handoff, common `artifactType` and `schemaRef` pairs include:
 
-- `designSystemSeed` -> `shared/schemas/design-system-seed.schema.json`
-- `runtimeDesignTheme` -> `shared/schemas/runtime-design-theme.schema.json`
-- `studyOutput` -> `shared/schemas/study-output.schema.json`
-- `wireframeConfig` -> `shared/schemas/wireframe-config.schema.json`
-- `prototypeConfig` -> `shared/schemas/prototype-config.schema.json`
-- `contentModel` -> `shared/schemas/content-model.schema.json`
-- `prototypeContent` -> `shared/schemas/prototype-content.schema.json`
+- `designSystemSeed` -> `.convention/schemas/design-system-seed.schema.json`
+- `runtimeDesignTheme` -> `.convention/schemas/runtime-design-theme.schema.json`
+- `studyOutput` -> `.convention/schemas/study-output.schema.json`
+- `wireframeConfig` -> `.convention/schemas/wireframe-config.schema.json`
+- `prototypeConfig` -> `.convention/schemas/prototype-config.schema.json`
+- `contentModel` -> `.convention/schemas/content-model.schema.json`
+- `prototypeContent` -> `.convention/schemas/prototype-content.schema.json`
 - `exportSeed` -> `docs/interop/blueprint-export-seed.md`
-- Markdown seed notes -> `shared/templates/design-system-seed.md`
+- Markdown seed notes -> `.convention/templates/design-system-seed.md`
 
 Fail handoff when:
 
@@ -158,7 +158,7 @@ Pass when:
 - Token roles describe purpose, not raw values.
 - Tokens are mapped to component or surface usage.
 - Low-confidence or generated values are marked with source and confidence.
-- Token categories follow `shared/design-system/token-taxonomy.md`.
+- Token categories follow `.convention/design-system/token-taxonomy.md`.
 
 Fail when:
 
@@ -174,9 +174,9 @@ Pass when:
   buttons, cards, header, and footer.
 - Component variants define use cases, action priority, and constraints.
 - Component anatomy follows
-  `shared/design-system/component-anatomy-reference.md`.
+  `.convention/design-system/component-anatomy-reference.md`.
 - Component selection rules follow
-  `shared/design-system/component-selection-guidelines.md` where relevant.
+  `.convention/design-system/component-selection-guidelines.md` where relevant.
 
 Fail when:
 
@@ -193,7 +193,7 @@ Pass when:
   active, selected, disabled, loading, success, warning, error, empty, open, and
   closed.
 - State guidance follows
-  `shared/design-system/component-state-guidelines.md`.
+  `.convention/design-system/component-state-guidelines.md`.
 - Prototype-specific transitions remain handoff notes instead of seed-owned
   runtime details.
 
@@ -212,7 +212,7 @@ Pass when:
 - Contrast, focus visibility, readable type, target size, disabled legibility,
   non-color state, reduced motion, and icon labeling risks are explicit.
 - Accessibility guidance follows
-  `shared/design-system/accessibility-token-guidelines.md`.
+  `.convention/design-system/accessibility-token-guidelines.md`.
 - Unverified color pairs are marked for contrast checks.
 
 Fail when:
@@ -228,7 +228,7 @@ Pass when:
 - Header, footer, cards, actions, density, sticky regions, and component
   adaptation rules are documented.
 - Responsive guidance follows
-  `shared/design-system/responsive-system-guidelines.md`.
+  `.convention/design-system/responsive-system-guidelines.md`.
 - Mobile behavior is specific enough for blueprint and prototype handoff.
 
 Fail when:

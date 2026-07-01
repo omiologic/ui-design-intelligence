@@ -25,9 +25,9 @@ off page sequence problems to page audit.
 
 - `references/section-audit-reporting.md`
 - `references/section-severity-remediation.md`
-- `../../../shared/schemas/page-audit.schema.json`
-- `../../../shared/vocabulary/audit-severity.json`
-- `../../../shared/templates/page-audit.md`
+- `../../../.convention/schemas/page-audit.schema.json`
+- `../../../.convention/vocabulary/audit-severity.json`
+- `../../../.convention/templates/page-audit.md`
 
 ## Decision Criteria
 

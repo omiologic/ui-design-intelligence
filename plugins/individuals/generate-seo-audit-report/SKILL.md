@@ -27,9 +27,9 @@ volume.
 
 - `references/seo-audit-reporting.md`
 - `references/seo-severity-remediation.md`
-- `../../../shared/schemas/page-audit.schema.json`
-- `../../../shared/vocabulary/audit-severity.json`
-- `../../../shared/templates/page-audit.md`
+- `../../../.convention/schemas/page-audit.schema.json`
+- `../../../.convention/vocabulary/audit-severity.json`
+- `../../../.convention/templates/page-audit.md`
 
 ## Decision Criteria
 

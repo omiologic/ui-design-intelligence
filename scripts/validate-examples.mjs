@@ -121,30 +121,30 @@ function loadNodeTypeVocabulary(file) {
   return { names, records };
 }
 
-const nodeTypeVocabulary = loadNodeTypeVocabulary(path.join(root, "shared/vocabulary/node-types.json"));
+const nodeTypeVocabulary = loadNodeTypeVocabulary(path.join(root, ".convention/vocabulary/node-types.json"));
 const nodeTypes = nodeTypeVocabulary.names;
 const nodeTypeRecords = nodeTypeVocabulary.records;
-const layoutPatterns = loadVocabulary(path.join(root, "shared/vocabulary/layout-patterns.json"), "layoutPatterns");
-const contentRoles = loadVocabulary(path.join(root, "shared/vocabulary/content-roles.json"), "contentRoles");
-const interactionStates = loadVocabulary(path.join(root, "shared/vocabulary/interaction-states.json"), "interactionStates");
-const auditSeverities = loadRecordVocabulary(path.join(root, "shared/vocabulary/audit-severity.json"), "auditSeverities", "audit severity");
+const layoutPatterns = loadVocabulary(path.join(root, ".convention/vocabulary/layout-patterns.json"), "layoutPatterns");
+const contentRoles = loadVocabulary(path.join(root, ".convention/vocabulary/content-roles.json"), "contentRoles");
+const interactionStates = loadVocabulary(path.join(root, ".convention/vocabulary/interaction-states.json"), "interactionStates");
+const auditSeverities = loadRecordVocabulary(path.join(root, ".convention/vocabulary/audit-severity.json"), "auditSeverities", "audit severity");
 
-const schema = readJson(path.join(root, "shared/schemas/wireframe-config.schema.json"));
-const studySchema = readJson(path.join(root, "shared/schemas/study-output.schema.json"));
+const schema = readJson(path.join(root, ".convention/schemas/wireframe-config.schema.json"));
+const studySchema = readJson(path.join(root, ".convention/schemas/study-output.schema.json"));
 if (schema) {
   const schemaTypes = new Set(schema.$defs?.nodeType?.enum ?? []);
   for (const type of nodeTypes) {
-    if (!schemaTypes.has(type)) fail(`shared/schemas/wireframe-config.schema.json: missing node type enum "${type}"`);
+    if (!schemaTypes.has(type)) fail(`.convention/schemas/wireframe-config.schema.json: missing node type enum "${type}"`);
   }
   for (const type of schemaTypes) {
-    if (!nodeTypes.has(type)) fail(`shared/schemas/wireframe-config.schema.json: enum has non-vocabulary node type "${type}"`);
+    if (!nodeTypes.has(type)) fail(`.convention/schemas/wireframe-config.schema.json: enum has non-vocabulary node type "${type}"`);
   }
   checkSchemaEnum("contentRole", contentRoles, "content role");
   checkSchemaEnum("layoutPattern", layoutPatterns, "layout pattern");
   checkSchemaEnum("interactionState", interactionStates, "interaction state");
 }
 
-const pageAuditSchema = readJson(path.join(root, "shared/schemas/page-audit.schema.json"));
+const pageAuditSchema = readJson(path.join(root, ".convention/schemas/page-audit.schema.json"));
 if (pageAuditSchema) {
   checkAuditSchemaEnum("overallSeverity", auditSeverities, "audit severity");
   checkAuditFindingSchemaEnum("severity", auditSeverities, "audit finding severity");
@@ -154,12 +154,12 @@ function checkSchemaEnum(defName, vocabularySet, label) {
   const schemaValues = new Set(schema.$defs?.[defName]?.enum ?? []);
   for (const value of vocabularySet) {
     if (!schemaValues.has(value)) {
-      fail(`shared/schemas/wireframe-config.schema.json: missing ${label} enum "${value}"`);
+      fail(`.convention/schemas/wireframe-config.schema.json: missing ${label} enum "${value}"`);
     }
   }
   for (const value of schemaValues) {
     if (!vocabularySet.has(value)) {
-      fail(`shared/schemas/wireframe-config.schema.json: enum has non-vocabulary ${label} "${value}"`);
+      fail(`.convention/schemas/wireframe-config.schema.json: enum has non-vocabulary ${label} "${value}"`);
     }
   }
 }
@@ -168,12 +168,12 @@ function checkAuditSchemaEnum(fieldName, vocabularySet, label) {
   const schemaValues = new Set(pageAuditSchema.properties?.[fieldName]?.enum ?? []);
   for (const value of vocabularySet) {
     if (!schemaValues.has(value)) {
-      fail(`shared/schemas/page-audit.schema.json: missing ${label} enum "${value}"`);
+      fail(`.convention/schemas/page-audit.schema.json: missing ${label} enum "${value}"`);
     }
   }
   for (const value of schemaValues) {
     if (!vocabularySet.has(value)) {
-      fail(`shared/schemas/page-audit.schema.json: enum has non-vocabulary ${label} "${value}"`);
+      fail(`.convention/schemas/page-audit.schema.json: enum has non-vocabulary ${label} "${value}"`);
     }
   }
 }
@@ -182,22 +182,22 @@ function checkAuditFindingSchemaEnum(fieldName, vocabularySet, label) {
   const schemaValues = new Set(pageAuditSchema.properties?.findings?.items?.properties?.[fieldName]?.enum ?? []);
   for (const value of vocabularySet) {
     if (!schemaValues.has(value)) {
-      fail(`shared/schemas/page-audit.schema.json: missing ${label} enum "${value}"`);
+      fail(`.convention/schemas/page-audit.schema.json: missing ${label} enum "${value}"`);
     }
   }
   for (const value of schemaValues) {
     if (!vocabularySet.has(value)) {
-      fail(`shared/schemas/page-audit.schema.json: enum has non-vocabulary ${label} "${value}"`);
+      fail(`.convention/schemas/page-audit.schema.json: enum has non-vocabulary ${label} "${value}"`);
     }
   }
 }
 
 const explicitExampleFiles = process.argv.slice(2);
-const sharedExampleFiles = walk(path.join(root, "shared/examples"))
+const sharedExampleFiles = walk(path.join(root, ".convention/examples"))
   .filter((file) => file.endsWith(".ui-blueprint.json") || file.endsWith("ui-blueprint.example.json"));
-const auditExampleFiles = walk(path.join(root, "shared/examples"))
+const auditExampleFiles = walk(path.join(root, ".convention/examples"))
   .filter((file) => file.endsWith("page-audit.example.json"));
-const studyExampleFiles = walk(path.join(root, "shared/examples"))
+const studyExampleFiles = walk(path.join(root, ".convention/examples"))
   .filter((file) => file.endsWith(".study.example.json") || file.endsWith("page-study.example.json"));
 const skillExampleFiles = [
   ...walk(path.join(root, "plugins/individuals"))

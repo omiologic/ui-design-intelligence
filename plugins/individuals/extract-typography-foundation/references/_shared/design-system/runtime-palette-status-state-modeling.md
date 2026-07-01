@@ -41,6 +41,6 @@ Runtime palette work must preserve these layers:
 
 ## Hand-Off
 
-Use `shared/schemas/runtime-design-theme.schema.json` for the contract. Runtime
+Use `.convention/schemas/runtime-design-theme.schema.json` for the contract. Runtime
 theme generation should fail readiness when contrast pairs are absent, required
 status roles are missing, or error/success/focus states rely only on color.

@@ -6,7 +6,7 @@ function readJson(root, relativePath) {
 }
 
 function nodeTypeNames(root) {
-  return readJson(root, "shared/vocabulary/node-types.json").nodeTypes.map((item) => {
+  return readJson(root, ".convention/vocabulary/node-types.json").nodeTypes.map((item) => {
     if (typeof item === "string") return item;
     return item.name;
   });
@@ -21,7 +21,7 @@ function arrayVocabulary(root, relativePath, key) {
 }
 
 export function schemaWithVocabularyEnums(root) {
-  const schema = readJson(root, "shared/schemas/wireframe-config.schema.json");
+  const schema = readJson(root, ".convention/schemas/wireframe-config.schema.json");
 
   schema.$defs.nodeType = {
     type: "string",
@@ -29,15 +29,15 @@ export function schemaWithVocabularyEnums(root) {
   };
   schema.$defs.contentRole = {
     type: "string",
-    enum: arrayVocabulary(root, "shared/vocabulary/content-roles.json", "contentRoles")
+    enum: arrayVocabulary(root, ".convention/vocabulary/content-roles.json", "contentRoles")
   };
   schema.$defs.layoutPattern = {
     type: "string",
-    enum: arrayVocabulary(root, "shared/vocabulary/layout-patterns.json", "layoutPatterns")
+    enum: arrayVocabulary(root, ".convention/vocabulary/layout-patterns.json", "layoutPatterns")
   };
   schema.$defs.interactionState = {
     type: "string",
-    enum: arrayVocabulary(root, "shared/vocabulary/interaction-states.json", "interactionStates")
+    enum: arrayVocabulary(root, ".convention/vocabulary/interaction-states.json", "interactionStates")
   };
 
   schema.$defs.node.properties.role = {

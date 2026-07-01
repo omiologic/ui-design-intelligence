@@ -33,11 +33,11 @@ to the action or decision the component supports.
 
 ## References
 
-- `../../../shared/content/content-accessibility-guidelines.md`
-- `../../../shared/content/laws-of-copywriting.md`
-- `../../../shared/content/microcopy-guidelines.md`
-- `../../../shared/schemas/content-model.schema.json`
-- `../../../shared/vocabulary/component-anatomy.json`
+- `../../../.convention/content/content-accessibility-guidelines.md`
+- `../../../.convention/content/laws-of-copywriting.md`
+- `../../../.convention/content/microcopy-guidelines.md`
+- `../../../.convention/schemas/content-model.schema.json`
+- `../../../.convention/vocabulary/component-anatomy.json`
 
 ## Rules
 

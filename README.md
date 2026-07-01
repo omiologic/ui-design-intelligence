@@ -13,11 +13,13 @@ Repository: [omiologic/ui-design-intelligence](https://github.com/omiologic/ui-d
 Most users should install first, then read the architecture notes only if they
 are contributing or packaging bundles.
 
-### Codex / GPT Skills
+### Codex / GPT
 
-Use Codex/GPT installs when you only need skill discovery. These targets receive
-flat runtime skill folders with `SKILL.md` plus required shared reference assets;
-they do not receive Claude agents or commands.
+Use Codex/GPT installs under `.agents`. A full install writes skills to
+`.agents/skills`, role definitions to `.agents/agents`, commands to
+`.agents/commands`, and reusable conventions to `.agents/.convention`.
+Pass `--skills-only` only when the target should receive skill folders and
+reference assets without roles or commands.
 
 Direct `npx skills add omiologic/ui-design-intelligence -a codex` installation
 is not the supported path after the Sprint 010 source-tree cleanup. Use the
@@ -28,8 +30,8 @@ Manual Codex user-local install:
 
 ```bash
 git clone https://github.com/omiologic/ui-design-intelligence.git ~/ui-design-intelligence
-node ~/ui-design-intelligence/scripts/install-bundle.mjs install ui-design-intelligence "$HOME/.agents" "$HOME/.agents/skills" --skills-only --dry-run
-node ~/ui-design-intelligence/scripts/install-bundle.mjs install ui-design-intelligence "$HOME/.agents" "$HOME/.agents/skills" --skills-only
+node ~/ui-design-intelligence/scripts/install-bundle.mjs install ui-design-intelligence "$HOME/.agents" "$HOME/.agents/skills" --dry-run
+node ~/ui-design-intelligence/scripts/install-bundle.mjs install ui-design-intelligence "$HOME/.agents" "$HOME/.agents/skills"
 node ~/ui-design-intelligence/scripts/verify-installed-references.mjs "$HOME/.agents/skills"
 ```
 
@@ -37,8 +39,8 @@ Manual Codex project-local install:
 
 ```bash
 git clone https://github.com/omiologic/ui-design-intelligence.git ~/ui-design-intelligence
-node ~/ui-design-intelligence/scripts/install-bundle.mjs install ui-design-intelligence "$PWD/.agents" "$PWD/.agents/skills" --skills-only --dry-run
-node ~/ui-design-intelligence/scripts/install-bundle.mjs install ui-design-intelligence "$PWD/.agents" "$PWD/.agents/skills" --skills-only
+node ~/ui-design-intelligence/scripts/install-bundle.mjs install ui-design-intelligence "$PWD/.agents" "$PWD/.agents/skills" --dry-run
+node ~/ui-design-intelligence/scripts/install-bundle.mjs install ui-design-intelligence "$PWD/.agents" "$PWD/.agents/skills"
 node ~/ui-design-intelligence/scripts/verify-installed-references.mjs "$PWD/.agents/skills"
 ```
 
@@ -48,7 +50,7 @@ skill files.
 ### Claude / Local Full Bundle
 
 Use Claude/local compatibility installs when you want the full
-`ui-design-intelligence` bundle, including skills, agents, commands, shared
+`ui-design-intelligence` bundle, including skills, agents, commands, convention
 schemas, examples, docs, helper scripts, references, and install records.
 
 ```bash
@@ -67,8 +69,8 @@ node ~/ui-design-intelligence/scripts/install-bundle.mjs install ui-design-intel
 node ~/ui-design-intelligence/scripts/verify-installed-references.mjs "$PWD/.claude/skills"
 ```
 
-The installer blocks non-identical existing skills, agents, commands, and shared
-files by default. Always use `--dry-run` first in existing projects. Use
+The installer blocks non-identical existing skills, agents, commands, and
+convention files by default. Always use `--dry-run` first in existing projects. Use
 `--force` only when you intentionally want to overwrite the target:
 
 ```bash
@@ -98,8 +100,8 @@ names:
 Example (blueprint skills, Codex/GPT):
 
 ```bash
-node scripts/install-bundle.mjs install ui-blueprint-skills "$HOME/.agents" "$HOME/.agents/skills" --skills-only --dry-run
-node scripts/install-bundle.mjs install ui-blueprint-skills "$HOME/.agents" "$HOME/.agents/skills" --skills-only
+node scripts/install-bundle.mjs install ui-blueprint-skills "$HOME/.agents" "$HOME/.agents/skills" --dry-run
+node scripts/install-bundle.mjs install ui-blueprint-skills "$HOME/.agents" "$HOME/.agents/skills"
 ```
 
 Claude/local component-bundle example:
@@ -154,9 +156,9 @@ The repository is organized as a plugin monorepo:
 
 - `plugins/individuals/`: source of truth for reusable installable skills.
 - `plugins/bundles/`: committed bundle manifests and bundle README files.
-- `agents/`: shared agent role definitions that bundles can include.
-- `commands/`: shared command entrypoints that bundles can include.
-- `shared/`: schemas, vocabulary, templates, and examples used by skills and bundles.
+- `.agents/agents/`: agent role definitions that bundles can include.
+- `.agents/commands/`: command entrypoints that bundles can include.
+- `.convention/`: schemas, vocabulary, templates, and examples used by skills and bundles.
 - `knowledge/`: repository-owned UI knowledge schemas, vocabulary, templates,
   and generic examples for reusable pattern knowledge.
 - `docs/interop/`: layer boundaries, install contracts, and handoff formats.
@@ -270,7 +272,7 @@ interactions; and why runtime/editor work remains a later package boundary.
 
 Project-local design-system defaults should use `.ui-design-intelligence.yml`.
 The starter config template is
-`shared/templates/ui-design-intelligence.config.yml`.
+`.convention/templates/ui-design-intelligence.config.yml`.
 
 ## Problems It Solves
 
@@ -311,10 +313,11 @@ These skills are kept in the repository for local development and planning, and 
 
 ## Install And Command Parity
 
-The compatibility contract separates Codex/GPT skill targets from Claude/local
-bundle targets. Codex local installs use `.agents/skills` for skills-only
-discovery. Claude/local compatibility installs use `.claude` for skills, agents,
-commands, shared files, and install records. Generated Codex plugin packages use
+The compatibility contract separates target roots from skill roots. Codex local
+installs use `.agents/skills` for skills and can also expose `.agents/agents`,
+`.agents/commands`, and `.agents/.convention` with a full bundle install.
+Claude/local compatibility installs use `.claude` for skills, agents,
+commands, convention files, and install records. Generated Codex plugin packages use
 their own `.codex-plugin/plugin.json` shape under `dist/` once built.
 
 Commands are discipline-scoped:
@@ -347,8 +350,8 @@ blueprint plus taste profile into the repository-native Blueprint Export Seed:
 
 ```bash
 node scripts/export-blueprint-seed.mjs \
-  --blueprint shared/examples/ui-blueprint.example.json \
-  --profile shared/taste-profiles/conversion.json \
+  --blueprint .convention/examples/ui-blueprint.example.json \
+  --profile .convention/taste-profiles/conversion.json \
   --out /tmp/ui-blueprint.export-seed.md
 ```
 
@@ -425,7 +428,7 @@ Use skill names directly when your agent supports explicit skill invocation.
 Wireframe examples use the UIBlueprint schema in:
 
 ```txt
-shared/schemas/wireframe-config.schema.json
+.convention/schemas/wireframe-config.schema.json
 ```
 
 Installed skills use their bundled copy at:
@@ -462,7 +465,7 @@ Minimal shape:
 Shared vocabulary lives in:
 
 ```txt
-shared/vocabulary/
+.convention/vocabulary/
 ```
 
 The current vocabulary files are:
@@ -477,7 +480,7 @@ The current vocabulary files are:
 
 Skills should reference these files instead of defining their own terms. This keeps generated wireframes compatible with the schema and with future renderers.
 
-In product skills, listed references point at `references/_shared/vocabulary/`. Those files are bundled from the canonical `shared/vocabulary/` source so each installed skill can be used on its own.
+In product skills, listed references point at `references/_shared/vocabulary/`. Those files are bundled from the canonical `.convention/vocabulary/` source so each installed skill can be used on its own.
 
 `node-types.json` is semantic, not just a flat token list. Each node type has a definition, allowed direct children, overlay placement rules, and selected cardinality rules. The example validator enforces those semantic rules.
 
@@ -488,7 +491,7 @@ Unknown `type`, `role`, `layout`, and `state` tokens hard-fail validation. There
 Shared examples live in:
 
 ```txt
-shared/examples/
+.convention/examples/
 ```
 
 Skill-local examples live under each skill's `references/examples/` directory when useful.
@@ -518,7 +521,7 @@ landmarks, responsive priority, and anti-pattern absence.
 The rubric lives at:
 
 ```txt
-shared/quality/blueprint-quality-rubric.md
+.convention/quality/blueprint-quality-rubric.md
 ```
 
 These fixtures are positive reference cases for discussing blueprint quality.
@@ -624,9 +627,9 @@ Validation checks:
 - skill `name` matches its directory
 - skill references exist where practical
 - example JSON parses
-- examples validate against `shared/schemas/wireframe-config.schema.json` directly
-- shared wireframe examples are files ending in `.ui-blueprint.json` plus the canonical `ui-blueprint.example.json`; future non-wireframe examples can coexist in `shared/examples/`
-- page audit examples ending in `page-audit.example.json` validate against `shared/schemas/page-audit.schema.json`
+- examples validate against `.convention/schemas/wireframe-config.schema.json` directly
+- shared wireframe examples are files ending in `.ui-blueprint.json` plus the canonical `ui-blueprint.example.json`; future non-wireframe examples can coexist in `.convention/examples/`
+- page audit examples ending in `page-audit.example.json` validate against `.convention/schemas/page-audit.schema.json`
 - skill-local wireframe examples are validated under `plugins/individuals/`
 - a local schema-subset validator is used so validation works offline without third-party runtime dependencies
 - duplicate node ids are rejected in a semantic validation layer
@@ -751,24 +754,25 @@ ui-design-intelligence/
       ui-blueprint-skills/
       ui-seo-skills/
       ui-design-intelligence/
-  agents/
-    README.md
-    ui-researcher.md
-    ui-specification-analyst.md
-    ui-interaction-analyst.md
-    ui-audit-lead.md
-    seo-content-analyst.md
-    accessibility-reviewer.md
-    blueprint-architect.md
-  commands/
-    README.md
-    study-page.md
-    study-site.md
-    audit-page.md
-    audit-site.md
-    audit-interactions.md
-    generate-blueprint-from-study.md
-  shared/
+  .agents/
+    agents/
+      README.md
+      ui-researcher.md
+      ui-specification-analyst.md
+      ui-interaction-analyst.md
+      ui-audit-lead.md
+      seo-content-analyst.md
+      accessibility-reviewer.md
+      blueprint-architect.md
+    commands/
+      README.md
+      study-page.md
+      study-site.md
+      audit-page.md
+      audit-site.md
+      audit-interactions.md
+      generate-blueprint-from-study.md
+  .convention/
     vocabulary/
     schemas/
     examples/
@@ -792,7 +796,7 @@ files. Built bundle contents and runtime `skills/` trees are generated under
 
 The first study vertical source set also lives in `plugins/individuals/`. These
 skills share the study output schema, UI terminology vocabulary, page-study
-template, and page-study example under `shared/`.
+template, and page-study example under `.convention/`.
 
 Canonical skill shapes and release validation expectations are documented in
 `docs/skill-shapes-and-validation.md`. That document records the intentional
@@ -808,7 +812,7 @@ When adding or updating a skill:
 3. Ensure frontmatter `name` exactly matches the directory name.
 4. Write a specific `description` that explains when the skill should be used.
 5. Put detailed reusable guidance in `references/` instead of bloating `SKILL.md`.
-6. Keep canonical terms in `shared/vocabulary/` and `shared/schemas/`.
+6. Keep canonical terms in `.convention/vocabulary/` and `.convention/schemas/`.
 7. Add or update examples when behavior changes.
 8. Add the skill name to one or more `plugins/bundles/{bundle-name}/plugin.json` manifests.
 9. Run `npm run validate`.
@@ -816,7 +820,7 @@ When adding or updating a skill:
 When adding a skill to a bundle:
 
 1. Add the skill directory under `plugins/individuals/{skill-name}/`.
-2. Add any reusable schemas, vocabulary, templates, or examples under `shared/`.
+2. Add any reusable schemas, vocabulary, templates, or examples under `.convention/`.
 3. Add the skill name to the bundle manifest `skills` array.
 4. Add required agent names, command names, and shared file paths to the same manifest.
 5. Run `npm run validate:bundles`.

@@ -1,7 +1,7 @@
 {
   "skill": "study-ui-storytelling",
   "brief": "Study the storytelling structure of a dental clinic homepage: observed narrative arc, how trust signals are sequenced, where the primary action appears relative to proof, and what evidence supports each structural interpretation.",
-  "referenceExample": "shared/examples/page-study.example.json",
+  "referenceExample": ".convention/examples/page-study.example.json",
   "requiredSignals": [
     {
       "description": "Study output is tagged with a studyType.",

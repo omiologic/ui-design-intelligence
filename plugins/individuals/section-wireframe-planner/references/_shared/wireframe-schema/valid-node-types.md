@@ -1,6 +1,6 @@
 # Valid Node Types
 
-This file is generated from `shared/vocabulary/node-types.json`. Do not edit it by hand.
+This file is generated from `.convention/vocabulary/node-types.json`. Do not edit it by hand.
 
 Use only these `type` values for UIBlueprint nodes.
 

@@ -4,11 +4,11 @@
   "id": "high-confidence-inferred-logo-color",
   "name": "High Confidence Inferred Logo Color",
   "source": {
-    "primarySeedRef": "shared/examples/design-system-seed.example.json",
+    "primarySeedRef": ".convention/examples/design-system-seed.example.json",
     "sourceRefs": [
       {
         "type": "designSystemSeed",
-        "ref": "shared/examples/design-system-seed.example.json",
+        "ref": ".convention/examples/design-system-seed.example.json",
         "confidence": "medium"
       }
     ],

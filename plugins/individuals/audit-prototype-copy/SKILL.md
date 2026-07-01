@@ -33,16 +33,16 @@ unsupported text from being mistaken for approved production language.
 
 ## References
 
-- `../../../shared/content/claim-risk-guidelines.md`
-- `../../../shared/content/content-accessibility-guidelines.md`
-- `../../../shared/content/cta-patterns.md`
-- `../../../shared/content/copy-quality-checklist.md`
-- `../../../shared/content/laws-of-copywriting.md`
-- `../../../shared/content/microcopy-guidelines.md`
-- `../../../shared/content/proof-and-credibility-patterns.md`
-- `../../../shared/schemas/content-model.schema.json`
-- `../../../shared/schemas/prototype-content.schema.json`
-- `../../../shared/schemas/brand-voice.schema.json`
+- `../../../.convention/content/claim-risk-guidelines.md`
+- `../../../.convention/content/content-accessibility-guidelines.md`
+- `../../../.convention/content/cta-patterns.md`
+- `../../../.convention/content/copy-quality-checklist.md`
+- `../../../.convention/content/laws-of-copywriting.md`
+- `../../../.convention/content/microcopy-guidelines.md`
+- `../../../.convention/content/proof-and-credibility-patterns.md`
+- `../../../.convention/schemas/content-model.schema.json`
+- `../../../.convention/schemas/prototype-content.schema.json`
+- `../../../.convention/schemas/brand-voice.schema.json`
 
 ## Rules
 

@@ -188,7 +188,7 @@ function allNodes(doc) {
 }
 
 const explicitFiles = process.argv.slice(2);
-const defaultFiles = walk(path.join(root, "shared/examples"))
+const defaultFiles = walk(path.join(root, ".convention/examples"))
   .filter((file) => file.endsWith(".ui-blueprint.json") || file.endsWith("ui-blueprint.example.json"));
 const files = explicitFiles.length
   ? explicitFiles.map((file) => path.resolve(root, file))

@@ -26,9 +26,9 @@ keyboard access, and responsive equivalence.
 
 - `references/interaction-audit-reporting.md`
 - `references/interaction-severity-remediation.md`
-- `../../../shared/schemas/page-audit.schema.json`
-- `../../../shared/vocabulary/audit-severity.json`
-- `../../../shared/templates/interaction-audit.md`
+- `../../../.convention/schemas/page-audit.schema.json`
+- `../../../.convention/vocabulary/audit-severity.json`
+- `../../../.convention/templates/interaction-audit.md`
 
 ## Decision Criteria
 

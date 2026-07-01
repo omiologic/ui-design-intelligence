@@ -25,9 +25,9 @@
     "seo-audit-site"
   ],
   "shared": [
-    "shared/schemas/page-audit.schema.json",
-    "shared/vocabulary/ui-terminology.json",
-    "shared/vocabulary/audit-severity.json",
-    "shared/templates/page-audit.md"
+    ".convention/schemas/page-audit.schema.json",
+    ".convention/vocabulary/ui-terminology.json",
+    ".convention/vocabulary/audit-severity.json",
+    ".convention/templates/page-audit.md"
   ]
 }

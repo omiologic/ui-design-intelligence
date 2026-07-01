@@ -9,11 +9,11 @@ folder layout, planning files, command output, or generated `dist/` internals.
 
 | Contract | Schema | Purpose |
 | --- | --- | --- |
-| Query context | `shared/schemas/app-query-context.schema.json` | Captures the user brief, target artifact type, scope, retrieval filters, source assumptions, and consumer surface before retrieval or creation starts. |
-| Retrieval results | `shared/schemas/app-retrieval-results.schema.json` | Captures ranked knowledge matches, reasons, scores when available, confidence/status, matched dimensions, and safe local or redacted storage references. |
-| Artifact manifest | `shared/schemas/app-artifact-manifest.schema.json` | Lists generated or reviewed artifacts with type, path, status, schema reference, validation command summaries, and optional storage references. |
-| Run record | `shared/schemas/app-run-record.schema.json` | Captures creation, review, retrieval, validation, and package runs with inputs, outputs, selected skills, validation status, findings, warnings, and handoff readiness. |
-| Package metadata | `shared/schemas/app-package-metadata.schema.json` | Exposes bundle/package metadata for local installers, package browsers, and hosted viewers without requiring consumers to parse internal manifests directly. |
+| Query context | `.convention/schemas/app-query-context.schema.json` | Captures the user brief, target artifact type, scope, retrieval filters, source assumptions, and consumer surface before retrieval or creation starts. |
+| Retrieval results | `.convention/schemas/app-retrieval-results.schema.json` | Captures ranked knowledge matches, reasons, scores when available, confidence/status, matched dimensions, and safe local or redacted storage references. |
+| Artifact manifest | `.convention/schemas/app-artifact-manifest.schema.json` | Lists generated or reviewed artifacts with type, path, status, schema reference, validation command summaries, and optional storage references. |
+| Run record | `.convention/schemas/app-run-record.schema.json` | Captures creation, review, retrieval, validation, and package runs with inputs, outputs, selected skills, validation status, findings, warnings, and handoff readiness. |
+| Package metadata | `.convention/schemas/app-package-metadata.schema.json` | Exposes bundle/package metadata for local installers, package browsers, and hosted viewers without requiring consumers to parse internal manifests directly. |
 
 ## Artifact Schema References
 
@@ -22,15 +22,15 @@ through `schemaRef` instead of duplicating artifact payloads.
 
 Common `schemaRef` values include:
 
-- `shared/schemas/wireframe-config.schema.json`
-- `shared/schemas/design-system-seed.schema.json`
-- `shared/schemas/prototype-config.schema.json`
-- `shared/schemas/user-journey-map.schema.json`
-- `shared/schemas/content-model.schema.json`
-- `shared/schemas/prototype-content.schema.json`
-- `shared/schemas/brand-voice.schema.json`
-- `shared/schemas/page-audit.schema.json`
-- `shared/schemas/study-output.schema.json`
+- `.convention/schemas/wireframe-config.schema.json`
+- `.convention/schemas/design-system-seed.schema.json`
+- `.convention/schemas/prototype-config.schema.json`
+- `.convention/schemas/user-journey-map.schema.json`
+- `.convention/schemas/content-model.schema.json`
+- `.convention/schemas/prototype-content.schema.json`
+- `.convention/schemas/brand-voice.schema.json`
+- `.convention/schemas/page-audit.schema.json`
+- `.convention/schemas/study-output.schema.json`
 - `docs/interop/blueprint-export-seed.md` for optional Markdown `exportSeed`
   artifacts
 
@@ -47,7 +47,7 @@ infrastructure values.
 Use one of these safe patterns in repository examples:
 
 - local paths such as `knowledge/patterns/navigation/example.json`
-- package paths such as `package://ui-blueprint-skills/shared/example.json`
+- package paths such as `package://ui-blueprint-skills/.convention/example.json`
 - redacted remote values such as `s3://example-bucket/redacted/pattern.json`
 - documented placeholders such as `s3-vector://example-vector-bucket/index/pattern-id`
 

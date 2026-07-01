@@ -4,8 +4,8 @@ import path from "node:path";
 
 const root = process.cwd();
 const bundlesDir = path.join(root, "plugins", "bundles");
-const agentsDir = path.join(root, "agents");
-const commandsDir = path.join(root, "commands");
+const agentsDir = path.join(root, ".agents", "agents");
+const commandsDir = path.join(root, ".agents", "commands");
 const args = process.argv.slice(2);
 const strict = args.includes("--strict");
 const requestedBundles = args.filter((arg) => !arg.startsWith("--"));
@@ -213,7 +213,7 @@ function parseRosterItems(file, text, sectionName) {
 
 function parseRepoLinks(text) {
   const links = [];
-  const pathPattern = /`((?:shared|knowledge)\/(?:schemas|templates|examples)\/[^`]+)`/g;
+  const pathPattern = /`((?:\.convention|knowledge)\/(?:schemas|templates|examples)\/[^`]+)`/g;
   let match;
   while ((match = pathPattern.exec(text))) links.push(match[1]);
   return links;

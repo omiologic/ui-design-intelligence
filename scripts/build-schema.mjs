@@ -5,7 +5,7 @@ import { productSkillMirrorDirs, productSkills } from "./lib/bundle-skill.mjs";
 import { schemaWithVocabularyEnums } from "./lib/schema-enums.mjs";
 
 const root = process.cwd();
-const schemaPath = path.join(root, "shared/schemas/wireframe-config.schema.json");
+const schemaPath = path.join(root, ".convention/schemas/wireframe-config.schema.json");
 const schema = schemaWithVocabularyEnums(root);
 
 fs.writeFileSync(schemaPath, `${JSON.stringify(schema, null, 2)}\n`);

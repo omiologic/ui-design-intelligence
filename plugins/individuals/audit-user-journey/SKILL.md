@@ -33,8 +33,8 @@ surface the missing decisions before downstream artifacts hide them.
 
 ## References
 
-- `../../../shared/content/objection-handling-reference.md`
-- `../../../shared/schemas/user-journey-map.schema.json`
+- `../../../.convention/content/objection-handling-reference.md`
+- `../../../.convention/schemas/user-journey-map.schema.json`
 - `../../../docs/interop/content-journey-layer-architecture.md`
 
 ## Rules

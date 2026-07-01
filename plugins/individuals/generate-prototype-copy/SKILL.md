@@ -33,16 +33,16 @@ production copy. It should clarify user decisions, states, and recovery.
 
 ## References
 
-- `../../../shared/content/content-pattern-library.md`
-- `../../../shared/content/claim-risk-guidelines.md`
-- `../../../shared/content/content-accessibility-guidelines.md`
-- `../../../shared/content/cta-patterns.md`
-- `../../../shared/content/laws-of-copywriting.md`
-- `../../../shared/content/microcopy-guidelines.md`
-- `../../../shared/content/proof-and-credibility-patterns.md`
-- `../../../shared/schemas/prototype-content.schema.json`
-- `../../../shared/schemas/content-model.schema.json`
-- `../../../shared/schemas/prototype-config.schema.json`
+- `../../../.convention/content/content-pattern-library.md`
+- `../../../.convention/content/claim-risk-guidelines.md`
+- `../../../.convention/content/content-accessibility-guidelines.md`
+- `../../../.convention/content/cta-patterns.md`
+- `../../../.convention/content/laws-of-copywriting.md`
+- `../../../.convention/content/microcopy-guidelines.md`
+- `../../../.convention/content/proof-and-credibility-patterns.md`
+- `../../../.convention/schemas/prototype-content.schema.json`
+- `../../../.convention/schemas/content-model.schema.json`
+- `../../../.convention/schemas/prototype-config.schema.json`
 
 ## Rules
 

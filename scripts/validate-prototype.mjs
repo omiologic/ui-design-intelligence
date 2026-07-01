@@ -45,12 +45,12 @@ function requireKnown(set, value, file, location, label) {
   if (!set.has(value)) fail(`${path.relative(root, file)}: ${location} references unknown ${label} "${value}"`);
 }
 
-const prototypeSchema = readJson(path.join(root, "shared/schemas/prototype-config.schema.json"));
-const interactionFlowSchema = readJson(path.join(root, "shared/schemas/interaction-flow.schema.json"));
-const componentStateModelSchema = readJson(path.join(root, "shared/schemas/component-state-model.schema.json"));
-const interactionStatesDoc = readJson(path.join(root, "shared/vocabulary/interaction-states.json"));
+const prototypeSchema = readJson(path.join(root, ".convention/schemas/prototype-config.schema.json"));
+const interactionFlowSchema = readJson(path.join(root, ".convention/schemas/interaction-flow.schema.json"));
+const componentStateModelSchema = readJson(path.join(root, ".convention/schemas/component-state-model.schema.json"));
+const interactionStatesDoc = readJson(path.join(root, ".convention/vocabulary/interaction-states.json"));
 const approvedStates = new Set(interactionStatesDoc?.interactionStates ?? []);
-const runtimeThemeFiles = walk(path.join(root, "shared/examples"))
+const runtimeThemeFiles = walk(path.join(root, ".convention/examples"))
   .filter((file) => file.endsWith("runtime-design-theme.example.json"))
   .sort();
 const runtimeThemeIds = new Set(
@@ -168,7 +168,7 @@ function checkPrototype(doc, file) {
   }
 }
 
-const prototypeFiles = walk(path.join(root, "shared/examples"))
+const prototypeFiles = walk(path.join(root, ".convention/examples"))
   .filter((file) => file.endsWith(".prototype-config.example.json"))
   .sort();
 

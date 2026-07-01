@@ -4,7 +4,7 @@ Bundle directories contain committed metadata only. Built bundle contents are
 generated under `dist/build/{bundle-name}` and zipped under `dist/plugins/`.
 
 Bundles are curated packages assembled from reusable skill sources in
-`plugins/individuals/`, shared assets in `shared/`, agent definitions in
+`plugins/individuals/`, shared assets in `.convention/`, agent definitions in
 `agents/`, and command definitions in `commands/`.
 
 Internal bundle manifests are not Codex marketplace manifests. Sprint 005 uses
@@ -133,7 +133,7 @@ distinct agent names rather than overloading one filename.
 1. Add or update `plugins/individuals/{skill-name}/SKILL.md`.
 2. Add reusable references under that skill's `references/` directory.
 3. Add required shared schemas, vocabulary, templates, or examples under
-   `shared/`.
+   `.convention/`.
 4. Add the skill name to the target manifest's `skills` array.
 5. Add any required `agents`, `commands`, and `shared` entries.
 6. Confirm the command is owned by this bundle or belongs in another bundle.

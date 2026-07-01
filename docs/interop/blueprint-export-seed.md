@@ -50,7 +50,7 @@ Required sections:
 | Overlay contracts | Blueprint `overlays` and interaction notes | No | Required only when overlays exist. |
 | Responsive priorities | Blueprint `responsive` plus taste profile priority | Yes | Preserve information/action priority, not visual layout. |
 | Accessibility constraints | Blueprint `accessibility` fields and study/audit notes | Yes | Include open questions. |
-| Profile bias | `shared/taste-profiles/{name}.json` | No | Structural bias only: section order, density, CTA cadence, overlays. |
+| Profile bias | `.convention/taste-profiles/{name}.json` | No | Structural bias only: section order, density, CTA cadence, overlays. |
 | Visual non-goals | This repository's layer boundary | Yes | Color, typography, imagery, motion, and code are downstream. |
 
 ## Do Not Infer Without Evidence
@@ -85,12 +85,12 @@ constraints; downstream tools choose visual design, motion, and code.
 
 ## Template
 
-Use `shared/templates/blueprint-export-seed.md`.
+Use `.convention/templates/blueprint-export-seed.md`.
 
 ## Worked Example
 
-See `shared/examples/ui-blueprint.export-seed.md`, generated from
-`shared/examples/ui-blueprint.example.json` with the `conversion` taste profile.
+See `.convention/examples/ui-blueprint.export-seed.md`, generated from
+`.convention/examples/ui-blueprint.example.json` with the `conversion` taste profile.
 
 ## Prototype Workflow
 
@@ -98,9 +98,9 @@ Sprint 002 prototypes deterministic generation with:
 
 ```bash
 node scripts/export-blueprint-seed.mjs \
-  --blueprint shared/examples/ui-blueprint.example.json \
-  --profile shared/taste-profiles/conversion.json \
-  --out shared/examples/ui-blueprint.generated.export-seed.md
+  --blueprint .convention/examples/ui-blueprint.example.json \
+  --profile .convention/taste-profiles/conversion.json \
+  --out .convention/examples/ui-blueprint.generated.export-seed.md
 ```
 
 Use `--check` to smoke-test generation without writing a file:
@@ -110,7 +110,7 @@ npm run validate:export-seed
 ```
 
 The validation command regenerates the seed and compares it to
-`shared/examples/ui-blueprint.export-seed.md`.
+`.convention/examples/ui-blueprint.export-seed.md`.
 
 The script emits this repository-native seed only. A user can hand the generated
 markdown to Impeccable, Taste Skill-style workflows, or a design-engineering
@@ -135,5 +135,5 @@ inside app artifact manifests. This promotion is intentionally narrow:
   production code generation, or third-party prompt compatibility claims.
 
 The Sprint 008 fixture includes
-`shared/examples/app-handoff/marketing-page.export-seed.md` as a concrete
+`.convention/examples/app-handoff/marketing-page.export-seed.md` as a concrete
 example of this optional manifest artifact.

@@ -64,7 +64,7 @@ Each component should define:
 
 ## Vocabulary Alignment
 
-The vocabulary file `shared/vocabulary/component-anatomy.json` defines the
+The vocabulary file `.convention/vocabulary/component-anatomy.json` defines the
 canonical component names and part names that schema-facing design-system
 reviews can validate. Use this markdown reference for richer guidance; use the
 JSON vocabulary for deterministic checks.

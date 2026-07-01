@@ -335,9 +335,9 @@ Recipes define the artifact contract. Commands define how to get there.
 
 Consumer command docs should reference:
 
-- `shared/recipes/wireframe.recipe.md`
-- `shared/recipes/design-spec.recipe.md`
-- `shared/recipes/prototype.recipe.md`
+- `.convention/recipes/wireframe.recipe.md`
+- `.convention/recipes/design-spec.recipe.md`
+- `.convention/recipes/prototype.recipe.md`
 
 Recipes are the artifact-level source of truth for required inputs, default
 pipelines, output files, quality gates, stop conditions, repair guidance, and

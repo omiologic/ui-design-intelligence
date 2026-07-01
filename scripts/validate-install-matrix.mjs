@@ -94,10 +94,23 @@ function testCleanCodexComponentInstall() {
   verify(skills);
 
   expectExists(path.join(skills, "design-terminology", "SKILL.md"), "Codex skill");
-  expectExists(path.join(target, "shared", "schemas", "wireframe-config.schema.json"), "Codex shared reference asset");
+  expectExists(path.join(target, ".convention", "schemas", "wireframe-config.schema.json"), "Codex convention reference asset");
   expectMissing(path.join(target, "agents"), "Codex agents directory");
   expectMissing(path.join(target, "commands"), "Codex commands directory");
   record("clean Codex .agents component install");
+}
+
+function testCleanCodexFullInstall() {
+  const target = path.join(tempRoot, "codex-full", ".agents");
+  const skills = path.join(target, "skills");
+  install("ui-blueprint-skills", target, skills);
+  verify(skills);
+
+  expectExists(path.join(skills, "design-terminology", "SKILL.md"), "Codex full skill");
+  expectExists(path.join(target, "agents", "blueprint-architect.md"), "Codex full agent");
+  expectExists(path.join(target, "commands", "generate-blueprint-from-study.md"), "Codex full command");
+  expectExists(path.join(target, ".convention", "schemas", "wireframe-config.schema.json"), "Codex full convention reference asset");
+  record("clean Codex .agents full install");
 }
 
 function testCleanClaudeAggregateInstall() {
@@ -109,7 +122,7 @@ function testCleanClaudeAggregateInstall() {
   expectExists(path.join(skills, "study-ui-storytelling", "SKILL.md"), "aggregate skill");
   expectExists(path.join(target, "agents", "ui-researcher.md"), "aggregate agent");
   expectExists(path.join(target, "commands", "study-page.md"), "aggregate command");
-  expectExists(path.join(target, "shared", "schemas", "wireframe-config.schema.json"), "aggregate shared file");
+  expectExists(path.join(target, ".convention", "schemas", "wireframe-config.schema.json"), "aggregate convention file");
   record("clean Claude .claude aggregate install");
 }
 
@@ -139,12 +152,12 @@ function testConflictBlockingAndForce() {
   const skillFile = path.join(skills, "design-terminology", "SKILL.md");
   const agentFile = path.join(target, "agents", "blueprint-architect.md");
   const commandFile = path.join(target, "commands", "generate-blueprint-from-study.md");
-  const sharedFile = path.join(target, "shared", "schemas", "wireframe-config.schema.json");
+  const sharedFile = path.join(target, ".convention", "schemas", "wireframe-config.schema.json");
 
   appendText(skillFile, "\nLOCAL SKILL EDIT\n");
   appendText(agentFile, "\nLOCAL AGENT EDIT\n");
   appendText(commandFile, "\nLOCAL COMMAND EDIT\n");
-  appendText(sharedFile, "\nLOCAL SHARED EDIT\n");
+  appendText(sharedFile, "\nLOCAL CONVENTION EDIT\n");
 
   const output = run(
     ["node", "scripts/install-bundle.mjs", "install", "ui-blueprint-skills", target, skills],
@@ -153,7 +166,7 @@ function testConflictBlockingAndForce() {
   expectIncludes(output, "skill design-terminology", "conflict output");
   expectIncludes(output, "agent blueprint-architect", "conflict output");
   expectIncludes(output, "command generate-blueprint-from-study", "conflict output");
-  expectIncludes(output, "shared shared/schemas/wireframe-config.schema.json", "conflict output");
+  expectIncludes(output, "convention .convention/schemas/wireframe-config.schema.json", "conflict output");
 
   install("ui-blueprint-skills", target, skills, ["--force"]);
   const rewritten = fs.readFileSync(skillFile, "utf8");
@@ -179,6 +192,7 @@ function testCodexAggregateInstall() {
 try {
   testDryRunWritesNoFiles();
   testCleanCodexComponentInstall();
+  testCleanCodexFullInstall();
   testCleanClaudeAggregateInstall();
   testIdenticalReinstallAndUninstall();
   testConflictBlockingAndForce();

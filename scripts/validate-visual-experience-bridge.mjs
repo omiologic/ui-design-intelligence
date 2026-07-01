@@ -138,11 +138,11 @@ if (studyBundle) {
   }
 
   for (const sharedPath of [
-    "shared/workflows/study-capture-motion-routing.md",
-    "shared/workflows/visual-experience-agent-routing.md",
-    "shared/examples/visual-experience-e2e/README.md",
-    "shared/examples/visual-experience-e2e/capture-manifest.json",
-    "shared/examples/visual-experience-e2e/visual-experience-spec.md"
+    ".convention/workflows/study-capture-motion-routing.md",
+    ".convention/workflows/visual-experience-agent-routing.md",
+    ".convention/examples/visual-experience-e2e/README.md",
+    ".convention/examples/visual-experience-e2e/capture-manifest.json",
+    ".convention/examples/visual-experience-e2e/visual-experience-spec.md"
   ]) {
     if (!studyBundle.shared?.includes(sharedPath)) {
       fail(`plugins/bundles/ui-study-skills/plugin.json: missing shared file "${sharedPath}"`);
@@ -150,42 +150,42 @@ if (studyBundle) {
   }
 }
 
-requireIncludes("commands/study-page.md", [
+requireIncludes(".agents/commands/study-page.md", [
   "study-ui-capture",
   "study-ui-motion",
-  "shared/workflows/study-capture-motion-routing.md",
+  ".convention/workflows/study-capture-motion-routing.md",
   "capture-manifest.json",
   ".motion_screenshots",
   "visual-experience-spec.md"
 ]);
 
-requireIncludes("commands/study-site.md", [
+requireIncludes(".agents/commands/study-site.md", [
   "study-ui-capture",
   "study-ui-motion",
-  "shared/workflows/study-capture-motion-routing.md",
+  ".convention/workflows/study-capture-motion-routing.md",
   "capture-manifest.json",
   ".motion_screenshots",
   "visual-experience-spec.md"
 ]);
 
-requireIncludes("commands/study-visual-experience.md", [
+requireIncludes(".agents/commands/study-visual-experience.md", [
   "study-ui-capture",
   "study-ui-motion",
   "visual-experience-analyst",
-  "shared/workflows/study-capture-motion-routing.md",
-  "shared/workflows/visual-experience-agent-routing.md",
+  ".convention/workflows/study-capture-motion-routing.md",
+  ".convention/workflows/visual-experience-agent-routing.md",
   "visual-experience-spec.md"
 ]);
 
 const commandFiles = [
-  "commands/study-page.md",
-  "commands/study-site.md",
-  "commands/study-visual-experience.md"
+  ".agents/commands/study-page.md",
+  ".agents/commands/study-site.md",
+  ".agents/commands/study-visual-experience.md"
 ];
 requireAnyFileIncludes(commandFiles, "study-ui-motion", "commands");
 requireAnyFileIncludes(commandFiles, "visual-experience-spec.md", "commands");
 
-requireIncludes("agents/visual-experience-analyst.md", [
+requireIncludes(".agents/agents/visual-experience-analyst.md", [
   "study-ui-capture",
   "study-ui-motion",
   "capture-manifest.json",
@@ -194,14 +194,14 @@ requireIncludes("agents/visual-experience-analyst.md", [
 ]);
 
 const agentFiles = [
-  "agents/ui-researcher.md",
-  "agents/ui-interaction-analyst.md",
-  "agents/visual-experience-analyst.md"
+  ".agents/agents/ui-researcher.md",
+  ".agents/agents/ui-interaction-analyst.md",
+  ".agents/agents/visual-experience-analyst.md"
 ];
 requireAnyFileIncludes(agentFiles, "study-ui-capture", "agents");
 requireAnyFileIncludes(agentFiles, "study-ui-motion", "agents");
 
-requireIncludes("shared/workflows/study-capture-motion-routing.md", [
+requireIncludes(".convention/workflows/study-capture-motion-routing.md", [
   "Codex Visibility",
   "study-ui-capture",
   "study-ui-motion",
@@ -209,7 +209,7 @@ requireIncludes("shared/workflows/study-capture-motion-routing.md", [
   "Visual Experience Study Flow"
 ]);
 
-requireIncludes("shared/workflows/visual-experience-agent-routing.md", [
+requireIncludes(".convention/workflows/visual-experience-agent-routing.md", [
   "study-ui-capture",
   "study-ui-motion",
   "visual-experience-spec.md",
@@ -219,13 +219,13 @@ requireIncludes("shared/workflows/visual-experience-agent-routing.md", [
 const codexVisibleFiles = [
   "plugins/individuals/study-ui-capture/SKILL.md",
   "plugins/individuals/study-ui-motion/SKILL.md",
-  "shared/workflows/study-capture-motion-routing.md",
-  "shared/workflows/visual-experience-agent-routing.md"
+  ".convention/workflows/study-capture-motion-routing.md",
+  ".convention/workflows/visual-experience-agent-routing.md"
 ];
 requireAnyFileIncludes(codexVisibleFiles, "study-ui-capture -> study-ui-motion", "Codex-visible routing");
 requireAnyFileIncludes(codexVisibleFiles, "study visual experience", "Codex-visible routing");
 
-requireIncludes("shared/templates/ui-design-intelligence.config.yml", [
+requireIncludes(".convention/templates/ui-design-intelligence.config.yml", [
   "artifacts:",
   "rootDir:",
   "projectSlug:",
@@ -255,7 +255,7 @@ requireIncludes("plugins/individuals/study-ui-capture/references/capture-executi
   "## Failure Reason Vocabulary"
 ]);
 
-requireIncludes("shared/templates/visual-experience-spec.md", [
+requireIncludes(".convention/templates/visual-experience-spec.md", [
   "# Visual Experience Spec",
   "## Evidence Files",
   "## Palette Timeline",
@@ -269,53 +269,53 @@ requireIncludes("shared/templates/visual-experience-spec.md", [
   "## Originality Guardrails"
 ]);
 
-requireValidVisualExperienceSpec("shared/examples/visual-experience-e2e/visual-experience-spec.md");
+requireValidVisualExperienceSpec(".convention/examples/visual-experience-e2e/visual-experience-spec.md");
 requireInvalidVisualExperienceSpec(
-  "shared/examples/visual-experience-invalid/missing-captured-frame-index.md",
+  ".convention/examples/visual-experience-invalid/missing-captured-frame-index.md",
   "## Captured Frame Index"
 );
 requireInvalidVisualExperienceSpec(
-  "shared/examples/visual-experience-invalid/missing-rendering-layer-ownership.md",
+  ".convention/examples/visual-experience-invalid/missing-rendering-layer-ownership.md",
   "## Rendering Layer Ownership"
 );
 requireInvalidVisualExperienceSpec(
-  "shared/examples/visual-experience-invalid/missing-originality-guardrails.md",
+  ".convention/examples/visual-experience-invalid/missing-originality-guardrails.md",
   "## Originality Guardrails"
 );
 
-const visualExampleManifest = readJson("shared/examples/visual-experience-e2e/capture-manifest.json");
+const visualExampleManifest = readJson(".convention/examples/visual-experience-e2e/capture-manifest.json");
 if (visualExampleManifest) {
   if (!visualExampleManifest.config?.motionScreenshotDir?.includes(".motion_screenshots")) {
-    fail("shared/examples/visual-experience-e2e/capture-manifest.json: motionScreenshotDir must reference .motion_screenshots");
+    fail(".convention/examples/visual-experience-e2e/capture-manifest.json: motionScreenshotDir must reference .motion_screenshots");
   }
   if (!visualExampleManifest.captures?.some((capture) => capture.type === "motion-frame")) {
-    fail("shared/examples/visual-experience-e2e/capture-manifest.json: expected at least one motion-frame capture");
+    fail(".convention/examples/visual-experience-e2e/capture-manifest.json: expected at least one motion-frame capture");
   }
   if (!visualExampleManifest.failedCaptures?.some((capture) => capture.failureReason === "motion-state-unavailable")) {
-    fail('shared/examples/visual-experience-e2e/capture-manifest.json: expected failed capture with "motion-state-unavailable"');
+    fail('.convention/examples/visual-experience-e2e/capture-manifest.json: expected failed capture with "motion-state-unavailable"');
   }
 }
 
-const manifest = readJson("shared/templates/capture-manifest.example.json");
+const manifest = readJson(".convention/templates/capture-manifest.example.json");
 if (manifest) {
   for (const field of ["schemaVersion", "projectBrand", "page", "source", "config", "captures", "failedCaptures", "sourceGaps", "handoffs"]) {
-    if (!Object.hasOwn(manifest, field)) fail(`shared/templates/capture-manifest.example.json: missing top-level field "${field}"`);
+    if (!Object.hasOwn(manifest, field)) fail(`.convention/templates/capture-manifest.example.json: missing top-level field "${field}"`);
   }
 
   for (const field of ["screenshotDir", "motionScreenshotDir", "failedCaptureDir", "readySelectors", "loaderSelectors", "maxWaitMs", "idleWaitMs", "retryCount", "rejectBlankFrames"]) {
-    if (!Object.hasOwn(manifest.config ?? {}, field)) fail(`shared/templates/capture-manifest.example.json: config missing "${field}"`);
+    if (!Object.hasOwn(manifest.config ?? {}, field)) fail(`.convention/templates/capture-manifest.example.json: config missing "${field}"`);
   }
 
   for (const reason of ["blank-frame-rejected", "loader-still-visible", "capture-tool-unavailable", "motion-state-unavailable"]) {
     if (!manifest.config?.failureReasons?.includes(reason)) {
-      fail(`shared/templates/capture-manifest.example.json: failureReasons missing "${reason}"`);
+      fail(`.convention/templates/capture-manifest.example.json: failureReasons missing "${reason}"`);
     }
   }
 
   const allCaptures = [...(manifest.captures ?? []), ...(manifest.failedCaptures ?? [])];
   for (const [index, capture] of allCaptures.entries()) {
     for (const field of ["id", "type", "status", "viewport", "readyState", "capturedAt"]) {
-      if (!Object.hasOwn(capture, field)) fail(`shared/templates/capture-manifest.example.json: capture ${index} missing "${field}"`);
+      if (!Object.hasOwn(capture, field)) fail(`.convention/templates/capture-manifest.example.json: capture ${index} missing "${field}"`);
     }
   }
 }

@@ -37,9 +37,9 @@ has unresolved questions.
 ## References
 
 - `../../../docs/interop/content-journey-layer-architecture.md`
-- `../../../shared/content/audience-intent-reference.md`
-- `../../../shared/content/objection-handling-reference.md`
-- `../../../shared/schemas/user-journey-map.schema.json`
+- `../../../.convention/content/audience-intent-reference.md`
+- `../../../.convention/content/objection-handling-reference.md`
+- `../../../.convention/schemas/user-journey-map.schema.json`
 - `../../../knowledge/schemas/journey-pattern.schema.json`
 
 ## Rules

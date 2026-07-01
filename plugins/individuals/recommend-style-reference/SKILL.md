@@ -43,9 +43,9 @@ design-system seed.
 ## References
 
 - `references/style-recommendation.md`
-- `../../../shared/style-references/index.json`
-- `../../../shared/style-references/categories.json`
-- `../../../shared/schemas/style-reference.schema.json`
+- `../../../.convention/style-references/index.json`
+- `../../../.convention/style-references/categories.json`
+- `../../../.convention/schemas/style-reference.schema.json`
 
 ## Rules
 

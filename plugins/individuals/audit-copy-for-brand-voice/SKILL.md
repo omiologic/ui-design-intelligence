@@ -33,13 +33,13 @@ protect trust and consistency while preserving the user task.
 
 ## References
 
-- `../../../shared/content/claim-risk-guidelines.md`
-- `../../../shared/content/content-accessibility-guidelines.md`
-- `../../../shared/content/copy-quality-checklist.md`
-- `../../../shared/content/laws-of-copywriting.md`
-- `../../../shared/schemas/brand-voice.schema.json`
+- `../../../.convention/content/claim-risk-guidelines.md`
+- `../../../.convention/content/content-accessibility-guidelines.md`
+- `../../../.convention/content/copy-quality-checklist.md`
+- `../../../.convention/content/laws-of-copywriting.md`
+- `../../../.convention/schemas/brand-voice.schema.json`
 - `../../../knowledge/schemas/voice-profile.schema.json`
-- `../../../shared/schemas/content-model.schema.json`
+- `../../../.convention/schemas/content-model.schema.json`
 
 ## Rules
 

@@ -25,7 +25,7 @@ promise that the visible page content can keep.
 - `references/meta-description-generation.md`
 - `references/meta-description-quality.md`
 - `references/metadata-example.json`
-- `../../../shared/vocabulary/ui-terminology.json`
+- `../../../.convention/vocabulary/ui-terminology.json`
 
 ## Decision Criteria
 

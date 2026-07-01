@@ -90,7 +90,7 @@ function checkUnique(items, file, getId, label) {
   return seen;
 }
 
-const schemasDir = path.join(root, "shared/schemas");
+const schemasDir = path.join(root, ".convention/schemas");
 const styleReferenceSchema = readJson(path.join(schemasDir, "style-reference.schema.json"));
 const styleApplicationSchema = readJson(path.join(schemasDir, "style-application.schema.json"));
 const stylePatchSchema = readJson(path.join(schemasDir, "style-patch.schema.json"));
@@ -116,7 +116,7 @@ const allowedComponentMappingKeys = new Set([
   "tabs"
 ]);
 
-const styleRoot = path.join(root, "shared/style-references");
+const styleRoot = path.join(root, ".convention/style-references");
 const categoryFile = path.join(styleRoot, "categories.json");
 const indexFile = path.join(styleRoot, "index.json");
 const categories = readJson(categoryFile);
@@ -153,14 +153,14 @@ for (const item of indexRecords) {
 }
 
 const styleFiles = walk(path.join(styleRoot, "styles")).filter((file) => file.endsWith(".style.json")).sort();
-if (styleFiles.length === 0) fail("shared/style-references/styles: expected at least one style record");
+if (styleFiles.length === 0) fail(".convention/style-references/styles: expected at least one style record");
 for (const file of styleFiles) {
   const doc = readJson(file);
   validateAgainstSchema(doc, styleReferenceSchema, file, "style-reference");
   if (!doc) continue;
 
   if (!indexedIds.has(doc.id)) {
-    fail(`${path.relative(root, file)}: style id "${doc.id}" is missing from shared/style-references/index.json`);
+    fail(`${path.relative(root, file)}: style id "${doc.id}" is missing from .convention/style-references/index.json`);
   } else if (path.resolve(indexedPaths.get(doc.id)) !== path.resolve(file)) {
     fail(`${path.relative(root, file)}: index path for style "${doc.id}" does not match this file`);
   }
@@ -225,10 +225,10 @@ for (const category of categoryRecords) {
 }
 
 const templateChecks = [
-  ["shared/templates/style-reference.json", styleReferenceSchema, "style-reference"],
-  ["shared/templates/style-application.json", styleApplicationSchema, "style-application"],
-  ["shared/templates/style-patch.json", stylePatchSchema, "style-patch"],
-  ["shared/templates/style-blend.json", styleBlendSchema, "style-blend"]
+  [".convention/templates/style-reference.json", styleReferenceSchema, "style-reference"],
+  [".convention/templates/style-application.json", styleApplicationSchema, "style-application"],
+  [".convention/templates/style-patch.json", stylePatchSchema, "style-patch"],
+  [".convention/templates/style-blend.json", styleBlendSchema, "style-blend"]
 ];
 for (const [relativeFile, schema, label] of templateChecks) {
   const file = path.join(root, relativeFile);
@@ -240,10 +240,10 @@ const exampleChecks = [
   [file => file.endsWith("style-patch.section-preserve-brand.example.json") || file.endsWith("style-patch.component-preserve-typography.example.json"), stylePatchSchema, "style-patch"],
   [file => file.endsWith("style-blend.hero-luxury-aurora.example.json"), styleBlendSchema, "style-blend"]
 ];
-const sharedExampleFiles = walk(path.join(root, "shared/examples")).filter((file) => file.endsWith(".json"));
+const sharedExampleFiles = walk(path.join(root, ".convention/examples")).filter((file) => file.endsWith(".json"));
 for (const [predicate, schema, label] of exampleChecks) {
   const files = sharedExampleFiles.filter(predicate).sort();
-  if (files.length === 0) fail(`shared/examples: expected ${label} example files`);
+  if (files.length === 0) fail(`.convention/examples: expected ${label} example files`);
   for (const file of files) validateAgainstSchema(readJson(file), schema, file, label);
 }
 
@@ -271,14 +271,14 @@ function checkBundlePackaging() {
   const requiredAgents = ["style-reference-curator"];
   const requiredShared = [
     "docs/interop/style-reference-layer-architecture.md",
-    "shared/schemas/style-reference.schema.json",
-    "shared/schemas/style-application.schema.json",
-    "shared/schemas/style-patch.schema.json",
-    "shared/schemas/style-blend.schema.json",
-    "shared/style-references/categories.json",
-    "shared/style-references/index.json",
-    "shared/templates/style-reference.json",
-    "shared/examples/style-application.site.example.json",
+    ".convention/schemas/style-reference.schema.json",
+    ".convention/schemas/style-application.schema.json",
+    ".convention/schemas/style-patch.schema.json",
+    ".convention/schemas/style-blend.schema.json",
+    ".convention/style-references/categories.json",
+    ".convention/style-references/index.json",
+    ".convention/templates/style-reference.json",
+    ".convention/examples/style-application.site.example.json",
     "scripts/validate-style-references.mjs"
   ];
 

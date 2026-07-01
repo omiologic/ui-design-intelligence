@@ -37,10 +37,10 @@ alone.
 ## References
 
 - `references/motion-study-baseline.md`
-- `../../../shared/workflows/study-capture-motion-routing.md`
-- `../../../shared/workflows/visual-experience-agent-routing.md`
-- `../../../shared/templates/visual-experience-spec.md`
-- `../../../shared/templates/capture-manifest.example.json`
+- `../../../.convention/workflows/study-capture-motion-routing.md`
+- `../../../.convention/workflows/visual-experience-agent-routing.md`
+- `../../../.convention/templates/visual-experience-spec.md`
+- `../../../.convention/templates/capture-manifest.example.json`
 
 ## Boundary
 
@@ -85,10 +85,10 @@ alone.
 
 ## Workflow
 
-1. Use `../../../shared/workflows/study-capture-motion-routing.md` when motion
+1. Use `../../../.convention/workflows/study-capture-motion-routing.md` when motion
    study is part of a `study-page`, `study-site`, or natural-language Codex
    request. Use
-   `../../../shared/workflows/visual-experience-agent-routing.md` when
+   `../../../.convention/workflows/visual-experience-agent-routing.md` when
    role-level routing or handoff ownership is needed without runtime subagents.
 2. Review the capture manifest, successful frames, failed frames, source gaps,
    viewport set, and scroll or interaction sampling plan.

@@ -3,9 +3,9 @@
 Use this guide when a generated design-system seed, design spec, blueprint, or
 wireframe looks technically valid but visually generic. This is the
 design-system-specific companion to
-`shared/design-philosophy/design-system/design-system-anti-slop.md` and should
-be used with `shared/design-system/visual-style-calibration.md` and
-`shared/style-references/`.
+`.convention/design-philosophy/design-system/design-system-anti-slop.md` and should
+be used with `.convention/design-system/visual-style-calibration.md` and
+`.convention/style-references/`.
 
 Anti-generic review is not about making every interface loud. It is about
 preventing default-looking choices that do not express the product category,
@@ -54,7 +54,7 @@ Do not treat font family as the whole type system. Instead:
 Do not make cards, pills, badges, and soft buttons the default visual language.
 Instead:
 
-- Use `shared/design-system/component-selection-guidelines.md` to justify the
+- Use `.convention/design-system/component-selection-guidelines.md` to justify the
   component pattern.
 - Define component anatomy before styling.
 - Give each reusable component variants, states, usage limits, and avoid rules.
@@ -89,7 +89,7 @@ Before accepting visual direction:
 
 1. Identify whether the style comes from user input, observed UI, a
    `StyleReference`, a generated recommendation, or a local patch.
-2. Use `shared/design-system/visual-style-calibration.md` to translate the style
+2. Use `.convention/design-system/visual-style-calibration.md` to translate the style
    into contrast, density, hierarchy, restraint, texture, imagery, motion
    posture, and category fit.
 3. Map calibrated decisions into token roles, component variants, rules, and

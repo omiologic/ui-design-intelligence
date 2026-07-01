@@ -1,0 +1,66 @@
+{
+  "version": "0.1.0",
+  "type": "appRunRecord",
+  "id": "ledgerpilot-review-run",
+  "runKind": "review",
+  "createdAt": "2026-06-30T00:00:05Z",
+  "completedAt": "2026-06-30T00:00:06Z",
+  "status": "passed",
+  "command": "fixture: review marketing page handoff",
+  "artifactManifestId": "ledgerpilot-artifact-manifest",
+  "selectedSkills": [
+    "review-generated-wireframe",
+    "study-ui-accessibility"
+  ],
+  "inputs": [
+    {
+      "id": "ledgerpilot-marketing-wireframe",
+      "artifactType": "wireframeConfig",
+      "path": ".convention/examples/marketing-page-e2e/marketing-page.ui-blueprint.json",
+      "schemaRef": ".convention/schemas/wireframe-config.schema.json",
+      "label": "Marketing page wireframe"
+    },
+    {
+      "id": "ledgerpilot-marketing-prototype",
+      "artifactType": "prototypeConfig",
+      "path": ".convention/examples/marketing-page-e2e/marketing-page.prototype-config.example.json",
+      "schemaRef": ".convention/schemas/prototype-config.schema.json",
+      "label": "Marketing page prototype config"
+    }
+  ],
+  "outputs": [
+    {
+      "id": "example-homepage-audit",
+      "artifactType": "pageAudit",
+      "path": ".convention/examples/page-audit.example.json",
+      "schemaRef": ".convention/schemas/page-audit.schema.json",
+      "label": "Page audit example"
+    }
+  ],
+  "validation": {
+    "status": "passed",
+    "commands": [
+      {
+        "name": "validate-examples",
+        "command": "npm run validate:examples",
+        "status": "passed"
+      }
+    ]
+  },
+  "findings": [
+    {
+      "id": "proof-placement-note",
+      "severity": "info",
+      "message": "Keep proof visible before the primary demo action in downstream app previews.",
+      "artifactRef": {
+        "id": "example-homepage-audit",
+        "artifactType": "pageAudit",
+        "path": ".convention/examples/page-audit.example.json",
+        "schemaRef": ".convention/schemas/page-audit.schema.json",
+        "label": "Page audit example"
+      },
+      "repairGuidance": "If a viewer collapses sections, preserve proof and CTA sections in the first visible summary."
+    }
+  ],
+  "handoffReadiness": "ready"
+}

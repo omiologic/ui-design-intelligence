@@ -66,7 +66,7 @@ for (const file of changedFiles) {
   match = normalized.match(/^plugins\/bundles\/([^/]+)\//);
   if (match) add(bundleNames, match[1]);
 
-  if (normalized.startsWith("shared/examples/") && normalized.endsWith(".json")) {
+  if (normalized.startsWith(".convention/examples/") && normalized.endsWith(".json")) {
     add(exampleFiles, normalized);
     if (normalized.endsWith(".ui-blueprint.json") || normalized.endsWith("ui-blueprint.example.json")) {
       add(antiPatternFiles, normalized);
@@ -77,7 +77,7 @@ for (const file of changedFiles) {
   if (normalized.startsWith("tests/invalid-content/")) runInvalidContent = true;
   if (normalized.startsWith("tests/invalid-taste-profiles/")) runInvalidTasteProfiles = true;
   if (normalized.startsWith("tests/invalid-antipatterns/")) runInvalidAntipatterns = true;
-  if (normalized.startsWith("shared/taste-profiles/")) runTasteProfiles = true;
+  if (normalized.startsWith(".convention/taste-profiles/")) runTasteProfiles = true;
   if (normalized.startsWith("tests/quality-golden-set/")) runQualityGoldenSet = true;
   if (normalized.startsWith("knowledge/")) runKnowledge = true;
   if (
@@ -92,10 +92,10 @@ for (const file of changedFiles) {
     normalized === "scripts/validate-content.mjs" ||
     normalized === "scripts/validate-invalid-content.mjs"
   ) runContent = true;
-  if (normalized.startsWith("shared/style-references/") || normalized.includes("style-reference") || normalized.includes("style-application") || normalized.includes("style-patch") || normalized.includes("style-blend")) runStyleReferences = true;
-  if (normalized.includes("design-system") || normalized.includes("foundation") || normalized.startsWith("shared/vocabulary/design-") || normalized.startsWith("shared/vocabulary/component-") || normalized.startsWith("shared/vocabulary/layout-roles")) runDesignSystem = true;
+  if (normalized.startsWith(".convention/style-references/") || normalized.includes("style-reference") || normalized.includes("style-application") || normalized.includes("style-patch") || normalized.includes("style-blend")) runStyleReferences = true;
+  if (normalized.includes("design-system") || normalized.includes("foundation") || normalized.startsWith(".convention/vocabulary/design-") || normalized.startsWith(".convention/vocabulary/component-") || normalized.startsWith(".convention/vocabulary/layout-roles")) runDesignSystem = true;
   if (normalized.includes("prototype") || normalized.includes("interaction-flow") || normalized.includes("component-state-model")) runPrototype = true;
-  if (normalized.startsWith("shared/schemas/") || normalized.startsWith("shared/vocabulary/")) runSchema = true;
+  if (normalized.startsWith(".convention/schemas/") || normalized.startsWith(".convention/vocabulary/")) runSchema = true;
   if (["install.sh", "uninstall.sh", "scripts/install-bundle.mjs", "scripts/validate-install-matrix.mjs"].includes(normalized)) runInstallMatrix = true;
   if (normalized.includes("codex-plugin") || normalized.includes("codex-marketplace") || normalized === "scripts/build-codex-plugins.mjs" || normalized === "scripts/validate-codex-plugins.mjs") runCodexPlugins = true;
   if (normalized === "package.json" || normalized === "scripts/validate-changed.mjs") runFullValidate = true;

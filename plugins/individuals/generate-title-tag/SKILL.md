@@ -30,7 +30,7 @@ title and hand off the mismatch to SEO audit instead of inventing claims.
 - `references/title-tag-generation.md`
 - `references/title-tag-quality.md`
 - `../generate-meta-description/references/metadata-example.json`
-- `../../../shared/vocabulary/ui-terminology.json`
+- `../../../.convention/vocabulary/ui-terminology.json`
 
 ## Decision Criteria
 

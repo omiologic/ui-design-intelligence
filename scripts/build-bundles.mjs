@@ -6,6 +6,8 @@ import { copyDir } from "./lib/bundle-skill.mjs";
 
 const root = process.cwd();
 const bundlesDir = path.join(root, "plugins", "bundles");
+const agentSourceDir = path.join(root, ".agents", "agents");
+const commandSourceDir = path.join(root, ".agents", "commands");
 const distDir = path.join(root, "dist");
 const buildRoot = path.join(distDir, "build");
 const pluginDist = path.join(distDir, "plugins");
@@ -49,10 +51,10 @@ function skillSourceDir(skillName) {
 function rewriteBundleSkillReferences(skillDir) {
   const skillFile = path.join(skillDir, "SKILL.md");
   let text = fs.readFileSync(skillFile, "utf8");
-  text = text.split("../../../shared/").join("../../shared/");
+  text = text.split("../../../.convention/").join("../../.convention/");
   text = text.split("../../../knowledge/").join("../../knowledge/");
   text = text.split("../../../docs/").join("../../docs/");
-  text = text.split("../../shared/").join("../../shared/");
+  text = text.split("../../.convention/").join("../../.convention/");
   fs.writeFileSync(skillFile, text);
 }
 
@@ -157,11 +159,11 @@ for (const { dir, manifest, resolvedManifest } of manifests) {
   }
 
   for (const agent of resolvedManifest.agents) {
-    copyFile(path.join(root, "agents", `${agent}.md`), path.join(buildDir, "agents", `${agent}.md`));
+    copyFile(path.join(agentSourceDir, `${agent}.md`), path.join(buildDir, "agents", `${agent}.md`));
   }
 
   for (const command of resolvedManifest.commands) {
-    copyFile(path.join(root, "commands", `${command}.md`), path.join(buildDir, "commands", `${command}.md`));
+    copyFile(path.join(commandSourceDir, `${command}.md`), path.join(buildDir, "commands", `${command}.md`));
   }
 
   for (const sharedPath of resolvedManifest.shared) {

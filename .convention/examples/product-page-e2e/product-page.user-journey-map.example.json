@@ -1,0 +1,79 @@
+{
+  "version": "0.1.0",
+  "type": "userJourneyMap",
+  "id": "northstar-product-page-journey",
+  "name": "Northstar Product Page Journey",
+  "source": {
+    "source": "generated",
+    "confidence": "medium",
+    "sourceRefs": [
+      ".convention/examples/product-page-e2e/brief.md",
+      ".convention/examples/product-page-e2e/product-page.study.example.json"
+    ],
+    "notes": ["Generated as a content and prototype copy fixture; not approved production copy."]
+  },
+  "audience": {
+    "primary": "Outdoor shoppers comparing rechargeable headlamps",
+    "segments": ["trail runners", "campers", "night hikers"],
+    "intent": "Choose the correct headlamp variant and add it to cart",
+    "context": "The user needs product confidence before selecting a color and adding to cart."
+  },
+  "primaryGoal": "add-to-cart",
+  "conversionGoals": ["productPurchase", "variantSelection"],
+  "stages": [
+    {
+      "id": "inspection",
+      "label": "Inspection",
+      "userQuestion": "Is this the right product for my activity?",
+      "userNeed": "Understand the product promise, rating proof, price, and availability.",
+      "contentGoal": "Give enough context to keep the product summary credible.",
+      "recommendedSections": ["product-inspection-section"],
+      "recommendedNodeRoles": ["headline", "price", "trustSignal", "helperText"],
+      "copyStrategy": "Use clear retail language and avoid unsupported performance claims.",
+      "objections": ["Unclear fit for activity", "Unclear stock or delivery timing"],
+      "successCriteria": ["User understands the product and moves to variant selection."]
+    },
+    {
+      "id": "selection",
+      "label": "Variant Selection",
+      "userQuestion": "What do I need to choose before adding to cart?",
+      "userNeed": "Know that color selection is required and recover from errors.",
+      "contentGoal": "Make the required variant choice and error recovery explicit.",
+      "recommendedSections": ["variant-selector-card"],
+      "recommendedNodeRoles": ["label", "helperText", "errorText", "primaryCTA"],
+      "copyStrategy": "Use short instructional copy with a direct fix for errors.",
+      "objections": ["Required selection is easy to miss"],
+      "successCriteria": ["User selects a color or understands how to fix the error."]
+    },
+    {
+      "id": "confidence-building",
+      "label": "Confidence Building",
+      "userQuestion": "How does this compare with other options?",
+      "userNeed": "Compare brightness, battery, and fit before committing.",
+      "contentGoal": "Support comparison without burying the cart action.",
+      "recommendedSections": ["comparison-section", "product-details-tabs"],
+      "recommendedNodeRoles": ["headline", "body", "comparison"],
+      "copyStrategy": "Use practical comparison language and avoid technical overclaiming.",
+      "objections": ["Not sure which model fits the use case"],
+      "successCriteria": ["User can compare key attributes and return to purchase."]
+    },
+    {
+      "id": "cart-feedback",
+      "label": "Cart Feedback",
+      "userQuestion": "Did adding to cart work, and what happens next?",
+      "userNeed": "See success, recover from errors, and continue to checkout.",
+      "contentGoal": "Confirm cart state and provide a clear next step.",
+      "recommendedSections": ["cart-feedback-section", "cart-drawer"],
+      "recommendedNodeRoles": ["success", "error", "primaryCTA"],
+      "copyStrategy": "Use direct state copy and clear recovery instructions.",
+      "objections": ["Cart action outcome is unclear"],
+      "successCriteria": ["User sees cart feedback and can proceed or recover."]
+    }
+  ],
+  "review": {
+    "status": "draft",
+    "needsReview": ["productSpecs", "clientApproval"],
+    "reviewNotes": ["Fixture copy uses generic product claims only."]
+  },
+  "notes": ["This journey drives node-tied content examples for the product page E2E fixture."]
+}

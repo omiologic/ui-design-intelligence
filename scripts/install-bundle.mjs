@@ -22,6 +22,9 @@ const skillsDir = path.resolve(skillsDirArg);
 const manifestPath = path.join(root, "plugins", "bundles", bundleName, "plugin.json");
 const installRecordDir = path.join(targetRoot, ".ui-blueprint-bundles");
 const installRecordPath = path.join(installRecordDir, `${bundleName}.json`);
+const agentSourceDir = path.join(root, ".agents", "agents");
+const commandSourceDir = path.join(root, ".agents", "commands");
+const conventionDirName = ".convention";
 
 function readJson(file) {
   return JSON.parse(fs.readFileSync(file, "utf8"));
@@ -38,7 +41,7 @@ function copyFile(source, target) {
 
 function applyInstalledReferenceRewrites(text) {
   return text
-    .split("../../../shared/").join("../../shared/")
+    .split("../../../.convention/").join("../../.convention/")
     .split("../../../knowledge/").join("../../knowledge/")
     .split("../../../docs/").join("../../docs/");
 }
@@ -135,13 +138,13 @@ function preflightInstall(manifest) {
 
   if (!skillsOnly) {
     for (const agentName of manifest.agents) {
-      const file = path.join(root, "agents", `${agentName}.md`);
-      if (!fs.existsSync(file)) throw new Error(`Bundle agent does not exist: agents/${agentName}.md`);
+      const file = path.join(agentSourceDir, `${agentName}.md`);
+      if (!fs.existsSync(file)) throw new Error(`Bundle agent does not exist: .agents/agents/${agentName}.md`);
     }
 
     for (const commandName of manifest.commands) {
-      const file = path.join(root, "commands", `${commandName}.md`);
-      if (!fs.existsSync(file)) throw new Error(`Bundle command does not exist: commands/${commandName}.md`);
+      const file = path.join(commandSourceDir, `${commandName}.md`);
+      if (!fs.existsSync(file)) throw new Error(`Bundle command does not exist: .agents/commands/${commandName}.md`);
     }
   }
 
@@ -215,7 +218,7 @@ function checkInstallConflicts(manifest) {
 
   if (!skillsOnly) {
     for (const agentName of manifest.agents) {
-      const source = path.join(root, "agents", `${agentName}.md`);
+      const source = path.join(agentSourceDir, `${agentName}.md`);
       const target = path.join(targetRoot, "agents", `${agentName}.md`);
       if (fs.existsSync(target) && !filesAreIdentical(source, target)) {
         conflicts.push(`agent ${agentName}: ${target}`);
@@ -223,7 +226,7 @@ function checkInstallConflicts(manifest) {
     }
 
     for (const commandName of manifest.commands) {
-      const source = path.join(root, "commands", `${commandName}.md`);
+      const source = path.join(commandSourceDir, `${commandName}.md`);
       const target = path.join(targetRoot, "commands", `${commandName}.md`);
       if (fs.existsSync(target) && !filesAreIdentical(source, target)) {
         conflicts.push(`command ${commandName}: ${target}`);
@@ -235,7 +238,7 @@ function checkInstallConflicts(manifest) {
     const source = path.join(root, sharedPath);
     const target = path.join(targetRoot, sharedPath);
     if (fs.existsSync(target) && !filesAreIdentical(source, target)) {
-      conflicts.push(`shared ${sharedPath}: ${target}`);
+      conflicts.push(`convention ${sharedPath}: ${target}`);
     }
   }
 
@@ -273,18 +276,18 @@ function installBundle(manifest) {
   const shared = manifest.shared;
 
   for (const agentName of agents) {
-    copyFile(path.join(root, "agents", `${agentName}.md`), path.join(targetRoot, "agents", `${agentName}.md`));
+    copyFile(path.join(agentSourceDir, `${agentName}.md`), path.join(targetRoot, "agents", `${agentName}.md`));
     console.log(`Installed agent: ${agentName}`);
   }
 
   for (const commandName of commands) {
-    copyFile(path.join(root, "commands", `${commandName}.md`), path.join(targetRoot, "commands", `${commandName}.md`));
+    copyFile(path.join(commandSourceDir, `${commandName}.md`), path.join(targetRoot, "commands", `${commandName}.md`));
     console.log(`Installed command: ${commandName}`);
   }
 
   for (const sharedPath of shared) {
     copyFile(path.join(root, sharedPath), path.join(targetRoot, sharedPath));
-    console.log(`Installed shared file: ${sharedPath}`);
+    console.log(`Installed convention file: ${sharedPath}`);
   }
 
   fs.mkdirSync(installRecordDir, { recursive: true });
@@ -336,8 +339,8 @@ function uninstallBundle(manifest) {
   for (const sharedPath of shared) {
     const target = path.join(targetRoot, sharedPath);
     removeFileIfExists(target);
-    pruneEmptyDirs(path.dirname(target), path.join(targetRoot, "shared"));
-    console.log(`Removed shared file: ${sharedPath}`);
+    pruneEmptyDirs(path.dirname(target), path.join(targetRoot, conventionDirName));
+    console.log(`Removed convention file: ${sharedPath}`);
   }
 
   removeFileIfExists(installRecordPath);

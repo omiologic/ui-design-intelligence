@@ -4,11 +4,11 @@ Use this reference when naming and grouping seed-level design tokens in
 `DesignSystemSeed` artifacts, design-system reviews, prototype specs, and app
 handoff packages.
 
-Use `shared/design-system/accessibility-token-guidelines.md` with this taxonomy
+Use `.convention/design-system/accessibility-token-guidelines.md` with this taxonomy
 when token names or values affect contrast, focus visibility, target size,
 readable type, opacity, disabled state, motion, or non-color state
 communication.
-Use `shared/design-system/responsive-system-guidelines.md` when `breakpoint.*`,
+Use `.convention/design-system/responsive-system-guidelines.md` when `breakpoint.*`,
 `spacing.*`, `size.*`, `zindex.*`, or responsive component guidance affects
 layout, density, sticky regions, or prototype handoff.
 
@@ -209,7 +209,7 @@ On submit error, move focus to the error summary, apply `color.status.error`,
 ## Review Rules
 
 - Fail token naming when a token category is not listed in
-  `shared/vocabulary/design-token-types.json`.
+  `.convention/vocabulary/design-token-types.json`.
 - Fail token naming when a token name encodes a raw value instead of role and
   purpose.
 - Warn when a token is defined but no component, state, usage note, or handoff
