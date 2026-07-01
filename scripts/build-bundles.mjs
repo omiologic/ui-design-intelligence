@@ -52,7 +52,6 @@ function rewriteBundleSkillReferences(skillDir) {
   const skillFile = path.join(skillDir, "SKILL.md");
   let text = fs.readFileSync(skillFile, "utf8");
   text = text.split("../../../.convention/").join("../../.convention/");
-  text = text.split("../../../knowledge/").join("../../knowledge/");
   text = text.split("../../../docs/").join("../../docs/");
   text = text.split("../../.convention/").join("../../.convention/");
   fs.writeFileSync(skillFile, text);

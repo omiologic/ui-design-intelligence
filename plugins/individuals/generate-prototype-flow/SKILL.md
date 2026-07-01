@@ -34,7 +34,7 @@ prototype config then defines exact events, focus, routes, and transitions.
 
 ## References
 
-- `../../../docs/interop/content-journey-layer-architecture.md`
+- `../../../.convention/workflows/content-journey-layer-architecture.md`
 - `../../../.convention/schemas/prototype-config.schema.json`
 - `../../../.convention/schemas/user-journey-map.schema.json`
 

@@ -13,7 +13,7 @@ rules that should become tagged pattern records.
 ## Purpose
 
 Extract reusable UI pattern knowledge from evidence-backed artifacts and emit
-records shaped for `knowledge/schemas/pattern-record.schema.json`.
+records shaped for `.convention/knowledge/schemas/pattern-record.schema.json`.
 
 ## Philosophy
 
@@ -25,10 +25,10 @@ artifacts, then save only the reusable design intelligence as pattern knowledge.
 ## References
 
 - `references/pattern-extraction.md`
-- `../../../knowledge/schemas/pattern-record.schema.json`
-- `../../../knowledge/vocabulary/pattern-types.json`
-- `../../../knowledge/vocabulary/knowledge-tags.json`
-- `../../../knowledge/templates/pattern-record.md`
+- `../../../.convention/knowledge/schemas/pattern-record.schema.json`
+- `../../../.convention/knowledge/vocabulary/pattern-types.json`
+- `../../../.convention/knowledge/vocabulary/knowledge-tags.json`
+- `../../../.convention/knowledge/templates/pattern-record.md`
 
 ## Decision Criteria
 
@@ -51,7 +51,7 @@ artifacts, then save only the reusable design intelligence as pattern knowledge.
 
 1. Reject trivial observations such as "uses cards" unless the structure changes
    user decision-making or implementation responsibility.
-2. Normalize tags to `knowledge/vocabulary/knowledge-tags.json`.
+2. Normalize tags to `.convention/knowledge/vocabulary/knowledge-tags.json`.
 3. Keep status `candidate` unless an explicit curation step says otherwise.
 4. Do not invent source evidence. Use placeholders only in repository examples,
    not in project-local extracted records.

@@ -6,13 +6,13 @@ research, competitor screenshots, or project-specific studies.
 
 The repository owns the format layer:
 
-- `knowledge/schemas/`: JSON schemas for source records, study wrappers, pattern
+- `.convention/knowledge/schemas/`: JSON schemas for source records, study wrappers, pattern
   records, audit insights, indexes, and blueprint lineage.
-- `knowledge/vocabulary/`: controlled tokens for pattern types, source types,
+- `.convention/knowledge/vocabulary/`: controlled tokens for pattern types, source types,
   confidence levels, statuses, and knowledge tags.
-- `knowledge/templates/`: markdown templates for hand-authored or reviewed
+- `.convention/knowledge/templates/`: markdown templates for hand-authored or reviewed
   knowledge artifacts.
-- `knowledge/examples/`: small generic examples that demonstrate schema shape
+- `.convention/knowledge/examples/`: small generic examples that demonstrate schema shape
   without copying real client or competitor archives.
 
 User projects own the archive layer. Real captures, screenshots, studies,
@@ -71,7 +71,7 @@ ui-knowledge/
 ```
 
 Do not commit project-local `ui-knowledge/` archives to this repository unless a
-future task explicitly adds sanitized fixtures under `knowledge/examples/`.
+future task explicitly adds sanitized fixtures under `.convention/knowledge/examples/`.
 
 ## Artifact Levels
 
@@ -127,7 +127,7 @@ Sprint 003 establishes this directory and the format foundation. Later Sprint
 003 tasks will add vocabulary, templates, examples, validation scripts,
 workspace initialization, skills, commands, agents, and bundle packaging.
 
-Initial schemas are defined in `knowledge/schemas/`:
+Initial schemas are defined in `.convention/knowledge/schemas/`:
 
 - `source-record.schema.json`
 - `study-record.schema.json`
@@ -136,7 +136,7 @@ Initial schemas are defined in `knowledge/schemas/`:
 - `knowledge-index.schema.json`
 - `blueprint-lineage.schema.json`
 
-Sprint 008 content knowledge schemas are also defined in `knowledge/schemas/`:
+Sprint 008 content knowledge schemas are also defined in `.convention/knowledge/schemas/`:
 
 - `copy-pattern.schema.json`
 - `journey-pattern.schema.json`
@@ -158,7 +158,7 @@ wireframe mapping vocabulary. It also rejects credentials, signed AWS URLs,
 account-specific ARNs, and concrete S3 URIs in committed examples; storage
 references must use local paths or placeholder S3 URIs.
 `validate:knowledge-index` verifies that
-`knowledge/examples/knowledge-index.example.json` is generated from the seed
+`.convention/knowledge/examples/knowledge-index.example.json` is generated from the seed
 pattern records.
 
 These checks intentionally do not judge whether a pattern is strategically good,
@@ -190,7 +190,7 @@ repository unless they are intentionally sanitized as examples.
 Local storage is the default:
 
 ```bash
-node scripts/sync-knowledge-storage.mjs --patterns knowledge/examples --provider local --dry-run
+node scripts/sync-knowledge-storage.mjs --patterns .convention/knowledge/examples --provider local --dry-run
 ```
 
 S3 storage is configured with environment variables from `.env.example` or
@@ -198,7 +198,7 @@ S3 storage is configured with environment variables from `.env.example` or
 planned canonical keys without AWS credentials or network access:
 
 ```bash
-node scripts/sync-knowledge-storage.mjs --patterns knowledge/examples --provider s3 --dry-run
+node scripts/sync-knowledge-storage.mjs --patterns .convention/knowledge/examples --provider s3 --dry-run
 ```
 
 Fetch a canonical record by storage reference, S3 URI, or local path:
@@ -225,7 +225,7 @@ content records remain schema-valid JSON files in local or normal S3 storage.
 Pattern records can be projected into vector-ready records:
 
 ```bash
-node scripts/index-knowledge-vectors.mjs --patterns knowledge/examples --provider mock --mock-embeddings --out /tmp/ui-knowledge-vectors.json --dry-run
+node scripts/index-knowledge-vectors.mjs --patterns .convention/knowledge/examples --provider mock --mock-embeddings --out /tmp/ui-knowledge-vectors.json --dry-run
 ```
 
 Query deterministic mock records locally:

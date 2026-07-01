@@ -6,24 +6,24 @@ project:
     - "primary audience"
 
 artifacts:
-  rootDir: "./artifacts"
+  outputDir: "./artifacts"
   projectSlug: "project-name"
   pageSlugStrategy: "url-path"
-  paths:
-    project: "{root}/{project_brand}"
-    designSystem: "{root}/{project_brand}/design-system"
-    page: "{root}/{project_brand}/{page}"
-    sections: "{root}/{project_brand}/{page}/sections"
-    components: "{root}/{project_brand}/{page}/components"
-    elements: "{root}/{project_brand}/{page}/elements"
-    screenshots: "{root}/{project_brand}/{page}/.screenshots"
-    motionScreenshots: "{root}/{project_brand}/{page}/.motion_screenshots"
-    failedCaptures: "{root}/{project_brand}/{page}/.screenshots/failed"
-    captureManifest: "{root}/{project_brand}/{page}/capture-manifest.json"
-    visualExperienceSpec: "{root}/{project_brand}/{page}/visual-experience-spec.md"
+  rootDirs:
+    project: "{outputDir}/{project_brand}"
+    designSystem: "{outputDir}/{project_brand}/design-system"
+    page: "{outputDir}/{project_brand}/{page}"
+    sections: "{outputDir}/{project_brand}/{page}/sections"
+    components: "{outputDir}/{project_brand}/{page}/components"
+    elements: "{outputDir}/{project_brand}/{page}/elements"
+    screenshots: "{outputDir}/{project_brand}/{page}/.screenshots"
+    motionScreenshots: "{outputDir}/{project_brand}/{page}/.motion_screenshots"
+    failedCaptures: "{outputDir}/{project_brand}/{page}/.screenshots/failed"
+    captureManifest: "{outputDir}/{project_brand}/{page}/capture-manifest.json"
+    visualExperienceSpec: "{outputDir}/{project_brand}/{page}/visual-experience-spec.md"
 
 designSystem:
-  outputDir: "./ui-design-system"
+  outputDir: "{artifacts.rootDirs.designSystem}"
   mode: "seed"
   maturity: "designSystemSeed"
   defaultTone: "clear, trustworthy, direct"
@@ -41,15 +41,15 @@ designSystem:
   requireSourceConfidence: true
 
 knowledge:
-  rootDir: "./ui-knowledge"
+  outputDir: "{artifacts.rootDirs.project}/knowledge"
   confidenceThreshold: "medium"
 
 blueprint:
-  outputDir: "./ui-blueprints"
+  outputDir: "{artifacts.rootDirs.page}/wireframe"
   schemaVersion: "0.1.0"
 
 prototype:
-  outputDir: "./ui-prototypes"
+  outputDir: "{artifacts.rootDirs.page}/prototype"
   schemaVersion: "0.1.0"
 
 capture:

@@ -227,7 +227,8 @@ requireAnyFileIncludes(codexVisibleFiles, "study visual experience", "Codex-visi
 
 requireIncludes(".convention/templates/ui-design-intelligence.config.yml", [
   "artifacts:",
-  "rootDir:",
+  "outputDir:",
+  "rootDirs:",
   "projectSlug:",
   "pageSlugStrategy:",
   ".screenshots",

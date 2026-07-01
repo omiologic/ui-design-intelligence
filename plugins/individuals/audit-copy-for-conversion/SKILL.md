@@ -41,7 +41,7 @@ clear next step feel understandable and low-friction.
 - `../../../.convention/content/objection-handling-reference.md`
 - `../../../.convention/content/page-message-architecture.md`
 - `../../../.convention/content/proof-and-credibility-patterns.md`
-- `../../../knowledge/schemas/copy-pattern.schema.json`
+- `../../../.convention/knowledge/schemas/copy-pattern.schema.json`
 - `../../../.convention/schemas/content-model.schema.json`
 - `../../../.convention/schemas/user-journey-map.schema.json`
 

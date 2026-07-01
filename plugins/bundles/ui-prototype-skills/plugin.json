@@ -32,9 +32,9 @@
     "explain-prototype-interactions"
   ],
   "shared": [
-    "docs/interop/prototype-config-architecture.md",
-    "docs/interop/design-system-prototype-pipeline.md",
-    "docs/interop/content-journey-layer-architecture.md",
+    ".convention/workflows/prototype-config-architecture.md",
+    ".convention/workflows/design-system-prototype-pipeline.md",
+    ".convention/workflows/content-journey-layer-architecture.md",
     ".convention/schemas/user-journey-map.schema.json",
     ".convention/schemas/prototype-config.schema.json",
     ".convention/schemas/interaction-flow.schema.json",

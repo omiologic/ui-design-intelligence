@@ -4,7 +4,7 @@
   "patterns": [
     {
       "id": "credibility-first-healthcare-hero",
-      "path": "knowledge/examples/credibility-first-healthcare-hero.pattern.json",
+      "path": ".convention/knowledge/examples/credibility-first-healthcare-hero.pattern.json",
       "patternType": "section",
       "category": "hero",
       "name": "Credibility-First Healthcare Hero",
@@ -48,7 +48,7 @@
     },
     {
       "id": "mobile-navigation-drawer",
-      "path": "knowledge/examples/mobile-navigation-drawer.pattern.json",
+      "path": ".convention/knowledge/examples/mobile-navigation-drawer.pattern.json",
       "patternType": "interaction",
       "category": "mobileNavigation",
       "name": "Mobile Navigation Drawer",
@@ -90,7 +90,7 @@
     },
     {
       "id": "sticky-appointment-cta",
-      "path": "knowledge/examples/sticky-appointment-cta.pattern.json",
+      "path": ".convention/knowledge/examples/sticky-appointment-cta.pattern.json",
       "patternType": "conversion",
       "category": "stickyAction",
       "name": "Sticky Appointment CTA",

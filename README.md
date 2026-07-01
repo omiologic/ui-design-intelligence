@@ -26,6 +26,11 @@ is not the supported path after the Sprint 010 source-tree cleanup. Use the
 bundle installer below so installed skills are selected by
 `plugins/bundles/*/plugin.json` and sourced from `plugins/individuals/`.
 
+If the target contains `skills-lock.json`, it was installed through the Skills
+CLI/GitHub source flow. That flow installs `.agents/skills` only. It will not
+install `.agents/agents`, `.agents/commands`, or project-level `.convention`
+because those are bundle assets copied by `scripts/install-bundle.mjs`.
+
 Manual Codex user-local install:
 
 ```bash
@@ -128,6 +133,9 @@ UI_PLUGIN_BUNDLE="ui-design-intelligence" ./install.sh
 
 Set `UI_PLUGIN_TARGET="./.claude"` for project-local installation.
 Pass `--dry-run` or `--force` through the wrapper when needed.
+Interactive installs ask whether to create project config
+`.ui-design-intelligence.yml`. Use `--with-config` to create it without a
+prompt, or `--without-config` to skip it explicitly.
 
 ### First Run
 
@@ -159,7 +167,7 @@ The repository is organized as a plugin monorepo:
 - `.agents/agents/`: agent role definitions that bundles can include.
 - `.agents/commands/`: command entrypoints that bundles can include.
 - `.convention/`: schemas, vocabulary, templates, and examples used by skills and bundles.
-- `knowledge/`: repository-owned UI knowledge schemas, vocabulary, templates,
+- `.convention/knowledge/`: repository-owned UI knowledge schemas, vocabulary, templates,
   and generic examples for reusable pattern knowledge.
 - `docs/interop/`: layer boundaries, install contracts, and handoff formats.
 - `dist/build/`: generated expanded bundle folders.
@@ -215,11 +223,11 @@ component polish, and production code.
 See `docs/interop/README.md` for the layer-ownership table and the interop map
 for Taste Skill-style, Impeccable-style, and Emil Kowalski-style design
 engineering workflows. The downstream handoff artifact is defined in
-`docs/interop/blueprint-export-seed.md`.
+`.convention/workflows/blueprint-export-seed.md`.
 
 ## Knowledge System
 
-Sprint 003 adds a `knowledge/` foundation for reusable UI pattern knowledge.
+Sprint 003 adds a `.convention/knowledge/` foundation for reusable UI pattern knowledge.
 This repository defines knowledge formats, controlled vocabulary, templates,
 generic examples, scripts, skills, commands, agents, and bundle packaging. Real
 captures, screenshots, studies, audits, extracted patterns, generated
@@ -255,16 +263,16 @@ patches, compatibility guidance, intensity levels, source metadata, and
 style-to-design-system mappings. This lets a style apply globally to a site or
 locally to a page, section, component, or prototype behavior target without
 replacing the whole design-system seed. See
-`docs/interop/style-reference-layer-architecture.md`.
+`.convention/workflows/style-reference-layer-architecture.md`.
 
 The design-system layer is a prototype design contract, not a production UI kit.
 It owns `DesignSystemSeed` and foundation decisions such as semantic token
 intent, component vocabulary, state names, layout rules, accessibility
 constraints, and source/confidence metadata. See
-`docs/interop/design-system-layer-architecture.md`.
+`.convention/workflows/design-system-layer-architecture.md`.
 
 The study-to-prototype artifact sequence is documented in
-`docs/interop/design-system-prototype-pipeline.md`. It explains how
+`.convention/workflows/design-system-prototype-pipeline.md`. It explains how
 style references can be recommended, applied, blended, patched, and audited
 before design-system seed generation; how `DesignSystemSeed` feeds blueprint and
 wireframe generation; how state and component vocabulary constrain prototype
@@ -272,7 +280,9 @@ interactions; and why runtime/editor work remains a later package boundary.
 
 Project-local design-system defaults should use `.ui-design-intelligence.yml`.
 The starter config template is
-`.convention/templates/ui-design-intelligence.config.yml`.
+`.convention/templates/ui-design-intelligence.config.yml`; it uses
+`artifacts.outputDir` plus `artifacts.rootDirs` for page, screenshot, motion,
+and handoff paths.
 
 ## Problems It Solves
 

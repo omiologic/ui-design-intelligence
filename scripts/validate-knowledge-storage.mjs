@@ -31,7 +31,7 @@ const rawPrefix = env[knowledgeEnvKeys.s3Prefix] || "ui-knowledge/";
 const prefix = rawPrefix.endsWith("/") ? rawPrefix : `${rawPrefix}/`;
 const patternKey = `${prefix}patterns/credibility-first-healthcare-hero.pattern.json`;
 
-run(["scripts/sync-knowledge-storage.mjs", "--patterns", "knowledge/examples", "--provider", "s3", "--dry-run"]);
+run(["scripts/sync-knowledge-storage.mjs", "--patterns", ".convention/knowledge/examples", "--provider", "s3", "--dry-run"]);
 run(["scripts/fetch-knowledge-storage.mjs", "--s3-uri", `s3://${bucket}/${patternKey}`, "--dry-run"]);
 
 console.log("Knowledge storage validation passed (dry run).");

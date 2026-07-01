@@ -39,7 +39,7 @@ not restate the whole page promise.
 - `../../../.convention/content/laws-of-copywriting.md`
 - `../../../.convention/content/proof-and-credibility-patterns.md`
 - `../../../.convention/schemas/content-model.schema.json`
-- `../../../knowledge/schemas/copy-pattern.schema.json`
+- `../../../.convention/knowledge/schemas/copy-pattern.schema.json`
 
 ## Rules
 

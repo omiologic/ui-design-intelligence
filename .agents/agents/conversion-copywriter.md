@@ -87,7 +87,7 @@ issues from brand approval, legal approval, and claim-review blockers.
   `.convention/content/proof-and-credibility-patterns.md`, and
   `.convention/content/tone-of-voice/tone-of-voice-reference.md`.
 - Schemas: `.convention/schemas/content-model.schema.json` and
-  `knowledge/schemas/objection-pattern.schema.json`.
+  `.convention/knowledge/schemas/objection-pattern.schema.json`.
 
 ## Outputs
 

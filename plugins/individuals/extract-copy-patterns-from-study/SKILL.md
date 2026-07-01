@@ -33,10 +33,10 @@ competitor, or private production text verbatim.
 
 ## References
 
-- `../../../knowledge/schemas/copy-pattern.schema.json`
-- `../../../knowledge/schemas/journey-pattern.schema.json`
-- `../../../knowledge/schemas/objection-pattern.schema.json`
-- `../../../knowledge/schemas/voice-profile.schema.json`
+- `../../../.convention/knowledge/schemas/copy-pattern.schema.json`
+- `../../../.convention/knowledge/schemas/journey-pattern.schema.json`
+- `../../../.convention/knowledge/schemas/objection-pattern.schema.json`
+- `../../../.convention/knowledge/schemas/voice-profile.schema.json`
 
 ## Rules
 

@@ -16,7 +16,7 @@ uncertainty, not pressure users.
   pricing, technical, safety, performance, compatibility, and availability
   claims.
 - `.convention/content/cta-patterns.md`: CTA posture after objections are answered.
-- `knowledge/schemas/objection-pattern.schema.json`: project-specific or
+- `.convention/knowledge/schemas/objection-pattern.schema.json`: project-specific or
   reusable objection records with source, confidence, status, and review
   metadata.
 
@@ -401,7 +401,7 @@ Avoid these unsafe patterns:
 defines common categories and response structures that can apply across
 industries.
 
-`knowledge/schemas/objection-pattern.schema.json` records are project-specific
+`.convention/knowledge/schemas/objection-pattern.schema.json` records are project-specific
 or reusable knowledge items. Prefer an `objectionPattern` record when it has:
 
 - a specific audience, domain, page type, journey stage, or product context

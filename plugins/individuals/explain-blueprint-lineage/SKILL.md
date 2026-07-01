@@ -23,8 +23,8 @@ having to inspect every source record.
 ## References
 
 - `references/lineage-explanation.md`
-- `../../../knowledge/schemas/blueprint-lineage.schema.json`
-- `../../../knowledge/templates/blueprint-lineage.md`
+- `../../../.convention/knowledge/schemas/blueprint-lineage.schema.json`
+- `../../../.convention/knowledge/templates/blueprint-lineage.md`
 
 ## Decision Criteria
 

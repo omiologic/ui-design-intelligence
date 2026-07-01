@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 import fs from "node:fs";
 import path from "node:path";
+import readline from "node:readline/promises";
 import { fileURLToPath } from "node:url";
 import { copyDir } from "./lib/bundle-skill.mjs";
 
@@ -11,9 +12,16 @@ const flags = new Set(process.argv.slice(6));
 const force = flags.has("--force");
 const dryRun = flags.has("--dry-run");
 const skillsOnly = flags.has("--skills-only");
+const withConfig = flags.has("--with-config");
+const withoutConfig = flags.has("--without-config");
 
 if (!action || !bundleName || !targetRootArg || !skillsDirArg || !["install", "uninstall"].includes(action)) {
-  console.error("Usage: node scripts/install-bundle.mjs <install|uninstall> <bundle-name> <target-root> <skills-dir> [--dry-run] [--force] [--skills-only]");
+  console.error("Usage: node scripts/install-bundle.mjs <install|uninstall> <bundle-name> <target-root> <skills-dir> [--dry-run] [--force] [--skills-only] [--with-config|--without-config]");
+  process.exit(1);
+}
+
+if (withConfig && withoutConfig) {
+  console.error("Use only one of --with-config or --without-config.");
   process.exit(1);
 }
 
@@ -26,6 +34,9 @@ const agentSourceDir = path.join(root, ".agents", "agents");
 const commandSourceDir = path.join(root, ".agents", "commands");
 const conventionDirName = ".convention";
 const projectRoot = path.dirname(targetRoot);
+const projectConfigName = ".ui-design-intelligence.yml";
+const projectConfigTemplate = path.join(root, conventionDirName, "templates", "ui-design-intelligence.config.yml");
+const projectConfigPath = path.join(projectRoot, projectConfigName);
 
 function readJson(file) {
   return JSON.parse(fs.readFileSync(file, "utf8"));
@@ -41,9 +52,7 @@ function copyFile(source, target) {
 }
 
 function applyInstalledReferenceRewrites(text) {
-  return text
-    .split("../../../knowledge/").join("../../knowledge/")
-    .split("../../../docs/").join("../../docs/");
+  return text.split("../../../docs/").join("../../docs/");
 }
 
 function installTargetForSharedPath(sharedPath) {
@@ -51,6 +60,60 @@ function installTargetForSharedPath(sharedPath) {
     return path.join(projectRoot, sharedPath);
   }
   return path.join(targetRoot, sharedPath);
+}
+
+function warnLegacyNestedConventionDir() {
+  const legacyDir = path.join(targetRoot, conventionDirName);
+  const projectConventionDir = path.join(projectRoot, conventionDirName);
+  if (!fs.existsSync(legacyDir) || path.resolve(legacyDir) === path.resolve(projectConventionDir)) return;
+
+  console.warn(
+    [
+      `Warning: legacy nested convention directory exists: ${legacyDir}`,
+      `Installed skills resolve ../../../.convention/* to: ${projectConventionDir}`,
+      "Review and remove the nested directory after confirming it has no local edits."
+    ].join("\n")
+  );
+}
+
+function isInteractiveInstall() {
+  return process.stdin.isTTY && process.stdout.isTTY;
+}
+
+async function shouldInstallProjectConfig() {
+  if (dryRun || action !== "install") return false;
+  if (withConfig) return true;
+  if (withoutConfig) return false;
+  if (!isInteractiveInstall()) return false;
+
+  const rl = readline.createInterface({ input: process.stdin, output: process.stdout });
+  try {
+    const answer = await rl.question(`Install project config ${projectConfigName}? [y/N] `);
+    return /^(y|yes)$/i.test(answer.trim());
+  } finally {
+    rl.close();
+  }
+}
+
+function installProjectConfig() {
+  if (!fs.existsSync(projectConfigTemplate)) {
+    throw new Error(`Project config template does not exist: ${path.relative(root, projectConfigTemplate)}`);
+  }
+
+  if (fs.existsSync(projectConfigPath)) {
+    if (filesAreIdentical(projectConfigTemplate, projectConfigPath)) {
+      console.log(`Project config already installed: ${projectConfigPath}`);
+      return;
+    }
+    if (!force) {
+      console.warn(`Project config already exists with local changes, leaving in place: ${projectConfigPath}`);
+      console.warn("Re-run with --with-config --force to overwrite intentionally.");
+      return;
+    }
+  }
+
+  copyFile(projectConfigTemplate, projectConfigPath);
+  console.log(`Installed project config: ${projectConfigPath}`);
 }
 
 function loadBundleManifest(bundle) {
@@ -210,6 +273,43 @@ function filesAreIdentical(source, target) {
   return fs.readFileSync(source, "utf8") === fs.readFileSync(target, "utf8");
 }
 
+function relocatedSharedSource(sharedPath) {
+  if (sharedPath.startsWith("knowledge/")) {
+    return path.join(root, conventionDirName, sharedPath);
+  }
+  return null;
+}
+
+function removeStaleSharedAssets(previousShared, nextShared) {
+  const next = new Set(nextShared);
+  for (const sharedPath of previousShared) {
+    if (next.has(sharedPath)) continue;
+
+    const source = path.join(root, sharedPath);
+    const relocatedSource = relocatedSharedSource(sharedPath);
+    const target = installTargetForSharedPath(sharedPath);
+    if (!fs.existsSync(target)) continue;
+
+    const comparableSource = fs.existsSync(source)
+      ? source
+      : relocatedSource && fs.existsSync(relocatedSource)
+        ? relocatedSource
+        : null;
+
+    if (comparableSource && filesAreIdentical(comparableSource, target)) {
+      removeFileIfExists(target);
+      const pruneStop = sharedPath.startsWith(`${conventionDirName}/`)
+        ? path.join(projectRoot, conventionDirName)
+        : targetRoot;
+      pruneEmptyDirs(path.dirname(target), pruneStop);
+      console.log(`Removed stale convention file: ${sharedPath}`);
+      continue;
+    }
+
+    console.warn(`Warning: stale installed file has local changes, leaving in place: ${target}`);
+  }
+}
+
 function checkInstallConflicts(manifest) {
   if (force) return;
 
@@ -260,7 +360,7 @@ function checkInstallConflicts(manifest) {
   }
 }
 
-function installBundle(manifest) {
+async function installBundle(manifest) {
   preflightInstall(manifest);
   checkInstallConflicts(manifest);
 
@@ -282,6 +382,11 @@ function installBundle(manifest) {
   const commands = skillsOnly ? [] : manifest.commands;
   const shared = manifest.shared;
 
+  if (fs.existsSync(installRecordPath)) {
+    const previousRecord = readJson(installRecordPath);
+    removeStaleSharedAssets(previousRecord.shared ?? [], shared);
+  }
+
   for (const agentName of agents) {
     copyFile(path.join(agentSourceDir, `${agentName}.md`), path.join(targetRoot, "agents", `${agentName}.md`));
     console.log(`Installed agent: ${agentName}`);
@@ -296,6 +401,12 @@ function installBundle(manifest) {
     copyFile(path.join(root, sharedPath), installTargetForSharedPath(sharedPath));
     console.log(`Installed convention file: ${sharedPath}`);
   }
+
+  if (await shouldInstallProjectConfig()) {
+    installProjectConfig();
+  }
+
+  warnLegacyNestedConventionDir();
 
   fs.mkdirSync(installRecordDir, { recursive: true });
   fs.writeFileSync(
@@ -356,7 +467,7 @@ function uninstallBundle(manifest) {
 
 try {
   const manifest = loadManifest();
-  if (action === "install") installBundle(manifest);
+  if (action === "install") await installBundle(manifest);
   if (action === "uninstall") uninstallBundle(manifest);
 } catch (error) {
   console.error(error.message);

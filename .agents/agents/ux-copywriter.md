@@ -108,7 +108,7 @@ they do not override source truth, node fit, or review-risk metadata.
   `.convention/content/tone-of-voice/tone-of-voice-reference.md`.
 - Schemas: `.convention/schemas/content-model.schema.json`,
   `.convention/schemas/brand-voice.schema.json`, and
-  `knowledge/schemas/copy-pattern.schema.json`.
+  `.convention/knowledge/schemas/copy-pattern.schema.json`.
 
 ## Outputs
 

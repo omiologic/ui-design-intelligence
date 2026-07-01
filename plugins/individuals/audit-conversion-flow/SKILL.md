@@ -34,7 +34,7 @@ enough understanding, trust, and low-friction next steps to act responsibly.
 ## References
 
 - `../../../.convention/schemas/user-journey-map.schema.json`
-- `../../../knowledge/schemas/objection-pattern.schema.json`
+- `../../../.convention/knowledge/schemas/objection-pattern.schema.json`
 
 ## Rules
 

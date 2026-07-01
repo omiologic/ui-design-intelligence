@@ -22,7 +22,7 @@ Projects pattern records into vector-ready records and optionally writes them to
 the configured vector index.
 
 Options:
-  --patterns <dir>             Pattern record directory. Default: knowledge/examples
+  --patterns <dir>             Pattern record directory. Default: .convention/knowledge/examples
   --provider <name>            none, mock, or s3-vectors
   --vector-bucket <name>       Vector bucket override. Prefer env for real values.
   --vector-index <name>        Vector index override. Prefer env for real values.
@@ -108,7 +108,7 @@ try {
   fail(error.message);
 }
 
-const patternsDir = path.resolve(root, readOption("--patterns") ?? "knowledge/examples");
+const patternsDir = path.resolve(root, readOption("--patterns") ?? ".convention/knowledge/examples");
 const patternFiles = walk(patternsDir).filter((file) => file.endsWith(".pattern.json")).sort();
 if (patternFiles.length === 0) fail(`no pattern records found under ${relative(patternsDir)}`);
 

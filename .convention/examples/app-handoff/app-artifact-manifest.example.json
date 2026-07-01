@@ -58,7 +58,7 @@
       "artifactType": "exportSeed",
       "path": ".convention/examples/app-handoff/marketing-page.export-seed.md",
       "status": "validated",
-      "schemaRef": "docs/interop/blueprint-export-seed.md",
+      "schemaRef": ".convention/workflows/blueprint-export-seed.md",
       "label": "Marketing page Blueprint Export Seed",
       "validationCommands": [
         {

@@ -21,10 +21,10 @@
       ],
       "storageRef": {
         "provider": "local",
-        "uri": "knowledge/examples/credibility-first-healthcare-hero.pattern.json",
+        "uri": ".convention/knowledge/examples/credibility-first-healthcare-hero.pattern.json",
         "recordType": "pattern-record"
       },
-      "sourceSchemaRef": "knowledge/schemas/pattern-record.schema.json"
+      "sourceSchemaRef": ".convention/knowledge/schemas/pattern-record.schema.json"
     },
     {
       "rank": 2,
@@ -41,10 +41,10 @@
       ],
       "storageRef": {
         "provider": "local",
-        "uri": "knowledge/examples/sticky-appointment-cta.pattern.json",
+        "uri": ".convention/knowledge/examples/sticky-appointment-cta.pattern.json",
         "recordType": "pattern-record"
       },
-      "sourceSchemaRef": "knowledge/schemas/pattern-record.schema.json"
+      "sourceSchemaRef": ".convention/knowledge/schemas/pattern-record.schema.json"
     }
   ],
   "warnings": [

@@ -185,12 +185,12 @@ function requireText(file, expected, label) {
 }
 
 requireText(
-  "docs/interop/design-system-prototype-pipeline.md",
+  ".convention/workflows/design-system-prototype-pipeline.md",
   "study -> knowledge -> style reference -> DesignSystemSeed -> RuntimeDesignTheme -> blueprint/wireframe -> PrototypeConfig -> viewer/runtime",
   "seed-to-runtime-theme-to-prototype pipeline summary"
 );
 requireText(
-  "docs/interop/design-system-prototype-pipeline.md",
+  ".convention/workflows/design-system-prototype-pipeline.md",
   "RuntimeDesignTheme Versus VisualExperienceSpec",
   "runtime theme versus visual experience boundary"
 );

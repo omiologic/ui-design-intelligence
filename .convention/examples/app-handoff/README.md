@@ -17,8 +17,8 @@ infrastructure values.
 
 ## Referenced Artifacts
 
-- `knowledge/examples/credibility-first-healthcare-hero.pattern.json`
-- `knowledge/examples/sticky-appointment-cta.pattern.json`
+- `.convention/knowledge/examples/credibility-first-healthcare-hero.pattern.json`
+- `.convention/knowledge/examples/sticky-appointment-cta.pattern.json`
 - `.convention/examples/marketing-page-e2e/marketing-page.design-system-seed.example.json`
 - `.convention/examples/marketing-page-e2e/marketing-page.ui-blueprint.json`
 - `.convention/examples/marketing-page-e2e/marketing-page.prototype-config.example.json`

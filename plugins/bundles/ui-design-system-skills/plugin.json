@@ -38,8 +38,8 @@
     "audit-design-system-seed"
   ],
   "shared": [
-    "docs/interop/design-system-layer-architecture.md",
-    "docs/interop/design-system-prototype-pipeline.md",
+    ".convention/workflows/design-system-layer-architecture.md",
+    ".convention/workflows/design-system-prototype-pipeline.md",
     ".convention/design-philosophy/design-system/design-system-principles.md",
     ".convention/design-philosophy/design-system/design-system-anti-slop.md",
     ".convention/design-philosophy/design-system/skill-doctrine.md",

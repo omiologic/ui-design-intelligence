@@ -79,7 +79,7 @@ for (const file of changedFiles) {
   if (normalized.startsWith("tests/invalid-antipatterns/")) runInvalidAntipatterns = true;
   if (normalized.startsWith(".convention/taste-profiles/")) runTasteProfiles = true;
   if (normalized.startsWith("tests/quality-golden-set/")) runQualityGoldenSet = true;
-  if (normalized.startsWith("knowledge/")) runKnowledge = true;
+  if (normalized.startsWith(".convention/knowledge/")) runKnowledge = true;
   if (
     normalized.endsWith(".user-journey-map.example.json") ||
     normalized.endsWith(".content-model.example.json") ||

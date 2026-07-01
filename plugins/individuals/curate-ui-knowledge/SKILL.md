@@ -23,10 +23,10 @@ for future blueprint work.
 ## References
 
 - `references/knowledge-curation.md`
-- `../../../knowledge/schemas/pattern-record.schema.json`
-- `../../../knowledge/vocabulary/confidence-levels.json`
-- `../../../knowledge/vocabulary/pattern-statuses.json`
-- `../../../knowledge/vocabulary/knowledge-tags.json`
+- `../../../.convention/knowledge/schemas/pattern-record.schema.json`
+- `../../../.convention/knowledge/vocabulary/confidence-levels.json`
+- `../../../.convention/knowledge/vocabulary/pattern-statuses.json`
+- `../../../.convention/knowledge/vocabulary/knowledge-tags.json`
 
 ## Decision Criteria
 

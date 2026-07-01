@@ -23,9 +23,9 @@ blueprint with generic advice.
 ## References
 
 - `references/knowledge-search.md`
-- `../../../knowledge/schemas/knowledge-index.schema.json`
-- `../../../knowledge/schemas/pattern-record.schema.json`
-- `../../../knowledge/vocabulary/knowledge-tags.json`
+- `../../../.convention/knowledge/schemas/knowledge-index.schema.json`
+- `../../../.convention/knowledge/schemas/pattern-record.schema.json`
+- `../../../.convention/knowledge/vocabulary/knowledge-tags.json`
 
 ## Decision Criteria
 

@@ -78,13 +78,13 @@ values before printing them.
 Plan canonical S3 keys without contacting AWS:
 
 ```bash
-node scripts/sync-knowledge-storage.mjs --patterns knowledge/examples --provider s3 --dry-run
+node scripts/sync-knowledge-storage.mjs --patterns .convention/knowledge/examples --provider s3 --dry-run
 ```
 
 Sync local pattern records to the configured canonical storage:
 
 ```bash
-node scripts/sync-knowledge-storage.mjs --patterns knowledge/examples
+node scripts/sync-knowledge-storage.mjs --patterns .convention/knowledge/examples
 ```
 
 Fetch a full canonical record by storage reference or URI:
@@ -103,13 +103,13 @@ offline.
 Plan vector records without generating embeddings or contacting AWS:
 
 ```bash
-node scripts/index-knowledge-vectors.mjs --patterns knowledge/examples --provider s3-vectors --dry-run
+node scripts/index-knowledge-vectors.mjs --patterns .convention/knowledge/examples --provider s3-vectors --dry-run
 ```
 
 Generate deterministic mock embeddings for local validation:
 
 ```bash
-node scripts/index-knowledge-vectors.mjs --patterns knowledge/examples --provider mock --mock-embeddings --out /tmp/ui-knowledge-vectors.json --dry-run
+node scripts/index-knowledge-vectors.mjs --patterns .convention/knowledge/examples --provider mock --mock-embeddings --out /tmp/ui-knowledge-vectors.json --dry-run
 node scripts/query-knowledge-vectors.mjs --query "homepage appointment booking" --records /tmp/ui-knowledge-vectors.json --filter pageTypes=homepage
 ```
 

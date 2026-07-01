@@ -117,7 +117,7 @@ export UI_KNOWLEDGE_S3_BUCKET=<your-normal-s3-bucket>
 export UI_KNOWLEDGE_S3_PREFIX=ui-knowledge/
 export UI_KNOWLEDGE_AWS_REGION=<your-aws-region>
 
-node scripts/sync-knowledge-storage.mjs --patterns knowledge/examples --provider s3 --dry-run
+node scripts/sync-knowledge-storage.mjs --patterns .convention/knowledge/examples --provider s3 --dry-run
 ```
 
 ## S3 Vector Bucket And Index
@@ -154,14 +154,14 @@ export UI_KNOWLEDGE_AWS_REGION=<your-aws-region>
 export UI_KNOWLEDGE_EMBEDDING_PROVIDER=bedrock
 export UI_KNOWLEDGE_EMBEDDING_MODEL=<your-embedding-model>
 
-node scripts/index-knowledge-vectors.mjs --patterns knowledge/examples --provider s3-vectors --dry-run
+node scripts/index-knowledge-vectors.mjs --patterns .convention/knowledge/examples --provider s3-vectors --dry-run
 ```
 
 Run deterministic local mock retrieval:
 
 ```bash
 node scripts/index-knowledge-vectors.mjs \
-  --patterns knowledge/examples \
+  --patterns .convention/knowledge/examples \
   --provider mock \
   --mock-embeddings \
   --out /tmp/ui-knowledge-vectors.json \
@@ -291,16 +291,16 @@ Run these after configuring your AWS account. Start with dry-run:
 
 ```bash
 npm run validate:knowledge-env -- --check-remote-env
-node scripts/sync-knowledge-storage.mjs --patterns knowledge/examples --provider s3 --dry-run
-node scripts/index-knowledge-vectors.mjs --patterns knowledge/examples --provider s3-vectors --dry-run
+node scripts/sync-knowledge-storage.mjs --patterns .convention/knowledge/examples --provider s3 --dry-run
+node scripts/index-knowledge-vectors.mjs --patterns .convention/knowledge/examples --provider s3-vectors --dry-run
 npm run smoke:knowledge-remote -- --remote
 ```
 
 Then run real writes only when you intend to create or update remote data:
 
 ```bash
-node scripts/sync-knowledge-storage.mjs --patterns knowledge/examples --provider s3
-node scripts/index-knowledge-vectors.mjs --patterns knowledge/examples --provider s3-vectors
+node scripts/sync-knowledge-storage.mjs --patterns .convention/knowledge/examples --provider s3
+node scripts/index-knowledge-vectors.mjs --patterns .convention/knowledge/examples --provider s3-vectors
 npm run smoke:knowledge-remote -- --remote --write
 ```
 

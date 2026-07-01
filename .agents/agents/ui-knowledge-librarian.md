@@ -56,10 +56,10 @@ merge into the highest-confidence source with older IDs preserved in lineage.
 
 - Study outputs, audit reports, capture metadata, pattern records, and knowledge
   index files.
-- Knowledge schemas from `knowledge/schemas/` and vocabulary from
-  `knowledge/vocabulary/`.
-- Pattern schema: `knowledge/schemas/pattern-record.schema.json`.
-- Index schema: `knowledge/schemas/knowledge-index.schema.json`.
+- Knowledge schemas from `.convention/knowledge/schemas/` and vocabulary from
+  `.convention/knowledge/vocabulary/`.
+- Pattern schema: `.convention/knowledge/schemas/pattern-record.schema.json`.
+- Index schema: `.convention/knowledge/schemas/knowledge-index.schema.json`.
 
 ## Outputs
 
@@ -67,8 +67,8 @@ merge into the highest-confidence source with older IDs preserved in lineage.
 - Curation notes, duplicate/merge decisions, tag recommendations, and index
   update guidance.
 - Blueprint lineage explanations.
-- Templates: `knowledge/templates/pattern-record.md` and
-  `knowledge/templates/blueprint-lineage.md`.
+- Templates: `.convention/knowledge/templates/pattern-record.md` and
+  `.convention/knowledge/templates/blueprint-lineage.md`.
 
 ## Worked Example
 

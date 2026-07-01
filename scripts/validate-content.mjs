@@ -16,10 +16,10 @@ const sharedSchemaByType = {
 };
 
 const knowledgeSchemaByType = {
-  copyPattern: "knowledge/schemas/copy-pattern.schema.json",
-  journeyPattern: "knowledge/schemas/journey-pattern.schema.json",
-  objectionPattern: "knowledge/schemas/objection-pattern.schema.json",
-  voiceProfile: "knowledge/schemas/voice-profile.schema.json"
+  copyPattern: ".convention/knowledge/schemas/copy-pattern.schema.json",
+  journeyPattern: ".convention/knowledge/schemas/journey-pattern.schema.json",
+  objectionPattern: ".convention/knowledge/schemas/objection-pattern.schema.json",
+  voiceProfile: ".convention/knowledge/schemas/voice-profile.schema.json"
 };
 
 const contentExampleSuffixes = [
@@ -85,7 +85,7 @@ function isContentExample(file) {
 
 function isKnowledgeContentExample(file) {
   const normalized = rel(file).split(path.sep).join("/");
-  return normalized.startsWith("knowledge/examples/") && knowledgeExampleSuffixes.some((suffix) => normalized.endsWith(suffix));
+  return normalized.startsWith(".convention/knowledge/examples/") && knowledgeExampleSuffixes.some((suffix) => normalized.endsWith(suffix));
 }
 
 function isToneReference(file) {
@@ -100,7 +100,7 @@ function collectFiles() {
 
   return [
     ...walk(path.join(root, ".convention/examples")).filter(isContentExample),
-    ...walk(path.join(root, "knowledge/examples")).filter(isKnowledgeContentExample),
+    ...walk(path.join(root, ".convention/knowledge/examples")).filter(isKnowledgeContentExample),
     ...walk(path.join(root, ".convention/content/tone-of-voice")).filter(isToneReference)
   ].sort();
 }
@@ -480,7 +480,7 @@ for (const file of files) {
 }
 
 validateBundleRefs([
-  ...files.filter((file) => rel(file).startsWith(".convention/examples/") || rel(file).startsWith("knowledge/examples/") || rel(file).startsWith(".convention/content/")),
+  ...files.filter((file) => rel(file).startsWith(".convention/examples/") || rel(file).startsWith(".convention/knowledge/examples/") || rel(file).startsWith(".convention/content/")),
   path.join(root, ".convention/content/tone-of-voice/tone-of-voice-reference.md"),
   path.join(root, ".convention/schemas/tone-of-voice-reference.schema.json")
 ]);

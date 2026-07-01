@@ -13,7 +13,7 @@ confidence-scored.
 - `.convention/content/copy-quality-checklist.md`: pass/fail audit prompts.
 - `.convention/content/tone-of-voice/tone-of-voice-reference.md`: tone selection and
   phrasing style.
-- `knowledge/schemas/copy-pattern.schema.json`: project or domain-specific
+- `.convention/knowledge/schemas/copy-pattern.schema.json`: project or domain-specific
   reusable copy patterns.
 - `.convention/schemas/content-model.schema.json`: page, section, and component copy
   tied to blueprint nodes.

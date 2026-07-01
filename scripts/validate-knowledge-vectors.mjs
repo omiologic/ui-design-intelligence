@@ -46,7 +46,7 @@ fs.mkdirSync(tmpDir, { recursive: true });
 run([
   "scripts/index-knowledge-vectors.mjs",
   "--patterns",
-  "knowledge/examples",
+  ".convention/knowledge/examples",
   "--provider",
   "mock",
   "--mock-embeddings",

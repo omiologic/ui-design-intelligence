@@ -43,7 +43,7 @@ the wrong node.
 - `../../../.convention/content/page-message-architecture.md`
 - `../../../.convention/schemas/user-journey-map.schema.json`
 - `../../../.convention/schemas/content-model.schema.json`
-- `../../../docs/interop/content-journey-layer-architecture.md`
+- `../../../.convention/workflows/content-journey-layer-architecture.md`
 
 ## Rules
 

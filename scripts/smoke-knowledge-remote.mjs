@@ -75,7 +75,7 @@ run("remote env validation", ["scripts/validate-knowledge-env.mjs", "--check-rem
 run("remote storage dry run", [
   "scripts/sync-knowledge-storage.mjs",
   "--patterns",
-  "knowledge/examples",
+  ".convention/knowledge/examples",
   "--provider",
   "s3",
   "--dry-run"
@@ -84,7 +84,7 @@ run("remote storage dry run", [
 run("remote vector dry run", [
   "scripts/index-knowledge-vectors.mjs",
   "--patterns",
-  "knowledge/examples",
+  ".convention/knowledge/examples",
   "--provider",
   "s3-vectors",
   "--dry-run"
@@ -98,7 +98,7 @@ if (!writeRemote) {
 run("remote storage write", [
   "scripts/sync-knowledge-storage.mjs",
   "--patterns",
-  "knowledge/examples",
+  ".convention/knowledge/examples",
   "--provider",
   "s3"
 ]);
@@ -106,7 +106,7 @@ run("remote storage write", [
 run("remote vector write", [
   "scripts/index-knowledge-vectors.mjs",
   "--patterns",
-  "knowledge/examples",
+  ".convention/knowledge/examples",
   "--provider",
   "s3-vectors"
 ]);

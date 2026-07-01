@@ -19,7 +19,7 @@ config, and optional design-system seed.
   conventions.
 - User behavior requirements and known viewport needs.
 - Optional output directory for `prototype-config.json` and plan notes.
-- Optional reference to `docs/interop/design-system-prototype-pipeline.md` for
+- Optional reference to `.convention/workflows/design-system-prototype-pipeline.md` for
   artifact order and runtime split boundaries.
 - Optional `.convention/recipes/prototype.recipe.md` when the output should follow
   the Sprint 006 consumer prototype artifact contract.

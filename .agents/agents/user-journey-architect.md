@@ -73,8 +73,8 @@ to honest response patterns, content moves, proof needs, and review risks.
   `.convention/content/objection-handling-reference.md`, and
   `.convention/content/page-message-architecture.md`.
 - Journey schema: `.convention/schemas/user-journey-map.schema.json`.
-- Knowledge schemas: `knowledge/schemas/journey-pattern.schema.json` and
-  `knowledge/schemas/objection-pattern.schema.json`.
+- Knowledge schemas: `.convention/knowledge/schemas/journey-pattern.schema.json` and
+  `.convention/knowledge/schemas/objection-pattern.schema.json`.
 
 ## Outputs
 

@@ -51,8 +51,10 @@ manifest:
 - `skills` -> `<target-root>/skills`
 - `agents` -> `<target-root>/agents` for full bundle installs only
 - `commands` -> `<target-root>/commands` for full bundle installs only
-- `shared` -> copied under `<target-root>` using the manifest path for both
+- `.convention/*` manifest assets -> `<project-root>/.convention/*` for both
   skills-only and full bundle installs
+- other `shared` manifest assets -> copied under `<target-root>` using the
+  manifest path
 - install record -> `<target-root>/.ui-blueprint-bundles/{bundle}.json`
 
 Aggregate bundles use `includes` to compose component bundles. Consumers should

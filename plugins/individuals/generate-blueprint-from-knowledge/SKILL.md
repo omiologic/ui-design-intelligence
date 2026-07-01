@@ -23,9 +23,9 @@ coherent page or component plan for the current brief.
 ## References
 
 - `references/knowledge-to-blueprint.md`
-- `../../../knowledge/schemas/pattern-record.schema.json`
-- `../../../knowledge/schemas/blueprint-lineage.schema.json`
-- `../../../knowledge/templates/blueprint-lineage.md`
+- `../../../.convention/knowledge/schemas/pattern-record.schema.json`
+- `../../../.convention/knowledge/schemas/blueprint-lineage.schema.json`
+- `../../../.convention/knowledge/templates/blueprint-lineage.md`
 
 ## Decision Criteria
 

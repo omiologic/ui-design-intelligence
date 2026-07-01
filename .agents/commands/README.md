@@ -24,9 +24,8 @@ Sprint 006 consumer creation commands have a stricter contract on top of this
 base shape. `create-wireframe`, `create-design-spec`, `create-prototype-plan`,
 and `review-generated-wireframe` must also define required inputs, optional
 inputs, missing-input questions, default pipeline, stop conditions, output
-files, quality checks, and example invocations. See
-`docs/interop/consumer-creation-contract.md` and the artifact recipes in
-`.convention/recipes/`.
+files, quality checks, and example invocations. See the internal maintainer doc `docs/interop/consumer-creation-contract.md`
+and the installable artifact recipes in `.convention/recipes/`.
 
 The filename stem is the manifest reference. For example,
 `commands/study-page.md` is referenced as `study-page`.
@@ -58,9 +57,8 @@ The filename stem is the manifest reference. For example,
   and `prototype-plan.md`.
 
 Sprint 002 keeps the Blueprint Export Seed workflow as
-`scripts/export-blueprint-seed.mjs` rather than an installed command. See
-`docs/interop/install-command-parity.md` for the install and command parity
-decision.
+`scripts/export-blueprint-seed.mjs` rather than an installed command. See the internal maintainer doc `docs/interop/install-command-parity.md` for the
+install and command parity decision.
 
 ## Command Ownership
 

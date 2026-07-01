@@ -189,8 +189,9 @@ Extend bridge validation to require:
 Evidence:
 
 - `.convention/templates/ui-design-intelligence.config.yml` defines
-  `artifacts.rootDir`, `projectSlug`, page paths, screenshot paths, motion frame
-  paths, manifest path, and visual-experience path.
+  `artifacts.outputDir`, `artifacts.rootDirs`, `projectSlug`, page paths,
+  screenshot paths, motion frame paths, manifest path, and visual-experience
+  path.
 - `study-page` and `study-site` do not mention `.ui-design-intelligence.yml`,
   artifact path resolution, project/page slug naming, or scoped output paths.
 

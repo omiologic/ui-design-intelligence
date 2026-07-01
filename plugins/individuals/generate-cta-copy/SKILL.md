@@ -36,7 +36,7 @@ manipulate, or ask for commitment before the journey has earned it.
 - `../../../.convention/content/claim-risk-guidelines.md`
 - `../../../.convention/content/cta-patterns.md`
 - `../../../.convention/content/laws-of-copywriting.md`
-- `../../../knowledge/schemas/copy-pattern.schema.json`
+- `../../../.convention/knowledge/schemas/copy-pattern.schema.json`
 - `../../../.convention/schemas/content-model.schema.json`
 
 ## Rules

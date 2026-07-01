@@ -21,7 +21,7 @@ Plans or syncs local pattern records to the configured canonical knowledge
 storage.
 
 Options:
-  --patterns <dir>      Pattern record directory. Default: knowledge/examples
+  --patterns <dir>      Pattern record directory. Default: .convention/knowledge/examples
   --provider <name>     local or s3. Default: UI_KNOWLEDGE_STORAGE_PROVIDER or local
   --local-dir <path>    Local storage root. Default: UI_KNOWLEDGE_LOCAL_DIR or ui-knowledge
   --bucket <name>       S3 bucket override. Prefer env for real values.
@@ -99,7 +99,7 @@ try {
   fail(error.message);
 }
 
-const patternsDir = path.resolve(root, readOption("--patterns") ?? "knowledge/examples");
+const patternsDir = path.resolve(root, readOption("--patterns") ?? ".convention/knowledge/examples");
 const patternFiles = walk(patternsDir).filter((file) => file.endsWith(".pattern.json")).sort();
 if (patternFiles.length === 0) fail(`no pattern records found under ${relative(patternsDir)}`);
 

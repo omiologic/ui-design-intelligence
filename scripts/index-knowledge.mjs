@@ -4,8 +4,8 @@ import path from "node:path";
 
 const root = process.cwd();
 const args = process.argv.slice(2);
-const patternsDir = path.resolve(root, valueAfter("--patterns") ?? "knowledge/examples");
-const outFile = path.resolve(root, valueAfter("--out") ?? "knowledge/examples/knowledge-index.example.json");
+const patternsDir = path.resolve(root, valueAfter("--patterns") ?? ".convention/knowledge/examples");
+const outFile = path.resolve(root, valueAfter("--out") ?? ".convention/knowledge/examples/knowledge-index.example.json");
 const check = args.includes("--check");
 
 function valueAfter(flag) {

@@ -41,7 +41,7 @@
     "generate-copy-from-knowledge"
   ],
   "shared": [
-    "docs/interop/content-journey-layer-architecture.md",
+    ".convention/workflows/content-journey-layer-architecture.md",
     ".convention/schemas/brand-voice.schema.json",
     ".convention/schemas/content-model.schema.json",
     ".convention/schemas/prototype-content.schema.json",
@@ -63,9 +63,9 @@
     ".convention/design-system/component-anatomy-reference.md",
     ".convention/examples/product-page-e2e/product-page.content-model.example.json",
     ".convention/examples/product-page-e2e/product-page.prototype-content.example.json",
-    "knowledge/schemas/copy-pattern.schema.json",
-    "knowledge/examples/product-page-clarity-before-cart.copy-pattern.json",
-    "knowledge/schemas/voice-profile.schema.json",
-    "knowledge/schemas/objection-pattern.schema.json"
+    ".convention/knowledge/schemas/copy-pattern.schema.json",
+    ".convention/knowledge/examples/product-page-clarity-before-cart.copy-pattern.json",
+    ".convention/knowledge/schemas/voice-profile.schema.json",
+    ".convention/knowledge/schemas/objection-pattern.schema.json"
   ]
 }

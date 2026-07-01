@@ -34,8 +34,8 @@ answered honestly with proof, clarity, comparison, or recovery paths.
 ## References
 
 - `../../../.convention/content/objection-handling-reference.md`
-- `../../../knowledge/schemas/objection-pattern.schema.json`
-- `../../../docs/interop/content-journey-layer-architecture.md`
+- `../../../.convention/knowledge/schemas/objection-pattern.schema.json`
+- `../../../.convention/workflows/content-journey-layer-architecture.md`
 
 ## Rules
 

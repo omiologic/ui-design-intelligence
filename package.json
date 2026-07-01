@@ -21,7 +21,7 @@
     "validate:recipes": "node scripts/validate-recipes.mjs",
     "validate:creation-workflows": "node scripts/validate-creation-workflows.mjs",
     "validate:app-contracts": "node scripts/validate-app-contracts.mjs",
-    "validate:knowledge-index": "node scripts/index-knowledge.mjs --patterns knowledge/examples --out knowledge/examples/knowledge-index.example.json --check",
+    "validate:knowledge-index": "node scripts/index-knowledge.mjs --patterns .convention/knowledge/examples --out .convention/knowledge/examples/knowledge-index.example.json --check",
     "validate:knowledge-workspace-init": "node scripts/init-knowledge-workspace.mjs --out /tmp/ui-knowledge-init-check --check",
     "validate:knowledge-env": "node scripts/validate-knowledge-env.mjs",
     "validate:knowledge-storage": "node scripts/validate-knowledge-storage.mjs",

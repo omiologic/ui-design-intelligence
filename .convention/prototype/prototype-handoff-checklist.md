@@ -111,7 +111,7 @@ For prototype handoff, common `artifactType` and `schemaRef` pairs include:
 - `prototypeContent` -> `.convention/schemas/prototype-content.schema.json`
 - `prototypeConfig` -> `.convention/schemas/prototype-config.schema.json`
 - `pageAudit` -> `.convention/schemas/page-audit.schema.json`
-- `exportSeed` -> `docs/interop/blueprint-export-seed.md`
+- `exportSeed` -> `.convention/workflows/blueprint-export-seed.md`
 
 Fail handoff when:
 

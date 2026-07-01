@@ -39,11 +39,11 @@ skills to produce node-level details.
 
 ## References
 
-- `../../../docs/interop/content-journey-layer-architecture.md`
+- `../../../.convention/workflows/content-journey-layer-architecture.md`
 - `../../../.convention/content/audience-intent-reference.md`
 - `../../../.convention/content/objection-handling-reference.md`
 - `../../../.convention/schemas/user-journey-map.schema.json`
-- `../../../knowledge/schemas/journey-pattern.schema.json`
+- `../../../.convention/knowledge/schemas/journey-pattern.schema.json`
 
 ## Rules
 

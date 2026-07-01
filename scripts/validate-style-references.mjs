@@ -270,7 +270,7 @@ function checkBundlePackaging() {
   ];
   const requiredAgents = ["style-reference-curator"];
   const requiredShared = [
-    "docs/interop/style-reference-layer-architecture.md",
+    ".convention/workflows/style-reference-layer-architecture.md",
     ".convention/schemas/style-reference.schema.json",
     ".convention/schemas/style-application.schema.json",
     ".convention/schemas/style-patch.schema.json",

@@ -34,8 +34,8 @@ adapted to the new audience, journey stage, node, and brand voice.
 ## References
 
 - `../../../.convention/content/content-pattern-library.md`
-- `../../../knowledge/schemas/copy-pattern.schema.json`
-- `../../../knowledge/schemas/voice-profile.schema.json`
+- `../../../.convention/knowledge/schemas/copy-pattern.schema.json`
+- `../../../.convention/knowledge/schemas/voice-profile.schema.json`
 - `../../../.convention/schemas/content-model.schema.json`
 
 ## Rules

@@ -32,7 +32,7 @@
     "apply-style-to-component"
   ],
   "shared": [
-    "docs/interop/style-reference-layer-architecture.md",
+    ".convention/workflows/style-reference-layer-architecture.md",
     ".convention/design-system/visual-style-calibration.md",
     ".convention/schemas/style-reference.schema.json",
     ".convention/schemas/style-application.schema.json",

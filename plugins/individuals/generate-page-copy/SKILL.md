@@ -44,7 +44,7 @@ into the same message or overwrite section-specific content goals.
 - `../../../.convention/content/proof-and-credibility-patterns.md`
 - `../../../.convention/schemas/content-model.schema.json`
 - `../../../.convention/schemas/brand-voice.schema.json`
-- `../../../docs/interop/content-journey-layer-architecture.md`
+- `../../../.convention/workflows/content-journey-layer-architecture.md`
 
 ## Rules
 

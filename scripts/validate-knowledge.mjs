@@ -5,7 +5,7 @@ import { validateJsonSchema } from "./lib/json-schema-validator.mjs";
 
 const root = process.cwd();
 const args = process.argv.slice(2);
-const knowledgeDir = valueAfter("--knowledge") ?? "knowledge";
+const knowledgeDir = valueAfter("--knowledge") ?? ".convention/knowledge";
 const errors = [];
 
 function valueAfter(flag) {

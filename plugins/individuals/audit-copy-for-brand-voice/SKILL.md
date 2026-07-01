@@ -38,7 +38,7 @@ protect trust and consistency while preserving the user task.
 - `../../../.convention/content/copy-quality-checklist.md`
 - `../../../.convention/content/laws-of-copywriting.md`
 - `../../../.convention/schemas/brand-voice.schema.json`
-- `../../../knowledge/schemas/voice-profile.schema.json`
+- `../../../.convention/knowledge/schemas/voice-profile.schema.json`
 - `../../../.convention/schemas/content-model.schema.json`
 
 ## Rules

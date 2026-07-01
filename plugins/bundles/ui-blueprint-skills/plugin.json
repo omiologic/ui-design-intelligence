@@ -72,9 +72,7 @@
     ".convention/examples/dashboard-e2e/dashboard.ui-blueprint.json",
     ".convention/examples/product-page-e2e/product-page.ui-blueprint.json",
     ".convention/examples/multi-step-form-e2e/multi-step-form.ui-blueprint.json",
-    "docs/interop/README.md",
-    "docs/interop/blueprint-export-seed.md",
-    "docs/interop/install-command-parity.md",
+    ".convention/workflows/blueprint-export-seed.md",
     "scripts/export-blueprint-seed.mjs"
   ]
 }

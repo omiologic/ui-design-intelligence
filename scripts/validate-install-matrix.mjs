@@ -184,13 +184,14 @@ function testConflictBlockingAndForce() {
 }
 
 function testCodexAggregateInstall() {
-  const target = path.join(tempRoot, "codex-aggregate", ".agents");
+  const project = path.join(tempRoot, "codex-aggregate");
+  const target = path.join(project, ".agents");
   const skills = path.join(target, "skills");
   install("ui-design-intelligence", target, skills, ["--skills-only"]);
   verify(skills);
 
   expectExists(path.join(skills, "generate-design-system-seed", "SKILL.md"), "aggregate Codex skill");
-  expectExists(path.join(target, "knowledge", "schemas", "pattern-record.schema.json"), "aggregate Codex knowledge asset");
+  expectExists(path.join(project, ".convention", "knowledge", "schemas", "pattern-record.schema.json"), "aggregate Codex knowledge asset");
   expectMissing(path.join(target, "agents"), "aggregate Codex agents directory");
   expectMissing(path.join(target, "commands"), "aggregate Codex commands directory");
   record("clean Codex .agents aggregate install");

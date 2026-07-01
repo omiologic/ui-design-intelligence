@@ -123,7 +123,7 @@ For design-system handoff, common `artifactType` and `schemaRef` pairs include:
 - `prototypeConfig` -> `.convention/schemas/prototype-config.schema.json`
 - `contentModel` -> `.convention/schemas/content-model.schema.json`
 - `prototypeContent` -> `.convention/schemas/prototype-content.schema.json`
-- `exportSeed` -> `docs/interop/blueprint-export-seed.md`
+- `exportSeed` -> `.convention/workflows/blueprint-export-seed.md`
 - Markdown seed notes -> `.convention/templates/design-system-seed.md`
 
 Fail handoff when:

@@ -34,7 +34,7 @@ cannot fit the planned structure.
 
 ## References
 
-- `../../../docs/interop/content-journey-layer-architecture.md`
+- `../../../.convention/workflows/content-journey-layer-architecture.md`
 - `../../../.convention/content/audience-intent-reference.md`
 - `../../../.convention/content/claim-risk-guidelines.md`
 - `../../../.convention/content/cta-patterns.md`

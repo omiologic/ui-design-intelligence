@@ -51,8 +51,7 @@ function rewriteCodexSkillReferences(skillDir) {
   const text = fs
     .readFileSync(skillFile, "utf8")
     .split("../../../.convention/").join("../../.convention/")
-    .split("../../../knowledge/").join("../../knowledge/")
-    .split("../../../docs/").join("../../docs/");
+        .split("../../../docs/").join("../../docs/");
   fs.writeFileSync(skillFile, text);
 }
 
