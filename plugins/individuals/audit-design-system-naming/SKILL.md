@@ -23,6 +23,8 @@ flourish and force downstream tools to guess intent.
 - `references/_shared/design-philosophy/design-system/design-system-principles.md`
 - `references/_shared/design-philosophy/design-system/design-system-anti-slop.md`
 - `references/_shared/design-philosophy/design-system/skill-doctrine.md`
+- `references/_shared/design-system/token-taxonomy.md`
+- `references/_shared/design-system/component-anatomy-reference.md`
 - `references/_shared/schemas/design-system-seed.schema.json`
 - `references/_shared/vocabulary/design-token-types.json`
 - `references/_shared/vocabulary/component-anatomy.json`

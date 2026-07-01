@@ -1,0 +1,88 @@
+{
+  "name": "saas-utility",
+  "version": "0.1.0",
+  "register": "product",
+  "description": "Structural bias for SaaS product pages and screens where feature discovery, task density, and progressive disclosure support repeated, goal-oriented use.",
+  "intent": "Surface the core feature or task immediately, enable progressive disclosure of depth, and keep navigation and feedback persistent without overwhelming the primary workflow.",
+  "rules": {
+    "sectionOrder": [
+      {
+        "job": "establish-context",
+        "preferredStructures": ["header", "section", "contentGroup"],
+        "reason": "SaaS product screens must orient the user around the current feature or task scope before exposing controls."
+      },
+      {
+        "job": "expose-primary-feature",
+        "preferredStructures": ["tabs", "cardGrid", "section", "sidebar"],
+        "reason": "Core feature surfaces should be reachable without scrolling through marketing content or secondary options."
+      },
+      {
+        "job": "support-configuration",
+        "preferredStructures": ["form", "accordion", "tabs", "drawer"],
+        "reason": "Feature configuration should be close to the primary surface but accessible on demand rather than always visible."
+      },
+      {
+        "job": "show-feedback",
+        "preferredStructures": ["banner", "toast", "annotation", "stickyBar"],
+        "reason": "Confirmation, error, and status feedback must be proximate to the action that triggered it."
+      },
+      {
+        "job": "support-discovery",
+        "preferredStructures": ["cardGrid", "list", "navigation", "accordion"],
+        "reason": "Feature discovery and upgrade paths should be accessible without disrupting the active workflow."
+      }
+    ],
+    "density": {
+      "default": "high-when-grouped",
+      "increaseWhen": ["feature-dashboard", "settings-panel", "filter-surface", "bulk-operations", "monitoring-view"],
+      "decreaseWhen": ["onboarding-first-run", "empty-state", "destructive-confirmation", "upgrade-prompt"],
+      "reason": "Repeated-use SaaS screens benefit from density that reduces navigation steps, but onboarding and destructive actions require calm."
+    },
+    "layoutSelection": {
+      "navigation": ["sidebar", "tabs", "stickyHeader"],
+      "featureSurface": ["twoColumn", "stackedSections", "tabs"],
+      "configuration": ["accordion", "drawerPanel", "stepper"],
+      "feedback": ["banner", "toast", "stickyFooterBar"],
+      "discovery": ["cardGrid", "featureGrid", "list"]
+    },
+    "ctaCadence": {
+      "primaryActionCount": "one-per-task-region",
+      "secondaryActionRule": "Secondary actions may be co-visible when they support the same task region and are visually subordinate.",
+      "repeatPrimaryActionAfter": ["multi-step-flow", "long-settings-form", "mobile-stack-break"],
+      "reason": "SaaS utility screens can expose more actions than marketing pages, but each task region still needs a single clear primary operation."
+    },
+    "overlayUse": {
+      "allowed": ["dialog", "drawer", "popover", "toast"],
+      "preferred": ["drawer", "popover"],
+      "useWhen": ["settings-detail", "filter-panel", "contextual-help", "bulk-action-confirmation", "feature-preview"],
+      "avoidWhen": ["primary-feature-surface", "persistent-navigation", "required-data-table"],
+      "reason": "SaaS overlays preserve task context and allow in-flow configuration without full-page navigation."
+    },
+    "responsivePriority": [
+      "primary-feature-surface",
+      "primary-task-action",
+      "critical-status-feedback",
+      "navigation-access",
+      "configuration-controls",
+      "secondary-discovery"
+    ]
+  },
+  "antiPatterns": [
+    {
+      "name": "marketing-hero-on-product-screen",
+      "reason": "Product screens should orient around the active task, not re-sell the product to an existing user."
+    },
+    {
+      "name": "deeply-nested-primary-controls",
+      "reason": "Primary feature controls buried in sequential drill-downs increase task time for repeated operations."
+    },
+    {
+      "name": "ungrouped-density",
+      "reason": "Dense controls without visual grouping make feature discovery slower and increase error likelihood."
+    },
+    {
+      "name": "feedback-disconnected-from-action",
+      "reason": "Success and error states must appear adjacent to the triggering action, not only in a global notification center."
+    }
+  ]
+}

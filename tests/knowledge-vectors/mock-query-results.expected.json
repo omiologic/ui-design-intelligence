@@ -1,0 +1,9 @@
+{
+  "query": "dentistry homepage appointment booking trust hero",
+  "filters": {
+    "pageTypes": "homepage"
+  },
+  "requiredPatternIds": [
+    "credibility-first-healthcare-hero"
+  ]
+}

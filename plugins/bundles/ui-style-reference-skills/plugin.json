@@ -1,7 +1,7 @@
 {
   "name": "ui-style-reference-skills",
   "displayName": "UI Style Reference Skills",
-  "version": "0.1.0",
+  "version": "0.9.0",
   "description": "Skills for generating, recommending, extracting, applying, blending, auditing, and mapping structured UI style references.",
   "status": "transitional",
   "maintainer": "UI Blueprint maintainers",
@@ -33,6 +33,7 @@
   ],
   "shared": [
     "docs/interop/style-reference-layer-architecture.md",
+    "shared/design-system/visual-style-calibration.md",
     "shared/schemas/style-reference.schema.json",
     "shared/schemas/style-application.schema.json",
     "shared/schemas/style-patch.schema.json",

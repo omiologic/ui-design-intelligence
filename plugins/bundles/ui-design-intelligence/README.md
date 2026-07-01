@@ -43,15 +43,28 @@ remove the need for source evidence, schemas, validation, or explicit handoffs.
 
 ## Install
 
+Codex/GPT skills-only target:
+
+```bash
+node scripts/install-bundle.mjs install ui-design-intelligence "$HOME/.agents" "$HOME/.agents/skills" --skills-only --dry-run
+node scripts/install-bundle.mjs install ui-design-intelligence "$HOME/.agents" "$HOME/.agents/skills" --skills-only
+```
+
+Claude/local full-bundle target:
+
 ```bash
 UI_PLUGIN_BUNDLE="ui-design-intelligence" ./install.sh
 ```
 
-Install into a project-local target:
+Claude/local project target:
 
 ```bash
+UI_PLUGIN_BUNDLE="ui-design-intelligence" UI_PLUGIN_TARGET="./.claude" ./install.sh --dry-run
 UI_PLUGIN_BUNDLE="ui-design-intelligence" UI_PLUGIN_TARGET="./.claude" ./install.sh
 ```
+
+Use `--force` only when you intentionally want to overwrite non-identical
+existing files.
 
 Uninstall:
 

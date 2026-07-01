@@ -51,15 +51,28 @@ themselves.
 
 ## Install
 
+Codex/GPT skills-only target:
+
+```bash
+node scripts/install-bundle.mjs install ui-study-skills "$HOME/.agents" "$HOME/.agents/skills" --skills-only --dry-run
+node scripts/install-bundle.mjs install ui-study-skills "$HOME/.agents" "$HOME/.agents/skills" --skills-only
+```
+
+Claude/local full-bundle target:
+
 ```bash
 UI_PLUGIN_BUNDLE="ui-study-skills" ./install.sh
 ```
 
-Install into a project-local target:
+Claude/local project target:
 
 ```bash
+UI_PLUGIN_BUNDLE="ui-study-skills" UI_PLUGIN_TARGET="./.claude" ./install.sh --dry-run
 UI_PLUGIN_BUNDLE="ui-study-skills" UI_PLUGIN_TARGET="./.claude" ./install.sh
 ```
+
+Use `--force` only when you intentionally want to overwrite non-identical
+existing files.
 
 Uninstall:
 

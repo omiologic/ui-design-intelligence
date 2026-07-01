@@ -1,0 +1,572 @@
+{
+  "version": "0.1.0",
+  "type": "toneOfVoiceReference",
+  "description": "Controlled tone-of-voice reference used by content, copywriting, journey, blueprint, and prototype skills.",
+  "tones": [
+    {
+      "id": "bold-edgy",
+      "name": "Bold & Edgy",
+      "summary": "Provocative, rebellious, confident, and attention-grabbing.",
+      "vibe": [
+        "provocative",
+        "rebellious",
+        "confident",
+        "unapologetic",
+        "high-energy"
+      ],
+      "bestFor": [
+        "challenger brands",
+        "lifestyle brands",
+        "fashion",
+        "entertainment",
+        "youth-focused campaigns",
+        "launch campaigns"
+      ],
+      "useCarefullyFor": [
+        "healthcare",
+        "finance",
+        "legal",
+        "government",
+        "trust-sensitive services"
+      ],
+      "copyRules": {
+        "do": [
+          "Use short, punchy sentences.",
+          "Challenge the default expectation.",
+          "Use active verbs.",
+          "Create contrast against boring category language."
+        ],
+        "avoid": [
+          "Sounding reckless in serious contexts.",
+          "Using shock value without purpose.",
+          "Making claims the brand cannot support."
+        ]
+      },
+      "sampleLines": {
+        "headline": "Stop settling for forgettable.",
+        "body": "Built for teams that would rather lead than blend in.",
+        "primaryCTA": "Make It Bold",
+        "secondaryCTA": "See the Difference",
+        "emptyState": "Nothing here yet. Let’s change that.",
+        "error": "Something broke. We’re on it."
+      },
+      "uiCopyFit": {
+        "hero": "high",
+        "cta": "high",
+        "productDescription": "medium",
+        "formMicrocopy": "low",
+        "errorMessage": "medium",
+        "healthcarePage": "low"
+      }
+    },
+    {
+      "id": "friendly-approachable",
+      "name": "Friendly & Approachable",
+      "summary": "Warm, conversational, honest, and easy to understand.",
+      "vibe": ["warm", "human", "simple", "honest", "helpful"],
+      "bestFor": [
+        "local businesses",
+        "healthcare",
+        "education",
+        "family brands",
+        "service businesses",
+        "onboarding flows"
+      ],
+      "useCarefullyFor": [
+        "luxury brands",
+        "highly technical B2B products",
+        "brands that need strong authority"
+      ],
+      "copyRules": {
+        "do": [
+          "Use plain language.",
+          "Write like a helpful person.",
+          "Explain benefits clearly.",
+          "Use short, natural sentences."
+        ],
+        "avoid": [
+          "Sounding too casual for serious decisions.",
+          "Overusing exclamation marks.",
+          "Using vague friendliness without useful information."
+        ]
+      },
+      "sampleLines": {
+        "headline": "Everything you need to get started.",
+        "body": "We’ll help you understand your options and choose the one that fits best.",
+        "primaryCTA": "Get Started",
+        "secondaryCTA": "Learn More",
+        "emptyState": "Nothing here yet. Once you add something, it’ll show up here.",
+        "error": "Something went wrong. Please try again."
+      },
+      "uiCopyFit": {
+        "hero": "high",
+        "cta": "high",
+        "productDescription": "high",
+        "formMicrocopy": "high",
+        "errorMessage": "high",
+        "healthcarePage": "high"
+      }
+    },
+    {
+      "id": "empathetic-soothing",
+      "name": "Empathetic & Soothing",
+      "summary": "Gentle, reassuring, calm, and emotionally supportive.",
+      "vibe": ["gentle", "calm", "mindful", "supportive", "reassuring"],
+      "bestFor": [
+        "wellness",
+        "healthcare",
+        "therapy",
+        "caregiving",
+        "financial support",
+        "sensitive onboarding",
+        "customer support"
+      ],
+      "useCarefullyFor": [
+        "urgent sales campaigns",
+        "bold product launches",
+        "high-energy consumer brands"
+      ],
+      "copyRules": {
+        "do": [
+          "Validate the user’s concern.",
+          "Use soft, clear instructions.",
+          "Reduce pressure.",
+          "Give users a sense of control."
+        ],
+        "avoid": [
+          "Sounding patronizing.",
+          "Using urgency too aggressively.",
+          "Making emotional promises the product cannot fulfill."
+        ]
+      },
+      "sampleLines": {
+        "headline": "Choose at your own pace.",
+        "body": "We’ll guide you through the options so you can feel confident before taking the next step.",
+        "primaryCTA": "Start When You’re Ready",
+        "secondaryCTA": "Explore Options",
+        "emptyState": "There’s nothing here yet. You can come back to this anytime.",
+        "error": "That didn’t work, but nothing was lost. Please try again."
+      },
+      "uiCopyFit": {
+        "hero": "medium",
+        "cta": "medium",
+        "productDescription": "medium",
+        "formMicrocopy": "high",
+        "errorMessage": "high",
+        "healthcarePage": "high"
+      }
+    },
+    {
+      "id": "authoritative-expert",
+      "name": "Authoritative & Expert",
+      "summary": "Clear, knowledgeable, precise, and professionally confident.",
+      "vibe": ["expert", "credible", "precise", "trustworthy", "professional"],
+      "bestFor": [
+        "medical products",
+        "B2B services",
+        "SaaS",
+        "finance",
+        "legal",
+        "technical products",
+        "professional services"
+      ],
+      "useCarefullyFor": [
+        "playful consumer brands",
+        "youth-focused social campaigns",
+        "casual lifestyle products"
+      ],
+      "copyRules": {
+        "do": [
+          "Use specific, evidence-oriented language.",
+          "Explain technical value clearly.",
+          "Avoid exaggeration.",
+          "Write with confidence and restraint."
+        ],
+        "avoid": [
+          "Sounding cold or inaccessible.",
+          "Overloading users with jargon.",
+          "Making unsupported performance claims."
+        ]
+      },
+      "sampleLines": {
+        "headline": "Designed for clinical accuracy and daily reliability.",
+        "body": "Compare lighting options, battery configurations, and comfort features before choosing the right setup.",
+        "primaryCTA": "Compare Models",
+        "secondaryCTA": "View Specifications",
+        "emptyState": "No results match the selected criteria.",
+        "error": "Unable to complete the request. Please check the information and try again."
+      },
+      "uiCopyFit": {
+        "hero": "high",
+        "cta": "high",
+        "productDescription": "high",
+        "formMicrocopy": "medium",
+        "errorMessage": "high",
+        "healthcarePage": "high"
+      }
+    },
+    {
+      "id": "inspiring-motivational",
+      "name": "Inspiring & Motivational",
+      "summary": "Confident, uplifting, action-oriented, and aspirational.",
+      "vibe": [
+        "uplifting",
+        "confident",
+        "ambitious",
+        "energizing",
+        "mission-driven"
+      ],
+      "bestFor": [
+        "fitness",
+        "education",
+        "entrepreneurship",
+        "coaching",
+        "creative tools",
+        "professional growth",
+        "mission-driven brands"
+      ],
+      "useCarefullyFor": [
+        "technical documentation",
+        "support pages",
+        "utility products",
+        "compliance-heavy industries"
+      ],
+      "copyRules": {
+        "do": [
+          "Connect action to progress.",
+          "Use confident verbs.",
+          "Make the user feel capable.",
+          "Tie product value to a larger goal."
+        ],
+        "avoid": [
+          "Becoming vague or overly inspirational.",
+          "Ignoring practical details.",
+          "Overpromising transformation."
+        ]
+      },
+      "sampleLines": {
+        "headline": "Build the practice your patients remember.",
+        "body": "Create a clearer, more confident experience from first visit to follow-up care.",
+        "primaryCTA": "Start Building",
+        "secondaryCTA": "See How It Works",
+        "emptyState": "Your next step starts here.",
+        "error": "Something got in the way. Try again and keep going."
+      },
+      "uiCopyFit": {
+        "hero": "high",
+        "cta": "high",
+        "productDescription": "medium",
+        "formMicrocopy": "medium",
+        "errorMessage": "low",
+        "healthcarePage": "medium"
+      }
+    },
+    {
+      "id": "premium-refined",
+      "name": "Premium & Refined",
+      "summary": "Elegant, minimal, polished, and selective.",
+      "vibe": [
+        "elegant",
+        "polished",
+        "minimal",
+        "quietly confident",
+        "high-quality"
+      ],
+      "bestFor": [
+        "luxury products",
+        "aesthetics",
+        "skincare",
+        "boutique studios",
+        "premium healthcare",
+        "high-end services"
+      ],
+      "useCarefullyFor": [
+        "budget-focused products",
+        "highly playful brands",
+        "support-heavy interfaces"
+      ],
+      "copyRules": {
+        "do": [
+          "Use fewer words.",
+          "Avoid over-explaining.",
+          "Choose precise, polished phrasing.",
+          "Let quality and restraint create value."
+        ],
+        "avoid": [
+          "Sounding vague or empty.",
+          "Using luxury language without substance.",
+          "Making simple tasks feel overly formal."
+        ]
+      },
+      "sampleLines": {
+        "headline": "Precision lighting, refined for clinical comfort.",
+        "body": "A focused product experience designed for professionals who value clarity, control, and ease.",
+        "primaryCTA": "Explore the Collection",
+        "secondaryCTA": "View Details",
+        "emptyState": "No items to display.",
+        "error": "We could not complete this action. Please try again."
+      },
+      "uiCopyFit": {
+        "hero": "high",
+        "cta": "medium",
+        "productDescription": "high",
+        "formMicrocopy": "medium",
+        "errorMessage": "medium",
+        "healthcarePage": "medium"
+      }
+    },
+    {
+      "id": "playful-quirky",
+      "name": "Playful & Quirky",
+      "summary": "Fun, surprising, lighthearted, and memorable.",
+      "vibe": ["fun", "unexpected", "lighthearted", "casual", "expressive"],
+      "bestFor": [
+        "apps",
+        "ecommerce",
+        "food",
+        "lifestyle products",
+        "social media",
+        "onboarding",
+        "empty states"
+      ],
+      "useCarefullyFor": [
+        "medical decisions",
+        "legal",
+        "finance",
+        "emergency flows",
+        "serious error states"
+      ],
+      "copyRules": {
+        "do": [
+          "Use small moments of personality.",
+          "Make routine UI feel more human.",
+          "Keep jokes short and clear.",
+          "Use humor to support, not distract."
+        ],
+        "avoid": [
+          "Making important information unclear.",
+          "Using jokes in stressful moments.",
+          "Forcing personality into every line."
+        ]
+      },
+      "sampleLines": {
+        "headline": "Useful tools, minus the boring bits.",
+        "body": "Everything is organized, easy to scan, and ready when you are.",
+        "primaryCTA": "Let’s Go",
+        "secondaryCTA": "Peek Around",
+        "emptyState": "It’s a little empty in here. Add something to make it interesting.",
+        "error": "Oops. That didn’t behave. Try again?"
+      },
+      "uiCopyFit": {
+        "hero": "medium",
+        "cta": "high",
+        "productDescription": "medium",
+        "formMicrocopy": "medium",
+        "errorMessage": "medium",
+        "healthcarePage": "low"
+      }
+    },
+    {
+      "id": "clear-practical",
+      "name": "Clear & Practical",
+      "summary": "Direct, useful, plainspoken, and efficient.",
+      "vibe": ["clear", "useful", "efficient", "plainspoken", "task-focused"],
+      "bestFor": [
+        "documentation",
+        "ecommerce",
+        "SaaS",
+        "product comparison",
+        "support",
+        "manuals",
+        "B2B websites"
+      ],
+      "useCarefullyFor": [
+        "brand campaigns",
+        "emotional storytelling",
+        "luxury positioning"
+      ],
+      "copyRules": {
+        "do": [
+          "Say exactly what the user needs to know.",
+          "Use scannable structure.",
+          "Prefer clarity over cleverness.",
+          "Make next steps obvious."
+        ],
+        "avoid": [
+          "Adding unnecessary personality.",
+          "Using vague claims.",
+          "Making copy longer than the decision requires."
+        ]
+      },
+      "sampleLines": {
+        "headline": "Compare models by light type, battery setup, and comfort.",
+        "body": "Use this guide to understand the main differences before choosing a headlamp.",
+        "primaryCTA": "Compare Models",
+        "secondaryCTA": "Read the Guide",
+        "emptyState": "No matching results.",
+        "error": "Please complete the required fields before continuing."
+      },
+      "uiCopyFit": {
+        "hero": "medium",
+        "cta": "high",
+        "productDescription": "high",
+        "formMicrocopy": "high",
+        "errorMessage": "high",
+        "healthcarePage": "high"
+      }
+    },
+    {
+      "id": "caring-service-oriented",
+      "name": "Caring & Service-Oriented",
+      "summary": "Helpful, patient, attentive, and support-focused.",
+      "vibe": ["helpful", "patient", "attentive", "supportive", "reliable"],
+      "bestFor": [
+        "healthcare",
+        "dental clinics",
+        "customer support",
+        "product guidance",
+        "service businesses",
+        "consultation-based sales"
+      ],
+      "useCarefullyFor": [
+        "edgy brands",
+        "highly self-directed tools",
+        "brands that want to feel exclusive or detached"
+      ],
+      "copyRules": {
+        "do": [
+          "Offer guidance.",
+          "Reduce decision friction.",
+          "Make support visible.",
+          "Use calm, helpful instructions."
+        ],
+        "avoid": [
+          "Sounding overly sentimental.",
+          "Creating dependence when users need quick action.",
+          "Overexplaining simple steps."
+        ]
+      },
+      "sampleLines": {
+        "headline": "Not sure which option fits your needs?",
+        "body": "Tell us what you are looking for, and we’ll help you choose the right next step.",
+        "primaryCTA": "Get Guidance",
+        "secondaryCTA": "Contact Support",
+        "emptyState": "There’s nothing here yet. We can help you get started.",
+        "error": "We could not complete that step. Please check the information or contact us for help."
+      },
+      "uiCopyFit": {
+        "hero": "high",
+        "cta": "high",
+        "productDescription": "high",
+        "formMicrocopy": "high",
+        "errorMessage": "high",
+        "healthcarePage": "high"
+      }
+    },
+    {
+      "id": "technical-precise",
+      "name": "Technical & Precise",
+      "summary": "Detailed, structured, accurate, and specification-driven.",
+      "vibe": [
+        "accurate",
+        "structured",
+        "specific",
+        "technical",
+        "unambiguous"
+      ],
+      "bestFor": [
+        "product specifications",
+        "developer tools",
+        "medical devices",
+        "electronics",
+        "documentation",
+        "compatibility notes"
+      ],
+      "useCarefullyFor": [
+        "hero sections",
+        "emotional storytelling",
+        "general consumer landing pages"
+      ],
+      "copyRules": {
+        "do": [
+          "Use exact terms.",
+          "Clarify compatibility and constraints.",
+          "Separate features from benefits.",
+          "Avoid ambiguity."
+        ],
+        "avoid": [
+          "Using technical detail where users need reassurance.",
+          "Assuming every reader knows the terminology.",
+          "Creating dense paragraphs."
+        ]
+      },
+      "sampleLines": {
+        "headline": "Compatible with Gen 2 and Gen 2S battery systems.",
+        "body": "This accessory is designed for Gen 2 series headlamps. It is not compatible with Gen 3 models.",
+        "primaryCTA": "Check Compatibility",
+        "secondaryCTA": "View Specifications",
+        "emptyState": "No compatible products found.",
+        "error": "The selected option is not compatible with this configuration."
+      },
+      "uiCopyFit": {
+        "hero": "low",
+        "cta": "medium",
+        "productDescription": "high",
+        "formMicrocopy": "high",
+        "errorMessage": "high",
+        "healthcarePage": "medium"
+      }
+    }
+  ],
+  "toneMixingRules": {
+    "description": "Rules for combining multiple tones in one project.",
+    "recommendedMaxTones": 2,
+    "primaryToneUsage": "Use the primary tone for page-level messaging, hero copy, section introductions, and major CTAs.",
+    "secondaryToneUsage": "Use the secondary tone for microcopy, support moments, empty states, or selected campaign sections.",
+    "avoid": [
+      "Do not combine two tones that create conflicting user expectations unless the contrast is intentional.",
+      "Do not use playful or edgy tones for serious errors, medical claims, pricing disclosures, or legal information.",
+      "Do not let tone override clarity, accessibility, or factual accuracy."
+    ],
+    "commonBlends": [
+      {
+        "id": "professional-helpful",
+        "name": "Professional Helpful",
+        "primaryTone": "authoritative-expert",
+        "secondaryTone": "caring-service-oriented",
+        "bestFor": [
+          "medical products",
+          "professional services",
+          "B2B service websites"
+        ]
+      },
+      {
+        "id": "clear-friendly",
+        "name": "Clear Friendly",
+        "primaryTone": "clear-practical",
+        "secondaryTone": "friendly-approachable",
+        "bestFor": [
+          "SaaS onboarding",
+          "local business websites",
+          "support flows"
+        ]
+      },
+      {
+        "id": "premium-calm",
+        "name": "Premium Calm",
+        "primaryTone": "premium-refined",
+        "secondaryTone": "empathetic-soothing",
+        "bestFor": [
+          "aesthetic clinics",
+          "wellness brands",
+          "premium healthcare"
+        ]
+      }
+    ]
+  },
+  "recommendedUsage": {
+    "contentModel": "Use tone IDs to guide generated headlines, body copy, CTA labels, form labels, helper text, errors, and empty states.",
+    "prototypeCopy": "Use realistic copy based on selected tone, journey stage, audience, and component anatomy.",
+    "audit": "Compare generated copy against selected tone rules and flag mismatch, excessive risk, unclear language, or unsupported claims."
+  }
+}

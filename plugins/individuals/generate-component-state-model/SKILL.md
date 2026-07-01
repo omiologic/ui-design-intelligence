@@ -42,6 +42,7 @@ not merely because a component looks different.
 ## References
 
 - `references/component-state-modeling.md`
+- `../../../shared/design-system/component-state-guidelines.md`
 - `../../../shared/schemas/component-state-model.schema.json`
 - `../../../shared/vocabulary/interaction-states.json`
 - `../../../shared/schemas/design-system-seed.schema.json`
@@ -66,7 +67,8 @@ not merely because a component looks different.
 ## Workflow
 
 1. Identify component role, node id, source wireframe, and initial state.
-2. Define allowed states using shared vocabulary.
+2. Define allowed states using shared component state guidelines and shared
+   vocabulary.
 3. Add transitions with triggers and descriptions.
 4. Add disabled, loading, validation, and accessibility requirements.
 5. Validate against `component-state-model.schema.json`.

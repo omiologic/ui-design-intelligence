@@ -1,7 +1,7 @@
 {
   "name": "ui-knowledge-skills",
   "displayName": "UI Knowledge Skills",
-  "version": "0.1.0",
+  "version": "0.9.0",
   "description": "Skills for extracting, curating, indexing, searching, applying, and explaining reusable UI pattern knowledge.",
   "status": "transitional",
   "maintainer": "UI Blueprint maintainers",

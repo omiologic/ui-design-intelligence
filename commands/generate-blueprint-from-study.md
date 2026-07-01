@@ -14,6 +14,8 @@ blueprint plan.
 
 - Page study, site study, UI specification, interaction notes, or audit findings.
 - Target output scope: page, section, component, or overlay.
+- Optional `shared/recipes/wireframe.recipe.md` when the output should follow
+  the Sprint 006 consumer wireframe artifact contract.
 
 ## Workflow
 
@@ -27,6 +29,7 @@ blueprint plan.
 
 - Schema-valid UIBlueprint JSON or blueprint plan.
 - Handoff notes for validation and implementation.
+- Consumer workflow default files: `wireframe.json` and `wireframe-notes.md`.
 
 ## Agents
 

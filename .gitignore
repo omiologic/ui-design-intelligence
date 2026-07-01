@@ -8,3 +8,11 @@ dist/plugins/*
 .DS_Store
 __pycache__/
 *.pyc
+
+# Local environment and cloud configuration
+.env
+.env.local
+.env.*.local
+ui-knowledge/
+.ui-knowledge-cloud.json
+ui-knowledge.remote.json

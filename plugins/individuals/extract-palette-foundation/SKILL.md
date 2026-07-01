@@ -23,6 +23,7 @@ work does not treat guesses as certified design tokens.
 - `references/_shared/design-philosophy/design-system/design-system-principles.md`
 - `references/_shared/design-philosophy/design-system/design-system-anti-slop.md`
 - `references/_shared/design-philosophy/design-system/skill-doctrine.md`
+- `references/_shared/design-system/accessibility-token-guidelines.md`
 - `references/_shared/schemas/design-system-seed.schema.json`
 - `references/_shared/schemas/palette-foundation.schema.json`
 - `references/_shared/vocabulary/design-token-types.json`
@@ -41,10 +42,12 @@ work does not treat guesses as certified design tokens.
 1. Include `intent`, `usage`, `useOn`, `doNotUseOn`, and accessibility notes.
 2. Mark every color with `source` and `confidence`.
 3. Do not rely on color alone for state or errors.
-4. Do not add large decorative palette systems in Sprint 003.
-5. Use `{category}.{role}.{purpose}` names such as
+4. Apply token-level accessibility guidance for contrast, focus visibility,
+   disabled legibility, and non-color state communication.
+5. Do not add large decorative palette systems in Sprint 003.
+6. Use `{category}.{role}.{purpose}` names such as
    `color.action.primary`, never value names such as `blueButton`.
-6. Every token must have a role and usage; delete orphan tokens.
+7. Every token must have a role and usage; delete orphan tokens.
 
 ## Boundary
 

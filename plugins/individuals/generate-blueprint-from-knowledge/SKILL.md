@@ -34,6 +34,8 @@ coherent page or component plan for the current brief.
    responsive decision.
 3. Preserve the current brief's goal over any single pattern's default sequence.
 4. Prepare lineage notes before final JSON assembly.
+5. Require full pattern records, not index-only summaries, before a retrieved
+   result can influence the blueprint plan.
 
 ## Boundary
 
@@ -47,6 +49,10 @@ coherent page or component plan for the current brief.
 2. Do not apply contradictory patterns without documenting the conflict.
 3. Keep pattern influence visible in annotations or lineage.
 4. Hand final JSON assembly to `generate-wireframe-config`.
+5. If a match has a `storageRef`, fetch the canonical record and validate it
+   against `pattern-record.schema.json` before applying it.
+6. Record retrieval reasons and storage references in lineage when they affect
+   blueprint decisions.
 
 ## Anti-Patterns
 
@@ -56,14 +62,22 @@ coherent page or component plan for the current brief.
 - Overriding the brief: forcing healthcare or conversion defaults onto a utility
   workflow because tags partially match.
 - Final JSON drift: emitting schema JSON before the plan is settled.
+- Index-only generation: applying an index entry or vector result without the
+  full validated pattern record.
+- Copying source designs: recreating captured pages instead of applying reusable
+  pattern constraints to the current brief.
 
 ## Workflow
 
-1. Read the brief, selected pattern records, and retrieval reasons.
-2. Decide target scope: page, section, component, interaction, or overlay.
-3. Map patterns to structural decisions and note conflicts or assumptions.
-4. Draft the plan and lineage entries.
-5. Hand off final assembly to `generate-wireframe-config`.
+1. Read the brief, selected pattern IDs, retrieval reasons, and storage
+   references.
+2. Fetch and validate full pattern records when only index/vector summaries are
+   available.
+3. Decide target scope: page, section, component, interaction, or overlay.
+4. Map patterns to structural decisions and note conflicts or assumptions.
+5. Draft the plan and lineage entries with pattern IDs, reasons, and
+   `storageRef` pointers.
+6. Hand off final assembly to `generate-wireframe-config`.
 
 ## Inline Example
 

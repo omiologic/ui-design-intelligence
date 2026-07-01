@@ -1,0 +1,56 @@
+{
+  "version": "0.1.0",
+  "type": "appRetrievalResults",
+  "id": "ledgerpilot-app-retrieval",
+  "queryContextId": "ledgerpilot-app-query",
+  "createdAt": "2026-06-30T00:00:01Z",
+  "retrievalMode": "fixture",
+  "results": [
+    {
+      "rank": 1,
+      "patternId": "credibility-first-healthcare-hero",
+      "title": "Credibility-first healthcare hero",
+      "reason": "The pattern demonstrates proof-before-action sequencing that maps to the requested B2B SaaS demo flow.",
+      "score": 0.92,
+      "confidence": "high",
+      "status": "reviewed",
+      "matchedDimensions": [
+        "hero",
+        "proof",
+        "primary-cta"
+      ],
+      "storageRef": {
+        "provider": "local",
+        "uri": "knowledge/examples/credibility-first-healthcare-hero.pattern.json",
+        "recordType": "pattern-record"
+      },
+      "sourceSchemaRef": "knowledge/schemas/pattern-record.schema.json"
+    },
+    {
+      "rank": 2,
+      "patternId": "sticky-appointment-cta",
+      "title": "Sticky appointment CTA",
+      "reason": "The pattern contributes mobile action persistence for a high-intent conversion flow.",
+      "score": 0.86,
+      "confidence": "high",
+      "status": "reviewed",
+      "matchedDimensions": [
+        "mobile",
+        "cta",
+        "conversion"
+      ],
+      "storageRef": {
+        "provider": "local",
+        "uri": "knowledge/examples/sticky-appointment-cta.pattern.json",
+        "recordType": "pattern-record"
+      },
+      "sourceSchemaRef": "knowledge/schemas/pattern-record.schema.json"
+    }
+  ],
+  "warnings": [
+    "Fixture retrieval uses local example records only."
+  ],
+  "notes": [
+    "Real vector bucket references should be injected from local environment configuration, not committed fixtures."
+  ]
+}

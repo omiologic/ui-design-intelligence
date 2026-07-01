@@ -1,0 +1,151 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://omiologic.dev/schemas/ui-blueprint/style-application.schema.json",
+  "title": "Style Application",
+  "description": "Scoped request for applying a style reference to a site, page, section, component, or prototype target.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "version",
+    "type",
+    "styleId",
+    "scope",
+    "target",
+    "intensity",
+    "preserve",
+    "applyTo",
+    "avoid",
+    "source"
+  ],
+  "properties": {
+    "version": {
+      "$ref": "#/$defs/version"
+    },
+    "type": {
+      "const": "styleApplication"
+    },
+    "styleId": {
+      "$ref": "#/$defs/id"
+    },
+    "scope": {
+      "$ref": "#/$defs/scope"
+    },
+    "target": {
+      "$ref": "#/$defs/target"
+    },
+    "intensity": {
+      "$ref": "#/$defs/intensity"
+    },
+    "preserve": {
+      "$ref": "#/$defs/stringList"
+    },
+    "applyTo": {
+      "$ref": "#/$defs/stringList"
+    },
+    "avoid": {
+      "$ref": "#/$defs/stringList"
+    },
+    "notes": {
+      "$ref": "#/$defs/stringList"
+    },
+    "source": {
+      "$ref": "#/$defs/source"
+    }
+  },
+  "$defs": {
+    "version": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$"
+    },
+    "scope": {
+      "type": "string",
+      "enum": [
+        "site",
+        "page",
+        "section",
+        "component",
+        "prototype"
+      ]
+    },
+    "intensity": {
+      "type": "string",
+      "enum": [
+        "subtle",
+        "medium",
+        "strong",
+        "experimental"
+      ]
+    },
+    "sourceType": {
+      "type": "string",
+      "enum": [
+        "prompt",
+        "userProvided",
+        "generated",
+        "styleRecommendation",
+        "styleBlend",
+        "internalReference"
+      ]
+    },
+    "stringList": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "target": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "scope",
+        "id",
+        "label"
+      ],
+      "properties": {
+        "scope": {
+          "$ref": "#/$defs/scope"
+        },
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "label": {
+          "type": "string",
+          "minLength": 1
+        },
+        "artifactRef": {
+          "type": "string"
+        }
+      }
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "type",
+        "description",
+        "licenseNotes"
+      ],
+      "properties": {
+        "type": {
+          "$ref": "#/$defs/sourceType"
+        },
+        "description": {
+          "type": "string",
+          "minLength": 1
+        },
+        "artifactRef": {
+          "type": "string"
+        },
+        "licenseNotes": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    }
+  }
+}

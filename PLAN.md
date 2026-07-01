@@ -402,6 +402,30 @@ The remaining sprint tasks intentionally harden the initial MVP:
 - add negative fixtures that prove validation catches failures
 - deepen skill references with decision heuristics, anti-patterns, and examples
 
+## Deprecation
+
+`skills/` is a read-only compatibility mirror for the eight blueprint product
+skills. It exists to keep existing consumers, `install.sh`, `uninstall.sh`, and
+`npm run package` working during the transition period.
+
+Rules:
+
+- Do not make changes directly in `skills/`. The canonical source for all
+  product skills is `plugins/individuals/{skill-name}`.
+- After updating a skill in `plugins/individuals/`, sync the change to its
+  `skills/` mirror and run `npm run check:skills-parity` to confirm they match.
+  Use `npm run sync:shared-references` (or a dedicated mirror command if added)
+  to propagate shared reference changes to both trees at once.
+- `npm run validate` and `npm run validate:ci` both run `check:skills-parity`
+  so drift between the two trees is caught in CI.
+
+Retirement condition:
+
+The `skills/` directory will be removed when all consumers have migrated to
+bundle install paths and no install script requires the direct `skills/` surface.
+
+Target milestone: `1.0.0`.
+
 ## Design Rules
 
 - Keep vocabulary and schema canonical in `shared/`.

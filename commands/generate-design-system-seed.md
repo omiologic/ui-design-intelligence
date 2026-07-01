@@ -16,6 +16,8 @@ screenshot, URL capture, study output, knowledge patterns, or mixed input.
 - User brief, screenshots, URL captures, study output, knowledge patterns, or
   mixed evidence.
 - Optional `.ui-design-intelligence.yml` project config.
+- Optional `shared/recipes/design-spec.recipe.md` when the seed is being
+  prepared for a downstream design specification.
 - Desired output directory for `design-system-seed.json` and
   `design-system-seed.md`.
 
@@ -34,6 +36,7 @@ screenshot, URL capture, study output, knowledge patterns, or mixed input.
 - `design-system-seed.json`
 - `design-system-seed.md`
 - Audit notes and unresolved questions for downstream blueprint/prototype work.
+- Downstream design-spec handoff notes when the design-spec recipe is in scope.
 
 ## Agents
 

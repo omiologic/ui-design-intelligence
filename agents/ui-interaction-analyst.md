@@ -39,11 +39,71 @@ visual motion polish, or certify accessibility. Adjacent guidance: use
 1. Inventory interactive surfaces and available evidence.
 2. Run `study-ui-interaction` for triggers, states, overlays, dismissal, forms,
    and feedback.
-3. Run `study-ui-prototype-behavior` when findings must feed prototype config.
-4. Branch to `generate-interaction-audit-report` when the requested output is an
+3. Use `shared/design-system/component-state-guidelines.md` to normalize
+   observed states to the canonical interaction vocabulary.
+4. Run `study-ui-prototype-behavior` when findings must feed prototype config.
+5. Branch to `generate-interaction-audit-report` when the requested output is an
    audit rather than a study.
-5. Stop when key trigger, target, or state evidence is missing; record open
+6. Stop when key trigger, target, or state evidence is missing; record open
    questions for capture or prototype generation.
+
+## Creation Defaults
+
+- Use this agent when creation involves forms, overlays, menus, filters,
+  accordions, tabs, sticky UI, navigation changes, async regions, or feedback.
+- For wireframes, produce state and structural interaction constraints.
+- For prototypes, produce behavior evidence before `prototype-architect`
+  assembles config.
+
+## Required Inputs
+
+- Interaction source: capture, notes, study output, or requirements.
+- Interactive surfaces and available trigger/target evidence.
+- Expected user task or flow.
+- Viewport differences when behavior changes responsively.
+- State vocabulary or prototype schema references when output feeds prototype
+  planning.
+
+## Missing Input Questions
+
+Ask at most three blocking questions:
+
+1. Which interactive surfaces are in scope?
+2. What user task or flow should the behavior support?
+3. Which states or viewport variants are known?
+
+Proceed with open questions for non-critical transition details.
+
+## Stop Conditions
+
+- Key trigger, target, or state evidence is missing.
+- Focus, keyboard, or recovery behavior is unknowable but central to the task.
+- The user expects runtime prototype assembly or production interaction code.
+
+## Output Files
+
+- `interaction-study-notes.md`
+- Optional `interaction-flow.json`
+- Optional `interaction-audit.md`
+- Handoff notes for `wireframe-notes.md` or `prototype-plan.md`.
+
+## Quality Gates
+
+- Triggers, targets, states, feedback, and recovery paths are named.
+- States are normalized through
+  `shared/design-system/component-state-guidelines.md` and
+  `shared/vocabulary/interaction-states.json`.
+- Overlay dismissal, focus, keyboard, and form behavior are captured when
+  relevant.
+- Desktop and mobile behavior differences are separated.
+- Unknowns are explicit enough for `prototype-architect` to stop or proceed.
+
+## Escalation And Handoffs
+
+- Hand accessibility risks to `accessibility-reviewer`.
+- Hand structural implications to `blueprint-architect`.
+- Hand prototype-ready findings to `prototype-architect`.
+- Hand audit findings to `ui-audit-lead`.
 
 ## Arbitration
 

@@ -9,7 +9,8 @@ const individualsDir = path.join(root, "plugins", "individuals");
 const errors = [];
 const names = new Map();
 const productSkillSet = new Set(productSkills);
-const strictCanonical = process.argv.includes("--strict-canonical");
+const requestedSkills = process.argv.slice(2).filter((arg) => !arg.startsWith("--"));
+const requestedSkillSet = new Set(requestedSkills);
 
 function fail(message) {
   errors.push(message);
@@ -119,24 +120,22 @@ function checkSkillBodySections(text, relativeSkillFile) {
     }
   ];
 
-  if (strictCanonical) {
-    requiredGroups.push({
-      label: "inline example section",
-      sections: ["Inline Example"]
-    });
-    requiredSections.push("Philosophy", "Boundary");
-  }
+  requiredGroups.push({
+    label: "inline example section",
+    sections: ["Inline Example"]
+  });
+  requiredSections.push("Philosophy", "Boundary");
 
-  for (const section of strictCanonical ? ["Philosophy", "Boundary"] : []) {
+  for (const section of ["Philosophy", "Boundary"]) {
     if (!headings.has(section)) {
-      fail(`${relativeSkillFile}: missing required strict canonical SKILL.md section "## ${section}"`);
+      fail(`${relativeSkillFile}: missing required canonical SKILL.md section "## ${section}"`);
     }
   }
 
   for (const group of requiredGroups) {
     if (!hasAnySection(headings, group.sections)) {
       fail(
-        `${relativeSkillFile}: missing required ${strictCanonical ? "strict canonical " : ""}${group.label}; expected one of ${group.sections
+        `${relativeSkillFile}: missing required ${group.label}; expected one of ${group.sections
           .map((section) => `"## ${section}"`)
           .join(", ")}`
       );
@@ -158,6 +157,7 @@ function validateSkillRoot(baseDir, label, options = {}) {
 
   for (const dirName of skillDirs) {
     if (dirName.startsWith("_")) continue;
+    if (requestedSkillSet.size > 0 && !requestedSkillSet.has(dirName)) continue;
 
     const skillDir = path.join(baseDir, dirName);
     const skillFile = path.join(skillDir, "SKILL.md");
@@ -207,10 +207,18 @@ function validateSkillRoot(baseDir, label, options = {}) {
 validateSkillRoot(skillsDir, "skills", { required: true });
 validateSkillRoot(individualsDir, "plugins/individuals", { requireJudgment: true });
 
-for (const skillName of productSkills) {
-  const skillFile = path.join(individualsDir, skillName, "SKILL.md");
-  if (!fs.existsSync(skillFile)) {
-    fail(`plugins/individuals/${skillName}: product skill individual is missing SKILL.md`);
+if (requestedSkillSet.size === 0) {
+  for (const skillName of productSkills) {
+    const skillFile = path.join(individualsDir, skillName, "SKILL.md");
+    if (!fs.existsSync(skillFile)) {
+      fail(`plugins/individuals/${skillName}: product skill individual is missing SKILL.md`);
+    }
+  }
+} else {
+  for (const skillName of requestedSkillSet) {
+    if (!names.has(skillName)) {
+      fail(`requested skill does not exist: ${skillName}`);
+    }
   }
 }
 
@@ -220,4 +228,6 @@ if (errors.length) {
   process.exit(1);
 }
 
-console.log(`Skill validation passed for ${names.size} skills${strictCanonical ? " with strict canonical sections" : ""}.`);
+console.log(
+  `Skill validation passed for ${names.size} ${requestedSkillSet.size > 0 ? "targeted " : ""}skills.`
+);

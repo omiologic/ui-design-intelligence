@@ -1,7 +1,7 @@
 {
   "name": "ui-seo-skills",
   "displayName": "UI SEO Skills",
-  "version": "0.2.0",
+  "version": "0.9.0",
   "description": "Skills for generating and reviewing SEO metadata, page summaries, and SEO audit findings.",
   "status": "active",
   "maintainer": "UI Blueprint maintainers",

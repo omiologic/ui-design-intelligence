@@ -24,6 +24,12 @@ are isolated from the states that need them.
 - `references/_shared/design-philosophy/design-system/design-system-principles.md`
 - `references/_shared/design-philosophy/design-system/design-system-anti-slop.md`
 - `references/_shared/design-philosophy/design-system/skill-doctrine.md`
+- `references/_shared/design-system/design-system-quality-checklist.md`
+- `references/_shared/design-system/token-taxonomy.md`
+- `references/_shared/design-system/component-anatomy-reference.md`
+- `references/_shared/design-system/component-state-guidelines.md`
+- `references/_shared/design-system/accessibility-token-guidelines.md`
+- `references/_shared/design-system/responsive-system-guidelines.md`
 - `references/_shared/schemas/design-system-seed.schema.json`
 - `references/_shared/vocabulary/design-token-types.json`
 - `references/_shared/vocabulary/component-anatomy.json`
@@ -58,10 +64,17 @@ explicitly asked.
 
 ## Workflow
 
-1. Compare palette tokens to component references.
-2. Compare states to component requirements.
-3. Compare layout and content roles to header/footer/card rules.
-4. Report conflicts and suggested fixes.
+1. Compare palette and token taxonomy roles to component references.
+2. Compare anatomy parts to component requirements.
+3. Compare states to component requirements and shared state guidelines.
+4. Compare token accessibility constraints to component states, palette roles,
+   typography, target size, motion, and opacity guidance.
+5. Compare responsive token and component expectations to header/footer/card,
+   form, navigation, and prototype handoff rules.
+6. Compare layout and content roles to header/footer/card rules.
+7. Use the shared quality checklist to judge whether consistency gaps block
+   review-ready or implementation-ready handoff.
+8. Report conflicts and suggested fixes.
 
 ## Anti-Patterns
 

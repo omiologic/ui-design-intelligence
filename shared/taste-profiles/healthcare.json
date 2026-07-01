@@ -1,0 +1,88 @@
+{
+  "name": "healthcare",
+  "version": "0.1.0",
+  "register": "marketing",
+  "description": "Structural bias for healthcare and institutional pages where clarity, trust, and accessibility take precedence over persuasion density.",
+  "intent": "Lead with clear orientation and service scope, build trust through transparency and landmark coverage, and keep actions low-pressure and recoverable.",
+  "rules": {
+    "sectionOrder": [
+      {
+        "job": "orient",
+        "preferredStructures": ["hero", "centeredHero", "header"],
+        "reason": "Patients and caregivers need immediate confirmation that they are in the right place before any action or detail."
+      },
+      {
+        "job": "clarify-services",
+        "preferredStructures": ["cardGrid", "section", "twoColumn", "list"],
+        "reason": "Service scope must be specific and legible before a visitor can evaluate whether to proceed."
+      },
+      {
+        "job": "establish-trust",
+        "preferredStructures": ["contentGroup", "cardGrid", "list"],
+        "reason": "Healthcare trust comes from credentials, affiliations, and clear process explanation, not social-proof density."
+      },
+      {
+        "job": "reduce-anxiety",
+        "preferredStructures": ["accordion", "contentGroup", "section"],
+        "reason": "Frequently asked questions and process explanations address the anxieties that prevent health-seeking action."
+      },
+      {
+        "job": "act",
+        "preferredStructures": ["form", "buttonGroup", "stickyBar"],
+        "reason": "Appointment and contact actions should follow orientation and trust, not lead the page."
+      }
+    ],
+    "density": {
+      "default": "low-to-moderate",
+      "increaseWhen": ["service-comparison", "location-listing", "provider-roster"],
+      "decreaseWhen": ["hero", "primary-cta", "emergency-guidance", "sensitive-condition-context"],
+      "reason": "Dense layouts increase cognitive load for anxious visitors and can obscure critical guidance."
+    },
+    "layoutSelection": {
+      "orientation": ["centeredHero", "splitHero", "singleColumn"],
+      "services": ["cardGrid", "twoColumn", "featureGrid"],
+      "trust": ["twoColumn", "cardGrid", "stackedSections"],
+      "faq": ["accordion", "singleColumn"],
+      "action": ["singleColumn", "inlineForm", "stickyFooterBar"]
+    },
+    "ctaCadence": {
+      "primaryActionCount": "one-per-service-context",
+      "secondaryActionRule": "Secondary actions should offer lower-commitment paths such as learn more or call us rather than competing appointment flows.",
+      "repeatPrimaryActionAfter": ["service-clarification", "trust-section", "faq"],
+      "reason": "Healthcare CTAs should feel available rather than urgent; pressure patterns damage trust in medical contexts."
+    },
+    "overlayUse": {
+      "allowed": ["dialog", "drawer", "popover"],
+      "preferred": ["drawer"],
+      "useWhen": ["appointment-form", "location-detail", "provider-bio", "insurance-check"],
+      "avoidWhen": ["emergency-content", "primary-service-explanation", "required-disclosure"],
+      "reason": "Critical health information must never be hidden behind an overlay that a user might miss or dismiss."
+    },
+    "responsivePriority": [
+      "service-name-and-scope",
+      "primary-action",
+      "trust-signals",
+      "service-details",
+      "faq-and-process",
+      "secondary-contact"
+    ]
+  },
+  "antiPatterns": [
+    {
+      "name": "urgency-pressure-ctas",
+      "reason": "Manufactured urgency in healthcare contexts erodes trust and may harm vulnerable visitors."
+    },
+    {
+      "name": "proof-substituting-for-clarity",
+      "reason": "Credential counts and review scores should support service clarity, not replace it."
+    },
+    {
+      "name": "overlay-for-required-disclosures",
+      "reason": "Legal, safety, and condition disclosures must be visible in the reading flow, not deferred to optional layers."
+    },
+    {
+      "name": "low-contrast-density",
+      "reason": "Dense low-contrast layouts fail accessibility requirements that are especially critical for aging and impaired healthcare audiences."
+    }
+  ]
+}

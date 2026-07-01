@@ -49,5 +49,16 @@
     "level": "medium",
     "reason": "Reusable conversion support pattern; exact placement should be validated against content length and obstruction risk."
   },
+  "storageRef": {
+    "kind": "s3Uri",
+    "uri": "s3://<bucket>/ui-knowledge/patterns/sticky-appointment-cta.pattern.json",
+    "objectType": "patternRecord",
+    "versionId": "<version-id>",
+    "updatedAt": "2026-06-30",
+    "checksum": {
+      "algorithm": "sha256",
+      "value": "<sha256-checksum>"
+    }
+  },
   "status": "candidate"
 }

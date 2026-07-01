@@ -1,0 +1,50 @@
+{
+  "skill": "generate-interactive-prototype-config",
+  "brief": "Generate an interactive prototype config for a dental appointment booking flow. Cover all screens in the flow, declare overlay dismissal contracts for the booking dialog, specify initial states for each screen, and include route definitions. No runtime code or implementation detail.",
+  "referenceExample": "shared/examples/dental-appointment.prototype-config.example.json",
+  "requiredSignals": [
+    {
+      "description": "Artifact is typed as a prototype config.",
+      "check": "fieldMatchesValue",
+      "target": "type",
+      "expectedValue": "prototypeConfig"
+    },
+    {
+      "description": "Version field is present.",
+      "check": "fieldPresent",
+      "target": "version"
+    },
+    {
+      "description": "At least one screen is declared.",
+      "check": "fieldCountAtLeast",
+      "target": "screens",
+      "minCount": 1
+    },
+    {
+      "description": "Every screen declares an initial state.",
+      "check": "allArrayItemsHaveField",
+      "target": "screens",
+      "field": "initialState"
+    },
+    {
+      "description": "At least one overlay is declared for the booking dialog.",
+      "check": "fieldCountAtLeast",
+      "target": "overlays",
+      "minCount": 1
+    },
+    {
+      "description": "Every overlay has a dismissal contract with at least one method.",
+      "check": "overlayHasDismissal"
+    },
+    {
+      "description": "Route definitions are present.",
+      "check": "fieldPresent",
+      "target": "routes"
+    },
+    {
+      "description": "No runtime implementation code is included in the config output.",
+      "check": "antiPatternAbsent",
+      "value": "runtime-code"
+    }
+  ]
+}

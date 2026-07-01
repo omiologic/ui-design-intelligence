@@ -42,6 +42,13 @@ title and hand off the mismatch to SEO audit instead of inventing claims.
    specificity, and natural reading over exact length.
 5. Make titles distinct across related pages without stuffing variants.
 
+## Boundary
+
+- Owns: title tag creation and revision — the `<title>` element text that names the page topic, distinguishes the page, and fits the actual content and brand context.
+- Does not own: meta description, on-page headings, structured data, or full SEO auditing.
+- Hand off meta description work to `generate-meta-description`.
+- Hand off full SEO audit to `generate-seo-audit-report`.
+
 ## Rules
 
 - Use the H1, page summary, section headings, visible copy, primary CTA, product

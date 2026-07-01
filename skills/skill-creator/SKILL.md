@@ -13,6 +13,22 @@ This skill provides guidance for creating effective skills.
 Guide creation or revision of self-contained skill packages with clear
 frontmatter, focused instructions, and useful bundled resources.
 
+## Philosophy
+
+A skill earns its value by packaging non-obvious procedural knowledge that
+would otherwise require rediscovery mid-task. The test is whether a competent
+instance would benefit from the guidance during the specific workflow — not
+whether the guidance is accurate in general. Focused frontmatter determines
+activation; everything in the skill body should reduce fragile in-context
+reasoning or repeated rewriting.
+
+## Boundary
+
+- Owns: guidance for creating and revising self-contained skill packages — frontmatter quality, SKILL.md structure, references, scripts, and assets organization.
+- Does not own: the domain-specific knowledge or implementation that belongs inside the skill being built, nor the validation tooling for this repository.
+- Hand off skill packaging and validation to `init_skill.py` and `package_skill.py`.
+- Hand off domain implementation to the new skill's own SKILL.md and references.
+
 ## References
 
 No repository-local references are required for this compatibility skill.
@@ -46,6 +62,30 @@ No repository-local references are required for this compatibility skill.
 
 Follow the skill creation process below, adapting only when the user is
 iterating on an existing skill or has already supplied concrete examples.
+
+## Inline Example
+
+Minimal frontmatter and purpose block for a new `summarize-page` skill:
+
+```yaml
+---
+name: summarize-page
+description: This skill should be used when a user wants a structured one-paragraph summary of what a web page does, who it serves, and what action it requests.
+license: See repository LICENSE
+---
+```
+
+```md
+## Purpose
+
+Produce a one-paragraph structured summary of a page: what it does, who it
+serves, what proof or offer it makes, and what action it requests.
+
+## Decision Criteria
+
+1. Use when a page summary is needed before audit, study, or SEO work.
+2. Do not use for multi-page or site-wide synthesis — use generate-site-audit-report for that.
+```
 
 ## Hand-Offs
 

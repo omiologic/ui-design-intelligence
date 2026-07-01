@@ -1,0 +1,49 @@
+{
+  "version": "0.1.0",
+  "type": "contentModel",
+  "id": "invalid-content-model-unknown-node",
+  "name": "Invalid Content Model Unknown Node",
+  "source": {
+    "source": "generated",
+    "confidence": "medium",
+    "sourceRefs": [
+      "shared/examples/product-page-e2e/product-page.ui-blueprint.json",
+      "shared/examples/product-page-e2e/product-page.user-journey-map.example.json"
+    ]
+  },
+  "sourceBlueprintId": "northstar-product-page-wireframe",
+  "sourceBlueprintRef": "shared/examples/product-page-e2e/product-page.ui-blueprint.json",
+  "journeyMapRef": "shared/examples/product-page-e2e/product-page.user-journey-map.example.json",
+  "audience": {
+    "primary": "Outdoor shoppers",
+    "intent": "Choose a product"
+  },
+  "journey": {
+    "primaryGoal": "add-to-cart",
+    "stages": ["inspection"]
+  },
+  "sections": [
+    {
+      "nodeId": "missing-product-node",
+      "journeyStage": "inspection",
+      "contentGoal": "Demonstrate invalid node reference handling.",
+      "copy": {
+        "headline": {
+          "value": "Review product details before checkout.",
+          "source": "generated",
+          "confidence": "medium",
+          "status": "draft",
+          "needsReview": ["productSpecs"]
+        }
+      },
+      "review": {
+        "status": "draft",
+        "needsReview": ["productSpecs"]
+      }
+    }
+  ],
+  "review": {
+    "status": "draft",
+    "needsReview": ["productSpecs"]
+  }
+}

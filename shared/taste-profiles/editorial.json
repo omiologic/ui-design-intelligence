@@ -1,0 +1,87 @@
+{
+  "name": "editorial",
+  "version": "0.1.0",
+  "register": "marketing",
+  "description": "Structural bias for long-form, content-first pages where depth of argument and editorial authority build trust before action.",
+  "intent": "Lead with a strong orientation, give the reader room to follow a sustained argument, and defer commitment requests until credibility is established.",
+  "rules": {
+    "sectionOrder": [
+      {
+        "job": "orient",
+        "preferredStructures": ["hero", "centeredHero", "heading"],
+        "reason": "Editorial pages need a clear statement of subject and authority before the reader commits time to reading."
+      },
+      {
+        "job": "establish-context",
+        "preferredStructures": ["contentGroup", "textBlock", "twoColumn"],
+        "reason": "Context and framing earn the reader's investment before the core argument arrives."
+      },
+      {
+        "job": "develop-argument",
+        "preferredStructures": ["section", "contentGroup", "stackedSections", "mediaLeft", "mediaRight"],
+        "reason": "Long-form content should progress through structured sections rather than fragment into unordered cards."
+      },
+      {
+        "job": "support-with-evidence",
+        "preferredStructures": ["cardGrid", "list", "table", "contentGroup"],
+        "reason": "Evidence in editorial pages earns authority through specificity, not social-proof density."
+      },
+      {
+        "job": "act",
+        "preferredStructures": ["buttonGroup", "form", "singleColumn"],
+        "reason": "Reader actions should follow earned trust, not interrupt the reading experience."
+      }
+    ],
+    "density": {
+      "default": "low-to-moderate",
+      "increaseWhen": ["reference-tables", "data-comparison", "multi-topic-index"],
+      "decreaseWhen": ["hero", "section-transition", "pull-quote", "primary-cta"],
+      "reason": "Editorial pages reward focused reading; dense layouts compete with the sustained attention required."
+    },
+    "layoutSelection": {
+      "orientation": ["centeredHero", "singleColumn"],
+      "narrative": ["singleColumn", "twoColumn", "mediaLeft", "mediaRight"],
+      "evidence": ["cardGrid", "stackedSections", "table"],
+      "relatedContent": ["cardGrid", "twoColumn"],
+      "action": ["singleColumn", "inlineForm"]
+    },
+    "ctaCadence": {
+      "primaryActionCount": "one-at-end-of-argument",
+      "secondaryActionRule": "Surface secondary actions only as navigation aids to related depth, not as commitment shortcuts.",
+      "repeatPrimaryActionAfter": ["final-section"],
+      "reason": "Interrupting an editorial argument with CTAs undermines the credibility the page is building."
+    },
+    "overlayUse": {
+      "allowed": ["dialog", "popover"],
+      "preferred": ["popover"],
+      "useWhen": ["footnote-expansion", "term-definition", "image-caption"],
+      "avoidWhen": ["core-argument", "primary-reading-flow", "lead-capture-interruption"],
+      "reason": "Overlays break reading flow and should serve reference expansion, not lead capture in content-first pages."
+    },
+    "responsivePriority": [
+      "headline-and-subject",
+      "opening-argument",
+      "supporting-evidence",
+      "related-navigation",
+      "primary-action"
+    ]
+  },
+  "antiPatterns": [
+    {
+      "name": "cta-interrupting-argument",
+      "reason": "Commitment requests placed mid-argument signal that the page does not trust its own content."
+    },
+    {
+      "name": "card-grid-substituting-for-narrative",
+      "reason": "Card grids fragment editorial arguments that depend on sequence and development."
+    },
+    {
+      "name": "proof-before-context",
+      "reason": "Social proof placed before the reader understands the subject reads as noise."
+    },
+    {
+      "name": "dense-hero-for-long-form",
+      "reason": "Editorial heroes should orient, not compress the whole argument into the first viewport."
+    }
+  ]
+}

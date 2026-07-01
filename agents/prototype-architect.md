@@ -31,6 +31,7 @@ structure, `design-system-architect` for component vocabulary, and
 
 ## Commands
 
+- optional: `create-prototype-plan`
 - required: `generate-prototype-from-blueprint`
 - required: `generate-prototype-from-knowledge`
 - required: `audit-prototype-flow`
@@ -40,16 +41,95 @@ structure, `design-system-architect` for component vocabulary, and
 
 1. Confirm source wireframe or blueprint node IDs and design-system component
    vocabulary exist.
-2. Run behavior study when the source is observed UI rather than explicit
+2. Use `shared/design-system/component-anatomy-reference.md` to identify
+   required interactive parts, focus targets, state hooks, and live-region
+   slots.
+3. Use `shared/design-system/component-state-guidelines.md` to distinguish
+   reusable state expectations from prototype-specific transitions.
+4. Use `shared/design-system/responsive-system-guidelines.md` as upstream
+   responsive system context before applying prototype-specific responsive
+   behavior.
+5. Use `shared/design-system/component-selection-guidelines.md` to check that
+   prototype behavior matches the selected component pattern, especially for
+   overlays, tabs, accordions, tables, comboboxes, and disclosure flows.
+6. Run behavior study when the source is observed UI rather than explicit
    requirements.
-3. Generate component state models for dialogs, forms, menus, sticky bars, and
+7. Generate component state models for dialogs, forms, menus, sticky bars, and
    other interactive nodes with unclear states.
-4. Generate interaction flows for event-to-result behavior.
-5. Assemble `PrototypeConfig`, then generate a clickable plan if a runtime
+8. Generate interaction flows for event-to-result behavior.
+9. Assemble `PrototypeConfig`, then generate a clickable plan if a runtime
    handoff is needed.
-6. Audit references, focus, keyboard, validation, overlays, responsive behavior,
+10. Audit references, focus, keyboard, validation, overlays, responsive behavior,
    and transitions before handoff.
-7. Stop when source node IDs, states, routes, or focus targets are missing.
+11. Stop when source node IDs, states, routes, or focus targets are missing.
+
+## Creation Defaults
+
+- For `create-prototype-plan`, default to `shared/recipes/prototype.recipe.md`.
+- Start from stable wireframe node IDs, not from visual intent.
+- Generate state models before interaction flows when component states are
+  unclear.
+- Audit focus, keyboard, overlays, forms, responsive behavior, and runtime
+  boundaries before final handoff.
+
+## Required Inputs
+
+- Source wireframe, blueprint, or design specification.
+- Stable node IDs for interactive targets.
+- Key user flows.
+- State requirements for forms, overlays, menus, navigation, async regions, or
+  other interactive components.
+- Viewport or device requirements when behavior changes responsively.
+
+## Missing Input Questions
+
+Ask at most three blocking questions:
+
+1. Which source artifact is the behavior source of truth?
+2. Which node IDs are interactive targets?
+3. What are the key user flows?
+
+Ask state or viewport questions only when they change the prototype behavior.
+
+## Stop Conditions
+
+- Source wireframe or blueprint is missing.
+- Stable node IDs are missing for interactive targets.
+- Key flows are unknown.
+- State, route, overlay, form, or focus targets cannot be referenced.
+- The user expects runtime implementation, rendered UI, or hosted preview.
+
+## Output Files
+
+- `prototype-config.json`
+- `prototype-plan.md`
+- Optional `component-state-model.json`
+- Optional `interaction-flow.json`
+- Optional `prototype-audit.md`
+
+## Quality Gates
+
+- Every interaction target references a stable source node ID.
+- Screens, routes, overlays, forms, menus, and async regions have explicit
+  states.
+- Component anatomy identifies the parts that own interaction, focus, feedback,
+  and announcements.
+- Component states follow the shared state guidelines and map to the canonical
+  interaction-state vocabulary.
+- Overlay close, focus trap, focus return, keyboard, validation, and recovery
+  behavior are covered where relevant.
+- Responsive conditions name interaction changes.
+- Component behavior matches the selected pattern and does not treat a drawer,
+  modal, tab, accordion, table, dropdown, or combobox as interchangeable.
+- Runtime boundary is clear.
+
+## Escalation And Handoffs
+
+- Hand missing structure to `blueprint-architect`.
+- Hand missing component vocabulary to `design-system-architect`.
+- Hand accessibility risks to `accessibility-reviewer`.
+- Hand visual interaction tone to `style-reference-curator`.
+- Hand validated config to a future runtime/editor package.
 
 ## Arbitration
 

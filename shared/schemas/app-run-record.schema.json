@@ -1,0 +1,246 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://omiologic.dev/schemas/ui-blueprint/app-run-record.schema.json",
+  "title": "App Run Record",
+  "description": "App-facing record for creation, review, retrieval, validation, and package runs.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "version",
+    "type",
+    "id",
+    "runKind",
+    "createdAt",
+    "status",
+    "inputs",
+    "outputs"
+  ],
+  "properties": {
+    "version": {
+      "$ref": "#/$defs/version"
+    },
+    "type": {
+      "const": "appRunRecord"
+    },
+    "id": {
+      "$ref": "#/$defs/id"
+    },
+    "runKind": {
+      "type": "string",
+      "enum": [
+        "creation",
+        "review",
+        "retrieval",
+        "validation",
+        "package"
+      ]
+    },
+    "createdAt": {
+      "$ref": "#/$defs/nonEmptyString"
+    },
+    "completedAt": {
+      "$ref": "#/$defs/nonEmptyString"
+    },
+    "status": {
+      "$ref": "#/$defs/runStatus"
+    },
+    "command": {
+      "$ref": "#/$defs/nonEmptyString"
+    },
+    "queryContextId": {
+      "$ref": "#/$defs/id"
+    },
+    "retrievalResultsId": {
+      "$ref": "#/$defs/id"
+    },
+    "artifactManifestId": {
+      "$ref": "#/$defs/id"
+    },
+    "selectedSkills": {
+      "$ref": "#/$defs/stringList"
+    },
+    "inputs": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/artifactRef"
+      }
+    },
+    "outputs": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/artifactRef"
+      }
+    },
+    "validation": {
+      "$ref": "#/$defs/validationSummary"
+    },
+    "findings": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/finding"
+      }
+    },
+    "warnings": {
+      "$ref": "#/$defs/stringList"
+    },
+    "handoffReadiness": {
+      "type": "string",
+      "enum": [
+        "notReady",
+        "needsReview",
+        "ready",
+        "skipped"
+      ]
+    },
+    "notes": {
+      "$ref": "#/$defs/stringList"
+    }
+  },
+  "$defs": {
+    "version": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$"
+    },
+    "nonEmptyString": {
+      "type": "string",
+      "minLength": 1
+    },
+    "stringList": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/nonEmptyString"
+      }
+    },
+    "runStatus": {
+      "type": "string",
+      "enum": [
+        "planned",
+        "running",
+        "passed",
+        "failed",
+        "skipped",
+        "blocked"
+      ]
+    },
+    "artifactType": {
+      "type": "string",
+      "enum": [
+        "queryContext",
+        "retrievalResults",
+        "artifactManifest",
+        "wireframeConfig",
+        "designSystemSeed",
+        "prototypeConfig",
+        "userJourneyMap",
+        "contentModel",
+        "prototypeContent",
+        "brandVoice",
+        "pageAudit",
+        "exportSeed",
+        "packageMetadata",
+        "notes"
+      ]
+    },
+    "artifactRef": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "artifactType",
+        "path"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "artifactType": {
+          "$ref": "#/$defs/artifactType"
+        },
+        "path": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "schemaRef": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "label": {
+          "$ref": "#/$defs/nonEmptyString"
+        }
+      }
+    },
+    "commandResult": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "status"
+      ],
+      "properties": {
+        "name": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "command": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "status": {
+          "$ref": "#/$defs/runStatus"
+        }
+      }
+    },
+    "validationSummary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "commands"
+      ],
+      "properties": {
+        "status": {
+          "$ref": "#/$defs/runStatus"
+        },
+        "commands": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/commandResult"
+          }
+        }
+      }
+    },
+    "finding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "severity",
+        "message"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "severity": {
+          "type": "string",
+          "enum": [
+            "info",
+            "low",
+            "medium",
+            "high",
+            "critical"
+          ]
+        },
+        "message": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "artifactRef": {
+          "$ref": "#/$defs/artifactRef"
+        },
+        "repairGuidance": {
+          "$ref": "#/$defs/nonEmptyString"
+        }
+      }
+    }
+  }
+}

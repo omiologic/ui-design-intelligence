@@ -1,0 +1,303 @@
+{
+  "id": "claimstart-intake-wireframe",
+  "type": "wireframe",
+  "label": "ClaimStart Multi-Step Intake Wireframe",
+  "version": "0.1.0",
+  "description": "Transactional multi-step form blueprint with validation, review, success, error, backtracking, and save recovery.",
+  "root": {
+    "id": "claimstart-intake-page",
+    "type": "page",
+    "label": "ClaimStart Intake Page",
+    "children": [
+      {
+        "id": "intake-header",
+        "type": "header",
+        "label": "Intake Header",
+        "accessibility": {
+          "landmark": "banner"
+        },
+        "children": [
+          {
+            "id": "intake-navigation",
+            "type": "navigation",
+            "label": "Claim Support Navigation",
+            "accessibility": {
+              "ariaLabel": "Claim support navigation"
+            }
+          },
+          {
+            "id": "save-progress-button",
+            "type": "button",
+            "label": "Save Progress",
+            "role": "secondaryCTA"
+          }
+        ]
+      },
+      {
+        "id": "main-content",
+        "type": "main",
+        "label": "Claim Intake Main",
+        "accessibility": {
+          "landmark": "main"
+        },
+        "children": [
+          {
+            "id": "progress-section",
+            "type": "section",
+            "label": "Step Progress",
+            "layout": "stepper",
+            "children": [
+              {
+                "id": "progress-heading",
+                "type": "heading",
+                "label": "Claim Intake Progress"
+              },
+              {
+                "id": "progress-list",
+                "type": "list",
+                "label": "Three Step Progress List"
+              }
+            ]
+          },
+          {
+            "id": "step-one-section",
+            "type": "section",
+            "label": "Step One Policy Contact",
+            "children": [
+              {
+                "id": "policy-contact-form",
+                "type": "form",
+                "label": "Policy And Contact Form",
+                "children": [
+                  {
+                    "id": "policy-fields",
+                    "type": "inputGroup",
+                    "label": "Policy Number And Contact Fields"
+                  },
+                  {
+                    "id": "policy-error-summary",
+                    "type": "banner",
+                    "label": "Policy Step Error Summary",
+                    "state": "error"
+                  },
+                  {
+                    "id": "policy-step-success",
+                    "type": "banner",
+                    "label": "Policy Step Complete",
+                    "state": "success"
+                  },
+                  {
+                    "id": "continue-to-incident-button",
+                    "type": "button",
+                    "label": "Continue To Incident Details",
+                    "role": "primaryCTA"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "step-two-section",
+            "type": "section",
+            "label": "Step Two Incident Details",
+            "children": [
+              {
+                "id": "incident-details-form",
+                "type": "form",
+                "label": "Incident Details Form",
+                "children": [
+                  {
+                    "id": "incident-fields",
+                    "type": "inputGroup",
+                    "label": "Incident Date Location And Description Fields"
+                  },
+                  {
+                    "id": "photo-upload-fields",
+                    "type": "inputGroup",
+                    "label": "Photo Upload Fields"
+                  },
+                  {
+                    "id": "incident-error-summary",
+                    "type": "banner",
+                    "label": "Incident Step Error Summary",
+                    "state": "error"
+                  },
+                  {
+                    "id": "incident-step-success",
+                    "type": "banner",
+                    "label": "Incident Step Complete",
+                    "state": "success"
+                  },
+                  {
+                    "id": "incident-step-actions",
+                    "type": "buttonGroup",
+                    "label": "Incident Step Actions",
+                    "children": [
+                      {
+                        "id": "back-to-policy-button",
+                        "type": "button",
+                        "label": "Back To Policy",
+                        "role": "secondaryCTA"
+                      },
+                      {
+                        "id": "continue-to-review-button",
+                        "type": "button",
+                        "label": "Continue To Review",
+                        "role": "primaryCTA"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "review-section",
+            "type": "section",
+            "label": "Review Claim",
+            "children": [
+              {
+                "id": "review-summary-card",
+                "type": "card",
+                "label": "Claim Review Summary",
+                "children": [
+                  {
+                    "id": "review-summary-heading",
+                    "type": "heading",
+                    "label": "Review Your Claim"
+                  },
+                  {
+                    "id": "review-summary-copy",
+                    "type": "paragraph",
+                    "label": "Review Entered Claim Details"
+                  }
+                ]
+              },
+              {
+                "id": "review-actions",
+                "type": "buttonGroup",
+                "label": "Review Actions",
+                "children": [
+                  {
+                    "id": "edit-incident-button",
+                    "type": "button",
+                    "label": "Edit Incident Details",
+                    "role": "secondaryCTA"
+                  },
+                  {
+                    "id": "submit-claim-button",
+                    "type": "button",
+                    "label": "Submit Claim",
+                    "role": "primaryCTA"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "success-section",
+            "type": "section",
+            "label": "Claim Submitted Success",
+            "children": [
+              {
+                "id": "success-confirmation-card",
+                "type": "card",
+                "label": "Claim Confirmation",
+                "role": "trustSignal",
+                "children": [
+                  {
+                    "id": "success-heading",
+                    "type": "heading",
+                    "label": "Claim Submitted"
+                  },
+                  {
+                    "id": "claim-reference-copy",
+                    "type": "paragraph",
+                    "label": "Claim Reference And Next Steps"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "save-recovery-section",
+            "type": "section",
+            "label": "Save And Recovery",
+            "children": [
+              {
+                "id": "save-recovery-card",
+                "type": "card",
+                "label": "Save And Resume Recovery",
+                "role": "helperText"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "mobile-progress-sticky-bar",
+        "type": "stickyBar",
+        "label": "Mobile Progress Sticky Bar",
+        "children": [
+          {
+            "id": "mobile-save-button",
+            "type": "button",
+            "label": "Save",
+            "role": "secondaryCTA"
+          }
+        ]
+      },
+      {
+        "id": "intake-footer",
+        "type": "footer",
+        "label": "Intake Footer",
+        "accessibility": {
+          "landmark": "contentinfo"
+        }
+      }
+    ]
+  },
+  "overlays": [
+    {
+      "id": "save-resume-dialog",
+      "type": "dialog",
+      "label": "Save And Resume Dialog",
+      "state": "closed",
+      "accessibility": {
+        "ariaLabel": "Save claim progress",
+        "focusManagement": "Move focus into the dialog on open and return focus to the save progress button on close.",
+        "keyboardBehavior": "Escape closes the dialog and Tab remains inside while open."
+      },
+      "children": [
+        {
+          "id": "save-resume-content",
+          "type": "contentGroup",
+          "label": "Save Resume Content",
+          "children": [
+            {
+              "id": "save-resume-heading",
+              "type": "heading",
+              "label": "Save Your Progress"
+            },
+            {
+              "id": "save-resume-copy",
+              "type": "paragraph",
+              "label": "Resume Link Explanation"
+            },
+            {
+              "id": "send-resume-link-button",
+              "type": "button",
+              "label": "Send Resume Link",
+              "role": "primaryCTA"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "responsive": {
+    "desktop": "Progress, current step, review, and recovery sections are visible in a guided single-column flow.",
+    "tablet": "Step sections remain single column with progress above current form fields.",
+    "mobile": "Sticky progress and save controls remain available; current step fields and primary action stay before secondary support content."
+  }
+}

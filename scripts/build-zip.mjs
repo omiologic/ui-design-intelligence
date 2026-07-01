@@ -10,6 +10,7 @@ const distDir = path.join(root, "dist");
 const archiveName = `${pkg.name}-${pkg.version}.zip`;
 const archivePath = path.join(distDir, archiveName);
 const packageDir = path.join(distDir, "package");
+const skipValidation = process.argv.includes("--skip-validation");
 
 function run(command, args, options = {}) {
   const result = spawnSync(command, args, {
@@ -42,7 +43,11 @@ if (fs.existsSync(archivePath)) fs.rmSync(archivePath);
 fs.rmSync(packageDir, { recursive: true, force: true });
 fs.mkdirSync(packageDir, { recursive: true });
 
-run("npm", ["run", "validate"]);
+if (skipValidation) {
+  console.warn("Skipping full validation because --skip-validation was supplied. Run npm run validate:release before publishing.");
+} else {
+  run("npm", ["run", "validate"]);
+}
 
 const files = [
   "README.md",
@@ -59,17 +64,25 @@ const files = [
   "docs",
   "shared",
   "tests/invalid-examples",
+  "tests/invalid-content",
   "tests/invalid-antipatterns",
   "scripts/validate-skills.mjs",
+  "scripts/validate-changed.mjs",
   "scripts/validate-examples.mjs",
+  "scripts/validate-content.mjs",
   "scripts/validate-blueprint-antipatterns.mjs",
   "scripts/validate-invalid-examples.mjs",
+  "scripts/validate-invalid-content.mjs",
   "scripts/validate-invalid-antipatterns.mjs",
   "scripts/validate-bundles.mjs",
+  "scripts/validate-install-matrix.mjs",
+  "scripts/validate-codex-plugins.mjs",
   "scripts/validate-release.mjs",
+  "scripts/inspect-release-artifacts.mjs",
   "scripts/capture-url.mjs",
   "scripts/export-blueprint-seed.mjs",
   "scripts/build-bundles.mjs",
+  "scripts/build-codex-plugins.mjs",
   "scripts/install-bundle.mjs",
   "scripts/build-schema.mjs",
   "scripts/check-schema-drift.mjs",

@@ -2,31 +2,38 @@
 
 ## Decision
 
-Sprint 002 documents parity with downstream taste-tool workflows without
-implementing a marketplace or `npx skills add` installer. Sprint 003 extends the
-same local parity model to design-system seed workflows.
+The supported install paths are target-specific. Codex/GPT local skill installs
+use `.agents/skills`; Claude/local compatibility installs use `.claude` for the
+full bundle surface; generated Codex plugin packages use `.codex-plugin` package
+shape under `dist/` once built.
 
-The supported install path remains this repository's deterministic local bundle
-installer:
+The deterministic local bundle installer remains the shared implementation for
+direct local installs:
 
 ```bash
-./install.sh
+node scripts/install-bundle.mjs install ui-design-intelligence "$HOME/.agents" "$HOME/.agents/skills" --skills-only --dry-run
+node scripts/install-bundle.mjs install ui-design-intelligence "$HOME/.claude" "$HOME/.claude/skills" --dry-run
+```
+
+The shell wrapper remains a Claude/local compatibility convenience:
+
+```bash
+./install.sh --dry-run
 UI_PLUGIN_BUNDLE="ui-design-intelligence" ./install.sh
 UI_PLUGIN_TARGET="/path/to/.claude" ./install.sh
 ```
 
-This keeps current installs stable while the repository continues its transition
-from a single skill package into a plugin monorepo with skills, agents,
-commands, and shared assets.
+## Compatibility Matrix
 
-## What Parity Means In Sprint 002
-
-| Area | Sprint 002 Behavior | Deferred |
+| Area | Supported behavior | Not implied |
 | --- | --- | --- |
-| Install | `install.sh` installs selected bundle manifests into an agent root. | `npx skills add`, marketplace metadata, remote registry publishing. |
-| Bundle selection | `UI_PLUGIN_BUNDLE` selects `ui-study-skills`, `ui-audit-skills`, `ui-blueprint-skills`, `ui-seo-skills`, `ui-knowledge-skills`, `ui-design-system-skills`, or `ui-design-intelligence`. | Public marketplace bundle discovery. |
-| Target selection | `UI_PLUGIN_TARGET` installs skills, agents, commands, and shared files under one agent root. | Tool-specific install adapters beyond the current local directory layout. |
-| Commands | Markdown commands are installed from bundle manifests into `commands/`. | Tool-specific slash-command marketplaces or generated command registries. |
+| Codex/GPT local skills | `install-bundle.mjs --skills-only` installs selected bundle skills into `.agents/skills` and required shared reference assets beside them. | Claude agents and commands in `.agents`. |
+| Codex plugin package | `build:codex-plugins` emits `.codex-plugin/plugin.json`, `skills/`, inspection output, and required reference assets under `dist/codex-plugins`. | Claude agents and commands in generated plugin packages. |
+| Codex local marketplace | `build:codex-plugins` emits `dist/codex-marketplace/.agents/plugins/marketplace.json` with local entries for mirrored generated packages. | Public marketplace publishing or remote registry availability. |
+| Claude/local full bundle | `install.sh` or `install-bundle.mjs` installs selected bundle manifests into `.claude`. | Codex plugin marketplace metadata in `.claude`. |
+| Bundle selection | `UI_PLUGIN_BUNDLE` selects `ui-study-skills`, `ui-audit-skills`, `ui-blueprint-skills`, `ui-seo-skills`, `ui-knowledge-skills`, `ui-design-system-skills`, `ui-style-reference-skills`, `ui-prototype-skills`, `ui-content-skills`, or `ui-design-intelligence`. | Automatic bundle discovery in external marketplaces. |
+| Target selection | `target-root` and `skills-dir` are passed separately; `UI_PLUGIN_TARGET` selects a Claude/local agent root for the shell wrapper. | Mixing Codex `.agents` command paths with Claude `.claude` command paths. |
+| Commands | Markdown commands are installed from bundle manifests into Claude/local `commands/`. | Codex slash-command registration until a generated Codex package supports it. |
 | Handoff | Blueprint Export Seed markdown can be passed to downstream visual-taste tools. | Direct invocation of third-party tools or private prompt formats. |
 
 ## Discipline-Scoped Commands
@@ -42,9 +49,8 @@ visual-taste tools without overlapping their responsibilities.
 | Blueprint | `generate-blueprint-from-study` | Translating study evidence into UIBlueprint structure and final wireframe JSON handoff. |
 | Export seed | `scripts/export-blueprint-seed.mjs` | Prototype-only deterministic conversion from blueprint plus taste profile to downstream seed markdown. |
 
-The export seed workflow is intentionally a script in Sprint 002, not an
-installed command. It may become a command after bundle packaging and command
-parity are updated in a later task.
+The export seed workflow is intentionally a script, not an installed command.
+It may become a command after bundle packaging and command parity require it.
 
 ## Bundle Command Matrix
 
@@ -56,19 +62,22 @@ parity are updated in a later task.
 | `ui-seo-skills` | `audit-page`, `audit-site` |
 | `ui-knowledge-skills` | `extract-patterns-from-study`, `index-knowledge-base`, `search-ui-knowledge`, `generate-blueprint-from-knowledge`, `explain-blueprint-lineage` |
 | `ui-design-system-skills` | `generate-design-system-seed`, `audit-design-system-seed` |
+| `ui-content-skills` | `generate-content-model-from-blueprint`, `generate-prototype-copy`, `audit-prototype-copy`, `extract-copy-patterns-from-study`, `generate-copy-from-knowledge` |
 | `ui-design-intelligence` | `study-page`, `study-site`, `audit-page`, `audit-site`, `audit-interactions`, `generate-blueprint-from-study`, `extract-patterns-from-study`, `index-knowledge-base`, `search-ui-knowledge`, `generate-blueprint-from-knowledge`, `explain-blueprint-lineage`, `generate-design-system-seed`, `audit-design-system-seed` |
 
 ## Validation Coverage
 
-Sprint 003 adds `npm run validate:design-system` and
-`npm run validate:style-references`. Design-system validation checks
+Design-system validation checks
 `DesignSystemSeed` examples and templates, standalone foundation schemas,
 design-system vocabulary alignment, component decision-tree targets,
 source/confidence metadata, and `ui-design-system-skills` plus aggregate bundle
 packaging. Style-reference validation checks style records, category/index
 drift, scope and intensity vocabulary, mapping keys, source/license metadata,
 application/patch/blend examples, and `ui-style-reference-skills` plus aggregate
-bundle packaging. The release validator runs these through `npm run validate`.
+bundle packaging. Install matrix validation checks Codex `.agents`, Claude
+`.claude`, aggregate, component, reinstall, conflict, force, and uninstall
+behavior through `npm run validate:install-matrix`. The release validator runs
+these gates before release.
 
 ## User Workflow Beside Taste Tools
 
@@ -83,14 +92,13 @@ bundle packaging. The release validator runs these through `npm run validate`.
 
 ## Deferred Work
 
-The following are intentionally outside Sprint 002:
+The following remain outside the current install contract:
 
-- `npx skills add` compatibility or a published package entrypoint.
-- Marketplace manifests, remote install metadata, or registry publishing.
+- Remote registry publishing.
 - Tool-specific command registries for third-party agents.
 - A first-class installed export command.
 - Direct adapters that claim to emit a private third-party format.
 
-Before any deferred install work ships, it should preserve the current
-manifest-selected local install path and pass release validation for all
+Before any deferred install work ships, it should preserve the target split in
+`cross-agent-compatibility-contract.md` and pass release validation for all
 buildable bundles.

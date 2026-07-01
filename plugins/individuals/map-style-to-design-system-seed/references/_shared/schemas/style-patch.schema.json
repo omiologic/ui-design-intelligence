@@ -1,0 +1,195 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://omiologic.dev/schemas/ui-blueprint/style-patch.schema.json",
+  "title": "Style Patch",
+  "description": "Scoped style changes that modify an existing design-system seed, section, component, or prototype behavior target without replacing the whole artifact.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "version",
+    "type",
+    "styleId",
+    "target",
+    "intensity",
+    "changes",
+    "preserve",
+    "avoid",
+    "rationale",
+    "source"
+  ],
+  "properties": {
+    "version": {
+      "$ref": "#/$defs/version"
+    },
+    "type": {
+      "const": "stylePatch"
+    },
+    "styleId": {
+      "$ref": "#/$defs/id"
+    },
+    "target": {
+      "$ref": "#/$defs/target"
+    },
+    "intensity": {
+      "$ref": "#/$defs/intensity"
+    },
+    "changes": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/change"
+      }
+    },
+    "preserve": {
+      "$ref": "#/$defs/stringList"
+    },
+    "avoid": {
+      "$ref": "#/$defs/stringList"
+    },
+    "rationale": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source": {
+      "$ref": "#/$defs/source"
+    }
+  },
+  "$defs": {
+    "version": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$"
+    },
+    "scope": {
+      "type": "string",
+      "enum": [
+        "site",
+        "page",
+        "section",
+        "component",
+        "prototype"
+      ]
+    },
+    "intensity": {
+      "type": "string",
+      "enum": [
+        "subtle",
+        "medium",
+        "strong",
+        "experimental"
+      ]
+    },
+    "operation": {
+      "type": "string",
+      "enum": [
+        "add",
+        "replace",
+        "remove",
+        "annotate"
+      ]
+    },
+    "sourceType": {
+      "type": "string",
+      "enum": [
+        "styleReference",
+        "styleApplication",
+        "styleBlend",
+        "userProvided",
+        "generated",
+        "internalReference"
+      ]
+    },
+    "stringList": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "target": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "scope",
+        "id",
+        "artifactType"
+      ],
+      "properties": {
+        "scope": {
+          "$ref": "#/$defs/scope"
+        },
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "artifactType": {
+          "type": "string",
+          "enum": [
+            "designSystemSeed",
+            "designSystemFoundation",
+            "blueprint",
+            "wireframe",
+            "prototypeConfig",
+            "section",
+            "component"
+          ]
+        },
+        "artifactRef": {
+          "type": "string"
+        }
+      }
+    },
+    "change": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "operation",
+        "path",
+        "value",
+        "reason"
+      ],
+      "properties": {
+        "operation": {
+          "$ref": "#/$defs/operation"
+        },
+        "path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "value": {
+          "type": "string"
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "type",
+        "description",
+        "licenseNotes"
+      ],
+      "properties": {
+        "type": {
+          "$ref": "#/$defs/sourceType"
+        },
+        "description": {
+          "type": "string",
+          "minLength": 1
+        },
+        "artifactRef": {
+          "type": "string"
+        },
+        "licenseNotes": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    }
+  }
+}

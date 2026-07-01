@@ -28,6 +28,16 @@ into final-looking design tokens.
 - `references/_shared/design-philosophy/design-system/design-system-principles.md`
 - `references/_shared/design-philosophy/design-system/design-system-anti-slop.md`
 - `references/_shared/design-philosophy/design-system/skill-doctrine.md`
+- `references/_shared/design-system/design-system-quality-checklist.md`
+- `references/_shared/design-system/design-system-handoff-checklist.md`
+- `references/_shared/design-system/token-taxonomy.md`
+- `references/_shared/design-system/component-anatomy-reference.md`
+- `references/_shared/design-system/component-state-guidelines.md`
+- `references/_shared/design-system/accessibility-token-guidelines.md`
+- `references/_shared/design-system/responsive-system-guidelines.md`
+- `references/_shared/design-system/visual-style-calibration.md`
+- `references/_shared/design-system/component-selection-guidelines.md`
+- `references/_shared/design-system/anti-generic-ui-guidelines.md`
 - `references/_shared/schemas/design-system-seed.schema.json`
 - `references/_shared/schemas/brand-foundation.schema.json`
 - `references/_shared/schemas/palette-foundation.schema.json`
@@ -84,9 +94,31 @@ into final-looking design tokens.
 1. Identify source input type and evidence quality.
 2. Load project defaults from `.ui-design-intelligence.yml` when available.
 3. Generate or request each foundation section.
-4. Assemble the schema-facing seed.
-5. Add Markdown notes for humans.
-6. Run audit skills and preserve unresolved questions.
+4. Name tokens with the shared token taxonomy before assembling the seed.
+5. Use the shared component anatomy reference for component parts, content
+   slots, accessibility hooks, and state hooks.
+6. Use the shared component state guidelines for reusable state coverage.
+7. Use the shared accessibility token guidelines for contrast, focus, target
+   size, readable type, disabled legibility, motion, opacity, and non-color
+   state constraints.
+8. Use the shared responsive system guidelines for responsive token,
+   component, density, sticky region, and prototype handoff expectations.
+9. Use the shared visual style calibration guide when style references, brand
+   direction, or screenshot study should influence non-generic token,
+   component, hierarchy, density, restraint, imagery, or motion-posture choices.
+10. Use the shared component selection guidelines when seed component rules
+   must constrain table/card, tabs/segmented control, modal/drawer,
+   dropdown/combobox, or disclosure decisions.
+11. Use the shared anti-generic UI guidelines to replace weak generic decisions
+   with concrete token, typography, component, density, surface, imagery, or
+   handoff constraints.
+12. Assemble the schema-facing seed.
+13. Add Markdown notes for humans.
+14. Review readiness against the shared design-system quality checklist.
+15. Review handoff readiness against the shared design-system handoff checklist
+   before the seed is used by blueprint, prototype, implementation, or app
+   rendering workflows.
+16. Run audit skills and preserve unresolved questions.
 
 ## Anti-Patterns
 
@@ -94,6 +126,7 @@ into final-looking design tokens.
 - Inventing exact visual values from weak evidence.
 - Omitting provenance from generated recommendations.
 - Creating component names that drift from shared vocabulary.
+- Creating token names that encode raw values instead of semantic roles.
 - Defining multiple primary action variants in the same context.
 - Emitting orphan tokens with no usage or semantic role.
 - Hiding unresolved evidence gaps in prose instead of `openQuestions`.

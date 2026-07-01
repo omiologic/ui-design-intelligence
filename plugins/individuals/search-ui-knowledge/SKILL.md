@@ -24,6 +24,7 @@ blueprint with generic advice.
 
 - `references/knowledge-search.md`
 - `../../../knowledge/schemas/knowledge-index.schema.json`
+- `../../../knowledge/schemas/pattern-record.schema.json`
 - `../../../knowledge/vocabulary/knowledge-tags.json`
 
 ## Decision Criteria
@@ -34,6 +35,8 @@ blueprint with generic advice.
    similar.
 3. Return reasons and recommended use, not just IDs.
 4. Exclude deprecated records unless explicitly auditing lineage or history.
+5. Preserve any `storageRef` returned by local indexes or remote retrieval so
+   downstream skills can fetch the full record before applying it.
 
 ## Boundary
 
@@ -47,6 +50,8 @@ blueprint with generic advice.
 2. Explain missing matches and tag gaps.
 3. Do not use raw study notes as search results when pattern records exist.
 4. Surface assumptions when the brief lacks key query dimensions.
+5. Use provider-neutral retrieval language: local index, vector-backed search,
+   canonical storage reference, and fetched pattern record.
 
 ## Anti-Patterns
 
@@ -54,13 +59,20 @@ blueprint with generic advice.
 - Industry overfit: ignoring page type or task because industry matches.
 - Hidden rationale: returning pattern IDs without why they apply.
 - Deprecated reuse: applying records marked deprecated.
+- Blind vector trust: accepting a ranked vector result without checking status,
+  confidence, tags, retrieval reason, and freshness.
+- Source copying: treating retrieved pattern knowledge as permission to copy a
+  source design or captured page.
 
 ## Workflow
 
 1. Parse the brief into query dimensions.
-2. Load `knowledge-index.schema.json` shaped index data.
-3. Filter by hard constraints and rank by tag overlap, confidence, and status.
-4. Return pattern IDs, reasons, recommended use, and gaps.
+2. Use local index search by default; use vector-backed retrieval only when the
+   environment/configuration provides it.
+3. Filter by hard constraints and rank by tag overlap, confidence, status, and
+   retrieval score or reason.
+4. Return pattern IDs, retrieval reasons, recommended use, gaps, and any
+   `storageRef` needed to fetch canonical records.
 
 ## Inline Example
 

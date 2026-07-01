@@ -42,6 +42,8 @@ const sharedFiles = [
   ["shared/design-philosophy/page-section-ordering.md", "design-philosophy/page-section-ordering.md"],
   ["shared/design-philosophy/preflight-checklist.md", "design-philosophy/preflight-checklist.md"],
   ["shared/design-philosophy/structural-anti-slop.md", "design-philosophy/structural-anti-slop.md"],
+  ["shared/design-system/component-selection-guidelines.md", "design-system/component-selection-guidelines.md"],
+  ["shared/design-system/anti-generic-ui-guidelines.md", "design-system/anti-generic-ui-guidelines.md"],
   ["shared/taste-profiles/README.md", "taste-profiles/README.md"],
   ["shared/taste-profiles/conversion.json", "taste-profiles/conversion.json"],
   ["shared/taste-profiles/utility-product.json", "taste-profiles/utility-product.json"],
@@ -53,6 +55,16 @@ const designSystemSharedFiles = [
   ["shared/design-philosophy/design-system/design-system-principles.md", "design-philosophy/design-system/design-system-principles.md"],
   ["shared/design-philosophy/design-system/design-system-anti-slop.md", "design-philosophy/design-system/design-system-anti-slop.md"],
   ["shared/design-philosophy/design-system/skill-doctrine.md", "design-philosophy/design-system/skill-doctrine.md"],
+  ["shared/design-system/design-system-quality-checklist.md", "design-system/design-system-quality-checklist.md"],
+  ["shared/design-system/design-system-handoff-checklist.md", "design-system/design-system-handoff-checklist.md"],
+  ["shared/design-system/token-taxonomy.md", "design-system/token-taxonomy.md"],
+  ["shared/design-system/component-anatomy-reference.md", "design-system/component-anatomy-reference.md"],
+  ["shared/design-system/component-state-guidelines.md", "design-system/component-state-guidelines.md"],
+  ["shared/design-system/accessibility-token-guidelines.md", "design-system/accessibility-token-guidelines.md"],
+  ["shared/design-system/responsive-system-guidelines.md", "design-system/responsive-system-guidelines.md"],
+  ["shared/design-system/visual-style-calibration.md", "design-system/visual-style-calibration.md"],
+  ["shared/design-system/component-selection-guidelines.md", "design-system/component-selection-guidelines.md"],
+  ["shared/design-system/anti-generic-ui-guidelines.md", "design-system/anti-generic-ui-guidelines.md"],
   ["shared/schemas/design-system-seed.schema.json", "schemas/design-system-seed.schema.json"],
   ["shared/schemas/brand-foundation.schema.json", "schemas/brand-foundation.schema.json"],
   ["shared/schemas/palette-foundation.schema.json", "schemas/palette-foundation.schema.json"],
@@ -80,6 +92,17 @@ export const sharedReferenceBundles = {
   "design-system": {
     skills: designSystemSkills,
     files: designSystemSharedFiles
+  },
+  "style-to-design-system": {
+    skills: ["map-style-to-design-system-seed"],
+    files: [
+      ["shared/design-system/visual-style-calibration.md", "design-system/visual-style-calibration.md"],
+      ["shared/schemas/style-reference.schema.json", "schemas/style-reference.schema.json"],
+      ["shared/schemas/style-application.schema.json", "schemas/style-application.schema.json"],
+      ["shared/schemas/style-patch.schema.json", "schemas/style-patch.schema.json"],
+      ["shared/schemas/style-blend.schema.json", "schemas/style-blend.schema.json"],
+      ["shared/schemas/design-system-seed.schema.json", "schemas/design-system-seed.schema.json"]
+    ]
   },
   study: {
     skills: [

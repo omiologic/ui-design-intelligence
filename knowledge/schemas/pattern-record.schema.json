@@ -66,6 +66,7 @@
       "minItems": 1,
       "items": { "$ref": "#/$defs/sourceRef" }
     },
+    "storageRef": { "$ref": "#/$defs/storageRef" },
     "confidence": { "$ref": "#/$defs/confidence" },
     "status": { "$ref": "#/$defs/status" }
   },
@@ -110,7 +111,33 @@
         "studyId": { "$ref": "#/$defs/id" },
         "auditId": { "$ref": "#/$defs/id" },
         "findingLabels": { "$ref": "#/$defs/stringList" },
-        "evidenceRefs": { "$ref": "#/$defs/stringList" }
+        "evidenceRefs": { "$ref": "#/$defs/stringList" },
+        "storageRef": { "$ref": "#/$defs/storageRef" }
+      }
+    },
+    "storageRef": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "uri"],
+      "properties": {
+        "kind": { "type": "string", "enum": ["localPath", "s3Uri"] },
+        "uri": { "type": "string", "minLength": 1 },
+        "objectType": {
+          "type": "string",
+          "enum": ["sourceRecord", "studyRecord", "auditRecord", "patternRecord", "knowledgeIndex", "blueprintLineage", "generatedOutput"]
+        },
+        "etag": { "type": "string", "minLength": 1 },
+        "versionId": { "type": "string", "minLength": 1 },
+        "updatedAt": { "type": "string", "minLength": 1 },
+        "checksum": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["algorithm", "value"],
+          "properties": {
+            "algorithm": { "type": "string", "enum": ["sha256"] },
+            "value": { "type": "string", "minLength": 1 }
+          }
+        }
       }
     },
     "nodeType": {

@@ -45,6 +45,62 @@ wireframe output.
 5. Stop if the source lacks enough content to distinguish evidence from
    inference; record open questions instead of inventing context.
 
+## Creation Defaults
+
+- Use this agent before creation only when the source is observed UI, a
+  screenshot, URL capture, raw page notes, or mixed evidence.
+- Do not run by default for a fresh brief that already states scope, audience,
+  goal, and source truth.
+- Produce evidence labels and missing-context notes for `create-wireframe`,
+  `create-design-spec`, and `create-prototype-plan`.
+
+## Required Inputs
+
+- Source type and available evidence.
+- Page, site, screen, or flow scope.
+- User-provided business context when available.
+- Target audience or conversion/task goal when available.
+- Capture date or freshness note when evidence is time-sensitive.
+
+## Missing Input Questions
+
+Ask at most three blocking questions:
+
+1. What source should be studied?
+2. What page, site, screen, or flow scope matters?
+3. What business context or user goal should frame the evidence?
+
+Proceed with confidence labels when context is helpful but not blocking.
+
+## Stop Conditions
+
+- The source is unavailable or too thin to separate evidence from inference.
+- The user expects generation rather than research.
+- Required freshness or capture context is unknown for a time-sensitive review.
+
+## Output Files
+
+- `page-study.md`
+- Optional `page-study.json`
+- Optional `site-study.md`
+- Handoff notes for `wireframe-notes.md`, `design-spec.md`, or
+  `prototype-plan.md`.
+
+## Quality Gates
+
+- Observed facts, interpretations, and assumptions are separated.
+- Audience, promise, proof, objections, CTA, and missing context are labeled.
+- Responsive findings are viewport-specific when evidence exists.
+- Downstream handoff names which agent owns each unresolved gap.
+
+## Escalation And Handoffs
+
+- Hand structure evidence to `ui-specification-analyst`.
+- Hand interaction evidence to `ui-interaction-analyst`.
+- Hand accessibility concerns to `accessibility-reviewer`.
+- Hand structural generation to `blueprint-architect`.
+- Hand reusable pattern candidates to `ui-knowledge-librarian`.
+
 ## Arbitration
 
 Observed page content beats inferred intent. User-provided business context

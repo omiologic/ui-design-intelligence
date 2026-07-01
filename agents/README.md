@@ -75,3 +75,13 @@ Each file should include:
   applications, patches, and audits.
 - `prototype-architect` owns declarative prototype behavior over wireframe node
   references.
+- `user-journey-architect` owns journey strategy, stages, objections, and
+  conversion-path logic.
+- `ux-content-strategist` owns content hierarchy and copy-role planning between
+  journeys and node-tied content.
+- `ux-copywriter` owns realistic UX copy for blueprint nodes and prototype
+  surfaces.
+- `conversion-copywriter` owns conversion-oriented CTA, proof, objection, and
+  form copy.
+- `prototype-content-designer` owns prototype-ready copy tied to content models,
+  prototype screens, forms, messages, and node IDs.

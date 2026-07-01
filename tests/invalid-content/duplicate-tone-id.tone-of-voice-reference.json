@@ -1,0 +1,69 @@
+{
+  "version": "0.1.0",
+  "type": "toneOfVoiceReference",
+  "description": "Invalid tone reference with duplicate tone IDs.",
+  "tones": [
+    {
+      "id": "clear-practical",
+      "name": "Clear Practical",
+      "summary": "Direct and useful.",
+      "vibe": ["clear"],
+      "bestFor": ["support"],
+      "useCarefullyFor": [],
+      "copyRules": {
+        "do": ["Use direct language."],
+        "avoid": ["Avoid vague claims."]
+      },
+      "sampleLines": {
+        "headline": "Compare the options.",
+        "body": "Use the details to choose the right next step.",
+        "primaryCTA": "Compare Options",
+        "secondaryCTA": "Read Details",
+        "emptyState": "No results found.",
+        "error": "Complete the required fields."
+      },
+      "uiCopyFit": {
+        "hero": "medium",
+        "cta": "high",
+        "formMicrocopy": "high"
+      }
+    },
+    {
+      "id": "clear-practical",
+      "name": "Duplicate Clear Practical",
+      "summary": "A duplicate ID that should fail semantic validation.",
+      "vibe": ["plainspoken"],
+      "bestFor": ["documentation"],
+      "useCarefullyFor": [],
+      "copyRules": {
+        "do": ["Keep copy scannable."],
+        "avoid": ["Avoid cleverness over clarity."]
+      },
+      "sampleLines": {
+        "headline": "Review the details.",
+        "body": "Check the information before continuing.",
+        "primaryCTA": "Continue",
+        "secondaryCTA": "Learn More",
+        "emptyState": "Nothing to show.",
+        "error": "Try again."
+      },
+      "uiCopyFit": {
+        "hero": "medium",
+        "cta": "high",
+        "formMicrocopy": "high"
+      }
+    }
+  ],
+  "toneMixingRules": {
+    "description": "Invalid duplicate fixture.",
+    "recommendedMaxTones": 2,
+    "primaryToneUsage": "Use the primary tone for major messaging.",
+    "secondaryToneUsage": "Use the secondary tone for support copy.",
+    "avoid": ["Do not mix conflicting tones."]
+  },
+  "recommendedUsage": {
+    "contentModel": "Use tone IDs for content models.",
+    "prototypeCopy": "Use tone IDs for prototype copy.",
+    "audit": "Use tone IDs for copy audit."
+  }
+}

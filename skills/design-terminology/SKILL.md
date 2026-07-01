@@ -48,6 +48,13 @@ needs state and accessibility handling.
 5. Preserve original wording only as a human-facing label or annotation; approved
    vocabulary remains the machine contract.
 
+## Boundary
+
+- Owns: canonical UI term selection and consistency enforcement before structural wireframe work begins.
+- Does not own: final structural layout, interaction behavior specification, component anatomy details, or accessibility rule application.
+- Hand off structural planning after term alignment to `page-wireframe-planner`.
+- Hand off interaction behavior to `interaction-patterns`.
+
 ## Rules
 
 1. Replace casual UI wording with approved vocabulary before producing JSON.

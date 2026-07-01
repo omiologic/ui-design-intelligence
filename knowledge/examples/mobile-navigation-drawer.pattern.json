@@ -47,5 +47,16 @@
     "level": "medium",
     "reason": "Common reusable interaction pattern; project-local evidence should confirm details."
   },
+  "storageRef": {
+    "kind": "s3Uri",
+    "uri": "s3://<bucket>/ui-knowledge/patterns/mobile-navigation-drawer.pattern.json",
+    "objectType": "patternRecord",
+    "versionId": "<version-id>",
+    "updatedAt": "2026-06-30",
+    "checksum": {
+      "algorithm": "sha256",
+      "value": "<sha256-checksum>"
+    }
+  },
   "status": "candidate"
 }

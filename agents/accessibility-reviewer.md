@@ -33,6 +33,7 @@ cross-domain findings, `blueprint-architect` for structural remediation, and
 - optional: `audit-page`
 - optional: `audit-site`
 - optional: `audit-prototype-flow`
+- optional: `review-generated-wireframe`
 
 ## Workflow
 
@@ -40,10 +41,77 @@ cross-domain findings, `blueprint-architect` for structural remediation, and
    custom controls, responsive shifts, and sticky regions.
 2. Run `study-ui-accessibility` when observing an existing interface.
 3. Run `accessibility-wireframe-review` when reviewing planned structure.
-4. Branch to `generate-accessibility-audit-report` when the requested output is
+4. Use `shared/design-system/accessibility-token-guidelines.md` when reviewing
+   design-system seeds, token choices, focus visibility, contrast risk,
+   target size, disabled legibility, reduced motion, or non-color state cues.
+5. Use `shared/content/content-accessibility-guidelines.md` when reviewing
+   copy-only accessibility issues such as plain language, label clarity, error
+   recovery, ambiguous links, jargon, idioms, or screen-reader-friendly copy.
+6. Branch to `generate-accessibility-audit-report` when the requested output is
    a severity-ranked audit finding.
-5. Stop if source evidence lacks enough detail for keyboard, focus, names, or
+7. Stop if source evidence lacks enough detail for keyboard, focus, names, or
    error behavior; record unknowns explicitly.
+
+## Creation Defaults
+
+- Review creation artifacts before handoff when they include navigation, forms,
+  overlays, custom controls, responsive shifts, sticky UI, or stateful feedback.
+- For wireframes, focus on landmarks, labels, focus order, keyboard paths, and
+  error recovery.
+- For prototype plans, focus on focus trap, focus return, Escape behavior,
+  validation feedback, and keyboard activation.
+
+## Required Inputs
+
+- Wireframe, design spec, prototype plan, interaction notes, or accessibility
+  observations.
+- Interactive surfaces in scope.
+- Known focus, keyboard, label, landmark, form, or responsive behavior.
+- Target output: review notes, score contribution, audit finding, or handoff
+  constraint.
+
+## Missing Input Questions
+
+Ask at most three blocking questions:
+
+1. Which artifact or surface should be reviewed?
+2. Which interactions or states are in scope?
+3. Is this a creation handoff review or a severity-ranked audit?
+
+Proceed with uncertainty labels when evidence is incomplete but not blocking.
+
+## Stop Conditions
+
+- Source evidence lacks enough detail for names, roles, focus, keyboard, or
+  error behavior.
+- The user asks for production accessibility certification.
+- Visual/browser QA is required but no rendered interface is available.
+
+## Output Files
+
+- `accessibility-review.md`
+- Optional `accessibility-audit.md`
+- Accessibility notes for `wireframe-review.md`, `design-spec.md`, or
+  `prototype-plan.md`.
+
+## Quality Gates
+
+- Landmarks, names, labels, focus, keyboard, and error recovery are addressed
+  where relevant.
+- Token-level risks for contrast, focus visibility, target size, readable type,
+  disabled legibility, reduced motion, and non-color state communication are
+  checked when a design-system seed or token guidance is in scope.
+- Overlay and form behavior includes dismissal, focus return, validation, and
+  recovery guidance.
+- Responsive accessibility risks are named separately from desktop behavior.
+- Unknowns are not treated as passing conditions.
+
+## Escalation And Handoffs
+
+- Hand structural fixes to `blueprint-architect`.
+- Hand behavior config fixes to `prototype-architect`.
+- Hand component constraint gaps to `design-system-architect`.
+- Hand severity prioritization to `ui-audit-lead`.
 
 ## Arbitration
 
@@ -55,6 +123,10 @@ When evidence is incomplete, mark uncertainty rather than approving the pattern.
 
 - UI specification, interaction notes, wireframe JSON, or planned blueprint
   structure.
+- Design-system token guidance such as
+  `shared/design-system/accessibility-token-guidelines.md`.
+- Content accessibility guidance:
+  `shared/content/content-accessibility-guidelines.md`.
 - Captured accessibility observations where available.
 - Prototype or form behavior notes when focus and keyboard behavior matter.
 - Relevant schemas: `shared/schemas/study-output.schema.json`,

@@ -63,6 +63,18 @@ The validator does not judge whether a profile has good taste, whether a
 sequence is strategically appropriate, or whether density and CTA cadence advice
 is persuasive. Those remain skill judgment and review concerns.
 
+## Available Profiles
+
+| Profile | Register | When to use |
+| --- | --- | --- |
+| `conversion` | marketing | Pages that need a visitor to understand, trust, and take one primary action |
+| `utility-product` | product | Screens where users inspect state, compare options, and complete tasks efficiently |
+| `editorial` | marketing | Long-form, content-first pages where depth and authority build trust before action |
+| `healthcare` | marketing | Healthcare and institutional pages where clarity, trust, and accessibility take precedence |
+| `ecommerce` | marketing | Product-led pages optimized for scanning, comparison, and purchase decisions |
+| `saas-utility` | product | SaaS screens where feature discovery, task density, and progressive disclosure support repeated use |
+| `local-business` | marketing | Local business pages that need to convert nearby intent into contact, appointment, or visit |
+
 ## Blueprint Metadata
 
 Blueprint examples can reference a profile with optional metadata:

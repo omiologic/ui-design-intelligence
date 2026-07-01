@@ -1,9 +1,9 @@
 {
   "name": "ui-prototype-skills",
   "displayName": "UI Prototype Skills",
-  "version": "0.1.0",
+  "version": "0.9.0",
   "description": "Skills for generating, studying, planning, and auditing structured interactive prototype configuration.",
-  "status": "transitional",
+  "status": "active",
   "maintainer": "UI Blueprint maintainers",
   "repository": "ui-design-intelligence repository",
   "license": "LICENSE",
@@ -14,16 +14,18 @@
   ],
   "skills": [
     "generate-interactive-prototype-config",
-    "study-ui-prototype-behavior",
-    "generate-component-state-model",
+    "generate-prototype-flow",
     "generate-interaction-flow",
+    "generate-component-state-model",
     "generate-clickable-prototype-plan",
-    "audit-prototype-interactions"
+    "audit-prototype-interactions",
+    "study-ui-prototype-behavior"
   ],
   "agents": [
     "prototype-architect"
   ],
   "commands": [
+    "create-prototype-plan",
     "generate-prototype-from-blueprint",
     "generate-prototype-from-knowledge",
     "audit-prototype-flow",
@@ -32,17 +34,28 @@
   "shared": [
     "docs/interop/prototype-config-architecture.md",
     "docs/interop/design-system-prototype-pipeline.md",
+    "docs/interop/content-journey-layer-architecture.md",
+    "shared/schemas/user-journey-map.schema.json",
     "shared/schemas/prototype-config.schema.json",
     "shared/schemas/interaction-flow.schema.json",
     "shared/schemas/component-state-model.schema.json",
     "shared/schemas/study-output.schema.json",
     "shared/schemas/wireframe-config.schema.json",
     "shared/schemas/design-system-seed.schema.json",
+    "shared/recipes/prototype.recipe.md",
+    "shared/design-system/component-anatomy-reference.md",
+    "shared/design-system/component-state-guidelines.md",
+    "shared/design-system/responsive-system-guidelines.md",
+    "shared/design-system/component-selection-guidelines.md",
     "shared/vocabulary/content-roles.json",
     "shared/vocabulary/interaction-states.json",
     "shared/vocabulary/node-types.json",
     "shared/vocabulary/layout-patterns.json",
     "shared/examples/dental-appointment.prototype-config.example.json",
-    "shared/examples/dental-homepage.ui-blueprint.json"
+    "shared/examples/dental-homepage.ui-blueprint.json",
+    "shared/examples/marketing-page-e2e/marketing-page.prototype-config.example.json",
+    "shared/examples/dashboard-e2e/dashboard.prototype-config.example.json",
+    "shared/examples/product-page-e2e/product-page.prototype-config.example.json",
+    "shared/examples/multi-step-form-e2e/multi-step-form.prototype-config.example.json"
   ]
 }

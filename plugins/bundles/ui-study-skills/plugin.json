@@ -1,7 +1,7 @@
 {
   "name": "ui-study-skills",
   "displayName": "UI Study Skills",
-  "version": "0.2.0",
+  "version": "0.9.0",
   "description": "Skills for studying website storytelling, UI structure, interaction behavior, responsive behavior, and accessibility from captured page data.",
   "status": "active",
   "maintainer": "UI Blueprint maintainers",
@@ -30,7 +30,20 @@
   "shared": [
     "shared/schemas/study-output.schema.json",
     "shared/vocabulary/ui-terminology.json",
+    "shared/design-system/component-selection-guidelines.md",
     "shared/templates/page-study.md",
-    "shared/examples/page-study.example.json"
+    "shared/examples/page-study.example.json",
+    "shared/examples/marketing-page-e2e/brief.md",
+    "shared/examples/marketing-page-e2e/README.md",
+    "shared/examples/marketing-page-e2e/marketing-page.study.example.json",
+    "shared/examples/dashboard-e2e/brief.md",
+    "shared/examples/dashboard-e2e/README.md",
+    "shared/examples/dashboard-e2e/dashboard.study.example.json",
+    "shared/examples/product-page-e2e/brief.md",
+    "shared/examples/product-page-e2e/README.md",
+    "shared/examples/product-page-e2e/product-page.study.example.json",
+    "shared/examples/multi-step-form-e2e/brief.md",
+    "shared/examples/multi-step-form-e2e/README.md",
+    "shared/examples/multi-step-form-e2e/multi-step-form.study.example.json"
   ]
 }

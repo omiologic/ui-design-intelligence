@@ -1,0 +1,175 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://omiologic.dev/schemas/ui-blueprint/app-retrieval-results.schema.json",
+  "title": "App Retrieval Results",
+  "description": "App-facing ranked retrieval response that points to local or redacted remote knowledge records.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "version",
+    "type",
+    "id",
+    "queryContextId",
+    "createdAt",
+    "results"
+  ],
+  "properties": {
+    "version": {
+      "$ref": "#/$defs/version"
+    },
+    "type": {
+      "const": "appRetrievalResults"
+    },
+    "id": {
+      "$ref": "#/$defs/id"
+    },
+    "queryContextId": {
+      "$ref": "#/$defs/id"
+    },
+    "createdAt": {
+      "$ref": "#/$defs/nonEmptyString"
+    },
+    "retrievalMode": {
+      "type": "string",
+      "enum": [
+        "local",
+        "remote",
+        "hybrid",
+        "fixture"
+      ]
+    },
+    "results": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/retrievalResult"
+      }
+    },
+    "warnings": {
+      "$ref": "#/$defs/stringList"
+    },
+    "notes": {
+      "$ref": "#/$defs/stringList"
+    }
+  },
+  "$defs": {
+    "version": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$"
+    },
+    "nonEmptyString": {
+      "type": "string",
+      "minLength": 1
+    },
+    "stringList": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/nonEmptyString"
+      }
+    },
+    "confidence": {
+      "type": "string",
+      "enum": [
+        "low",
+        "medium",
+        "high",
+        "approved"
+      ]
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "draft",
+        "reviewed",
+        "approved",
+        "deprecated"
+      ]
+    },
+    "storageRef": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "provider",
+        "uri"
+      ],
+      "properties": {
+        "provider": {
+          "type": "string",
+          "enum": [
+            "local",
+            "s3",
+            "s3Vector",
+            "hosted",
+            "package",
+            "redacted"
+          ]
+        },
+        "uri": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "recordType": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "etag": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "versionId": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "updatedAt": {
+          "$ref": "#/$defs/nonEmptyString"
+        }
+      }
+    },
+    "retrievalResult": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "rank",
+        "patternId",
+        "title",
+        "reason",
+        "confidence",
+        "status"
+      ],
+      "properties": {
+        "rank": {
+          "type": "number"
+        },
+        "patternId": {
+          "$ref": "#/$defs/id"
+        },
+        "title": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "reason": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "score": {
+          "type": "number"
+        },
+        "confidence": {
+          "$ref": "#/$defs/confidence"
+        },
+        "status": {
+          "$ref": "#/$defs/status"
+        },
+        "matchedDimensions": {
+          "$ref": "#/$defs/stringList"
+        },
+        "storageRef": {
+          "$ref": "#/$defs/storageRef"
+        },
+        "sourceSchemaRef": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "notes": {
+          "$ref": "#/$defs/stringList"
+        }
+      }
+    }
+  }
+}

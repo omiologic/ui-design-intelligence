@@ -1,0 +1,102 @@
+{
+  "version": "0.1.0",
+  "type": "appPackageMetadata",
+  "id": "ui-design-intelligence-app-package",
+  "name": "UI Design Intelligence App Handoff Fixture",
+  "packageVersion": "0.1.0",
+  "status": "experimental",
+  "bundleType": "aggregateBundle",
+  "surfaces": [
+    "codexSkills",
+    "codexPlugin",
+    "genericLocal",
+    "packageBrowser"
+  ],
+  "includes": {
+    "skills": [
+      {
+        "id": "generate-ui-blueprint-from-study",
+        "path": "plugins/individuals/generate-ui-blueprint-from-study/SKILL.md",
+        "label": "Generate UI blueprint from study"
+      },
+      {
+        "id": "generate-interactive-prototype-config",
+        "path": "plugins/individuals/generate-interactive-prototype-config/SKILL.md",
+        "label": "Generate interactive prototype config"
+      }
+    ],
+    "commands": [
+      {
+        "id": "generate-blueprint-from-study",
+        "path": "commands/generate-blueprint-from-study.md",
+        "label": "Generate blueprint from study"
+      },
+      {
+        "id": "generate-prototype-from-blueprint",
+        "path": "commands/generate-prototype-from-blueprint.md",
+        "label": "Generate prototype from blueprint"
+      }
+    ],
+    "agents": [
+      {
+        "id": "blueprint-architect",
+        "path": "agents/blueprint-architect.md",
+        "label": "Blueprint architect"
+      },
+      {
+        "id": "prototype-architect",
+        "path": "agents/prototype-architect.md",
+        "label": "Prototype architect"
+      }
+    ],
+    "sharedAssets": [
+      {
+        "id": "app-handoff-fixture",
+        "path": "shared/examples/app-handoff/README.md",
+        "label": "App handoff fixture README"
+      }
+    ],
+    "schemas": [
+      {
+        "id": "app-query-context-schema",
+        "path": "shared/schemas/app-query-context.schema.json",
+        "label": "App query context schema"
+      },
+      {
+        "id": "app-retrieval-results-schema",
+        "path": "shared/schemas/app-retrieval-results.schema.json",
+        "label": "App retrieval results schema"
+      },
+      {
+        "id": "app-artifact-manifest-schema",
+        "path": "shared/schemas/app-artifact-manifest.schema.json",
+        "label": "App artifact manifest schema"
+      },
+      {
+        "id": "app-run-record-schema",
+        "path": "shared/schemas/app-run-record.schema.json",
+        "label": "App run record schema"
+      },
+      {
+        "id": "app-package-metadata-schema",
+        "path": "shared/schemas/app-package-metadata.schema.json",
+        "label": "App package metadata schema"
+      }
+    ]
+  },
+  "sourceRefs": [
+    {
+      "id": "ledgerpilot-artifact-manifest",
+      "artifactType": "appArtifactManifest",
+      "path": "shared/examples/app-handoff/app-artifact-manifest.example.json",
+      "schemaRef": "shared/schemas/app-artifact-manifest.schema.json",
+      "label": "App artifact manifest"
+    }
+  ],
+  "licenseRef": "LICENSE",
+  "changelogRef": "CHANGELOG.md",
+  "generatedAt": "2026-06-30T00:00:08Z",
+  "notes": [
+    "This metadata fixture is for app consumers and package browsers; it is not a public marketplace submission."
+  ]
+}

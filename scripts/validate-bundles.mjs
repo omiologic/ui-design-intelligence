@@ -49,6 +49,26 @@ const requiredBundleReadmeSections = [
   "## License"
 ];
 
+const creationFacingAgents = new Set([
+  "blueprint-architect",
+  "design-system-architect",
+  "prototype-architect",
+  "ui-researcher",
+  "ui-specification-analyst",
+  "ui-interaction-analyst",
+  "accessibility-reviewer"
+]);
+
+const requiredCreationAgentSections = [
+  "## Creation Defaults",
+  "## Required Inputs",
+  "## Missing Input Questions",
+  "## Stop Conditions",
+  "## Output Files",
+  "## Quality Gates",
+  "## Escalation And Handoffs"
+];
+
 const allowedStatuses = new Set(["planned", "transitional", "active"]);
 const marketplaceOnlyFields = new Set([
   "category",
@@ -394,6 +414,9 @@ if (!fs.existsSync(bundlesDir)) {
     for (const agent of resolvedManifest.agents ?? []) {
       const agentPath = path.join(agentsDir, `${agent}.md`);
       requireMarkdownSections(agentPath, requiredAgentSections);
+      if (creationFacingAgents.has(agent)) {
+        requireMarkdownSections(agentPath, requiredCreationAgentSections);
+      }
 
       if (!agentExists(agent)) continue;
       const text = readText(agentPath);

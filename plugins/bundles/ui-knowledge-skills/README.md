@@ -41,6 +41,11 @@ Commands:
 Shared assets include knowledge schemas, vocabulary, templates, examples,
 validation scripts, index script, and workspace initialization script.
 
+Remote knowledge retrieval is optional. When configured by the user, search can
+use vector-backed retrieval plus canonical storage references; local
+`ui-knowledge/` indexes remain the default and no committed bundle text should
+contain real bucket URLs or account-specific resources.
+
 ## Requirements
 
 This bundle is stateful. Project-specific studies, audits, pattern records, and
@@ -53,15 +58,28 @@ labels so later searches and lineage explanations remain reviewable.
 
 ## Install
 
+Codex/GPT skills-only target:
+
+```bash
+node scripts/install-bundle.mjs install ui-knowledge-skills "$HOME/.agents" "$HOME/.agents/skills" --skills-only --dry-run
+node scripts/install-bundle.mjs install ui-knowledge-skills "$HOME/.agents" "$HOME/.agents/skills" --skills-only
+```
+
+Claude/local full-bundle target:
+
 ```bash
 UI_PLUGIN_BUNDLE="ui-knowledge-skills" ./install.sh
 ```
 
-Install into a project-local target:
+Claude/local project target:
 
 ```bash
+UI_PLUGIN_BUNDLE="ui-knowledge-skills" UI_PLUGIN_TARGET="./.claude" ./install.sh --dry-run
 UI_PLUGIN_BUNDLE="ui-knowledge-skills" UI_PLUGIN_TARGET="./.claude" ./install.sh
 ```
+
+Use `--force` only when you intentionally want to overwrite non-identical
+existing files.
 
 Uninstall:
 

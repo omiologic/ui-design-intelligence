@@ -1,7 +1,7 @@
 {
   "name": "ui-design-system-skills",
   "displayName": "UI Design System Skills",
-  "version": "0.1.0",
+  "version": "0.9.0",
   "description": "Skills for generating, auditing, and documenting lightweight design-system seed and foundation artifacts.",
   "status": "transitional",
   "maintainer": "UI Blueprint maintainers",
@@ -31,6 +31,7 @@
     "design-system-architect"
   ],
   "commands": [
+    "create-design-spec",
     "generate-design-system-seed",
     "audit-design-system-seed"
   ],
@@ -40,6 +41,16 @@
     "shared/design-philosophy/design-system/design-system-principles.md",
     "shared/design-philosophy/design-system/design-system-anti-slop.md",
     "shared/design-philosophy/design-system/skill-doctrine.md",
+    "shared/design-system/design-system-quality-checklist.md",
+    "shared/design-system/design-system-handoff-checklist.md",
+    "shared/design-system/token-taxonomy.md",
+    "shared/design-system/component-anatomy-reference.md",
+    "shared/design-system/component-state-guidelines.md",
+    "shared/design-system/accessibility-token-guidelines.md",
+    "shared/design-system/responsive-system-guidelines.md",
+    "shared/design-system/visual-style-calibration.md",
+    "shared/design-system/component-selection-guidelines.md",
+    "shared/design-system/anti-generic-ui-guidelines.md",
     "shared/schemas/design-system-seed.schema.json",
     "shared/schemas/brand-foundation.schema.json",
     "shared/schemas/palette-foundation.schema.json",
@@ -60,8 +71,13 @@
     "shared/templates/design-system-seed.json",
     "shared/templates/design-system-seed.md",
     "shared/templates/ui-design-intelligence.config.yml",
+    "shared/recipes/design-spec.recipe.md",
     "shared/examples/design-system-seed.example.json",
     "shared/examples/local-service-design-system-seed.compact.json",
+    "shared/examples/marketing-page-e2e/marketing-page.design-system-seed.example.json",
+    "shared/examples/dashboard-e2e/dashboard.design-system-seed.example.json",
+    "shared/examples/product-page-e2e/product-page.design-system-seed.example.json",
+    "shared/examples/multi-step-form-e2e/multi-step-form.design-system-seed.example.json",
     "shared/examples/component-decision-tree.example.json"
   ]
 }

@@ -1,0 +1,42 @@
+{
+  "name": "ux-journey-skills",
+  "displayName": "UX Journey Skills",
+  "version": "0.9.0",
+  "description": "Skills for mapping user goals, journey stages, objections, page flows, prototype flows, and conversion paths.",
+  "status": "planned",
+  "maintainer": "UI Blueprint maintainers",
+  "repository": "ui-design-intelligence repository",
+  "license": "LICENSE",
+  "changelog": "CHANGELOG.md",
+  "dependencies": [
+    "ui-study-skills",
+    "ui-knowledge-skills"
+  ],
+  "skills": [
+    "generate-user-journey-map",
+    "generate-conversion-journey",
+    "generate-page-user-flow",
+    "generate-prototype-flow",
+    "generate-objection-map",
+    "generate-content-journey-map",
+    "audit-user-journey",
+    "audit-conversion-flow"
+  ],
+  "agents": [
+    "user-journey-architect",
+    "ux-content-strategist"
+  ],
+  "commands": [
+    "generate-user-journey-map"
+  ],
+  "shared": [
+    "docs/interop/content-journey-layer-architecture.md",
+    "shared/content/audience-intent-reference.md",
+    "shared/content/objection-handling-reference.md",
+    "shared/design-system/component-anatomy-reference.md",
+    "shared/schemas/user-journey-map.schema.json",
+    "shared/examples/product-page-e2e/product-page.user-journey-map.example.json",
+    "knowledge/schemas/journey-pattern.schema.json",
+    "knowledge/schemas/objection-pattern.schema.json"
+  ]
+}

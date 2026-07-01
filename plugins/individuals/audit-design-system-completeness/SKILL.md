@@ -24,6 +24,12 @@ evidence is missing.
 - `references/_shared/design-philosophy/design-system/design-system-principles.md`
 - `references/_shared/design-philosophy/design-system/design-system-anti-slop.md`
 - `references/_shared/design-philosophy/design-system/skill-doctrine.md`
+- `references/_shared/design-system/design-system-quality-checklist.md`
+- `references/_shared/design-system/token-taxonomy.md`
+- `references/_shared/design-system/component-anatomy-reference.md`
+- `references/_shared/design-system/component-state-guidelines.md`
+- `references/_shared/design-system/accessibility-token-guidelines.md`
+- `references/_shared/design-system/responsive-system-guidelines.md`
 - `references/_shared/schemas/design-system-seed.schema.json`
 - `references/_shared/vocabulary/accessibility-rules.json`
 - `references/_shared/vocabulary/design-system-source-kinds.json`
@@ -54,8 +60,11 @@ Owns completeness review only. Does not rewrite the seed unless asked.
 
 1. Validate required sections exist.
 2. Check provenance and confidence.
-3. Check token and component fields.
-4. Summarize blockers, warnings, and follow-ups.
+3. Check token taxonomy, naming, token accessibility, component anatomy,
+   component states, responsive behavior, and component fields.
+4. Assign draft, review-ready, or implementation-ready readiness using the
+   shared quality checklist.
+5. Summarize blockers, warnings, and follow-ups.
 
 ## Anti-Patterns
 

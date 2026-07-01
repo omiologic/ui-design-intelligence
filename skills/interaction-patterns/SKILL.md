@@ -50,6 +50,13 @@ needs blocking attention, extra space, persistence, or a separate route.
 8. Use a new page when the task needs a URL, history behavior, or full-page
    context.
 
+## Boundary
+
+- Owns: interaction pattern selection, state naming, overlay behavior, focus management, and schema-friendly trigger and state specification for wireframe plans.
+- Does not own: visual styling, design token values, final wireframe JSON emission, or runtime implementation code.
+- Hand off page structure and section ordering to `page-wireframe-planner` or `section-wireframe-planner`.
+- Hand off final wireframe emission to `generate-wireframe-config`.
+
 ## Rules
 
 1. Always specify trigger, visible state, dismissal, focus path, keyboard path,

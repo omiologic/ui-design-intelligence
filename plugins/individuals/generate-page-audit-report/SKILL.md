@@ -40,6 +40,14 @@ evidence; the report should not turn personal visual preference into severity.
    clarity is weak.
 5. `info`: contextual observation with no corrective action.
 
+## Boundary
+
+- Owns: multi-dimension page audit reports covering structure, storytelling, content clarity, interaction quality, accessibility, responsive behavior, SEO, and conversion risks.
+- Does not own: cross-page IA synthesis, section-level anatomy focus, or site-wide pattern reporting.
+- Hand off cross-page synthesis to `generate-site-audit-report`.
+- Hand off section-level focus to `generate-section-audit-report`.
+- Hand off SEO-only focus to `generate-seo-audit-report`.
+
 ## Rules
 
 1. Cite visible structure, section order, headings, CTAs, proof, forms, overlays,

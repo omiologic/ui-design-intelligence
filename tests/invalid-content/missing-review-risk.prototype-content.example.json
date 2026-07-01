@@ -1,0 +1,46 @@
+{
+  "version": "0.1.0",
+  "type": "prototypeContent",
+  "id": "invalid-prototype-content-missing-review-risk",
+  "name": "Invalid Prototype Content Missing Review Risk",
+  "source": {
+    "source": "generated",
+    "confidence": "medium",
+    "sourceRefs": [
+      "shared/examples/product-page-e2e/product-page.content-model.example.json",
+      "shared/examples/product-page-e2e/product-page.prototype-config.example.json"
+    ]
+  },
+  "sourceContentModelId": "northstar-product-page-content",
+  "sourceContentModelRef": "shared/examples/product-page-e2e/product-page.content-model.example.json",
+  "sourcePrototypeConfigId": "northstar-product-page-prototype",
+  "sourcePrototypeConfigRef": "shared/examples/product-page-e2e/product-page.prototype-config.example.json",
+  "screens": [
+    {
+      "screenId": "product-screen",
+      "routeId": "product-route",
+      "content": [
+        {
+          "nodeId": "product-summary",
+          "contentRef": "content.product-summary",
+          "copy": {
+            "headline": {
+              "value": "Guaranteed battery performance for every trail route.",
+              "source": "generated",
+              "confidence": "medium",
+              "status": "draft"
+            }
+          },
+          "review": {
+            "status": "draft",
+            "needsReview": []
+          }
+        }
+      ]
+    }
+  ],
+  "review": {
+    "status": "draft",
+    "needsReview": []
+  }
+}

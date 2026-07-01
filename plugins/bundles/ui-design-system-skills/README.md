@@ -39,6 +39,7 @@ Agents:
 
 Commands:
 
+- `create-design-spec`
 - `generate-design-system-seed`
 - `audit-design-system-seed`
 
@@ -57,15 +58,28 @@ are inferred unless source evidence confirms exactness.
 
 ## Install
 
+Codex/GPT skills-only target:
+
+```bash
+node scripts/install-bundle.mjs install ui-design-system-skills "$HOME/.agents" "$HOME/.agents/skills" --skills-only --dry-run
+node scripts/install-bundle.mjs install ui-design-system-skills "$HOME/.agents" "$HOME/.agents/skills" --skills-only
+```
+
+Claude/local full-bundle target:
+
 ```bash
 UI_PLUGIN_BUNDLE="ui-design-system-skills" ./install.sh
 ```
 
-Install into a project-local target:
+Claude/local project target:
 
 ```bash
+UI_PLUGIN_BUNDLE="ui-design-system-skills" UI_PLUGIN_TARGET="./.claude" ./install.sh --dry-run
 UI_PLUGIN_BUNDLE="ui-design-system-skills" UI_PLUGIN_TARGET="./.claude" ./install.sh
 ```
+
+Use `--force` only when you intentionally want to overwrite non-identical
+existing files.
 
 Uninstall:
 
@@ -75,9 +89,16 @@ UI_PLUGIN_BUNDLE="ui-design-system-skills" ./uninstall.sh
 
 ## Usage Example
 
-Run `generate-design-system-seed` from a brief plus study evidence to produce a
-seed contract. Then run `audit-design-system-seed` before handing the seed to
-blueprint, style-reference, or prototype workflows.
+Run `create-design-spec` when the user wants one clear entrypoint for an
+implementation-ready structural design specification. The workflow can reuse or
+generate a seed, incorporate wireframe decisions, preserve style constraints,
+and produce `design-spec.md` with components, states, responsive behavior,
+accessibility notes, assumptions, and open questions.
+
+Run `generate-design-system-seed` from a brief plus study evidence when the
+output should be only the seed contract. Then run `audit-design-system-seed`
+before handing the seed to blueprint, style-reference, design-spec, or prototype
+workflows.
 
 ## Relationship To Other Bundles
 

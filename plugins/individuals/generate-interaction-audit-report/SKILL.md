@@ -41,6 +41,13 @@ keyboard access, and responsive equivalence.
 4. `low`: the interaction works but handoff detail is weak.
 5. `info`: contextual observation with no corrective action.
 
+## Boundary
+
+- Owns: interaction quality findings for existing UIs — triggers, states, transitions, feedback signals, keyboard behavior, error recovery, and mobile interaction details.
+- Does not own: accessibility depth, SEO evaluation, layout analysis, or interaction pattern design decisions.
+- Hand off multi-dimension page evaluation to `generate-page-audit-report`.
+- Hand off interaction pattern design to `interaction-patterns`.
+
 ## Rules
 
 1. Cite observed triggers, states, feedback, focus notes, dismissal behavior, or

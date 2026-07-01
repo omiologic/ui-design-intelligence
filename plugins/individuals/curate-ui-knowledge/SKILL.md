@@ -35,6 +35,8 @@ for future blueprint work.
 2. Merge patterns that describe the same structural decision at the same level.
 3. Lower confidence or keep `candidate` when support is thin.
 4. Deprecate patterns that are outdated, harmful, too narrow, or superseded.
+5. Treat curation as a canonical-record change that may require storage sync and
+   vector index rebuild before remote search results are fresh.
 
 ## Boundary
 
@@ -48,6 +50,8 @@ for future blueprint work.
 2. Preserve source references when merging.
 3. Prefer precise tags over broad retrieval bait.
 4. Keep deprecated or merged records only when traceability is useful.
+5. After accepting, merging, deprecating, or retagging records, rebuild the
+   local index and note whether canonical storage/vector indexes need re-sync.
 
 ## Anti-Patterns
 
@@ -55,6 +59,10 @@ for future blueprint work.
 - Duplicate drift: many near-identical patterns split retrieval quality.
 - Confidence inflation: treating common-sense advice as validated evidence.
 - Tag dilution: broad tags make every query match every pattern.
+- Stale vector index: editing canonical records while leaving remote retrieval
+  records unchanged.
+- Secret-bearing curation notes: recording real bucket URLs, signed URLs,
+  account IDs, or credentials in committed pattern records.
 
 ## Workflow
 
@@ -62,7 +70,9 @@ for future blueprint work.
 2. Compare IDs, names, summaries, tags, and wireframe mappings.
 3. Decide accept, revise, merge, deprecate, or reject.
 4. Update confidence and status with reasons.
-5. Rebuild and validate the index after changes.
+5. Rebuild and validate the local index after changes.
+6. If remote storage is configured, plan canonical storage sync and vector
+   rebuild so future retrieval reflects curated records.
 
 ## Inline Example
 

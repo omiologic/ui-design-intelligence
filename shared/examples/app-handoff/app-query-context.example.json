@@ -1,0 +1,70 @@
+{
+  "version": "0.1.0",
+  "type": "appQueryContext",
+  "id": "ledgerpilot-app-query",
+  "createdAt": "2026-06-30T00:00:00Z",
+  "request": {
+    "brief": "Create a B2B SaaS marketing page handoff that can be inspected by a local app before implementation.",
+    "targetArtifactType": "prototypeConfig",
+    "audience": "Finance operations leaders evaluating month-end close automation.",
+    "goal": "Move qualified visitors from proof review to demo request.",
+    "constraints": [
+      "Use repository examples only.",
+      "Keep retrieval and artifact references safe for committed fixtures.",
+      "Preserve schema references instead of embedding artifact payloads."
+    ]
+  },
+  "scope": {
+    "productType": "b2b-saas",
+    "pageType": "marketing-page",
+    "flowType": "demo-request",
+    "viewport": "responsive"
+  },
+  "retrievalFilters": {
+    "industries": [
+      "saas",
+      "local-service"
+    ],
+    "pageTypes": [
+      "marketing-page",
+      "homepage"
+    ],
+    "sectionTypes": [
+      "hero",
+      "proof",
+      "cta"
+    ],
+    "conversionGoals": [
+      "demo-request",
+      "appointment-booking"
+    ],
+    "confidenceLevels": [
+      "high",
+      "approved"
+    ],
+    "statuses": [
+      "reviewed",
+      "approved"
+    ]
+  },
+  "sourceRefs": [
+    {
+      "id": "ledgerpilot-marketing-wireframe",
+      "artifactType": "wireframeConfig",
+      "path": "shared/examples/marketing-page-e2e/marketing-page.ui-blueprint.json",
+      "schemaRef": "shared/schemas/wireframe-config.schema.json",
+      "label": "Marketing page wireframe example"
+    }
+  ],
+  "consumer": {
+    "surface": "localApp",
+    "name": "App Handoff Fixture"
+  },
+  "assumptions": [
+    "The local app can read repository-relative paths.",
+    "Remote storage URLs are configured outside committed fixtures."
+  ],
+  "notes": [
+    "This query context is intentionally provider-neutral."
+  ]
+}

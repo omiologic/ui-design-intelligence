@@ -21,6 +21,8 @@ config, and optional design-system seed.
 - Optional output directory for `prototype-config.json` and plan notes.
 - Optional reference to `docs/interop/design-system-prototype-pipeline.md` for
   artifact order and runtime split boundaries.
+- Optional `shared/recipes/prototype.recipe.md` when the output should follow
+  the Sprint 006 consumer prototype artifact contract.
 
 ## Workflow
 
@@ -39,6 +41,7 @@ config, and optional design-system seed.
 - Component state model notes or JSON snippets.
 - Interaction flow notes or JSON snippets.
 - Clickable prototype plan and audit findings.
+- Consumer workflow default file: `prototype-plan.md`.
 
 ## Agents
 

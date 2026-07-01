@@ -30,6 +30,7 @@ that never modeled those paths.
 - `references/component-anatomy.md`
 - `references/component-decision-matrix.md`
 - `references/component-states.md`
+- `references/_shared/design-system/component-selection-guidelines.md`
 - `references/_shared/wireframe-schema/valid-node-types.md`
 - `references/_shared/vocabulary/node-types.json`
 - `references/_shared/vocabulary/interaction-states.json`
@@ -94,10 +95,14 @@ that never modeled those paths.
 1. Identify the component type and its parent context.
 2. Define anatomy: container, controls, content slots, repeated items, and
    feedback areas.
-3. Choose required states using `references/component-states.md`.
-4. Add accessibility and responsive notes for controls, forms, overlays, and
+3. Choose the component pattern using
+   `references/_shared/design-system/component-selection-guidelines.md` when the
+   task could be represented as table/card list, tabs/segmented control,
+   modal/drawer, dropdown/combobox, or accordion/progressive disclosure.
+4. Choose required states using `references/component-states.md`.
+5. Add accessibility and responsive notes for controls, forms, overlays, and
    hidden content.
-5. State parent inputs and child outputs for handoff.
+6. State parent inputs and child outputs for handoff.
 
 ## Inline Example
 

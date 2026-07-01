@@ -1,0 +1,89 @@
+{
+  "name": "ecommerce",
+  "version": "0.1.0",
+  "register": "marketing",
+  "description": "Structural bias for product-led pages optimized for scanning, comparison, and purchase decisions.",
+  "intent": "Put product identity and key differentiators early, enable rapid comparison and filtering, and keep the purchase action visible throughout the decision journey.",
+  "rules": {
+    "sectionOrder": [
+      {
+        "job": "orient",
+        "preferredStructures": ["hero", "splitHero", "header"],
+        "reason": "Product pages must establish the item's identity, key image, and price context before details arrive."
+      },
+      {
+        "job": "enable-selection",
+        "preferredStructures": ["cardGrid", "comparisonTable", "list", "tabs"],
+        "reason": "Ecommerce decisions depend on variant selection, option comparison, and quantity or configuration choice."
+      },
+      {
+        "job": "prove-product",
+        "preferredStructures": ["cardGrid", "contentGroup", "list"],
+        "reason": "Reviews, ratings, and usage evidence should follow product presentation, not precede understanding."
+      },
+      {
+        "job": "resolve-objections",
+        "preferredStructures": ["accordion", "comparisonTable", "contentGroup"],
+        "reason": "Return policy, shipping details, size guides, and FAQs should appear near the decision they affect."
+      },
+      {
+        "job": "act",
+        "preferredStructures": ["buttonGroup", "stickyBar", "form"],
+        "reason": "Add-to-cart and checkout actions should persist throughout the product decision journey."
+      }
+    ],
+    "density": {
+      "default": "high-when-scanning",
+      "increaseWhen": ["product-grid", "variant-selection", "filter-surface", "comparison"],
+      "decreaseWhen": ["hero-product-image", "primary-purchase-action", "trust-callout"],
+      "reason": "Shoppers scan densely on category pages but need breathing room at the moment of commitment."
+    },
+    "layoutSelection": {
+      "orientation": ["splitHero", "mediaLeft", "mediaRight"],
+      "catalog": ["cardGrid", "comparisonGrid", "threeColumn"],
+      "variants": ["tabs", "cardGrid", "buttonGroup"],
+      "proof": ["cardGrid", "stackedSections"],
+      "objections": ["accordion", "twoColumn"],
+      "action": ["stickyFooterBar", "singleColumn", "inlineForm"]
+    },
+    "ctaCadence": {
+      "primaryActionCount": "one-per-product-context",
+      "secondaryActionRule": "Secondary actions may surface wishlist, share, or lower-commitment paths as visually subordinate controls.",
+      "repeatPrimaryActionAfter": ["product-proof", "objection-resolution", "mobile-scroll-break"],
+      "reason": "Purchase intent can arrive at any point in the scan; the primary action must be findable without a full read."
+    },
+    "overlayUse": {
+      "allowed": ["dialog", "drawer", "popover", "toast"],
+      "preferred": ["drawer", "toast"],
+      "useWhen": ["cart-preview", "size-guide", "quick-view", "add-confirmation", "filter-panel"],
+      "avoidWhen": ["primary-product-image", "price-and-variant-selection", "required-product-details"],
+      "reason": "Ecommerce overlays should support browsing efficiency without hiding required selection or comparison information."
+    },
+    "responsivePriority": [
+      "product-image",
+      "product-name-and-price",
+      "primary-purchase-action",
+      "key-variant-selection",
+      "proof-and-ratings",
+      "objection-resolution"
+    ]
+  },
+  "antiPatterns": [
+    {
+      "name": "buried-purchase-action",
+      "reason": "The primary action must remain accessible throughout the product decision journey, not only at page end."
+    },
+    {
+      "name": "proof-before-product-identity",
+      "reason": "Reviews placed before the visitor understands what the product is lose their persuasive value."
+    },
+    {
+      "name": "hidden-price-or-variant",
+      "reason": "Requiring overlay or click-through to see price or variant options adds friction at the highest-value decision point."
+    },
+    {
+      "name": "unfiltered-catalog-wall",
+      "reason": "Product grids without filter or sort surfaces force exhaustive scanning and block comparison decisions."
+    }
+  ]
+}

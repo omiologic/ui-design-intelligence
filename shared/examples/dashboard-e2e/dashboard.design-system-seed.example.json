@@ -1,0 +1,239 @@
+{
+  "version": "0.1.0",
+  "type": "designSystemSeed",
+  "id": "ledgerpilot-dashboard-design-system-seed",
+  "name": "LedgerPilot Dashboard Design System Seed",
+  "source": {
+    "inputType": "prompt",
+    "sourceRefs": ["prompt:ledgerpilot operations dashboard brief"],
+    "confidence": "medium",
+    "notes": ["Compact seed for the dashboard end-to-end example."]
+  },
+  "maturity": "designSystemSeed",
+  "brand": {
+    "name": {
+      "value": "LedgerPilot",
+      "source": "userProvided",
+      "confidence": "high"
+    },
+    "summary": {
+      "value": "A finance operations dashboard foundation focused on status clarity, diagnostics, and recovery.",
+      "source": "generated",
+      "confidence": "medium"
+    },
+    "personality": {
+      "values": ["precise", "calm", "operational", "trustworthy"],
+      "source": "recommended",
+      "confidence": "medium"
+    },
+    "audience": {
+      "values": ["fractional CFOs", "founders", "finance operators"],
+      "source": "userProvided",
+      "confidence": "high"
+    },
+    "positioning": {
+      "value": "A compact operations surface for understanding finance status and recovery actions.",
+      "source": "recommended",
+      "confidence": "medium"
+    },
+    "voice": {
+      "tone": {
+        "value": "concise, diagnostic, and direct",
+        "source": "recommended",
+        "confidence": "medium"
+      },
+      "avoid": {
+        "values": ["marketing claims", "ambiguous status labels", "unsupported financial certainty"],
+        "source": "recommended",
+        "confidence": "medium"
+      }
+    },
+    "visualDirection": {
+      "density": {
+        "value": "medium",
+        "source": "recommended",
+        "confidence": "medium"
+      },
+      "style": {
+        "value": "quiet B2B operations dashboard",
+        "source": "generated",
+        "confidence": "medium"
+      },
+      "emphasis": {
+        "value": "status, controls, diagnostics, and recovery",
+        "source": "recommended",
+        "confidence": "medium"
+      }
+    }
+  },
+  "palette": {
+    "mode": "light",
+    "colors": {
+      "color.action.primary": {
+        "name": "Operations Blue",
+        "value": "#145C9E",
+        "intent": "Primary control action color.",
+        "usage": "Filter apply action and active controls.",
+        "useOn": ["button.primary", "active navigation"],
+        "doNotUseOn": ["large decorative backgrounds"],
+        "accessibilityNotes": ["Validate contrast with white text before production use."],
+        "source": "recommended",
+        "confidence": "medium"
+      },
+      "color.surface.default": {
+        "name": "Dashboard White",
+        "value": "#FFFFFF",
+        "intent": "Default readable dashboard surface.",
+        "usage": "Page background and card surfaces.",
+        "useOn": ["page background", "card surfaces"],
+        "doNotUseOn": ["focus indicators"],
+        "accessibilityNotes": ["Validate contrast for all text on this surface."],
+        "source": "recommended",
+        "confidence": "medium"
+      },
+      "color.text.primary": {
+        "name": "Dashboard Ink",
+        "value": "#16202A",
+        "intent": "Primary readable text.",
+        "usage": "Metric labels, headings, and body copy.",
+        "useOn": ["heading", "paragraph"],
+        "doNotUseOn": ["disabled states"],
+        "accessibilityNotes": ["Validate contrast against default and subtle surfaces."],
+        "source": "recommended",
+        "confidence": "medium"
+      }
+    },
+    "accessibilityNotes": ["Do not rely on color alone for warning or error states."]
+  },
+  "typography": {
+    "fontFamilies": {
+      "heading": {
+        "value": "Inter, system-ui, sans-serif",
+        "source": "recommended",
+        "confidence": "medium"
+      },
+      "body": {
+        "value": "Inter, system-ui, sans-serif",
+        "source": "recommended",
+        "confidence": "medium"
+      }
+    },
+    "scale": {
+      "h2": {
+        "fontSize": "28px",
+        "lineHeight": "1.2",
+        "fontWeight": 650,
+        "usage": "Dashboard page and section titles.",
+        "source": "recommended",
+        "confidence": "medium"
+      },
+      "body": {
+        "fontSize": "16px",
+        "lineHeight": "1.5",
+        "fontWeight": 400,
+        "usage": "Main readable content.",
+        "source": "recommended",
+        "confidence": "medium"
+      }
+    }
+  },
+  "iconography": {
+    "style": "outline",
+    "strokeWidth": "1.75px",
+    "cornerStyle": "rounded",
+    "preferredLibrary": "lucide-react",
+    "usage": {
+      "featureCards": "Use icons only when they improve scanning.",
+      "status": "Use semantic icons for success, warning, and error."
+    },
+    "rules": ["Icons should support labels, not replace them."],
+    "source": "recommended",
+    "confidence": "medium"
+  },
+  "components": {
+    "buttons": {
+      "base": {
+        "radius": "8px",
+        "fontWeight": 600,
+        "height": {
+          "md": "44px"
+        }
+      },
+      "variants": {
+        "button.primary": {
+          "usage": "Primary filter or recovery action.",
+          "background": "color.action.primary",
+          "text": "color.surface.default",
+          "border": "color.action.primary",
+          "allowedActions": ["navigate", "openDialog"]
+        },
+        "button.secondary": {
+          "usage": "Supporting dashboard action.",
+          "background": "transparent",
+          "text": "color.action.primary",
+          "border": "color.action.primary",
+          "allowedActions": ["navigate"]
+        }
+      },
+      "states": ["default", "hover", "focus", "active", "disabled", "loading"],
+      "rules": ["Use one primary control action per control region."],
+      "source": "generated",
+      "confidence": "medium"
+    },
+    "cards": {
+      "base": {
+        "surface": "color.surface.default",
+        "radius": "8px",
+        "padding": "20px"
+      },
+      "anatomy": ["title", "description", "actions"],
+      "variants": {
+        "card.service": {
+          "usage": "Present a dashboard metric, diagnostic, or recovery summary.",
+          "requiredParts": ["title", "description", "actions"],
+          "allowedActions": ["navigate", "openDialog"]
+        }
+      },
+      "rules": ["Metric cards should keep labels and status meaning explicit."],
+      "source": "generated",
+      "confidence": "medium"
+    },
+    "header": {
+      "layout": {
+        "desktop": "logo-left nav-center actions-right",
+        "mobile": "logo-left menu-button-right"
+      },
+      "height": {
+        "desktop": "64px",
+        "mobile": "56px"
+      },
+      "behavior": {
+        "sticky": false,
+        "mobileNavigation": "drawer"
+      },
+      "anatomy": ["logo", "primaryNavigation", "primaryAction", "mobileMenuButton"],
+      "navigation": {
+        "maxPrimaryItems": 6,
+        "supportsDropdown": true,
+        "supportsMegaMenu": false
+      },
+      "rules": ["Keep filter access visible on compact dashboard views."],
+      "source": "recommended",
+      "confidence": "medium"
+    },
+    "footer": {
+      "layout": {
+        "desktop": "multi-column",
+        "mobile": "stacked"
+      },
+      "anatomy": ["brandSummary", "navigationGroups", "contactInfo", "legalLinks"],
+      "navigationGroups": ["Product", "Support", "Company", "Legal"],
+      "industrySpecificNeeds": ["security", "privacy", "support contact"],
+      "rules": ["Support and data-policy links should be easy to find."],
+      "source": "recommended",
+      "confidence": "medium"
+    }
+  },
+  "usageNotes": ["Use as the seed for the dashboard e2e example."],
+  "openQuestions": ["Confirm exact status color semantics before implementation."]
+}

@@ -1,0 +1,96 @@
+{
+  "version": "0.1.0",
+  "type": "appArtifactManifest",
+  "id": "ledgerpilot-artifact-manifest",
+  "createdAt": "2026-06-30T00:00:07Z",
+  "sourceRunId": "ledgerpilot-creation-run",
+  "queryContextId": "ledgerpilot-app-query",
+  "retrievalResultsId": "ledgerpilot-app-retrieval",
+  "summary": "Repository-local app handoff fixture for a marketing page prototype flow.",
+  "artifacts": [
+    {
+      "id": "ledgerpilot-design-system-seed",
+      "artifactType": "designSystemSeed",
+      "path": "shared/examples/marketing-page-e2e/marketing-page.design-system-seed.example.json",
+      "status": "validated",
+      "schemaRef": "shared/schemas/design-system-seed.schema.json",
+      "label": "Marketing page design-system seed",
+      "validationCommands": [
+        {
+          "name": "validate-design-system",
+          "command": "npm run validate:design-system",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "id": "ledgerpilot-marketing-wireframe",
+      "artifactType": "wireframeConfig",
+      "path": "shared/examples/marketing-page-e2e/marketing-page.ui-blueprint.json",
+      "status": "validated",
+      "schemaRef": "shared/schemas/wireframe-config.schema.json",
+      "label": "Marketing page wireframe",
+      "validationCommands": [
+        {
+          "name": "validate-examples",
+          "command": "npm run validate:examples",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "id": "ledgerpilot-marketing-prototype",
+      "artifactType": "prototypeConfig",
+      "path": "shared/examples/marketing-page-e2e/marketing-page.prototype-config.example.json",
+      "status": "validated",
+      "schemaRef": "shared/schemas/prototype-config.schema.json",
+      "label": "Marketing page prototype config",
+      "validationCommands": [
+        {
+          "name": "validate-prototype",
+          "command": "npm run validate:prototype",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "id": "ledgerpilot-export-seed",
+      "artifactType": "exportSeed",
+      "path": "shared/examples/app-handoff/marketing-page.export-seed.md",
+      "status": "validated",
+      "schemaRef": "docs/interop/blueprint-export-seed.md",
+      "label": "Marketing page Blueprint Export Seed",
+      "validationCommands": [
+        {
+          "name": "validate-export-seed",
+          "command": "npm run validate:export-seed",
+          "status": "passed"
+        }
+      ],
+      "notes": [
+        "Repository-native Markdown handoff for product, design-direction, and design-engineering adapters."
+      ]
+    },
+    {
+      "id": "example-homepage-audit",
+      "artifactType": "pageAudit",
+      "path": "shared/examples/page-audit.example.json",
+      "status": "validated",
+      "schemaRef": "shared/schemas/page-audit.schema.json",
+      "label": "Page audit example",
+      "validationCommands": [
+        {
+          "name": "validate-examples",
+          "command": "npm run validate:examples",
+          "status": "passed"
+        }
+      ]
+    }
+  ],
+  "warnings": [
+    "Manifest paths are repository-relative fixture paths."
+  ],
+  "notes": [
+    "Apps should validate referenced artifacts against schemaRef when the files are available."
+  ]
+}

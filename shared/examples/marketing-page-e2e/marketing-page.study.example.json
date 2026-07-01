@@ -1,0 +1,30 @@
+{
+  "id": "marketing-page-study",
+  "source": {
+    "urlOrName": "LedgerPilot marketing page brief",
+    "capturedAt": "2026-06-30",
+    "viewport": "desktop"
+  },
+  "studyType": "storytelling",
+  "summary": "The page should lead with a cash-flow clarity promise, show proof before feature depth, handle setup and trust objections, and repeat one demo-request action without competing CTAs.",
+  "findings": [
+    {
+      "label": "Promise must precede product detail",
+      "evidence": "The brief identifies founders and operators who need cash-flow visibility before investor or board updates.",
+      "interpretation": "The hero should orient around the board-update outcome before explaining features.",
+      "handoff": "Use create-wireframe to keep the hero focused on one demo-request action."
+    },
+    {
+      "label": "Proof belongs before feature depth",
+      "evidence": "The required content asks for customer count, reporting time saved, and finance team trust before feature explanation.",
+      "interpretation": "Visitors need confidence before reading product mechanics.",
+      "handoff": "Place proof cards immediately after the hero before the feature section."
+    },
+    {
+      "label": "Objections are conversion-critical",
+      "evidence": "The brief names setup time, accounting-system compatibility, and data accuracy as required objection handling.",
+      "interpretation": "The wireframe needs an objection section before the final demo CTA.",
+      "handoff": "Represent objections as comparison or FAQ-style support before final commitment."
+    }
+  ]
+}

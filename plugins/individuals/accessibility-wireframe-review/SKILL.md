@@ -43,6 +43,13 @@ visual design and implementation harden the wrong structure.
 6. Use follow-up, not severity, for concerns that require visual styling,
    implementation, or content evidence outside the wireframe.
 
+## Boundary
+
+- Owns: structural accessibility review at wireframe fidelity — landmark presence, label coverage, focus path logic, form grouping, overlay dismissal contracts, and responsive reading order in structural plans.
+- Does not own: visual polish, final production accessibility testing, WCAG compliance certification, or audit findings on deployed UIs.
+- Hand off accessibility findings on existing UIs to `generate-accessibility-audit-report`.
+- Hand off structural layout decisions to `page-wireframe-planner` or `section-wireframe-planner`.
+
 ## Rules
 
 1. Review structure before visual details.

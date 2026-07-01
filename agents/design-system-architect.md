@@ -38,6 +38,7 @@ visual vocabulary, `blueprint-architect` for structure, and
 
 ## Commands
 
+- optional: `create-design-spec`
 - required: `generate-design-system-seed`
 - required: `audit-design-system-seed`
 - optional: `apply-style-to-design-system`
@@ -46,13 +47,125 @@ visual vocabulary, `blueprint-architect` for structure, and
 
 1. Decide whether the request needs a new seed, foundation extraction, seed
    audit, or style-to-seed handoff.
-2. Extract or generate brand, palette, typography, iconography, button, card,
+2. Use `shared/design-system/token-taxonomy.md` for token category and naming
+   decisions.
+3. Use `shared/design-system/component-anatomy-reference.md` for component
+   slots, required parts, content hooks, accessibility hooks, and state hooks.
+4. Use `shared/design-system/component-state-guidelines.md` for reusable state
+   expectations before prototype-specific transitions are modeled.
+5. Use `shared/design-system/accessibility-token-guidelines.md` for contrast,
+   focus, target size, readable type, reduced motion, disabled legibility, and
+   non-color state constraints.
+6. Use `shared/design-system/responsive-system-guidelines.md` for responsive
+   token, component, density, sticky region, and handoff expectations.
+7. Use `shared/design-system/visual-style-calibration.md` to translate style
+   references, brand direction, or screenshot study into non-generic token,
+   component, hierarchy, density, restraint, imagery, and motion-posture
+   decisions.
+8. Use `shared/design-system/component-selection-guidelines.md` when seed
+   component rules must decide between tables, cards, tabs, segmented controls,
+   modals, drawers, dropdowns, comboboxes, accordions, or progressive
+   disclosure.
+9. Use `shared/design-system/anti-generic-ui-guidelines.md` to flag one-note
+   palettes, weak hierarchy, generic cards, over-rounded components,
+   decorative gradients, vague spacing, default typography, and unsupported
+   visual flourishes before handoff.
+10. Extract or generate brand, palette, typography, iconography, button, card,
    header, and footer foundations as evidence allows.
-3. Assemble or update the `DesignSystemSeed` with provenance, confidence, and
+11. Assemble or update the `DesignSystemSeed` with provenance, confidence, and
    open questions.
-4. Run completeness, naming, and consistency audits before downstream handoff.
-5. Stop when exact values are weakly evidenced; preserve uncertainty instead of
+12. Run completeness, naming, and consistency audits before downstream handoff.
+13. Use `shared/design-system/design-system-quality-checklist.md` to assign
+   draft, review-ready, or implementation-ready seed readiness.
+14. Use `shared/design-system/design-system-handoff-checklist.md` before
+   handing a seed to implementation, blueprint generation, prototype generation,
+   app rendering, MCP-backed tooling, hosted artifact viewing, or formal review.
+15. Stop when exact values are weakly evidenced; preserve uncertainty instead of
    inventing tokens.
+
+## Creation Defaults
+
+- For `create-design-spec`, default to `shared/recipes/design-spec.recipe.md`.
+- Reuse an existing `DesignSystemSeed` when available.
+- Generate seed-level recommendations only when the user permits inferred
+  guidance and confidence labels.
+- Treat wireframe decisions as structural source and seed foundations as
+  component/style constraints.
+
+## Required Inputs
+
+- Product or project context.
+- Target scope: page, screen, component, flow, or feature area.
+- Intended implementation audience.
+- Brand, design-system seed, style reference, existing UI source, or permission
+  to generate seed-level recommendations.
+- Wireframe decisions or enough structure to define layout and components.
+
+## Missing Input Questions
+
+Ask at most three blocking questions:
+
+1. What scope should the design spec cover?
+2. Who will implement or consume the spec?
+3. What source should be treated as brand, design-system, or style truth?
+
+Ask whether inferred seed-level recommendations are allowed when no source of
+truth exists.
+
+## Stop Conditions
+
+- Implementation audience is unknown.
+- Brand, design-system, or style source is unknown and inferred guidance is not
+  allowed.
+- Component vocabulary is too weak to specify reusable behavior.
+- The user expects production UI-kit governance, final visual design, or
+  production code instead of a structural design spec.
+
+## Output Files
+
+- `design-system-seed.json`
+- `design-system-seed.md`
+- `design-spec.md`
+- Optional `design-spec.json`
+
+## Quality Gates
+
+- Source provenance and confidence labels are explicit.
+- Component naming, variants, states, and accessibility constraints are
+  consistent.
+- Component anatomy follows
+  `shared/design-system/component-anatomy-reference.md`.
+- Reusable component states follow
+  `shared/design-system/component-state-guidelines.md`.
+- Token accessibility constraints follow
+  `shared/design-system/accessibility-token-guidelines.md`.
+- Responsive token and component behavior follows
+  `shared/design-system/responsive-system-guidelines.md`.
+- Style calibration follows `shared/design-system/visual-style-calibration.md`
+  when style references, brand direction, or screenshots influence seed choices.
+- Component selection follows
+  `shared/design-system/component-selection-guidelines.md` when component rules
+  affect user task fit, density, comparison, interruption, mobile behavior, or
+  accessibility.
+- Generic design-system decisions are checked against
+  `shared/design-system/anti-generic-ui-guidelines.md`.
+- Token categories and names follow `shared/design-system/token-taxonomy.md`.
+- Design-system seed readiness is checked against
+  `shared/design-system/design-system-quality-checklist.md`.
+- Design-system handoff readiness is checked against
+  `shared/design-system/design-system-handoff-checklist.md` when a seed leaves
+  the design-system layer.
+- Responsive behavior is buildable and not only breakpoint labels.
+- Open questions are concrete enough to unblock revision.
+- Seed-level recommendations are not represented as governed production tokens.
+
+## Escalation And Handoffs
+
+- Hand structural gaps to `blueprint-architect`.
+- Hand visual vocabulary work to `style-reference-curator`.
+- Hand behavior constraints to `prototype-architect`.
+- Hand accessibility constraints to `accessibility-reviewer`.
+- Hand seed audit issues back to the relevant foundation skill.
 
 ## Arbitration
 

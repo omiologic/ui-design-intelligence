@@ -1,0 +1,206 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://omiologic.dev/schemas/ui-blueprint/app-artifact-manifest.schema.json",
+  "title": "App Artifact Manifest",
+  "description": "App-facing manifest for generated or reviewed UI Design Intelligence artifacts.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "version",
+    "type",
+    "id",
+    "createdAt",
+    "artifacts"
+  ],
+  "properties": {
+    "version": {
+      "$ref": "#/$defs/version"
+    },
+    "type": {
+      "const": "appArtifactManifest"
+    },
+    "id": {
+      "$ref": "#/$defs/id"
+    },
+    "createdAt": {
+      "$ref": "#/$defs/nonEmptyString"
+    },
+    "sourceRunId": {
+      "$ref": "#/$defs/id"
+    },
+    "queryContextId": {
+      "$ref": "#/$defs/id"
+    },
+    "retrievalResultsId": {
+      "$ref": "#/$defs/id"
+    },
+    "summary": {
+      "$ref": "#/$defs/nonEmptyString"
+    },
+    "artifacts": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/artifactDescriptor"
+      }
+    },
+    "warnings": {
+      "$ref": "#/$defs/stringList"
+    },
+    "notes": {
+      "$ref": "#/$defs/stringList"
+    }
+  },
+  "$defs": {
+    "version": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$"
+    },
+    "nonEmptyString": {
+      "type": "string",
+      "minLength": 1
+    },
+    "stringList": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/nonEmptyString"
+      }
+    },
+    "artifactType": {
+      "type": "string",
+      "enum": [
+        "wireframeConfig",
+        "designSystemSeed",
+        "prototypeConfig",
+        "userJourneyMap",
+        "contentModel",
+        "prototypeContent",
+        "brandVoice",
+        "pageAudit",
+        "styleReference",
+        "studyOutput",
+        "exportSeed",
+        "packageMetadata",
+        "notes"
+      ]
+    },
+    "artifactStatus": {
+      "type": "string",
+      "enum": [
+        "planned",
+        "generated",
+        "validated",
+        "failed",
+        "skipped",
+        "superseded"
+      ]
+    },
+    "storageRef": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "provider",
+        "uri"
+      ],
+      "properties": {
+        "provider": {
+          "type": "string",
+          "enum": [
+            "local",
+            "s3",
+            "s3Vector",
+            "hosted",
+            "package",
+            "redacted"
+          ]
+        },
+        "uri": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "recordType": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "etag": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "versionId": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "updatedAt": {
+          "$ref": "#/$defs/nonEmptyString"
+        }
+      }
+    },
+    "commandRef": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "status"
+      ],
+      "properties": {
+        "name": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "command": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "passed",
+            "failed",
+            "skipped",
+            "notRun"
+          ]
+        }
+      }
+    },
+    "artifactDescriptor": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "artifactType",
+        "path",
+        "status",
+        "schemaRef"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "artifactType": {
+          "$ref": "#/$defs/artifactType"
+        },
+        "path": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "status": {
+          "$ref": "#/$defs/artifactStatus"
+        },
+        "schemaRef": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "label": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "storageRef": {
+          "$ref": "#/$defs/storageRef"
+        },
+        "validationCommands": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/commandRef"
+          }
+        },
+        "notes": {
+          "$ref": "#/$defs/stringList"
+        }
+      }
+    }
+  }
+}

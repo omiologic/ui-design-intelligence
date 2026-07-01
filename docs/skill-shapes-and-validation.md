@@ -26,8 +26,8 @@ Use shared assets instead of local vocabulary forks:
 ## Canonical SKILL.md Template
 
 Sprint 004 standardizes skill bodies around one canonical section contract. The
-default validation gate enforces the currently stable subset, and the strict
-canonical gate is the ratchet used as migration tasks add the remaining sections.
+validation gate enforces the canonical section set by default; all sections are
+required for every skill.
 
 Canonical section order:
 
@@ -148,10 +148,10 @@ validation.
 
 ## Prototype Skills
 
-Prototype skills are planned in Sprint 003 but are not complete at this point in
-the task sequence.
+Prototype skills are active as of Sprint 009. They plan behavior-first
+interaction structures: screens, states, flows, overlays, and form contracts.
 
-Expected shape once implemented:
+Expected shape:
 
 - Behavior, route, screen, state, event, action, transition, overlay, form, and
   navigation-flow ownership
@@ -159,9 +159,6 @@ Expected shape once implemented:
 - Schema-backed output examples
 - Audit checks for missing states, unreachable screens, unclear dismissals, and
   broken task flow
-
-Prototype bundle validation is deferred to
-`.plan/sprint-003/tasks/sprint-003.23.run-sprint-003-design-system-prototype-validation.task.md`.
 
 ## Commands And Agents
 
@@ -224,38 +221,126 @@ style-reference records and examples, index generation, knowledge workspace
 initialization, blueprint anti-patterns, invalid fixtures, bundle manifests,
 capture URL smoke behavior, and blueprint export seed output.
 
+Run behavioral test validation:
+
+```bash
+npm run validate:behavioral-tests
+```
+
+This validates `tests/behavioral/*.behavioral-test.json` fixtures and, for any
+fixture with a `referenceExample`, checks each declared signal against that
+artifact offline without calling any model.
+
+## Behavioral Test Format
+
+Behavioral fixtures live in `tests/behavioral/` and use the filename pattern
+`{skill-name}.behavioral-test.json`. They are defined by
+`shared/schemas/skill-behavioral-test.schema.json`.
+
+Required fields:
+
+- `skill`: kebab-case name of the skill under test.
+- `brief`: compact input scenario (at least 10 characters).
+- `requiredSignals`: array of at least one signal object.
+
+Optional field:
+
+- `referenceExample`: repository-relative path to an existing artifact. When
+  present the validator checks every signal against it.
+
+Each signal requires:
+
+- `description`: human-readable assertion (at least 5 characters).
+- `check`: one of the check types listed below.
+
+### Check Types
+
+| Check | What it asserts | Required fields |
+| --- | --- | --- |
+| `nodeTypePresent` | A node with `type === target` exists somewhere in the artifact's node tree. | `target` |
+| `fieldPresent` | Dot-path field is truthy and non-empty. | `target` |
+| `fieldMatchesValue` | Dot-path field equals `expectedValue` exactly. | `target`, `expectedValue` |
+| `fieldCountAtLeast` | Dot-path array has at least `minCount` items. | `target`, `minCount` |
+| `allArrayItemsHaveField` | Every item in the `target` array has a truthy `field`. | `target`, `field` |
+| `fieldValuesInSet` | Every item's `field` in the `target` array is in `allowedValues`. | `target`, `field`, `allowedValues` |
+| `overlayHasDismissal` | Every entry in `artifact.overlays` has `.dismissal.methods` as a non-empty array. | — |
+| `antiPatternAbsent` | Declaration only — documents a failure mode; always passes statically. | `value` (label) |
+| `rubricCriteria` | Declaration only — documents a quality criterion; always passes statically. | `value` (label) |
+
+### Adding A Fixture For A New Skill
+
+1. Create `tests/behavioral/{skill-name}.behavioral-test.json`.
+2. Set `skill` to the exact kebab-case skill directory name.
+3. Write a `brief` that represents a realistic scenario a user would hand to the
+   skill.
+4. Choose a `referenceExample` from `shared/examples/` that a correct skill
+   output would match structurally, or use an artifact from `tests/`.
+5. Add at least three mechanically checkable signals (`nodeTypePresent`,
+   `fieldPresent`, `fieldCountAtLeast`, etc.) plus one declaration-only signal
+   (`antiPatternAbsent` or `rubricCriteria`) documenting the most important
+   failure mode to watch for.
+6. Run `npm run validate:behavioral-tests` to confirm all signals pass against
+   the reference artifact.
+
+Signals that require model output are recorded as `antiPatternAbsent` or
+`rubricCriteria` declarations. They document intent for manual review and
+evaluator tooling rather than blocking the offline gate.
+
 Run skill-only validation:
 
 ```bash
 npm run validate:skills
 ```
 
-This checks skill frontmatter, local `## References`, and required `SKILL.md`
-body sections: `Purpose`, `References`, `Rules`, `Anti-Patterns`, `Hand-Offs`,
-one decision section, and one workflow section. It also rejects deprecated
-top-level taxonomy headings such as `Best-Practice Checks`, `Evidence Rules`,
-`Inline Examples`, `Cross-Skill Example`, `Decision Heuristics`,
-`Worked Example`, and singular `Hand-Off`.
+This checks skill frontmatter, local `## References`, and all required `SKILL.md`
+body sections: `Purpose`, `Philosophy`, `Boundary`, `References`, `Rules`,
+`Anti-Patterns`, `Hand-Offs`, one decision section (`Decision Criteria` or
+`Evidence Discipline`), one workflow section (`Workflow` or `Method`), and the
+singular `Inline Example` section. It also rejects deprecated top-level taxonomy
+headings such as `Best-Practice Checks`, `Evidence Rules`, `Inline Examples`,
+`Cross-Skill Example`, `Decision Heuristics`, `Worked Example`, and singular
+`Hand-Off`.
 
-Run the strict canonical skill gate:
+Run targeted validation for an affected skill:
+
+```bash
+npm run validate:skill -- page-wireframe-planner
+```
+
+Targeted skill validation checks only the named skill directory under
+`plugins/individuals/` and its compatibility copy under `skills/` when present.
+It is intended for local iteration; full validation remains the release gate.
+
+Run the full canonical skill gate (alias for `validate:skills`):
 
 ```bash
 npm run validate:skills:canonical
 ```
 
-The strict gate additionally requires `Philosophy`, `Boundary`, and the singular
-`Inline Example` section. It is expected to become the default once Sprint 004
-skill migration tasks have normalized the corpus.
+Both `validate:skills` and `validate:skills:canonical` now run the same check.
+The canonical gate (`Philosophy`, `Boundary`, `Inline Example`) is the default
+since Sprint 009 normalized the full skill corpus.
 
 Run strict validation for an affected bundle:
 
 ```bash
-npm run validate:bundles:strict -- ui-knowledge-skills
+npm run validate:bundle -- ui-knowledge-skills
 ```
 
 Strict bundle validation requires all referenced skills, agents, commands, and
 shared files to exist. Normal bundle validation allows planned bundles to name
 future assets.
+
+Run changed-file validation:
+
+```bash
+npm run validate:changed
+```
+
+This routes Git changed files to targeted validators when possible, including
+skill, bundle, example, knowledge, design-system, prototype, style-reference,
+install-matrix, and Codex package checks. If package or validator wiring
+changes, it falls back to the full `npm run validate` chain.
 
 Run release validation:
 
@@ -263,10 +348,111 @@ Run release validation:
 npm run validate:release
 ```
 
+Install matrix validation is the local release gate for install/update safety:
+
+```bash
+npm run validate:install-matrix
+```
+
+It covers Codex `.agents` skills-only installs, Claude `.claude` full installs,
+component and aggregate bundles, dry-run behavior, conflict blocking, identical
+reinstall, forced overwrite, uninstall record scope, and installed reference
+checks.
+
 Release validation runs the full validation chain, builds every active or
 transitional bundle, validates each buildable bundle strictly, installs each
 bundle into a temporary target, verifies installed skill references, uninstalls
-it, and reports per-bundle success.
+it, builds generated Codex plugin packages, inspects release artifacts, and
+reports per-bundle success.
+
+Inspect release artifacts after building bundles and Codex plugin packages:
+
+```bash
+npm run inspect:release-artifacts
+```
+
+The inspection checks generated zip entries without manual unpacking, rejects
+local/private state, verifies manifests, README, license, and changelog files,
+checks generated Codex package manifests, and writes
+`dist/release-artifact-inspection.md`.
+
+For local packaging iteration only:
+
+```bash
+npm run package:fast
+```
+
+`package:fast` skips full validation only because the command is explicit. Run
+`npm run validate:release` before publishing release candidates.
+
+## Behavioral Tests
+
+Behavioral fixtures live in `tests/behavioral/` and use the extension
+`.behavioral-test.json`. Each fixture is validated against
+`shared/schemas/skill-behavioral-test.schema.json`.
+
+### What a behavioral fixture is
+
+A behavioral fixture declares the structural signals that a correct skill output
+must satisfy. It does not capture exact model output (which is brittle across
+runs). Instead it captures the minimum structural contract: which fields must be
+present, which node types must appear in the artifact tree, which array items
+must carry required sub-fields, and which anti-patterns must be absent.
+
+When a `referenceExample` path is provided, the validator loads that artifact
+and asserts each signal against it deterministically — no model call required.
+Fixtures without a `referenceExample` are validated for fixture structure only;
+their signals document intent.
+
+### Required fixture fields
+
+- `skill` — kebab-case name of the skill under test (matches the skill directory
+  name).
+- `brief` — compact scenario that would be handed to the skill as input.
+- `requiredSignals` — array of signal objects, each with `description` and
+  `check`, plus check-specific fields.
+- `referenceExample` (optional) — repository-relative path to an existing
+  artifact in `shared/examples/` or `tests/quality-golden-set/`.
+
+### Signal check types
+
+| Check | What it asserts |
+|---|---|
+| `nodeTypePresent` | A node with the given `target` type exists anywhere in the artifact's blueprint tree (root + overlays). |
+| `fieldPresent` | The dot-path `target` field is present and non-empty in the artifact. |
+| `fieldMatchesValue` | The dot-path `target` field equals `expectedValue`. |
+| `fieldCountAtLeast` | The dot-path `target` array has at least `minCount` items. |
+| `allArrayItemsHaveField` | Every item in the `target` array has a truthy `field` property. |
+| `fieldValuesInSet` | Every `target[].field` value is contained in `allowedValues`. |
+| `overlayHasDismissal` | Every overlay in `artifact.overlays` has a non-empty `dismissal.methods` array. |
+| `antiPatternAbsent` | Declaration only — always passes. Documents a pattern the skill must not produce; reviewed by evaluators against live output. |
+| `rubricCriteria` | Declaration only — always passes. Documents a rubric criterion the skill should satisfy; reviewed by evaluators against live output. |
+
+### How to add a fixture for a new skill
+
+1. Create `tests/behavioral/<skill-name>.behavioral-test.json`.
+2. Set `skill` to the exact skill directory name.
+3. Write a `brief` that covers the scenario you want to guard.
+4. Add at least one `requiredSignals` entry. Use `fieldPresent` and
+   `fieldMatchesValue` to assert top-level artifact shape; use `nodeTypePresent`
+   for blueprint artifacts; use `allArrayItemsHaveField` to assert evidence
+   discipline on arrays.
+5. If a reference example already exists in `shared/examples/`, set
+   `referenceExample` to its repository-relative path so the validator confirms
+   signals hold against it.
+6. Run `npm run validate:behavioral-tests` to confirm the fixture passes.
+
+### Running behavioral tests
+
+```bash
+npm run validate:behavioral-tests
+```
+
+Behavioral tests are included in the full validation chain:
+
+```bash
+npm run validate
+```
 
 ## Current Deferrals
 

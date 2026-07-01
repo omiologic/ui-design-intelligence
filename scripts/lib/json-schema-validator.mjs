@@ -21,6 +21,7 @@ function matchesType(value, type) {
   if (type === "array") return Array.isArray(value);
   if (type === "object") return value !== null && typeof value === "object" && !Array.isArray(value);
   if (type === "null") return value === null;
+  if (type === "integer") return Number.isInteger(value);
   return typeof value === type;
 }
 

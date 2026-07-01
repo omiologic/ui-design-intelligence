@@ -1,0 +1,364 @@
+{
+  "version": "0.1.0",
+  "type": "prototypeConfig",
+  "id": "northstar-product-page-prototype",
+  "name": "Northstar Product Page Prototype",
+  "source": {
+    "sourceWireframeId": "northstar-product-page-wireframe",
+    "sourceWireframeRef": "shared/examples/product-page-e2e/product-page.ui-blueprint.json",
+    "sourceDesignSystemSeedId": "northstar-product-design-system-seed",
+    "notes": ["Prototype config references wireframe node IDs and models ecommerce behavior only."]
+  },
+  "designSystemSeedRef": "northstar-product-design-system-seed",
+  "screens": [
+    {
+      "id": "product-screen",
+      "label": "Product Detail Page",
+      "wireframeRef": "northstar-product-page",
+      "routeId": "product-route",
+      "initialState": "default",
+      "viewportPriority": ["expanded", "compact"]
+    }
+  ],
+  "routes": [
+    {
+      "id": "product-route",
+      "path": "/products/northstar-beam-400",
+      "screenId": "product-screen",
+      "label": "Product Detail"
+    }
+  ],
+  "states": [
+    {
+      "id": "variant-unselected",
+      "name": "Variant Unselected",
+      "state": "required",
+      "nodeId": "variant-selector-card",
+      "screenId": "product-screen",
+      "description": "Color variant is required before add to cart."
+    },
+    {
+      "id": "variant-error-state",
+      "name": "Variant Error",
+      "state": "error",
+      "nodeId": "variant-selector-card",
+      "screenId": "product-screen",
+      "description": "Variant selector shows required-choice error."
+    },
+    {
+      "id": "variant-error-text-visible",
+      "name": "Variant Error Text Visible",
+      "state": "visible",
+      "nodeId": "variant-error-text",
+      "screenId": "product-screen",
+      "description": "Inline required-choice error text is visible."
+    },
+    {
+      "id": "cart-drawer-closed",
+      "name": "Cart Drawer Closed",
+      "state": "closed",
+      "nodeId": "cart-drawer",
+      "screenId": "product-screen",
+      "description": "Cart drawer is not visible."
+    },
+    {
+      "id": "cart-drawer-open",
+      "name": "Cart Drawer Open",
+      "state": "open",
+      "nodeId": "cart-drawer",
+      "screenId": "product-screen",
+      "description": "Cart drawer is visible and holds focus."
+    },
+    {
+      "id": "cart-feedback-success",
+      "name": "Cart Feedback Success",
+      "state": "success",
+      "nodeId": "cart-feedback-banner",
+      "screenId": "product-screen",
+      "description": "Add-to-cart success feedback is visible."
+    },
+    {
+      "id": "cart-feedback-error",
+      "name": "Cart Feedback Error",
+      "state": "error",
+      "nodeId": "cart-error-banner",
+      "screenId": "product-screen",
+      "description": "Cart feedback explains what needs recovery."
+    },
+    {
+      "id": "size-guide-closed",
+      "name": "Size Guide Closed",
+      "state": "closed",
+      "nodeId": "size-guide-dialog",
+      "screenId": "product-screen",
+      "description": "Fit guide dialog is not visible."
+    },
+    {
+      "id": "size-guide-open",
+      "name": "Size Guide Open",
+      "state": "open",
+      "nodeId": "size-guide-dialog",
+      "screenId": "product-screen",
+      "description": "Fit guide dialog is visible and traps focus."
+    },
+    {
+      "id": "mobile-cart-sticky-visible",
+      "name": "Mobile Cart Sticky Visible",
+      "state": "visible",
+      "nodeId": "mobile-cart-sticky-bar",
+      "screenId": "product-screen",
+      "description": "Mobile sticky add-to-cart remains visible."
+    }
+  ],
+  "componentStateModels": [
+    {
+      "id": "cart-drawer-state-model",
+      "component": "drawer",
+      "nodeId": "cart-drawer",
+      "wireframeRef": "northstar-product-page",
+      "initialState": "closed",
+      "allowedStates": ["closed", "open"],
+      "transitions": [
+        {
+          "from": "closed",
+          "to": "open",
+          "trigger": "click",
+          "description": "Successful add-to-cart opens cart drawer."
+        },
+        {
+          "from": "open",
+          "to": "closed",
+          "trigger": "keydown",
+          "description": "Escape closes the cart drawer."
+        }
+      ],
+      "accessibility": {
+        "focusManagement": "Move focus into the cart drawer on open and return focus to the triggering add-to-cart button on close.",
+        "keyboardBehavior": "Escape closes the drawer; Tab remains inside while open.",
+        "ariaLabel": "Shopping cart"
+      }
+    },
+    {
+      "id": "size-guide-state-model",
+      "component": "dialog",
+      "nodeId": "size-guide-dialog",
+      "wireframeRef": "northstar-product-page",
+      "initialState": "closed",
+      "allowedStates": ["closed", "open"],
+      "transitions": [
+        {
+          "from": "closed",
+          "to": "open",
+          "trigger": "click",
+          "description": "Size guide button opens fit guide."
+        },
+        {
+          "from": "open",
+          "to": "closed",
+          "trigger": "keydown",
+          "description": "Escape closes fit guide."
+        }
+      ],
+      "accessibility": {
+        "focusManagement": "Move focus into the fit guide on open and return focus to the size guide button on close.",
+        "keyboardBehavior": "Escape closes the dialog; Tab remains inside while open.",
+        "ariaLabel": "Headlamp fit guide"
+      }
+    },
+    {
+      "id": "variant-selector-state-model",
+      "component": "variant-selector",
+      "nodeId": "variant-selector-card",
+      "wireframeRef": "northstar-product-page",
+      "initialState": "required",
+      "allowedStates": ["required", "selected", "error"],
+      "transitions": [
+        {
+          "from": "required",
+          "to": "error",
+          "trigger": "submit",
+          "description": "Submitting without color selection shows error."
+        },
+        {
+          "from": "error",
+          "to": "selected",
+          "trigger": "change",
+          "description": "Choosing a color clears the error."
+        }
+      ],
+      "validation": {
+        "states": ["error", "success"],
+        "errorPlacement": "inline",
+        "rules": ["Color variant is required before add to cart."]
+      },
+      "accessibility": {
+        "focusManagement": "Move focus to variant error text when add-to-cart is attempted without a selection.",
+        "keyboardBehavior": "Arrow keys or Tab reach each variant option."
+      }
+    }
+  ],
+  "interactions": [
+    {
+      "id": "show-variant-required-error",
+      "label": "Show required variant error",
+      "trigger": {
+        "event": "click",
+        "sourceNodeId": "add-to-cart-button",
+        "screenId": "product-screen",
+        "routeId": "product-route"
+      },
+      "condition": {
+        "type": "whenInvalid",
+        "stateId": "variant-unselected"
+      },
+      "action": {
+        "type": "validateField",
+        "targetNodeId": "variant-selector-card",
+        "targetStateId": "variant-error-state"
+      },
+      "result": {
+        "type": "validationShown",
+        "description": "Variant required error appears inline.",
+        "resultingStateId": "variant-error-state",
+        "focusTargetNodeId": "variant-error-text"
+      },
+      "accessibility": {
+        "focusManagement": "Move focus to the inline error text.",
+        "keyboardBehavior": "Error is reachable by keyboard after failed submission.",
+        "ariaLive": "polite"
+      }
+    },
+    {
+      "id": "add-selected-product-to-cart",
+      "label": "Add selected product to cart",
+      "trigger": {
+        "event": "click",
+        "sourceNodeId": "add-to-cart-button",
+        "screenId": "product-screen",
+        "routeId": "product-route"
+      },
+      "condition": {
+        "type": "whenValid",
+        "stateId": "variant-unselected"
+      },
+      "action": {
+        "type": "openOverlay",
+        "targetNodeId": "cart-drawer",
+        "targetStateId": "cart-drawer-open"
+      },
+      "result": {
+        "type": "overlayOpened",
+        "description": "Cart drawer opens with the selected headlamp in the cart.",
+        "resultingStateId": "cart-drawer-open",
+        "focusTargetNodeId": "cart-drawer"
+      },
+      "accessibility": {
+        "focusManagement": "Move focus to cart drawer heading.",
+        "keyboardBehavior": "Escape closes cart drawer.",
+        "ariaLive": "polite"
+      }
+    },
+    {
+      "id": "open-size-guide",
+      "label": "Open size guide",
+      "trigger": {
+        "event": "click",
+        "sourceNodeId": "size-guide-button",
+        "screenId": "product-screen",
+        "routeId": "product-route"
+      },
+      "condition": {
+        "type": "always"
+      },
+      "action": {
+        "type": "openOverlay",
+        "targetNodeId": "size-guide-dialog",
+        "targetStateId": "size-guide-open"
+      },
+      "result": {
+        "type": "overlayOpened",
+        "description": "Fit guide dialog opens.",
+        "resultingStateId": "size-guide-open",
+        "focusTargetNodeId": "size-guide-dialog"
+      },
+      "accessibility": {
+        "focusManagement": "Move focus to fit guide dialog.",
+        "keyboardBehavior": "Escape closes fit guide.",
+        "ariaLive": "off"
+      }
+    }
+  ],
+  "overlays": [
+    {
+      "id": "cart-drawer-overlay",
+      "nodeId": "cart-drawer",
+      "type": "drawer",
+      "initialState": "closed",
+      "triggerNodeIds": ["add-to-cart-button", "mobile-add-to-cart-button", "cart-button"],
+      "dismissal": {
+        "methods": ["escape", "closeButton", "scrim"],
+        "focusReturnNodeId": "add-to-cart-button"
+      }
+    },
+    {
+      "id": "size-guide-overlay",
+      "nodeId": "size-guide-dialog",
+      "type": "dialog",
+      "initialState": "closed",
+      "triggerNodeIds": ["size-guide-button"],
+      "dismissal": {
+        "methods": ["escape", "closeButton", "scrim"],
+        "focusReturnNodeId": "size-guide-button"
+      }
+    }
+  ],
+  "forms": [
+    {
+      "id": "variant-selection-form",
+      "nodeId": "variant-selector-card",
+      "fields": [
+        {
+          "id": "color-variant-field",
+          "nodeId": "variant-selector-card",
+          "required": true,
+          "validationStateIds": ["variant-error-state"]
+        }
+      ],
+      "submitNodeId": "add-to-cart-button",
+      "validation": {
+        "states": ["error", "success"],
+        "errorPlacement": "inline",
+        "rules": ["Color selection is required before add to cart."]
+      }
+    }
+  ],
+  "navigationFlows": [
+    {
+      "id": "product-page-self-flow",
+      "fromScreenId": "product-screen",
+      "toScreenId": "product-screen",
+      "triggerNodeId": "product-details-tabs",
+      "action": "toggleState"
+    }
+  ],
+  "transitions": [
+    {
+      "id": "cart-drawer-open-transition",
+      "from": "cart-drawer-closed",
+      "to": "cart-drawer-open",
+      "trigger": "click",
+      "description": "Cart drawer opens after valid add-to-cart."
+    },
+    {
+      "id": "size-guide-open-transition",
+      "from": "size-guide-closed",
+      "to": "size-guide-open",
+      "trigger": "click",
+      "description": "Fit guide opens from product summary."
+    }
+  ],
+  "notes": [
+    "Prototype config models behavior only and does not implement checkout.",
+    "Variant choice is represented as a structural card until a richer option-control schema exists."
+  ]
+}

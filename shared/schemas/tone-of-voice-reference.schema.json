@@ -1,0 +1,517 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://omiologic.dev/schemas/tone-of-voice-reference.schema.json",
+  "title": "Tone of Voice Reference",
+  "description": "Schema for a controlled tone-of-voice reference used by content, copywriting, journey, blueprint, and prototype skills.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "version",
+    "type",
+    "description",
+    "tones"
+  ],
+  "properties": {
+    "version": {
+      "type": "string",
+      "description": "Version of this tone reference format.",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$",
+      "examples": [
+        "0.1.0"
+      ]
+    },
+    "type": {
+      "type": "string",
+      "const": "toneOfVoiceReference"
+    },
+    "description": {
+      "type": "string",
+      "minLength": 1
+    },
+    "tones": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/tone"
+      }
+    },
+    "toneMixingRules": {
+      "$ref": "#/$defs/toneMixingRules"
+    },
+    "recommendedUsage": {
+      "$ref": "#/$defs/recommendedUsage"
+    },
+    "metadata": {
+      "$ref": "#/$defs/metadata"
+    }
+  },
+  "$defs": {
+    "tone": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "name",
+        "summary",
+        "vibe",
+        "bestFor",
+        "useCarefullyFor",
+        "copyRules",
+        "sampleLines",
+        "uiCopyFit"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/kebabCaseId",
+          "description": "Stable machine-readable tone identifier."
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Human-readable tone name."
+        },
+        "summary": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Short explanation of the tone."
+        },
+        "vibe": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "description": "Personality descriptors for the tone."
+        },
+        "bestFor": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "description": "Situations, industries, page types, or contexts where this tone fits well."
+        },
+        "useCarefullyFor": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "description": "Contexts where the tone may be risky or should be softened."
+        },
+        "copyRules": {
+          "$ref": "#/$defs/copyRules"
+        },
+        "sampleLines": {
+          "$ref": "#/$defs/sampleLines"
+        },
+        "uiCopyFit": {
+          "$ref": "#/$defs/uiCopyFit"
+        },
+        "contentRoles": {
+          "type": "array",
+          "description": "Optional content roles where this tone is especially useful.",
+          "items": {
+            "$ref": "#/$defs/contentRole"
+          }
+        },
+        "riskNotes": {
+          "type": "array",
+          "description": "Optional cautions for regulated, healthcare, financial, legal, or trust-sensitive use.",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "exampleApplications": {
+          "type": "array",
+          "description": "Optional examples showing how the tone can be applied to a specific UI context.",
+          "items": {
+            "$ref": "#/$defs/exampleApplication"
+          }
+        },
+        "tags": {
+          "$ref": "#/$defs/tags"
+        }
+      }
+    },
+    "copyRules": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "do",
+        "avoid"
+      ],
+      "properties": {
+        "do": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "avoid": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "sampleLines": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "headline",
+        "body",
+        "primaryCTA",
+        "secondaryCTA",
+        "emptyState",
+        "error"
+      ],
+      "properties": {
+        "headline": {
+          "type": "string",
+          "minLength": 1
+        },
+        "body": {
+          "type": "string",
+          "minLength": 1
+        },
+        "primaryCTA": {
+          "type": "string",
+          "minLength": 1
+        },
+        "secondaryCTA": {
+          "type": "string",
+          "minLength": 1
+        },
+        "emptyState": {
+          "type": "string",
+          "minLength": 1
+        },
+        "error": {
+          "type": "string",
+          "minLength": 1
+        },
+        "formHelperText": {
+          "type": "string",
+          "minLength": 1
+        },
+        "successMessage": {
+          "type": "string",
+          "minLength": 1
+        },
+        "confirmationMessage": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "uiCopyFit": {
+      "type": "object",
+      "description": "Fit rating for common UI copy contexts.",
+      "additionalProperties": {
+        "$ref": "#/$defs/fitRating"
+      },
+      "properties": {
+        "hero": {
+          "$ref": "#/$defs/fitRating"
+        },
+        "cta": {
+          "$ref": "#/$defs/fitRating"
+        },
+        "productDescription": {
+          "$ref": "#/$defs/fitRating"
+        },
+        "formMicrocopy": {
+          "$ref": "#/$defs/fitRating"
+        },
+        "errorMessage": {
+          "$ref": "#/$defs/fitRating"
+        },
+        "emptyState": {
+          "$ref": "#/$defs/fitRating"
+        },
+        "confirmationMessage": {
+          "$ref": "#/$defs/fitRating"
+        },
+        "healthcarePage": {
+          "$ref": "#/$defs/fitRating"
+        },
+        "landingPage": {
+          "$ref": "#/$defs/fitRating"
+        },
+        "documentation": {
+          "$ref": "#/$defs/fitRating"
+        },
+        "supportFlow": {
+          "$ref": "#/$defs/fitRating"
+        }
+      }
+    },
+    "fitRating": {
+      "type": "string",
+      "enum": [
+        "low",
+        "medium",
+        "high"
+      ]
+    },
+    "toneMixingRules": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "description",
+        "recommendedMaxTones",
+        "primaryToneUsage",
+        "secondaryToneUsage",
+        "avoid"
+      ],
+      "properties": {
+        "description": {
+          "type": "string",
+          "minLength": 1
+        },
+        "recommendedMaxTones": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 3
+        },
+        "primaryToneUsage": {
+          "type": "string",
+          "minLength": 1
+        },
+        "secondaryToneUsage": {
+          "type": "string",
+          "minLength": 1
+        },
+        "avoid": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "commonBlends": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/toneBlend"
+          }
+        }
+      }
+    },
+    "toneBlend": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "name",
+        "primaryTone",
+        "secondaryTone",
+        "bestFor"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/kebabCaseId"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "primaryTone": {
+          "$ref": "#/$defs/kebabCaseId",
+          "description": "Tone id used as the dominant voice."
+        },
+        "secondaryTone": {
+          "$ref": "#/$defs/kebabCaseId",
+          "description": "Tone id used for support copy, microcopy, or selected sections."
+        },
+        "ratio": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "primary": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            "secondary": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            }
+          }
+        },
+        "bestFor": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "rules": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "recommendedUsage": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "contentModel": {
+          "type": "string",
+          "minLength": 1
+        },
+        "prototypeCopy": {
+          "type": "string",
+          "minLength": 1
+        },
+        "audit": {
+          "type": "string",
+          "minLength": 1
+        },
+        "journeyMap": {
+          "type": "string",
+          "minLength": 1
+        },
+        "designSystemSeed": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "exampleApplication": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "context",
+        "copy"
+      ],
+      "properties": {
+        "context": {
+          "type": "string",
+          "minLength": 1
+        },
+        "copy": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "notes": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "tags": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "industries": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/kebabCaseId"
+          }
+        },
+        "pageTypes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/kebabCaseId"
+          }
+        },
+        "conversionGoals": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/kebabCaseId"
+          }
+        },
+        "audiences": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/kebabCaseId"
+          }
+        },
+        "riskLevels": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "low",
+              "medium",
+              "high",
+              "regulated"
+            ]
+          }
+        }
+      }
+    },
+    "contentRole": {
+      "type": "string",
+      "enum": [
+        "eyebrow",
+        "headline",
+        "subheadline",
+        "body",
+        "caption",
+        "metadata",
+        "primaryCTA",
+        "secondaryCTA",
+        "helperText",
+        "errorText",
+        "successMessage",
+        "emptyState",
+        "confirmationMessage",
+        "formLabel",
+        "formHelperText",
+        "navigationLabel",
+        "disclaimer"
+      ]
+    },
+    "metadata": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "createdBy": {
+          "type": "string"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "source": {
+          "type": "string"
+        },
+        "notes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "kebabCaseId": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$"
+    }
+  }
+}

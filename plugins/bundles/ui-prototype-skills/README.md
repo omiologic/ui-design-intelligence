@@ -20,11 +20,12 @@ or production runtime implementation.
 Skills:
 
 - `generate-interactive-prototype-config`
-- `study-ui-prototype-behavior`
-- `generate-component-state-model`
+- `generate-prototype-flow`
 - `generate-interaction-flow`
+- `generate-component-state-model`
 - `generate-clickable-prototype-plan`
 - `audit-prototype-interactions`
+- `study-ui-prototype-behavior`
 
 Agents:
 
@@ -32,6 +33,7 @@ Agents:
 
 Commands:
 
+- `create-prototype-plan`
 - `generate-prototype-from-blueprint`
 - `generate-prototype-from-knowledge`
 - `audit-prototype-flow`
@@ -53,15 +55,28 @@ bundle.
 
 ## Install
 
+Codex/GPT skills-only target:
+
+```bash
+node scripts/install-bundle.mjs install ui-prototype-skills "$HOME/.agents" "$HOME/.agents/skills" --skills-only --dry-run
+node scripts/install-bundle.mjs install ui-prototype-skills "$HOME/.agents" "$HOME/.agents/skills" --skills-only
+```
+
+Claude/local full-bundle target:
+
 ```bash
 UI_PLUGIN_BUNDLE="ui-prototype-skills" ./install.sh
 ```
 
-Install into a project-local target:
+Claude/local project target:
 
 ```bash
+UI_PLUGIN_BUNDLE="ui-prototype-skills" UI_PLUGIN_TARGET="./.claude" ./install.sh --dry-run
 UI_PLUGIN_BUNDLE="ui-prototype-skills" UI_PLUGIN_TARGET="./.claude" ./install.sh
 ```
+
+Use `--force` only when you intentionally want to overwrite non-identical
+existing files.
 
 Uninstall:
 
@@ -71,11 +86,15 @@ UI_PLUGIN_BUNDLE="ui-prototype-skills" ./uninstall.sh
 
 ## Usage Example
 
-Use `generate-prototype-from-blueprint` with a schema-valid UIBlueprint and
-optional design-system seed. The workflow can generate component state models,
-interaction flows, and a prototype config, then use `audit-prototype-flow` to
-check missing states, unreachable screens, unclear dismissals, or broken task
-flow.
+Use `create-prototype-plan` when the user wants one clear entrypoint for a
+prototype behavior plan. The workflow confirms source wireframe node IDs,
+generates state models and interaction flows, assembles `prototype-config.json`,
+writes `prototype-plan.md`, and audits focus, keyboard, validation, overlays,
+responsive behavior, and runtime boundaries.
+
+Use `generate-prototype-from-blueprint` when the input is already a
+schema-valid UIBlueprint and you want the lower-level source-artifact workflow
+directly.
 
 ## Relationship To Other Bundles
 
@@ -87,8 +106,8 @@ flow.
 
 ## Versioning And Status
 
-Version: `0.1.0`. Status: `transitional`. The bundle is buildable but remains a
-newer behavior layer that depends on blueprint and design-system contracts.
+Version: `0.9.0`. Status: `active`. All seven prototype skills meet the full
+canonical skill gate. The bundle is ready for production install.
 
 ## License
 

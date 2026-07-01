@@ -1,0 +1,324 @@
+{
+  "id": "northstar-product-page-wireframe",
+  "type": "wireframe",
+  "label": "Northstar Beam Product Page Wireframe",
+  "version": "0.1.0",
+  "description": "Ecommerce product detail blueprint with inspection, comparison, cart feedback, and recovery.",
+  "root": {
+    "id": "northstar-product-page",
+    "type": "page",
+    "label": "Northstar Beam Product Page",
+    "children": [
+      {
+        "id": "store-header",
+        "type": "header",
+        "label": "Store Header",
+        "accessibility": {
+          "landmark": "banner"
+        },
+        "children": [
+          {
+            "id": "store-navigation",
+            "type": "navigation",
+            "label": "Store Navigation",
+            "accessibility": {
+              "ariaLabel": "Store navigation"
+            }
+          },
+          {
+            "id": "cart-button",
+            "type": "button",
+            "label": "Cart",
+            "role": "secondaryCTA"
+          }
+        ]
+      },
+      {
+        "id": "product-main",
+        "type": "main",
+        "label": "Product Main",
+        "accessibility": {
+          "landmark": "main"
+        },
+        "children": [
+          {
+            "id": "product-breadcrumb",
+            "type": "breadcrumb",
+            "label": "Product Breadcrumb"
+          },
+          {
+            "id": "product-inspection-section",
+            "type": "section",
+            "label": "Product Inspection And Purchase",
+            "layout": "twoColumn",
+            "children": [
+              {
+                "id": "product-media-gallery",
+                "type": "imagePlaceholder",
+                "label": "Product Media Gallery"
+              },
+              {
+                "id": "product-summary",
+                "type": "contentGroup",
+                "label": "Product Summary",
+                "children": [
+                  {
+                    "id": "product-title",
+                    "type": "heading",
+                    "label": "Northstar Beam 400",
+                    "role": "headline"
+                  },
+                  {
+                    "id": "product-price",
+                    "type": "paragraph",
+                    "label": "Product Price",
+                    "role": "price"
+                  },
+                  {
+                    "id": "rating-proof",
+                    "type": "paragraph",
+                    "label": "Rating And Review Proof",
+                    "role": "trustSignal"
+                  },
+                  {
+                    "id": "shipping-stock-proof",
+                    "type": "paragraph",
+                    "label": "Shipping And Stock Status",
+                    "role": "helperText"
+                  },
+                  {
+                    "id": "variant-selector-card",
+                    "type": "card",
+                    "label": "Required Color Variant Selector",
+                    "children": [
+                      {
+                        "id": "variant-selector-heading",
+                        "type": "heading",
+                        "label": "Choose Color"
+                      },
+                      {
+                        "id": "variant-selector-help",
+                        "type": "paragraph",
+                        "label": "Required Variant Help",
+                        "role": "helperText"
+                      },
+                      {
+                        "id": "variant-error-text",
+                        "type": "paragraph",
+                        "label": "Variant Required Error",
+                        "role": "errorText"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "product-actions",
+                    "type": "buttonGroup",
+                    "label": "Product Actions",
+                    "children": [
+                      {
+                        "id": "add-to-cart-button",
+                        "type": "button",
+                        "label": "Add To Cart",
+                        "role": "primaryCTA"
+                      },
+                      {
+                        "id": "size-guide-button",
+                        "type": "button",
+                        "label": "Open Fit Guide",
+                        "role": "secondaryCTA"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "product-details-tabs",
+            "type": "tabs",
+            "label": "Product Details Tabs",
+            "children": [
+              {
+                "id": "overview-tab-panel",
+                "type": "contentGroup",
+                "label": "Overview Tab Panel"
+              },
+              {
+                "id": "specifications-tab-panel",
+                "type": "contentGroup",
+                "label": "Specifications Tab Panel"
+              }
+            ]
+          },
+          {
+            "id": "comparison-section",
+            "type": "section",
+            "label": "Brightness Battery Fit Comparison",
+            "children": [
+              {
+                "id": "comparison-heading",
+                "type": "heading",
+                "label": "Compare Trail Headlamps"
+              },
+              {
+                "id": "comparison-table",
+                "type": "comparisonTable",
+                "label": "Product Comparison Table"
+              }
+            ]
+          },
+          {
+            "id": "cart-feedback-section",
+            "type": "section",
+            "label": "Cart Feedback And Recovery",
+            "children": [
+              {
+                "id": "cart-feedback-banner",
+                "type": "card",
+                "label": "Cart Feedback Banner",
+                "state": "success"
+              },
+              {
+                "id": "cart-error-banner",
+                "type": "card",
+                "label": "Cart Error Banner",
+                "state": "error"
+              }
+            ]
+          },
+          {
+            "id": "related-products",
+            "type": "section",
+            "label": "Related Products",
+            "layout": "cardGrid",
+            "children": [
+              {
+                "id": "related-product-grid",
+                "type": "cardGrid",
+                "label": "Related Product Grid",
+                "children": [
+                  {
+                    "id": "related-lantern-card",
+                    "type": "card",
+                    "label": "Related Lantern Card"
+                  },
+                  {
+                    "id": "related-battery-card",
+                    "type": "card",
+                    "label": "Related Battery Pack Card"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "mobile-cart-sticky-bar",
+        "type": "stickyBar",
+        "label": "Mobile Cart Sticky Bar",
+        "children": [
+          {
+            "id": "mobile-add-to-cart-button",
+            "type": "button",
+            "label": "Add To Cart",
+            "role": "primaryCTA"
+          }
+        ]
+      },
+      {
+        "id": "store-footer",
+        "type": "footer",
+        "label": "Store Footer",
+        "accessibility": {
+          "landmark": "contentinfo"
+        }
+      }
+    ]
+  },
+  "overlays": [
+    {
+      "id": "size-guide-dialog",
+      "type": "dialog",
+      "label": "Fit Guide Dialog",
+      "state": "closed",
+      "accessibility": {
+        "ariaLabel": "Headlamp fit guide",
+        "focusManagement": "Move focus into the dialog on open and return focus to the size guide button on close.",
+        "keyboardBehavior": "Escape closes the dialog and Tab remains inside while open."
+      },
+      "children": [
+        {
+          "id": "size-guide-content",
+          "type": "contentGroup",
+          "label": "Fit Guide Content",
+          "children": [
+            {
+              "id": "size-guide-heading",
+              "type": "heading",
+              "label": "Strap Fit Guide"
+            },
+            {
+              "id": "size-guide-copy",
+              "type": "paragraph",
+              "label": "Fit Guidance Copy"
+            },
+            {
+              "id": "close-size-guide-button",
+              "type": "button",
+              "label": "Close Fit Guide",
+              "role": "secondaryCTA"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cart-drawer",
+      "type": "drawer",
+      "label": "Cart Drawer",
+      "state": "closed",
+      "accessibility": {
+        "ariaLabel": "Shopping cart",
+        "focusManagement": "Move focus into drawer on open and return focus to add-to-cart trigger on close.",
+        "keyboardBehavior": "Escape closes the drawer."
+      },
+      "children": [
+        {
+          "id": "cart-drawer-content",
+          "type": "contentGroup",
+          "label": "Cart Drawer Content",
+          "children": [
+            {
+              "id": "cart-drawer-heading",
+              "type": "heading",
+              "label": "Cart Summary"
+            },
+            {
+              "id": "cart-line-item",
+              "type": "card",
+              "label": "Cart Line Item"
+            },
+            {
+              "id": "checkout-button",
+              "type": "button",
+              "label": "Checkout",
+              "role": "primaryCTA"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cart-toast",
+      "type": "toast",
+      "label": "Added To Cart Toast",
+      "state": "closed"
+    }
+  ],
+  "responsive": {
+    "desktop": "Product media and summary use two columns; comparison appears before related products.",
+    "tablet": "Product media and summary compress while keeping variant and add-to-cart visible.",
+    "mobile": "Media, summary, variant selector, add-to-cart, details, comparison, and related products stack in purchase order."
+  }
+}

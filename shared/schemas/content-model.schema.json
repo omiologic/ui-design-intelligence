@@ -1,0 +1,302 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://omiologic.dev/schemas/ui-blueprint/content-model.schema.json",
+  "title": "Content Model",
+  "description": "Node-tied realistic content for a source blueprint, generated after journey and structure are known.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "version",
+    "type",
+    "id",
+    "name",
+    "source",
+    "sourceBlueprintId",
+    "sourceBlueprintRef",
+    "audience",
+    "journey",
+    "sections",
+    "review"
+  ],
+  "properties": {
+    "version": {
+      "$ref": "#/$defs/version"
+    },
+    "type": {
+      "const": "contentModel"
+    },
+    "id": {
+      "$ref": "#/$defs/id"
+    },
+    "name": {
+      "$ref": "#/$defs/nonEmptyString"
+    },
+    "source": {
+      "$ref": "#/$defs/artifactSource"
+    },
+    "sourceBlueprintId": {
+      "$ref": "#/$defs/id"
+    },
+    "sourceBlueprintRef": {
+      "$ref": "#/$defs/nonEmptyString"
+    },
+    "journeyMapRef": {
+      "$ref": "#/$defs/nonEmptyString"
+    },
+    "brandVoiceRef": {
+      "$ref": "#/$defs/id"
+    },
+    "audience": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "primary",
+        "intent"
+      ],
+      "properties": {
+        "primary": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "intent": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "segments": {
+          "$ref": "#/$defs/stringList"
+        }
+      }
+    },
+    "journey": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "primaryGoal",
+        "stages"
+      ],
+      "properties": {
+        "primaryGoal": {
+          "$ref": "#/$defs/id"
+        },
+        "stages": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/id"
+          }
+        }
+      }
+    },
+    "globalContent": {
+      "$ref": "#/$defs/copyMap"
+    },
+    "sections": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/contentEntry"
+      }
+    },
+    "review": {
+      "$ref": "#/$defs/reviewState"
+    },
+    "notes": {
+      "$ref": "#/$defs/stringList"
+    }
+  },
+  "$defs": {
+    "version": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$"
+    },
+    "nonEmptyString": {
+      "type": "string",
+      "minLength": 1
+    },
+    "stringList": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/nonEmptyString"
+      }
+    },
+    "sourceKind": {
+      "type": "string",
+      "enum": [
+        "userProvided",
+        "generated",
+        "derivedFromStudy",
+        "derivedFromKnowledge",
+        "clientApproved"
+      ]
+    },
+    "confidence": {
+      "type": "string",
+      "enum": [
+        "low",
+        "medium",
+        "high",
+        "approved"
+      ]
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "draft",
+        "reviewed",
+        "clientApproved",
+        "productionReady",
+        "deprecated"
+      ]
+    },
+    "reviewRisk": {
+      "type": "string",
+      "enum": [
+        "medicalClaims",
+        "pricingAccuracy",
+        "productSpecs",
+        "legalCompliance",
+        "financialClaims",
+        "brandApproval",
+        "clientApproval",
+        "accessibilityLanguage",
+        "translationReview"
+      ]
+    },
+    "artifactSource": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "source",
+        "confidence",
+        "sourceRefs"
+      ],
+      "properties": {
+        "source": {
+          "$ref": "#/$defs/sourceKind"
+        },
+        "confidence": {
+          "$ref": "#/$defs/confidence"
+        },
+        "sourceRefs": {
+          "$ref": "#/$defs/stringList"
+        },
+        "notes": {
+          "$ref": "#/$defs/stringList"
+        }
+      }
+    },
+    "reviewState": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "needsReview"
+      ],
+      "properties": {
+        "status": {
+          "$ref": "#/$defs/status"
+        },
+        "needsReview": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/reviewRisk"
+          }
+        },
+        "reviewNotes": {
+          "$ref": "#/$defs/stringList"
+        }
+      }
+    },
+    "copyField": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "value",
+        "source",
+        "confidence",
+        "status"
+      ],
+      "properties": {
+        "value": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "source": {
+          "$ref": "#/$defs/sourceKind"
+        },
+        "confidence": {
+          "$ref": "#/$defs/confidence"
+        },
+        "status": {
+          "$ref": "#/$defs/status"
+        },
+        "basedOn": {
+          "$ref": "#/$defs/stringList"
+        },
+        "needsReview": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/reviewRisk"
+          }
+        },
+        "notes": {
+          "$ref": "#/$defs/stringList"
+        }
+      }
+    },
+    "copyValue": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/copyField"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/copyField"
+          }
+        }
+      ]
+    },
+    "copyMap": {
+      "type": "object",
+      "additionalProperties": {
+        "$ref": "#/$defs/copyValue"
+      }
+    },
+    "contentEntry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "nodeId",
+        "journeyStage",
+        "contentGoal",
+        "copy",
+        "review"
+      ],
+      "properties": {
+        "nodeId": {
+          "$ref": "#/$defs/id"
+        },
+        "nodeRole": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "journeyStage": {
+          "$ref": "#/$defs/id"
+        },
+        "contentGoal": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "copy": {
+          "$ref": "#/$defs/copyMap"
+        },
+        "review": {
+          "$ref": "#/$defs/reviewState"
+        },
+        "notes": {
+          "$ref": "#/$defs/stringList"
+        }
+      }
+    }
+  }
+}

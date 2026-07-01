@@ -37,6 +37,13 @@ promise that the visible page content can keep.
 5. If evidence is weak, write conservatively and hand off content mismatch to
    `generate-seo-audit-report`.
 
+## Boundary
+
+- Owns: meta description writing and revision — the `<meta name="description">` summary text that reflects visible page content and honest search intent.
+- Does not own: title tag creation, structured data, on-page content rewriting, heading structure, or full SEO auditing.
+- Hand off title tag work to `generate-title-tag`.
+- Hand off full SEO audit to `generate-seo-audit-report`.
+
 ## Rules
 
 1. Identify page purpose, audience, and primary offer before writing.

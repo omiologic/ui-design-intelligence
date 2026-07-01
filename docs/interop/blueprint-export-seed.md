@@ -116,3 +116,24 @@ The script emits this repository-native seed only. A user can hand the generated
 markdown to Impeccable, Taste Skill-style workflows, or a design-engineering
 skill as context, while those tools remain responsible for visual design, motion,
 and code decisions.
+
+## Sprint 008 App Handoff Role
+
+Sprint 008 promotes Blueprint Export Seed as an optional `exportSeed` artifact
+inside app artifact manifests. This promotion is intentionally narrow:
+
+- The seed remains repository-native Markdown, not a third-party-specific file
+  format.
+- App manifests should reference the seed by `path` and use this document as
+  the `schemaRef`/format reference.
+- Apps and hosted viewers may display the seed as a human-readable handoff
+  summary for product-context, design-direction, or design-engineering adapters.
+- The seed must not replace schema-backed artifacts such as `WireframeConfig`,
+  `DesignSystemSeed`, `PrototypeConfig`, run records, retrieval results, or
+  artifact manifests.
+- The seed does not authorize visual mockup generation, runtime/editor behavior,
+  production code generation, or third-party prompt compatibility claims.
+
+The Sprint 008 fixture includes
+`shared/examples/app-handoff/marketing-page.export-seed.md` as a concrete
+example of this optional manifest artifact.

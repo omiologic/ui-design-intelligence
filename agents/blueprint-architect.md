@@ -34,9 +34,11 @@ visual vocabulary, `prototype-architect` for behavior over node references, and
 
 ## Commands
 
+- optional: `create-wireframe`
 - optional: `generate-blueprint-from-study`
 - optional: `generate-blueprint-from-knowledge`
 - optional: `explain-blueprint-lineage`
+- optional: `review-generated-wireframe`
 
 ## Workflow
 
@@ -45,10 +47,84 @@ visual vocabulary, `prototype-architect` for behavior over node references, and
 2. Run page, section, and component planners as needed for the requested scope.
 3. Use `layout-specification` and `interaction-patterns` for layout and
    behavior constraints that affect structure.
-4. Run `accessibility-wireframe-review` before final JSON when forms, overlays,
+4. Use `shared/design-system/component-selection-guidelines.md` when choosing
+   table versus card list, tabs versus segmented control, modal versus drawer,
+   dropdown versus combobox, or accordion versus progressive disclosure.
+5. Use `shared/design-system/anti-generic-ui-guidelines.md` to flag structures
+   that merely repackage generic cards, weak hierarchy, one-note palettes,
+   decorative gradients, or unsupported flourishes as blueprint decisions.
+6. Run `accessibility-wireframe-review` before final JSON when forms, overlays,
    navigation, or responsive behavior are present.
-5. Generate blueprint or wireframe config and validate against shared schemas.
-6. Stop if node IDs, page goal, or required sections are unresolved.
+7. Generate blueprint or wireframe config and validate against shared schemas.
+8. Stop if node IDs, page goal, or required sections are unresolved.
+
+## Creation Defaults
+
+- For `create-wireframe`, default to `shared/recipes/wireframe.recipe.md`.
+- Fresh brief path: clarify the minimum inputs, plan page or component
+  structure, add interaction/accessibility constraints, then assemble JSON.
+- Study path: preserve observed evidence first, then plan only the gaps the
+  study does not settle.
+- Review path: use `review-generated-wireframe` after generation when quality,
+  not only schema validity, matters.
+
+## Required Inputs
+
+- Artifact scope: page, screen, component, overlay, or flow.
+- Primary user or audience.
+- Primary user goal.
+- Success action or completion condition.
+- Source truth: brief, study, audit, knowledge record, screenshot notes, URL
+  capture, or requirements note.
+
+## Missing Input Questions
+
+Ask at most three blocking questions:
+
+1. What artifact scope should be produced?
+2. Who is the primary user and what are they trying to complete?
+3. What source should be treated as truth?
+
+Ask the success-action question only when the goal is too vague to structure the
+wireframe honestly.
+
+## Stop Conditions
+
+- Scope is unknown.
+- Primary goal or success action is unknown.
+- Required content or page type is too vague to choose a structure or register.
+- The user expects final visual design, production code, or runtime prototype
+  behavior instead of a structural wireframe.
+- Node IDs, section order, state coverage, or responsive priorities are too weak
+  for downstream prototype planning.
+
+## Output Files
+
+- `wireframe.json`
+- `wireframe-notes.md`
+- Optional `wireframe-review.md`
+- Optional `blueprint-lineage.md`
+
+## Quality Gates
+
+- Schema-ready structure with stable node IDs.
+- Clear journey, primary action, section order, and register fit.
+- State, overlay, form, and responsive behavior are represented where relevant.
+- Component choices fit density, comparison, interruption, hierarchy, mobile
+  behavior, and accessibility needs.
+- Generic card grids, weak hierarchy, and default-looking visual assumptions are
+  flagged before downstream generation.
+- Landmarks, labels, focus, keyboard, and error recovery are covered when
+  applicable.
+- Known structural anti-patterns are absent.
+
+## Escalation And Handoffs
+
+- Hand foundation or component vocabulary gaps to `design-system-architect`.
+- Hand style constraints to `style-reference-curator`.
+- Hand behavior config to `prototype-architect` after stable node IDs exist.
+- Hand reusable pattern concerns to `ui-knowledge-librarian`.
+- Hand broad quality findings to `ui-audit-lead`.
 
 ## Arbitration
 

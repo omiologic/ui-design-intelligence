@@ -52,6 +52,7 @@ visual request.
 - `../../../shared/schemas/style-patch.schema.json`
 - `../../../shared/schemas/style-blend.schema.json`
 - `../../../shared/schemas/design-system-seed.schema.json`
+- `references/_shared/design-system/visual-style-calibration.md`
 
 ## Rules
 
@@ -72,13 +73,16 @@ visual request.
 
 1. Load style artifact and target seed context.
 2. Identify preserved values and allowed change paths.
-3. Map brand, palette, typography, iconography, buttons, cards, header, footer,
+3. Calibrate the style source across contrast, density, hierarchy, restraint,
+   texture, imagery, motion posture, and category fit before selecting seed
+   fields.
+4. Map brand, palette, typography, iconography, buttons, cards, header, footer,
    and prototype guidance.
-4. If no seed exists, emit seed-section recommendations for
+5. If no seed exists, emit seed-section recommendations for
    `generate-design-system-seed`.
-5. If a seed exists, emit a `StylePatch` with explicit `preserve` and `changes`
+6. If a seed exists, emit a `StylePatch` with explicit `preserve` and `changes`
    paths.
-6. Keep prototype guidance as behavior vocabulary and hand it to prototype
+7. Keep prototype guidance as behavior vocabulary and hand it to prototype
    config work without runtime assumptions.
 
 ## Inline Example

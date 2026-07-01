@@ -1,0 +1,76 @@
+{
+  "id": "product-page-clarity-before-cart",
+  "type": "copyPattern",
+  "name": "Product Page Clarity Before Cart",
+  "summary": "Give shoppers the product promise, required selection, comparison support, and cart feedback before checkout.",
+  "tags": {
+    "industries": ["retail", "outdoor"],
+    "pageTypes": ["productDetail"],
+    "sectionTypes": ["productSummary", "comparison", "cartFeedback"],
+    "componentTypes": ["variantSelector", "cartDrawer", "dialog"],
+    "journeyStages": ["inspection", "selection", "confidence-building", "cart-feedback"],
+    "conversionGoals": ["productPurchase", "addToCart"],
+    "audiences": ["comparison shoppers"],
+    "copyRoles": ["headline", "helperText", "errorText", "primaryCTA"],
+    "voiceProfiles": ["clear-retail"]
+  },
+  "useWhen": [
+    "A product page needs copy tied to variant selection, comparison, and cart feedback nodes.",
+    "Generated copy must stay reviewable because product specs or store policy may change."
+  ],
+  "avoidWhen": [
+    "The team needs approved production claims or final legal copy.",
+    "The page does not include product selection or cart feedback states."
+  ],
+  "structure": [
+    {
+      "role": "headline",
+      "purpose": "State the product promise without unsupported superlatives.",
+      "recommendedLength": "One short sentence",
+      "required": true,
+      "notes": ["Mark product-specific claims for productSpecs review."]
+    },
+    {
+      "role": "helper-text",
+      "purpose": "Explain the required choice or comparison task.",
+      "recommendedLength": "One direct sentence",
+      "required": true
+    },
+    {
+      "role": "error-text",
+      "purpose": "Tell the shopper exactly what to fix.",
+      "recommendedLength": "Three to eight words",
+      "required": true
+    },
+    {
+      "role": "confirmation",
+      "purpose": "Confirm cart state and provide the next action.",
+      "recommendedLength": "One sentence plus CTA",
+      "required": true,
+      "notes": ["Mark checkout or support-policy wording for clientApproval review."]
+    }
+  ],
+  "exampleTemplate": {
+    "headline": "{Product name} helps {audience} understand {primary product benefit}.",
+    "helperText": "Choose {required option} before adding this item to your cart.",
+    "errorText": "Choose {required option} to continue.",
+    "confirmation": "Added to your cart. Review {selected option} before checkout."
+  },
+  "reviewRisks": ["productSpecs", "clientApproval"],
+  "sourceRefs": [
+    {
+      "sourceId": "northstar-product-page-source",
+      "studyId": "northstar-product-page-study",
+      "evidenceRefs": [
+        "shared/examples/product-page-e2e/brief.md",
+        "shared/examples/product-page-e2e/product-page.study.example.json",
+        "shared/examples/product-page-e2e/product-page.ui-blueprint.json"
+      ]
+    }
+  ],
+  "confidence": {
+    "level": "medium",
+    "reason": "Derived from a small local fixture and intended as a candidate pattern for validation coverage."
+  },
+  "status": "candidate"
+}

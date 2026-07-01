@@ -40,6 +40,13 @@ missing evidence as risk instead of pretending an implementation test was run.
 4. `low`: the structure works but handoff detail is weak.
 5. `info`: contextual observation with no corrective action.
 
+## Boundary
+
+- Owns: accessibility finding reports for deployed or described UIs — landmarks, labels, focus order, keyboard behavior, overlay dismissal, form recovery, and responsive reading order.
+- Does not own: accessibility review at wireframe fidelity, visual design recommendations, SEO evaluation, or interaction audit findings.
+- Hand off wireframe-stage accessibility checks to `accessibility-wireframe-review`.
+- Hand off multi-dimension page evaluation to `generate-page-audit-report`.
+
 ## Rules
 
 1. Mark observed structure and behavior as evidence.

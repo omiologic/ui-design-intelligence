@@ -1,0 +1,393 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://omiologic.dev/schemas/ui-blueprint/prototype-content.schema.json",
+  "title": "Prototype Content",
+  "description": "Prototype-ready copy tied to content model entries, prototype screens, and wireframe node IDs.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "version",
+    "type",
+    "id",
+    "name",
+    "source",
+    "sourceContentModelId",
+    "sourceContentModelRef",
+    "screens",
+    "review"
+  ],
+  "properties": {
+    "version": {
+      "$ref": "#/$defs/version"
+    },
+    "type": {
+      "const": "prototypeContent"
+    },
+    "id": {
+      "$ref": "#/$defs/id"
+    },
+    "name": {
+      "$ref": "#/$defs/nonEmptyString"
+    },
+    "source": {
+      "$ref": "#/$defs/artifactSource"
+    },
+    "sourceContentModelId": {
+      "$ref": "#/$defs/id"
+    },
+    "sourceContentModelRef": {
+      "$ref": "#/$defs/nonEmptyString"
+    },
+    "sourcePrototypeConfigId": {
+      "$ref": "#/$defs/id"
+    },
+    "sourcePrototypeConfigRef": {
+      "$ref": "#/$defs/nonEmptyString"
+    },
+    "screens": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/screenContent"
+      }
+    },
+    "dialogs": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/nodeContent"
+      }
+    },
+    "forms": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/formContent"
+      }
+    },
+    "messages": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/messageContent"
+      }
+    },
+    "review": {
+      "$ref": "#/$defs/reviewState"
+    },
+    "notes": {
+      "$ref": "#/$defs/stringList"
+    }
+  },
+  "$defs": {
+    "version": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$"
+    },
+    "nonEmptyString": {
+      "type": "string",
+      "minLength": 1
+    },
+    "stringList": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/nonEmptyString"
+      }
+    },
+    "sourceKind": {
+      "type": "string",
+      "enum": [
+        "userProvided",
+        "generated",
+        "derivedFromStudy",
+        "derivedFromKnowledge",
+        "clientApproved"
+      ]
+    },
+    "confidence": {
+      "type": "string",
+      "enum": [
+        "low",
+        "medium",
+        "high",
+        "approved"
+      ]
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "draft",
+        "reviewed",
+        "clientApproved",
+        "productionReady",
+        "deprecated"
+      ]
+    },
+    "reviewRisk": {
+      "type": "string",
+      "enum": [
+        "medicalClaims",
+        "pricingAccuracy",
+        "productSpecs",
+        "legalCompliance",
+        "financialClaims",
+        "brandApproval",
+        "clientApproval",
+        "accessibilityLanguage",
+        "translationReview"
+      ]
+    },
+    "artifactSource": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "source",
+        "confidence",
+        "sourceRefs"
+      ],
+      "properties": {
+        "source": {
+          "$ref": "#/$defs/sourceKind"
+        },
+        "confidence": {
+          "$ref": "#/$defs/confidence"
+        },
+        "sourceRefs": {
+          "$ref": "#/$defs/stringList"
+        },
+        "notes": {
+          "$ref": "#/$defs/stringList"
+        }
+      }
+    },
+    "reviewState": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "needsReview"
+      ],
+      "properties": {
+        "status": {
+          "$ref": "#/$defs/status"
+        },
+        "needsReview": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/reviewRisk"
+          }
+        },
+        "reviewNotes": {
+          "$ref": "#/$defs/stringList"
+        }
+      }
+    },
+    "copyField": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "value",
+        "source",
+        "confidence",
+        "status"
+      ],
+      "properties": {
+        "value": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "source": {
+          "$ref": "#/$defs/sourceKind"
+        },
+        "confidence": {
+          "$ref": "#/$defs/confidence"
+        },
+        "status": {
+          "$ref": "#/$defs/status"
+        },
+        "basedOn": {
+          "$ref": "#/$defs/stringList"
+        },
+        "needsReview": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/reviewRisk"
+          }
+        },
+        "notes": {
+          "$ref": "#/$defs/stringList"
+        }
+      }
+    },
+    "copyValue": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/copyField"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/copyField"
+          }
+        }
+      ]
+    },
+    "copyMap": {
+      "type": "object",
+      "additionalProperties": {
+        "$ref": "#/$defs/copyValue"
+      }
+    },
+    "nodeContent": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "nodeId",
+        "contentRef",
+        "copy",
+        "review"
+      ],
+      "properties": {
+        "nodeId": {
+          "$ref": "#/$defs/id"
+        },
+        "contentRef": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "copy": {
+          "$ref": "#/$defs/copyMap"
+        },
+        "review": {
+          "$ref": "#/$defs/reviewState"
+        },
+        "notes": {
+          "$ref": "#/$defs/stringList"
+        }
+      }
+    },
+    "screenContent": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "screenId",
+        "content"
+      ],
+      "properties": {
+        "screenId": {
+          "$ref": "#/$defs/id"
+        },
+        "routeId": {
+          "$ref": "#/$defs/id"
+        },
+        "content": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/nodeContent"
+          }
+        }
+      }
+    },
+    "formContent": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "formId",
+        "nodeId",
+        "fields",
+        "actions",
+        "review"
+      ],
+      "properties": {
+        "formId": {
+          "$ref": "#/$defs/id"
+        },
+        "nodeId": {
+          "$ref": "#/$defs/id"
+        },
+        "title": {
+          "$ref": "#/$defs/copyField"
+        },
+        "description": {
+          "$ref": "#/$defs/copyField"
+        },
+        "fields": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/formFieldContent"
+          }
+        },
+        "actions": {
+          "$ref": "#/$defs/copyMap"
+        },
+        "review": {
+          "$ref": "#/$defs/reviewState"
+        }
+      }
+    },
+    "formFieldContent": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "fieldId",
+        "nodeId",
+        "label"
+      ],
+      "properties": {
+        "fieldId": {
+          "$ref": "#/$defs/id"
+        },
+        "nodeId": {
+          "$ref": "#/$defs/id"
+        },
+        "label": {
+          "$ref": "#/$defs/copyField"
+        },
+        "helperText": {
+          "$ref": "#/$defs/copyField"
+        },
+        "placeholder": {
+          "$ref": "#/$defs/copyField"
+        },
+        "errorText": {
+          "$ref": "#/$defs/copyField"
+        }
+      }
+    },
+    "messageContent": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "kind",
+        "copy",
+        "review"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "kind": {
+          "type": "string",
+          "enum": [
+            "empty",
+            "loading",
+            "error",
+            "success",
+            "confirmation",
+            "toast",
+            "inlineHelp"
+          ]
+        },
+        "nodeId": {
+          "$ref": "#/$defs/id"
+        },
+        "copy": {
+          "$ref": "#/$defs/copyMap"
+        },
+        "review": {
+          "$ref": "#/$defs/reviewState"
+        }
+      }
+    }
+  }
+}

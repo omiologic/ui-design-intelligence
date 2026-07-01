@@ -1,0 +1,239 @@
+{
+  "version": "0.1.0",
+  "type": "designSystemSeed",
+  "id": "northstar-product-design-system-seed",
+  "name": "Northstar Product Design System Seed",
+  "source": {
+    "inputType": "prompt",
+    "sourceRefs": ["prompt:northstar beam product page brief"],
+    "confidence": "medium",
+    "notes": ["Compact seed for the product page end-to-end example."]
+  },
+  "maturity": "designSystemSeed",
+  "brand": {
+    "name": {
+      "value": "Northstar Gear",
+      "source": "userProvided",
+      "confidence": "high"
+    },
+    "summary": {
+      "value": "An outdoor gear commerce foundation focused on product confidence, comparison, and cart clarity.",
+      "source": "generated",
+      "confidence": "medium"
+    },
+    "personality": {
+      "values": ["practical", "durable", "clear", "field-tested"],
+      "source": "recommended",
+      "confidence": "medium"
+    },
+    "audience": {
+      "values": ["trail runners", "hikers", "campers"],
+      "source": "userProvided",
+      "confidence": "high"
+    },
+    "positioning": {
+      "value": "Reliable trail gear with enough product detail to buy confidently.",
+      "source": "recommended",
+      "confidence": "medium"
+    },
+    "voice": {
+      "tone": {
+        "value": "specific, helpful, and confidence-building",
+        "source": "recommended",
+        "confidence": "medium"
+      },
+      "avoid": {
+        "values": ["unsupported performance claims", "vague adventure language"],
+        "source": "recommended",
+        "confidence": "medium"
+      }
+    },
+    "visualDirection": {
+      "density": {
+        "value": "medium",
+        "source": "recommended",
+        "confidence": "medium"
+      },
+      "style": {
+        "value": "clear ecommerce product interface",
+        "source": "generated",
+        "confidence": "medium"
+      },
+      "emphasis": {
+        "value": "inspection, comparison, action, and recovery",
+        "source": "recommended",
+        "confidence": "medium"
+      }
+    }
+  },
+  "palette": {
+    "mode": "light",
+    "colors": {
+      "color.action.primary": {
+        "name": "Trail Blue",
+        "value": "#155E9E",
+        "intent": "Primary purchase action color.",
+        "usage": "Add-to-cart and active controls.",
+        "useOn": ["button.primary", "active navigation"],
+        "doNotUseOn": ["large decorative backgrounds"],
+        "accessibilityNotes": ["Validate contrast with white text before production use."],
+        "source": "recommended",
+        "confidence": "medium"
+      },
+      "color.surface.default": {
+        "name": "Store White",
+        "value": "#FFFFFF",
+        "intent": "Default readable commerce surface.",
+        "usage": "Page background and card surfaces.",
+        "useOn": ["page background", "card surfaces"],
+        "doNotUseOn": ["focus indicators"],
+        "accessibilityNotes": ["Validate contrast for all text on this surface."],
+        "source": "recommended",
+        "confidence": "medium"
+      },
+      "color.text.primary": {
+        "name": "Product Ink",
+        "value": "#17212B",
+        "intent": "Primary readable text.",
+        "usage": "Product titles, price, labels, and body copy.",
+        "useOn": ["heading", "paragraph"],
+        "doNotUseOn": ["disabled states"],
+        "accessibilityNotes": ["Validate contrast against all surfaces."],
+        "source": "recommended",
+        "confidence": "medium"
+      }
+    },
+    "accessibilityNotes": ["Do not rely on color alone for required variant errors."]
+  },
+  "typography": {
+    "fontFamilies": {
+      "heading": {
+        "value": "Inter, system-ui, sans-serif",
+        "source": "recommended",
+        "confidence": "medium"
+      },
+      "body": {
+        "value": "Inter, system-ui, sans-serif",
+        "source": "recommended",
+        "confidence": "medium"
+      }
+    },
+    "scale": {
+      "h2": {
+        "fontSize": "32px",
+        "lineHeight": "1.2",
+        "fontWeight": 650,
+        "usage": "Product and section titles.",
+        "source": "recommended",
+        "confidence": "medium"
+      },
+      "body": {
+        "fontSize": "16px",
+        "lineHeight": "1.6",
+        "fontWeight": 400,
+        "usage": "Main readable content.",
+        "source": "recommended",
+        "confidence": "medium"
+      }
+    }
+  },
+  "iconography": {
+    "style": "outline",
+    "strokeWidth": "1.75px",
+    "cornerStyle": "rounded",
+    "preferredLibrary": "lucide-react",
+    "usage": {
+      "featureCards": "Use icons only when they improve scanning.",
+      "status": "Use semantic icons for success, warning, and error."
+    },
+    "rules": ["Icons should support labels, not replace them."],
+    "source": "recommended",
+    "confidence": "medium"
+  },
+  "components": {
+    "buttons": {
+      "base": {
+        "radius": "8px",
+        "fontWeight": 600,
+        "height": {
+          "md": "44px"
+        }
+      },
+      "variants": {
+        "button.primary": {
+          "usage": "Primary purchase action.",
+          "background": "color.action.primary",
+          "text": "color.surface.default",
+          "border": "color.action.primary",
+          "allowedActions": ["navigate", "openDialog"]
+        },
+        "button.secondary": {
+          "usage": "Supporting product action.",
+          "background": "transparent",
+          "text": "color.action.primary",
+          "border": "color.action.primary",
+          "allowedActions": ["navigate"]
+        }
+      },
+      "states": ["default", "hover", "focus", "active", "disabled", "loading"],
+      "rules": ["Use one add-to-cart primary CTA in the product summary."],
+      "source": "generated",
+      "confidence": "medium"
+    },
+    "cards": {
+      "base": {
+        "surface": "color.surface.default",
+        "radius": "8px",
+        "padding": "20px"
+      },
+      "anatomy": ["title", "description", "actions"],
+      "variants": {
+        "card.service": {
+          "usage": "Present related products, proof, or product benefits.",
+          "requiredParts": ["title", "description", "actions"],
+          "allowedActions": ["navigate", "openDialog"]
+        }
+      },
+      "rules": ["Related product cards should not compete with the primary product action."],
+      "source": "generated",
+      "confidence": "medium"
+    },
+    "header": {
+      "layout": {
+        "desktop": "logo-left nav-center actions-right",
+        "mobile": "logo-left menu-button-right"
+      },
+      "height": {
+        "desktop": "72px",
+        "mobile": "64px"
+      },
+      "behavior": {
+        "sticky": false,
+        "mobileNavigation": "drawer"
+      },
+      "anatomy": ["logo", "primaryNavigation", "primaryAction", "mobileMenuButton"],
+      "navigation": {
+        "maxPrimaryItems": 6,
+        "supportsDropdown": true,
+        "supportsMegaMenu": false
+      },
+      "rules": ["Keep cart access visible without competing with add to cart."],
+      "source": "recommended",
+      "confidence": "medium"
+    },
+    "footer": {
+      "layout": {
+        "desktop": "multi-column",
+        "mobile": "stacked"
+      },
+      "anatomy": ["brandSummary", "navigationGroups", "contactInfo", "legalLinks"],
+      "navigationGroups": ["Shop", "Support", "Company", "Legal"],
+      "industrySpecificNeeds": ["shipping", "returns", "warranty", "support contact"],
+      "rules": ["Shipping and returns links should be easy to find."],
+      "source": "recommended",
+      "confidence": "medium"
+    }
+  },
+  "usageNotes": ["Use as the seed for the product page e2e example."],
+  "openQuestions": ["Confirm exact product imagery and option taxonomy before implementation."]
+}

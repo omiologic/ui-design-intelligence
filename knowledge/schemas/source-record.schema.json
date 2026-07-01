@@ -22,12 +22,38 @@
     "captureRefs": { "$ref": "#/$defs/pathList" },
     "studyRefs": { "$ref": "#/$defs/pathList" },
     "auditRefs": { "$ref": "#/$defs/pathList" },
+    "storageRef": { "$ref": "#/$defs/storageRef" },
     "notes": { "$ref": "#/$defs/stringList" }
   },
   "$defs": {
     "id": { "type": "string", "pattern": "^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$" },
     "label": { "type": "string", "minLength": 1 },
     "stringList": { "type": "array", "items": { "type": "string", "minLength": 1 }, "default": [] },
-    "pathList": { "type": "array", "items": { "type": "string", "minLength": 1 }, "default": [] }
+    "pathList": { "type": "array", "items": { "type": "string", "minLength": 1 }, "default": [] },
+    "storageRef": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "uri"],
+      "properties": {
+        "kind": { "type": "string", "enum": ["localPath", "s3Uri"] },
+        "uri": { "type": "string", "minLength": 1 },
+        "objectType": {
+          "type": "string",
+          "enum": ["sourceRecord", "studyRecord", "auditRecord", "patternRecord", "knowledgeIndex", "blueprintLineage", "generatedOutput"]
+        },
+        "etag": { "type": "string", "minLength": 1 },
+        "versionId": { "type": "string", "minLength": 1 },
+        "updatedAt": { "type": "string", "minLength": 1 },
+        "checksum": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["algorithm", "value"],
+          "properties": {
+            "algorithm": { "type": "string", "enum": ["sha256"] },
+            "value": { "type": "string", "minLength": 1 }
+          }
+        }
+      }
+    }
   }
 }

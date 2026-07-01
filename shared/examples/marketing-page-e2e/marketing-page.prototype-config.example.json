@@ -1,0 +1,291 @@
+{
+  "version": "0.1.0",
+  "type": "prototypeConfig",
+  "id": "ledgerpilot-marketing-prototype",
+  "name": "LedgerPilot Marketing Prototype",
+  "source": {
+    "sourceWireframeId": "ledgerpilot-marketing-wireframe",
+    "sourceWireframeRef": "shared/examples/marketing-page-e2e/marketing-page.ui-blueprint.json",
+    "sourceDesignSystemSeedId": "ledgerpilot-design-system-seed",
+    "notes": ["Prototype config references wireframe node IDs and does not duplicate layout hierarchy."]
+  },
+  "designSystemSeedRef": "ledgerpilot-design-system-seed",
+  "screens": [
+    {
+      "id": "marketing-screen",
+      "label": "Marketing Page",
+      "wireframeRef": "ledgerpilot-marketing-page",
+      "routeId": "home-route",
+      "initialState": "default",
+      "viewportPriority": ["expanded", "compact"]
+    }
+  ],
+  "routes": [
+    {
+      "id": "home-route",
+      "path": "/",
+      "screenId": "marketing-screen",
+      "label": "Marketing"
+    }
+  ],
+  "states": [
+    {
+      "id": "demo-dialog-closed",
+      "name": "Demo Dialog Closed",
+      "state": "closed",
+      "nodeId": "demo-request-dialog",
+      "screenId": "marketing-screen",
+      "description": "Demo request dialog is not visible."
+    },
+    {
+      "id": "demo-dialog-open",
+      "name": "Demo Dialog Open",
+      "state": "open",
+      "nodeId": "demo-request-dialog",
+      "screenId": "marketing-screen",
+      "description": "Demo request dialog is visible and holds focus."
+    },
+    {
+      "id": "demo-form-error-state",
+      "name": "Demo Form Error",
+      "state": "error",
+      "nodeId": "demo-request-form",
+      "screenId": "marketing-screen",
+      "description": "Form shows inline validation errors."
+    },
+    {
+      "id": "demo-form-success-state",
+      "name": "Demo Form Success",
+      "state": "success",
+      "nodeId": "demo-request-form",
+      "screenId": "marketing-screen",
+      "description": "Form shows success confirmation."
+    },
+    {
+      "id": "mobile-sticky-demo-visible",
+      "name": "Mobile Sticky Demo Visible",
+      "state": "visible",
+      "nodeId": "mobile-sticky-demo-button",
+      "screenId": "marketing-screen",
+      "description": "Compact viewport keeps a sticky demo action reachable."
+    }
+  ],
+  "componentStateModels": [
+    {
+      "id": "demo-dialog-state-model",
+      "component": "dialog",
+      "nodeId": "demo-request-dialog",
+      "wireframeRef": "ledgerpilot-marketing-page",
+      "initialState": "closed",
+      "allowedStates": ["closed", "open"],
+      "transitions": [
+        {
+          "from": "closed",
+          "to": "open",
+          "trigger": "click",
+          "description": "Demo CTA opens the request dialog."
+        },
+        {
+          "from": "open",
+          "to": "closed",
+          "trigger": "keydown",
+          "description": "Escape closes the dialog."
+        }
+      ],
+      "accessibility": {
+        "focusManagement": "Move focus into the dialog on open and return focus to the triggering CTA on close.",
+        "keyboardBehavior": "Escape closes the dialog; Tab remains inside while open.",
+        "ariaLabel": "Request a LedgerPilot demo",
+        "notes": ["Dialog must not open automatically."]
+      }
+    },
+    {
+      "id": "demo-submit-state-model",
+      "component": "button",
+      "nodeId": "demo-submit-button",
+      "wireframeRef": "ledgerpilot-marketing-page",
+      "initialState": "default",
+      "allowedStates": ["default", "focus", "disabled", "loading", "success", "error"],
+      "transitions": [
+        {
+          "from": "default",
+          "to": "loading",
+          "trigger": "submit",
+          "description": "Submitting the demo form enters loading state."
+        },
+        {
+          "from": "loading",
+          "to": "success",
+          "trigger": "timeout",
+          "description": "Successful simulated submission shows success state."
+        }
+      ],
+      "disabledBehavior": "Disabled submit button cannot receive pointer activation.",
+      "loadingBehavior": "Preserve button width and announce submission progress.",
+      "validation": {
+        "states": ["error", "success"],
+        "errorPlacement": "inline",
+        "rules": ["Required field errors appear beside the field."]
+      },
+      "accessibility": {
+        "focusManagement": "Keep focus on submit until validation result is available.",
+        "keyboardBehavior": "Enter submits the form when focus is inside a valid field group.",
+        "notes": ["Do not use toast as the only validation surface."]
+      }
+    }
+  ],
+  "interactions": [
+    {
+      "id": "open-demo-dialog-from-hero",
+      "label": "Open demo dialog from hero CTA",
+      "trigger": {
+        "event": "click",
+        "sourceNodeId": "hero-demo-button",
+        "screenId": "marketing-screen",
+        "routeId": "home-route"
+      },
+      "condition": {
+        "type": "always"
+      },
+      "action": {
+        "type": "openOverlay",
+        "targetNodeId": "demo-request-dialog",
+        "targetStateId": "demo-dialog-open"
+      },
+      "result": {
+        "type": "overlayOpened",
+        "description": "Demo request dialog opens and focus moves to the dialog container.",
+        "resultingStateId": "demo-dialog-open",
+        "focusTargetNodeId": "demo-request-dialog"
+      },
+      "accessibility": {
+        "focusManagement": "Focus moves from CTA to dialog container.",
+        "keyboardBehavior": "Escape closes the dialog.",
+        "ariaLive": "off"
+      }
+    },
+    {
+      "id": "open-demo-dialog-from-mobile-sticky",
+      "label": "Open demo dialog from mobile sticky CTA",
+      "trigger": {
+        "event": "tap",
+        "sourceNodeId": "mobile-sticky-demo-button",
+        "screenId": "marketing-screen",
+        "routeId": "home-route"
+      },
+      "condition": {
+        "type": "whenViewport",
+        "viewport": "compact",
+        "description": "Mobile sticky CTA is only used on compact viewport."
+      },
+      "action": {
+        "type": "openOverlay",
+        "targetNodeId": "demo-request-dialog",
+        "targetStateId": "demo-dialog-open"
+      },
+      "result": {
+        "type": "overlayOpened",
+        "description": "Demo dialog opens from sticky CTA.",
+        "resultingStateId": "demo-dialog-open",
+        "focusTargetNodeId": "demo-request-dialog"
+      },
+      "accessibility": {
+        "focusManagement": "Return focus to the sticky CTA when the dialog closes.",
+        "keyboardBehavior": "Sticky CTA remains keyboard reachable before the dialog opens.",
+        "ariaLive": "off"
+      }
+    },
+    {
+      "id": "close-demo-dialog",
+      "label": "Close demo dialog",
+      "trigger": {
+        "event": "keydown",
+        "sourceNodeId": "demo-request-dialog",
+        "screenId": "marketing-screen",
+        "key": "Escape"
+      },
+      "condition": {
+        "type": "whenState",
+        "stateId": "demo-dialog-open"
+      },
+      "action": {
+        "type": "closeOverlay",
+        "targetNodeId": "demo-request-dialog",
+        "targetStateId": "demo-dialog-closed"
+      },
+      "result": {
+        "type": "overlayClosed",
+        "description": "Dialog closes and focus returns to the hero demo button.",
+        "resultingStateId": "demo-dialog-closed",
+        "focusTargetNodeId": "hero-demo-button"
+      },
+      "accessibility": {
+        "focusManagement": "Return focus to the opening control.",
+        "keyboardBehavior": "Escape dismisses only while the dialog is open.",
+        "ariaLive": "off"
+      }
+    }
+  ],
+  "overlays": [
+    {
+      "id": "demo-dialog-overlay",
+      "nodeId": "demo-request-dialog",
+      "type": "dialog",
+      "initialState": "closed",
+      "triggerNodeIds": ["hero-demo-button", "header-demo-button", "mobile-sticky-demo-button"],
+      "dismissal": {
+        "methods": ["escape", "closeButton", "scrim"],
+        "focusReturnNodeId": "hero-demo-button"
+      }
+    }
+  ],
+  "forms": [
+    {
+      "id": "demo-request-form-model",
+      "nodeId": "demo-request-form",
+      "fields": [
+        {
+          "id": "demo-contact-fields-model",
+          "nodeId": "demo-contact-fields",
+          "required": true,
+          "validationStateIds": ["demo-form-error-state"]
+        }
+      ],
+      "submitNodeId": "demo-submit-button",
+      "validation": {
+        "states": ["error", "success"],
+        "errorPlacement": "inline",
+        "rules": ["Name, work email, and company are required."]
+      }
+    }
+  ],
+  "navigationFlows": [
+    {
+      "id": "marketing-home-loop",
+      "fromScreenId": "marketing-screen",
+      "toScreenId": "marketing-screen",
+      "triggerNodeId": "primary-navigation",
+      "action": "scrollTo"
+    }
+  ],
+  "transitions": [
+    {
+      "id": "demo-dialog-open-transition",
+      "from": "demo-dialog-closed",
+      "to": "demo-dialog-open",
+      "trigger": "click",
+      "description": "Demo dialog opens after CTA activation."
+    },
+    {
+      "id": "demo-dialog-close-transition",
+      "from": "demo-dialog-open",
+      "to": "demo-dialog-closed",
+      "trigger": "keydown",
+      "description": "Escape closes the dialog and returns focus."
+    }
+  ],
+  "notes": [
+    "Prototype config models behavior only and does not implement a runtime viewer.",
+    "Mobile sticky demo CTA is referenced as a responsive behavior requirement even though it is not duplicated in the wireframe hierarchy."
+  ]
+}

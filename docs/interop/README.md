@@ -78,8 +78,27 @@ study-to-knowledge-to-style-to-design-system-to-blueprint-to-prototype sequence,
 including when to recommend, apply, blend, patch, or audit styles.
 
 Install and command parity with downstream taste tooling is documented in
-`docs/interop/install-command-parity.md`. Sprint 002 keeps marketplace and
-`npx skills add` support deferred while preserving the local bundle installer.
+`docs/interop/install-command-parity.md`. The supported Codex/GPT, Claude, and
+generic local install layouts are documented in
+`docs/interop/cross-agent-compatibility-contract.md`.
+The generated local Codex marketplace fixture and smoke-test flow are documented
+in `docs/interop/codex-local-marketplace-fixture.md`.
+Sprint 006 consumer creation command behavior is documented in
+`docs/interop/consumer-creation-contract.md`.
+
+Sprint 008 defines the app-compatible handoff scope for local apps,
+MCP-backed tools, hosted artifact viewers, run records, artifact manifests,
+retrieval results, and package metadata. See
+`docs/interop/app-handoff-scope.md`. The first schema-backed app contracts are
+documented in `docs/interop/app-handoff-contracts.md`. Consumer boundaries for
+future local apps, MCP-backed tools, hosted artifact viewers, and remote
+adapters are documented in `docs/interop/app-mcp-hosted-boundaries.md`.
+
+Sprint 008 adds the first content and journey layer for realistic prototypes.
+See `docs/interop/content-journey-layer-architecture.md` for how
+`UserJourneyMap`, `ContentModel`, `PrototypeContent`, `BrandVoice`,
+`WireframeConfig`, and `PrototypeConfig` relate without turning generated copy
+into production-approved content.
 
 Canonical skill shapes and release validation expectations are documented in
 `docs/skill-shapes-and-validation.md`.

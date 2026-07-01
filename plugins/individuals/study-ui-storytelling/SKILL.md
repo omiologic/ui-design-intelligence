@@ -36,6 +36,13 @@ evidence instead of assuming the page lacks them.
 - `references/_shared/vocabulary/ui-terminology.json`
 - `references/_shared/examples/page-study.example.json`
 
+## Boundary
+
+- Owns: narrative and conversion structure observations — how a page explains value, earns trust, sequences proof, and requests action, expressed as study findings using the shared study output shape.
+- Does not own: interaction behavior study, IA grouping analysis, accessibility evaluation, or responsive structure documentation.
+- Hand off structural layout sequencing to `study-ui-information-architecture`.
+- Hand off conversion-informed blueprint planning to `page-wireframe-planner`.
+
 ## Rules
 
 1. Separate observed copy and structure from inferred business intent.

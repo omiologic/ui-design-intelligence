@@ -1,0 +1,213 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://omiologic.dev/schemas/ui-blueprint/app-query-context.schema.json",
+  "title": "App Query Context",
+  "description": "App-facing record for a user request before knowledge retrieval or artifact creation.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "version",
+    "type",
+    "id",
+    "createdAt",
+    "request"
+  ],
+  "properties": {
+    "version": {
+      "$ref": "#/$defs/version"
+    },
+    "type": {
+      "const": "appQueryContext"
+    },
+    "id": {
+      "$ref": "#/$defs/id"
+    },
+    "createdAt": {
+      "$ref": "#/$defs/nonEmptyString"
+    },
+    "request": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "brief",
+        "targetArtifactType"
+      ],
+      "properties": {
+        "brief": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "targetArtifactType": {
+          "$ref": "#/$defs/targetArtifactType"
+        },
+        "audience": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "goal": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "constraints": {
+          "$ref": "#/$defs/stringList"
+        }
+      }
+    },
+    "scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "productType": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "pageType": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "sectionType": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "componentType": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "flowType": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "viewport": {
+          "type": "string",
+          "enum": [
+            "mobile",
+            "tablet",
+            "desktop",
+            "responsive"
+          ]
+        }
+      }
+    },
+    "retrievalFilters": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "industries": {
+          "$ref": "#/$defs/stringList"
+        },
+        "pageTypes": {
+          "$ref": "#/$defs/stringList"
+        },
+        "sectionTypes": {
+          "$ref": "#/$defs/stringList"
+        },
+        "componentTypes": {
+          "$ref": "#/$defs/stringList"
+        },
+        "interactionTypes": {
+          "$ref": "#/$defs/stringList"
+        },
+        "conversionGoals": {
+          "$ref": "#/$defs/stringList"
+        },
+        "confidenceLevels": {
+          "$ref": "#/$defs/stringList"
+        },
+        "statuses": {
+          "$ref": "#/$defs/stringList"
+        }
+      }
+    },
+    "sourceRefs": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/artifactRef"
+      }
+    },
+    "consumer": {
+      "$ref": "#/$defs/consumer"
+    },
+    "assumptions": {
+      "$ref": "#/$defs/stringList"
+    },
+    "notes": {
+      "$ref": "#/$defs/stringList"
+    }
+  },
+  "$defs": {
+    "version": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$"
+    },
+    "nonEmptyString": {
+      "type": "string",
+      "minLength": 1
+    },
+    "stringList": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/nonEmptyString"
+      }
+    },
+    "targetArtifactType": {
+      "type": "string",
+      "enum": [
+        "wireframeConfig",
+        "designSystemSeed",
+        "prototypeConfig",
+        "userJourneyMap",
+        "contentModel",
+        "prototypeContent",
+        "brandVoice",
+        "pageAudit",
+        "packageMetadata",
+        "knowledgeSearch"
+      ]
+    },
+    "artifactRef": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "artifactType",
+        "path"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "artifactType": {
+          "$ref": "#/$defs/targetArtifactType"
+        },
+        "path": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "schemaRef": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "label": {
+          "$ref": "#/$defs/nonEmptyString"
+        }
+      }
+    },
+    "consumer": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "surface"
+      ],
+      "properties": {
+        "surface": {
+          "type": "string",
+          "enum": [
+            "localApp",
+            "mcpTool",
+            "hostedViewer",
+            "dashboard",
+            "packageBrowser",
+            "other"
+          ]
+        },
+        "name": {
+          "$ref": "#/$defs/nonEmptyString"
+        }
+      }
+    }
+  }
+}

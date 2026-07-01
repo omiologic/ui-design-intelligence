@@ -1,0 +1,30 @@
+{
+  "id": "dashboard-study",
+  "source": {
+    "urlOrName": "LedgerPilot operations dashboard brief",
+    "capturedAt": "2026-06-30",
+    "viewport": "desktop"
+  },
+  "studyType": "specification",
+  "summary": "The dashboard should prioritize status summary, filtering controls, diagnostic evidence, and recovery for stale or incomplete data.",
+  "findings": [
+    {
+      "label": "Status summary must orient before controls",
+      "evidence": "The brief requires cash balance, runway, forecast confidence, and data freshness cards.",
+      "interpretation": "Users need current status before they diagnose or change filters.",
+      "handoff": "Place summary cards at the top of the wireframe before the filter section."
+    },
+    {
+      "label": "Controls drive the dashboard task",
+      "evidence": "The success action includes applying reporting-period filters before reviewing diagnostics.",
+      "interpretation": "Date range, entity, and scenario controls are part of the primary workflow, not secondary settings.",
+      "handoff": "Model filters as a form with validation and mobile drawer behavior."
+    },
+    {
+      "label": "Stale data requires recovery",
+      "evidence": "The brief requires warning and recovery behavior for stale data.",
+      "interpretation": "The dashboard must explain trust limits and provide a next action before users rely on diagnostics.",
+      "handoff": "Add a warning banner and stale-data detail drawer with focus and keyboard behavior."
+    }
+  ]
+}

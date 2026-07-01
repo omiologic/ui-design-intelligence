@@ -38,9 +38,67 @@ audit quality, or model runtime behavior. Adjacent guidance: use
    components, content groups, and responsive implications.
 3. Normalize observed names through `design-terminology` when terms are
    ambiguous or inconsistent.
-4. Check candidate node and layout terms against `wireframe-schema` before
+4. Use `shared/design-system/component-selection-guidelines.md` to preserve
+   evidence for component choice tradeoffs such as comparison density,
+   interruption, mobile behavior, and accessibility.
+5. Check candidate node and layout terms against `wireframe-schema` before
    handoff.
-5. Stop before generating final hierarchy; record ambiguity for the architect.
+6. Stop before generating final hierarchy; record ambiguity for the architect.
+
+## Creation Defaults
+
+- Use this agent before `create-wireframe` when observed UI must become
+  normalized structure.
+- Inventory regions, sections, repeated components, content groups, and
+  responsive implications before blueprint planning.
+- Normalize language through approved vocabulary without deciding final
+  hierarchy.
+
+## Required Inputs
+
+- Research notes, screenshots, DOM summaries, captured content, or page study.
+- Target scope.
+- Evidence for section order and repeated components.
+- Responsive evidence when viewport behavior matters.
+- Shared vocabulary or schema references when terms are ambiguous.
+
+## Missing Input Questions
+
+Ask at most three blocking questions:
+
+1. What evidence source should define the structure?
+2. What scope should be inventoried?
+3. Are desktop, tablet, or mobile variants available?
+
+Proceed with explicit gaps when responsive evidence is absent but not blocking.
+
+## Stop Conditions
+
+- Evidence is too thin to inventory structure.
+- Observed terminology cannot be normalized enough for handoff.
+- The user expects final blueprint generation, visual design, or runtime
+  behavior from this agent.
+
+## Output Files
+
+- `ui-specification-notes.md`
+- Optional `structure-inventory.md`
+- Handoff notes for `wireframe-notes.md`.
+
+## Quality Gates
+
+- Regions, sections, components, and content roles are inventoried.
+- Vocabulary is normalized or ambiguity is named.
+- Component selection evidence and mismatches are recorded when observed.
+- Responsive implications are preserved.
+- Final hierarchy decisions are deferred to `blueprint-architect`.
+
+## Escalation And Handoffs
+
+- Hand page intent gaps to `ui-researcher`.
+- Hand behavior observations to `ui-interaction-analyst`.
+- Hand accessibility concerns to `accessibility-reviewer`.
+- Hand blueprint-ready structure to `blueprint-architect`.
 
 ## Arbitration
 

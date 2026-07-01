@@ -1,0 +1,253 @@
+{
+  "version": "0.1.0",
+  "type": "contentModel",
+  "id": "northstar-product-page-content",
+  "name": "Northstar Product Page Content Model",
+  "source": {
+    "source": "generated",
+    "confidence": "medium",
+    "sourceRefs": [
+      "shared/examples/product-page-e2e/product-page.ui-blueprint.json",
+      "shared/examples/product-page-e2e/product-page.user-journey-map.example.json"
+    ],
+    "notes": ["Node-tied fixture copy; not approved production copy."]
+  },
+  "sourceBlueprintId": "northstar-product-page-wireframe",
+  "sourceBlueprintRef": "shared/examples/product-page-e2e/product-page.ui-blueprint.json",
+  "journeyMapRef": "shared/examples/product-page-e2e/product-page.user-journey-map.example.json",
+  "brandVoiceRef": "northstar-retail-voice",
+  "audience": {
+    "primary": "Outdoor shoppers comparing rechargeable headlamps",
+    "intent": "Choose a headlamp variant and add it to cart",
+    "segments": ["trail runners", "campers", "night hikers"]
+  },
+  "journey": {
+    "primaryGoal": "add-to-cart",
+    "stages": ["inspection", "selection", "confidence-building", "cart-feedback"]
+  },
+  "globalContent": {
+    "footerNote": {
+      "value": "Questions about fit or battery life? Product support can help before you check out.",
+      "source": "generated",
+      "confidence": "medium",
+      "status": "draft",
+      "needsReview": ["clientApproval"]
+    }
+  },
+  "sections": [
+    {
+      "nodeId": "product-summary",
+      "nodeRole": "product-summary",
+      "journeyStage": "inspection",
+      "contentGoal": "Explain the product value and support purchase confidence.",
+      "copy": {
+        "headline": {
+          "value": "Northstar Beam 400 keeps the trail visible after dark",
+          "source": "generated",
+          "confidence": "medium",
+          "status": "draft",
+          "basedOn": ["product-page-clarity-before-cart"],
+          "needsReview": ["productSpecs"]
+        },
+        "body": {
+          "value": "Review brightness, battery, fit, and color before adding this rechargeable headlamp to your cart.",
+          "source": "generated",
+          "confidence": "medium",
+          "status": "draft",
+          "needsReview": ["productSpecs"]
+        },
+        "primaryCTA": {
+          "value": "Add Selected Color to Cart",
+          "source": "generated",
+          "confidence": "high",
+          "status": "draft"
+        },
+        "secondaryCTA": {
+          "value": "Open Fit Guide",
+          "source": "generated",
+          "confidence": "high",
+          "status": "draft"
+        }
+      },
+      "review": {
+        "status": "draft",
+        "needsReview": ["productSpecs", "clientApproval"],
+        "reviewNotes": ["Brightness and battery claims should be verified before production use."]
+      }
+    },
+    {
+      "nodeId": "variant-selector-card",
+      "nodeRole": "variant-selection",
+      "journeyStage": "selection",
+      "contentGoal": "Make required color selection and recovery behavior clear.",
+      "copy": {
+        "label": {
+          "value": "Choose a color",
+          "source": "generated",
+          "confidence": "high",
+          "status": "draft"
+        },
+        "helperText": {
+          "value": "Pick one color before adding the headlamp to your cart.",
+          "source": "generated",
+          "confidence": "high",
+          "status": "draft"
+        },
+        "errorText": {
+          "value": "Choose a color to continue.",
+          "source": "generated",
+          "confidence": "high",
+          "status": "draft"
+        }
+      },
+      "review": {
+        "status": "draft",
+        "needsReview": [],
+        "reviewNotes": ["Microcopy is generic and safe for prototype use."]
+      }
+    },
+    {
+      "nodeId": "comparison-section",
+      "nodeRole": "comparison",
+      "journeyStage": "confidence-building",
+      "contentGoal": "Help users compare headlamp options before committing.",
+      "copy": {
+        "headline": {
+          "value": "Compare brightness, battery, and trail fit",
+          "source": "generated",
+          "confidence": "medium",
+          "status": "draft",
+          "needsReview": ["productSpecs"]
+        },
+        "body": {
+          "value": "Use the comparison table to check whether the Beam 400 matches the length and intensity of your typical routes.",
+          "source": "generated",
+          "confidence": "medium",
+          "status": "draft",
+          "needsReview": ["productSpecs"]
+        }
+      },
+      "review": {
+        "status": "draft",
+        "needsReview": ["productSpecs"],
+        "reviewNotes": ["Comparison copy should be checked against final product attributes."]
+      }
+    },
+    {
+      "nodeId": "size-guide-dialog",
+      "nodeRole": "dialog",
+      "journeyStage": "confidence-building",
+      "contentGoal": "Explain fit guidance inside the prototype dialog.",
+      "copy": {
+        "title": {
+          "value": "Find a comfortable headlamp fit",
+          "source": "generated",
+          "confidence": "medium",
+          "status": "draft"
+        },
+        "description": {
+          "value": "Check strap adjustment and intended activity before choosing your color.",
+          "source": "generated",
+          "confidence": "medium",
+          "status": "draft",
+          "needsReview": ["productSpecs"]
+        },
+        "secondaryCTA": {
+          "value": "Close Guide",
+          "source": "generated",
+          "confidence": "high",
+          "status": "draft"
+        }
+      },
+      "review": {
+        "status": "draft",
+        "needsReview": ["productSpecs"],
+        "reviewNotes": ["Fit guidance should be verified against final product documentation."]
+      }
+    },
+    {
+      "nodeId": "cart-drawer",
+      "nodeRole": "cart-feedback",
+      "journeyStage": "cart-feedback",
+      "contentGoal": "Confirm cart contents and provide a checkout path.",
+      "copy": {
+        "title": {
+          "value": "Added to your cart",
+          "source": "generated",
+          "confidence": "high",
+          "status": "draft"
+        },
+        "body": {
+          "value": "Review your selected color before checking out.",
+          "source": "generated",
+          "confidence": "medium",
+          "status": "draft"
+        },
+        "primaryCTA": {
+          "value": "Continue to Checkout",
+          "source": "generated",
+          "confidence": "high",
+          "status": "draft"
+        }
+      },
+      "review": {
+        "status": "draft",
+        "needsReview": ["clientApproval"],
+        "reviewNotes": ["Checkout label should match the final commerce flow."]
+      }
+    },
+    {
+      "nodeId": "product-details-tabs",
+      "nodeRole": "faq",
+      "journeyStage": "confidence-building",
+      "contentGoal": "Answer common inspection questions without interrupting purchase flow.",
+      "copy": {
+        "faqQuestion": {
+          "value": "Can I use this headlamp for long evening routes?",
+          "source": "generated",
+          "confidence": "medium",
+          "status": "draft",
+          "needsReview": ["productSpecs"]
+        },
+        "faqAnswer": {
+          "value": "Check the battery and brightness comparison before choosing the setup for your route length.",
+          "source": "generated",
+          "confidence": "medium",
+          "status": "draft",
+          "needsReview": ["productSpecs"]
+        }
+      },
+      "review": {
+        "status": "draft",
+        "needsReview": ["productSpecs"],
+        "reviewNotes": ["FAQ answer stays advisory until final product specifications are approved."]
+      }
+    },
+    {
+      "nodeId": "store-footer",
+      "nodeRole": "footer",
+      "journeyStage": "cart-feedback",
+      "contentGoal": "Provide support reassurance after product inspection and cart actions.",
+      "copy": {
+        "supportText": {
+          "value": "Need help before checkout? Product support can answer fit, battery, and order questions.",
+          "source": "generated",
+          "confidence": "medium",
+          "status": "draft",
+          "needsReview": ["clientApproval"]
+        }
+      },
+      "review": {
+        "status": "draft",
+        "needsReview": ["clientApproval"],
+        "reviewNotes": ["Footer support copy should match the final store support policy."]
+      }
+    }
+  ],
+  "review": {
+    "status": "draft",
+    "needsReview": ["productSpecs", "clientApproval"],
+    "reviewNotes": ["Generated copy is prototype-ready only."]
+  },
+  "notes": ["Every section entry references a node ID from product-page.ui-blueprint.json."]
+}

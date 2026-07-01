@@ -7,9 +7,13 @@ import { copyDir } from "./lib/bundle-skill.mjs";
 const scriptDir = path.dirname(fileURLToPath(import.meta.url));
 const root = path.resolve(scriptDir, "..");
 const [action, bundleName, targetRootArg, skillsDirArg] = process.argv.slice(2);
+const flags = new Set(process.argv.slice(6));
+const force = flags.has("--force");
+const dryRun = flags.has("--dry-run");
+const skillsOnly = flags.has("--skills-only");
 
 if (!action || !bundleName || !targetRootArg || !skillsDirArg || !["install", "uninstall"].includes(action)) {
-  console.error("Usage: node scripts/install-bundle.mjs <install|uninstall> <bundle-name> <target-root> <skills-dir>");
+  console.error("Usage: node scripts/install-bundle.mjs <install|uninstall> <bundle-name> <target-root> <skills-dir> [--dry-run] [--force] [--skills-only]");
   process.exit(1);
 }
 
@@ -30,6 +34,13 @@ function uniqueSorted(values) {
 function copyFile(source, target) {
   fs.mkdirSync(path.dirname(target), { recursive: true });
   fs.copyFileSync(source, target);
+}
+
+function applyInstalledReferenceRewrites(text) {
+  return text
+    .split("../../../shared/").join("../../shared/")
+    .split("../../../knowledge/").join("../../knowledge/")
+    .split("../../../docs/").join("../../docs/");
 }
 
 function loadBundleManifest(bundle) {
@@ -105,10 +116,7 @@ function skillSourceDir(skillName) {
 
 function rewriteInstalledSkillReferences(skillDir) {
   const skillFile = path.join(skillDir, "SKILL.md");
-  let text = fs.readFileSync(skillFile, "utf8");
-  text = text.split("../../../shared/").join("../../shared/");
-  text = text.split("../../../knowledge/").join("../../knowledge/");
-  fs.writeFileSync(skillFile, text);
+  fs.writeFileSync(skillFile, applyInstalledReferenceRewrites(fs.readFileSync(skillFile, "utf8")));
 }
 
 function loadManifest() {
@@ -128,14 +136,16 @@ function preflightInstall(manifest) {
     skillSourceDir(skillName);
   }
 
-  for (const agentName of manifest.agents) {
-    const file = path.join(root, "agents", `${agentName}.md`);
-    if (!fs.existsSync(file)) throw new Error(`Bundle agent does not exist: agents/${agentName}.md`);
-  }
+  if (!skillsOnly) {
+    for (const agentName of manifest.agents) {
+      const file = path.join(root, "agents", `${agentName}.md`);
+      if (!fs.existsSync(file)) throw new Error(`Bundle agent does not exist: agents/${agentName}.md`);
+    }
 
-  for (const commandName of manifest.commands) {
-    const file = path.join(root, "commands", `${commandName}.md`);
-    if (!fs.existsSync(file)) throw new Error(`Bundle command does not exist: commands/${commandName}.md`);
+    for (const commandName of manifest.commands) {
+      const file = path.join(root, "commands", `${commandName}.md`);
+      if (!fs.existsSync(file)) throw new Error(`Bundle command does not exist: commands/${commandName}.md`);
+    }
   }
 
   for (const sharedPath of manifest.shared) {
@@ -144,8 +154,113 @@ function preflightInstall(manifest) {
   }
 }
 
+function listRelativeFiles(dir) {
+  const files = [];
+
+  function walk(current) {
+    for (const entry of fs.readdirSync(current, { withFileTypes: true })) {
+      if (entry.name === ".DS_Store") continue;
+      const file = path.join(current, entry.name);
+      if (entry.isDirectory()) {
+        walk(file);
+      } else if (entry.isFile()) {
+        files.push(path.relative(dir, file));
+      }
+    }
+  }
+
+  walk(dir);
+  return files.sort();
+}
+
+function sameStringArray(left, right) {
+  return left.length === right.length && left.every((value, index) => value === right[index]);
+}
+
+function readSkillSourceFile(sourceDir, relativeFile) {
+  const text = fs.readFileSync(path.join(sourceDir, relativeFile), "utf8");
+  return relativeFile === "SKILL.md" ? applyInstalledReferenceRewrites(text) : text;
+}
+
+function directoriesAreIdenticalForInstall(sourceDir, targetDir) {
+  if (!fs.existsSync(targetDir)) return true;
+  if (!fs.statSync(targetDir).isDirectory()) return false;
+
+  const sourceFiles = listRelativeFiles(sourceDir);
+  const targetFiles = listRelativeFiles(targetDir);
+  if (!sameStringArray(sourceFiles, targetFiles)) return false;
+
+  return sourceFiles.every((relativeFile) => {
+    const sourceText = readSkillSourceFile(sourceDir, relativeFile);
+    const targetText = fs.readFileSync(path.join(targetDir, relativeFile), "utf8");
+    return sourceText === targetText;
+  });
+}
+
+function filesAreIdentical(source, target) {
+  if (!fs.existsSync(target)) return true;
+  if (!fs.statSync(target).isFile()) return false;
+  return fs.readFileSync(source, "utf8") === fs.readFileSync(target, "utf8");
+}
+
+function checkInstallConflicts(manifest) {
+  if (force) return;
+
+  const conflicts = [];
+
+  for (const skillName of manifest.skills) {
+    const source = skillSourceDir(skillName);
+    const target = path.join(skillsDir, skillName);
+    if (fs.existsSync(target) && !directoriesAreIdenticalForInstall(source, target)) {
+      conflicts.push(`skill ${skillName}: ${target}`);
+    }
+  }
+
+  if (!skillsOnly) {
+    for (const agentName of manifest.agents) {
+      const source = path.join(root, "agents", `${agentName}.md`);
+      const target = path.join(targetRoot, "agents", `${agentName}.md`);
+      if (fs.existsSync(target) && !filesAreIdentical(source, target)) {
+        conflicts.push(`agent ${agentName}: ${target}`);
+      }
+    }
+
+    for (const commandName of manifest.commands) {
+      const source = path.join(root, "commands", `${commandName}.md`);
+      const target = path.join(targetRoot, "commands", `${commandName}.md`);
+      if (fs.existsSync(target) && !filesAreIdentical(source, target)) {
+        conflicts.push(`command ${commandName}: ${target}`);
+      }
+    }
+  }
+
+  for (const sharedPath of manifest.shared) {
+    const source = path.join(root, sharedPath);
+    const target = path.join(targetRoot, sharedPath);
+    if (fs.existsSync(target) && !filesAreIdentical(source, target)) {
+      conflicts.push(`shared ${sharedPath}: ${target}`);
+    }
+  }
+
+  if (conflicts.length > 0) {
+    throw new Error(
+      [
+        `Install would overwrite ${conflicts.length} existing non-identical file or directory target(s):`,
+        ...conflicts.map((conflict) => `- ${conflict}`),
+        "Re-run with --force to overwrite intentionally."
+      ].join("\n")
+    );
+  }
+}
+
 function installBundle(manifest) {
   preflightInstall(manifest);
+  checkInstallConflicts(manifest);
+
+  if (dryRun) {
+    console.log(`Dry run passed for ${manifest.name}. No files written.`);
+    return;
+  }
 
   fs.mkdirSync(skillsDir, { recursive: true });
 
@@ -156,17 +271,21 @@ function installBundle(manifest) {
     console.log(`Installed skill: ${skillName}`);
   }
 
-  for (const agentName of manifest.agents) {
+  const agents = skillsOnly ? [] : manifest.agents;
+  const commands = skillsOnly ? [] : manifest.commands;
+  const shared = manifest.shared;
+
+  for (const agentName of agents) {
     copyFile(path.join(root, "agents", `${agentName}.md`), path.join(targetRoot, "agents", `${agentName}.md`));
     console.log(`Installed agent: ${agentName}`);
   }
 
-  for (const commandName of manifest.commands) {
+  for (const commandName of commands) {
     copyFile(path.join(root, "commands", `${commandName}.md`), path.join(targetRoot, "commands", `${commandName}.md`));
     console.log(`Installed command: ${commandName}`);
   }
 
-  for (const sharedPath of manifest.shared) {
+  for (const sharedPath of shared) {
     copyFile(path.join(root, sharedPath), path.join(targetRoot, sharedPath));
     console.log(`Installed shared file: ${sharedPath}`);
   }
@@ -181,10 +300,11 @@ function installBundle(manifest) {
         installedAt: new Date().toISOString(),
         targetRoot,
         skillsDir,
+        skillsOnly,
         skills: manifest.skills,
-        agents: manifest.agents,
-        commands: manifest.commands,
-        shared: manifest.shared
+        agents,
+        commands,
+        shared
       },
       null,
       2

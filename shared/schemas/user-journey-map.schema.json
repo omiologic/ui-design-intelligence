@@ -1,0 +1,232 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://omiologic.dev/schemas/ui-blueprint/user-journey-map.schema.json",
+  "title": "User Journey Map",
+  "description": "Strategic journey artifact that maps audience goals, stages, needs, objections, and content goals before blueprint copy is generated.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "version",
+    "type",
+    "id",
+    "name",
+    "source",
+    "audience",
+    "primaryGoal",
+    "stages",
+    "review"
+  ],
+  "properties": {
+    "version": {
+      "$ref": "#/$defs/version"
+    },
+    "type": {
+      "const": "userJourneyMap"
+    },
+    "id": {
+      "$ref": "#/$defs/id"
+    },
+    "name": {
+      "$ref": "#/$defs/nonEmptyString"
+    },
+    "source": {
+      "$ref": "#/$defs/artifactSource"
+    },
+    "audience": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "primary",
+        "intent"
+      ],
+      "properties": {
+        "primary": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "segments": {
+          "$ref": "#/$defs/stringList"
+        },
+        "intent": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "context": {
+          "$ref": "#/$defs/nonEmptyString"
+        }
+      }
+    },
+    "primaryGoal": {
+      "$ref": "#/$defs/id"
+    },
+    "conversionGoals": {
+      "$ref": "#/$defs/stringList"
+    },
+    "stages": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/journeyStage"
+      }
+    },
+    "review": {
+      "$ref": "#/$defs/reviewState"
+    },
+    "notes": {
+      "$ref": "#/$defs/stringList"
+    }
+  },
+  "$defs": {
+    "version": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$"
+    },
+    "nonEmptyString": {
+      "type": "string",
+      "minLength": 1
+    },
+    "stringList": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/nonEmptyString"
+      }
+    },
+    "sourceKind": {
+      "type": "string",
+      "enum": [
+        "userProvided",
+        "generated",
+        "derivedFromStudy",
+        "derivedFromKnowledge",
+        "clientApproved"
+      ]
+    },
+    "confidence": {
+      "type": "string",
+      "enum": [
+        "low",
+        "medium",
+        "high",
+        "approved"
+      ]
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "draft",
+        "reviewed",
+        "clientApproved",
+        "productionReady",
+        "deprecated"
+      ]
+    },
+    "reviewRisk": {
+      "type": "string",
+      "enum": [
+        "medicalClaims",
+        "pricingAccuracy",
+        "productSpecs",
+        "legalCompliance",
+        "financialClaims",
+        "brandApproval",
+        "clientApproval",
+        "accessibilityLanguage",
+        "translationReview"
+      ]
+    },
+    "artifactSource": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "source",
+        "confidence",
+        "sourceRefs"
+      ],
+      "properties": {
+        "source": {
+          "$ref": "#/$defs/sourceKind"
+        },
+        "confidence": {
+          "$ref": "#/$defs/confidence"
+        },
+        "sourceRefs": {
+          "$ref": "#/$defs/stringList"
+        },
+        "notes": {
+          "$ref": "#/$defs/stringList"
+        }
+      }
+    },
+    "reviewState": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "needsReview"
+      ],
+      "properties": {
+        "status": {
+          "$ref": "#/$defs/status"
+        },
+        "needsReview": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/reviewRisk"
+          }
+        },
+        "reviewNotes": {
+          "$ref": "#/$defs/stringList"
+        }
+      }
+    },
+    "journeyStage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "label",
+        "userQuestion",
+        "userNeed",
+        "contentGoal",
+        "copyStrategy"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "label": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "userQuestion": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "userNeed": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "contentGoal": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "recommendedSections": {
+          "$ref": "#/$defs/stringList"
+        },
+        "recommendedNodeRoles": {
+          "$ref": "#/$defs/stringList"
+        },
+        "copyStrategy": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "objections": {
+          "$ref": "#/$defs/stringList"
+        },
+        "successCriteria": {
+          "$ref": "#/$defs/stringList"
+        },
+        "handoffNotes": {
+          "$ref": "#/$defs/stringList"
+        }
+      }
+    }
+  }
+}

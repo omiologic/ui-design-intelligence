@@ -77,6 +77,79 @@ function validateAgainstSchema(doc, schema, file, label) {
   }
 }
 
+function scanValueForStorageLeaks(value, file, location = "$") {
+  if (typeof value === "string") {
+    const checks = [
+      {
+        label: "AWS access key ID",
+        pattern: /\b(?:AKIA|ASIA)[A-Z0-9]{16}\b/
+      },
+      {
+        label: "account-specific AWS ARN",
+        pattern: /\barn:aws[a-z-]*:[^\s:]+:[^\s:]*:\d{12}:[^\s)'"`]+/
+      },
+      {
+        label: "signed AWS URL",
+        pattern: new RegExp(`\\b(?:${"X-Amz-"}${"Signature="}|${"AWSAccess"}${"KeyId="})`)
+      },
+      {
+        label: "concrete S3 URI",
+        pattern: /\bs3:\/\/(?!<)[a-z0-9][a-z0-9.-]{1,61}[a-z0-9](?:\/[^\s)'"`]*)?/
+      }
+    ];
+
+    for (const { label, pattern } of checks) {
+      if (pattern.test(value)) {
+        fail(`${path.relative(root, file)}: ${location} contains possible ${label}; examples must use placeholders`);
+      }
+    }
+    return;
+  }
+
+  if (Array.isArray(value)) {
+    value.forEach((item, index) => scanValueForStorageLeaks(item, file, `${location}[${index}]`));
+    return;
+  }
+
+  if (!value || typeof value !== "object") return;
+  for (const [key, item] of Object.entries(value)) {
+    scanValueForStorageLeaks(item, file, `${location}.${key}`);
+  }
+}
+
+function checkStorageRefs(value, file, location = "$") {
+  if (Array.isArray(value)) {
+    value.forEach((item, index) => checkStorageRefs(item, file, `${location}[${index}]`));
+    return;
+  }
+  if (!value || typeof value !== "object") return;
+
+  if (value.storageRef && typeof value.storageRef === "object" && !Array.isArray(value.storageRef)) {
+    const ref = value.storageRef;
+    const refLocation = `${location}.storageRef`;
+    if (ref.kind === "s3Uri") {
+      if (typeof ref.uri !== "string" || !ref.uri.startsWith("s3://")) {
+        fail(`${path.relative(root, file)}: ${refLocation}.uri must start with s3:// when kind is s3Uri`);
+      } else if (!ref.uri.startsWith("s3://<")) {
+        fail(`${path.relative(root, file)}: ${refLocation}.uri must use an S3 placeholder in examples`);
+      }
+    }
+    if (ref.kind === "localPath" && typeof ref.uri === "string" && ref.uri.startsWith("s3://")) {
+      fail(`${path.relative(root, file)}: ${refLocation}.uri must be a local path when kind is localPath`);
+    }
+    if (ref.checksum && ref.checksum.algorithm === "sha256") {
+      const checksum = ref.checksum.value;
+      if (typeof checksum !== "string" || (!/^<[^>]+>$/.test(checksum) && !/^[a-f0-9]{64}$/.test(checksum))) {
+        fail(`${path.relative(root, file)}: ${refLocation}.checksum.value must be a SHA-256 hex digest or placeholder`);
+      }
+    }
+  }
+
+  for (const [key, item] of Object.entries(value)) {
+    checkStorageRefs(item, file, `${location}.${key}`);
+  }
+}
+
 function checkTags(tags, file, location) {
   if (!tags || typeof tags !== "object" || Array.isArray(tags)) return;
 
@@ -100,6 +173,8 @@ function checkTags(tags, file, location) {
 
 function checkPattern(doc, file) {
   if (!doc) return;
+  scanValueForStorageLeaks(doc, file);
+  checkStorageRefs(doc, file);
   if (patternIds.has(doc.id)) {
     fail(`${path.relative(root, file)}: duplicate pattern id "${doc.id}"`);
   }
@@ -132,6 +207,8 @@ function checkPattern(doc, file) {
 
 function checkIndex(doc, file) {
   if (!doc) return;
+  scanValueForStorageLeaks(doc, file);
+  checkStorageRefs(doc, file);
   const indexIds = new Set();
   for (const [index, entry] of (doc.patterns ?? []).entries()) {
     if (indexIds.has(entry.id)) {
@@ -161,7 +238,9 @@ const vocabularyDir = path.join(base, "vocabulary");
 const examplesDir = path.join(base, "examples");
 
 const patternSchema = readJson(path.join(schemaDir, "pattern-record.schema.json"));
+const sourceSchema = readJson(path.join(schemaDir, "source-record.schema.json"));
 const indexSchema = readJson(path.join(schemaDir, "knowledge-index.schema.json"));
+const lineageSchema = readJson(path.join(schemaDir, "blueprint-lineage.schema.json"));
 const patternTypes = loadNamedVocabulary(path.join(vocabularyDir, "pattern-types.json"), "patternTypes");
 const statuses = loadNamedVocabulary(path.join(vocabularyDir, "pattern-statuses.json"), "patternStatuses");
 const confidenceLevels = loadNamedVocabulary(path.join(vocabularyDir, "confidence-levels.json"), "confidenceLevels");
@@ -169,7 +248,9 @@ const tagVocabulary = loadTagVocabulary(path.join(vocabularyDir, "knowledge-tags
 const patternIds = new Map();
 
 const patternFiles = walk(examplesDir).filter((file) => file.endsWith(".pattern.json")).sort();
+const sourceFiles = walk(examplesDir).filter((file) => file.endsWith(".source.json")).sort();
 const indexFiles = walk(examplesDir).filter((file) => file.endsWith("knowledge-index.example.json")).sort();
+const lineageFiles = walk(examplesDir).filter((file) => file.endsWith(".blueprint-lineage.json")).sort();
 
 for (const file of patternFiles) {
   const doc = readJson(file);
@@ -177,10 +258,24 @@ for (const file of patternFiles) {
   checkPattern(doc, file);
 }
 
+for (const file of sourceFiles) {
+  const doc = readJson(file);
+  validateAgainstSchema(doc, sourceSchema, file, "source-record");
+  scanValueForStorageLeaks(doc, file);
+  checkStorageRefs(doc, file);
+}
+
 for (const file of indexFiles) {
   const doc = readJson(file);
   validateAgainstSchema(doc, indexSchema, file, "knowledge-index");
   checkIndex(doc, file);
+}
+
+for (const file of lineageFiles) {
+  const doc = readJson(file);
+  validateAgainstSchema(doc, lineageSchema, file, "blueprint-lineage");
+  scanValueForStorageLeaks(doc, file);
+  checkStorageRefs(doc, file);
 }
 
 if (errors.length) {

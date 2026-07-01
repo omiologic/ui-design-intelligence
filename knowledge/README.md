@@ -19,6 +19,20 @@ User projects own the archive layer. Real captures, screenshots, studies,
 audits, extracted patterns, generated blueprints, and lineage files should live
 in a project-local `ui-knowledge/` workspace created for that project.
 
+Sprint 007 defines an optional remote archive and retrieval contract in
+`docs/knowledge/remote-storage-contract.md`, with local-only configuration
+instructions in `docs/knowledge/remote-storage-configuration.md` and user AWS
+setup guidance in `docs/knowledge/aws-user-setup.md`. The short version is:
+
+```txt
+normal S3 bucket       = canonical knowledge records and generated artifacts
+S3 vector bucket/index = semantic retrieval index over selected records
+```
+
+S3 Vectors is a retrieval index, not the source of truth. Local `ui-knowledge/`
+archives remain the default when remote storage environment variables are not
+configured.
+
 ## Project-Local Archive Shape
 
 A project-local archive should be disposable and client/project scoped:
@@ -42,6 +56,14 @@ ui-knowledge/
     interactions/
     storytelling/
     conversion/
+  content/
+    copy-patterns/
+    journey-patterns/
+    cta-patterns/
+    microcopy-patterns/
+    objection-patterns/
+    voice-profiles/
+    industry-language/
   blueprints/
     generated/
   lineage/
@@ -65,6 +87,22 @@ prevents raw observations from becoming copyable design instructions.
 | 5 | Knowledge Index | Summarizes pattern records for fast lookup by tags such as industry, page type, section type, conversion goal, and confidence. |
 | 6 | Blueprint | Applies selected patterns to a new planned UI structure or UIBlueprint wireframe. |
 | 7 | Lineage | Records which patterns influenced a generated blueprint and why. |
+
+Sprint 008 adds content-specific knowledge records for realistic prototypes and
+node-tied copy generation:
+
+- `copy-patterns/`: reusable headline, body, CTA, section, component, and
+  microcopy structures.
+- `journey-patterns/`: reusable audience-goal, journey-stage, objection, and
+  conversion path logic.
+- `cta-patterns/`: reusable action-label sets and CTA decision rules. These can
+  use `copy-pattern.schema.json` until a narrower CTA schema is needed.
+- `microcopy-patterns/`: reusable labels, helper text, errors,
+  confirmations, empty states, and dialog copy. These can use
+  `copy-pattern.schema.json` until a narrower microcopy schema is needed.
+- `objection-patterns/`: reusable user concerns and response strategies.
+- `voice-profiles/`: reusable tone, vocabulary, and content-rule profiles.
+- `industry-language/`: curated terminology notes and domain phrase guidance.
 
 ## Evidence vs Reusable Knowledge
 
@@ -98,6 +136,13 @@ Initial schemas are defined in `knowledge/schemas/`:
 - `knowledge-index.schema.json`
 - `blueprint-lineage.schema.json`
 
+Sprint 008 content knowledge schemas are also defined in `knowledge/schemas/`:
+
+- `copy-pattern.schema.json`
+- `journey-pattern.schema.json`
+- `objection-pattern.schema.json`
+- `voice-profile.schema.json`
+
 ## Validation And Indexing
 
 Knowledge records are checked by deterministic scripts:
@@ -109,7 +154,10 @@ npm run validate:knowledge-index
 
 `validate:knowledge` checks schema shape, unique pattern IDs, approved tag
 vocabulary, approved confidence/status values, required `sourceRefs`, and
-wireframe mapping vocabulary. `validate:knowledge-index` verifies that
+wireframe mapping vocabulary. It also rejects credentials, signed AWS URLs,
+account-specific ARNs, and concrete S3 URIs in committed examples; storage
+references must use local paths or placeholder S3 URIs.
+`validate:knowledge-index` verifies that
 `knowledge/examples/knowledge-index.example.json` is generated from the seed
 pattern records.
 
@@ -136,3 +184,58 @@ node scripts/init-knowledge-workspace.mjs --out ./ui-knowledge --check
 The initialized workspace belongs to the user project. Keep real captures,
 screenshots, studies, audits, and generated client work out of this plugin
 repository unless they are intentionally sanitized as examples.
+
+## Storage Sync And Fetch
+
+Local storage is the default:
+
+```bash
+node scripts/sync-knowledge-storage.mjs --patterns knowledge/examples --provider local --dry-run
+```
+
+S3 storage is configured with environment variables from `.env.example` or
+`docs/knowledge/remote-storage-configuration.md`. Use dry-run first to validate
+planned canonical keys without AWS credentials or network access:
+
+```bash
+node scripts/sync-knowledge-storage.mjs --patterns knowledge/examples --provider s3 --dry-run
+```
+
+Fetch a canonical record by storage reference, S3 URI, or local path:
+
+```bash
+node scripts/fetch-knowledge-storage.mjs --s3-uri "s3://<bucket>/ui-knowledge/patterns/<pattern-id>.pattern.json" --dry-run
+node scripts/fetch-knowledge-storage.mjs --local-path ./ui-knowledge/patterns/<pattern-id>.pattern.json --out /tmp/pattern.json
+```
+
+The S3 adapter loads `@aws-sdk/client-s3` only for non-dry-run S3 operations,
+so offline validation does not require AWS packages or credentials. Command
+diagnostics redact bucket, prefix, key, region, version, and local path values.
+
+Content knowledge records follow the same local-first storage rule as UI
+pattern records. Local archives should store them under `ui-knowledge/content/`.
+Optional S3 storage should preserve the same relative shape under the configured
+prefix, for example
+`s3://<bucket>/<prefix>/content/copy-patterns/<pattern-id>.copy-pattern.json`.
+Remote vector retrieval may project content records later, but canonical
+content records remain schema-valid JSON files in local or normal S3 storage.
+
+## Vector Projection And Query
+
+Pattern records can be projected into vector-ready records:
+
+```bash
+node scripts/index-knowledge-vectors.mjs --patterns knowledge/examples --provider mock --mock-embeddings --out /tmp/ui-knowledge-vectors.json --dry-run
+```
+
+Query deterministic mock records locally:
+
+```bash
+node scripts/query-knowledge-vectors.mjs --query "dentistry homepage appointment booking trust hero" --records /tmp/ui-knowledge-vectors.json --filter pageTypes=homepage
+```
+
+The vector projection includes summary, tags, `useWhen`, `avoidWhen`,
+structure, wireframe mapping, and blueprint impact. Metadata keeps filterable
+pattern ID, type, category, confidence, status, tags, and canonical storage
+references. Real S3 vector writes remain optional and require user-configured
+credentials plus optional SDK packages; normal validation uses mocks.

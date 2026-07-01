@@ -1,0 +1,239 @@
+{
+  "version": "0.1.0",
+  "type": "designSystemSeed",
+  "id": "ledgerpilot-design-system-seed",
+  "name": "LedgerPilot Design System Seed",
+  "source": {
+    "inputType": "prompt",
+    "sourceRefs": ["prompt:ledgerpilot marketing page brief"],
+    "confidence": "medium",
+    "notes": ["Compact seed for the marketing page end-to-end example."]
+  },
+  "maturity": "designSystemSeed",
+  "brand": {
+    "name": {
+      "value": "LedgerPilot",
+      "source": "userProvided",
+      "confidence": "high"
+    },
+    "summary": {
+      "value": "A finance-operations product foundation focused on clarity, trust, and demo conversion.",
+      "source": "generated",
+      "confidence": "medium"
+    },
+    "personality": {
+      "values": ["credible", "precise", "calm", "operator-focused"],
+      "source": "recommended",
+      "confidence": "medium"
+    },
+    "audience": {
+      "values": ["founders", "fractional CFOs", "operations leads"],
+      "source": "userProvided",
+      "confidence": "high"
+    },
+    "positioning": {
+      "value": "Cash-flow clarity for teams preparing investor and board updates.",
+      "source": "recommended",
+      "confidence": "medium"
+    },
+    "voice": {
+      "tone": {
+        "value": "direct, credible, and plainspoken",
+        "source": "recommended",
+        "confidence": "medium"
+      },
+      "avoid": {
+        "values": ["hype", "unsupported financial claims", "consumer-finance language"],
+        "source": "recommended",
+        "confidence": "medium"
+      }
+    },
+    "visualDirection": {
+      "density": {
+        "value": "medium",
+        "source": "recommended",
+        "confidence": "medium"
+      },
+      "style": {
+        "value": "clear B2B SaaS marketing interface",
+        "source": "generated",
+        "confidence": "medium"
+      },
+      "emphasis": {
+        "value": "proof, financial confidence, and demo action",
+        "source": "recommended",
+        "confidence": "medium"
+      }
+    }
+  },
+  "palette": {
+    "mode": "light",
+    "colors": {
+      "color.action.primary": {
+        "name": "Ledger Blue",
+        "value": "#145C9E",
+        "intent": "Primary demo-request action color.",
+        "usage": "Primary CTA and active navigation.",
+        "useOn": ["button.primary", "active navigation"],
+        "doNotUseOn": ["large decorative backgrounds"],
+        "accessibilityNotes": ["Validate contrast with white text before production use."],
+        "source": "recommended",
+        "confidence": "medium"
+      },
+      "color.surface.default": {
+        "name": "Report White",
+        "value": "#FFFFFF",
+        "intent": "Default readable surface.",
+        "usage": "Page background and card surfaces.",
+        "useOn": ["page background", "card surfaces"],
+        "doNotUseOn": ["focus indicators"],
+        "accessibilityNotes": ["Validate contrast for all text on this surface."],
+        "source": "recommended",
+        "confidence": "medium"
+      },
+      "color.text.primary": {
+        "name": "Finance Ink",
+        "value": "#16202A",
+        "intent": "Primary readable text.",
+        "usage": "Headings and body copy.",
+        "useOn": ["heading", "paragraph"],
+        "doNotUseOn": ["disabled states"],
+        "accessibilityNotes": ["Validate contrast against default and subtle surfaces."],
+        "source": "recommended",
+        "confidence": "medium"
+      }
+    },
+    "accessibilityNotes": ["Check all generated color pairs before implementation."]
+  },
+  "typography": {
+    "fontFamilies": {
+      "heading": {
+        "value": "Inter, system-ui, sans-serif",
+        "source": "recommended",
+        "confidence": "medium"
+      },
+      "body": {
+        "value": "Inter, system-ui, sans-serif",
+        "source": "recommended",
+        "confidence": "medium"
+      }
+    },
+    "scale": {
+      "h2": {
+        "fontSize": "32px",
+        "lineHeight": "1.2",
+        "fontWeight": 650,
+        "usage": "Major section title.",
+        "source": "recommended",
+        "confidence": "medium"
+      },
+      "body": {
+        "fontSize": "16px",
+        "lineHeight": "1.6",
+        "fontWeight": 400,
+        "usage": "Main readable content.",
+        "source": "recommended",
+        "confidence": "medium"
+      }
+    }
+  },
+  "iconography": {
+    "style": "outline",
+    "strokeWidth": "1.75px",
+    "cornerStyle": "rounded",
+    "preferredLibrary": "lucide-react",
+    "usage": {
+      "featureCards": "Use icons only when they improve scanning.",
+      "status": "Use semantic icons for success, warning, and error."
+    },
+    "rules": ["Icons should support labels, not replace them."],
+    "source": "recommended",
+    "confidence": "medium"
+  },
+  "components": {
+    "buttons": {
+      "base": {
+        "radius": "8px",
+        "fontWeight": 600,
+        "height": {
+          "md": "44px"
+        }
+      },
+      "variants": {
+        "button.primary": {
+          "usage": "Main demo request action.",
+          "background": "color.action.primary",
+          "text": "color.surface.default",
+          "border": "color.action.primary",
+          "allowedActions": ["navigate", "openDialog"]
+        },
+        "button.secondary": {
+          "usage": "Supporting action near the primary CTA.",
+          "background": "transparent",
+          "text": "color.action.primary",
+          "border": "color.action.primary",
+          "allowedActions": ["navigate"]
+        }
+      },
+      "states": ["default", "hover", "focus", "active", "disabled", "loading"],
+      "rules": ["Use one primary CTA per major decision region."],
+      "source": "generated",
+      "confidence": "medium"
+    },
+    "cards": {
+      "base": {
+        "surface": "color.surface.default",
+        "radius": "12px",
+        "padding": "24px"
+      },
+      "anatomy": ["title", "description", "actions"],
+      "variants": {
+        "card.service": {
+          "usage": "Present a finance workflow benefit or proof point.",
+          "requiredParts": ["title", "description", "actions"],
+          "allowedActions": ["navigate", "openDialog"]
+        }
+      },
+      "rules": ["Keep proof and feature cards scannable and evidence-led."],
+      "source": "generated",
+      "confidence": "medium"
+    },
+    "header": {
+      "layout": {
+        "desktop": "logo-left nav-center actions-right",
+        "mobile": "logo-left menu-button-right"
+      },
+      "height": {
+        "desktop": "72px",
+        "mobile": "64px"
+      },
+      "behavior": {
+        "sticky": false,
+        "mobileNavigation": "drawer"
+      },
+      "anatomy": ["logo", "primaryNavigation", "primaryAction", "mobileMenuButton"],
+      "navigation": {
+        "maxPrimaryItems": 6,
+        "supportsDropdown": true,
+        "supportsMegaMenu": false
+      },
+      "rules": ["Keep the demo CTA visible on desktop."],
+      "source": "recommended",
+      "confidence": "medium"
+    },
+    "footer": {
+      "layout": {
+        "desktop": "multi-column",
+        "mobile": "stacked"
+      },
+      "anatomy": ["brandSummary", "navigationGroups", "contactInfo", "legalLinks"],
+      "navigationGroups": ["Product", "Resources", "Company", "Legal"],
+      "industrySpecificNeeds": ["security", "privacy", "support contact"],
+      "rules": ["Security and privacy links should be easy to find."],
+      "source": "recommended",
+      "confidence": "medium"
+    }
+  },
+  "usageNotes": ["Use as the seed for the marketing page e2e example."],
+  "openQuestions": ["Confirm exact brand colors and typography from source assets."]
+}

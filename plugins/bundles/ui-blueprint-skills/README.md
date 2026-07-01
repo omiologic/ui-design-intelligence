@@ -37,7 +37,9 @@ Agents:
 
 Commands:
 
+- `create-wireframe`
 - `generate-blueprint-from-study`
+- `review-generated-wireframe`
 
 Shared assets include the UIBlueprint schema, study-output schema, controlled
 vocabulary, structural design philosophy, taste profiles, blueprint templates,
@@ -56,15 +58,28 @@ pattern inputs.
 
 ## Install
 
+Codex/GPT skills-only target:
+
+```bash
+node scripts/install-bundle.mjs install ui-blueprint-skills "$HOME/.agents" "$HOME/.agents/skills" --skills-only --dry-run
+node scripts/install-bundle.mjs install ui-blueprint-skills "$HOME/.agents" "$HOME/.agents/skills" --skills-only
+```
+
+Claude/local full-bundle target:
+
 ```bash
 UI_PLUGIN_BUNDLE="ui-blueprint-skills" ./install.sh
 ```
 
-Install into a project-local target:
+Claude/local project target:
 
 ```bash
+UI_PLUGIN_BUNDLE="ui-blueprint-skills" UI_PLUGIN_TARGET="./.claude" ./install.sh --dry-run
 UI_PLUGIN_BUNDLE="ui-blueprint-skills" UI_PLUGIN_TARGET="./.claude" ./install.sh
 ```
+
+Use `--force` only when you intentionally want to overwrite non-identical
+existing files.
 
 Uninstall:
 
@@ -74,10 +89,18 @@ UI_PLUGIN_BUNDLE="ui-blueprint-skills" ./uninstall.sh
 
 ## Usage Example
 
-Use `generate-blueprint-from-study` with a page-study artifact. The workflow
-routes terminology, page planning, section planning, interaction modeling,
-accessibility review, and final `generate-wireframe-config` assembly into a
-schema-valid UIBlueprint artifact.
+Use `create-wireframe` with a brief, requirements note, study output, or audit
+finding when the user wants one clear entrypoint. The workflow routes
+terminology, page planning, section planning, interaction modeling,
+accessibility review, and final `generate-wireframe-config` assembly into
+`wireframe.json` and `wireframe-notes.md`.
+
+Use `generate-blueprint-from-study` when the input is already a page-study
+artifact and you want the lower-level study-to-blueprint workflow directly.
+
+Use `review-generated-wireframe` after generation to score the artifact against
+the blueprint quality rubric and report whether it is weak, usable, or strong
+before downstream design-spec, prototype, or implementation work.
 
 ## Relationship To Other Bundles
 

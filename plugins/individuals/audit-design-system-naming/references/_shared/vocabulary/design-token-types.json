@@ -13,6 +13,10 @@
       "definition": "Layout rhythm role for gaps, padding, margins, and section spacing."
     },
     {
+      "name": "size",
+      "definition": "Dimension role for controls, media, icons, hit areas, and bounded containers."
+    },
+    {
       "name": "radius",
       "definition": "Corner shape role for controls, cards, overlays, and media."
     },
@@ -31,6 +35,18 @@
     {
       "name": "motion",
       "definition": "Behavioral transition role for prototype contracts; final easing and timing remain downstream."
+    },
+    {
+      "name": "zindex",
+      "definition": "Layering role for sticky regions, overlays, dialogs, popovers, and tooltips."
+    },
+    {
+      "name": "opacity",
+      "definition": "Transparency role for disabled states, overlays, scrims, muted content, and emphasis control."
+    },
+    {
+      "name": "breakpoint",
+      "definition": "Responsive threshold role for layout, content, and interaction behavior changes."
     }
   ],
   "semanticNamePattern": "{category}.{role}.{purpose}",
@@ -40,6 +56,10 @@
     "color.surface.subtle",
     "typography.heading.h1",
     "spacing.section.default",
-    "radius.control.default"
+    "size.touchTarget.minimum",
+    "radius.control.default",
+    "zindex.overlay.modal",
+    "opacity.disabled.default",
+    "breakpoint.layout.mobile"
   ]
 }

@@ -9,6 +9,7 @@
   "properties": {
     "version": { "type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$" },
     "generatedAt": { "type": "string", "minLength": 1 },
+    "storageRef": { "$ref": "#/$defs/storageRef" },
     "patterns": {
       "type": "array",
       "items": {
@@ -24,7 +25,8 @@
           "summary": { "type": "string" },
           "tags": { "$ref": "#/$defs/knowledgeTags" },
           "confidence": { "type": "string", "enum": ["low", "medium", "high", "validated"] },
-          "status": { "type": "string", "enum": ["candidate", "accepted", "validated", "deprecated", "merged"] }
+          "status": { "type": "string", "enum": ["candidate", "accepted", "validated", "deprecated", "merged"] },
+          "storageRef": { "$ref": "#/$defs/storageRef" }
         }
       }
     }
@@ -47,6 +49,31 @@
         "interactionTypes": { "$ref": "#/$defs/stringList" },
         "conversionGoals": { "$ref": "#/$defs/stringList" },
         "audiences": { "$ref": "#/$defs/stringList" }
+      }
+    },
+    "storageRef": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "uri"],
+      "properties": {
+        "kind": { "type": "string", "enum": ["localPath", "s3Uri"] },
+        "uri": { "type": "string", "minLength": 1 },
+        "objectType": {
+          "type": "string",
+          "enum": ["sourceRecord", "studyRecord", "auditRecord", "patternRecord", "knowledgeIndex", "blueprintLineage", "generatedOutput"]
+        },
+        "etag": { "type": "string", "minLength": 1 },
+        "versionId": { "type": "string", "minLength": 1 },
+        "updatedAt": { "type": "string", "minLength": 1 },
+        "checksum": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["algorithm", "value"],
+          "properties": {
+            "algorithm": { "type": "string", "enum": ["sha256"] },
+            "value": { "type": "string", "minLength": 1 }
+          }
+        }
       }
     }
   }

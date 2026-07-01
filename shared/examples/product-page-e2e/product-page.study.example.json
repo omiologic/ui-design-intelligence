@@ -1,0 +1,30 @@
+{
+  "id": "product-page-study",
+  "source": {
+    "urlOrName": "Northstar Beam 400 product page brief",
+    "capturedAt": "2026-06-30",
+    "viewport": "desktop"
+  },
+  "studyType": "specification",
+  "summary": "The product page should prioritize inspection, product state, required variant selection, comparison support, cart feedback, and recovery behavior.",
+  "findings": [
+    {
+      "label": "Product state must precede supporting content",
+      "evidence": "The brief requires product media, price, rating proof, stock status, and variant selection near add-to-cart.",
+      "interpretation": "The product summary is the primary decision region and should appear before specs or related products.",
+      "handoff": "Place media and summary in the first product section with one primary add-to-cart action."
+    },
+    {
+      "label": "Variant choice requires validation",
+      "evidence": "The brief names required-choice validation for the color selector.",
+      "interpretation": "Add-to-cart cannot be a happy-path-only interaction.",
+      "handoff": "Model missing variant error and recovery in the wireframe and prototype config."
+    },
+    {
+      "label": "Comparison should appear before related products",
+      "evidence": "The brief requires specification comparison before related products.",
+      "interpretation": "Users need confidence about brightness, battery, and fit before browsing alternatives.",
+      "handoff": "Use comparisonTable before related card grid."
+    }
+  ]
+}

@@ -1,0 +1,88 @@
+{
+  "name": "local-business",
+  "version": "0.1.0",
+  "register": "marketing",
+  "description": "Structural bias for local business pages that need to convert nearby intent into contact, appointment, or visit.",
+  "intent": "Establish service clarity and local trust signals early, make contact and booking actions persistent, and resolve geographic and scheduling objections before they prevent action.",
+  "rules": {
+    "sectionOrder": [
+      {
+        "job": "orient",
+        "preferredStructures": ["hero", "centeredHero", "header"],
+        "reason": "Local visitors need immediate confirmation of service type, location, and that the business is open and accepting customers."
+      },
+      {
+        "job": "establish-local-trust",
+        "preferredStructures": ["cardGrid", "contentGroup", "list"],
+        "reason": "Reviews, years in business, certifications, and local affiliations address the trust deficit that comes from local unfamiliarity."
+      },
+      {
+        "job": "clarify-services",
+        "preferredStructures": ["cardGrid", "section", "twoColumn", "list"],
+        "reason": "Visitors must understand what services are offered before they can decide to contact or book."
+      },
+      {
+        "job": "resolve-logistics",
+        "preferredStructures": ["accordion", "contentGroup", "twoColumn"],
+        "reason": "Hours, location, parking, service area, and booking requirements reduce the friction that prevents follow-through."
+      },
+      {
+        "job": "act",
+        "preferredStructures": ["form", "buttonGroup", "stickyBar"],
+        "reason": "Local conversion actions should be easy to find from anywhere on the page without full scroll."
+      }
+    ],
+    "density": {
+      "default": "moderate",
+      "increaseWhen": ["service-listing", "location-and-hours", "faq"],
+      "decreaseWhen": ["hero", "primary-cta", "appointment-form"],
+      "reason": "Local pages must balance enough evidence to build trust with enough clarity that a busy or mobile visitor can act quickly."
+    },
+    "layoutSelection": {
+      "orientation": ["centeredHero", "splitHero", "singleColumn"],
+      "trust": ["cardGrid", "twoColumn", "stackedSections"],
+      "services": ["cardGrid", "featureGrid", "twoColumn"],
+      "logistics": ["twoColumn", "accordion", "singleColumn"],
+      "action": ["stickyFooterBar", "inlineForm", "singleColumn"]
+    },
+    "ctaCadence": {
+      "primaryActionCount": "one-per-section",
+      "secondaryActionRule": "Surface call, email, and direction actions as co-visible but visually subordinate to the primary booking or appointment action.",
+      "repeatPrimaryActionAfter": ["trust-section", "service-clarification", "logistics"],
+      "reason": "Local intent peaks unpredictably; the contact or booking action must be reachable at multiple scroll positions."
+    },
+    "overlayUse": {
+      "allowed": ["dialog", "drawer", "popover"],
+      "preferred": ["dialog"],
+      "useWhen": ["appointment-form", "contact-form", "location-detail", "review-expansion"],
+      "avoidWhen": ["primary-service-description", "hours-and-location", "emergency-contact"],
+      "reason": "Local business overlays should support the booking and contact flows; critical logistics like hours and phone must never require an overlay."
+    },
+    "responsivePriority": [
+      "service-name-and-location",
+      "primary-contact-or-booking-action",
+      "local-trust-signals",
+      "service-summary",
+      "hours-and-logistics",
+      "faq-and-secondary-contact"
+    ]
+  },
+  "antiPatterns": [
+    {
+      "name": "hidden-phone-or-address",
+      "reason": "Local visitors in high-intent moments need contact information immediately visible, not buried or behind an overlay."
+    },
+    {
+      "name": "no-sticky-action-on-mobile",
+      "reason": "Mobile local search intent is high; the booking or contact action must persist as the visitor scrolls."
+    },
+    {
+      "name": "generic-hero-without-location-signal",
+      "reason": "A local business hero that omits the service area, neighborhood, or city loses the trust signal that separates it from national competitors."
+    },
+    {
+      "name": "proof-without-local-specificity",
+      "reason": "Generic five-star testimonials do not build local trust; reviews should reference location, staff, or local context."
+    }
+  ]
+}

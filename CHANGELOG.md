@@ -2,6 +2,39 @@
 
 All notable changes to `ui-design-intelligence` will be documented in this file.
 
+## [0.9.0] — 2026-06-30
+
+Pre-1.0 integration milestone. Closes the ten structural weaknesses identified
+in the Sprint 009 repository audit.
+
+- Added GitHub Actions CI pipeline (`validate.yml`) that runs `npm run
+  validate:ci` on every push and pull request. Added `validate-release.yml`
+  that runs `npm run validate:release` on `v*` tags.
+- Added `validate:ci` npm script that runs the full validation chain with
+  cloud-dependent steps excluded, safe to run in CI without credentials.
+- Added `validate:cloud` npm script that runs the full remote knowledge
+  storage and vector smoke checks for environments with AWS credentials.
+- Made `validate:knowledge-storage`, `validate:knowledge-vectors`, and
+  `validate:knowledge-remote-smoke` credential-safe: they log `[SKIP]` and
+  exit 0 when required environment variables are absent rather than failing.
+  Removed embedded `<bucket>` and `<region>` placeholder strings from
+  `package.json`.
+- Added `scripts/validate-knowledge-storage.mjs` as a credential-aware wrapper
+  for the storage sync and fetch dry-run checks.
+- Added `scripts/sync-shared-references.mjs` to propagate canonical `shared/`
+  changes into all `skills/*/references/_shared/` and
+  `plugins/individuals/*/references/_shared/` copies. Wired a `check:shared-references`
+  drift check into `npm run validate`.
+- Added `scripts/check-skills-mirror-parity.mjs` and `check:skills-parity` to
+  detect divergence between `skills/` and `plugins/individuals/` mirror copies.
+- Documented the `skills/` retirement timeline: read-only compatibility mirror,
+  changes in `plugins/individuals/`, target removal at `1.0.0`.
+- Added `validate:knowledge-env` check documentation for remote storage setup
+  in `docs/knowledge/aws-user-setup.md`.
+- Bumped version to `0.9.0` across `package.json` and all bundle manifests.
+- Added CI status badge to `README.md`.
+- Updated versioning roadmap in `README.md` to reflect the pre-1.0 milestone.
+
 ## Unreleased
 
 - Replaced duplicated exploratory planning transcripts with a concise architecture plan.
@@ -51,3 +84,9 @@ All notable changes to `ui-design-intelligence` will be documented in this file.
 - Added README documentation for installation, usage, validation, packaging, contribution, versioning, and security.
 - Renamed the repository/package identity to `ui-design-intelligence` while
   retaining `ui-blueprint-skills` as the compatibility blueprint bundle.
+- Added `ui-content-skills` planned bundle (Sprint 008) covering user journey
+  copy, content models, prototype copy, page/section/component copy, form
+  microcopy, CTA labels, copy audits (`audit-prototype-copy`,
+  `audit-copy-for-user-journey`, `audit-copy-for-conversion`,
+  `audit-copy-for-brand-voice`), copy-pattern extraction from study, and
+  knowledge-driven copy generation. Bundle status: `planned`.

@@ -36,6 +36,13 @@ trigger, dismissal, validation, or success behavior.
 - `references/_shared/vocabulary/ui-terminology.json`
 - `references/_shared/examples/page-study.example.json`
 
+## Boundary
+
+- Owns: observable interaction findings — triggers, states, affordances, overlays, form behavior, disclosure patterns, and feedback signals as visible from the UI.
+- Does not own: interaction design recommendations, wireframe planning, accessibility depth evaluation, or responsive layout study.
+- Hand off accessibility-specific findings to `study-ui-accessibility`.
+- Hand off interaction design decisions to `interaction-patterns`.
+
 ## Rules
 
 1. Record only interactions visible in the source or reasonably implied by controls.

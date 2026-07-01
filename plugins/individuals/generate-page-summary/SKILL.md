@@ -38,6 +38,13 @@ instead of inventing a better story.
 5. Hand quality judgments, missing-proof concerns, or SEO mismatch to audit
    skills.
 
+## Boundary
+
+- Owns: factual page-level summary of purpose, audience, offering, proof structure, and primary call to action — neutral description, not audit findings.
+- Does not own: audit findings, design recommendations, SEO tag writing, or multi-page synthesis.
+- Hand off evaluation and findings to `generate-page-audit-report`.
+- Hand off SEO metadata review to `generate-seo-audit-report`.
+
 ## Rules
 
 1. Treat headings, visible copy, section structure, CTAs, forms, proof, metadata,

@@ -46,6 +46,13 @@ or content-model changes.
 5. Use `info` for contextual site observations that should inform future
    structure without requiring immediate remediation.
 
+## Boundary
+
+- Owns: site-wide audit synthesis covering cross-page navigation, IA, UX, interaction, accessibility, SEO, and conversion pattern findings.
+- Does not own: single-page detail findings, section anatomy, or code-level accessibility verification.
+- Hand off per-page detail to `generate-page-audit-report`.
+- Hand off IA observation to `study-ui-information-architecture`.
+
 ## Rules
 
 - Cite representative pages, template groups, navigation labels, CTA labels,

@@ -60,7 +60,8 @@ const patterns = patternFiles.map((file) => {
     summary: pattern.summary,
     tags: pattern.tags,
     confidence: pattern.confidence?.level,
-    status: pattern.status
+    status: pattern.status,
+    ...(pattern.storageRef ? { storageRef: pattern.storageRef } : {})
   };
 });
 

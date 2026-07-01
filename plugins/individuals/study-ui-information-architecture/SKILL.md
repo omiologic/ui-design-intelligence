@@ -35,6 +35,13 @@ taxonomy.
 - `references/_shared/vocabulary/ui-terminology.json`
 - `references/_shared/examples/page-study.example.json`
 
+## Boundary
+
+- Owns: observable IA findings — navigation grouping, label choices, prioritization patterns, and cross-section connection structure as visible from the UI.
+- Does not own: interaction behavior study, accessibility evaluation, conversion storytelling analysis, or blueprint design decisions.
+- Hand off interaction pattern observation to `study-ui-interaction`.
+- Hand off conversion-focused narrative observation to `study-ui-storytelling`.
+
 ## Rules
 
 1. Study navigation labels, section hierarchy, content grouping, and wayfinding cues.

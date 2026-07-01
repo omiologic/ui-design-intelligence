@@ -29,6 +29,18 @@
       "definition": "Generated or inferred color pairs require contrast validation before production use."
     },
     {
+      "name": "nonColorState",
+      "definition": "Error, warning, success, selected, required, and focus states must not rely on color alone."
+    },
+    {
+      "name": "readableTypeScale",
+      "definition": "Text tokens must preserve readable size, line-height, and hierarchy for body, labels, helper text, errors, captions, and dense UI."
+    },
+    {
+      "name": "disabledLegibility",
+      "definition": "Disabled-state color and opacity choices must remain legible enough to explain unavailable actions when needed."
+    },
+    {
       "name": "motionReduced",
       "definition": "Prototype behavior that implies motion should preserve a reduced-motion path."
     }

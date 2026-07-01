@@ -1,0 +1,250 @@
+{
+  "id": "ledgerpilot-marketing-wireframe",
+  "type": "wireframe",
+  "label": "LedgerPilot Marketing Page Wireframe",
+  "version": "0.1.0",
+  "description": "Conversion marketing page blueprint with proof before feature depth and demo request behavior.",
+  "root": {
+    "id": "ledgerpilot-marketing-page",
+    "type": "page",
+    "label": "LedgerPilot Marketing Page",
+    "children": [
+      {
+        "id": "site-header",
+        "type": "header",
+        "label": "Site Header",
+        "accessibility": {
+          "landmark": "banner"
+        },
+        "children": [
+          {
+            "id": "primary-navigation",
+            "type": "navigation",
+            "label": "Primary Navigation",
+            "accessibility": {
+              "ariaLabel": "Primary navigation"
+            }
+          },
+          {
+            "id": "header-demo-button",
+            "type": "button",
+            "label": "Request Demo",
+            "role": "primaryCTA"
+          }
+        ]
+      },
+      {
+        "id": "main-content",
+        "type": "main",
+        "label": "Main Content",
+        "accessibility": {
+          "landmark": "main"
+        },
+        "children": [
+          {
+            "id": "hero-section",
+            "type": "hero",
+            "label": "Cash Flow Clarity Hero",
+            "layout": "splitHero",
+            "children": [
+              {
+                "id": "hero-copy",
+                "type": "textBlock",
+                "label": "Hero Copy",
+                "children": [
+                  {
+                    "id": "hero-heading",
+                    "type": "heading",
+                    "label": "Cash Flow Clarity Headline",
+                    "role": "headline"
+                  },
+                  {
+                    "id": "hero-subheadline",
+                    "type": "paragraph",
+                    "label": "Board Update Subheadline",
+                    "role": "subheadline"
+                  },
+                  {
+                    "id": "hero-actions",
+                    "type": "buttonGroup",
+                    "label": "Hero Actions",
+                    "children": [
+                      {
+                        "id": "hero-demo-button",
+                        "type": "button",
+                        "label": "Request Demo",
+                        "role": "primaryCTA"
+                      },
+                      {
+                        "id": "hero-security-link",
+                        "type": "button",
+                        "label": "View Security Notes",
+                        "role": "secondaryCTA"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "hero-product-preview",
+                "type": "imagePlaceholder",
+                "label": "Cash Flow Dashboard Preview"
+              }
+            ]
+          },
+          {
+            "id": "proof-section",
+            "type": "section",
+            "label": "Proof Before Feature Detail",
+            "layout": "cardGrid",
+            "children": [
+              {
+                "id": "customer-count-card",
+                "type": "card",
+                "label": "Customer Count Proof",
+                "role": "trustSignal"
+              },
+              {
+                "id": "reporting-time-card",
+                "type": "card",
+                "label": "Reporting Time Saved Proof",
+                "role": "trustSignal"
+              },
+              {
+                "id": "finance-team-card",
+                "type": "card",
+                "label": "Finance Team Trust Proof",
+                "role": "trustSignal"
+              }
+            ]
+          },
+          {
+            "id": "features-section",
+            "type": "section",
+            "label": "Finance Workflow Features",
+            "layout": "featureGrid",
+            "children": [
+              {
+                "id": "feature-grid",
+                "type": "cardGrid",
+                "label": "Feature Grid",
+                "children": [
+                  {
+                    "id": "runway-view-card",
+                    "type": "card",
+                    "label": "Runway View Card"
+                  },
+                  {
+                    "id": "anomaly-alerts-card",
+                    "type": "card",
+                    "label": "Anomaly Alerts Card"
+                  },
+                  {
+                    "id": "board-report-card",
+                    "type": "card",
+                    "label": "Board Ready Report Card"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "objections-section",
+            "type": "section",
+            "label": "Setup And Trust Objections",
+            "children": [
+              {
+                "id": "objection-faq",
+                "type": "accordion",
+                "label": "Setup Compatibility Accuracy FAQ"
+              }
+            ]
+          },
+          {
+            "id": "final-cta-section",
+            "type": "section",
+            "label": "Final Demo Request",
+            "children": [
+              {
+                "id": "final-cta-copy",
+                "type": "textBlock",
+                "label": "Final CTA Copy",
+                "children": [
+                  {
+                    "id": "final-cta-heading",
+                    "type": "heading",
+                    "label": "Ready For Board Update Clarity"
+                  },
+                  {
+                    "id": "final-demo-button",
+                    "type": "button",
+                    "label": "Request Demo",
+                    "role": "primaryCTA"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "site-footer",
+        "type": "footer",
+        "label": "Site Footer",
+        "accessibility": {
+          "landmark": "contentinfo"
+        }
+      }
+    ]
+  },
+  "overlays": [
+    {
+      "id": "demo-request-dialog",
+      "type": "dialog",
+      "label": "Demo Request Dialog",
+      "state": "closed",
+      "accessibility": {
+        "ariaLabel": "Request a LedgerPilot demo",
+        "focusManagement": "Move focus into the dialog on open and return focus to the triggering demo button on close.",
+        "keyboardBehavior": "Escape closes the dialog and Tab remains inside while open."
+      },
+      "children": [
+        {
+          "id": "demo-request-form",
+          "type": "form",
+          "label": "Demo Request Form",
+          "children": [
+            {
+              "id": "demo-contact-fields",
+              "type": "inputGroup",
+              "label": "Demo Contact Fields"
+            },
+            {
+              "id": "demo-submit-button",
+              "type": "button",
+              "label": "Submit Demo Request",
+              "role": "primaryCTA"
+            },
+            {
+              "id": "demo-form-error",
+              "type": "banner",
+              "label": "Demo Form Error",
+              "state": "error"
+            },
+            {
+              "id": "demo-form-success",
+              "type": "banner",
+              "label": "Demo Form Success",
+              "state": "success"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "responsive": {
+    "desktop": "Header navigation, hero preview, proof cards, feature grid, objections, and final CTA are visible in conversion order.",
+    "tablet": "Hero columns compress and proof cards reduce columns while the demo action remains visible.",
+    "mobile": "Navigation moves to a drawer; order preserves promise, demo CTA, proof, features, objections, and final action."
+  }
+}

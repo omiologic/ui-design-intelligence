@@ -35,6 +35,14 @@ unopened states.
 - `references/_shared/vocabulary/ui-terminology.json`
 - `references/_shared/examples/page-study.example.json`
 
+## Boundary
+
+- Owns: structured specification of observed sections, components, repeated patterns, content groups, and notable structural decisions — expressed as evidence-backed observations, not design prescriptions.
+- Does not own: interaction behavior documentation, narrative and conversion structure analysis, or IA labeling evaluation.
+- Hand off interaction detail to `study-ui-interaction`.
+- Hand off narrative structure to `study-ui-storytelling`.
+- Hand off IA labeling patterns to `study-ui-information-architecture`.
+
 ## Rules
 
 1. Inventory visible structure before judging quality.

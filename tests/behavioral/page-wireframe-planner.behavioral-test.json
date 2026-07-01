@@ -1,0 +1,65 @@
+{
+  "skill": "page-wireframe-planner",
+  "brief": "Plan a dental practice homepage for new patients who need to understand the offer, trust the practice, and book an appointment. Include landmark coverage, a booking dialog overlay with a dismissal contract, and mobile responsive priority notes.",
+  "referenceExample": "shared/examples/dental-homepage.ui-blueprint.json",
+  "requiredSignals": [
+    {
+      "description": "Blueprint is typed as a wireframe artifact.",
+      "check": "fieldMatchesValue",
+      "target": "type",
+      "expectedValue": "wireframe"
+    },
+    {
+      "description": "Root node is present for the page structure.",
+      "check": "fieldPresent",
+      "target": "root"
+    },
+    {
+      "description": "Landmark header node is present.",
+      "check": "nodeTypePresent",
+      "target": "header"
+    },
+    {
+      "description": "Landmark main node is present.",
+      "check": "nodeTypePresent",
+      "target": "main"
+    },
+    {
+      "description": "Landmark footer node is present.",
+      "check": "nodeTypePresent",
+      "target": "footer"
+    },
+    {
+      "description": "Hero section is present for the primary offer and orientation.",
+      "check": "nodeTypePresent",
+      "target": "hero"
+    },
+    {
+      "description": "Navigation node is present for wayfinding.",
+      "check": "nodeTypePresent",
+      "target": "navigation"
+    },
+    {
+      "description": "At least one overlay is declared for the booking dialog.",
+      "check": "fieldCountAtLeast",
+      "target": "overlays",
+      "minCount": 1
+    },
+    {
+      "description": "Responsive priority block is present to guide mobile layout decisions.",
+      "check": "fieldPresent",
+      "target": "responsive"
+    },
+    {
+      "description": "Every declared overlay includes an accessibility block documenting keyboard and focus behavior.",
+      "check": "allArrayItemsHaveField",
+      "target": "overlays",
+      "field": "accessibility"
+    },
+    {
+      "description": "No filler labels used in place of meaningful node content.",
+      "check": "antiPatternAbsent",
+      "value": "filler-label"
+    }
+  ]
+}

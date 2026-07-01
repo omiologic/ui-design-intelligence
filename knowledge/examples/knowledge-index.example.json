@@ -33,7 +33,18 @@
         ]
       },
       "confidence": "medium",
-      "status": "candidate"
+      "status": "candidate",
+      "storageRef": {
+        "kind": "s3Uri",
+        "uri": "s3://<bucket>/ui-knowledge/patterns/credibility-first-healthcare-hero.pattern.json",
+        "objectType": "patternRecord",
+        "versionId": "<version-id>",
+        "updatedAt": "2026-06-30",
+        "checksum": {
+          "algorithm": "sha256",
+          "value": "<sha256-checksum>"
+        }
+      }
     },
     {
       "id": "mobile-navigation-drawer",
@@ -64,7 +75,18 @@
         ]
       },
       "confidence": "medium",
-      "status": "candidate"
+      "status": "candidate",
+      "storageRef": {
+        "kind": "s3Uri",
+        "uri": "s3://<bucket>/ui-knowledge/patterns/mobile-navigation-drawer.pattern.json",
+        "objectType": "patternRecord",
+        "versionId": "<version-id>",
+        "updatedAt": "2026-06-30",
+        "checksum": {
+          "algorithm": "sha256",
+          "value": "<sha256-checksum>"
+        }
+      }
     },
     {
       "id": "sticky-appointment-cta",
@@ -101,7 +123,18 @@
         ]
       },
       "confidence": "medium",
-      "status": "candidate"
+      "status": "candidate",
+      "storageRef": {
+        "kind": "s3Uri",
+        "uri": "s3://<bucket>/ui-knowledge/patterns/sticky-appointment-cta.pattern.json",
+        "objectType": "patternRecord",
+        "versionId": "<version-id>",
+        "updatedAt": "2026-06-30",
+        "checksum": {
+          "algorithm": "sha256",
+          "value": "<sha256-checksum>"
+        }
+      }
     }
   ]
 }

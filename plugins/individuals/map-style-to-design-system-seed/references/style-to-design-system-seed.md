@@ -6,6 +6,12 @@ Map style guidance to seed sections only where it improves reusable generation:
 brand, palette, typography, iconography, buttons, cards, header, footer, and
 prototype behavior conventions.
 
+Before mapping fields, use
+`references/_shared/design-system/visual-style-calibration.md` to convert the
+style source into calibration axes: contrast, density, hierarchy, restraint,
+texture, imagery, motion posture, and category fit. The mapped output should
+name token and component consequences, not just style adjectives.
+
 Use two modes:
 
 - Full-seed guidance when no `DesignSystemSeed` exists yet.
@@ -101,6 +107,11 @@ change.
 Do not convert style mood into exact colors, fonts, spacing, or animation
 durations without evidence. Mood can guide roles and constraints; exact values
 belong to observed, user-provided, or separately generated design-system data.
+
+Do not confuse style calibration with brand voice or prototype behavior. Brand
+voice affects language. Prototype behavior affects interaction. Style
+calibration affects seed-level visual roles, component emphasis, and handoff
+constraints.
 
 ## Worked Example
 

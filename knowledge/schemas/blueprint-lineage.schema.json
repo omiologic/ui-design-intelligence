@@ -34,17 +34,56 @@
           "patternId": { "$ref": "#/$defs/id" },
           "usedFor": { "type": "string", "minLength": 1 },
           "reason": { "type": "string", "minLength": 1 },
-          "sourceRefs": { "$ref": "#/$defs/stringList" }
+          "sourceRefs": { "$ref": "#/$defs/stringList" },
+          "storageRef": { "$ref": "#/$defs/storageRef" }
         }
       }
     },
     "generatedOutputs": { "$ref": "#/$defs/pathList" },
+    "generatedOutputRefs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["path"],
+        "properties": {
+          "path": { "type": "string", "minLength": 1 },
+          "storageRef": { "$ref": "#/$defs/storageRef" }
+        }
+      }
+    },
+    "storageRef": { "$ref": "#/$defs/storageRef" },
     "assumptions": { "$ref": "#/$defs/stringList" },
     "unresolvedGaps": { "$ref": "#/$defs/stringList" }
   },
   "$defs": {
     "id": { "type": "string", "pattern": "^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$" },
     "stringList": { "type": "array", "items": { "type": "string", "minLength": 1 }, "default": [] },
-    "pathList": { "type": "array", "items": { "type": "string", "minLength": 1 }, "minItems": 1 }
+    "pathList": { "type": "array", "items": { "type": "string", "minLength": 1 }, "minItems": 1 },
+    "storageRef": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "uri"],
+      "properties": {
+        "kind": { "type": "string", "enum": ["localPath", "s3Uri"] },
+        "uri": { "type": "string", "minLength": 1 },
+        "objectType": {
+          "type": "string",
+          "enum": ["sourceRecord", "studyRecord", "auditRecord", "patternRecord", "knowledgeIndex", "blueprintLineage", "generatedOutput"]
+        },
+        "etag": { "type": "string", "minLength": 1 },
+        "versionId": { "type": "string", "minLength": 1 },
+        "updatedAt": { "type": "string", "minLength": 1 },
+        "checksum": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["algorithm", "value"],
+          "properties": {
+            "algorithm": { "type": "string", "enum": ["sha256"] },
+            "value": { "type": "string", "minLength": 1 }
+          }
+        }
+      }
+    }
   }
 }

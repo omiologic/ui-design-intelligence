@@ -50,5 +50,16 @@
     "level": "medium",
     "reason": "Seed pattern is generic and evidence-shaped, but awaits project-local validation."
   },
+  "storageRef": {
+    "kind": "s3Uri",
+    "uri": "s3://<bucket>/ui-knowledge/patterns/credibility-first-healthcare-hero.pattern.json",
+    "objectType": "patternRecord",
+    "versionId": "<version-id>",
+    "updatedAt": "2026-06-30",
+    "checksum": {
+      "algorithm": "sha256",
+      "value": "<sha256-checksum>"
+    }
+  },
   "status": "candidate"
 }

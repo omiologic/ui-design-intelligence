@@ -1,8 +1,142 @@
 # ui-design-intelligence
 
-Reusable agent skills for generating schema-valid UI wireframes, controlled UI terminology, layout structures, interaction patterns, and accessibility reviews.
+[![CI](https://github.com/omiologic/ui-design-intelligence/actions/workflows/validate.yml/badge.svg)](https://github.com/omiologic/ui-design-intelligence/actions/workflows/validate.yml)
 
-`ui-design-intelligence` is a local skills repository. Its value is not a collection of prompts; it is a shared UI blueprint language backed by vocabulary files, a wireframe JSON schema, examples, validation scripts, and install packaging.
+Reusable agent skills for studying UI, auditing product quality, generating
+schema-valid wireframes, building lightweight design-system seeds, curating
+style references, and planning prototype behavior.
+
+Repository: [omiologic/ui-design-intelligence](https://github.com/omiologic/ui-design-intelligence)
+
+## Install
+
+Most users should install first, then read the architecture notes only if they
+are contributing or packaging bundles.
+
+### Codex / GPT Skills
+
+Use Codex/GPT installs when you only need skill discovery. These targets receive
+skill folders with `SKILL.md` plus required shared reference assets; they do not
+receive Claude agents or commands.
+
+```bash
+npx skills add omiologic/ui-design-intelligence -a codex
+```
+
+Manual Codex user-local install:
+
+```bash
+git clone https://github.com/omiologic/ui-design-intelligence.git ~/ui-design-intelligence
+node ~/ui-design-intelligence/scripts/install-bundle.mjs install ui-design-intelligence "$HOME/.agents" "$HOME/.agents/skills" --skills-only --dry-run
+node ~/ui-design-intelligence/scripts/install-bundle.mjs install ui-design-intelligence "$HOME/.agents" "$HOME/.agents/skills" --skills-only
+node ~/ui-design-intelligence/scripts/verify-installed-references.mjs "$HOME/.agents/skills"
+```
+
+Manual Codex project-local install:
+
+```bash
+git clone https://github.com/omiologic/ui-design-intelligence.git ~/ui-design-intelligence
+node ~/ui-design-intelligence/scripts/install-bundle.mjs install ui-design-intelligence "$PWD/.agents" "$PWD/.agents/skills" --skills-only --dry-run
+node ~/ui-design-intelligence/scripts/install-bundle.mjs install ui-design-intelligence "$PWD/.agents" "$PWD/.agents/skills" --skills-only
+node ~/ui-design-intelligence/scripts/verify-installed-references.mjs "$PWD/.agents/skills"
+```
+
+Use `--force` only when you intentionally want to replace conflicting existing
+skill files.
+
+### Claude / Local Full Bundle
+
+Use Claude/local compatibility installs when you want the full
+`ui-design-intelligence` bundle, including skills, agents, commands, shared
+schemas, examples, docs, helper scripts, references, and install records.
+
+```bash
+git clone https://github.com/omiologic/ui-design-intelligence.git ~/ui-design-intelligence
+node ~/ui-design-intelligence/scripts/install-bundle.mjs install ui-design-intelligence "$HOME/.claude" "$HOME/.claude/skills" --dry-run
+node ~/ui-design-intelligence/scripts/install-bundle.mjs install ui-design-intelligence "$HOME/.claude" "$HOME/.claude/skills"
+node ~/ui-design-intelligence/scripts/verify-installed-references.mjs "$HOME/.claude/skills"
+```
+
+Project-local install:
+
+```bash
+git clone https://github.com/omiologic/ui-design-intelligence.git ~/ui-design-intelligence
+node ~/ui-design-intelligence/scripts/install-bundle.mjs install ui-design-intelligence "$PWD/.claude" "$PWD/.claude/skills" --dry-run
+node ~/ui-design-intelligence/scripts/install-bundle.mjs install ui-design-intelligence "$PWD/.claude" "$PWD/.claude/skills"
+node ~/ui-design-intelligence/scripts/verify-installed-references.mjs "$PWD/.claude/skills"
+```
+
+The installer blocks non-identical existing skills, agents, commands, and shared
+files by default. Always use `--dry-run` first in existing projects. Use
+`--force` only when you intentionally want to overwrite the target:
+
+```bash
+node ~/ui-design-intelligence/scripts/install-bundle.mjs install ui-design-intelligence "$PWD/.claude" "$PWD/.claude/skills" --force
+```
+
+### Install A Smaller Bundle
+
+Install `ui-design-intelligence` when a target should have the full study,
+audit, SEO, knowledge, blueprint, design-system, style, and prototype workflow.
+Choose a component bundle when you want narrower context, fewer commands, or a
+smaller install. Replace `ui-design-intelligence` with one of these bundle
+names:
+
+| Bundle | Use when you need |
+| --- | --- |
+| `ui-blueprint-skills` | Controlled vocabulary and schema-valid UIBlueprint generation |
+| `ui-study-skills` | Page/site study, structure, interaction, responsive, and accessibility observations |
+| `ui-audit-skills` | Page, site, section, interaction, accessibility, and SEO quality audits |
+| `ui-design-system-skills` | Lightweight design-system seed and foundation planning |
+| `ui-style-reference-skills` | Structured style references, style application, blends, and audits |
+| `ui-prototype-skills` | Prototype config, interaction flows, state models, and behavior audits |
+| `ui-knowledge-skills` | Reusable UI pattern knowledge, indexing, and lineage |
+| `ui-seo-skills` | Title tags, meta descriptions, page summaries, and SEO audit findings |
+| `ui-content-skills` | User journey copy, content models, prototype copy, microcopy, CTA labels, and copy audit workflows |
+
+Example (blueprint skills, Codex/GPT):
+
+```bash
+node scripts/install-bundle.mjs install ui-blueprint-skills "$HOME/.agents" "$HOME/.agents/skills" --skills-only --dry-run
+node scripts/install-bundle.mjs install ui-blueprint-skills "$HOME/.agents" "$HOME/.agents/skills" --skills-only
+```
+
+Claude/local component-bundle example:
+
+```bash
+node scripts/install-bundle.mjs install ui-blueprint-skills "$HOME/.claude" "$HOME/.claude/skills" --dry-run
+node scripts/install-bundle.mjs install ui-blueprint-skills "$HOME/.claude" "$HOME/.claude/skills"
+```
+
+Content skills (Claude/local):
+
+```bash
+UI_PLUGIN_BUNDLE="ui-content-skills" ./install.sh
+```
+
+### Shell Wrapper For Claude / Local Compatibility
+
+The shell wrapper defaults to a Claude-style target and the
+`ui-blueprint-skills` compatibility bundle:
+
+```bash
+UI_PLUGIN_BUNDLE="ui-design-intelligence" ./install.sh
+```
+
+Set `UI_PLUGIN_TARGET="./.claude"` for project-local installation.
+Pass `--dry-run` or `--force` through the wrapper when needed.
+
+### First Run
+
+Restart or reload your agent environment, then ask for a structured UI task:
+
+```txt
+Study this homepage and generate a UIBlueprint plan with accessibility risks.
+```
+
+If the agent references installed skills such as `study-ui-storytelling`,
+`page-wireframe-planner`, `generate-design-system-seed`, or
+`generate-interactive-prototype-config`, the install is working.
 
 ## Transition Direction
 
@@ -24,8 +158,7 @@ The repository is organized as a plugin monorepo:
 - `shared/`: schemas, vocabulary, templates, and examples used by skills and bundles.
 - `knowledge/`: repository-owned UI knowledge schemas, vocabulary, templates,
   and generic examples for reusable pattern knowledge.
-- `docs/interop/`: layer boundaries and handoff formats, including the
-  Sprint 003 design-system foundation architecture.
+- `docs/interop/`: layer boundaries, install contracts, and handoff formats.
 - `dist/build/`: generated expanded bundle folders.
 - `dist/plugins/`: generated release zip files.
 
@@ -45,12 +178,15 @@ Current bundle roles:
 - `ui-design-system-skills`: lightweight design-system seed bundle for
   foundation sections, semantic token intent, component vocabulary, and seed
   audits.
+- `ui-style-reference-skills`: structured style references, scoped style
+  application, blends, and audits.
+- `ui-prototype-skills`: prototype configs, state models, interaction flows, and
+  behavior audits.
+- `ui-content-skills`: planned content bundle for user journey copy, content
+  models, prototype copy, microcopy, CTA labels, copy audits, and copy-pattern
+  knowledge.
 - `ui-design-intelligence`: transitional full bundle combining study, audit,
-  SEO, blueprint, knowledge, and design-system workflows.
-
-Development order for Sprint 001 is study vertical first, blueprint bundle
-second, audit vertical third, SEO vertical fourth, then the full
-`ui-design-intelligence` bundle.
+  SEO, knowledge, blueprint, design-system, style, and prototype workflows.
 
 ## What This Is
 
@@ -83,6 +219,12 @@ generic examples, scripts, skills, commands, agents, and bundle packaging. Real
 captures, screenshots, studies, audits, extracted patterns, generated
 blueprints, and lineage files belong in project-local `ui-knowledge/`
 workspaces.
+
+Remote knowledge storage is optional. The default workflow remains local, but
+users can connect their own normal S3 bucket for canonical records and S3
+vector bucket/index for retrieval through ignored environment configuration.
+See `docs/knowledge/aws-user-setup.md` for setup, IAM, dry-run, and
+troubleshooting guidance.
 
 The knowledge flow is:
 
@@ -163,71 +305,13 @@ These skills are kept in the repository for local development and planning, and 
 - `skill-creator`: Guidance for creating and maintaining agent skills.
 - `sprint-planner`: Local utility for `.plan/` sprint summaries, objectives, and task files.
 
-## Install
+## Install And Command Parity
 
-The installer copies a selected plugin bundle into an agent target directory. By
-default it installs the `ui-blueprint-skills` compatibility bundle, which
-preserves the original product wireframing install behavior while adding bundled
-agents, commands, and shared files when the selected manifest includes them.
-
-Installed product skills include a `references/_shared/` bundle with the vocabulary, schema, and wireframe-schema references they need. That makes each installed skill self-contained; it does not need a sibling `shared/` directory or another installed skill to resolve its listed references.
-
-Bundle installs also copy manifest-referenced shared files to the plugin target
-root so study and generation skills can resolve `../../shared/...` references.
-
-### Global Install
-
-```bash
-./install.sh
-```
-
-By default this installs bundle files under:
-
-```txt
-~/.claude/
-```
-
-Skills are installed to `~/.claude/skills`, agents to `~/.claude/agents`,
-commands to `~/.claude/commands`, and shared files to `~/.claude/shared`.
-
-### Project-Local Install
-
-```bash
-UI_PLUGIN_TARGET="./.claude" ./install.sh
-```
-
-### Bundle Selection
-
-Install the study bundle:
-
-```bash
-UI_PLUGIN_BUNDLE="ui-study-skills" ./install.sh
-```
-
-Install the blueprint bundle explicitly:
-
-```bash
-UI_PLUGIN_BUNDLE="ui-blueprint-skills" ./install.sh
-```
-
-Install the design-system foundation bundle:
-
-```bash
-UI_PLUGIN_BUNDLE="ui-design-system-skills" ./install.sh
-```
-
-Install the full design intelligence bundle:
-
-```bash
-UI_PLUGIN_BUNDLE="ui-design-intelligence" ./install.sh
-```
-
-### Install And Command Parity
-
-Sprint 002 keeps install parity practical and local: `install.sh` installs
-manifest-selected bundles into an agent root, including skills, agents,
-commands, and shared files. Marketplace or `npx skills add` support is
-documented as deferred work, not implied release behavior.
+The compatibility contract separates Codex/GPT skill targets from Claude/local
+bundle targets. Codex local installs use `.agents/skills` for skills-only
+discovery. Claude/local compatibility installs use `.claude` for skills, agents,
+commands, shared files, and install records. Generated Codex plugin packages use
+their own `.codex-plugin/plugin.json` shape under `dist/` once built.
 
 Commands are discipline-scoped:
 
@@ -237,12 +321,12 @@ Commands are discipline-scoped:
 - Design system: `generate-design-system-seed`, `audit-design-system-seed`
 - Export seed prototype: `scripts/export-blueprint-seed.mjs`
 
-See `docs/interop/install-command-parity.md` for bundle command coverage and the
-deferred marketplace/npx work.
+See `docs/interop/cross-agent-compatibility-contract.md` for target layouts and
+`docs/interop/install-command-parity.md` for bundle command coverage.
 
 ### Capture URL Helper
 
-Sprint 001 includes a deterministic URL metadata helper:
+The repository includes a deterministic URL metadata helper:
 
 ```bash
 node scripts/capture-url.mjs --url "https://example.com" --screenshot "./captures/example.png"
@@ -254,7 +338,7 @@ exports, or notes so study commands have an explicit evidence envelope.
 
 ### Blueprint Export Seed Prototype
 
-Sprint 002 includes a deterministic prototype for exporting a structural
+The repository includes a deterministic prototype for exporting a structural
 blueprint plus taste profile into the repository-native Blueprint Export Seed:
 
 ```bash
@@ -270,7 +354,7 @@ style, motion, or implementation code.
 
 ### Custom Install Target
 
-Use `UI_PLUGIN_TARGET` for an agent root directory:
+Use `UI_PLUGIN_TARGET` for a Claude/local agent root directory:
 
 ```bash
 UI_PLUGIN_TARGET="/path/to/.claude" ./install.sh
@@ -484,16 +568,42 @@ Run strict bundle validation for a selected bundle:
 npm run validate:bundles:strict -- ui-blueprint-skills
 ```
 
+Run targeted validation for one edited skill or bundle:
+
+```bash
+npm run validate:skill -- page-wireframe-planner
+npm run validate:bundle -- ui-blueprint-skills
+```
+
+Run the changed-file validation router for local iteration:
+
+```bash
+npm run validate:changed
+```
+
 Run release validation for buildable bundles:
 
 ```bash
 npm run validate:release
 ```
 
+Run install matrix validation for supported local targets:
+
+```bash
+npm run validate:install-matrix
+```
+
 Build active/transitional plugin bundles:
 
 ```bash
 npm run build:bundles
+```
+
+Inspect generated bundle archives, Codex plugin packages, and the local Codex
+marketplace fixture:
+
+```bash
+npm run inspect:release-artifacts
 ```
 
 Validation checks:
@@ -525,7 +635,10 @@ Validation checks:
 - `scripts/capture-url.mjs` has a smoke validation path for deterministic URL metadata generation
 - normal bundle validation allows `planned` bundles to reference future skills and shared files
 - strict bundle validation requires selected bundles to resolve skills and shared files even if they are still marked `planned`
-- release validation builds active/transitional bundles, installs each one into a temporary target, and verifies installed skill references before release
+- targeted validation supports `validate:skill -- <name>`, `validate:bundle -- <name>`, and `validate:changed` for day-to-day edits
+- install matrix validation covers Codex `.agents` skills-only installs, Claude `.claude` full installs, component and aggregate bundles, dry-run behavior, conflict blocking, identical reinstall, forced overwrite, uninstall record scope, and installed reference checks
+- release artifact inspection checks generated zip contents, required metadata files, local/private state exclusions, Codex package manifests, marketplace entries, and generated version alignment
+- release validation runs the full validation chain, install matrix, active/transitional bundle builds, Codex plugin package builds, temporary installs/uninstalls, installed reference checks, and release artifact inspection before release
 
 Bundle builds:
 
@@ -549,15 +662,25 @@ This runs validation first and writes generated release output to:
 dist/
 ```
 
+For local iteration only, create the repository zip without running the full
+validation chain:
+
+```bash
+npm run package:fast
+```
+
+`package:fast` is not a release candidate gate. Run `npm run validate:release`
+before publishing any generated archive.
+
 Generated files under `dist/` are ignored by Git because release archives are
 generated artifacts. `dist/plugins/.gitkeep` is tracked only to preserve the
 planned plugin release directory.
 
-Release archives include product wireframing skills and exclude repository maintenance skills.
-Sprint 002 release packages also include interop documentation, structural
-design philosophy references, taste profiles, export seed templates/examples,
-the export seed prototype script, and negative anti-pattern fixtures used by
-validation.
+Release archives include product workflow skills and exclude repository
+maintenance skills. Bundle packages also include the manifest-referenced interop
+documentation, structural design philosophy references, taste profiles,
+templates, examples, helper scripts, and validation fixtures required by the
+selected bundle.
 
 ## Uninstall
 
@@ -657,11 +780,11 @@ ui-design-intelligence/
   .plan/
 ```
 
-During Sprint 001, `skills/` remains the compatibility install surface for the
-completed blueprint MVP. The scaffolded `plugins/individuals/` directory is the
-planned source location for reusable plugin skills, and `plugins/bundles/` holds
-committed `plugin.json` manifests plus bundle README files. Built bundle contents
-should be generated under `dist/`, not committed.
+The `skills/` directory remains the compatibility install surface for direct
+skills-only installs. `plugins/individuals/` is the source location for reusable
+bundle skills, and `plugins/bundles/` holds committed internal bundle manifests
+plus bundle README files. Built bundle contents should be generated under
+`dist/`, not committed.
 
 The current blueprint product skills are copied into `plugins/individuals/` while
 the `skills/` copies remain for compatibility. Scripts prefer individual plugin
@@ -691,10 +814,10 @@ When adding or updating a skill:
 8. Add the skill name to one or more `plugins/bundles/{bundle-name}/plugin.json` manifests.
 9. Run `npm run validate`.
 
-During Sprint 001, product blueprint skills are mirrored in both
-`plugins/individuals/` and `skills/` for compatibility. New plugin-first skills
-should start in `plugins/individuals/`. Only mirror into `skills/` when the
-skill must remain part of the legacy compatibility surface.
+Product blueprint skills are mirrored in both `plugins/individuals/` and
+`skills/` for compatibility. New plugin-first skills should start in
+`plugins/individuals/`. Only mirror into `skills/` when the skill must remain
+part of the direct skills-only compatibility surface.
 
 When adding a skill to a bundle:
 
@@ -724,14 +847,21 @@ design-system, command, agent, strict bundle, and release validation gates, see
 
 ## Versioning
 
-This repository starts at `0.1.0` for the MVP skillset.
+This repository is at `0.9.0`, the pre-1.0 integration milestone.
 
-Planned version direction:
+Version history:
 
 - `0.1.0`: MVP core skills, vocabulary, schema, examples, validation, and install packaging.
 - `0.2.0`: stronger schema and validation coverage.
-- `0.3.0`: domain skills such as healthcare, dental, ecommerce, local business, or SaaS.
-- `1.0.0`: stable vocabulary and schema contract.
+- `0.3.0–0.8.0`: knowledge system, design-system, style-reference, prototype,
+  multi-agent bundle professionalization, Codex support, E2E creation commands,
+  remote knowledge retrieval, and app handoff contracts.
+- `0.9.0`: pre-1.0 integration milestone — CI pipeline, credential-safe
+  validation, shared reference sync, `skills/` retirement path, canonical skill
+  gate, taste profile expansion, prototype skill layer, behavioral test
+  fixtures, and `ui-content-skills` documentation.
+- `1.0.0`: stable vocabulary and schema contract. Requires `skills/` retirement
+  and a verified prototype skill layer under the CI gate.
 
 Schema and vocabulary changes can affect downstream renderers. Breaking changes should be documented in `CHANGELOG.md`; add `MIGRATION.md` when compatibility guidance is needed.
 

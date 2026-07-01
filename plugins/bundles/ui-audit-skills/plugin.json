@@ -1,7 +1,7 @@
 {
   "name": "ui-audit-skills",
   "displayName": "UI Audit Skills",
-  "version": "0.2.0",
+  "version": "0.9.0",
   "description": "Skills for evaluating site, page, section, interaction, accessibility, and SEO quality.",
   "status": "active",
   "maintainer": "UI Blueprint maintainers",

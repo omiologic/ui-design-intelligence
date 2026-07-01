@@ -35,6 +35,13 @@ whether information and action priority survive the viewport change.
 - `references/_shared/vocabulary/ui-terminology.json`
 - `references/_shared/examples/page-study.example.json`
 
+## Boundary
+
+- Owns: observable responsive structure findings across viewport sizes — navigation collapse behavior, column shifts, element reordering, table behavior, sticky element placement, form layout, and overlay behavior at breakpoints.
+- Does not own: interaction state study, accessibility evaluation, or responsive design recommendations.
+- Hand off interaction changes at breakpoints to `study-ui-interaction`.
+- Hand off accessibility implications of responsive layout to `study-ui-accessibility`.
+
 ## Rules
 
 1. Compare structure across viewports rather than describing visual polish.

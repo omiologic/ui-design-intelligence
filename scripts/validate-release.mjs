@@ -39,7 +39,9 @@ function buildableBundleNames() {
 }
 
 run("npm", ["run", "validate"]);
+run("npm", ["run", "validate:install-matrix"]);
 run("node", ["scripts/build-bundles.mjs"]);
+run("npm", ["run", "build:codex-plugins"]);
 
 const tempRoot = fs.mkdtempSync(path.join(os.tmpdir(), "ui-blueprint-release-"));
 
@@ -57,5 +59,7 @@ try {
 } finally {
   fs.rmSync(tempRoot, { recursive: true, force: true });
 }
+
+run("npm", ["run", "inspect:release-artifacts"]);
 
 console.log("Release validation passed.");

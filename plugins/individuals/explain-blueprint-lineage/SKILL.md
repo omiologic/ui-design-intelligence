@@ -32,6 +32,8 @@ having to inspect every source record.
 2. Explain why each pattern matched the brief or query.
 3. Distinguish evidence-backed decisions from assumptions.
 4. Surface unresolved gaps instead of overstating confidence.
+5. Include retrieval reasons, canonical storage references, and generated
+   output references when lineage provides them.
 
 ## Boundary
 
@@ -43,7 +45,8 @@ having to inspect every source record.
 
 1. Do not claim a study influenced a blueprint unless lineage or source refs say
    so.
-2. Preserve pattern IDs and generated output paths.
+2. Preserve pattern IDs, storage references, retrieval reasons, and generated
+   output paths.
 3. Keep explanations concise and decision-oriented.
 4. Flag missing lineage as a quality issue.
 
@@ -54,14 +57,21 @@ having to inspect every source record.
 - Vague explanation: "used for UX" without naming the section or decision.
 - Confidence inflation: presenting candidate patterns as validated.
 - Missing gaps: hiding assumptions that should be reviewed.
+- Storage erasure: dropping canonical storage references from a lineage
+  explanation when they are needed for review or refetch.
+- Stale retrieval: ignoring that a vector result may point to an outdated,
+  deprecated, or missing canonical record.
 
 ## Workflow
 
-1. Read the lineage record and generated output references.
+1. Read the lineage record, retrieval reasons, storage references, and generated
+   output references.
 2. Group used patterns by page, section, component, interaction, or responsive
    decision.
-3. Explain the reason and source relationship for each pattern.
-4. List assumptions, unresolved gaps, and review recommendations.
+3. Explain the reason, source relationship, confidence/status, and canonical
+   fetch pointer for each pattern.
+4. List assumptions, unresolved gaps, stale-reference risks, and review
+   recommendations.
 
 ## Inline Example
 

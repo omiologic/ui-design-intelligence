@@ -7,10 +7,16 @@ Bundles are curated packages assembled from reusable skill sources in
 `plugins/individuals/`, shared assets in `shared/`, agent definitions in
 `agents/`, and command definitions in `commands/`.
 
-Marketplace or `npx skills add` support is deferred. Do not add
-marketplace-only fields such as `category`, `icon`, `keywords`, `homepage`,
-publisher IDs, marketplace slugs, or publishing identifiers to `plugin.json`
-until a later task defines that format.
+Internal bundle manifests are not Codex marketplace manifests. Sprint 005 uses
+them as the source of truth for target-specific packages: Claude/local bundle
+installs, Codex `.agents/skills` installs, and generated Codex plugin packages.
+Do not add marketplace-only fields such as `category`, `icon`, `keywords`,
+`homepage`, publisher IDs, marketplace slugs, or publishing identifiers to
+`plugin.json`; generated Codex package metadata belongs in the package generator
+and validator.
+
+See `docs/interop/cross-agent-compatibility-contract.md` for the supported
+Codex/GPT, Claude, and generic local target layouts.
 
 ## Bundle Map
 

@@ -40,6 +40,13 @@ off page sequence problems to page audit.
    labels are weak.
 5. `info`: contextual observation with no corrective action.
 
+## Boundary
+
+- Owns: bounded section reviews covering purpose alignment, hierarchy, content fit, component anatomy, responsive behavior, accessibility signals, and blueprint handoff readiness.
+- Does not own: page-level journey evaluation, cross-section IA synthesis, or site-wide pattern findings.
+- Hand off full-page evaluation to `generate-page-audit-report`.
+- Hand off site-level synthesis to `generate-site-audit-report`.
+
 ## Rules
 
 1. Cite section heading, label, role, child structure, proof, controls, repeated

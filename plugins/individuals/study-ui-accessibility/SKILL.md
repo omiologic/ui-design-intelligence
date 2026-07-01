@@ -37,6 +37,13 @@ questions as unverified.
 - `references/_shared/vocabulary/ui-terminology.json`
 - `references/_shared/examples/page-study.example.json`
 
+## Boundary
+
+- Owns: observed accessibility findings from page captures or descriptions — landmark presence, label coverage, focus path logic, form grouping, overlay behavior, and responsive reading order as observable structure.
+- Does not own: structured audit findings with severity ratings, design recommendations, or wireframe planning.
+- Hand off formal accessibility audit reports to `generate-accessibility-audit-report`.
+- Hand off interaction behavior observation to `study-ui-interaction`.
+
 ## Rules
 
 1. Distinguish observable evidence from issues that require DOM or assistive technology testing.

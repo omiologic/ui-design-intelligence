@@ -1,0 +1,49 @@
+{
+  "skill": "generate-design-system-seed",
+  "brief": "Generate a design-system seed for a dental clinic from study output and a screenshot. Record provenance for all values, preserve uncertainty as open questions rather than invented exact tokens, and include brand, palette, and typography foundations.",
+  "referenceExample": "shared/examples/design-system-seed.example.json",
+  "requiredSignals": [
+    {
+      "description": "Artifact is typed as a design-system seed.",
+      "check": "fieldMatchesValue",
+      "target": "type",
+      "expectedValue": "designSystemSeed"
+    },
+    {
+      "description": "Version field is present.",
+      "check": "fieldPresent",
+      "target": "version"
+    },
+    {
+      "description": "Source provenance block is present.",
+      "check": "fieldPresent",
+      "target": "source"
+    },
+    {
+      "description": "Brand foundation section is present.",
+      "check": "fieldPresent",
+      "target": "brand"
+    },
+    {
+      "description": "Palette foundation section is present.",
+      "check": "fieldPresent",
+      "target": "palette"
+    },
+    {
+      "description": "Typography foundation section is present.",
+      "check": "fieldPresent",
+      "target": "typography"
+    },
+    {
+      "description": "Open questions are recorded to preserve uncertainty rather than inventing exact token values.",
+      "check": "fieldCountAtLeast",
+      "target": "openQuestions",
+      "minCount": 1
+    },
+    {
+      "description": "No exact token values invented without supporting evidence.",
+      "check": "antiPatternAbsent",
+      "value": "unsupported-token"
+    }
+  ]
+}

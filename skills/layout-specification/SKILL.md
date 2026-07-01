@@ -49,6 +49,14 @@ choice belongs to downstream visual design, not the wireframe.
    access changes task success.
 7. On mobile, preserve decision priority even if the pattern changes.
 
+## Boundary
+
+- Owns: layout pattern selection, breakpoint-specific structural notes, and column and grid decisions for wireframe plans.
+- Does not own: component-level anatomy, interaction behavior, visual token values, or final wireframe emission.
+- Hand off component internals to `component-wireframe-planner`.
+- Hand off interaction behavior to `interaction-patterns`.
+- Hand off final wireframe emission to `generate-wireframe-config`.
+
 ## Rules
 
 1. Describe grouping, order, density, and breakpoint behavior without colors,

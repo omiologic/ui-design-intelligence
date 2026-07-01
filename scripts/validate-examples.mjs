@@ -130,6 +130,7 @@ const interactionStates = loadVocabulary(path.join(root, "shared/vocabulary/inte
 const auditSeverities = loadRecordVocabulary(path.join(root, "shared/vocabulary/audit-severity.json"), "auditSeverities", "audit severity");
 
 const schema = readJson(path.join(root, "shared/schemas/wireframe-config.schema.json"));
+const studySchema = readJson(path.join(root, "shared/schemas/study-output.schema.json"));
 if (schema) {
   const schemaTypes = new Set(schema.$defs?.nodeType?.enum ?? []);
   for (const type of nodeTypes) {
@@ -196,6 +197,8 @@ const sharedExampleFiles = walk(path.join(root, "shared/examples"))
   .filter((file) => file.endsWith(".ui-blueprint.json") || file.endsWith("ui-blueprint.example.json"));
 const auditExampleFiles = walk(path.join(root, "shared/examples"))
   .filter((file) => file.endsWith("page-audit.example.json"));
+const studyExampleFiles = walk(path.join(root, "shared/examples"))
+  .filter((file) => file.endsWith(".study.example.json") || file.endsWith("page-study.example.json"));
 const skillExampleFiles = [
   ...walk(path.join(root, "skills")),
   ...walk(path.join(root, "plugins/individuals"))
@@ -317,10 +320,19 @@ for (const file of auditExampleFiles.sort()) {
   }
 }
 
+for (const file of studyExampleFiles.sort()) {
+  const doc = readJson(file);
+  if (!doc || !studySchema) continue;
+
+  for (const error of validateJsonSchema(doc, studySchema)) {
+    fail(`${file}: study-output schema ${error}`);
+  }
+}
+
 if (errors.length) {
   console.error("Example validation failed:");
   for (const error of errors) console.error(`- ${error}`);
   process.exit(1);
 }
 
-console.log(`Example validation passed for ${exampleFiles.length + auditExampleFiles.length} example files.`);
+console.log(`Example validation passed for ${exampleFiles.length + auditExampleFiles.length + studyExampleFiles.length} example files.`);

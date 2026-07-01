@@ -1,0 +1,30 @@
+{
+  "id": "multi-step-form-study",
+  "source": {
+    "urlOrName": "ClaimStart multi-step form brief",
+    "capturedAt": "2026-06-30",
+    "viewport": "mobile"
+  },
+  "studyType": "interaction",
+  "summary": "The claim intake flow should expose progress, validate each step, support backtracking, preserve progress with save/resume, and end with review and success states.",
+  "findings": [
+    {
+      "label": "Progress context is required",
+      "evidence": "The brief defines three steps plus success confirmation.",
+      "interpretation": "Users need a visible progress summary before each step's required fields.",
+      "handoff": "Represent progress as a stepper-style section before the form."
+    },
+    {
+      "label": "Validation must support recovery",
+      "evidence": "The brief requires inline validation and summary behavior for multiple missing fields.",
+      "interpretation": "The form cannot rely on a single generic error banner.",
+      "handoff": "Model field-level error text, error summary, and focus movement."
+    },
+    {
+      "label": "Review protects high-consequence submission",
+      "evidence": "The user submits an insurance claim and needs to review entered information.",
+      "interpretation": "Review should be a distinct step before final submission.",
+      "handoff": "Add review state and backtracking behavior before success."
+    }
+  ]
+}

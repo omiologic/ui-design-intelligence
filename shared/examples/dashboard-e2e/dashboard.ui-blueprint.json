@@ -1,0 +1,305 @@
+{
+  "id": "ledgerpilot-dashboard-wireframe",
+  "type": "wireframe",
+  "label": "LedgerPilot Operations Dashboard Wireframe",
+  "version": "0.1.0",
+  "description": "Utility dashboard blueprint with status summary, controls, diagnostics, states, and recovery behavior.",
+  "root": {
+    "id": "ledgerpilot-dashboard-page",
+    "type": "page",
+    "label": "LedgerPilot Operations Dashboard",
+    "children": [
+      {
+        "id": "dashboard-header",
+        "type": "header",
+        "label": "Dashboard Header",
+        "accessibility": {
+          "landmark": "banner"
+        },
+        "children": [
+          {
+            "id": "dashboard-navigation",
+            "type": "navigation",
+            "label": "Dashboard Navigation",
+            "accessibility": {
+              "ariaLabel": "Dashboard navigation"
+            }
+          },
+          {
+            "id": "header-filter-button",
+            "type": "button",
+            "label": "Filters",
+            "role": "secondaryCTA"
+          }
+        ]
+      },
+      {
+        "id": "main-content",
+        "type": "main",
+        "label": "Dashboard Main Content",
+        "accessibility": {
+          "landmark": "main"
+        },
+        "children": [
+          {
+            "id": "status-summary-section",
+            "type": "section",
+            "label": "Status Summary",
+            "layout": "cardGrid",
+            "children": [
+              {
+                "id": "status-summary-heading",
+                "type": "heading",
+                "label": "Finance Status"
+              },
+              {
+                "id": "status-card-grid",
+                "type": "cardGrid",
+                "label": "Status Card Grid",
+                "children": [
+                  {
+                    "id": "cash-balance-card",
+                    "type": "card",
+                    "label": "Cash Balance Metric Card",
+                    "role": "metadata"
+                  },
+                  {
+                    "id": "runway-card",
+                    "type": "card",
+                    "label": "Runway Metric Card",
+                    "role": "metadata"
+                  },
+                  {
+                    "id": "forecast-confidence-card",
+                    "type": "card",
+                    "label": "Forecast Confidence Card",
+                    "role": "metadata"
+                  },
+                  {
+                    "id": "data-freshness-card",
+                    "type": "card",
+                    "label": "Data Freshness Card",
+                    "role": "badge"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "stale-data-warning",
+            "type": "banner",
+            "label": "Stale Data Warning",
+            "state": "warning",
+            "children": [
+              {
+                "id": "stale-data-message",
+                "type": "paragraph",
+                "label": "Stale Data Message",
+                "role": "helperText"
+              },
+              {
+                "id": "stale-data-detail-button",
+                "type": "button",
+                "label": "Review Data Freshness",
+                "role": "secondaryCTA"
+              }
+            ]
+          },
+          {
+            "id": "controls-section",
+            "type": "section",
+            "label": "Dashboard Controls",
+            "layout": "inlineForm",
+            "children": [
+              {
+                "id": "filter-form",
+                "type": "form",
+                "label": "Dashboard Filter Form",
+                "children": [
+                  {
+                    "id": "date-range-fields",
+                    "type": "inputGroup",
+                    "label": "Date Range Fields"
+                  },
+                  {
+                    "id": "entity-scenario-fields",
+                    "type": "inputGroup",
+                    "label": "Entity And Scenario Fields"
+                  },
+                  {
+                    "id": "apply-filter-button",
+                    "type": "button",
+                    "label": "Apply Filters",
+                    "role": "primaryCTA"
+                  },
+                  {
+                    "id": "filter-form-error",
+                    "type": "banner",
+                    "label": "Filter Form Error",
+                    "state": "error"
+                  },
+                  {
+                    "id": "filter-form-success",
+                    "type": "banner",
+                    "label": "Filter Form Success",
+                    "state": "success"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "diagnostics-section",
+            "type": "section",
+            "label": "Account Diagnostics",
+            "children": [
+              {
+                "id": "diagnostics-heading",
+                "type": "heading",
+                "label": "Account Diagnostics"
+              },
+              {
+                "id": "diagnostics-table",
+                "type": "table",
+                "label": "Diagnostic Accounts Table"
+              }
+            ]
+          },
+          {
+            "id": "empty-recovery-section",
+            "type": "section",
+            "label": "Empty And Recovery States",
+            "children": [
+              {
+                "id": "empty-state-card",
+                "type": "card",
+                "label": "No Matching Accounts Empty State",
+                "role": "emptyState"
+              },
+              {
+                "id": "empty-recovery-actions",
+                "type": "buttonGroup",
+                "label": "Empty Recovery Actions",
+                "children": [
+                  {
+                    "id": "retry-sync-button",
+                    "type": "button",
+                    "label": "Retry Sync",
+                    "role": "secondaryCTA"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "mobile-filter-sticky-bar",
+        "type": "stickyBar",
+        "label": "Mobile Filter Sticky Bar",
+        "children": [
+          {
+            "id": "mobile-filter-button",
+            "type": "button",
+            "label": "Filter Dashboard",
+            "role": "secondaryCTA"
+          }
+        ]
+      },
+      {
+        "id": "dashboard-footer",
+        "type": "footer",
+        "label": "Dashboard Footer",
+        "accessibility": {
+          "landmark": "contentinfo"
+        }
+      }
+    ]
+  },
+  "overlays": [
+    {
+      "id": "filter-drawer",
+      "type": "drawer",
+      "label": "Filter Drawer",
+      "state": "closed",
+      "accessibility": {
+        "ariaLabel": "Dashboard filters",
+        "focusManagement": "Move focus into the drawer on open and return focus to the triggering filter button on close.",
+        "keyboardBehavior": "Escape closes the drawer and Tab remains inside while open."
+      },
+      "children": [
+        {
+          "id": "filter-drawer-form",
+          "type": "form",
+          "label": "Filter Drawer Form",
+          "children": [
+            {
+              "id": "drawer-date-range-fields",
+              "type": "inputGroup",
+              "label": "Drawer Date Range Fields"
+            },
+            {
+              "id": "drawer-apply-filter-button",
+              "type": "button",
+              "label": "Apply Drawer Filters",
+              "role": "primaryCTA"
+            },
+            {
+              "id": "drawer-filter-error",
+              "type": "banner",
+              "label": "Drawer Filter Error",
+              "state": "error"
+            },
+            {
+              "id": "drawer-filter-success",
+              "type": "banner",
+              "label": "Drawer Filter Success",
+              "state": "success"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "stale-data-drawer",
+      "type": "drawer",
+      "label": "Data Freshness Drawer",
+      "state": "closed",
+      "accessibility": {
+        "ariaLabel": "Data freshness details",
+        "focusManagement": "Move focus into the drawer on open and return focus to the stale data detail button on close.",
+        "keyboardBehavior": "Escape closes the drawer."
+      },
+      "children": [
+        {
+          "id": "stale-data-detail-content",
+          "type": "contentGroup",
+          "label": "Stale Data Detail Content",
+          "children": [
+            {
+              "id": "stale-data-detail-heading",
+              "type": "heading",
+              "label": "Data Freshness Details"
+            },
+            {
+              "id": "stale-data-detail-copy",
+              "type": "paragraph",
+              "label": "Freshness Recovery Explanation"
+            },
+            {
+              "id": "sync-now-button",
+              "type": "button",
+              "label": "Sync Now",
+              "role": "primaryCTA"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "responsive": {
+    "desktop": "Summary cards, inline filters, warning, and diagnostic table are visible in one task flow.",
+    "tablet": "Summary cards reduce columns and filters wrap before diagnostics.",
+    "mobile": "Summary, stale warning, sticky filter action, and diagnostics remain available before secondary recovery content."
+  }
+}

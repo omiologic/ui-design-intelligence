@@ -1,0 +1,239 @@
+{
+  "version": "0.1.0",
+  "type": "designSystemSeed",
+  "id": "claimstart-form-design-system-seed",
+  "name": "ClaimStart Form Design System Seed",
+  "source": {
+    "inputType": "prompt",
+    "sourceRefs": ["prompt:claimstart multi-step form brief"],
+    "confidence": "medium",
+    "notes": ["Compact seed for the multi-step form end-to-end example."]
+  },
+  "maturity": "designSystemSeed",
+  "brand": {
+    "name": {
+      "value": "ClaimStart",
+      "source": "userProvided",
+      "confidence": "high"
+    },
+    "summary": {
+      "value": "A claim intake foundation focused on clarity, trust, validation, and recovery.",
+      "source": "generated",
+      "confidence": "medium"
+    },
+    "personality": {
+      "values": ["calm", "supportive", "precise", "reliable"],
+      "source": "recommended",
+      "confidence": "medium"
+    },
+    "audience": {
+      "values": ["policyholders", "claim filers", "mobile users"],
+      "source": "userProvided",
+      "confidence": "high"
+    },
+    "positioning": {
+      "value": "A guided claim intake flow that preserves progress and reduces filing anxiety.",
+      "source": "recommended",
+      "confidence": "medium"
+    },
+    "voice": {
+      "tone": {
+        "value": "plainspoken, reassuring, and action-oriented",
+        "source": "recommended",
+        "confidence": "medium"
+      },
+      "avoid": {
+        "values": ["legal ambiguity", "blame language", "unsupported claim promises"],
+        "source": "recommended",
+        "confidence": "medium"
+      }
+    },
+    "visualDirection": {
+      "density": {
+        "value": "medium",
+        "source": "recommended",
+        "confidence": "medium"
+      },
+      "style": {
+        "value": "guided transactional form interface",
+        "source": "generated",
+        "confidence": "medium"
+      },
+      "emphasis": {
+        "value": "progress, validation, review, and recovery",
+        "source": "recommended",
+        "confidence": "medium"
+      }
+    }
+  },
+  "palette": {
+    "mode": "light",
+    "colors": {
+      "color.action.primary": {
+        "name": "Claim Blue",
+        "value": "#145C9E",
+        "intent": "Primary step and submit action color.",
+        "usage": "Continue, submit, and resume actions.",
+        "useOn": ["button.primary", "active navigation"],
+        "doNotUseOn": ["large decorative backgrounds"],
+        "accessibilityNotes": ["Validate contrast with white text before production use."],
+        "source": "recommended",
+        "confidence": "medium"
+      },
+      "color.surface.default": {
+        "name": "Form White",
+        "value": "#FFFFFF",
+        "intent": "Default readable form surface.",
+        "usage": "Page background and card surfaces.",
+        "useOn": ["page background", "card surfaces"],
+        "doNotUseOn": ["focus indicators"],
+        "accessibilityNotes": ["Validate contrast for all text on this surface."],
+        "source": "recommended",
+        "confidence": "medium"
+      },
+      "color.text.primary": {
+        "name": "Claim Ink",
+        "value": "#17212B",
+        "intent": "Primary readable text.",
+        "usage": "Form labels, headings, and body copy.",
+        "useOn": ["heading", "paragraph"],
+        "doNotUseOn": ["disabled states"],
+        "accessibilityNotes": ["Validate contrast against all surfaces."],
+        "source": "recommended",
+        "confidence": "medium"
+      }
+    },
+    "accessibilityNotes": ["Do not rely on color alone for validation errors."]
+  },
+  "typography": {
+    "fontFamilies": {
+      "heading": {
+        "value": "Inter, system-ui, sans-serif",
+        "source": "recommended",
+        "confidence": "medium"
+      },
+      "body": {
+        "value": "Inter, system-ui, sans-serif",
+        "source": "recommended",
+        "confidence": "medium"
+      }
+    },
+    "scale": {
+      "h2": {
+        "fontSize": "30px",
+        "lineHeight": "1.2",
+        "fontWeight": 650,
+        "usage": "Step and review headings.",
+        "source": "recommended",
+        "confidence": "medium"
+      },
+      "body": {
+        "fontSize": "16px",
+        "lineHeight": "1.6",
+        "fontWeight": 400,
+        "usage": "Labels, helper text, and body copy.",
+        "source": "recommended",
+        "confidence": "medium"
+      }
+    }
+  },
+  "iconography": {
+    "style": "outline",
+    "strokeWidth": "1.75px",
+    "cornerStyle": "rounded",
+    "preferredLibrary": "lucide-react",
+    "usage": {
+      "featureCards": "Use icons only when they improve scanning.",
+      "status": "Use semantic icons for success, warning, and error."
+    },
+    "rules": ["Icons should support labels, not replace them."],
+    "source": "recommended",
+    "confidence": "medium"
+  },
+  "components": {
+    "buttons": {
+      "base": {
+        "radius": "8px",
+        "fontWeight": 600,
+        "height": {
+          "md": "44px"
+        }
+      },
+      "variants": {
+        "button.primary": {
+          "usage": "Continue, submit, or resume action.",
+          "background": "color.action.primary",
+          "text": "color.surface.default",
+          "border": "color.action.primary",
+          "allowedActions": ["navigate", "openDialog"]
+        },
+        "button.secondary": {
+          "usage": "Back, save, or supporting form action.",
+          "background": "transparent",
+          "text": "color.action.primary",
+          "border": "color.action.primary",
+          "allowedActions": ["navigate"]
+        }
+      },
+      "states": ["default", "hover", "focus", "active", "disabled", "loading"],
+      "rules": ["Use one primary action for the current step."],
+      "source": "generated",
+      "confidence": "medium"
+    },
+    "cards": {
+      "base": {
+        "surface": "color.surface.default",
+        "radius": "8px",
+        "padding": "20px"
+      },
+      "anatomy": ["title", "description", "actions"],
+      "variants": {
+        "card.service": {
+          "usage": "Present review summary, recovery note, or confirmation details.",
+          "requiredParts": ["title", "description", "actions"],
+          "allowedActions": ["navigate", "openDialog"]
+        }
+      },
+      "rules": ["Review cards should preserve labels and user-entered values."],
+      "source": "generated",
+      "confidence": "medium"
+    },
+    "header": {
+      "layout": {
+        "desktop": "logo-left nav-center actions-right",
+        "mobile": "logo-left menu-button-right"
+      },
+      "height": {
+        "desktop": "64px",
+        "mobile": "56px"
+      },
+      "behavior": {
+        "sticky": false,
+        "mobileNavigation": "drawer"
+      },
+      "anatomy": ["logo", "primaryNavigation", "primaryAction", "mobileMenuButton"],
+      "navigation": {
+        "maxPrimaryItems": 6,
+        "supportsDropdown": true,
+        "supportsMegaMenu": false
+      },
+      "rules": ["Keep save-and-resume available without competing with continue."],
+      "source": "recommended",
+      "confidence": "medium"
+    },
+    "footer": {
+      "layout": {
+        "desktop": "multi-column",
+        "mobile": "stacked"
+      },
+      "anatomy": ["brandSummary", "navigationGroups", "contactInfo", "legalLinks"],
+      "navigationGroups": ["Claims", "Support", "Company", "Legal"],
+      "industrySpecificNeeds": ["support phone", "privacy", "claim terms"],
+      "rules": ["Support contact should be easy to find."],
+      "source": "recommended",
+      "confidence": "medium"
+    }
+  },
+  "usageNotes": ["Use as the seed for the multi-step form e2e example."],
+  "openQuestions": ["Confirm exact legal disclosure language before implementation."]
+}

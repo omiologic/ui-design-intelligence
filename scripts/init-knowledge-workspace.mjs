@@ -69,6 +69,13 @@ const directories = [
   "patterns/interactions",
   "patterns/storytelling",
   "patterns/conversion",
+  "content/copy-patterns",
+  "content/journey-patterns",
+  "content/cta-patterns",
+  "content/microcopy-patterns",
+  "content/objection-patterns",
+  "content/voice-profiles",
+  "content/industry-language",
   "blueprints/generated",
   "lineage/blueprint-lineage"
 ];

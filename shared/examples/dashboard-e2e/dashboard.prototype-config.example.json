@@ -1,0 +1,364 @@
+{
+  "version": "0.1.0",
+  "type": "prototypeConfig",
+  "id": "ledgerpilot-dashboard-prototype",
+  "name": "LedgerPilot Dashboard Prototype",
+  "source": {
+    "sourceWireframeId": "ledgerpilot-dashboard-wireframe",
+    "sourceWireframeRef": "shared/examples/dashboard-e2e/dashboard.ui-blueprint.json",
+    "sourceDesignSystemSeedId": "ledgerpilot-dashboard-design-system-seed",
+    "notes": ["Prototype config references wireframe node IDs and models dashboard behavior only."]
+  },
+  "designSystemSeedRef": "ledgerpilot-dashboard-design-system-seed",
+  "screens": [
+    {
+      "id": "dashboard-screen",
+      "label": "Operations Dashboard",
+      "wireframeRef": "ledgerpilot-dashboard-page",
+      "routeId": "dashboard-route",
+      "initialState": "default",
+      "viewportPriority": ["expanded", "compact"]
+    }
+  ],
+  "routes": [
+    {
+      "id": "dashboard-route",
+      "path": "/dashboard",
+      "screenId": "dashboard-screen",
+      "label": "Dashboard"
+    }
+  ],
+  "states": [
+    {
+      "id": "filter-drawer-closed",
+      "name": "Filter Drawer Closed",
+      "state": "closed",
+      "nodeId": "filter-drawer",
+      "screenId": "dashboard-screen",
+      "description": "Filter drawer is not visible."
+    },
+    {
+      "id": "filter-drawer-open",
+      "name": "Filter Drawer Open",
+      "state": "open",
+      "nodeId": "filter-drawer",
+      "screenId": "dashboard-screen",
+      "description": "Filter drawer is visible and holds focus on compact viewports."
+    },
+    {
+      "id": "filter-form-loading",
+      "name": "Filter Form Loading",
+      "state": "loading",
+      "nodeId": "filter-form",
+      "screenId": "dashboard-screen",
+      "description": "Dashboard filters are applying."
+    },
+    {
+      "id": "filter-form-error-state",
+      "name": "Filter Form Error",
+      "state": "error",
+      "nodeId": "filter-form",
+      "screenId": "dashboard-screen",
+      "description": "Filter form shows validation or data-loading errors."
+    },
+    {
+      "id": "filter-form-success-state",
+      "name": "Filter Form Success",
+      "state": "success",
+      "nodeId": "filter-form",
+      "screenId": "dashboard-screen",
+      "description": "Dashboard view has refreshed successfully."
+    },
+    {
+      "id": "stale-data-drawer-closed",
+      "name": "Stale Data Drawer Closed",
+      "state": "closed",
+      "nodeId": "stale-data-drawer",
+      "screenId": "dashboard-screen",
+      "description": "Data freshness drawer is not visible."
+    },
+    {
+      "id": "stale-data-drawer-open",
+      "name": "Stale Data Drawer Open",
+      "state": "open",
+      "nodeId": "stale-data-drawer",
+      "screenId": "dashboard-screen",
+      "description": "Data freshness drawer is visible with recovery guidance."
+    },
+    {
+      "id": "mobile-filter-sticky-visible",
+      "name": "Mobile Filter Sticky Visible",
+      "state": "visible",
+      "nodeId": "mobile-filter-sticky-bar",
+      "screenId": "dashboard-screen",
+      "description": "Mobile sticky filter bar remains visible on compact viewports."
+    },
+    {
+      "id": "diagnostics-table-default",
+      "name": "Diagnostics Table Default",
+      "state": "default",
+      "nodeId": "diagnostics-table",
+      "screenId": "dashboard-screen",
+      "description": "Diagnostics table is visible with refreshed account status rows."
+    }
+  ],
+  "componentStateModels": [
+    {
+      "id": "filter-drawer-state-model",
+      "component": "drawer",
+      "nodeId": "filter-drawer",
+      "wireframeRef": "ledgerpilot-dashboard-page",
+      "initialState": "closed",
+      "allowedStates": ["closed", "open"],
+      "transitions": [
+        {
+          "from": "closed",
+          "to": "open",
+          "trigger": "tap",
+          "description": "Mobile filter button opens the filter drawer."
+        },
+        {
+          "from": "open",
+          "to": "closed",
+          "trigger": "keydown",
+          "description": "Escape closes the filter drawer."
+        }
+      ],
+      "accessibility": {
+        "focusManagement": "Move focus into the drawer on open and return focus to the triggering filter button on close.",
+        "keyboardBehavior": "Escape closes the drawer; Tab remains inside while open.",
+        "ariaLabel": "Dashboard filters"
+      }
+    },
+    {
+      "id": "filter-form-state-model",
+      "component": "form",
+      "nodeId": "filter-form",
+      "wireframeRef": "ledgerpilot-dashboard-page",
+      "initialState": "default",
+      "allowedStates": ["default", "loading", "success", "error"],
+      "transitions": [
+        {
+          "from": "default",
+          "to": "loading",
+          "trigger": "submit",
+          "description": "Applying filters loads dashboard results."
+        },
+        {
+          "from": "loading",
+          "to": "success",
+          "trigger": "timeout",
+          "description": "Dashboard refresh completes successfully."
+        }
+      ],
+      "validation": {
+        "states": ["error", "success"],
+        "errorPlacement": "inline",
+        "rules": ["Date range is required and cannot end before it starts."]
+      },
+      "accessibility": {
+        "focusManagement": "Keep focus within the form until validation result is announced.",
+        "keyboardBehavior": "Enter submits when focus is inside a valid field group."
+      }
+    },
+    {
+      "id": "stale-data-drawer-state-model",
+      "component": "drawer",
+      "nodeId": "stale-data-drawer",
+      "wireframeRef": "ledgerpilot-dashboard-page",
+      "initialState": "closed",
+      "allowedStates": ["closed", "open"],
+      "transitions": [
+        {
+          "from": "closed",
+          "to": "open",
+          "trigger": "click",
+          "description": "Warning action opens data freshness details."
+        },
+        {
+          "from": "open",
+          "to": "closed",
+          "trigger": "keydown",
+          "description": "Escape closes the data freshness drawer."
+        }
+      ],
+      "accessibility": {
+        "focusManagement": "Move focus into the drawer on open and return focus to the stale data detail button on close.",
+        "keyboardBehavior": "Escape closes the drawer.",
+        "ariaLabel": "Data freshness details"
+      }
+    }
+  ],
+  "interactions": [
+    {
+      "id": "open-filter-drawer",
+      "label": "Open filter drawer from mobile sticky button",
+      "trigger": {
+        "event": "tap",
+        "sourceNodeId": "mobile-filter-button",
+        "screenId": "dashboard-screen",
+        "routeId": "dashboard-route"
+      },
+      "condition": {
+        "type": "whenViewport",
+        "viewport": "compact",
+        "description": "Compact dashboard uses drawer filters."
+      },
+      "action": {
+        "type": "openOverlay",
+        "targetNodeId": "filter-drawer",
+        "targetStateId": "filter-drawer-open"
+      },
+      "result": {
+        "type": "overlayOpened",
+        "description": "Filter drawer opens and focus moves into the drawer.",
+        "resultingStateId": "filter-drawer-open",
+        "focusTargetNodeId": "filter-drawer"
+      },
+      "accessibility": {
+        "focusManagement": "Focus moves to filter drawer.",
+        "keyboardBehavior": "Escape closes the drawer.",
+        "ariaLive": "off"
+      }
+    },
+    {
+      "id": "apply-dashboard-filters",
+      "label": "Apply dashboard filters",
+      "trigger": {
+        "event": "submit",
+        "sourceNodeId": "apply-filter-button",
+        "screenId": "dashboard-screen",
+        "routeId": "dashboard-route"
+      },
+      "condition": {
+        "type": "whenValid",
+        "stateId": "filter-form-success-state"
+      },
+      "action": {
+        "type": "submitForm",
+        "targetNodeId": "filter-form",
+        "targetStateId": "filter-form-loading"
+      },
+      "result": {
+        "type": "formSubmitted",
+        "description": "Filters apply and dashboard diagnostics refresh.",
+        "resultingStateId": "filter-form-success-state",
+        "focusTargetNodeId": "diagnostics-table"
+      },
+      "accessibility": {
+        "focusManagement": "Move focus to diagnostics heading after refresh.",
+        "keyboardBehavior": "Enter submits a valid filter form.",
+        "ariaLive": "polite"
+      }
+    },
+    {
+      "id": "open-stale-data-drawer",
+      "label": "Open stale data drawer",
+      "trigger": {
+        "event": "click",
+        "sourceNodeId": "stale-data-detail-button",
+        "screenId": "dashboard-screen",
+        "routeId": "dashboard-route"
+      },
+      "condition": {
+        "type": "whenState",
+        "stateId": "stale-data-drawer-closed"
+      },
+      "action": {
+        "type": "openOverlay",
+        "targetNodeId": "stale-data-drawer",
+        "targetStateId": "stale-data-drawer-open"
+      },
+      "result": {
+        "type": "overlayOpened",
+        "description": "Data freshness drawer opens with recovery guidance.",
+        "resultingStateId": "stale-data-drawer-open",
+        "focusTargetNodeId": "stale-data-drawer"
+      },
+      "accessibility": {
+        "focusManagement": "Focus moves to data freshness drawer.",
+        "keyboardBehavior": "Escape closes the drawer.",
+        "ariaLive": "off"
+      }
+    }
+  ],
+  "overlays": [
+    {
+      "id": "filter-drawer-overlay",
+      "nodeId": "filter-drawer",
+      "type": "drawer",
+      "initialState": "closed",
+      "triggerNodeIds": ["header-filter-button", "mobile-filter-button"],
+      "dismissal": {
+        "methods": ["escape", "closeButton", "scrim"],
+        "focusReturnNodeId": "mobile-filter-button"
+      }
+    },
+    {
+      "id": "stale-data-drawer-overlay",
+      "nodeId": "stale-data-drawer",
+      "type": "drawer",
+      "initialState": "closed",
+      "triggerNodeIds": ["stale-data-detail-button"],
+      "dismissal": {
+        "methods": ["escape", "closeButton", "scrim"],
+        "focusReturnNodeId": "stale-data-detail-button"
+      }
+    }
+  ],
+  "forms": [
+    {
+      "id": "filter-form-model",
+      "nodeId": "filter-form",
+      "fields": [
+        {
+          "id": "date-range-field-model",
+          "nodeId": "date-range-fields",
+          "required": true,
+          "validationStateIds": ["filter-form-error-state"]
+        },
+        {
+          "id": "entity-scenario-field-model",
+          "nodeId": "entity-scenario-fields",
+          "required": false,
+          "validationStateIds": ["filter-form-success-state"]
+        }
+      ],
+      "submitNodeId": "apply-filter-button",
+      "validation": {
+        "states": ["error", "success"],
+        "errorPlacement": "inline",
+        "rules": ["Date range is required.", "Scenario defaults to base case when omitted."]
+      }
+    }
+  ],
+  "navigationFlows": [
+    {
+      "id": "dashboard-refresh-loop",
+      "fromScreenId": "dashboard-screen",
+      "toScreenId": "dashboard-screen",
+      "triggerNodeId": "apply-filter-button",
+      "action": "submitForm"
+    }
+  ],
+  "transitions": [
+    {
+      "id": "filter-drawer-open-transition",
+      "from": "filter-drawer-closed",
+      "to": "filter-drawer-open",
+      "trigger": "tap",
+      "description": "Filter drawer opens from compact sticky control."
+    },
+    {
+      "id": "filter-refresh-transition",
+      "from": "filter-form-loading",
+      "to": "filter-form-success-state",
+      "trigger": "timeout",
+      "description": "Dashboard diagnostics refresh after filters apply."
+    }
+  ],
+  "notes": [
+    "Prototype config models behavior only and does not implement a runtime viewer.",
+    "Dashboard table data is represented structurally, not as production data."
+  ]
+}

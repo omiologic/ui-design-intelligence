@@ -1,0 +1,52 @@
+{
+  "skill": "study-ui-storytelling",
+  "brief": "Study the storytelling structure of a dental clinic homepage: observed narrative arc, how trust signals are sequenced, where the primary action appears relative to proof, and what evidence supports each structural interpretation.",
+  "referenceExample": "shared/examples/page-study.example.json",
+  "requiredSignals": [
+    {
+      "description": "Study output is tagged with a studyType.",
+      "check": "fieldMatchesValue",
+      "target": "studyType",
+      "expectedValue": "storytelling"
+    },
+    {
+      "description": "Source capture metadata is present.",
+      "check": "fieldPresent",
+      "target": "source.urlOrName"
+    },
+    {
+      "description": "Summary of observed narrative structure is present.",
+      "check": "fieldPresent",
+      "target": "summary"
+    },
+    {
+      "description": "At least one finding is recorded.",
+      "check": "fieldCountAtLeast",
+      "target": "findings",
+      "minCount": 1
+    },
+    {
+      "description": "Every finding includes observed evidence — not only an interpretation.",
+      "check": "allArrayItemsHaveField",
+      "target": "findings",
+      "field": "evidence"
+    },
+    {
+      "description": "Every finding includes an interpretation of what the evidence means structurally.",
+      "check": "allArrayItemsHaveField",
+      "target": "findings",
+      "field": "interpretation"
+    },
+    {
+      "description": "Every finding includes a handoff pointer to the next skill in the pipeline.",
+      "check": "allArrayItemsHaveField",
+      "target": "findings",
+      "field": "handoff"
+    },
+    {
+      "description": "No invented interpretations stated as certain fact without supporting evidence.",
+      "check": "antiPatternAbsent",
+      "value": "unsupported-inference"
+    }
+  ]
+}

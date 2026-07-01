@@ -43,6 +43,14 @@ volume.
    action, or hierarchy cue.
 5. `info`: contextual observation with no corrective action.
 
+## Boundary
+
+- Owns: SEO audit findings covering metadata completeness, heading structure, page summaries, and content-to-search-intent alignment.
+- Does not own: meta description or title tag writing, accessibility audit, on-page content rewriting, or conversion analysis.
+- Hand off meta description writing to `generate-meta-description`.
+- Hand off title tag writing to `generate-title-tag`.
+- Hand off multi-dimension page evaluation to `generate-page-audit-report`.
+
 ## Rules
 
 1. Cite supplied title, meta description, page summary, headings, section labels,
