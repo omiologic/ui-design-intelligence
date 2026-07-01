@@ -18,7 +18,8 @@
     "ui-content-skills",
     "ui-design-system-skills",
     "ui-style-reference-skills",
-    "ui-prototype-skills"
+    "ui-prototype-skills",
+    "ui-react-component-skills"
   ],
   "includes": [
     "ui-study-skills",
@@ -30,6 +31,7 @@
     "ui-content-skills",
     "ui-design-system-skills",
     "ui-style-reference-skills",
-    "ui-prototype-skills"
+    "ui-prototype-skills",
+    "ui-react-component-skills"
   ]
 }

@@ -30,6 +30,7 @@ This aggregate is defined by `includes` in `plugin.json` and expands to:
 - `ui-design-system-skills`
 - `ui-style-reference-skills`
 - `ui-prototype-skills`
+- `ui-react-component-skills`
 
 The build expands those component bundles into one self-contained package with
 all component skills, agents, commands, shared files, and aggregate release
