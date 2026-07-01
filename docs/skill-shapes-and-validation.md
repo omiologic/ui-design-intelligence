@@ -354,10 +354,10 @@ Install matrix validation is the local release gate for install/update safety:
 npm run validate:install-matrix
 ```
 
-It covers Codex `.agents` skills-only installs, Claude `.claude` full installs,
-component and aggregate bundles, dry-run behavior, conflict blocking, identical
-reinstall, forced overwrite, uninstall record scope, and installed reference
-checks.
+It covers Codex `.agents` full and skills-only installs, Claude `.claude` full
+installs, component and aggregate bundles, dry-run behavior, conflict blocking,
+identical reinstall, forced overwrite, uninstall record scope, and installed
+reference checks.
 
 Release validation runs the full validation chain, builds every active or
 transitional bundle, validates each buildable bundle strictly, installs each

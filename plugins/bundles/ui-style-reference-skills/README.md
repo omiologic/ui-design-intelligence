@@ -54,11 +54,11 @@ reference.
 
 ## Install
 
-Codex/GPT skills-only target:
+Codex/GPT full .agents target:
 
 ```bash
-node scripts/install-bundle.mjs install ui-style-reference-skills "$HOME/.agents" "$HOME/.agents/skills" --skills-only --dry-run
-node scripts/install-bundle.mjs install ui-style-reference-skills "$HOME/.agents" "$HOME/.agents/skills" --skills-only
+node scripts/install-bundle.mjs install ui-style-reference-skills "$HOME/.agents" "$HOME/.agents/skills" --dry-run
+node scripts/install-bundle.mjs install ui-style-reference-skills "$HOME/.agents" "$HOME/.agents/skills"
 ```
 
 Claude/local full-bundle target:

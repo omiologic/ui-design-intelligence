@@ -25,6 +25,7 @@ const installRecordPath = path.join(installRecordDir, `${bundleName}.json`);
 const agentSourceDir = path.join(root, ".agents", "agents");
 const commandSourceDir = path.join(root, ".agents", "commands");
 const conventionDirName = ".convention";
+const projectRoot = path.dirname(targetRoot);
 
 function readJson(file) {
   return JSON.parse(fs.readFileSync(file, "utf8"));
@@ -41,9 +42,15 @@ function copyFile(source, target) {
 
 function applyInstalledReferenceRewrites(text) {
   return text
-    .split("../../../.convention/").join("../../.convention/")
     .split("../../../knowledge/").join("../../knowledge/")
     .split("../../../docs/").join("../../docs/");
+}
+
+function installTargetForSharedPath(sharedPath) {
+  if (sharedPath.startsWith(`${conventionDirName}/`)) {
+    return path.join(projectRoot, sharedPath);
+  }
+  return path.join(targetRoot, sharedPath);
 }
 
 function loadBundleManifest(bundle) {
@@ -236,7 +243,7 @@ function checkInstallConflicts(manifest) {
 
   for (const sharedPath of manifest.shared) {
     const source = path.join(root, sharedPath);
-    const target = path.join(targetRoot, sharedPath);
+    const target = installTargetForSharedPath(sharedPath);
     if (fs.existsSync(target) && !filesAreIdentical(source, target)) {
       conflicts.push(`convention ${sharedPath}: ${target}`);
     }
@@ -286,7 +293,7 @@ function installBundle(manifest) {
   }
 
   for (const sharedPath of shared) {
-    copyFile(path.join(root, sharedPath), path.join(targetRoot, sharedPath));
+    copyFile(path.join(root, sharedPath), installTargetForSharedPath(sharedPath));
     console.log(`Installed convention file: ${sharedPath}`);
   }
 
@@ -337,9 +344,9 @@ function uninstallBundle(manifest) {
   }
 
   for (const sharedPath of shared) {
-    const target = path.join(targetRoot, sharedPath);
+    const target = installTargetForSharedPath(sharedPath);
     removeFileIfExists(target);
-    pruneEmptyDirs(path.dirname(target), path.join(targetRoot, conventionDirName));
+    pruneEmptyDirs(path.dirname(target), path.join(projectRoot, conventionDirName));
     console.log(`Removed convention file: ${sharedPath}`);
   }
 

@@ -88,20 +88,23 @@ function testDryRunWritesNoFiles() {
 }
 
 function testCleanCodexComponentInstall() {
-  const target = path.join(tempRoot, "codex-component", ".agents");
+  const project = path.join(tempRoot, "codex-component");
+  const target = path.join(project, ".agents");
   const skills = path.join(target, "skills");
   install("ui-blueprint-skills", target, skills, ["--skills-only"]);
   verify(skills);
 
   expectExists(path.join(skills, "design-terminology", "SKILL.md"), "Codex skill");
-  expectExists(path.join(target, ".convention", "schemas", "wireframe-config.schema.json"), "Codex convention reference asset");
+  expectExists(path.join(project, ".convention", "schemas", "wireframe-config.schema.json"), "Codex convention reference asset");
+  expectMissing(path.join(target, ".convention"), "Codex nested convention directory");
   expectMissing(path.join(target, "agents"), "Codex agents directory");
   expectMissing(path.join(target, "commands"), "Codex commands directory");
   record("clean Codex .agents component install");
 }
 
 function testCleanCodexFullInstall() {
-  const target = path.join(tempRoot, "codex-full", ".agents");
+  const project = path.join(tempRoot, "codex-full");
+  const target = path.join(project, ".agents");
   const skills = path.join(target, "skills");
   install("ui-blueprint-skills", target, skills);
   verify(skills);
@@ -109,12 +112,14 @@ function testCleanCodexFullInstall() {
   expectExists(path.join(skills, "design-terminology", "SKILL.md"), "Codex full skill");
   expectExists(path.join(target, "agents", "blueprint-architect.md"), "Codex full agent");
   expectExists(path.join(target, "commands", "generate-blueprint-from-study.md"), "Codex full command");
-  expectExists(path.join(target, ".convention", "schemas", "wireframe-config.schema.json"), "Codex full convention reference asset");
+  expectExists(path.join(project, ".convention", "schemas", "wireframe-config.schema.json"), "Codex full convention reference asset");
+  expectMissing(path.join(target, ".convention"), "Codex full nested convention directory");
   record("clean Codex .agents full install");
 }
 
 function testCleanClaudeAggregateInstall() {
-  const target = path.join(tempRoot, "claude-aggregate", ".claude");
+  const project = path.join(tempRoot, "claude-aggregate");
+  const target = path.join(project, ".claude");
   const skills = path.join(target, "skills");
   install("ui-design-intelligence", target, skills);
   verify(skills);
@@ -122,7 +127,8 @@ function testCleanClaudeAggregateInstall() {
   expectExists(path.join(skills, "study-ui-storytelling", "SKILL.md"), "aggregate skill");
   expectExists(path.join(target, "agents", "ui-researcher.md"), "aggregate agent");
   expectExists(path.join(target, "commands", "study-page.md"), "aggregate command");
-  expectExists(path.join(target, ".convention", "schemas", "wireframe-config.schema.json"), "aggregate convention file");
+  expectExists(path.join(project, ".convention", "schemas", "wireframe-config.schema.json"), "aggregate convention file");
+  expectMissing(path.join(target, ".convention"), "Claude nested convention directory");
   record("clean Claude .claude aggregate install");
 }
 
@@ -145,14 +151,15 @@ function testIdenticalReinstallAndUninstall() {
 }
 
 function testConflictBlockingAndForce() {
-  const target = path.join(tempRoot, "conflicts", ".claude");
+  const project = path.join(tempRoot, "conflicts");
+  const target = path.join(project, ".claude");
   const skills = path.join(target, "skills");
   install("ui-blueprint-skills", target, skills);
 
   const skillFile = path.join(skills, "design-terminology", "SKILL.md");
   const agentFile = path.join(target, "agents", "blueprint-architect.md");
   const commandFile = path.join(target, "commands", "generate-blueprint-from-study.md");
-  const sharedFile = path.join(target, ".convention", "schemas", "wireframe-config.schema.json");
+  const sharedFile = path.join(project, ".convention", "schemas", "wireframe-config.schema.json");
 
   appendText(skillFile, "\nLOCAL SKILL EDIT\n");
   appendText(agentFile, "\nLOCAL AGENT EDIT\n");

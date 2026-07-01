@@ -8,12 +8,12 @@ folders are separate surfaces with different package shapes.
 
 | Surface | Install target | Package shape | Bundle assets | Validation gate |
 | --- | --- | --- | --- | --- |
-| Codex local full bundle | `$HOME/.agents` or `$PWD/.agents` | `.agents/skills`, `.agents/agents`, `.agents/commands`, `.agents/.convention`, optional `.agents/knowledge`, and `.agents/.ui-blueprint-bundles`. | Skills, role definitions, commands, convention files, knowledge files, and install records selected by bundle manifests. | `scripts/verify-installed-references.mjs <skills-dir>` after install; install matrix tests cover `.agents` target roots. |
+| Codex local full bundle | `$HOME/.agents` or `$PWD/.agents` | `.agents/skills`, `.agents/agents`, `.agents/commands`, `.convention`, optional `.agents/knowledge`, and `.agents/.ui-blueprint-bundles`. | Skills, role definitions, commands, convention files, knowledge files, and install records selected by bundle manifests. | `scripts/verify-installed-references.mjs <skills-dir>` after install; install matrix tests cover `.agents` target roots. |
 | Codex local skills-only | `$HOME/.agents/skills` or `$PWD/.agents/skills` | Skill directories containing `SKILL.md` plus local references, scripts, and assets. | Skills plus manifest-declared .convention/knowledge reference assets via `install-bundle.mjs --skills-only`. Agents and commands are intentionally omitted. | `scripts/verify-installed-references.mjs <skills-dir>` after install. |
 | Codex plugin package | `dist/codex-plugins/{bundle-name}/` | `.codex-plugin/plugin.json`, package README/license/changelog, `skills/`, `PACKAGE_INSPECTION.md`, and manifest-declared .convention/knowledge reference assets generated from bundle manifests. | Skills and reference assets packaged for Codex plugin loading. Agents and commands are omitted and recorded in generated metadata. | `npm run build:codex-plugins` then `npm run validate:codex-plugins`; local marketplace smoke tests cover app/CLI plugin discovery. |
 | Codex local marketplace | `dist/codex-marketplace/.agents/plugins/marketplace.json` | Local marketplace catalog with `plugins[]` entries pointing at mirrored generated package folders under `dist/codex-marketplace/plugins/`. | Marketplace metadata plus mirrored Codex plugin packages for CLI-compatible local loading. Source inspection copies stay under `dist/codex-plugins`. | `npm run validate:codex-plugins` validates marketplace entries and package paths. |
 | ChatGPT/GPT-facing skill distribution | Bundle installer or generated Codex plugin package | Runtime skill folders generated from `plugins/individuals/` through bundle manifests; generated plugin package for marketplace-shaped installs. | Skills only unless a later marketplace task adds supported metadata. | Direct Skills CLI repository discovery is not the supported path after Sprint 010; plugin validation gates apply to generated packages. |
-| Claude Code/local compatibility | `$HOME/.claude` or `$PWD/.claude` | `.claude/skills`, `.claude/agents`, `.claude/commands`, `.claude/.convention`, and `.claude/.ui-blueprint-bundles`. | Skills, agents, commands, convention schemas/vocabulary/templates/examples/docs, helper scripts referenced by bundle manifests, and install records. | `scripts/verify-installed-references.mjs <skills-dir>`; existing-project tests cover dry-run, conflict blocking, `--force`, reinstall, and uninstall. |
+| Claude Code/local compatibility | `$HOME/.claude` or `$PWD/.claude` | `.claude/skills`, `.claude/agents`, `.claude/commands`, `.convention`, and `.claude/.ui-blueprint-bundles`. | Skills, agents, commands, convention schemas/vocabulary/templates/examples/docs, helper scripts referenced by bundle manifests, and install records. | `scripts/verify-installed-references.mjs <skills-dir>`; existing-project tests cover dry-run, conflict blocking, `--force`, reinstall, and uninstall. |
 | Generic local skills folder | Any explicit skills directory | Skill directories under the supplied skills directory. The parent is treated as the install root for records if using `install-bundle.mjs`. | Skills can be installed alone only when the consuming agent ignores bundle commands and agents. Full bundle assets should use a named agent root instead. | `scripts/verify-installed-references.mjs <skills-dir>` plus consumer-agent manual smoke testing. |
 
 ## Target Layout Rules
@@ -72,9 +72,9 @@ install record exists. If no record exists, uninstall falls back to the current
 bundle manifest.
 
 `npm run validate:install-matrix` is the release gate for supported local
-install targets. It exercises clean Codex `.agents` skills-only installs, clean
-Claude `.claude` full installs, aggregate and component bundles, dry-run,
-conflict blocking, identical reinstall, forced overwrite, reference
+install targets. It exercises clean Codex `.agents` full and skills-only
+installs, clean Claude `.claude` full installs, aggregate and component bundles,
+dry-run, conflict blocking, identical reinstall, forced overwrite, reference
 verification, and uninstall record scope.
 
 ## Unsupported Surfaces

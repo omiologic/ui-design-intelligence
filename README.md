@@ -17,7 +17,7 @@ are contributing or packaging bundles.
 
 Use Codex/GPT installs under `.agents`. A full install writes skills to
 `.agents/skills`, role definitions to `.agents/agents`, commands to
-`.agents/commands`, and reusable conventions to `.agents/.convention`.
+`.agents/commands`, and reusable conventions to `.convention`.
 Pass `--skills-only` only when the target should receive skill folders and
 reference assets without roles or commands.
 
@@ -315,7 +315,7 @@ These skills are kept in the repository for local development and planning, and 
 
 The compatibility contract separates target roots from skill roots. Codex local
 installs use `.agents/skills` for skills and can also expose `.agents/agents`,
-`.agents/commands`, and `.agents/.convention` with a full bundle install.
+`.agents/commands`, and `.convention` with a full bundle install.
 Claude/local compatibility installs use `.claude` for skills, agents,
 commands, convention files, and install records. Generated Codex plugin packages use
 their own `.codex-plugin/plugin.json` shape under `dist/` once built.
@@ -650,7 +650,7 @@ Validation checks:
 - normal bundle validation allows `planned` bundles to reference future skills and shared files
 - strict bundle validation requires selected bundles to resolve skills and shared files even if they are still marked `planned`
 - targeted validation supports `validate:skill -- <name>`, `validate:bundle -- <name>`, and `validate:changed` for day-to-day edits
-- install matrix validation covers Codex `.agents` skills-only installs, Claude `.claude` full installs, component and aggregate bundles, dry-run behavior, conflict blocking, identical reinstall, forced overwrite, uninstall record scope, and installed reference checks
+- install matrix validation covers Codex `.agents` full and skills-only installs, Claude `.claude` full installs, component and aggregate bundles, dry-run behavior, conflict blocking, identical reinstall, forced overwrite, uninstall record scope, and installed reference checks
 - release artifact inspection checks generated zip contents, required metadata files, local/private state exclusions, Codex package manifests, marketplace entries, and generated version alignment
 - release validation runs the full validation chain, install matrix, active/transitional bundle builds, Codex plugin package builds, temporary installs/uninstalls, installed reference checks, and release artifact inspection before release
 

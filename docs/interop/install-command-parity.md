@@ -4,7 +4,7 @@
 
 The supported install paths are target-specific. Codex/GPT full local installs
 use `.agents` with skills under `.agents/skills`, roles under `.agents/agents`,
-commands under `.agents/commands`, and conventions under `.agents/.convention`.
+commands under `.agents/commands`, and conventions under `.convention`.
 Claude/local compatibility installs use `.claude` for the same full bundle
 surface. Generated Codex plugin packages use `.codex-plugin` package shape under
 `dist/` once built.
@@ -29,7 +29,7 @@ UI_PLUGIN_TARGET="/path/to/.claude" ./install.sh
 
 | Area | Supported behavior | Not implied |
 | --- | --- | --- |
-| Codex/GPT local full bundle | `install-bundle.mjs` installs selected bundle skills into `.agents/skills`, agents into `.agents/agents`, commands into `.agents/commands`, and conventions into `.agents/.convention`. | Generated Codex plugin marketplace metadata in `.agents`. |
+| Codex/GPT local full bundle | `install-bundle.mjs` installs selected bundle skills into `.agents/skills`, agents into `.agents/agents`, commands into `.agents/commands`, and conventions into `.convention`. | Generated Codex plugin marketplace metadata in `.agents`. |
 | Codex/GPT local skills-only | `install-bundle.mjs --skills-only` installs selected bundle skills into `.agents/skills` and required convention reference assets beside them. | Agents and commands. |
 | Codex plugin package | `build:codex-plugins` emits `.codex-plugin/plugin.json`, `skills/`, inspection output, and required reference assets under `dist/codex-plugins`. | Claude agents and commands in generated plugin packages. |
 | Codex local marketplace | `build:codex-plugins` emits `dist/codex-marketplace/.agents/plugins/marketplace.json` with local entries for mirrored generated packages. | Public marketplace publishing or remote registry availability. |
