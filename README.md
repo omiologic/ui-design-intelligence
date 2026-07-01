@@ -587,6 +587,10 @@ Run release validation for buildable bundles:
 npm run validate:release
 ```
 
+For the end-to-end publish checklist, including version checks, tags, GitHub
+release artifacts, and local Codex marketplace fixtures, see
+`docs/publishing.md`.
+
 Run install matrix validation for supported local targets:
 
 ```bash
@@ -649,6 +653,11 @@ Bundle builds:
 - verify copied skill references before zipping
 
 ## Package
+
+Packaging creates release candidates. A version is considered published only
+after the release commit and `v{version}` tag are pushed and the generated
+archives are attached to the chosen release channel. See `docs/publishing.md`
+for the full release checklist.
 
 Create a release zip:
 
@@ -848,6 +857,10 @@ design-system, command, agent, strict bundle, and release validation gates, see
 ## Versioning
 
 This repository is at `0.9.0`, the pre-1.0 integration milestone.
+
+Release publication is tag-based: generated archives in `dist/` are not
+releases by themselves. A published release should have a pushed `v{version}`
+tag and release artifacts attached. See `docs/publishing.md`.
 
 Version history:
 

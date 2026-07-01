@@ -54,6 +54,7 @@ function rewriteBundleSkillReferences(skillDir) {
   let text = fs.readFileSync(skillFile, "utf8");
   text = text.split("../../../shared/").join("../../shared/");
   text = text.split("../../../knowledge/").join("../../knowledge/");
+  text = text.split("../../../docs/").join("../../docs/");
   text = text.split("../../shared/").join("../../shared/");
   fs.writeFileSync(skillFile, text);
 }
