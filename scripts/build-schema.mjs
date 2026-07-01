@@ -11,9 +11,6 @@ const schema = schemaWithVocabularyEnums(root);
 fs.writeFileSync(schemaPath, `${JSON.stringify(schema, null, 2)}\n`);
 console.log(`Wrote ${path.relative(root, schemaPath)}`);
 
-const wireframeSchemaReference = path.join(root, "skills/wireframe-schema/references/wireframe-config.schema.json");
-fs.copyFileSync(schemaPath, wireframeSchemaReference);
-console.log(`Wrote ${path.relative(root, wireframeSchemaReference)}`);
 const individualWireframeSchemaReference = path.join(root, "plugins/individuals/wireframe-schema/references/wireframe-config.schema.json");
 if (fs.existsSync(path.dirname(individualWireframeSchemaReference))) {
   fs.copyFileSync(schemaPath, individualWireframeSchemaReference);
@@ -31,4 +28,4 @@ for (const skill of productSkills) {
   }
 }
 
-console.log(`Synced schema bundles for ${productSkills.length} product skills and compatibility mirrors.`);
+console.log(`Synced schema bundles for ${productSkills.length} product skills.`);

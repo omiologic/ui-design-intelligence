@@ -16,12 +16,13 @@ are contributing or packaging bundles.
 ### Codex / GPT Skills
 
 Use Codex/GPT installs when you only need skill discovery. These targets receive
-skill folders with `SKILL.md` plus required shared reference assets; they do not
-receive Claude agents or commands.
+flat runtime skill folders with `SKILL.md` plus required shared reference assets;
+they do not receive Claude agents or commands.
 
-```bash
-npx skills add omiologic/ui-design-intelligence -a codex
-```
+Direct `npx skills add omiologic/ui-design-intelligence -a codex` installation
+is not the supported path after the Sprint 010 source-tree cleanup. Use the
+bundle installer below so installed skills are selected by
+`plugins/bundles/*/plugin.json` and sourced from `plugins/individuals/`.
 
 Manual Codex user-local install:
 
@@ -142,10 +143,10 @@ If the agent references installed skills such as `study-ui-storytelling`,
 
 This repository is named `ui-design-intelligence`. The original
 `ui-blueprint-skills` name remains as a compatibility bundle for controlled
-UIBlueprint wireframe generation. The current `skills/` install surface remains
-compatible for existing blueprint users, while plugin source lives under
+UIBlueprint wireframe generation. The committed skill source lives under
 `plugins/individuals/`, with `plugins/bundles/*` holding committed bundle
-manifests and generated bundle contents written to `dist/plugins/`.
+manifests. Runtime install folders and generated plugin packages still use a
+flat `skills/` directory shape because that is what agents load.
 
 ## Plugin Monorepo Model
 
@@ -190,7 +191,10 @@ Current bundle roles:
 
 ## What This Is
 
-This repository provides installable skills under `skills/` for agents that support local skill directories. The skills help an agent produce predictable UIBlueprint JSON instead of ad hoc wireframe descriptions.
+This repository provides installable skills for agents that support local skill
+directories. Source skills are maintained under `plugins/individuals/` and
+installed into target runtime `skills/` directories. The skills help an agent
+produce predictable UIBlueprint JSON instead of ad hoc wireframe descriptions.
 
 It is useful for:
 
@@ -360,9 +364,9 @@ Use `UI_PLUGIN_TARGET` for a Claude/local agent root directory:
 UI_PLUGIN_TARGET="/path/to/.claude" ./install.sh
 ```
 
-For compatibility with earlier releases, `UI_BLUEPRINT_SKILLS_DIR` still points
-directly at the skills directory. The installer derives the plugin target from
-that directory's parent:
+For compatibility with earlier installer commands, `UI_BLUEPRINT_SKILLS_DIR`
+still points directly at the target runtime skills directory. The installer
+derives the plugin target from that directory's parent:
 
 ```bash
 UI_BLUEPRINT_SKILLS_DIR="/path/to/.claude/skills" ./install.sh
@@ -370,7 +374,10 @@ UI_BLUEPRINT_SKILLS_DIR="/path/to/.claude/skills" ./install.sh
 
 ### Manual Install
 
-Copy selected product skill directories from `skills/` into your agent's skills directory. Each installed skill directory must include its `SKILL.md` file and any referenced `references/`, `scripts/`, or `assets/` files.
+Use `scripts/install-bundle.mjs` for manual installs. Do not copy source
+directories by hand; the installer resolves bundle manifests, copies the
+selected `plugins/individuals/` skills, rewrites references, and verifies the
+installed runtime tree.
 
 ## Usage Examples
 
@@ -620,7 +627,7 @@ Validation checks:
 - examples validate against `shared/schemas/wireframe-config.schema.json` directly
 - shared wireframe examples are files ending in `.ui-blueprint.json` plus the canonical `ui-blueprint.example.json`; future non-wireframe examples can coexist in `shared/examples/`
 - page audit examples ending in `page-audit.example.json` validate against `shared/schemas/page-audit.schema.json`
-- skill-local wireframe examples are validated under both `skills/` and `plugins/individuals/`
+- skill-local wireframe examples are validated under `plugins/individuals/`
 - a local schema-subset validator is used so validation works offline without third-party runtime dependencies
 - duplicate node ids are rejected in a semantic validation layer
 - example node types, roles, layouts, and states match shared vocabulary in the semantic validation layer
@@ -761,17 +768,6 @@ ui-design-intelligence/
     audit-site.md
     audit-interactions.md
     generate-blueprint-from-study.md
-  skills/
-    design-terminology/
-    wireframe-schema/
-    page-wireframe-planner/
-    section-wireframe-planner/
-    component-wireframe-planner/
-    layout-specification/
-    interaction-patterns/
-    accessibility-wireframe-review/
-    skill-creator/
-    sprint-planner/
   shared/
     vocabulary/
     schemas/
@@ -789,16 +785,10 @@ ui-design-intelligence/
   .plan/
 ```
 
-The `skills/` directory remains the compatibility install surface for direct
-skills-only installs. `plugins/individuals/` is the source location for reusable
-bundle skills, and `plugins/bundles/` holds committed internal bundle manifests
-plus bundle README files. Built bundle contents should be generated under
-`dist/`, not committed.
-
-The current blueprint product skills are copied into `plugins/individuals/` while
-the `skills/` copies remain for compatibility. Scripts prefer individual plugin
-sources when present and fall back to `skills/` for existing MVP installs and
-packages.
+`plugins/individuals/` is the source location for reusable bundle skills, and
+`plugins/bundles/` holds committed internal bundle manifests plus bundle README
+files. Built bundle contents and runtime `skills/` trees are generated under
+`dist/` or installed into agent targets; they are not committed source trees.
 
 The first study vertical source set also lives in `plugins/individuals/`. These
 skills share the study output schema, UI terminology vocabulary, page-study
@@ -822,11 +812,6 @@ When adding or updating a skill:
 7. Add or update examples when behavior changes.
 8. Add the skill name to one or more `plugins/bundles/{bundle-name}/plugin.json` manifests.
 9. Run `npm run validate`.
-
-Product blueprint skills are mirrored in both `plugins/individuals/` and
-`skills/` for compatibility. New plugin-first skills should start in
-`plugins/individuals/`. Only mirror into `skills/` when the skill must remain
-part of the direct skills-only compatibility surface.
 
 When adding a skill to a bundle:
 
@@ -870,11 +855,12 @@ Version history:
   multi-agent bundle professionalization, Codex support, E2E creation commands,
   remote knowledge retrieval, and app handoff contracts.
 - `0.9.0`: pre-1.0 integration milestone — CI pipeline, credential-safe
-  validation, shared reference sync, `skills/` retirement path, canonical skill
-  gate, taste profile expansion, prototype skill layer, behavioral test
-  fixtures, and `ui-content-skills` documentation.
-- `1.0.0`: stable vocabulary and schema contract. Requires `skills/` retirement
-  and a verified prototype skill layer under the CI gate.
+  validation, shared reference sync, canonical skill gate, taste profile
+  expansion, prototype skill layer, behavioral test fixtures, and
+  `ui-content-skills` documentation.
+- `1.0.0`: stable vocabulary and schema contract. Requires final public
+  install-surface validation and a verified prototype skill layer under the CI
+  gate.
 
 Schema and vocabulary changes can affect downstream renderers. Breaking changes should be documented in `CHANGELOG.md`; add `MIGRATION.md` when compatibility guidance is needed.
 

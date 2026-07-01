@@ -60,7 +60,7 @@ let runFullValidate = false;
 
 for (const file of changedFiles) {
   const normalized = file.split(path.sep).join("/");
-  let match = normalized.match(/^(?:skills|plugins\/individuals)\/([^/]+)\//);
+  let match = normalized.match(/^plugins\/individuals\/([^/]+)\//);
   if (match) add(skillNames, match[1]);
 
   match = normalized.match(/^plugins\/bundles\/([^/]+)\//);

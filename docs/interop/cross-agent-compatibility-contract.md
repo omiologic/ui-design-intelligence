@@ -11,7 +11,7 @@ folders are separate surfaces with different package shapes.
 | Codex local skills | `$HOME/.agents/skills` or `$PWD/.agents/skills` | Skill directories containing `SKILL.md` plus local references, scripts, and assets. | Skills plus manifest-declared shared/knowledge reference assets via `install-bundle.mjs --skills-only`. Agents and commands are not installed into `.agents` by this path. | `scripts/verify-installed-references.mjs <skills-dir>` after install; Sprint 005 smoke tests cover user-local and project-local `.agents/skills`. |
 | Codex plugin package | `dist/codex-plugins/{bundle-name}/` | `.codex-plugin/plugin.json`, package README/license/changelog, `skills/`, `PACKAGE_INSPECTION.md`, and manifest-declared shared/knowledge reference assets generated from bundle manifests. | Skills and reference assets packaged for Codex plugin loading. Agents and commands are omitted and recorded in generated metadata. | `npm run build:codex-plugins` then `npm run validate:codex-plugins`; local marketplace smoke tests cover app/CLI plugin discovery. |
 | Codex local marketplace | `dist/codex-marketplace/.agents/plugins/marketplace.json` | Local marketplace catalog with `plugins[]` entries pointing at mirrored generated package folders under `dist/codex-marketplace/plugins/`. | Marketplace metadata plus mirrored Codex plugin packages for CLI-compatible local loading. Source inspection copies stay under `dist/codex-plugins`. | `npm run validate:codex-plugins` validates marketplace entries and package paths. |
-| ChatGPT/GPT-facing skill distribution | Skills CLI or generated Codex plugin package | Repository `skills/` surface for direct skill installs; generated plugin package for marketplace-shaped installs. | Skills only unless a later marketplace task adds supported metadata. | Skills CLI install examples must not mention `.claude`; plugin validation gates apply to generated packages. |
+| ChatGPT/GPT-facing skill distribution | Bundle installer or generated Codex plugin package | Runtime skill folders generated from `plugins/individuals/` through bundle manifests; generated plugin package for marketplace-shaped installs. | Skills only unless a later marketplace task adds supported metadata. | Direct Skills CLI repository discovery is not the supported path after Sprint 010; plugin validation gates apply to generated packages. |
 | Claude Code/local compatibility | `$HOME/.claude` or `$PWD/.claude` | `.claude/skills`, `.claude/agents`, `.claude/commands`, `.claude/shared`, and `.claude/.ui-blueprint-bundles`. | Skills, agents, commands, shared schemas/vocabulary/templates/examples/docs, helper scripts referenced by bundle manifests, and install records. | `scripts/verify-installed-references.mjs <skills-dir>`; existing-project tests cover dry-run, conflict blocking, `--force`, reinstall, and uninstall. |
 | Generic local skills folder | Any explicit skills directory | Skill directories under the supplied skills directory. The parent is treated as the install root for records if using `install-bundle.mjs`. | Skills can be installed alone only when the consuming agent ignores bundle commands and agents. Full bundle assets should use a named agent root instead. | `scripts/verify-installed-references.mjs <skills-dir>` plus consumer-agent manual smoke testing. |
 
@@ -91,8 +91,9 @@ verification, and uninstall record scope.
 ## Assumptions
 
 - The repository remains the source of truth for bundle composition.
-- `plugins/individuals/` is preferred for bundle builds; `skills/` remains a
-  compatibility source for existing skill installs.
+- `plugins/individuals/` is the only committed skill source for bundle builds.
+- Runtime `skills/` folders are generated artifacts or install targets, not
+  committed source trees.
 - Generated artifacts under `dist/` are reproducible and should not be edited
   manually.
 - Codex plugin metadata requirements may change; the generated package validator

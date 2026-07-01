@@ -4,7 +4,6 @@ import path from "node:path";
 import { productSkills } from "./lib/bundle-skill.mjs";
 
 const root = process.cwd();
-const skillsDir = path.join(root, "skills");
 const individualsDir = path.join(root, "plugins", "individuals");
 const errors = [];
 const names = new Map();
@@ -76,12 +75,6 @@ function walkFiles(dir) {
     if (entry.isDirectory()) return walkFiles(item);
     return [item];
   });
-}
-
-function isCompatibilityDuplicate(skillName, existingPath, nextPath) {
-  const skillPath = `skills/${skillName}/SKILL.md`;
-  const individualPath = `plugins/individuals/${skillName}/SKILL.md`;
-  return [existingPath, nextPath].sort().join("|") === [skillPath, individualPath].sort().join("|");
 }
 
 function checkSkillBodySections(text, relativeSkillFile) {
@@ -180,7 +173,7 @@ function validateSkillRoot(baseDir, label, options = {}) {
         fail(`${relativeSkillFile}: name "${skillName}" must match directory "${dirName}"`);
       }
       const existingPath = names.get(skillName);
-      if (existingPath && !isCompatibilityDuplicate(skillName, existingPath, relativeSkillFile)) {
+      if (existingPath) {
         fail(`${relativeSkillFile}: duplicate skill name "${skillName}" also used by ${existingPath}`);
       }
       if (!existingPath) names.set(skillName, relativeSkillFile);
@@ -204,7 +197,6 @@ function validateSkillRoot(baseDir, label, options = {}) {
   }
 }
 
-validateSkillRoot(skillsDir, "skills", { required: true });
 validateSkillRoot(individualsDir, "plugins/individuals", { requireJudgment: true });
 
 if (requestedSkillSet.size === 0) {

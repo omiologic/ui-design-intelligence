@@ -47,8 +47,8 @@ const sharedFiles = [
   ["shared/taste-profiles/README.md", "taste-profiles/README.md"],
   ["shared/taste-profiles/conversion.json", "taste-profiles/conversion.json"],
   ["shared/taste-profiles/utility-product.json", "taste-profiles/utility-product.json"],
-  ["skills/wireframe-schema/references/valid-node-types.md", "wireframe-schema/valid-node-types.md"],
-  ["skills/wireframe-schema/references/wireframe-config.schema.json", "wireframe-schema/wireframe-config.schema.json"]
+  ["plugins/individuals/wireframe-schema/references/valid-node-types.md", "wireframe-schema/valid-node-types.md"],
+  ["plugins/individuals/wireframe-schema/references/wireframe-config.schema.json", "wireframe-schema/wireframe-config.schema.json"]
 ];
 
 const designSystemSharedFiles = [
@@ -156,16 +156,12 @@ export function productSkillSourceDir(root, skillName) {
   const individualDir = path.join(root, "plugins", "individuals", skillName);
   if (fs.existsSync(path.join(individualDir, "SKILL.md"))) return individualDir;
 
-  const compatibilityDir = path.join(root, "skills", skillName);
-  if (fs.existsSync(path.join(compatibilityDir, "SKILL.md"))) return compatibilityDir;
-
   return individualDir;
 }
 
 export function productSkillMirrorDirs(root, skillName) {
   return [
-    path.join(root, "plugins", "individuals", skillName),
-    path.join(root, "skills", skillName)
+    path.join(root, "plugins", "individuals", skillName)
   ].filter((dir) => fs.existsSync(path.join(dir, "SKILL.md")));
 }
 
@@ -196,8 +192,7 @@ function copyFile(source, target) {
 
 export function skillSourceDirs(root, skillName) {
   return [
-    path.join(root, "plugins", "individuals", skillName),
-    path.join(root, "skills", skillName)
+    path.join(root, "plugins", "individuals", skillName)
   ].filter((dir) => fs.existsSync(path.join(dir, "SKILL.md")));
 }
 

@@ -200,7 +200,6 @@ const auditExampleFiles = walk(path.join(root, "shared/examples"))
 const studyExampleFiles = walk(path.join(root, "shared/examples"))
   .filter((file) => file.endsWith(".study.example.json") || file.endsWith("page-study.example.json"));
 const skillExampleFiles = [
-  ...walk(path.join(root, "skills")),
   ...walk(path.join(root, "plugins/individuals"))
 ].filter((file) =>
   file.endsWith(".json") &&

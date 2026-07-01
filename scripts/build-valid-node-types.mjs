@@ -5,7 +5,6 @@ import { syncSharedReferenceBundles } from "./lib/bundle-skill.mjs";
 
 const root = process.cwd();
 const vocabularyPath = path.join(root, "shared/vocabulary/node-types.json");
-const outputPath = path.join(root, "skills/wireframe-schema/references/valid-node-types.md");
 const individualOutputPath = path.join(root, "plugins/individuals/wireframe-schema/references/valid-node-types.md");
 const vocabulary = JSON.parse(fs.readFileSync(vocabularyPath, "utf8"));
 
@@ -52,8 +51,6 @@ lines.push("- `type`: one approved node type from this reference.");
 lines.push("- `label`: human-readable label for the node.");
 lines.push("");
 
-fs.writeFileSync(outputPath, `${lines.join("\n")}`);
-console.log(`Wrote ${path.relative(root, outputPath)}`);
 if (fs.existsSync(path.dirname(individualOutputPath))) {
   fs.writeFileSync(individualOutputPath, `${lines.join("\n")}`);
   console.log(`Wrote ${path.relative(root, individualOutputPath)}`);

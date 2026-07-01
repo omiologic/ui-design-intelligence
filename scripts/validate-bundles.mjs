@@ -220,8 +220,7 @@ function parseRepoLinks(text) {
 }
 
 function skillExists(skillName) {
-  return fs.existsSync(path.join(root, "plugins", "individuals", skillName, "SKILL.md"))
-    || fs.existsSync(path.join(root, "skills", skillName, "SKILL.md"));
+  return fs.existsSync(path.join(root, "plugins", "individuals", skillName, "SKILL.md"));
 }
 
 function commandExists(commandName) {

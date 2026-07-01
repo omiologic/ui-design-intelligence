@@ -25,7 +25,7 @@ function run(command, args, options = {}) {
   if (result.status !== 0) process.exit(result.status ?? 1);
 }
 
-if (!fs.existsSync(path.join(root, "plugins", "individuals")) && !fs.existsSync(path.join(root, "skills"))) {
+if (!fs.existsSync(path.join(root, "plugins", "individuals"))) {
   console.error("Cannot package: no product skill source directory exists.");
   process.exit(1);
 }

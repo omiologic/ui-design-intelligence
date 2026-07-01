@@ -43,9 +43,6 @@ function skillSourceDir(skillName) {
   const individual = path.join(root, "plugins", "individuals", skillName);
   if (fs.existsSync(path.join(individual, "SKILL.md"))) return individual;
 
-  const compatibility = path.join(root, "skills", skillName);
-  if (fs.existsSync(path.join(compatibility, "SKILL.md"))) return compatibility;
-
   throw new Error(`Bundle skill source does not exist: ${skillName}`);
 }
 

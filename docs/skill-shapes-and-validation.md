@@ -56,9 +56,9 @@ Domain variants:
   `## Best-Practice Checks` or `## Evidence Rules` sections.
 - Reference files may use focused local headings when they are method documents;
   the canonical section gate applies to `SKILL.md` bodies.
-- `skills/skill-creator` is a compatibility guide that keeps a canonical skill
-  core, then appends upstream skill-authoring documentation. Its appended guide
-  headings are not a UI blueprint pipeline variant.
+- Skill authoring guidance belongs in repository docs or installable
+  `plugins/individuals/` skills. The legacy committed `skills/` source mirror
+  was retired in Sprint 010.
 
 Every JSON-emitting skill needs a compact, schema-shaped JSON example. The
 example should anchor output shape and required metadata, not attempt to be a
@@ -308,7 +308,7 @@ npm run validate:skill -- page-wireframe-planner
 ```
 
 Targeted skill validation checks only the named skill directory under
-`plugins/individuals/` and its compatibility copy under `skills/` when present.
+`plugins/individuals/`.
 It is intended for local iteration; full validation remains the release gate.
 
 Run the full canonical skill gate (alias for `validate:skills`):
