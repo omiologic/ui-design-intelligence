@@ -1,0 +1,239 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://omiologic.dev/schemas/ui-blueprint/component-spec.schema.json",
+  "title": "ComponentSpec",
+  "description": "Implementation-facing React component specification produced before JSX or TSX is written.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "componentName",
+    "componentLayer",
+    "implementationTarget",
+    "sourceType",
+    "complexityLevel",
+    "dataCoupling",
+    "purpose",
+    "componentTree",
+    "propsModel",
+    "responsiveBehavior",
+    "accessibilityRequirements",
+    "implementationRisks",
+    "openQuestions"
+  ],
+  "properties": {
+    "componentName": {
+      "type": "string",
+      "pattern": "^[A-Z][A-Za-z0-9]*$"
+    },
+    "componentLayer": {
+      "$ref": "#/$defs/componentLayer"
+    },
+    "implementationTarget": {
+      "$ref": "#/$defs/implementationTarget"
+    },
+    "sourceType": {
+      "$ref": "#/$defs/sourceType"
+    },
+    "complexityLevel": {
+      "$ref": "#/$defs/complexityLevel"
+    },
+    "dataCoupling": {
+      "$ref": "#/$defs/dataCoupling"
+    },
+    "purpose": {
+      "type": "string",
+      "minLength": 1
+    },
+    "componentTree": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[A-Z][A-Za-z0-9]*$"
+      }
+    },
+    "propsModel": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "responsiveBehavior": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "desktop",
+        "tablet",
+        "mobile"
+      ],
+      "properties": {
+        "desktop": {
+          "type": "string",
+          "minLength": 1
+        },
+        "tablet": {
+          "type": "string",
+          "minLength": 1
+        },
+        "mobile": {
+          "type": "string",
+          "minLength": 1
+        },
+        "reducedMotion": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "accessibilityRequirements": {
+      "$ref": "#/$defs/stringList"
+    },
+    "implementationRisks": {
+      "$ref": "#/$defs/stringList"
+    },
+    "openQuestions": {
+      "$ref": "#/$defs/stringList"
+    },
+    "sourceRefs": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/sourceRef"
+      }
+    },
+    "stateModel": {
+      "$ref": "#/$defs/stringList"
+    },
+    "events": {
+      "$ref": "#/$defs/stringList"
+    },
+    "uiDataBoundary": {
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "$defs": {
+    "componentLayer": {
+      "type": "string",
+      "enum": [
+        "primitive",
+        "shared-ui",
+        "section",
+        "layout",
+        "data-driven",
+        "app-specific",
+        "workflow"
+      ]
+    },
+    "sourceType": {
+      "type": "string",
+      "enum": [
+        "mockup",
+        "screenshot",
+        "wireframe",
+        "prototype",
+        "design-system-seed",
+        "runtime-design-theme",
+        "style-reference",
+        "visual-experience-spec",
+        "mixed-input",
+        "manual-brief"
+      ]
+    },
+    "complexityLevel": {
+      "type": "integer",
+      "enum": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ]
+    },
+    "dataCoupling": {
+      "type": "string",
+      "enum": [
+        "none",
+        "static-props",
+        "schema-data",
+        "api-data",
+        "domain-model",
+        "state-machine",
+        "external-service"
+      ]
+    },
+    "implementationTarget": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "framework",
+        "defaultComponentCodeFormat"
+      ],
+      "properties": {
+        "framework": {
+          "type": "string",
+          "enum": [
+            "react"
+          ]
+        },
+        "defaultComponentCodeFormat": {
+          "type": "string",
+          "enum": [
+            "jsx",
+            "tsx"
+          ]
+        },
+        "stylingApproach": {
+          "type": "string",
+          "minLength": 1
+        },
+        "storybookRequired": {
+          "type": "boolean"
+        },
+        "testPlanRequired": {
+          "type": "boolean"
+        }
+      }
+    },
+    "sourceRef": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "type",
+        "path"
+      ],
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "study-output",
+            "pattern-knowledge",
+            "style-reference",
+            "design-system-seed",
+            "runtime-design-theme",
+            "ui-blueprint",
+            "prototype-config",
+            "visual-experience-spec",
+            "image",
+            "brief"
+          ]
+        },
+        "path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "notes": {
+          "type": "string"
+        }
+      }
+    },
+    "stringList": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    }
+  }
+}

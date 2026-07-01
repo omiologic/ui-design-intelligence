@@ -1,0 +1,44 @@
+{
+  "sourceTypes": [
+    {
+      "name": "mockup",
+      "definition": "Visual mockup or rendered design image."
+    },
+    {
+      "name": "screenshot",
+      "definition": "Screenshot captured from a live or local interface."
+    },
+    {
+      "name": "wireframe",
+      "definition": "UIBlueprint or wireframe structure."
+    },
+    {
+      "name": "prototype",
+      "definition": "PrototypeConfig or interactive prototype plan."
+    },
+    {
+      "name": "design-system-seed",
+      "definition": "DesignSystemSeed artifact."
+    },
+    {
+      "name": "runtime-design-theme",
+      "definition": "RuntimeDesignTheme artifact."
+    },
+    {
+      "name": "style-reference",
+      "definition": "StyleReference artifact."
+    },
+    {
+      "name": "visual-experience-spec",
+      "definition": "VisualExperienceSpec artifact."
+    },
+    {
+      "name": "mixed-input",
+      "definition": "Multiple source artifacts or evidence types."
+    },
+    {
+      "name": "manual-brief",
+      "definition": "User-supplied component brief without a structured source artifact."
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "implementationTargets": [
+    {
+      "name": "react",
+      "definition": "React component implementation target."
+    }
+  ]
+}

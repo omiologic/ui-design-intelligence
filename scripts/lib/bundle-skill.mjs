@@ -28,6 +28,15 @@ export const designSystemSkills = [
   "audit-design-system-consistency"
 ];
 
+export const reactComponentSkills = [
+  "mockup-to-component-analysis",
+  "component-spec-to-react-plan",
+  "storybook-from-component-spec",
+  "shared-ui-component-planner",
+  "app-specific-component-planner",
+  "react-component-review"
+];
+
 const sharedFiles = [
   [".convention/vocabulary/node-types.json", "vocabulary/node-types.json"],
   [".convention/vocabulary/layout-patterns.json", "vocabulary/layout-patterns.json"],
@@ -88,6 +97,38 @@ const designSystemSharedFiles = [
   [".convention/vocabulary/interaction-states.json", "vocabulary/interaction-states.json"]
 ];
 
+const reactComponentSharedFiles = [
+  [".convention/contracts/react-components/component-build-config.contract.md", "contracts/react-components/component-build-config.contract.md"],
+  [".convention/contracts/react-components/component-implementation.contract.md", "contracts/react-components/component-implementation.contract.md"],
+  [".convention/contracts/react-components/component-spec.contract.md", "contracts/react-components/component-spec.contract.md"],
+  [".convention/contracts/react-components/shared-ui-vs-app-ui.contract.md", "contracts/react-components/shared-ui-vs-app-ui.contract.md"],
+  [".convention/contracts/react-components/storybook-handoff.contract.md", "contracts/react-components/storybook-handoff.contract.md"],
+  [".convention/schemas/component-spec.schema.json", "schemas/component-spec.schema.json"],
+  [".convention/vocabulary/react-components/component-code-format.json", "vocabulary/react-components/component-code-format.json"],
+  [".convention/vocabulary/react-components/component-code-format.md", "vocabulary/react-components/component-code-format.md"],
+  [".convention/vocabulary/react-components/component-complexity.json", "vocabulary/react-components/component-complexity.json"],
+  [".convention/vocabulary/react-components/component-complexity.md", "vocabulary/react-components/component-complexity.md"],
+  [".convention/vocabulary/react-components/component-layer.json", "vocabulary/react-components/component-layer.json"],
+  [".convention/vocabulary/react-components/component-layer.md", "vocabulary/react-components/component-layer.md"],
+  [".convention/vocabulary/react-components/data-coupling.json", "vocabulary/react-components/data-coupling.json"],
+  [".convention/vocabulary/react-components/data-coupling.md", "vocabulary/react-components/data-coupling.md"],
+  [".convention/vocabulary/react-components/implementation-target.json", "vocabulary/react-components/implementation-target.json"],
+  [".convention/vocabulary/react-components/implementation-target.md", "vocabulary/react-components/implementation-target.md"],
+  [".convention/vocabulary/react-components/source-type.json", "vocabulary/react-components/source-type.json"],
+  [".convention/vocabulary/react-components/source-type.md", "vocabulary/react-components/source-type.md"],
+  [".convention/react-patterns/accessibility-rules.md", "react-patterns/accessibility-rules.md"],
+  [".convention/react-patterns/ai-output-rules.md", "react-patterns/ai-output-rules.md"],
+  [".convention/react-patterns/memoization-guidelines.md", "react-patterns/memoization-guidelines.md"],
+  [".convention/react-patterns/react-component-rules.md", "react-patterns/react-component-rules.md"],
+  [".convention/react-patterns/storybook-rules.md", "react-patterns/storybook-rules.md"],
+  [".convention/react-patterns/styling-rules.md", "react-patterns/styling-rules.md"],
+  [".convention/react-patterns/ui-layer-boundary.md", "react-patterns/ui-layer-boundary.md"],
+  [".convention/templates/react-components/component-analysis-template.md", "templates/react-components/component-analysis-template.md"],
+  [".convention/templates/react-components/component-implementation-plan-template.md", "templates/react-components/component-implementation-plan-template.md"],
+  [".convention/templates/react-components/storybook-plan-template.md", "templates/react-components/storybook-plan-template.md"],
+  [".convention/templates/ui-design-intelligence.config.yml", "templates/ui-design-intelligence.config.yml"]
+];
+
 export const sharedReferenceBundles = {
   blueprint: {
     skills: productSkills,
@@ -96,6 +137,10 @@ export const sharedReferenceBundles = {
   "design-system": {
     skills: designSystemSkills,
     files: designSystemSharedFiles
+  },
+  "react-components": {
+    skills: reactComponentSkills,
+    files: reactComponentSharedFiles
   },
   "style-to-design-system": {
     skills: ["map-style-to-design-system-seed"],

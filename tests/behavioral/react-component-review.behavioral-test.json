@@ -1,0 +1,34 @@
+{
+  "skill": "react-component-review",
+  "brief": "Review a React component implementation against the ComponentSpec for UI/data separation, accessibility coverage, responsive behavior, Storybook readiness, and measured memoization decisions.",
+  "referenceExample": ".convention/examples/react-components/product-feature-grid.component-spec.example.json",
+  "requiredSignals": [
+    {
+      "description": "Review has implementation risks to compare against.",
+      "check": "fieldCountAtLeast",
+      "target": "implementationRisks",
+      "minCount": 2
+    },
+    {
+      "description": "Review checks UI/data layer separation.",
+      "check": "fieldPresent",
+      "target": "uiDataBoundary"
+    },
+    {
+      "description": "Review checks responsive behavior.",
+      "check": "fieldPresent",
+      "target": "responsiveBehavior.mobile"
+    },
+    {
+      "description": "Review checks explicit accessibility requirements.",
+      "check": "fieldCountAtLeast",
+      "target": "accessibilityRequirements",
+      "minCount": 1
+    },
+    {
+      "description": "Review rejects blanket memoization approval.",
+      "check": "antiPatternAbsent",
+      "value": "blanket-memoization-approval"
+    }
+  ]
+}

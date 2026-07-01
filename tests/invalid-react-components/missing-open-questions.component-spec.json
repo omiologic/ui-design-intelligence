@@ -1,0 +1,29 @@
+{
+  "componentName": "ProductFeatureGrid",
+  "componentLayer": "section",
+  "implementationTarget": {
+    "framework": "react",
+    "defaultComponentCodeFormat": "tsx"
+  },
+  "sourceType": "mockup",
+  "complexityLevel": 3,
+  "dataCoupling": "static-props",
+  "purpose": "Display product feature cards.",
+  "componentTree": [
+    "ProductFeatureGrid"
+  ],
+  "propsModel": {
+    "items": "FeatureCardItem[]"
+  },
+  "responsiveBehavior": {
+    "desktop": "Grid.",
+    "tablet": "Grid.",
+    "mobile": "Stack."
+  },
+  "accessibilityRequirements": [
+    "Use a labelled section."
+  ],
+  "implementationRisks": [
+    "Do not hard-code item count."
+  ]
+}

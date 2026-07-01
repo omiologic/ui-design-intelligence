@@ -1,0 +1,38 @@
+{
+  "skill": "component-spec-to-react-plan",
+  "brief": "Convert a ComponentSpec into a React implementation plan that honors JSX or TSX preference, keeps reusable UI out of the data layer, and gives memoization advice only when justified.",
+  "referenceExample": ".convention/examples/react-components/product-feature-grid.component-spec.example.json",
+  "requiredSignals": [
+    {
+      "description": "The plan reads the React implementation target.",
+      "check": "fieldMatchesValue",
+      "target": "implementationTarget.framework",
+      "expectedValue": "react"
+    },
+    {
+      "description": "The plan preserves the configured JSX or TSX code format.",
+      "check": "fieldPresent",
+      "target": "implementationTarget.defaultComponentCodeFormat"
+    },
+    {
+      "description": "Props model is present before code planning.",
+      "check": "fieldPresent",
+      "target": "propsModel"
+    },
+    {
+      "description": "UI/data boundary prevents data-layer leakage into reusable UI components.",
+      "check": "fieldPresent",
+      "target": "uiDataBoundary"
+    },
+    {
+      "description": "Shared UI does not import fetchers, service clients, or raw API data.",
+      "check": "antiPatternAbsent",
+      "value": "data-layer-leakage-into-ui"
+    },
+    {
+      "description": "Memoization is judged case by case rather than applied by blanket rule.",
+      "check": "antiPatternAbsent",
+      "value": "blanket-memoization-advice"
+    }
+  ]
+}

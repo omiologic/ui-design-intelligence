@@ -1,0 +1,32 @@
+{
+  "componentLayers": [
+    {
+      "name": "primitive",
+      "definition": "Smallest reusable visual building block."
+    },
+    {
+      "name": "shared-ui",
+      "definition": "Reusable component that can be used across pages, routes, or projects without owning app data, fetching, routing, analytics, or persistence."
+    },
+    {
+      "name": "section",
+      "definition": "Page or screen section composed of smaller shared components."
+    },
+    {
+      "name": "layout",
+      "definition": "Component responsible for page, screen, or container structure."
+    },
+    {
+      "name": "data-driven",
+      "definition": "Component renders supplied structured data or schema-driven content without owning fetch or persistence unless explicitly app-specific."
+    },
+    {
+      "name": "app-specific",
+      "definition": "Component knows app domain, routing, API, cart, analytics, auth, or product-specific infrastructure."
+    },
+    {
+      "name": "workflow",
+      "definition": "Component manages multi-step interaction, domain-specific states, validation, or process behavior."
+    }
+  ]
+}

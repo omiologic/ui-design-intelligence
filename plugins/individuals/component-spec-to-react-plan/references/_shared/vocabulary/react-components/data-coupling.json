@@ -1,0 +1,32 @@
+{
+  "dataCouplingValues": [
+    {
+      "name": "none",
+      "definition": "No data dependency beyond static markup, children, or simple composition."
+    },
+    {
+      "name": "static-props",
+      "definition": "Receives simple props such as string, number, boolean, image, or CTA object."
+    },
+    {
+      "name": "schema-data",
+      "definition": "Receives structured data validated by a schema."
+    },
+    {
+      "name": "api-data",
+      "definition": "Consumes, maps, or adapts data shaped like an API response."
+    },
+    {
+      "name": "domain-model",
+      "definition": "Uses app-specific domain types such as Product, Variant, Customer, Inquiry, or Thread."
+    },
+    {
+      "name": "state-machine",
+      "definition": "Depends on explicit workflow states, transitions, guards, or reducer/state machine rules."
+    },
+    {
+      "name": "external-service",
+      "definition": "Connects to services such as Shopify, analytics, auth, cart, search, or backend APIs."
+    }
+  ]
+}

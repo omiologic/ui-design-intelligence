@@ -1,0 +1,55 @@
+{
+  "componentName": "ProductFeatureGrid",
+  "componentLayer": "section",
+  "implementationTarget": {
+    "framework": "react",
+    "defaultComponentCodeFormat": "tsx",
+    "stylingApproach": "project-convention",
+    "storybookRequired": true,
+    "testPlanRequired": true
+  },
+  "sourceType": "mockup",
+  "complexityLevel": 3,
+  "dataCoupling": "static-props",
+  "purpose": "Display a responsive grid of product feature cards with a heading, supporting copy, and optional CTA.",
+  "componentTree": [
+    "ProductFeatureGrid",
+    "SectionHeader",
+    "FeatureCardList",
+    "FeatureCard",
+    "SectionCTA"
+  ],
+  "propsModel": {
+    "title": "string",
+    "description": "string",
+    "items": "FeatureCardItem[]",
+    "cta": "LinkAction | null"
+  },
+  "responsiveBehavior": {
+    "desktop": "Three-column card grid with aligned card heights and visible section CTA.",
+    "tablet": "Two-column card grid with CTA below the card list.",
+    "mobile": "Single-column stacked cards with CTA after all cards.",
+    "reducedMotion": "Remove card entrance stagger and preserve static hierarchy."
+  },
+  "accessibilityRequirements": [
+    "Use a section landmark labelled by the section heading.",
+    "Use article for each card only when cards are independently meaningful.",
+    "Render the CTA as a link when it navigates and as a button only when it triggers an in-place action."
+  ],
+  "implementationRisks": [
+    "Do not hard-code the number of feature cards.",
+    "Do not make reusable UI cards fetch feature data directly.",
+    "Avoid image-only feature cards without accessible text alternatives."
+  ],
+  "openQuestions": [
+    "Confirm whether each feature card links to a feature detail page."
+  ],
+  "sourceRefs": [
+    {
+      "type": "image",
+      "path": "artifacts/example/product-feature-grid-mockup.png",
+      "notes": "Mockup source used for component hierarchy and responsive assumptions."
+    }
+  ],
+  "uiDataBoundary": "ProductFeatureGrid accepts already-prepared item data through props; route loaders or page containers own fetching and domain transformation."
+}

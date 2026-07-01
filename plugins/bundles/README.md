@@ -30,11 +30,13 @@ Codex/GPT, Claude, and generic local target layouts.
 | `ui-design-system-skills` | Design-system seed | Creating and auditing lightweight design-system seed and foundation artifacts. | `generate-design-system-seed`, `audit-design-system-seed` |
 | `ui-style-reference-skills` | Style reference | Creating, recommending, blending, applying, and auditing reusable visual style references. | `generate-style-library`, `recommend-style`, `apply-style-to-design-system`, `apply-style-to-section`, `apply-style-to-component` |
 | `ui-prototype-skills` | Prototype behavior | Generating prototype configs, interaction flows, state models, and prototype audits. | `generate-prototype-from-blueprint`, `generate-prototype-from-knowledge`, `audit-prototype-flow`, `explain-prototype-interactions` |
+| `ui-react-component-skills` | React component planning | Producing ComponentSpec artifacts, JSX/TSX-aware implementation plans, Storybook plans, shared/app decisions, and React component reviews. | No command ownership in first bundle |
 | `ui-design-intelligence` | Aggregate | Installing the full study, audit, knowledge, blueprint, design-system, style, and prototype stack. | May include component-bundle commands; does not create new ownership. |
 
 The layered architecture is: study evidence and knowledge inform blueprint
 structure; design-system seeds and style references constrain visual foundations;
-prototype skills add behavior; audit skills cut across the stack.
+prototype skills add behavior; React component skills bridge design-intelligence
+artifacts into component planning; audit skills cut across the stack.
 
 ## Internal `plugin.json` Fields
 

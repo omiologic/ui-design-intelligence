@@ -21,33 +21,58 @@ Use Codex/GPT installs under `.agents`. A full install writes skills to
 Pass `--skills-only` only when the target should receive skill folders and
 reference assets without roles or commands.
 
-Direct `npx skills add omiologic/ui-design-intelligence -a codex` installation
-is not the supported path after the Sprint 010 source-tree cleanup. Use the
-bundle installer below so installed skills are selected by
-`plugins/bundles/*/plugin.json` and sourced from `plugins/individuals/`.
+The Skills CLI GitHub source flow is not supported for the full
+`ui-design-intelligence` bundle. It installs skill folders only, so it leaves
+bundle-level agents, commands, project conventions, helper scripts, and config
+out of the target. Use the bundle installer below so installed files are
+selected by `plugins/bundles/*/plugin.json` and sourced from
+`plugins/individuals/`.
 
 If the target contains `skills-lock.json`, it was installed through the Skills
 CLI/GitHub source flow. That flow installs `.agents/skills` only. It will not
 install `.agents/agents`, `.agents/commands`, or project-level `.convention`
 because those are bundle assets copied by `scripts/install-bundle.mjs`.
 
-Manual Codex user-local install:
+The installer checkout is separate from the target project. The snippets below
+keep that checkout in `$HOME/.ui-design-intelligence` and update it when it
+already exists.
+
+Codex global install:
 
 ```bash
-git clone https://github.com/omiologic/ui-design-intelligence.git ~/ui-design-intelligence
-node ~/ui-design-intelligence/scripts/install-bundle.mjs install ui-design-intelligence "$HOME/.agents" "$HOME/.agents/skills" --dry-run
-node ~/ui-design-intelligence/scripts/install-bundle.mjs install ui-design-intelligence "$HOME/.agents" "$HOME/.agents/skills"
-node ~/ui-design-intelligence/scripts/verify-installed-references.mjs "$HOME/.agents/skills"
+INSTALLER_DIR="$HOME/.ui-design-intelligence"
+if [ -d "$INSTALLER_DIR/.git" ]; then git -C "$INSTALLER_DIR" pull --ff-only; else git clone https://github.com/omiologic/ui-design-intelligence.git "$INSTALLER_DIR"; fi
+UI_PLUGIN_BUNDLE="ui-design-intelligence" UI_PLUGIN_TARGET="$HOME/.agents" "$INSTALLER_DIR/install.sh" --dry-run
+UI_PLUGIN_BUNDLE="ui-design-intelligence" UI_PLUGIN_TARGET="$HOME/.agents" "$INSTALLER_DIR/install.sh" --with-config
 ```
 
-Manual Codex project-local install:
+Codex project install, run from the project root:
 
 ```bash
-git clone https://github.com/omiologic/ui-design-intelligence.git ~/ui-design-intelligence
-node ~/ui-design-intelligence/scripts/install-bundle.mjs install ui-design-intelligence "$PWD/.agents" "$PWD/.agents/skills" --dry-run
-node ~/ui-design-intelligence/scripts/install-bundle.mjs install ui-design-intelligence "$PWD/.agents" "$PWD/.agents/skills"
-node ~/ui-design-intelligence/scripts/verify-installed-references.mjs "$PWD/.agents/skills"
+INSTALLER_DIR="$HOME/.ui-design-intelligence"
+if [ -d "$INSTALLER_DIR/.git" ]; then git -C "$INSTALLER_DIR" pull --ff-only; else git clone https://github.com/omiologic/ui-design-intelligence.git "$INSTALLER_DIR"; fi
+UI_PLUGIN_BUNDLE="ui-design-intelligence" UI_PLUGIN_TARGET="$PWD/.agents" "$INSTALLER_DIR/install.sh" --dry-run
+UI_PLUGIN_BUNDLE="ui-design-intelligence" UI_PLUGIN_TARGET="$PWD/.agents" "$INSTALLER_DIR/install.sh" --with-config
 ```
+
+Expected project-level result:
+
+```txt
+your-project/
+  .agents/
+    skills/
+    agents/
+    commands/
+    scripts/
+    .ui-blueprint-bundles/
+  .convention/
+  .ui-design-intelligence.yml
+```
+
+In a monorepo, run the project install from the package or app directory that
+should receive those files. For example, run from `apps/storefront`, not the
+monorepo root, when only `apps/storefront` should receive `.agents/`,
+`.convention/`, and `.ui-design-intelligence.yml`.
 
 Use `--force` only when you intentionally want to replace conflicting existing
 skill files.
@@ -59,27 +84,29 @@ Use Claude/local compatibility installs when you want the full
 schemas, examples, docs, helper scripts, references, and install records.
 
 ```bash
-git clone https://github.com/omiologic/ui-design-intelligence.git ~/ui-design-intelligence
-node ~/ui-design-intelligence/scripts/install-bundle.mjs install ui-design-intelligence "$HOME/.claude" "$HOME/.claude/skills" --dry-run
-node ~/ui-design-intelligence/scripts/install-bundle.mjs install ui-design-intelligence "$HOME/.claude" "$HOME/.claude/skills"
-node ~/ui-design-intelligence/scripts/verify-installed-references.mjs "$HOME/.claude/skills"
+INSTALLER_DIR="$HOME/.ui-design-intelligence"
+if [ -d "$INSTALLER_DIR/.git" ]; then git -C "$INSTALLER_DIR" pull --ff-only; else git clone https://github.com/omiologic/ui-design-intelligence.git "$INSTALLER_DIR"; fi
+UI_PLUGIN_BUNDLE="ui-design-intelligence" UI_PLUGIN_TARGET="$HOME/.claude" "$INSTALLER_DIR/install.sh" --dry-run
+UI_PLUGIN_BUNDLE="ui-design-intelligence" UI_PLUGIN_TARGET="$HOME/.claude" "$INSTALLER_DIR/install.sh" --with-config
 ```
 
-Project-local install:
+Claude project install, run from the project root:
 
 ```bash
-git clone https://github.com/omiologic/ui-design-intelligence.git ~/ui-design-intelligence
-node ~/ui-design-intelligence/scripts/install-bundle.mjs install ui-design-intelligence "$PWD/.claude" "$PWD/.claude/skills" --dry-run
-node ~/ui-design-intelligence/scripts/install-bundle.mjs install ui-design-intelligence "$PWD/.claude" "$PWD/.claude/skills"
-node ~/ui-design-intelligence/scripts/verify-installed-references.mjs "$PWD/.claude/skills"
+INSTALLER_DIR="$HOME/.ui-design-intelligence"
+if [ -d "$INSTALLER_DIR/.git" ]; then git -C "$INSTALLER_DIR" pull --ff-only; else git clone https://github.com/omiologic/ui-design-intelligence.git "$INSTALLER_DIR"; fi
+UI_PLUGIN_BUNDLE="ui-design-intelligence" UI_PLUGIN_TARGET="$PWD/.claude" "$INSTALLER_DIR/install.sh" --dry-run
+UI_PLUGIN_BUNDLE="ui-design-intelligence" UI_PLUGIN_TARGET="$PWD/.claude" "$INSTALLER_DIR/install.sh" --with-config
 ```
 
 The installer blocks non-identical existing skills, agents, commands, and
-convention files by default. Always use `--dry-run` first in existing projects. Use
-`--force` only when you intentionally want to overwrite the target:
+convention files by default. Always use `--dry-run` first in existing projects.
+Use `--force` only when you intentionally want to overwrite the selected
+`UI_PLUGIN_TARGET`, for example a Codex project install:
 
 ```bash
-node ~/ui-design-intelligence/scripts/install-bundle.mjs install ui-design-intelligence "$PWD/.claude" "$PWD/.claude/skills" --force
+INSTALLER_DIR="$HOME/.ui-design-intelligence"
+UI_PLUGIN_BUNDLE="ui-design-intelligence" UI_PLUGIN_TARGET="$PWD/.agents" "$INSTALLER_DIR/install.sh" --force --with-config
 ```
 
 ### Install A Smaller Bundle
@@ -98,6 +125,7 @@ names:
 | `ui-design-system-skills` | Lightweight design-system seed and foundation planning |
 | `ui-style-reference-skills` | Structured style references, style application, blends, and audits |
 | `ui-prototype-skills` | Prototype config, interaction flows, state models, and behavior audits |
+| `ui-react-component-skills` | ComponentSpec, JSX/TSX implementation plans, Storybook plans, shared/app component decisions, and React component reviews |
 | `ui-knowledge-skills` | Reusable UI pattern knowledge, indexing, and lineage |
 | `ui-seo-skills` | Title tags, meta descriptions, page summaries, and SEO audit findings |
 | `ui-content-skills` | User journey copy, content models, prototype copy, microcopy, CTA labels, and copy audit workflows |
@@ -193,11 +221,15 @@ Current bundle roles:
   application, blends, and audits.
 - `ui-prototype-skills`: prototype configs, state models, interaction flows, and
   behavior audits.
+- `ui-react-component-skills`: ComponentSpec artifacts, JSX/TSX-aware
+  implementation plans, Storybook plans, shared/app component decisions, and
+  React component reviews.
 - `ui-content-skills`: planned content bundle for user journey copy, content
   models, prototype copy, microcopy, CTA labels, copy audits, and copy-pattern
   knowledge.
 - `ui-design-intelligence`: transitional full bundle combining study, audit,
-  SEO, knowledge, blueprint, design-system, style, and prototype workflows.
+  SEO, knowledge, blueprint, design-system, style, prototype, and React
+  component workflows.
 
 ## What This Is
 
@@ -282,7 +314,10 @@ Project-local design-system defaults should use `.ui-design-intelligence.yml`.
 The starter config template is
 `.convention/templates/ui-design-intelligence.config.yml`; it uses
 `artifacts.outputDir` plus `artifacts.rootDirs` for page, screenshot, motion,
-and handoff paths.
+and handoff paths. React component workflows can also use
+`reactComponents.componentBuildConventionPath` to read consumer-owned markdown
+conventions for JSX/TSX, styling, Storybook, testing, and UI/data boundary
+preferences.
 
 ## Problems It Solves
 

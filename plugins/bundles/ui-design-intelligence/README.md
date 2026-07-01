@@ -47,21 +47,21 @@ remove the need for source evidence, schemas, validation, or explicit handoffs.
 Codex/GPT full .agents target:
 
 ```bash
-node scripts/install-bundle.mjs install ui-design-intelligence "$HOME/.agents" "$HOME/.agents/skills" --dry-run
-node scripts/install-bundle.mjs install ui-design-intelligence "$HOME/.agents" "$HOME/.agents/skills"
+UI_PLUGIN_BUNDLE="ui-design-intelligence" UI_PLUGIN_TARGET="$HOME/.agents" ./install.sh --dry-run
+UI_PLUGIN_BUNDLE="ui-design-intelligence" UI_PLUGIN_TARGET="$HOME/.agents" ./install.sh --with-config
 ```
 
 Claude/local full-bundle target:
 
 ```bash
-UI_PLUGIN_BUNDLE="ui-design-intelligence" ./install.sh
+UI_PLUGIN_BUNDLE="ui-design-intelligence" ./install.sh --with-config
 ```
 
 Claude/local project target:
 
 ```bash
 UI_PLUGIN_BUNDLE="ui-design-intelligence" UI_PLUGIN_TARGET="./.claude" ./install.sh --dry-run
-UI_PLUGIN_BUNDLE="ui-design-intelligence" UI_PLUGIN_TARGET="./.claude" ./install.sh
+UI_PLUGIN_BUNDLE="ui-design-intelligence" UI_PLUGIN_TARGET="./.claude" ./install.sh --with-config
 ```
 
 Use `--force` only when you intentionally want to overwrite non-identical

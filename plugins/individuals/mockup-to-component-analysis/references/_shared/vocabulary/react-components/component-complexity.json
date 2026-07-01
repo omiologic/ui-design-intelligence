@@ -1,0 +1,39 @@
+{
+  "componentComplexityLevels": [
+    {
+      "level": 1,
+      "name": "static-building-block",
+      "definition": "Simple visual piece with minimal props and no meaningful state."
+    },
+    {
+      "level": 2,
+      "name": "reusable-shared-ui-component",
+      "definition": "Reusable card, panel, row, or item component."
+    },
+    {
+      "level": 3,
+      "name": "composed-section-component",
+      "definition": "Section built from multiple smaller parts."
+    },
+    {
+      "level": 4,
+      "name": "data-driven-component",
+      "definition": "Component renders from arrays, schemas, or structured data."
+    },
+    {
+      "level": 5,
+      "name": "app-specific-integrated-component",
+      "definition": "Component connects to app-level data types or services."
+    },
+    {
+      "level": 6,
+      "name": "state-heavy-interactive-component",
+      "definition": "Component has complex UI state or interaction rules."
+    },
+    {
+      "level": 7,
+      "name": "domain-specific-workflow-component",
+      "definition": "Component handles business-specific flow, validation, and external integrations."
+    }
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "skill": "mockup-to-component-analysis",
+  "brief": "Analyze a desktop product feature grid mockup into a React ComponentSpec without writing JSX or TSX. Preserve responsive assumptions, accessibility requirements, code format preference, and the UI/data boundary.",
+  "referenceExample": ".convention/examples/react-components/product-feature-grid.component-spec.example.json",
+  "requiredSignals": [
+    {
+      "description": "The output remains a ComponentSpec instead of premature JSX or TSX implementation.",
+      "check": "antiPatternAbsent",
+      "value": "premature-jsx-tsx-output"
+    },
+    {
+      "description": "React is the implementation framework.",
+      "check": "fieldMatchesValue",
+      "target": "implementationTarget.framework",
+      "expectedValue": "react"
+    },
+    {
+      "description": "The default component code format supports TSX.",
+      "check": "fieldMatchesValue",
+      "target": "implementationTarget.defaultComponentCodeFormat",
+      "expectedValue": "tsx"
+    },
+    {
+      "description": "Component layer uses canonical vocabulary.",
+      "check": "fieldMatchesValue",
+      "target": "componentLayer",
+      "expectedValue": "section"
+    },
+    {
+      "description": "UI/data layer separation is explicitly documented.",
+      "check": "fieldPresent",
+      "target": "uiDataBoundary"
+    },
+    {
+      "description": "Desktop responsive behavior is present.",
+      "check": "fieldPresent",
+      "target": "responsiveBehavior.desktop"
+    },
+    {
+      "description": "Tablet responsive behavior is present.",
+      "check": "fieldPresent",
+      "target": "responsiveBehavior.tablet"
+    },
+    {
+      "description": "Mobile responsive behavior is present.",
+      "check": "fieldPresent",
+      "target": "responsiveBehavior.mobile"
+    },
+    {
+      "description": "Accessibility requirements are explicit.",
+      "check": "fieldCountAtLeast",
+      "target": "accessibilityRequirements",
+      "minCount": 1
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "componentCodeFormats": [
+    {
+      "name": "jsx",
+      "definition": "Plain JavaScript React component format."
+    },
+    {
+      "name": "tsx",
+      "definition": "TypeScript React component format with typed props and exported types when useful."
+    }
+  ]
+}
